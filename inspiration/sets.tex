@@ -1,0 +1,143 @@
+%!TEX root = ../../noBSstats.tex
+
+
+\section{Sets}
+\label{mathematical_preliminiaries:sets}
+
+We'll start by some definitions of \emph{sets} and set operations.
+Sets are important because they're used to represent random events.
+Many rules of probability theory are direct consequences of the underlying rules for sets,
+so if you understand set theory you automatically understand 80\% of probability theory.
+
+
+	A \emphindexdef{set} is the mathematical notion that describes a group of objects.
+
+	\subsection{Definitions}
+	
+		\begin{itemize}
+		    \item   \emph{set}: a collection of mathematical objects
+		    \item   $S,T$: the usual variable names for sets
+		    \item   $\emptyset$: the empty set. The empty set is a set that contains no elements.
+		    \item   $s \in S$: this statement is read ``$s$ is an element of $S$'' or ``$s$ is in $S$''
+		    \item   $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$: some important number sets:
+		    		the naturals, the integers,  the rationals, and the real numbers, respectively.
+		    \item   $\emptyset$: the \emph{empty set} is a set that contains no elements.
+		    		Mathematicians adopted the symbol $\emptyset$ because the notation $\{ \, \}$ is confusing.
+		    \item   $\{ \textrm{  definition  } \}$: the curly brackets surround the definition of a set,
+		    		and the expression inside the curly brackets describes what the set contains.
+		    \item   $S\cup T$: the \emph{union} of two sets.													\index{set!union|textit}
+		    		The union of $S$ and $T$ corresponds to the elements in either $S$ or $T$.
+		    \item   $S \cap T$: the \emph{intersection} of the two sets.											\index{set!intersection|textit}
+		    		The intersection of $S$ and $T$ corresponds to the elements that are in both $S$ and $T$.
+		    \item   $S \setminus T$: \emph{set difference} or \emph{set minus}.									\index{set!difference|textit}
+		    		The set difference $S \setminus T$ corresponds to the elements of $S$ that are not in $T$.
+		    \item	$A^c$: the \emph{complement} of set $A$
+		\end{itemize}
+		Sets and set operations are used in probability theory to define random events.
+
+		An \emphindexdef{interval} is a subset of the real line.
+		We denote an interval by specifying its endpoints and surrounding them with
+		either square brackets ``$[$'' or round brackets ``$($'' to indicate whether or not the corresponding endpoint is included in the interval.
+		\begin{itemize}
+		    \item   	$[a,b]$: the \emph{closed} interval from $a$ to $b$.
+		    		This corresponds to the set of numbers between $a$ and $b$ on the real line,
+				including the endpoints $a$ and $b$. $[a,b] \equiv \{ x\in \mathbb{R}\ | \ a \leq x \leq b \}$.
+		    \item   	$(a,b)$: the \emph{open} interval from $a$ to $b$. 
+		    		This corresponds to the set of numbers between $a$ and $b$ on the real line, 
+				\emph{not} including the endpoints $a$ and $b$. $(a,b) \equiv \{ x\in \mathbb{R}\ | \ a < x < b \}$.
+		    \item   	$[a,b)$: the half-open interval that includes the left endpoint $a$ but not the right endpoint $b$.
+		    		$[a,b) \equiv \{ x\in \mathbb{R}\; | \; a \leq x < b \}$.
+		    \item   	$[a,b] \cup [c,d]$: the union of the two intervals,
+		    		which is the set of numbers \emph{either} between $a$ and $b$ (inclusive) \emph{or} between $c$ and $d$ (inclusive).
+		\end{itemize}
+		Intervals are used to describe the probability events for continuous random variables.
+
+		
+		The \emph{union} of two sets is the set defined as the set
+		\[
+		   A\cup B = \{x \ | \ x\in A \text{ or } x\in B\}.
+		\]
+		% The union operation corresponds to the logical \code{OR} operator.
+	
+		The \emph{intersection} of two sets is the set defined as
+		\[
+		   A\cap B = \{x \ | \ x\in A \text{ and } x\in B\}.
+		\]
+		The set intersection $A \cap B$ describes the elements that are part of both sets.
+		% The intersection operation corresponds to the logical \code{AND} operator.
+
+		The \emph{set difference} of two sets is defined as
+		\[
+		   A \setminus B = \{x \ | \ x\in A \text{ and } x\notin B\}.
+		\]
+		The set difference $A \setminus B$ describes all the elements that are in $A$ but not in $B$.
+
+
+		Although sets are purely mathematical constructs and they have no ``shape,''
+		we can draw \emph{Venn diagrams} to visualize relationships between sets and different subsets.
+		Venn diagrams are useful for visualizing the subsets obtained from set operations.
+		Figure~\ref{fig:set_operations} illustrates the set union $A \cup B$,
+		the set intersection $A \cap B$, and the set difference $A \setminus B$,
+		for two sets $A$ and $B$.
+
+		\begin{figure}[htb]
+		\vspace{-2mm}
+		\centering
+		\includegraphics[width=0.9\textwidth]{figures/prob/set_operations_union_intersection_difference.pdf}
+		\vspace{-2mm}
+		\caption{Venn diagrams showing different subsets obtained using the set operations:
+				set union $A \cup B$, set intersection $A \cap B$, and set difference $A \setminus B$.}
+		\label{fig:set_operations_union_intersection_difference}
+		\end{figure}
+		
+		
+
+\input{02_prob/prereqs/set_completement.tex}
+
+
+
+
+		\paragraph{Example}
+			Consider the three sets $A=\{a,b,c\}$, $B=\{b,c,d\}$, and $C=\{c,d,e\}$.
+			Using set operations, we can define new sets, such as
+			\[
+				A \cup B = 	\{a,b,c,d\},
+				\quad 
+				A \cap B =  	\{b,c\},
+				\quad
+				\textrm{and} 
+				\quad
+				A \setminus B =  \{a\},
+			\]
+			which correspond to elements in either $A$ or $B$,
+			the set of elements in $A$ and $B$,
+			and the set of elements in $A$ but not in $B$, respectively.
+			
+			We can also construct expressions involving three sets:
+			\[
+				A \cup B \cup C = \{a,b,c,d,e\},
+				\qquad
+				\quad
+				A \cap B \cap C = \{c\}.
+			\]
+			And we can write more elaborate set expressions, like $(A \cup B ) \setminus C = \{a,b\}$,
+			which is the set of elements that are in $A$ or $B$ but not in $C$.
+			Another example of a complicated set expression is $(A \cap B) \cup (B\cap C) = \{b,c,d\}$,
+			which describes the set of elements in both $A$ and $B$ or in both $B$ and $C$.
+
+
+	\bigskip
+		
+	\noindent
+	In probability theory we define the outcomes of random experiments in terms of sets.
+	All the set formulas shown above will prove to be very useful when defining probability events and doing probability calculations.
+
+	If this is the first time you're learning about sets,
+	I'll need you to work through the following exercises to get some practice with these concepts.
+	Solving this set of exercises about sets and set operations will set you up for success!
+
+		TODO: import exercises
+		TODO: add exercises with complements
+
+
+

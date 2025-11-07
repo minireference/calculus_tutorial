@@ -1,0 +1,446 @@
+%!TEX root = ../../noBSstats.tex
+
+
+\section{Functions}
+\label{mathematical_preliminiaries:functions}
+
+	The probability distribution of the random variable $X$ is represented by a mathematical functions $f_X$.
+	Any knowledge and prior experience with manipulating math functions will therefore prove to be very useful for studying probability distributions.
+	The math vocabulary and notation for math functions applies equally well to probability distribution functions.
+
+
+	\subsection{Definitions}
+	\label{functions:definitions}
+	
+		A \emphindexdef{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
+		We use the notation
+		\[
+		  f \colon A \to B
+		\]
+		to denote a function from the input set $A$ to the output set $B$.
+		For every input $x$, the output value of $f$ for that input is denoted $f(x)$.
+
+		We'll now define some fancy technical terms used to describe the input and output sets of functions.
+		\begin{itemize}
+		    \item   	The \emphindexdef{domain} of a function is the set of input values for which the function is defined.
+		    \item   	The \emphindexdef{image} or \emph{range} of the function $f$ is the set of all possible output values of the function.
+		\end{itemize}
+
+		\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.4667\textwidth]{figures/math/functions-definition.pdf}
+		\caption{	An abstract representation of a function $f$ from the set $A$ to the set $B$.
+				The function $f$ is the arrow which \emph{maps} each input 
+				$x$ in $A$ to an output $f(x)$ in $B$. 
+				The output of the function $f(x)$ is also denoted $y$.}
+		%\label{fig:}
+		\end{figure}
+
+		\noindent
+		A function is a \emph{mapping} from numbers to numbers.
+		We say ``$f$ maps $x$ to $f(x)$,''
+		and use the following terminology to classify the type of mapping that a function performs: 
+		\begin{itemize}
+		    \item   	A function is \emph{one-to-one} or \emphindexdef{injective} if it maps different inputs to different outputs. 
+		    \item   	A function is \emph{onto} or \emphindexdef{surjective} if it covers the entire output set 
+		    		(in other words, if the image of the function is equal to the function's codomain).
+		    \item   	A function is \emphindexdef{bijective} if it is both injective and surjective. 
+		    		In this case, $f$ is a \emph{one-to-one correspondence} between the input set and the output set: 
+				for each of the possible outputs $y \in Y$ (surjective part), 
+		    		there exists exactly one input $x \in X$, such that $f(x)=y$ (injective part).
+		\end{itemize}
+
+		\noindent
+		The term \emph{injective} is an allusion from the 1940s inviting us to picture the actions of
+		injective functions as pipes through which numbers flow like fluids. 
+		Since a fluid cannot be compressed, the output space must be at least as large as the input space. 
+		A modern synonym for injective functions is to
+		say they are \href{http://gowers.wordpress.com/2011/10/11/injections-surjections-and-all-that/}{\emph{two-to-two}}. 
+		If we imagine two specks of paint floating around in the ``input fluid,'' 
+		an injective function will contain two distinct specks of paint in the ``output fluid.''
+		In contrast, non-injective functions can map several different inputs to the same output. 
+		For example $f(x)=x^2$ is not injective since the inputs $2$ and $-2$ are both mapped to the output value $4$.
+	
+	
+		\subsubsection{Function composition}
+		
+			We can combine two simple functions by chaining them together to build a more complicated function.
+			This act of applying one function after another is called \emph{function composition}.
+			Consider for example the composition:
+			\[
+			  f\!\circ\!g \, (x) \equiv  f\!\left( \: g(x) \: \right) = z.
+			\]
+	
+			\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.4\textwidth]{figures/math/functions-composition.pdf}
+			\vspace{-2mm}
+			\caption{The function composition $f\!\circ\!g$ describes the combination of first applying the function $g$,
+					followed by the function $f$: $f\circ g\,(x) \equiv f(g(x))$.}
+			\label{fig:functions-composition}
+			\end{figure}
+	
+			Figure~\ref{fig:functions-composition} illustrates this concept.
+			First, the function $g:A\to B$ acts on some input $x$ to produce an intermediary value $y=g(x)$ in the set $B$.
+			The intermediary value $y$ is then passed through the function $f:B \to C$ to produce
+			the final output value $z=f(y) = f(g(x))$ in the set $C$.
+			We can think of the \emph{composite function} $f \circ g$ as a function in its own right.
+			The function $f\circ g: A \to C$ is defined through the formula $f\circ g\,(x) \equiv f(g(x))$.
+	
+			Don't worry too much about the $\circ$ symbol---it's just a convenient math notation I wanted you to know about.
+			Writing $f\circ g$ is just as good as writing $f(g(x))$.
+			The important takeaway from Figure~\ref{fig:functions-composition} is that
+			functions can be combined by using the outputs of one function as the inputs to the next.
+			This is a very useful idea for building math models.
+			You can understand many complicated input-output transformations by describing them as compositions of simple functions.
+	
+	
+		\subsubsection{Inverse function}
+	
+			Recall that a \emph{bijective} function is a one-to-one correspondence between
+			a set of input values and a set of output values.
+			For every input value $x$,
+			there is exactly one corresponding output value $y$.
+			This means that we can start from any output value $y$ and find the corresponding input value $x$ that produced it.
+	
+			\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.4333\textwidth]{figures/math/functions-inverse.pdf}
+			\caption{The inverse $f^{-1}$ undoes the operation of the function $f$.}
+			\label{fig:functions-inverse}
+			\end{figure}
+			
+			Given a bijective function $f:A \to B$,
+			there exists an inverse function $f^{-1}:B \to A$,
+			which performs the \emph{inverse mapping} of $f$.
+			If you start from some $x$, apply $f$, and then apply $f^{-1}$,
+			you'll arrive---full circle---back to the original input $x$:
+			\[
+			 f^{-1}\!\big( \; f(x) \; \big) \equiv f^{-1}\!\circ\! f \;(x) = x.
+			\]
+			In Figure~\ref{fig:functions-inverse} the function $f$ is represented as a forward arrow,
+			and the inverse function $f^{-1}$ is represented as a backward arrow
+			that puts the value $f(x)$ back to the $x$ it came from.
+	
+
+
+	\subsection{Functions reference}
+	
+		Your \emph{function vocabulary} determines how well you can express yourself mathematically					\index{function}
+		in the same way that your English vocabulary determines how well you can express yourself in English.
+		The following sections aims to embiggen your function vocabulary.
+
+		\subsubsection{Line}
+		\label{function_reference:line}
+		
+			The equation of a line describes an input-output relationship
+			where the change in the output is \emph{proportional} to the change in the input.
+			\[
+				f(x) = mx+b.
+			\]	
+			The constant $m$ describes the slope of the line.
+			The constant $b$ is called the $y$-intercept and it corresponds to the value of the function when $x=0$.
+
+			\begin{itemize}
+			    \item 	Domain: $x\in \mathbb{R}$. \\
+			    		The function $f(x)=mx+b$ is defined for all inputs $x \in \mathbb{R}$.
+			    \item 	Image: $x\in\mathbb{R}$ if $m\neq 0$. 
+			    		If $m=0$ the function is constant $f(x)=b$, so the image set contains only a single number $\{ b\}$.
+			    \item 	$x=-b/m$: the $x$-intercept of $f(x)=mx+b$. The $x$-intercept is obtained by solving $f(x)=0$.
+			    \item	A unique line passes through any two points $(x_1,y_1)$ and $(x_2,y_2)$ if $x_1 \neq x_2$.
+			    \item	The inverse to the function $f(x)=mx+b$ is $f^{-1}(x)=\frac{1}{m}(x-b)$, which is also a line.
+			    \item 	$Ax + By = C$: the \emph{general} equation of a line.
+			    		Given the general equation of a line $Ax + By = C$,
+					you can obtain the function form $y=f(x)=mx+b$ by setting $b=\frac{C}{B}$ and $m=\frac{-A}{B}$.
+			\end{itemize}
+
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{figures/math/graph_of_2x_plus_3.pdf}
+			\caption{	The graph of the function $f(x)=2x-3$.
+					The slope is $m=2$.
+					The $y$-intercept of this line is at $y=-3$. The $x$-intercept is at $x=\frac{3}{2}$.}
+			\label{fig:graph_of_2x_plus_3}
+			\end{figure}
+	
+	
+		\subsubsection{Square}
+		\label{function_reference:square}
+	
+			The function $x$ \emph{squared},
+			is also called the \emph{quadratic} function, or \emphindexdef{parabola}.		\index{quadratic|textit}
+			The formula for the quadratic function is
+			\[
+			  f(x)=x^2.
+			\]
+			The name ``quadratic'' comes from the Latin \emph{quadratus} for square,
+			since the expression for the area of a square with side length $x$ is $x^2$.
+	
+			\begin{figure}[htb]
+			\centering
+			\includegraphics[width=\textwidth]{figures/math/quadratic_func.pdf}
+			\caption{Plot of the quadratic function $f(x)=x^2$.
+				The graph of the function passes through the following $(x,y)$ coordinates:
+				$(-2,4)$, $(-1,1)$, $(0,0)$, $(1,1)$, $(2,4)$, $(3,9)$, etc.
+				}
+			\label{fig:quadratic_func}
+			\end{figure}
+	
+			\begin{itemize}
+				    \item 	Domain: $x\in\mathbb{R}$. \\
+					    	The function $f(x)=x^2$ is defined for all input values $x \in \mathbb{R}$.
+				    \item 	Image: $f(x)\in[0,\infty)$. \\
+						The outputs are never negative: $x^2 \geq 0$, for all $x\in \mathbb{R}$.
+				    \item 	The function $x^2$ is the inverse of the square root function $\sqrt{x}$.	     
+				    		% for positive numbers $x$
+						%	    $f(x)=x^2$ is the inverse function of $f(x)=\sqrt{x}$.		
+				    \item 	$f(x)=x^2$ is \emph{two-to-one}: 
+				    		it sends both $x$ and $-x$ to the same output value $x^2=(-x)^2$.
+				    \item 	The quadratic function is \emph{convex}, meaning it curves upward.
+				    \item	A general quadratic function has the form $f(x) = A(x-h)^2 + k$,
+				    		where $A$ is a vertical scaling factor,
+						$h$ is a horizontal displacement,
+						and $k$ is a vertical displacement of the function.
+			\end{itemize}
+
+
+
+		\subsubsection{Square root}
+		\label{function_reference:square_root}
+		
+			The square root function is denoted
+			\[
+			 f(x) = \sqrt{x} \equiv x^{\frac{1}{2}} .
+			\]
+			The square root $\sqrt{x}$ is the inverse function of the square function $x^2$ for $x\geq 0$.
+			The symbol $\sqrt{c}$ refers to the \emph{positive} solution of $x^2=c$.
+			Note that $-\sqrt{c}$ is also a solution of $x^2=c$.
+
+			\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.9333\textwidth]{figures/math/sqrt_of_x.pdf}
+			\caption{	The graph of the function $f(x)=\sqrt{x}$.
+					The domain of the function is $x \in [0,\infty)$.
+					You can't take the square root of a negative number.
+				    }
+			\label{fig:sqrt_of_x}
+			\end{figure}
+	
+	
+			\begin{itemize}
+				    \item Domain: $x \in [0,\infty)$\,. \\
+						The function $f(x)=\sqrt{x}$ is only defined for nonnegative inputs  $x \geq 0$.					\index{nonnegative}
+						There is no real number $y$ such that  $y^2$ is negative, hence the function $f(x)=\sqrt{x}$ 
+						is not  defined for negative inputs $x$.		    
+				    \item Image: $f(x) \in [0,\infty)$\,.	\\ 
+						The outputs of the function $f(x)=\sqrt{x}$ are never negative: 
+						$\sqrt{x} \geq 0$, for all $x\in [0,\infty)$\,.
+				    \item The \emph{cube} root function $f(x) = \sqrt[3]{x}  \equiv x^{\frac{1}{3}}$,
+				    		is the inverse function for the cubic function $f(x)=x^3$.
+				    \item The $n$\textsuperscript{th}-root function $\sqrt[n]{x} \equiv x^{\frac{1}{n}}$ is the inverse function of $x^n$.
+			\end{itemize}
+
+
+
+	\subsubsection{Absolute value}
+	\label{function_reference:absolute_value}
+		
+		The \emphindexdef{absolute value} function tells us the size of numbers
+		without paying attention to whether the number is positive or negative.
+		\[
+		  f(x)=|x|=  \left\{  \begin{array}{rl}  x &\text{ if } x\geq 0, \\  -x &\text{ if } x<0. \end{array} \right.
+		\]
+		We can compute a number's absolute value by \emph{ignoring the sign} of the number.
+		A number's absolute value corresponds to its distance from the origin of the number line.							\index{origin}
+
+		\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/math/absolute_value_of_x.pdf}
+		\caption{The graph of the absolute value function $f(x)=|x|$.}
+		%\label{fig:}
+		\end{figure}
+
+		\begin{itemize}
+		    \item   	The absolute value $|x|$ is always a nonnegative number											\index{nonnegative}
+		    \item   	The combination of squaring followed by square-root
+		    		is equivalent to the absolute value function $\sqrt{x^2} \equiv |x|$,
+				since squaring destroys the sign.
+		\end{itemize}
+
+
+
+
+
+	\subsubsection{Polynomials}
+	\label{function_reference:polynomials}
+																							\index{polynomial|textit}
+		The general equation for a polynomial function of degree $n$ is written,
+		\[
+		  f(x)=a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n.
+		\]
+		The constants $a_i$ are known as the \emph{coefficients} of the polynomial.
+		We call $a_0$ the constant term.														\index{term}
+		We call the number $a_1$ the \emph{linear} coefficient, or \emph{first-order} coefficient.						\index{linearity}
+		The coefficient $a_2$ is the \emph{quadratic} coefficient,
+		$a_3$ the \emph{cubic} coefficient,
+		and $a_n$ the $n$\textsuperscript{th} order coefficient.
+		The largest power of $x$ that appears in the polynomial is called the \emph{degree} of the polynomial.
+			
+		 \begin{itemize}
+			    \item 	Domain: $x\in\mathbb{R}$. 
+				    	Polynomials are defined for all inputs $x \in \mathbb{R}$.
+			    \item	The roots of $f(x)$ are the values of $x$ for which $f(x)=0$.
+			    \item 	The image of a polynomial function depends on the coefficients.
+			    \item 	A polynomial of degree $n$ has  $n+1$ coefficients: $a_0,a_1,a_2,\ldots, a_n$.
+			    \item 	The sum of two polynomials is also a polynomial.
+			    \item	To solve the polynomials equation $A(x)=B(x)$,
+			    		you can rewrite it as $A(x)-B(x)=0$,
+					and use one of the standard formulas.
+					\begin{itemize}
+						\item		The solution to $mx + b = 0$ is $x=\frac{-b}{m}$ (just move $b$ to the other side and divide by~$m$).
+						\item		For a second-degree polynomial,														\index{quadratic}
+								$ax^2 + bx + c = 0$,
+								the solutions are $x_1=\frac{-b + \sqrt{ b^2 -4ac}}{2a}$ and $x_2=\frac{-b - \sqrt{b^2-4ac}}{2a}$.
+								If $b^2-4ac < 0$,
+								the solutions will involve taking the square root of a negative number.
+								In those cases, we say no real solutions exist.
+						\item		To solve polynomial equations of degree $3$ or higher we recommend using a computer algebra system
+								like \texttt{SymPy}: \texttt{\href{http://live.sympy.org}{http://live.sympy.org}}.
+								To solve the equation $C(x)=0$,
+								call the function \texttt{solve(expr,var)},
+								where the expression \texttt{expr} corresponds to $C(x)$,
+								and \texttt{var} is the variable you want to solve for.
+								For example,
+								to solve $x^3-3x^2-4x=0$,
+								use the command \code{solve(x**3-3*x**2-4*x, x)}
+								and you'll obtain the output \code{[-1, 0, 4]},
+								which tells you roots of this polynomial are $x=-1$, $x=0$, and $x=4$.					
+					\end{itemize}
+		\end{itemize}
+
+		Depending on the choice of degree $n$ and coefficients $a_0$, $a_1$, $\ldots$, $a_n$,
+		Consider the following observations about the symmetries of polynomials:
+		\begin{itemize}
+			\item
+			If a polynomial contains only even powers of $x$,
+			like $f(x)=1+x^2-x^4$ for example,
+			we call this polynomial \emph{even}.														\index{function!even|textit}
+			Even polynomials have the property $f(x)=f(-x)$.
+			The sign of the input doesn't matter.
+			\item
+			If a polynomial contains only odd powers of $x$,  for example $g(x)=x+x^3-x^9$,
+			we call this polynomial \emph{odd}.														\index{function!odd|textit}
+			Odd polynomials have the property $g(x)=-g(-x)$.
+			\item
+			If a polynomial has both even and odd terms then it is neither even nor odd.
+		\end{itemize}
+		
+		\noindent
+		The terminology of \emph{odd} and \emph{even} applies to functions in general and not just to polynomials.
+		All functions that satisfy $f(x)=f(-x)$ are called \emph{even functions},
+		and all functions that satisfy $f(x)=-f(-x)$ are called \emph{odd functions}.
+
+
+
+	\subsubsection{Exponential}
+	\label{function_reference:exponential}
+		
+		The exponential function base $e=2.7182818\ldots$ is denoted										\index{exponential|textit}
+		\[
+		  f(x)=e^{x} \equiv \exp(x).
+		\]
+
+		\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.833\textwidth]{figures/math/exp_x.pdf}
+		\caption{The graph of the exponential function $f(x)=e^x$
+				passes through the following $(x,y)$ coordinates:
+				$(-2,\frac{1}{e^2})$, 
+				$(-1,\frac{1}{e})$, 
+				$(0,1)$, 
+				$(1,e)$, 
+				$(2,e^2)$, 
+				$(3,e^3=20.08\ldots)$, 
+				$(5,148.41\ldots)$, and 
+				$(10,22026.46\ldots)$.
+				%			$(20,485165195.41\ldots)$, and 
+				%			$(27,532048240601.80\ldots)$.
+			}
+		\label{fig:exp_x}
+		\end{figure}
+
+	
+		\begin{itemize}
+		    \item 	Domain: $x\in \mathbb{R}$
+		    \item 	Image: $e^x \in (0, \infty)$  
+		    \item	$f(a)f(b)=f(a+b)$ since $e^ae^b=e^{a+b}$
+		    \item   	The derivative (the slope of the graph) of the exponential function 
+		    		is the exponential function: $f(x) = e^x  \ \ \Rightarrow \ \ f'(x)=e^x$
+				%	The function $e^x$ is the only function which is equal to its own derivative: $f(x)=f'(x)$.
+		    \item   	A more general exponential function would be $f(x)=Ae^{\gamma x}$,
+				where $A$ is the initial value
+				and $\gamma$ (the Greek letter \emph{gamma}) is the \emph{rate} of the exponential.
+				For $\gamma > 0$, the function $f(x)$ is increasing, as in Figure~\ref{fig:exp_x}.
+				For $\gamma < 0$, the function is decreasing and tends to zero for large values of $x$.
+		\end{itemize}
+
+
+
+
+	\subsubsection{Natural logarithm}
+	\label{function_reference:natural_logarithm}
+
+		The natural logarithm function is denoted														\index{logarithm|textit}
+		\[
+		  f(x)=\ln(x) = \log_e(x).
+		\]
+		The function $\ln(x)$ is the inverse function of the exponential $e^x$.
+
+		\begin{figure}[htb]
+		\centering
+		\vspace{-4mm}
+		\includegraphics[width=0.9\textwidth]{figures/math/ln_of_x.pdf}
+		\vspace{-1mm}		
+		\caption{The graph of the function $\ln(x)$
+				passes through the following $(x,y)$ coordinates:
+				$(\frac{1}{e^2},-2)$, 
+				$(\frac{1}{e},-1)$, 
+				$(1,0)$, 
+				$(e,1)$, 
+				$(e^2,2)$, 
+				$(e^3,3)$, 
+				$(148.41\ldots,5)$, and 
+				$(22026.46\ldots,10)$.
+		}
+		\label{fig:ln_of_x}
+		\end{figure}
+
+		\begin{itemize}
+		    \item 	Domain: $x\in(0, \infty)$  
+		    \item 	Image: $\ln(x) \in \mathbb{R}$.
+		    \item	$\ln(x) + \ln(y) = \ln(xy)$ since $e^{a+b}=e^ae^b$.
+		\end{itemize}
+	
+
+
+	\subsection{Function transformations}
+	\label{function_reference:function_transformations}
+		
+		We can adjust the shape of a function by scaling it or moving it,
+		so that it passes through certain points.
+		Here are four useful transformations you can perform on \emph{any} function $f$ to obtain a transformed function $g$:
+
+		\begin{itemize}[topsep=2pt,itemsep=0.5pt]
+		    \item   Vertical translation: $g(x) = f(x)+k$
+		    \item   Horizontal translation: $g(x) = f(x-h)$
+		    \item   Vertical scaling: $g(x) = Af(x)$ 
+		    \item   Horizontal scaling: $g(x) = f(ax)$
+		\end{itemize}
+		By applying these transformations,
+		we can \emph{move} and \emph{stretch} a generic function to give it any desired shape.
+
+
+
+
+
+

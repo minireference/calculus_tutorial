@@ -1,0 +1,62 @@
+		Consider now some set $A$ contained in another set $\Omega$, denoted $A \subseteq \Omega$.
+		The \emph{complement} of a set $A$ in $\Omega$ is defined as
+		\[
+			A^c = \{x\in \Omega \ | \ x \notin A\}.
+		\]
+		
+		By definition, $\emptyset^c=\Omega$ and $\Omega^c=\emptyset$.
+		The union of any set with the empty set is the set itself, $A\cup \emptyset=A$.
+		The intersection of any set with the empty set is the empty set, $A \cap \emptyset=\emptyset$.
+		
+
+
+		\begin{figure}[htb]
+		\vspace{-2mm}
+		\centering
+		\includegraphics[width=0.33\textwidth]{figures/prob/set_operations_complement.pdf}
+		\vspace{-2mm}
+		\caption{The complement of the set $A$ is denoted $A^c$ and includes all elements of $\Omega$
+				that are not in $A$.}
+		\label{fig:set_operations_complement}
+		\end{figure}
+
+
+
+
+
+
+
+\emph{DeMorgan's Law} describes two important equations that apply to the complements of unions and intersections of sets:		
+\[
+	(A\cup B)^c = A^c \cap B^c
+	\qquad
+	\textrm{and}
+	\qquad
+	(A\cap B)^c = A^c \cup B^c.
+\]
+See Figure~\ref{fig:set_operations_deMorgans_law} for an illustration.
+
+\begin{figure}[htb]
+\vspace{-2mm}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/prob/set_operations_deMorgans_law.pdf}
+\vspace{-2mm}
+\caption{DeMorgan's laws provide an alternative ways for computing the complements of unions and intersections of sets.
+	Try to picture how each of the shaded ways can be constructed in two different ways.}
+\label{fig:set_operations_deMorgans_law}
+\end{figure}
+
+%1. A∪∅=A, A∩∅=∅ 2.A∪S=S, A∩S=A
+%3. A∪Ac =S,A∩Ac =∅
+%4. (Ac)c = A
+%5. The Commutative Property:
+%A∪B=B∪A, A∩B=B∩A
+%6. The Associative Property:
+%(A∪B)∪C=A∪(B∪C), (A∩B)∩C=A∩(B∩C)
+%7. The Distributive Property:
+%A∪(B∩C)=(A∪B)∩(A∪C), A∩(B∪C)=(A∩B)∪(A∩C)
+
+		% TODO: more rules and tricks from https://en.wikipedia.org/wiki/Algebra_of_sets
+		% TODO: mention duality https://en.wikipedia.org/wiki/Algebra_of_sets#The_principle_of_duality
+
+

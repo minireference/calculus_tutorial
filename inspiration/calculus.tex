@@ -1,0 +1,382 @@
+%!TEX root = ../../noBSstats.tex
+
+
+\section{Calculus}
+\label{mathematical_preliminiaries:calculus}
+
+	Calculus allows you to describe how functions change over time (derivatives),
+	and to calculate the total amount of a quantity that accumulates over a time period (integrals).
+	The language of calculus will allow you to speak precisely about the properties of probability density functions
+	(Section~\ref{sec:continuous_prob_distr}) and better understand their behaviour.
+
+	This section presents a bird's-eye view of the core concepts of calculus.
+	We'll talk about derivatives, integrals, and also introduce some formulas for computing sums of sequences.
+
+
+	\subsection{Definitions}
+	
+		\begin{itemize}
+
+		    \item   	$\mathbb{R}$: the set of real numbers
+
+		    \item   	$f(x)$:  a function of the form $f: \mathbb{R} \to \mathbb{R}$,
+		    		which means $f$ takes real numbers as inputs and produces real numbers as outputs
+
+		    \item   $\lim_{\delta \to 0}$: a limit expression in which the number $\delta$ tends to zero
+
+		    \item   $f'(x)$: the derivative of $f(x)$ is the rate of change of $f$ at $x$:
+		    		\[
+				  f'(x) = \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}\,.
+			   	\] 
+				The derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+
+
+		    \item   	$A(a,b)$: the value of the \emph{area} under the curve $f(x)$ from $x=a$ until $x=b$.
+		    		The area $A(a,b)$ is computed as the following integral
+		    		\[
+			        	   A(a,b) = \int_a^b f(x)\;dx.
+			    	\] 
+			    	The $\int$ sign stands for \emph{sum}.
+			    	Indeed, the integral is the ``sum'' of $f(x)$ for all values of $x$ between $a$ and $b$.
+				
+		    \item   	$F(c) \equiv A(0,c)$: the \emph{integral function} of $f(x)$.
+		    		The integral function corresponds to the computation of the area under $f(x)$
+				as a function of the upper limit of integration:
+			       	\[
+			        	   F(c) \equiv A(0,c) = \int_0^{c}\! f(u)\:du.
+			      	\]
+				The choice of $x=0$ as the lower limit of integration is arbitrary.
+
+		\item		$F(x)+C$: The \emph{antiderivative} function of the function $f(x)$.								\index{antiderivative}
+				An antiderivative function is defined as a function whose derivative equals to $f(x)$.
+				The antiderivative function always includes an additive constant $C$.
+				If the function $F(x)$ is an antiderivative (obeys $F'(x)=f(x)$)
+				then the function $F(x)+C$ is also an antiderivative since  
+				\[ \frac{d}{dx}\!\left[   F(x) + C \right] = f(x), \]
+				for any constant $C$.
+				
+				
+		\item		The fundamental theorem of calculus (FTC) states that
+				the integral function $F(c)$ is the same as the antiderivative function $F(x)$
+				up to an additive constant $C$:
+				\[
+				   A(0,x) \overset{\scriptscriptstyle {\textrm{FTC}}}{=} F(x)+C.
+				\]
+				The fundamental theorem leads us to the following formula for computing the area $A(a,b)$:
+				\[
+				   A(a,b) 
+				 	= A(0,b) - A(0,a) 
+				 	= F(b) - F(a).
+				\]
+				The area under the curve, $A(a,b)$, is equal to the change in the antiderivative function $F(x)$ between $x=a$ and $x=b$.
+
+		    \item   	$\mathbb{N} \equiv \{0, 1, 2, 3, 4, 5, 6, \ldots \}$: the set of natural numbers
+
+		    \item   	$\mathbb{N}_+ \equiv \mathbb{N} \setminus \{0\}  \equiv \{1, 2, 3, 4, 5, 6, \ldots \}$: 
+		    		the set of positive natural numbers
+
+		    \item   	$a_k$: a sequence of numbers $(a_0, a_1, a_2, a_3, a_4, \ldots)$
+
+		    \item   	$\sum$: sum. This symbol indicates taking the sum of several objects grouped together. 
+				The summation sign is the short way to express certain long expressions: 								\index{summation}
+				\[
+			      	    a_3 + a_4 + a_5 + a_6 + a_7
+					= \sum_{3 \leq k \leq 7} a_k
+					= \sum_{k=3}^7 a_k.
+				\]
+
+		    \item	$\sum a_n$: the \emph{series} $a_n$ is the sum of all terms in the sequence $a_n$:						\index{term}
+			    	\[
+				    S_\infty = \sum_{k=1}^\infty a_n  = a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + \cdots.
+			    	\]
+
+		    \item   	$n!$: the \emph{factorial} function $n!=n(n-1)(n-2)\cdots 3\cdot2\cdot1$,
+		    		if $n\geq1$. We define $0!=1$.
+
+		    \item   	$f(x)=\sum_{k=0}^\infty c_k x^k$: the \emph{Taylor series} approximation of the function $f(x)$.				\index{approximation}
+				It has the form of an infinitely long polynomial $c_0 + c_1x^1 + c_2x^2 + c_3x^3 + \ldots$
+				where the coefficients $c_k$ are chosen so as to encode the properties of the function $f(x)$.
+
+		\end{itemize}
+
+
+
+		\subsection{Download example}
+		
+			Suppose you're downloading a large file to your computer.
+			At $t=0$ you click ``save as'' in your browser and the download starts.
+			Let $f(t)$ represent the size of the downloaded data.
+			At any time $t$,
+			the function $f(t)$ tells you the amount of disk space taken by the partially-downloaded file.
+			You are downloading a $720$[MB] file, so the download progress at time $t$
+			corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
+
+			\subsubsection{Download rate}
+			\label{introduction:download_rate}
+
+				The derivative function $f^\prime(t)$,
+				pronounced ``\:\!\!$f$ prime,''
+				describes how the function $f(t)$ changes over time.
+				In our example $f^\prime(t)$ is the download speed.
+				If your downloading speed is  $f'(t)=100$[kB/s],
+				then the file size $f(t)$ must increase by 100[kB] each second.
+				If you maintain this download speed, the file size will grow at a constant rate:
+				$f(0)=0$[kB], $f(1)=100$[kB], $f(2)=200$[kB], $\ldots$, $f(100)=10$[MB].
+
+				To calculate the ``estimated time remaining'' until the download's completion,
+				we divide the amount of data that remains to be downloaded by the current download speed:
+				\[
+				  \text{time remaining } = \frac{ 720 - f(t) }{ f^\prime(t) } \quad [\textrm{s}].
+				\]
+				The bigger the derivative, the faster the download will finish.
+				If your internet connection were 10 times faster, the download would finish 10 times more quickly.
+
+			\subsubsection{Inverse problem}
+			\label{introduction:inverse_problem}
+	
+				Let's consider this situation from the point of view of the modem that connects your computer to the internet.
+				Any data you download comes through the modem.
+				The modem knows the download rate $f^\prime(t)$[kB/s] at all times during the download.
+
+				However, since the modem is separate from your computer,
+				it does not know the file size $f(t)$ as the download progresses.
+				Nevertheless,
+				the modem can infer the file size at time $t$ from knowing the transmission rate $f^\prime(t)$.
+				The integral of the download rate between $t=0$ and $t=\tau$
+				corresponds to the total amount of downloaded data stored on your computer.
+				During this download period, the change in file size is described by the integral
+				\[
+				   \Delta f = f(\tau)-f(0) = \int_0^\tau \! f'(t)\: dt\,.
+				\]
+				Assuming the file size starts from zero $f(0)=0$[kB] at $t=0$,
+				the modem can use the integration procedure to find $f(\tau)$,
+				the file size on your computer at $t=\tau$:
+				\[
+				  f(\tau) = \int_0^\tau\! f^\prime(t) dt\,.
+				\]
+				The download rate $f'(t)$ is measured in [kB/s],
+				and each time step $dt$ is $1$[s] long,
+				so the data downloaded during one second is $f'(t)dt$[kB].
+				The file size at time $t=\tau$ is equal to the sum of the data
+				downloaded during each second from $t=0$ until $t=\tau$.			
+
+				The integral $\int_a^b q(t)\:dt$ is the calculation of the \emph{total}
+				of some quantity $q(t)$ that accumulates during the time period from $t=a$ to $t=b$.
+				Integrals are necessary any time you want to calculate the total of a quantity that changes over time.
+
+
+	\subsection{Derivatives}
+	\label{mathematical_preliminiaries:derivatives}
+
+		Consider the function $f(x)$,
+		which takes real numbers as inputs and produces real numbers as outputs, $f: \mathbb{R} \to \mathbb{R}$.
+		The input variable for the function $f$ is usually denoted $x$.
+		The function's output is denoted $f(x)$ and is identified with the $y$-coordinate in graphs.
+
+		The \emph{derivative} function																		\index{derivative}
+		describes the \emph{rate of change} of the function $f(x)$.
+		For example,
+		the constant function $f(x)=c$ has derivative $f'(x)=0$ since the function $f(x)$ does not change at all.
+
+		Graphically speaking,
+		the derivative function describes the \emph{slope} of the graph of the function $f(x)$.
+		The derivative of a line $f(x)=mx+b$ is $f'(x)=m$ since the slope of this line is equal to $m$.
+		In general, the slope of a function is different at different values of~$x$.
+		For a given choice of input $x=x_0$, the value of the derivative function $f'(x_0)$ is equal 
+		to the slope of $f(x)$ as it passes through the point $(x_0,f(x_0))$.
+
+
+
+
+%\input{02_prob/prereqs/derivative_impl.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	\subsection{Integrals}
+	\label{mathematical_preliminiaries:integrals}
+
+		The integral of the function $f(x)$ between $x=a$ and $x=b$, denoted $\int_a^b f(x)\, dx$,
+		corresponds to the concept of ``total amount of $f$ accumulated between $x=a$ and $x=b$.''
+		The notion of an integral in foundational for understanding continuous random variables
+		since computing probabilities of random events are defined as integral calculations.
+
+		Graphically speaking,
+		this integral corresponds to the area under the curve of the graph of $f(x)$ between the vertical lines at $x=a$ and $x=b$:
+		\[
+		A(a,b) = \int_a^b f(x) \: dx.
+		\]
+		We refer to the numbers $a$ and $b$ as the \emph{limits of integration},
+		and the notation $\int_a^b f(x)\:dx$ is shorthand for $\int_{x=a}^{x=b} f(x)\: dx$.
+		The $\int$ sign comes from the Latin word \emph{summa} for sum.
+		Indeed,
+		the integral is the ``sum'' of the values of $f(x)$ between the two limits of integration.
+
+		\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.35\textwidth]{figures/calculus/integral_as_region_under_curve_Aab.pdf}
+		\vspace{-2mm}
+		\caption{The integral of the function $f(x)$ between $x=a$ and $x=b$ corresponds to the area $A(a,b)$.}
+		\label{fig:integral_as_region_under_curve_Aab_repeat}
+		\end{figure}
+
+
+
+		\subsubsection{Integral function}
+		
+			The \emph{integral function} $F(c)$ corresponds to the area calculation $A(0,c)$ as a function of the upper limit of integration:
+			\[
+			   F(c) \equiv A(0,c) = \int_0^c \! f(x)\:dx\,.
+			\]
+			There are two variables and one constant in this formula.
+			The input variable $c$ describes the upper limit of integration.
+			The \emph{integration variable} $x$ performs a sweep from $x=0$ until $x=c$.
+			The constant $0$ describes the lower limit of integration.
+			Note that choosing $x=0$ for the starting point of the integral function was an arbitrary choice,
+			and we obtain another integral function $F_a(c)=\int_a^c \! f(x)\:dx$  if we use $x=a$ as the starting point.
+
+			The integral function $F(c)$ contains the ``precomputed'' information about the area under the graph of $f(x)$.
+			The derivative function $f'(x)$ tells us the "slope of the graph" property of the function $f(x)$ for all values of $x$.
+			Similarly,
+			the integral function $F(c)$ tells us the "area under the graph" property of the function $f(x)$ for \emph{all} possible limits of integration.
+
+			The area under $f(x)$ between $x=a$ and $x=b$ is obtained by calculating the \emph{change} in the integral function as follows:
+			\[
+			A(a,b) = \int_a^b \! f(x)\:dx
+			 =  F(b)-F(a).
+			\]
+
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.966\textwidth]{figures/calculus/integral_as_difference_off.pdf}
+			\caption{  The integral function $F(x)=A(0,x)$ computes the area under the curve $f(x)$ starting from $x=0$.
+					The area under $f(x)$ between $x=a$ and $x=b$ is computed using the formula $A(a,b)=F(b)-F(a)$,
+					which describes the change in $F(x)$ between $x=a$ to $x=b$.
+					}
+			\label{fig:integral_as_difference_off}
+			\end{figure}
+
+
+
+
+
+
+\input{02_prob/prereqs/integral_impl.tex}
+
+
+
+
+
+
+
+
+		\subsubsection{Properties of integrals}
+		
+			In this section we'll state some important properties of integrals that you can use to simplify and solve integral calculations.
+	
+			\paragraph{Integrals are signed area calculations}
+	
+				The value of an integral can be either positive or negative.
+				If the limits of integration $a$ and $b$ satisfy $a < b$ ($b$ is to the right of $a$ on the number line),
+				and if $f(x) > 0$ (meaning $f(x)$ is a positive function),
+				then the area under the curve will be positive:
+				\[
+				 A(a,b) = \int_{a}^{b} f(x) \; dx 	\ \ > \ \  0.
+				\]
+				For a function $g(x) < 0$,
+				the integral from $a$ to $b$ corresponds to a negative area.
+				In general, if $f(x)$ is above the $x$-axis in some places,
+				these zones contribute positively to the total area under the curve;
+				places where $f(x)$ is below the $x$-axis contribute negatively to the total area $A(a,b)$.
+	
+				We can also obtain a negative area if we swap the limits of integration.
+				Suppose we have $f(x)>0$, and limits of integration $a$ and $b$ such that $a < b$.
+				If we start integrating at $x=b$ and stop integrating at $x=a$,
+				the area under the curve will be negative:
+				\[
+				    A(b,a) = \int_{b}^{a} f(x) \; dx 	\ \ < \ \  0.
+				\]
+				The function $f(x)$ is positive but each integration step $dx$ is \emph{negative},
+				since we're moving from right to left.
+		
+				Integrals are \emph{signed} areas.
+				Changing the direction of integration changes the sign of the integral:
+				\[
+				 A(b,a)
+				 = \int_{b}^{a} f(x) \ dx 
+				 = - \int_{a}^{b} f(x) \ dx 
+				 = - A(a,b).
+				\]
+	
+	
+			\paragraph{Additivity}
+	
+				The integral from $a$ to $b$ plus the integral from $b$ to $c$
+				is equal to the integral from $a$ to $c$:
+				\begin{shadebox}
+				\vspace{-2mm}
+				\[
+				  A(a,b) + A(b,c) = 
+				 \int_a^b f(x) \; dx + \int_b^c f(x) \; dx  =
+				  \int_a^c f(x) \; dx =
+				  A(a,c).
+				\]
+				\vspace{-2mm}
+				\end{shadebox}	
+	
+	
+			\paragraph{Linearity}
+			
+				Integration is a \emph{linear} operation, meaning													\index{linearity}
+				\begin{shadebox}
+				\vspace{1mm}
+				\[
+				 \int [\alpha f(x) + \beta g(x)]\; dx 
+				 =
+				 \alpha  \int f(x)\; dx
+				 + 
+				 \beta \int g(x)\; dx,
+				\]
+				\vspace{-2mm}
+				\end{shadebox}	
+				for arbitrary constants $\alpha, \beta$.
+	
+				Recall the derivative is also a linear operation:
+				\[
+				[\alpha f(x) + \beta g(x)]'
+				 =
+				 \alpha  f'(x)
+				  + 
+				 \beta g'(x).
+				\]
+				Thus, we can say the operations of calculus as a whole are \emph{linear} operations.
+				This property is really cool, 
+				because it allows us to break down complicated problems into smaller chunks.
+	
+
+	
+
+
+% \input{02_prob/prereqs/multivariable_calculus.tex}
+
+
+
+
+
+
+
