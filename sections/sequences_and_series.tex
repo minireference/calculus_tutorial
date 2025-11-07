@@ -1,0 +1,153 @@
+%!TEX root = ../calculus_tutorial.tex
+
+	\section{Sequences and series}
+
+		A sequence is a function of the form $a: \mathbb{N} \to \mathbb{R}$.	
+		The sequence's input variable is usually denoted $k$ or $n$,
+		and it corresponds to the \emph{index} or number in the sequence.
+		We describe sequences either by specifying the formula $a_k$ for the $k$\textsuperscript{th} term in the sequence
+		or by listing all the values of the sequence:
+		\[
+			a_k, k \in \mathbb{N}  \ \ \Leftrightarrow \ \  \left(a_0, a_1, a_2, a_3, a_4, \ldots \, \right).
+		\]
+		Note the new notation for the input variable as a subscript.
+		This is the standard notation for describing sequences,
+		and is used instead of the standard function notation $a(k)$.
+
+		We're often interested in computing the sum of all the values in this given a sequence $a_k$.
+		To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th} elements of the sequence $a_k$,
+		we turn to summation notation:									\index{summation}
+    		\[
+		      a_3 + a_4 + a_5 
+		      \equiv \sum_{3 \leq k \leq 5}\!\! a_k 
+		      \equiv \sum_{n=3}^{5} a_k \,.      
+		\] 
+		The capital Greek letter \emph{sigma} stands in for the word \emph{sum}, 
+		and the range of index values included in this sum is denoted below and above the summation sign.
+
+		The partial sum of the sequence values $a_n$ ranging from $k=0$ until $k=N$  is denoted as
+		\[
+			S_N = \sum_{k=0}^N a_k =  a_0 + a_1 + a_2 + \cdots + a_{N-1} + a_N.
+		\]
+
+		In calculus,
+		the notion of a \emph{series} describes the sum of \emph{all} the values in the sequence $a_k$:				\index{series}
+		\[
+		   \sum a_k 
+		    	\equiv 	S_\infty	
+			= 		\lim_{N \to \infty} S_N
+			=		\sum_{n=k}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
+		\]
+		Note if the sequence $a_k$ continues indefinitely,
+		computing the sum requires an infinite number of addition operations.
+
+
+		\subsubsection{Exact sums}
+		
+			Formulas exist for calculating the sum of certain series, even series with infinite number of terms.
+
+			The formulas for the sum of the first $N$ positive integers is
+			\[
+			   \sum_{k=1}^N k = \frac{N(N+1)}{2}.
+			\]
+			The the sum of the squares of the first $N$ positive integers is
+			\[
+			   \sum_{k=1}^N k^2=\frac{N(N+1)(2N+1)}{6}.
+			\]
+			% See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}} for the derivations of these formulas.
+		
+			\noindent
+			The formula for the geometric sequence is $a_k = r^k$.
+			The sum of the first $N$ terms in the geometric sequence is														\index{sequence!geometric}
+			\[
+			  S_N = \sum_{k=0}^N r^k
+			   = 1 + r + r^2 + \cdots + r^N 
+			   =\frac{1-r^{N+1}}{1-r}.
+			\]
+			If $|r|<1$, taking the limit $N\to \infty$ in the above expression leads to
+			\[ 
+			  S_\infty 
+			   = \lim_{N \to \infty} S_N 
+			   = \sum_{k=0}^\infty r^k
+			   = 1 + r + r^2 +  r^3 + \cdots 
+			   =\frac{1}{1-r}.
+			\]
+
+			
+			\paragraph{Example}
+				Consider the geometric series with $r=\frac{1}{2}$.
+				Applying the above formula, we obtain 
+				\[
+				 S_\infty  
+				 	=  \sum_{k=0}^\infty \left(\frac{1}{2}\right)^k
+					= 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{32} + \cdots 
+					=\frac{1}{1-\frac{1}{2}} = 2.
+				\]
+				You can visualize this infinite summation graphically in Figure~\ref{fig:geometric_progression_of_one_half}.
+		
+				\begin{figure}[htb]
+				\centering
+				\includegraphics[width=0.34\textwidth]{figures/calculus/geometric_progression_of_one_half.png}
+				\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
+						The area of each region corresponds to one of the terms in the series.
+						The total area is equal to $\sum_{k=0}^\infty (\frac{1}{2})^k=\frac{1}{1-\frac{1}{2}}=2$.}
+				\label{fig:geometric_progression_of_one_half}
+				\end{figure}
+
+
+%TODO explain
+The Binomial series
+\[
+	\sum_{k=0}^n {n \choose k} a^{n-k} b^k=(a+b)^n
+\]
+special case when one of the terms is 1:
+\[
+	\sum_{k=0}^n {n \choose k} x^k=(1+x)^n
+\]
+
+
+	\subsection{Taylor series}
+	\label{series:taylor_series}
+
+		The \emphindexdef{Taylor series} of a function $f(x)$ approximates the function by an infinitely long polynomial:		\index{polynomial}
+		\[
+		    f(x)
+			= \sum_{k=0}^\infty c_k x^k
+			=  c_0 + c_1x + c_2x^2 + c_3x^3 + c_4x^4 + \cdots \,.
+		\]
+		Each term in the series is of the form $a_k=c_k x^k$, 
+		where the coefficient $c_k$ depends on the properties of the function $f(x)$.
+		Specifically,
+		$c_k = \frac{f^{(k)}(0)}{k!}$,
+		where $f^{(k)}(0)$ is the $k$\textsuperscript{th} derivative of $f(x)$ and $k!$ is the factorial function:
+		\begin{align*}
+		  f(x)
+		 	& =f(0)+f'(0)x+\frac{f^{\prime\prime}(0)}{2!}x^2+\frac{f^{\prime\prime\prime}(0)}{3!}x^3 +\frac{f^{(4)}(0)}{4!}x^4 + \cdots \\
+		 	& = \sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k.
+		\end{align*}
+		Using this formula and your knowledge of derivatives,
+		you can compute the Taylor series of any function $f(x)$.
+
+		For example,
+		let's find the Taylor series of the function $f(x)=e^x$ at $x=0$.
+		The first derivative of $f(x)=e^x$ is $f'(x)=e^x$.
+		The second derivative of $f(x)=e^x$ is $f''(x)=e^x$.
+		In fact,
+		all the derivatives of $f(x)$ will be $e^x$ because the $e^x$ is a special function that is equal to its derivative!
+		The $k$\textsuperscript{th} coefficient in the power series of $f(x)=e^x$ at the point $x=0$ 
+		is equal to the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=0$.
+		In the case of $f(x)=e^x$ we have $f^{(k)}(0)=e^0=1$,
+		so the coefficient of the $k$\textsuperscript{th} term is $c_k = \tfrac{f^{(k)}(0)}{k!}  = \tfrac{1}{k!}$.
+		The Taylor series of $f(x)=e^x$ is
+		\[
+		 e^x      	= \sum_{k=0}^\infty \frac{1}{k!}x^k
+		 	 	= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots 
+		 \]
+		Series are a powerful computational tool for approximating numbers and functions.
+		As we compute more terms from the above series,
+		our the polynomial approximation to the function $f(x)=e^x$ becomes more accurate.
+		The exact value of the function at $x=1$ is $f(1) = e^1 = e$.
+		The partial sum of the first six terms (as shown above) gives us an approximation of $e^1$ that is accurate to three decimals. 
+		The partial sum of the first 12 terms gives us $e$ to an accuracy of nine decimals.
+		% http://bit.ly/12DrCZY
+

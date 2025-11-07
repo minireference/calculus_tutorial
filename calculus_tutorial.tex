@@ -1,0 +1,374 @@
+%\documentclass[11pt,onecolumn,draftclsnofoot]{IEEEtran}
+\documentclass[10pt]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+
+
+
+
+
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={Calculus tutorial},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=black,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+\usepackage{etoolbox}
+
+
+
+% NEW CODEBLOCK MACRO -- auto-numbered with labels in the margin
+\usepackage{listings}
+\usepackage{lstautogobble}
+\usepackage{upquote}
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	language=Python,
+	escapechar=¡,
+	showstringspaces=false,
+	commentstyle=\color{lightgray},
+	literate={~}{\midtilde}{1},
+	autogobble
+}
+
+%\newcounter{codeblock}
+\makeatletter
+\lstnewenvironment{codeblock2}[1][]{}{}
+\makeatother
+
+
+
+
+
+
+
+\title{{\Huge Calculus tutorial}}
+%	A tale of with equations and code}
+%\author{Ivan Savov}
+\author{{\normalsize Tutorial based on the \href{http://minireference.com}{{\sc No bullshit guide}} series of textbooks by \href{mailto:ivan@minireference.com}{Ivan Savov}}}
+\author{Excerpt from the \href{http://minireference.com/}{\textbf{No bullshit guide to math and physics}} by Ivan Savov} 
+\date{\today}
+
+
+
+%\usepackage{listings}
+\usepackage{moreverb}
+\usepackage[letterpaper,bmargin=1.3cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1.1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
+
+\usepackage{bbm}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+
+\usepackage{ifthen}
+\usepackage{subfigure}						% Riemann sum will be better side by side.
+
+
+
+\newcommand{\printcp}{}
+\newcommand{\printni}{}
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{3}
+\usepackage{setspace}
+
+
+\newcommand*{\eqdef}{\stackrel{\raisebox{-2pt}{\scalebox{0.48}{def}}}{=}}		% "defined to be equal" symbol (prev. used \equiv; other common is := )
+\newcommand{\emphindexdef}[1]{\emph{#1}\index{#1|textit}}		% Used for term definition --- emph and index entry in italics
+
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.75} % used for annotation arrows
+\definecolor{dark-gray}{gray}{0.50}  % used for annotation text
+% NEW CODEBLOCK MACRO -- auto-numbered with labels in the margin
+
+\usepackage{lstautogobble}
+\usepackage{upquote}
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	language=Python,
+	escapechar=¡,
+	showstringspaces=false,
+	commentstyle=\color{lightgray},
+	literate={~}{\midtilde}{1},
+	autogobble
+}
+
+\newcounter{codeblock}
+\makeatletter
+\@ifundefined{section}{}{\numberwithin{codeblock}{section}}
+\lstnewenvironment{codeblock}[1][]{%
+	\refstepcounter{codeblock}%
+	\label{#1}%
+	% \marginpar{\vspace{1em}\linespread{0.9}\footnotesize code \\ \thecodeblock}%
+}{}
+\makeatother
+
+% TMP macro while writing (to be expanded manually in final version)
+\def\tt{\texttt}
+
+
+\def\calX{\mathcal{X}}
+\def\calU{\mathcal{U}}
+\def\EE{\mathbb{E}}
+
+
+\def\tt{\texttt}
+\def\code{\texttt}	% OLD MACRO
+
+
+\usepackage{shadethm}
+\newshadetheorem{shadetheorem}{Theorem}
+\renewcommand{\theshadeshadetheorem}{}			% turn off theorem numbering
+\setlength\shadedtextwidth{0.49\textwidth}
+
+
+
+
+
+\begin{document}
+
+\makeatletter
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt \vspace{-1.2mm}}
+\makeatother
+
+
+
+
+
+        \maketitle
+
+
+\begin{abstract}
+aaa
+\end{abstract}
+
+\begin{spacing}{-1}
+\tableofcontents
+\end{spacing}
+
+
+% ========================================================================
+%   NOTES AND CONVENTIONS
+% ========================================================================
+%
+% Geometrical intuition for calculus conventions:
+%	interval = subset of the domain of integration are called  (one dimensional)        not region
+%	region = two-dimensional area under the graph of f(x)
+
+\vspace{2em}
+
+
+\input{sections/introduction.tex}
+
+\input{sections/definitions.tex}
+
+
+\input{sections/sets_and_intervals.tex}
+
+
+
+
+\input{sections/functions.tex}
+
+
+
+\input{sections/limits.tex}
+
+
+\input{sections/derivatives.tex}
+
+
+\input{sections/integrals.tex}
+\input{sections/integrals_as_area_calculations.tex}
+\input{sections/integrals_as_functions.tex}
+\input{sections/computing_integrals_symbolically.tex}
+\input{sections/fundamental_theorem_of_calculus.tex}
+\input{sections/tecniques_of_integration.tex}
+\input{sections/computing_integrals_numerically.tex}
+\input{sections/applicatoins_of_integration.tex}
+
+
+
+
+
+
+
+\input{sections/sequences_and_series.tex}
+
+
+
+\input{sections/multivariable_calculus.tex}
+
+
+
+
+	
+
+\clearpage
+
+\input{sections/from_sympy_tutorial.tex}
+
+
+
+
+
+\section*{Exercises}
+\label{calculus_prerequisites:exercises}	
+
+	TODO: 10x exercises on sets, functions, and integrals (geometric, numeric, and symbolic)
+
+
+%		\input{statsprobs/chapter21_integrals_fEQc_and_gEQmx.tex}
+
+	
+	TODO: 3 more
+
+
+
+\section*{Links}
+\label{calculus_prerequisites:links}
+
+
+
+	\subsection{Recommended calculus learning resources}
+	
+
+		Above all,
+		my advice is not to think of calculus as ``advanced math theory'' that might be difficult to understand,
+		but instead as practical, useful math that allows you to do calculations---just look at the name of the thing!
+		% ALT: Just look at the name of the thing: if it's called \emph{calculus} then you know it's all about calculations!
+		This means learning calculus is all about getting practical experience
+		calculating limits, derivatives, and integrals of functions,
+		which is best achieved by solving lots of problems.
+		The problems and exercises in the books \emph{Calculus made simple} and \emph{No bullshit guide to math and physics}
+		are therefore your best route for learning calculus,
+		if you choose to pursue this subject.
+
+
+
+
+	[ \emph{Essence of calculus} series by 3Blue1Brown ] \\
+	\href{https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr}
+	{\texttt{https://tinyurl.com/CALCess}}
+
+	\medskip
+	\noindent
+	[ \emph{Calculus made simple} by Silvanus P. Thompson ] \\
+	\href{https://gutenberg.org/ebooks/33283}
+	{\texttt{https://gutenberg.org/ebooks/33283}}
+	%	There is an excellent free book called \emph{}\cite{thompson1914calculus} by Silvanus P. Thompson,
+	%	which is a very friendly introduction to the subject.
+	%	The subtitle of Thompson's book includes the phrase
+	%	``Being a very-simplest introduction to those beautiful methods which are generally called by terrifying names,''
+	%	which should give you some idea about the author's attitude and the tone of his writing.
+	%	You can also check out Chapter~5 in the \emph{No bullshit guide to math and physics}\cite{savov2014noBSmathphys},
+	%	which is a compact introduction to calculus,
+	%	and includes lots of examples from physics.
+
+	%		\medskip
+	%		\noindent
+	%		[ SymPy tutorial by Ivan Savov ] \\
+	%		\href{https://minireference.com/static/tutorials/sympy_tutorial.pdf}
+	%		{\small \texttt{https://minireference.com/static/tutorials/sympy_tutorial.pdf}}
+	%	Remember that you have SymPy at your disposal to solve calculus problems,
+	%	so you don't have to do all the calculations by hand using pen and paper.
+	%	Indeed,
+	%	you can solve any calculus problem using just a few lines of code using the SymPy functions \tt{limit}, \tt{diff}, and \tt{integrate}.
+	%	Check out Section~III of the \emph{SymPy tutorial}\cite{savov2017sympy} to learn how to use these functions.
+
+
+	%		\medskip
+	%		\noindent
+	%		[  ] \\
+	%		\href{}
+	%		{\texttt{}}
+
+	% TODO add more links to intro-calculus material
+
+\vspace{4in}
+
+
+	% BOOK PLUG
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\noindent
+	If you want to learn more about calculus,
+	I invite you to check out my book,
+	the \textbf{No bullshit guide to math and physics}.
+
+	\begin{wrapfigure}[8]{r}{0pt}
+	\includegraphics[width=120pt]{figures/cover_v40_noline_lighter.jpg}
+	%\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/mass_spring-highres.png}
+	\end{wrapfigure}
+
+	This book contains short lessons on mechanics,
+	differential calculus, and integral calculus
+	written in a style that is jargon-free and to the point.
+	% The main focus of the book is to show the intricate connections between the concepts of mechanics and calculus.
+	%	Often calculus and mechanics are taught as separate subjects.
+	%	It shouldn't be like that.
+	%	If you learn calculus without mechanics, it will be boring.
+	%	If you learn mechanics without calculus, you won't truly understand.
+	This textbook covers both subjects in an integrated manner and aims to highlight the
+	connections between them. % two subjects.
+
+	Contents:
+	\begin{itemize}
+		\item	{\sc high school math}%: (40pp) %Review of algebra, functions and trigonometry.
+		\item	{\sc vectors}%: (20pp) 
+		\item	{\sc mechanics} (just 70 pages!)
+		\item	{\sc differential calculus}%: (30pp)
+		\item	{\sc integral calculus}%: (20pp)
+		\item	{\sc sequences and series}%: (20pp)
+	\end{itemize}
+
+	\vspace{1mm}
+
+	\noindent
+	\hfill {\small   5\textonehalf[in] $\times$ 8\textonehalf[in] $\times$ 528[pages]} 
+
+	\vspace{3mm}
+	
+	\noindent
+	For more information, see the book's website \  %and find more information on the following website 
+	\href{http://minireference.com/}{\texttt{minireference.com}}
+	or you can get in touch with me by email here \texttt{ivan@minireference.com}.
+	%	You can also follow \href{https://twitter.com/minireference}{\texttt{@minireference}} on twitter 
+	%	and check out the facebook page \href{http://fb.me/noBSguide}{\texttt{fb.me/noBSguide}}.
+
+
+\end{document}

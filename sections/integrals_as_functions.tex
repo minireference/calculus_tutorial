@@ -1,0 +1,131 @@
+%!TEX root = ../calculus_tutorial.tex
+
+
+\subsection{Integrals as functions}
+
+	The \emph{integral function} $F_0(b)$ corresponds to the area calculation
+	with a variable upper limit of integration $A_f(0,b)$.
+	The variable $b$,
+	which serves as the input for the integral function $F_0$,
+	corresponds to the upper limit of integration in the following calculation:
+	\[
+		F_0(b) \;\; \eqdef \;\; A_f(0,b) = \int_{x=0}^{x=b} \! f(x)\:dx\,.
+	\]
+	There are two variables and one constant in this formula.
+	The input variable $b$ describes the upper limit of integration.
+	The \emph{integration variable} $x$ performs a sweep from $x=0$ until $x=b$.
+	The constant $0$ describes the lower limit of integration.
+	As a matter of convention,
+	we'll always denote the integral function using the capital letter of the same letter as the original function.
+
+	Note that choosing $x=0$ for the starting point of the integral function was an arbitrary choice,
+	and we obtain another integral function if we use $x=a$ as the starting point,
+	$F_a(b)=\int_a^b \! f(x)\:dx$.
+	Two integral functions differ only by a constant term.
+	For example,
+	$F_0(b) = F_a(b) + C$,
+	where $C = \int_{x=0}^{x=a} f(x)dx$.
+
+	The integral function $F(b)$ contains the ``precomputed'' information about the area under the graph of $f(x)$.
+	% The integral function $F(b)$ tells us the ``area under the graph'' property of the function $f(x)$ for \emph{all} possible limits of integration.
+	The area under $f(x)$ between $x=a$ and $x=b$ can be obtained by calculating the \emph{change} in the integral function as follows:
+	\[
+		A_f(a,b) = \int_a^b \! f(x)\:dx	=  F(b)-F(a).
+	\]
+	Intuitively,
+	this formula computes the area $A_f(a,b)$ as the difference between the areas of two regions:
+	the area until $x=b$ minus the area until $x=a$,
+	as illustrated in Figure~\ref{fig:integral_as_difference_off}.
+
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.4\textwidth]{figures/calculus/integral_as_difference_off.pdf}
+		\caption{	The area under $f(x)$ between $x=a$ and $x=b$ is computed using the formula $A_f(a,b)=F_0(b)-F_0(a)$,
+				which describes the change in the output of $F_0(x)$ between $x=a$ and $x=b$.}
+		\label{fig:integral_as_difference_off}
+	\end{figure}
+
+
+
+	% TODO: explain intuition: area until b  minus area until a equals area between a and b
+
+
+
+	\subsubsection{Example 1 revisited}
+
+		We can easily find the integral function for the constant function $f(x)=~3$,
+		because the region under the curve is rectangular.
+		Choosing $x=0$ as the starting point,
+		we obtain the integral function $F_0(b)$
+		that corresponds to the area under $f(x)$ between $x=0$ and $x=b$
+		as follows:
+		\[ 
+			F_0(b) = A_f(0,b) = \int_0^b \! f(x)\;dx	= 3 b.
+		\]
+		The area is equal to the rectangle's height times its width,
+		as illustrated in Figure~\ref{fig:simple_integral_function_fx_eq_3}.
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.4\textwidth]{figures/calculus/simple_integral_function_fx_eq_3.pdf}
+			\caption{The area of a rectangle of height $3$ and width $b$ is equal to $3b$.}
+			\label{fig:simple_integral_function_fx_eq_3}
+		\end{figure}
+		
+		Knowing the function $F_0(b)$ allows us to compute the area under the graph of $f(x)$
+		between any two points $x=a$ and $x=b$ using the formula $A_f(a,b) = F_0(b) - F_0(a) = 3(b-a)$.
+
+
+	\subsubsection{Example 2 revisited}
+	
+		Consider now the area under the graph of the line $g(x)=x$, starting from $x=0$.
+		Since the region under the curve is triangular,
+		we can compute its area using the formula for the area of a triangle:
+		base times height divided by two.
+	
+		The general formula for the area under $g(x)$ from $x=0$ until $x=b$
+		is described by the following integral calculation:
+		\[
+			G_0(b) = A_g(0,b) = \int_0^b g(x) \; dx = \tfrac{1}{2} ( b\times b ) = \tfrac{1}{2}b^2.
+		\]
+	
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.4\textwidth]{figures/calculus/simple_integral_function_gx_eq_x.pdf}
+			\caption{The area of a triangle with base $b$ and height $b$ is equal to $\frac{1}{2}b^2$.}
+			\label{fig:simple_integral_function_gx_eq_x}
+		\end{figure}
+		
+		Knowing the function $G_0(b)$ allows us to compute the area under the graph of $g(x)$
+		between $x=a$ and $x=b$ as the difference $A_g(a,b) = G_0(b) - G_0(a) = \frac{1}{2}b^2 - \frac{1}{2}a^2$.
+
+
+	%	But don't worry,
+	%	you don't need to take an integral calculus to learn statistics.
+	%	What is important right now is that you understand the concept of integration.
+	%	The integral of a function is the area under the graph of the function,
+	%	which is in some sense the total amount of the function accumulated during some interval of time.
+
+
+
+
+
+\bigskip
+\noindent
+We were able to compute the above integrals thanks to the simple geometries of the areas under the graphs.
+Computing integrals of more complicated functions requires more advanced techniques.
+There is an entire course called integral calculus which is dedicated to the task of finding integrals
+using various tricks and techniques.
+
+Taking a calculus course would be useful if you plan to study physics or engineering,
+but for the purpose of learning probability and statistics,
+you're not required to learn all these integration techniques.
+Instead,
+you can rely on computers to do integration for you.
+Specifically,
+you can use the Python modules SciPy and SymPy to compute all the integrals you need,
+as we'll show in the next two sections.
+
+% Robyn said: 	Confusing that before you said that integrals is a topic that can't be skipped,
+%			and here you say that you can rely on computers.
+% 			If they don't need to know the math, then perhaps this section could be made even shorter.

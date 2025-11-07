@@ -1,0 +1,50 @@
+%!TEX root = ../calculus_tutorial.tex
+
+\section{Inroduction}
+\label{sec:introduction}
+
+	In order to do calculations with continuous random variables,
+	you need to know about the calculus procedure of \emph{integration},
+	which is used to compute the ``total amount accumulated'' of some quantity described by a continuous function,
+	over an interval of inputs.
+
+	This section is your opportunity to learn (or relearn) the main concepts from calculus that you need to know
+	to do calculations with continuous probability distributions.
+
+% TUTORIAL
+	We'll talk about concepts like sets, functions, and integrals,
+	which are essential for understanding what's going on in the rest of the book.
+	% These are the essential tools we'll need to do probability calculations.
+	We'll start with a practical example in which integration is used.
+	I want to show you that integration is not some fancy new idea,
+	but an operation you're already familiar with from everyday life.
+
+	\paragraph{Banking example}
+
+		Consider the function $\textrm{ba}(t)$ that represents your bank account balance at time $t$.
+		Also consider the function $\textrm{tr}(t)$,
+		which corresponds to the transactions (deposits and withdrawals) on your account.
+
+		Suppose you have a record of all the transactions on your account $\textrm{tr}(t)$,
+		and you want to compute the final account balance at the end of the month $\textrm{ba}(30)$.
+		You can use the integration procedure on the transactions $\textrm{tr}(t)$
+		to calculate the total change in the account balance at the end of the month,
+		relative to the account balance at the beginning of the month $\textrm{ba}(0)$.
+		The end-of-the-month-balance calculation is described by the following equation:
+		\[ 
+			\textrm{ba}(30)		=	\textrm{ba}(0)	+	\int_0^{30} \textrm{tr}(t)\;dt.
+		\]
+		The integral $\int_0^{30} \textrm{tr}(t)dt$ describes the process of computing 
+		the total of all the transactions that occurred between day $0$ and day $30$.
+		The weird-looking integral sign ``$\int$'' comes from the Latin word \emph{summa} for sum.
+
+		We use integrals every time we need to calculate the total of some quantity over a time period.
+		The integral $\int_a^b q(t)dt$ is the calculation of the \emph{total}
+		of some quantity $q(t)$ that accumulates during the time period from $t=a$ to $t=b$.
+
+% Robyn said: 	Since this is in the intro, it makes it sound like integrals are only used to calculate a value over time. 
+% 			We should make it clear that they can also be used to calculate probabilities
+%			and other quantities over a range of values or outcomes.
+
+		% TODO: mention accumulation can be done over any variable; from now on variables x, n, u, etc.
+

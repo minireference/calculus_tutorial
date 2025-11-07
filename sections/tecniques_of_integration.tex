@@ -1,0 +1,106 @@
+%!TEX root = ../calculus_tutorial.tex
+
+
+\subsection{Techniques of integration}
+
+			\paragraph{Substitution trick}
+			
+				Suppose the function we want to integrate has the structure $f(u(x))u'(x)$,
+				which consists of inner function wrapped in an outer function multiplied by the derivative of the inner function.
+				We can use the \emph{substitution trick} to rewrite this integral in terms of the function $f(u)$ using $u$ as the variable of integration:
+				\begin{align*}
+					\int_{x \in \calX} f(u(x)) \, u'(x) dx
+						&= \int_{u \in \calU} f(u) \; du.
+					%	\int_{x=a}^{x=b} f(u(x)) \; u'(x) \; dx
+					%		&=  \int_{u(a)}^{u(b)} f(u) \; du.					
+				\end{align*}
+				The substitution trick is ``change of variable'' operation from the variable $x$ to the variable $u$,
+				similar to a search-and-replace operation when editing text.
+				Because we're doing the substitution ``inside'' an integral operation,
+				we must also change the region of integration ($\calX$ to $\calU$) and change of the ``step'' parameter ($dx$ to $du$).
+
+				\begin{shadebox}
+				\vspace{1mm}
+				\noindent
+				Follow these three steps to apply the substitution trick:
+				\begin{enumerate}
+				    \item   Replace $dx$ with $\frac{1}{u'(x)}du$.
+				    \item   Replace all occurrences of $u(x)$ with $u$.
+				    \item   Replace the $x$ limits of integration with $u$ limits of integration.
+				\end{enumerate}
+				\vspace{-1mm}
+				\end{shadebox}	
+
+				\noindent
+				For example,
+				let's compute the integral $\int_a^b \frac{1}{x - \sqrt{x}} \; dx$
+				by applying the substitution $u=\sqrt{x}$,
+				which implies $u'(x) =  \frac{1}{2\sqrt{x}}$.
+
+				Performing the three steps of the substitution trick gives
+				{\allowdisplaybreaks
+				\begin{align*}
+				     \int_{x=a}^{x=b} \frac{1}{x - \sqrt{x}} \; dx  
+					&=  \int_{x=a}^{x=b}  \frac{1}{x - \sqrt{x}} \; \frac{1}{2\sqrt{x}} du				\\
+					&=  \int_{x=a}^{x=b} \frac{1}{u^2 - u} \; 2u\,du							\\
+					&=  \int_{u(a)}^{u(b)} \frac{1}{u^2 - u} \; 2u\,du
+						= \int_{u(a)}^{u(b)} \frac{2u}{u^2 - u} \; du							\\
+					&=  \int_{u(a)}^{u(b)} \frac{2}{u - 1} \; du
+						=  2\ln(u-1) \bigg|_{u(a)}^{u(b)}									\\
+					&=  2\ln(\sqrt{x}-1) \bigg|_{x=a}^{x=b}
+						=  2\ln(\sqrt{b}-1) - 2\ln(\sqrt{a}-1).
+				\end{align*}
+				}
+				
+				\noindent
+				In the fourth line,
+				we recognized the general form of the function inside the integral, $f(u)=\frac{2}{u-1}$,
+				to be similar to the function $f(u)=\frac{1}{u}$ whose integral function is $\ln(u)$.
+				Accounting for the $-1$ horizontal shift and the factor of $2$ in the numerator,
+				we obtain the answer $2\ln(u-1)$.
+				In the last step,
+				we changed back from $u$-variables to $x$-variables to compute the final answer.
+
+				The substitution trick for integrals comes from the chain rule for derivatives
+				$\left[ f(u(x)) \right]^\prime = f^\prime(u(x))u^\prime(x)$.
+				Unlike the chain rule which you can apply to \emph{all} functions of the form $f(u(x))$,
+				the substitution rule only works when you're computing integrals
+				where the function you're integrating has the special structure $f^\prime(u(x))u^\prime(x)$.
+
+
+
+			\paragraph{Integration by parts}
+	
+				Integration by parts is useful whenever the function we're integrating has the special structure $f(x)g'(x)$.
+				\begin{shadebox}
+				\vspace{1mm}
+				\[
+				  \int f(x) \; g'(x)\:dx \ \ = \ \
+					 f(x) g(x) \ \ 
+					-  \int f'(x)g(x) \; dx.
+				\]
+				\vspace{-2mm}
+				\end{shadebox}	
+				
+				\noindent
+				It is easier to remember the integration by parts formula in its shorthand notation,
+				$\int u\; dv = uv - \int v\; du$.
+				You can think of integration by parts as a form of ``double substitution,''
+				where you simultaneously replace $u$ and $dv$.
+				For definite integrals,
+				the integration by parts rule must account for evaluation at the function's limits:
+				\[
+				 \int_a^b u\; dv = \left(uv\right)\Big|_a^b \ \  - \ \ \int_a^b v \; du.
+				\]
+				Let's see how we can calculate $\int_0^5 x e^x \, dx$ using the integration by parts procedure.
+				We apply the substitutions $u=x$ and $dv=e^x dx$,
+				which means $du=dx$ and $v= e^x$.
+				Applying the formula for integration by parts gives us
+				\begin{align*} 
+				\int_0^5 x \; e^x dx 
+					 &= \left( x e^x \right) \Big|_0^5  \ - \  \int_0^5 e^x \; dx  		\\
+					 &= \left( x e^x \right) \Big|_0^5      \ - \  e^x\Big|_0^5			\\[1mm]
+					 &=  \left[ 5 e^5 - 0e^0 \right]    \ - \  \left[  e^5 - e^0 \right] 	\\
+					 &= 5 e^5 - e^5 + 1 								\\
+					 &= 4e^5 + 1 .
+				\end{align*}

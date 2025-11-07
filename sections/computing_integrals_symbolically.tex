@@ -1,0 +1,165 @@
+%!TEX root = ../calculus_tutorial.tex
+
+
+\subsection{Computing integrals using SymPy}
+
+	We can also use Python to do \emph{symbolic} integration using variables (symbols) instead of numbers.
+	Symbolic integration allows us to obtain exact formulas for integrals
+	that are valid for \emph{any} limits of integration $x=a$ and $x=b$.
+	The Python module \tt{sympy} provides the functionality for doing symbolic math calculations
+	similar to the calculation you could do using pen and paper.
+
+	The following code block imports the SymPy function \tt{symbols},
+	which is used to define new symbolic variables,
+	and the function \tt{integrate} that we'll use for computing integrals.
+
+	\begin{codeblock}[import-sympy-symbols-and-integrate]
+	>>> from sympy import symbols, integrate
+	\end{codeblock}
+	
+	\noindent
+	Next we define four symbols \tt{x}, \tt{a}, \tt{b}, and \tt{c},
+	which we'll use to denote mathematical variables and constants in the following code examples.
+
+	\begin{codeblock}[define-symbols-xabcm]
+	>>> x, a, b, c = symbols('x a b c')
+	\end{codeblock}
+	% TODO: explain symbol variables like x, a, b, c is symbol can be used in expressions
+
+	\subsubsection{Example 1 revisited again}
+
+		Consider the constant function $f(x) = c$.
+		The symbolic expression that represents the value of this function is simply the constant $c$,
+		which we can define as follows:
+
+		\begin{codeblock}[sympy-define-fx]
+		>>> fx = c
+		>>> fx
+		c
+		\end{codeblock}
+
+		\noindent
+		The variable \tt{fx} is defined as the constant \tt{c},
+		one of the SymPy symbols we defined earlier,
+		which we assume corresponds to some unspecified constant value.
+
+		To compute the integral $\int_a^b f(x) dx$,
+		we call the SymPy function \tt{integrate},
+		passing in the expression we want to integrate as the first argument.
+		The second argument is a triple $(x,a,b)$,
+		which specifies the variable of integration $x$,
+		the lower limit of integration $a$,
+		and the upper limit of integration $b$.
+
+		\begin{codeblock}[sympy-integrate-fx-a-b]
+		>>> integrate(fx, (x,a,b))  # = A_f(a,b)
+		c*(b-a)
+		\end{codeblock}
+
+		\noindent
+		Since $a$, $b$, and $c$ are arbitrary constants,
+		the expression we obtain for $A_f(a,b) = \int_a^b f(x) dx$ is a general purpose formula
+		that works for all functions $f(x) = c$ and all possible integration intervals $[a,b]$.
+		Geometrically speaking,
+		this is just the height-times-width formula for the area of a rectangle.
+
+		To compute the specific integral between $a=0$ and $b=5$ under the graph of $f(x)=3$,
+		we can use the method \tt{subs} (short for substitute) on the SymPy expression we obtained as a result of the integration.
+		The \tt{subs} method expects as inputs a Python dictionary whose keys are symbols,
+		and whose values represent the numbers we want to ``plug'' into the expression.
+		In our case,
+		we want to make the substitutions $c=3$, $a=0$, and $b=5$.
+
+		\begin{codeblock}[integrate-fx-subs-vals]
+		>>> integrate(fx, (x,a,b)).subs({c:3, a:0, b:5})
+		15
+		\end{codeblock}
+
+		\noindent
+		This result matches the value we obtained using the intuitive geometrical calculation (see Figure~\ref{fig:simple_integral_fx_eq_3})
+		and the value we obtained using numerical integration, \tt{quad(f,0,5) = 15}.
+
+		We can also use SymPy to compute the integral function $F_0(b)$,
+		which is defined as  $F_0(b) \eqdef \int_0^b f(x) dx$,
+		for the function $f(x) = \tt{fx}$.
+
+		\begin{codeblock}[sympy-integral-function-F]
+		>>> integrate(fx, (x,0,b))  # = F_0(b)
+		b*c
+		\end{codeblock}
+
+		\noindent
+		Recall that the integral function $F_0$ is simply the area-under-the-graph calculation
+		with a variable upper limit of integration $b$.
+		See Figure~\ref{fig:simple_integral_function_fx_eq_3} for an illustration of the integral function $F_0(b)$.
+
+
+
+	\subsubsection{Example 2 revisited again}
+
+		Let's now compute some integrals of the function $g(x) = x$.
+		First we'll define a SymPy expression that corresponds to the function.
+
+		\begin{codeblock}[sympy-define-gx]
+		>>> gx = 1*x
+		>>> gx
+		x
+		\end{codeblock}
+
+		\noindent
+		We can now compute the integral $\int_a^b g(x) dx$
+		by calling the function \tt{integrate} with arguments \tt{gx},
+		followed by the triple specifying the variable of the integration and the limits of integration.
+
+		\begin{codeblock}[sympy-integrate-gx-a-b]
+		>>> integrate(gx, (x,a,b))  # = A_g(a,b)
+		b**2/2 - a**2/2
+		\end{codeblock}
+
+		\noindent
+		To obtain the numerical value for the integral  $\int_0^5 g(x) dx$,
+		we call the method \tt{subs} on the result of the integration.
+
+		\begin{codeblock}[integrate-gx-subs-vals]
+		>>> integrate(gx, (x,a,b)).subs({a:0, b:5})
+		25/2
+		\end{codeblock}
+
+		\noindent
+		SymPy computed the exact answer for us as a fraction $\frac{25}{2}$,
+		but we sometimes want to force the answer to be computed as a floating-point number (a Python \tt{float}),
+		which we can do by calling the \tt{.evalf()} method on the SymPy expression.				
+
+		\begin{codeblock}[integrate-gx-subs-vals-evalf]
+		>>> integrate(gx, (x,a,b)).subs({a:0, b:5}).evalf()
+		12.5
+		\end{codeblock}
+
+		\noindent
+		This result matches the value we obtained earlier using numerical integration,
+		\tt{quad(g,0,5) = 12.5}.
+
+		If we use the symbol \tt{b} for the upper limit of integration,
+		we can obtain an expression for the integral function $G_0(b) \eqdef \int_0^b g(x) dx$.
+
+		\begin{codeblock}[sympy-integral-function-G]
+		>>> integrate(gx, (x,0,b))  # = G_0(b)
+		b**2 / 2
+		\end{codeblock}
+
+		\noindent
+		Note the expression for $G_0(b)$ we obtain from SymPy is identical
+		to the formula we obtained earlier using a geometrical calculation (the area of a triangle with base $b$ and height $b$).
+		See Figure~\ref{fig:simple_integral_function_gx_eq_x}.
+
+
+	\bigskip
+	\noindent
+	Unfortunately,
+	it's not always possible to use symbolic manipulations to find integrals.
+	We can only use \tt{sympy.integrate} for certain simple examples
+	where it is possible to obtain exact expressions for integral functions.
+	For most practical calculations in probability and statistics,
+	we'll need to rely on the \tt{scipy.integrate} function \tt{quad(f,a,b)},
+	which computes the integral $\int_a^b f(x)dx$ for \emph{any} function $f(x)$ expressed as a Python function \tt{f}.
+

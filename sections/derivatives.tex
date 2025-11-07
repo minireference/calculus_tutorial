@@ -1,0 +1,549 @@
+%!TEX root = ../calculus_tutorial.tex
+
+\section{Derivatives}
+
+		The \emph{derivative} function, denoted $f'(x)$, $\frac{d}{dx}f(x)$, or $\frac{df}{dx}$, 				\index{derivative}
+		describes the \emph{rate of change} of the function $f(x)$.
+		For example,
+		the constant function $f(x)=c$ has derivative $f'(x)=0$ since the function $f(x)$ does not change at all.
+		The derivative function describes the \emph{slope} of the graph of the function $f(x)$.
+		The derivative of a line $f(x)=mx+b$ is $f'(x)=m$,
+		since the slope of this line is equal to $m$.
+		In general,
+		the slope of a function is different at different values of~$x$,
+		so mathematicians invented a new notation for describing ``the slope (rate of change) of the function $f(x)$''
+		and obtained formulas for finding the derivative of any function.
+
+		The derivative function $f'(x)$ is defined as the rate of change of the function $f$ at $x$:
+		\[
+			f'(x) = \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}\,.
+		\]
+		In words,
+		this formula describes the general rise-over-run calculation for computing the slope of a line that connects
+		the points $(x,f(x))$ and $(x+\delta, f(x+\delta))$,
+		with the step-length $\delta$ becoming infinitely small.
+
+		%	The definition of the derivative comes from the rise-over-run formula for calculating the slope of a line:
+		%	\[
+		%	  \frac{ \textrm{rise} } { \textrm{run} } = \frac{ \Delta y } { \Delta x } 
+		%		=  \frac{y_f - y_i}{x_f - x_i} = 
+		%		\frac{f(x+\delta)\ - \ f(x)}{x + \delta \  -\  x}.
+		%	\]
+		%	By making $\delta$ tend to zero in the above expression,
+		%	we're performing a rise-over-run of the function $f(x)$ at a point.
+
+
+		Geometrically,
+		the derivative function computes the slope of the graph of the function $f(x)$ for all values of $x$.
+		In general,
+		the slope of a function is different for different values of $x$.
+		Figure~\ref{fig:derivative_as_slope_small-0} shows the slope calculation for the function $f(x) = \frac{1}{2}x^2$
+		for two different values of $x$: $x=-0.5$ and $x=1$.
+		% the slope of the function is the same as the line passing through this point
+
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.5\textwidth]{figures/calculus/derivative_as_slope_small-0.pdf}
+			\caption{	The derivative of the function at $x=a$ is denoted $f'(a)$ and describes the slope function at that point.}
+			%	\caption{	The diagram illustrates how to compute the derivative of the function $f(x)=\tfrac{1}{2}x^2$
+			%			at three different points on the graph of the function.
+			%			To calculate the derivative of $f(x)$ at $x=1$, 
+			%			we can ``zoom in'' near the point $(1,\tfrac{1}{2})$ and 
+			%			draw a line that has the same slope as the function.
+			%	 	 	We can then calculate the slope of the line using a rise-over-run calculation,
+			%			aided by the mini coordinate system that is provided.
+			%			The derivative calculations for $x=-\tfrac{1}{2}$ and  $x=2$ are also shown.
+			%			Note that the slope of the function is different for each value of $x$. 
+			%			What is the value of the derivative at $x=0$?
+			%			Can you find the general pattern?}
+			\label{fig:derivative_as_slope_small-0}
+		\end{figure}
+
+
+		%	Derivatives occur so often in math that people have devised many ways to denote them:
+		%	\[
+		%	    Df(x) \equiv f'(x) \equiv  \frac{d}{dx}f(x) \equiv \frac{df}{dx} \equiv \frac{dy}{dx} \equiv \nabla f.
+		%	\]
+		%	Don't be fooled by this multitude of notations---all of them refer to the same concept.
+
+		% TODO: mention the derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+		The derivative function $f'(x)$ is a property of the function $f(x)$.
+		Indeed, this is where the name \emph{derivative} comes from:
+		$f'(x)$ is not an independent function---it is \emph{derived} from the original function $f(x)$.
+		
+		The \emph{derivative operator}, 
+		denoted $\frac{d}{dx}$ or simply $D$, 
+		takes as input a function $f(x)$ and produces as output the derivative function $f'(x)$,
+		which is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+		For each input $x_0$ the derivative function tells you the slope of $f(x)$ when $x=x_0$.
+		Applying the derivative operator to a function is also called ``taking the derivative'' of a function.
+		
+		For example, 
+		the derivative of the function $f(x)=\tfrac{1}{2}x^2$ is the function $f'(x)=x$.
+		We can describe this relationship as $(\tfrac{1}{2}x^2)^{\prime} = x$
+		or as $\tfrac{d}{dx}(\tfrac{1}{2}x^2)=x$.
+		Look at Figure~\ref{fig:derivative_as_slope} and use the graph to prove to yourself
+		that the slope of $f(x)=\tfrac{1}{2}x^2$ is described by $f'(x)=x$ everywhere on the graph.
+
+
+
+LETS SEE SOME CODE
+
+
+		Here is a simple computer program for computing the numerical approximations to the derivative of any function at any point:
+		
+		\begin{codeblock}[]
+		def differentiate(func, x, delta):
+		    """
+		    Compute the slope of the function `func` at `x` using
+		    the rise-over-run calculation with run of length `delta`.
+		    """
+		    rise = func(x+delta) - func(x)
+		    run = delta
+		    return rise/run
+		\end{codeblock}
+
+
+		
+		\vspace{-3mm}
+		\noindent
+		You can then define the function $f=\frac{1}{2}x^2$ using the code
+
+		\begin{codeblock}[]
+		def f(x):
+		    return 0.5*x**2
+		\end{codeblock}
+		
+		\noindent
+		and compute the derivative at any point $x$ by calling the function \texttt{differentiate(f,x,delta)},
+		where \texttt{delta} is some small number.
+		
+		Here are some of the outputs of the differentiation procedure at $x=1$
+		using different values of horizontal ``run'' parameter \texttt{delta}:
+		\begin{itemize}
+			\item	The output of \texttt{differentiate(f,x=1,delta=0.01)} is $1.005$,
+				which is within $0.5\%$ of the exact answer $f'(1)=1$.
+			\item	The output of \texttt{differentiate(f,x=1,delta=0.001)} is $1.0005$,
+				which is within within $0.05\%$ accuracy of the exact answer.
+			\item The output for \texttt{differentiate(f,1,0.0001)} is $1.00005$,
+				which is an even more accurate approximation of the exact value.
+			\item	The output of \texttt{differentiate(f,1,0.00001)} is $1.000005$.
+		\end{itemize}
+		Note the approximations get more and more accurate as the parameter \texttt{delta} decreases.
+		For most practical applications,
+		we can always choose a sufficient small \texttt{delta}
+		so the fact that numeric approximations computed are a little bit ``off'' does not become a problem.
+
+%		The mathematical notion of a limit describes logical continuation of the above thinking with where the parameter $\code{delta}$ becomes infinitely small.
+%		The mathematical definition $f'(x) \equiv \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
+%		allows us to find a closed form expression for the derivative function that applies for all values of $x$.
+%		Finding the exact formula for the derivative requires a little bit more work upfront (to simplify an expressions that involves Greek symbols),
+%		but once you find the exact formula for the derivative $f'(x)$,
+%		you can compute the slope of $f(x)$ at the point $x=c$ by simply evaluating the the derivative function at that point:
+%		$f'(c) = \{ \textrm{the slope of} \ f(x) \ \textrm{at} \ x=c\}$.
+
+
+
+
+% SYMPY DERIVATIVES
+%
+%	The code below shows how to compute the derivative of the function $f(x) = mx +b$.
+%
+%	\begin{codeblock}[sympy-diff-line]
+%	>>> from sympy import diff
+%	>>> f = b + m*x
+%	>>> diff(f, x)
+%	m
+%	\end{codeblock}
+%
+%	\noindent
+%	In words,
+%	this calculation tells us the derivative of the function $f(x) = mx +b$ is the constant function $f'(x)=m$.
+%	The expression \tt{diff(f,x)} tells SymPy to compute the derivative of the expression \tt{f} with respect to the variable \tt{x}.
+%
+%	Let's now define the function $f(x) = \frac{c}{2}x^2$ and compute its derivative.
+%
+%	\begin{codeblock}[sympy-diff-quadratic]
+%	>>> f = c/2 * x**2
+%	>>> diff(f, x)
+%	c*x
+%	\end{codeblock}
+%
+%	\noindent
+%	The derivative function is $f'(x)=cx$.
+%	See the plot in Figure~\ref{fig:derivative_as_slope_small-0} for an illustration of the case when $c=1$.
+%
+%	Here is another example of a complicated-looking function $f$,
+%	that includes an exponential, a trigonometric, and a logarithmic function:
+%
+%	\begin{codeblock}[sympy-diff-fancy-mix]
+%	>>> from sympy import log, exp, sin
+%	>>> f = exp(x) + sin(x) + log(x)
+%	>>> diff(f, x)
+%	exp(x) + cos(x) + 1/x
+%	\end{codeblock}
+%
+%	\noindent
+%	As you can see,
+%	using the function SymPy function \tt{diff} allows you to compute the derivative function for any function $f(x)$.
+
+
+		\subsubsection{Derivative formulas}
+		\label{mathematical_preliminiaries:derivative_formulas}
+		
+			You don't need to apply the complicated derivative formula $f'(x) \equiv \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
+			every time you need to find the derivative of a function.
+			For each function $f(x)$,
+			it's enough to use the complicated formula once and record the formula you obtain for $f'(x)$,
+			then you can reuse that formula whenever it comes up again in a calculation.
+			Indeed,
+			that's what most scientists and engineers do---whenever they need to know the derivative of some function $f(x)$,
+			the lookup the answer in a table of derivative formulas.
+
+			The following table shows the derivative formulas for a number of commonly used functions.								\index{derivative} \index{integral}
+
+			{\allowdisplaybreaks
+			\begin{align*}
+			f(x)			&  \ -\textrm{derivative}\to  \   		f'(x)		\\
+			%	F(x)			&  \ - \textrm{ derivative } \to  \quad		F'(x)		\\
+			%	\int f(x)\;dx   	& \ \ \leftarrow \textrm{ integral } -   \quad 	f(x)     	\\
+			a			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				0		\\
+			\alpha f(x)+ \beta g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\alpha f'(x)+ \beta g'(x)	\\
+			x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				1		\\
+			%	af(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				af'(x)		\\
+			%	f(x)+g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				f'(x)+g'(x)	\\
+			x^n			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				nx^{n-1}	\\
+			\frac{1}{x}\equiv x^{-1}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\frac{-1}{x^2} \equiv -x^{-2}		\\
+			\sqrt{x} \equiv x^{\frac{1}{2}}	&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\frac{1}{2\sqrt{x}} \equiv \frac{1}{2}x^{-\frac{1}{2}}	\\
+			e^x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				e^x	\\
+			a^x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				a^x\ln(a)	\\
+			\ln(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{x}		\\
+			\log_a(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				(x\ln(a))^{-1}	\\
+			\sin(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cos(x)		\\
+			\cos(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				-\sin(x)	\\
+			\tan(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sec^2(x)\equiv\cos^{-2}(x)
+			%	\csc(x) \equiv \frac{1}{\sin(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\sin^{-2}(x)\cos(x)	\\
+			%	\sec(x) \equiv \frac{1}{\cos(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tan(x)\sec(x)	\\
+			%	\cot(x) \equiv \frac{1}{\tan(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\csc^2(x)	\\
+			%	\sin^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{\sqrt{1-x^2}}	\\
+			%	\cos^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{-1}{\sqrt{1-x^2}}	\\
+			%	\tan^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{1+x^2}	\\
+			%	\sinh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cosh(x)	\\
+			%	\cosh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sinh(x)	
+			\end{align*}
+			}
+			
+			\noindent
+			We'll be using these derivative formulas a lot in Section~\ref{sec:continuous_prob_distr},
+			so it's a good idea to mentally bookmark this page so you can come back to it when derivatives come up.
+
+
+
+		\subsubsection{Derivative rules}
+
+			In addition to the table of derivative formulas show above,
+			there are some important derivatives rules that you should know about.
+			These rules will allow you to find derivatives of \emph{composite} functions.
+
+			\paragraph{Linearity}		
+				The derivative is a \emph{linear} operation, which means:								\index{linearity}
+				\vspace{1mm}
+				\[
+					\frac{d}{dx} \left[\alpha f(x) + \beta g(x)\right]
+					=
+					\alpha \frac{d}{dx}f(x) + \beta \frac{d}{dx}g(x).
+				\]
+				
+				\noindent
+				In other words,
+				the derivative of a linear combination of functions $\alpha f(x) + \beta g(x)$ is equal 
+				to the same linear combination of the derivatives $\alpha f'(x) + \beta g'(x)$.
+
+			\paragraph{Product rule}
+				The derivative of a product of two functions is obtained as follows:									\index{product rule|textit}
+				\[
+				 \left[ f(x)g(x) \right]^\prime 
+				 = f^\prime(x)g(x)  + f(x)g^\prime(x).
+				\]
+
+				The product rule also applies to the product of three functions $f(x)g(x)h(x)$,
+				for which the derivative is
+				\[
+				 \left[ f(x)g(x)h(x) \right]^\prime 
+					 =
+					 f'(x)g(x)h(x) + 
+					 f(x)g'(x)h(x) + 
+					 f(x)g(x)h'(x).
+				\]
+				For each term,
+				take the derivative of one of the functions and multiply this derivative by the other two functions:
+
+
+			\paragraph{Quotient rule}
+				The \emphindexdef{quotient rule} tells us how to obtain the derivative of a fraction of two functions:
+				
+				\[
+					\left[ \frac{f(x)}{g(x)}\right]^\prime=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}.
+				\]
+				
+				
+			\paragraph{Chain rule}
+				If you encounter a situation that includes an inner function and an outer function,						\index{chain rule|textit}
+				like $f(g(x))$, you can obtain the derivative by a two-step process:		
+				\[
+				 \left[ f(g(x)) \right]^\prime
+				 =
+				 f^\prime(g(x))g^\prime(x).
+				\]%
+				
+				\noindent
+				In the first step, leave the inner function $g(x)$ alone,
+				and focus on taking the derivative of the outer function $f(x)$.
+				This step gives us $f'(g(x))$,
+				the value of $f'$ evaluated at $g(x)$.
+				As the second step,
+				we multiply the resulting expression by the derivative of the \emph{inner} function $g'(x)$.
+
+				The chain rule so applies to functions of functions of functions $f(g(h(x)))$.
+				To take the derivative,
+				start from the outermost function and work your way toward $x$.
+				\[
+				 \left[ f(g(h(x))) \right]^\prime 
+					 =
+					 f'(g(h(x)))
+					 g'(h(x))
+					 h'(x).
+				\]
+
+
+		\subsubsection{Examples}
+		
+			The above rules define \emph{all} you need to know to take the derivative of any function, 
+			no matter how complicated.
+			Let's look at some examples.
+
+			\paragraph{Example 1}
+				To calculate the derivative of $f(x) = e^{x^2}$,
+				we use the chain rule: $f'(x) = e^{x^2}[x^2]'  = e^{x^2}2x$.
+	
+			\paragraph{Example 2}
+				To find the derivative of $f(x) = \sin(x)e^{x^2}$,
+				we use the product rule and the chain rule: $f'(x) = \cos(x)e^{x^2} + \sin(x)2xe^{x^2}$.
+	
+			\paragraph{Example 3}
+				To compute the derivative of $f(x) = \sin(x)e^{x^2}\ln(x)$,
+				we apply the product rule for three terms: 
+				$f'(x) = \cos(x)e^{x^2}\ln(x) + \sin(x)2xe^{x^2}\ln(x) + \sin(x)e^{x^2}\frac{1}{x}$.
+	
+			\paragraph{Example 4}
+				The derivative of $\sin(x^2)$ requires using the chain rule:
+				$\left[ \sin(x^2) \right]^\prime =  \cos(x^2)\left[x^2\right]' =  \cos(x^2)2x$.
+
+			\paragraph{Example 5}
+				The derivative of $\sin( \ln( x^3) )$ requires the triple chain rule:
+				\begin{align*}
+				   \!\left[ \sin( \ln( x^3) )  \right]^\prime
+				   	&= \cos( \ln(x^3) ) \!\left[ \ln(x^3)  \right]^\prime 			\\
+				   	&= \cos( \ln(x^3) )\tfrac{1}{x^3}\!\left[ x^3 \right]^\prime 	\\
+					%	  = \cos( \ln(x^3) ) \frac{1}{x^3} 3x^2 
+					&= \cos( \ln(x^3) ) \tfrac{3}{x}\,.
+				\end{align*}
+				Simple, right?
+
+			%	\paragraph{Example 6}
+			%		To find the derivative of $f(x) = \sin\!\left( \cos\!\left( \tan(x) \right) \right)$,
+			%		we need the triple chain rule again:
+			%		\begin{align*}
+			%		 f'(x) 
+			%		 & = \cos\!\left( \cos\!\left( \tan(x) \right) \right)
+			%		  \left[ \cos\!\left( \tan(x) \right) \right]^\prime \\
+			%		 & = -\cos\!\left( \cos\!\left( \tan(x) \right) \right)
+			%		  \sin\!\left( \tan(x) \right)\left[ \tan(x) \right]^\prime \\
+			%		 & = -\cos\!\left( \cos\!\left( \tan(x) \right) \right)
+			%		  \sin\!\left( \tan(x) \right)\sec^2(x).
+			%		\end{align*}
+
+
+    
+		\subsubsection{Applications of derivatives}
+
+			We use derivatives to solve problems in physics, chemistry, computing, biology, business,
+			and many other areas of science.
+			The derivative operator comes up whenever we study the rate of change of a quantity.
+			Derivatives are also useful for solving optimization problems,
+			which consist of finding the maximum or minimum value of some function $f(x)$.
+			
+			Optimization techniques form a key building block for many machine learning algorithms,
+			so it's good to know a derivative of two if you're going to learn about machine learning topics.
+			In this book,
+			we won't go too far so a ``superficial'' familiarity with the concept will be sufficient,
+			but if you want to pursue machine learning topics in more depth you'll have to read up more on derivatives.
+			
+			The derivative operation is also important because it is the ``inverse operation'' of the integration operation,
+			which is the subject we'll discuss in the next section.
+			Skip ahead to page~\pageref{mathematical_preliminiaries:FTC} if you want spoilers about the inverse 
+			relationship between differentiation and integration,
+			or read on to watch the calculus movie in order.
+
+
+
+
+
+
+
+
+	\subsection{Optimization algorithms}
+
+		One of the most prominent applications of derivatives is \emph{optimization}:              \index{optimization}
+		the process of finding a function's maximum and minimum values.                           \index{maximum} \index{minimum}
+		
+		Consider the shape of the function near a minimum value.
+		The function is decreasing just before it reaches its minimum,
+		and the function increases just after its minimum.
+		This means we can start at any point $x_0$ near the minimum
+		and take ``downhill'' steps following the descending direction of the function,
+		we'll end up at the minimum value.
+		This simple procedure that repeatedly takes steps in the direction where the function is decreasing
+		turns out to be a very powerful tool that can find the minimum of any function.
+		This procedure is called the \emph{gradient descent algorithm},
+		where the name \emph{gradient} % (denoted $\nabla f(x,y)$)
+		refers to the derivative operation for multivariable functions. % like $f(x,y)$.
+		% TODO: say see notebook for implementation of derivative_descent algo. /TODO
+		%	You'll encounter the gradient descent algorithm and its numerous variations
+		%	if you choose to purse the topic of machine learning,
+		%	since they are used in many machine learning applications.	% where multivariable functions are the norm
+
+		In this book,
+		we won't discuss the details behind optimization algorithms,
+		and instead rely on the computational tools available in \tt{numpy}, \tt{scipy}, and \tt{sympy} to do optimization-type calculations for us.
+		We'll encounter optimization ideas (maximization and minimization) in several concepts in statistics:
+		\emph{maximum likelihood} and \emph{least squares},
+		and rely on ``visual proofs'' for these optimization procedures.
+		If you're interested in attaining a deeper understanding of optimization algorithms,
+		you can follow the links provided at the end of this section,
+		but note such ``under the hood'' understanding is not required to continue with the rest of the book.
+		
+		Here is a quick code example that shows how to use the function \tt{minimize} defined in the module \tt{scipy.optimize}
+		to find the minimum value of the function $f(x)=(x-5)^2$.
+
+		\begin{codeblock}[sympy-minimize-fx]
+		>>> from scipy.optimize import minimize
+		>>> def f(x):
+		        return (x-5)**2
+		>>> res = minimize(f, x0=0)
+		>>> res["x"][0]  # = argmin f(x)
+		4.99999997455944
+		\end{codeblock}
+
+		\noindent
+		The \tt{minimize} function takes two arguments:
+		the function to minimize,
+		and a initial value $x_0$ where to start the minimization process.
+
+
+
+
+	\subsection{Fundamental theorem of calculus}
+	
+		The fundamental theorem of calculus (FTC) is a deep insight about the
+		inverse relation that exists between the operations of integration $\int \cdot dx$
+		and differentiation $\frac{d}{dx}[\cdot]$.
+
+		The integral function $F_a(x)$ is obtained from the original function $f(x)$ using integration,
+		$F_a(x) = \int_a^x f(u) du$.
+		Another way to describe this is to say we \emph{applied} the integration operator $\int \cdot dx$
+		on the function $f(x)$ to obtain the integral function $F_a(x)$.
+		The derivative function $f'(x)$ is defined by the formula $f'(x) = \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}$.
+		We can also say we \emph{applied} the derivative operator $\frac{d}{dx}[\cdot]$
+		to the function $f(x)$ to obtain the derivative function $f'(x)$.
+		I use the word ``operator'' here to refer to an operation that acts on functions.
+
+		There is no reason \emph{a priori} to think that integration and differentiation might be related:
+		the former is a calculation about areas,
+		while the latter is a calculation about slopes.
+		The fundamental theorem of calculus reveals that they are in fact inverse operations:
+		we can obtain the original function $f(x)$ from the integral function $F_a(x)$ by computing it's derivative:
+		\[
+			\frac{d}{dx}\big[F_a(x)\big] 	= 	\frac{d}{dx}\left[\int_a^x f(u) \; du \right]  	= 	f(x).
+		\]
+		Note we used a temporary variable $u$ as the integration variable,
+		since $x$ is already used to denote the upper limit of integration.
+
+		In order to understand the inverse relationship between integration and differentiation,
+		we can draw an analogy with the inverse relationship between a function $f$ and its inverse function $f^{-1}$,
+		which \emph{undoes} the effects of $f$.
+		See Figure~\ref{fig:functions-inverse} on page~\pageref{fig:functions-inverse}.
+		Given some initial value $x$,
+		if we apply the function $f$ to obtain the number $f(x)$,
+		and apply the inverse function $f^{-1}$ on the number $f(x)$,
+		then the result will be the initial value $x$ we started from:
+		\[
+			f^{-1}\!\left( f(x) \right)	=	x.
+		\]
+		Similarly,
+		the derivative operator is the ``inverse operator'' of the integral operator.
+		If you perform the integral operation followed by the derivative operation on some function,
+		you'll obtain the same function:
+		\[
+			\tt{diff( }\tt{integrate(} f(x) \tt{) )} = f(x),
+		\]
+		where we've used the SymPy functions \tt{integrate} for computing the integrals,
+		and \tt{diff} (short for ``differentiate'') for computing derivatives.
+
+		The code example below shows how we can construct a complicated-looking function \tt{f}
+		and compute its integral function \tt{F} using SymPy.
+
+		\begin{codeblock}[sympy-FTC-obtain-F]
+		>>> from sympy import diff, integrate, log, exp, sin
+		>>> f =  log(x) + exp(x) + sin(x)
+		>>> F = integrate(f)
+		>>> F
+		x*log(x) - x + exp(x) - cos(x)
+		\end{codeblock}
+
+
+		\noindent
+		If we now take the derivative of the function \tt{F},
+		we get back the original function \tt{f}.
+
+		\begin{codeblock}[sympy-FTC-get-back-f]
+		>>> diff(F)
+		log(x) + exp(x) + sin(x)
+		>>> diff(integrate(f)) == f  # FTC part 1
+		True
+		\end{codeblock}
+
+		\noindent
+		The inverse relationship also holds for the opposite order of application:
+		if we take the derivative of some function,
+		then compute the integral of the derivative,
+		then we arrive back at the original function (up to an additive constant factor).  % due to the arbitrary choice of the starting point for integration
+
+		\begin{codeblock}[sympy-FTC-part-2]
+		>>> integrate(diff(f)) == f  # FTC part 2
+		True
+		\end{codeblock}
+
+		\noindent
+		That's kind of cool, no?
+		% TODO: mention application integration by finding anti-derivative functions
+		% TODO: explain what it means for integral not to have closed form
+
+		\bigskip
+		
+		\noindent
+		In probability theory,
+		the FTC tells us that the probability density can be obtained from the cumulative distribution using differentiation
+		\[
+			f_X(x) = \frac{d}{dx}\!\left[ F_X(x) \right] = \frac{dF_X}{dx}(x) = F'_X(x).
+		\]
+		The fact that we can obtain $f_X$ from $F_X$ and vice versa,
+		means we only need to define one of the two functions,
+		and obtain the other function using differentiation or integration.
+		In this book,
+		we define the random variable $X$ through its probability distribution function $f_X$,
+		then define $F_X$ as the integral of $f_X$.
+		In other books,
+		you might see the random variable $X$ being defined through its cumulative distribution function $F_X$,
+		with its probability density function $f_X$ defined as the derivative of $F_X$.

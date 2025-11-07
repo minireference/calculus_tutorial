@@ -1,0 +1,80 @@
+%!TEX root = ../calculus_tutorial.tex
+
+\subsection{Computing integrals numerically}
+
+	There are numerous ways to compute integrals using Python.
+	Computing integrals ``numerically'' means we're splitting the region of integration into thousands or millions of subregions,
+	computing the areas of these subregions,
+	then adding up the areas of the subregions to obtain the total area.
+
+	The Python function \tt{quad} in the module \tt{scipy.integrate} allows us to compute the integral of any function.
+	The name \tt{quad} is short for ``quadrature'' which is the historical math term used for find-the-area procedures.
+	Let's start by importing the \tt{quad} function.
+
+	\begin{codeblock}[import-quad-from-scipy]
+	>>> from scipy.integrate import quad
+	\end{codeblock}
+
+	\noindent
+	Now let's define a Python function \tt{f} that corresponds to the constant function $f(x) = 3$.
+
+	\begin{codeblock}[deffun-f-eq-3-and-call]
+	>>> def f(x):
+	        return 3
+	>>> f(333)
+	3
+	\end{codeblock}
+	
+	\noindent
+	No matter what input $x$ we choose,
+	the output will always be the same $f(x)=3$.
+
+	To compute the integral $\int_0^5 f(x) dx$ we call the function \tt{quad}
+	with inputs \tt{f} as the first argument,
+	and the limits of integration $a=0$ and $b=5$ as the second and third arguments.
+
+	\begin{codeblock}[quad-f-0-5-tuple]
+	>>> quad(f, 0, 5)
+	(15.0, 1.1102230246251565e-13)
+	\end{codeblock}
+
+	\noindent
+	The function \tt{quad} returns a tuple (a pair of numbers) as output: $(A,\epsilon)$.
+	The first number in the tuple is the value of the area calculation.
+	The second number $\epsilon$ tells us the accuracy of the procedure used to calculate the area.
+	In the above calculation,
+	the output tells us the integral $\int_0^5 f(x) dx$ is equal to $15.0$ up to a precision on the order of $10^{-13}$.
+
+	Since we're usually only interested in the value of the area $A$ and not the precision $\epsilon$,
+	we often select the first number in the output of \tt{quad}.
+	This is why you'll often see the expression \tt{quad(...)[0]} in code examples.
+
+	\begin{codeblock}[quad-f-0-5]
+	>>> quad(f, 0, 5)[0]  # extract A
+	15.0
+	\end{codeblock}
+
+	\noindent
+	As a second example,
+	let's calculate the area under the graph of the function $g(x)=x$ between $x=0$ and $x=5$.
+
+	\begin{codeblock}[deffun-g-eq-x-and-quad-g-0-5]
+	>>> def g(x):
+	        return x
+	>>> quad(g, 0, 5)[0]
+	12.5
+	\end{codeblock}
+
+	\noindent
+	The answer we obtained matches the results of the general formula we obtained above,
+	$A_g(0,5) = \frac{1}{2}b^2$,
+	when the upper limit of integration is $b=5$.
+
+	We'll use the function \tt{quad} hundreds of times in the remainder of the book to compute various integrals
+	as part of probability and statistics calculations,
+	so make sure you understand what is going on in the above code examples.
+	The main takeaway message is that the \tt{quad} function is your friend whenever you need to compute integrals.
+	All the scary-looking math equations that contain the $\int$ symbol can be computed using one or two lines of Python code.
+
+
+

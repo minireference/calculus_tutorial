@@ -1,0 +1,92 @@
+%!TEX root = ../calculus_tutorial.tex
+
+	\subsection{Limits}
+
+		In high school math,
+		we learn all kinds of math procedures for solving problems using a finite number of steps of math operations.
+		Whether you're manipulating expressions using algebra,
+		or applying the inverse function to simplify an equation,
+		all problems in high school math can be solved by using less than five steps,
+		or if your teacher really doesn't like you 10 steps.
+		% INFINITY
+		In calculus,
+		we learn a broader class of problem-solving strategies
+		that include procedures with an infinite number of steps.
+
+		% LIMITS
+		Limit expressions provide a precise mathematical language
+		for talking about infinitely large numbers, infinitely small steps,
+		and mathematical procedures with an infinite number of steps.
+		Here are three representative examples of limit expressions:
+
+		\begin{itemize}
+
+			% ASYMPTOTICS
+			\item	$\lim_{x \to \infty} f(x)$: limit expression that describes what happens to $f(x)$
+				when the input to the function $x$ tends to infinity (gets larger and larger).
+				In words,
+				this limit expression is read as ``limit of $f(x)$ as $n$ goes to infinity.''
+
+			% INFINITELY MANY
+			\item	$\lim_{n \to \infty} \textrm{proc}(n)$: limit expression that describes the value of $\textrm{proc}(n)$ as the integer $n$ tends to infinity.
+				The integer $n$ usually describes the number of steps in a given procedure,
+				and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
+
+			% INFINITELY SMALL
+			\item	$\lim_{\delta \to 0} h(\delta)$: limit expression that describes what happens to
+				$h(\delta)$ as the real number $\delta$ tends to zero.
+				The number $\delta$ (the Greek letter delta) usually describes a small distance,
+				and the limit as delta goes to zero ($\delta \to 0$) describes the behaviour of the expression $h(\delta)$
+				for an infinitely short distance $\delta$.
+
+		\end{itemize}
+
+		%	Using limits allows us to obtain answers computed by mathematical procedures with an infinite number of steps!
+
+		\noindent
+		The SymPy function \tt{limit} allows us to compute limit expressions.
+		For example,
+		if we want to see if the exponential function $e^x$ or the polynomial function $x^{100}$ grows faster
+		in the limit as $x$ goes to infinity,
+		The code for computing the limit of the ratio between these two expressions is
+
+		\begin{codeblock}[sympy-limit-exp-over-x-100]
+		>>> from sympy import limit, exp, oo
+		>>> limit(exp(x)/x**100, x, oo) 
+		oo
+		\end{codeblock}
+
+		\noindent
+		The answer $\infty$,
+		written as \tt{oo} (two lowercase letters ``o''),
+		tells us exponential functions grow faster than polynomial functions.
+		%	This result has implications in computer science,
+		%	where algorithms whose running time grows exponentially with the size of their input are considered bad
+
+		% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
+		%	splitting with an infinite number of segments
+		%	\begin{codeblock}[sympy-limit-sement-zero-length]
+		%	>>> from sympy import limit, oo, summation
+		%	>>> delta = (b - a)/n
+		%	>>> limit(delta, n, oo)
+		%	0
+		%	\end{codeblock}
+		%
+		%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
+		%	>>> summation(delta, (i, 0, n-1))
+		%	b - a				
+		%	\end{codeblock}
+
+		Limits are important in calculus because they are used in the formal definitions of the derivative and integral operations.
+		The derivative is defined as a rise-over-run calculation for an infinitely short run.
+		The integral is defined as a Riemann sum with infinitely narrow rectangles.
+		We'll explain both of these in the next sections.
+
+
+
+		\subsection{Applications of limits}
+		
+			Definition of the derivative
+			
+			Definition of the Riemann sum for computing integrals
+

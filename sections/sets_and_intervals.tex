@@ -1,0 +1,170 @@
+%!TEX root = ../calculus_tutorial.tex
+
+\section{Sets and intervals}
+
+	Sets are arbitrary collections of math objects.
+	Many math ideas are expressed using the language of sets,
+	so it's worth going over the basic definitions and notation conventions.
+
+	\begin{itemize}
+
+		\item $S,T$: the usual variable names for sets
+
+		\item $s \in S$: this statement is read ``$s$ is an element of $S$'' or ``$s$ is in $S$''
+
+		% seems not needed; put back if needed somewhere in the book (grep for it)
+		%	\item $\emptyset$: the \emph{empty set} is a set that contains no elements.
+		%		Mathematicians adopted the symbol $\emptyset$ because the notation $\{ \, \}$ is confusing.
+
+		\item $\{ \textrm{  definition  } \}$: the curly brackets surround the definition of a set,
+			and the expression inside the curly brackets describes what the set contains.
+			% The math symbol ``$|$'' is shorthand for the phrase ``such that'' and it is often used in definitions.
+
+		\item	$S^c$: the \emph{complement} of the set $S$,
+			is defined as all elements that are not in the set $S$.
+			% TODO: explain assumption of "universe" and complement as all elements of the universe that are not in $S$.
+
+		\item $\mathbb{N}$: the set of natural numbers $\mathbb{N}\eqdef\{0,1,2,\ldots\}$
+
+		\item $\mathbb{Z}$: the set of integers $\mathbb{Z}\eqdef\{\ldots,-2,-1,0,1,2,3,\ldots\}$
+
+		\item $\mathbb{Q}$: the set of rational numbers,
+			$\mathbb{Q} \eqdef \left\{  \frac{m}{n} \; \Big| \; m \in \mathbb{Z}, \; n \in \mathbb{N}, \; n \neq 0  \right\}$.
+			The set $\mathbb{Q}$ consists of all numbers that can be expressed as \emph{fractions} of the form $\frac{m}{n}$,
+			where $m$ is an integer, $n$ is a natural number, and $n \neq 0$.
+
+		\item	$\mathbb{R}$: the set of real numbers
+
+		\item	$\mathbb{R}_+$: the set of nonnegative real numbers.
+			The definition of the nonnegative is written as
+			$\mathbb{R}_+ \eqdef  \{ \text{all } x \text{ in } \mathbb{R} \text{ such that } x \geq 0 \}$,
+			or it can be expressed more compactly as $\mathbb{R}_+ \eqdef \{ x \in \mathbb{R} \; | \; x \geq 0 \}$.
+
+	\end{itemize}
+
+	\noindent
+	Note the multiple ways we use the  curly-brackets notation $\{ \}$ to denote sets.
+	A \emph{finite set} is defined by simply listing all its elements.
+	For example,
+	the set of possible outcomes of a coin flip is $\{ \texttt{heads}, \texttt{tails} \}$.
+	For an infinite set we can't write down all the elements,
+	but we can show the pattern like $\mathbb{N} \eqdef \{0,1,2,3,4,\ldots\}$.
+	The meaning of the three dots is ``and so on, continuing the same pattern.''
+	Another way to define a set is to use the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$.
+	Inside the curly brackets we first describe the general kind of mathematical objects we are talking about,
+	followed by the symbol ``$|$'' (read ``such that''),
+	followed by the conditions that must be satisfied by all elements of the set.
+	The definitions of the rational numbers $\mathbb{Q}$ and the nonnegative real numbers $\mathbb{R}_+$ above are examples of the set-builder notation.
+
+	The \emph{number line} is a visual representation of the set of real numbers $\mathbb{R}$,
+	as shown in Figure~\ref{fig:number_line_rationals_and_reals}.
+	The real numbers correspond to all the points on the number line,
+	from $-\infty$ to $\infty$.
+
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.4\textwidth]{figures/calculus/number_line_rationals_and_reals.pdf}
+		\vspace{-2mm}
+		\caption{The real numbers $\mathbb{R}$ cover the entire number line.}
+		\label{fig:number_line_rationals_and_reals}
+	\end{figure}
+
+	\noindent
+	The set of real numbers includes all the rational numbers like $-\frac{3}{2}$, $\frac{1}{2}$, and $\frac{9}{2}$,
+	as well as irrational numbers like $\sqrt{2}$, $e$, and $\pi$.
+	This means any number you are likely to run into when solving math problems
+	can be visualized as a point on the number line.
+
+	\subsection{Intervals}
+
+		The number line can also be used to represent subsets of the real numbers,
+		which we call \emph{intervals}.
+		Figure~\ref{fig:interval_2closed_to_4closed} shows an illustration of the interval $[2,4] = \{ x \in \mathbb{R} \;|\; 2 \leq x \leq 4 \}$,
+		which is a subset of the real numbers.
+
+		Here are some more examples of various intervals:
+		\begin{itemize}
+
+			\item	$[a,b]$: the interval from $a$ to $b$.
+				This corresponds to the set of real numbers between $a$ and~$b$,
+				including the endpoints $a$ and~$b$.
+				The interval $[a,b]$ corresponds to the set $\{ x\in \mathbb{R}\ | \ a \leq x \leq b \}$.
+
+			\item	$[a,\infty)$: the interval from $a$ until infinity,
+				which corresponds to the set $\{ x\in \mathbb{R}\ | \ a \leq x \}$.
+
+			\item	$(-\infty,b]$: the interval from negative infinity until $b$,
+				which corresponds to the set $\{ x\in \mathbb{R}\ | \ x \leq b \}$.
+
+		\end{itemize}
+
+		\noindent
+		The notation $[a,b]$ describes the \emph{closed} interval from $a$ to $b$,
+		which means the endpoints $a$ and $b$ are included in the interval.
+		The notation $(a,b)$ describes the \emph{open} interval from $a$ to $b$,
+		defined as the set $\{ x\in \mathbb{R}\ | \ a < x < b \}$,
+		which doesn't include the endpoints $a$ and $b$.
+		In other words,
+		intervals defined using square brackets ``$[$'' include the endpoints (defined using less-than-or-equal conditions)
+		while intervals defined with round brackets ``$($'' do not include their endpoints (defined using strictly-less-than conditions).
+		The distinction between open and closed intervals is important in general,
+		but makes no difference in the context of probability theory,
+		so you don't need to worry about the difference between $[a,b]$ and $(a,b)$ in this book.
+
+		% \SIDENOTE{ @Ivan: If not relevant to the book, why are we explaining it? }
+
+		\begin{figure}[htb]
+			\centering	
+			\includegraphics[width=0.4\textwidth]{figures/calculus/interval_2closed_to_4closed.pdf}
+			\vspace{-3mm}
+			\caption{The interval $[2,4] \protect\eqdef \{ x \in \mathbb{R} \; | \; 2 \leq x \leq 4 \}$. }
+			\label{fig:interval_2closed_to_4closed}
+		\end{figure}
+
+
+
+
+	\subsection{Set operations}
+
+		We use set operations like union $\cup$, intersection $\cap$, and set difference~$\setminus$ to define composite sets.
+
+		\begin{itemize}
+
+			\item $S\cup T$: the \emph{union} of two sets.						\index{set!union|textit}
+				The union of $S$ and $T$ corresponds to the elements in either $S$ or $T$.
+
+			\item $S \cap T$: the \emph{intersection} of two sets.				\index{set!intersection|textit}
+				The intersection of $S$ and $T$ corresponds to the elements that are in both $S$ and $T$.
+
+			\item $S \, \setminus \, T$: \emph{set difference} or \emph{set minus}.		\index{set!difference|textit}
+				The set difference $S \setminus T$ corresponds to the elements of $S$ that are not in $T$.
+
+		\end{itemize}
+
+		\noindent
+		Consider the overlapping intervals $A = [a,b]$ and $B = [c,d]$ illustrated in Figure~\ref{fig:sets_A_B_and_set_operations}.
+		The union of these two intervals is the set of numbers that are \emph{either} between $a$ and $b$ \emph{or} between $c$ and $d$,
+		which corresponds to the interval $[a,d]$.
+		The intersection of $A$ and $B$ is the set of numbers that are in \emph{both} $A$ and $B$,
+		and corresponds to the interval $[c,b]$.
+		The figure also illustrates the two set differences,
+		$A\;\setminus\;B$ and $B\;\setminus\;A$ which correspond to numbers that are in one set,
+		but not in the other.
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.3\textwidth]{figures/calculus/sets_A_B_and_set_operations.pdf}
+			\caption{	Various intervals that can be obtained using set operations of the intervals $A$ and $B$.}
+			\label{fig:sets_A_B_and_set_operations}
+		\end{figure}
+
+	\noindent
+	I hope these definitions and examples made you feel more comfortable with sets,
+	and the weird-looking curly bracket notation that mathematicians use to define sets.
+	It might look a little complicated at first,
+	but you'll get used to it in the rest of the book.
+	% Robyn said: I love these reassuring paragraphs, though it's a bit repetative in this chapter. Just something to be aware of.
+
+	In probability theory,
+	we use finite sets and countably infinite sets like the natural numbers to represent the sample spaces of discrete random variables.
+	We also use intervals to describe outcomes in the sample space of continuous random variables.
