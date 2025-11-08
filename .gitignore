@@ -2,6 +2,8 @@
 # large files
 resources/IEEEtran_HOWTO.pdf
 
+# symlink to the calc tutorial in noBSstats notebooks project
+calculus_tutorial.ipynb
 
 
 ## Core latex/pdflatex auxiliary files:

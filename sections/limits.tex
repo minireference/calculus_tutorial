@@ -1,92 +1,457 @@
 %!TEX root = ../calculus_tutorial.tex
 
-	\subsection{Limits}
+\section{Limits}
 
-		In high school math,
-		we learn all kinds of math procedures for solving problems using a finite number of steps of math operations.
-		Whether you're manipulating expressions using algebra,
-		or applying the inverse function to simplify an equation,
-		all problems in high school math can be solved by using less than five steps,
-		or if your teacher really doesn't like you 10 steps.
-		% INFINITY
-		In calculus,
-		we learn a broader class of problem-solving strategies
-		that include procedures with an infinite number of steps.
+	In high school math,
+	we learn all kinds of math procedures for solving problems using a finite number of steps of math operations.
+	Whether you're manipulating expressions using algebra,
+	or applying the inverse function to simplify an equation,
+	all problems in high school math can be solved by using less than five steps,
+	or if your teacher really doesn't like you 10 steps.
+	% INFINITY
+	In calculus,
+	we learn a broader class of problem-solving strategies
+	that include procedures with an infinite number of steps.
 
-		% LIMITS
-		Limit expressions provide a precise mathematical language
-		for talking about infinitely large numbers, infinitely small steps,
-		and mathematical procedures with an infinite number of steps.
-		Here are three representative examples of limit expressions:
+	% LIMITS
+	Limit expressions provide a precise mathematical language
+	for talking about infinitely large numbers, infinitely small steps,
+	and mathematical procedures with an infinite number of steps.
+	Here are three representative examples of limit expressions:
 
-		\begin{itemize}
+	\begin{itemize}
 
-			% ASYMPTOTICS
-			\item	$\lim_{x \to \infty} f(x)$: limit expression that describes what happens to $f(x)$
-				when the input to the function $x$ tends to infinity (gets larger and larger).
-				In words,
-				this limit expression is read as ``limit of $f(x)$ as $n$ goes to infinity.''
+		% ASYMPTOTICS
+		\item	$\lim_{x \to \infty} f(x)$: limit expression that describes what happens to $f(x)$
+			when the input to the function $x$ tends to infinity (gets larger and larger).
+			In words,
+			this limit expression is read as ``limit of $f(x)$ as $n$ goes to infinity.''
 
-			% INFINITELY MANY
-			\item	$\lim_{n \to \infty} \textrm{proc}(n)$: limit expression that describes the value of $\textrm{proc}(n)$ as the integer $n$ tends to infinity.
-				The integer $n$ usually describes the number of steps in a given procedure,
-				and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
+		% INFINITELY MANY
+		\item	$\lim_{n \to \infty} \textrm{proc}(n)$: limit expression that describes the value of $\textrm{proc}(n)$ as the integer $n$ tends to infinity.
+			The integer $n$ usually describes the number of steps in a given procedure,
+			and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
 
-			% INFINITELY SMALL
-			\item	$\lim_{\delta \to 0} h(\delta)$: limit expression that describes what happens to
-				$h(\delta)$ as the real number $\delta$ tends to zero.
-				The number $\delta$ (the Greek letter delta) usually describes a small distance,
-				and the limit as delta goes to zero ($\delta \to 0$) describes the behaviour of the expression $h(\delta)$
-				for an infinitely short distance $\delta$.
+		% INFINITELY SMALL
+		\item	$\lim_{\delta \to 0} h(\delta)$: limit expression that describes what happens to
+			$h(\delta)$ as the real number $\delta$ tends to zero.
+			The number $\delta$ (the Greek letter delta) usually describes a small distance,
+			and the limit as delta goes to zero ($\delta \to 0$) describes the behaviour of the expression $h(\delta)$
+			for an infinitely short distance $\delta$.
 
-		\end{itemize}
+	\end{itemize}
 
-		%	Using limits allows us to obtain answers computed by mathematical procedures with an infinite number of steps!
+	%	Using limits allows us to obtain answers computed by mathematical procedures with an infinite number of steps!
 
-		\noindent
-		The SymPy function \tt{limit} allows us to compute limit expressions.
-		For example,
-		if we want to see if the exponential function $e^x$ or the polynomial function $x^{100}$ grows faster
-		in the limit as $x$ goes to infinity,
-		The code for computing the limit of the ratio between these two expressions is
+	\noindent
+	The SymPy function \tt{limit} allows us to compute limit expressions.
+	For example,
+	if we want to see if the exponential function $e^x$ or the polynomial function $x^{100}$ grows faster
+	in the limit as $x$ goes to infinity,
+	The code for computing the limit of the ratio between these two expressions is
 
-		\begin{codeblock}[sympy-limit-exp-over-x-100]
-		>>> from sympy import limit, exp, oo
-		>>> limit(exp(x)/x**100, x, oo) 
-		oo
-		\end{codeblock}
+	\begin{codeblock}[sympy-limit-exp-over-x-100]
+	>>> from sympy import limit, exp, oo
+	>>> limit(exp(x)/x**100, x, oo) 
+	oo
+	\end{codeblock}
 
-		\noindent
-		The answer $\infty$,
-		written as \tt{oo} (two lowercase letters ``o''),
-		tells us exponential functions grow faster than polynomial functions.
-		%	This result has implications in computer science,
-		%	where algorithms whose running time grows exponentially with the size of their input are considered bad
+	\noindent
+	The answer $\infty$,
+	written as \tt{oo} (two lowercase letters ``o''),
+	tells us exponential functions grow faster than polynomial functions.
+	%	This result has implications in computer science,
+	%	where algorithms whose running time grows exponentially with the size of their input are considered bad
 
-		% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
-		%	splitting with an infinite number of segments
-		%	\begin{codeblock}[sympy-limit-sement-zero-length]
-		%	>>> from sympy import limit, oo, summation
-		%	>>> delta = (b - a)/n
-		%	>>> limit(delta, n, oo)
-		%	0
-		%	\end{codeblock}
-		%
-		%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
-		%	>>> summation(delta, (i, 0, n-1))
-		%	b - a				
-		%	\end{codeblock}
+	% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
+	%	splitting with an infinite number of segments
+	%	\begin{codeblock}[sympy-limit-sement-zero-length]
+	%	>>> from sympy import limit, oo, summation
+	%	>>> delta = (b - a)/n
+	%	>>> limit(delta, n, oo)
+	%	0
+	%	\end{codeblock}
+	%
+	%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
+	%	>>> summation(delta, (i, 0, n-1))
+	%	b - a				
+	%	\end{codeblock}
 
-		Limits are important in calculus because they are used in the formal definitions of the derivative and integral operations.
-		The derivative is defined as a rise-over-run calculation for an infinitely short run.
-		The integral is defined as a Riemann sum with infinitely narrow rectangles.
-		We'll explain both of these in the next sections.
+	Limits are important in calculus because they are used in the formal definitions of the derivative and integral operations.
+	The derivative is defined as a rise-over-run calculation for an infinitely short run.
+	The integral is defined as a Riemann sum with infinitely narrow rectangles.
+	We'll explain both of these in the next sections.
 
 
 
-		\subsection{Applications of limits}
+
+
+
+	\subsubsection{Example}
+
+		Let's begin with a simple example.
+		Say you have a string of length $\ell$ and you want to divide it into infinitely many, infinitely short segments.
+		There are infinitely many segments,
+		and they are infinitely short, so together the segments add to the string's total length $\ell$.
+
+		It's easy enough to describe this process in words.
+		Now let's describe the same process using the notion of a limit.
+		If we divide the length of the string $\ell$ into $N$ equal pieces then each piece will have a length of
+		\[
+		   \delta = \frac{\ell}{N}  \,.
+		\]
+		Let's make sure that $N$ pieces of length $\delta$ added together equal the string's total length: 
+		\[
+		 N \delta = N \frac{\ell}{N} = \ell.
+		\]
 		
-			Definition of the derivative
-			
-			Definition of the Riemann sum for computing integrals
+		\noindent
+		Now imagine what happens when the variable $N$ becomes larger and larger.
+		The larger $N$ becomes, the shorter the pieces of string will become.
+		In fact, if $N$ goes to infinity (written $N \to \infty$),
+		then the pieces of string will have zero length:
+		\[
+		 \lim_{N\to \infty}  \delta = \lim_{N\to \infty} \frac{\ell}{N} = 0.
+		\]
+		In the limit as $N \to \infty$, the pieces of string are \emph{infinitely small}.
+		
+		Note we can still add the pieces of string together to obtain the whole length:
+		\[
+		 \lim_{N\to \infty}  \left( N \delta \right) 
+		 = 
+		 \lim_{N\to \infty}  \left( N \frac{\ell}{N} \right)
+		 = \ell.
+		\]
+		Even if the pieces of string are \emph{infinitely small},
+		because there are \emph{infinitely many} of them,
+		they still add to $\ell$.
+		
+		The take-home message is that as long as you clearly define your limits,
+		you can use infinitely small numbers in your calculations.
+		The notion of a limit is one of the central ideas in this course.
 
+
+	\subsection{Limits at infinity}
+	\label{limits:limits_to_infinity}
+
+		In math,
+		we're often interested in describing what happens to a certain function when its input variable tends to infinity.			\index{infinity}
+		This information helps us draw the function's graph.
+		Does $f(x)$ approach a finite number,
+		or does it keep on growing to $\infty$?
+
+		As an example of this type of calculation,
+		consider the limit of the function $f(x)=\tfrac{1}{x}$ as $x$ goes to infinity:
+		\[
+		 \lim_{x \to \infty} f(x) = \lim_{x \to \infty} \tfrac{1}{x} = 0.
+		\]
+		This statement is true,
+		even though the function $\tfrac{1}{x}$ never \emph{actually} reaches zero.
+		The function gets closer and closer to the $x$-axis but never touches it.
+		This is why the concept of a limit is useful:
+		it allows us to write $\displaystyle \lim_{x\to \infty} f(x)=0$ even though $f(x)\neq 0$ for any $x \in \mathbb{R}$.
+
+		The function $f(x)$ is said to \emph{converge} to the number $L$											\index{convergence}
+		if the function approaches the value $L$ for large values of $x$:
+		\[
+		 \lim_{x \to \infty} f(x) = L.
+		\]
+		We say ``The limit of $f(x)$ as $x$ goes to infinity is the number $L$.''
+		See Figure~\ref{fig:limit-at-infinity-graph} for an illustration.
+		The limit expression is a concise way of saying the following precise mathematical statement:
+		for \emph{any} precision $\epsilon>0$,
+		there exists a starting point $S$,
+		after which $f(x)$ equals $L$ within a precision $\epsilon$.
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.3\textwidth]{figures/calculus/limit-at-infinity-graph.png}
+			\vspace{-2mm}
+			\caption{	A function $f(x)$ whose oscillations around the value $L$ are smaller than $\epsilon$ for all $x\geq S$.
+					The starting point $S$ depends on the choice of precision~$\epsilon$.}
+			\label{fig:limit-at-infinity-graph}
+		\end{figure}
+
+
+		The precise mathematical meaning of $\displaystyle \lim_{x \to \infty} f(x) = L$ is
+		\[ 
+		  \forall \epsilon>0 \; \exists S \in \mathbb{R} \textrm{ such that }  \;  \forall x \geq S \;  \;  \left|f(x) - L\right| <\epsilon.
+		\]
+		I know what you are thinking. Whoa!
+		What just happened here?
+		Chill.
+		I know we saw that upside-down-A and backward-E business all the way
+		back in Chapter~\ref{chapter:math_fundamentals} (see page~\pageref{sec:set_notation}),
+		so let me rewrite the expression for you in plain English:
+		\begin{multline*}
+		  \textrm{For all } \epsilon>0,  \\
+		  	 \textrm{ there exists a number } S \textrm{ such that } \qquad \qquad \qquad \qquad  \\
+			 	 \left|f(x) - L\right| <\epsilon
+		   \textrm{ for all } x \textrm{ greater than or equal to } S.
+		\end{multline*}
+
+		 \vspace{1mm}
+
+		\noindent
+		The limit equation {\small$\displaystyle \lim_{x \to \infty} f(x) = L$} states that the 
+		``limit at infinity'' of the function $f(x)$ is equal to the number $L$.
+		This statement is true if and only if there exists a winning strategy for an $\epsilon,\!S$-game,
+		similar to the $\epsilon,\!N$-game played by the computer scientist and the mathematician.
+		In the new $\epsilon,\!S$-game,
+		the mathematician specifies the precision $\epsilon$,
+		and the computer scientists must find a starting point~$S$ after which $f(x)$ becomes (and stays) $\epsilon$-close to the limit $L$.
+		If the computer scientist can succeed for all levels of precision $\epsilon$,
+		then the mathematician will be convinced the equation $\displaystyle \lim_{x \to \infty} f(x) = L$ is true.
+
+
+		\paragraph{Example 2}		
+			Calculate $\lim\limits_{x\to \infty} \frac{2x+1}{x}\,$.
+
+			You are given the function $f(x)=\frac{2x+1}{x}$
+			and must determine what the function looks like for very large values of $x$.
+			We can rewrite the function as $\frac{2x+1}{x}=2+\frac{1}{x}$ to more easily see what is going on:
+			\[
+			 \lim_{x\to \infty} \frac{2x+1}{x} 
+			  = \lim_{x\to \infty}\left( 2 + \frac{1}{x} \right)
+			  = 2 + \lim_{x\to \infty}\left( \frac{1}{x} \right)
+			  = 2 + 0,
+			\]
+			since $\frac{1}{x}$ tends toward zero for large values of $x$.
+
+			In an introductory calculus course, you will not be required to 
+			give formal proofs for statements like $\lim_{x\to \infty}\frac{1}{x}=0$; 
+			instead, you can assume the result is obvious and needs no proof.
+			As the denominator $x$ becomes larger and larger,
+			the fraction $\frac{1}{x}$ becomes smaller and smaller.
+
+
+
+	\subsection{Limits to a number}
+	\label{limits:limits_to_a_number}
+
+		The limit of $f(x)$ approaching $x=a$ \emph{from the right} is defined as
+		\[
+		 \lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta). 
+		\]
+		To find the limit from the right at $a$, we let $x$ take on values like 
+		$a+0.1$, $a+0.01$, $a+0.001$, $a+0.0001$, etc.
+		Figure~\ref{fig:limit_epsilon_delta_f_at_a_from_right} shows the graph of a function $f(x)$ near the point $(a,f(a))$.
+		To prove the statement
+		\[
+			\lim_{x\to a^+} f(x) =  L, 
+		\]
+		you must show that
+		\begin{multline*}
+		  \qquad \qquad \forall \epsilon>0, \\
+		  	\exists \delta>0 \textrm{ such that }  \qquad \qquad \qquad  \\
+			 \forall x \in (a, a+\delta) \;  \;  \left|f(x) - L\right| <\epsilon. \qquad \qquad 
+		\end{multline*}
+		In other words, the limit from the right corresponds to an $\epsilon,\!\delta$-game
+		in which the mathematician specifies the precision $\epsilon>0$,
+		and the computer scientist must find a distance $\delta>0$,
+		such that $\left|f(x) - L\right| <\epsilon$, for all $x$ in the range $(a,a+\delta)$.
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.3\textwidth]{figures/calculus/limit_epsilon_delta_f_at_a_from_right.png}
+			\caption{	A function $f(x)$ whose variation around the value $L$ is smaller than $\epsilon$ for all $x$ in the interval $(a, a+\delta)$.
+					The value $\delta$ depends the choice of $\epsilon$.}
+			\label{fig:limit_epsilon_delta_f_at_a_from_right}
+		\end{figure}
+
+		The limit of $f(x)$ when $x$ approaches \emph{from the left} is defined analogously,
+		\[
+ 		   \lim_{x\to a^-} f(x)  = \lim_{\delta \to 0} f(a - \delta).
+		\]
+		%		describes what happens to $f(x)$ as $x$ approaches $a$ from below
+		%		(from the left) with values like $x=a-$, 
+		%		with $\delta>0, \delta \to 0$.
+
+		If both limits from the left and from the right of some number exist and 
+		are equal to each other, we can talk about the limit as $x\to a$ 
+		without specifying the direction of approach: 
+		\[
+		 \lim_{x\to a} f(x) =  \lim_{x\to a^+} f(x) =  \lim_{x\to a^-} f(x).
+		\]
+		For the two-sided limit of a function to exist at a point,
+		both the limit from the left and the limit from the right must converge to the same number.
+		If the function $f(x)$ obeys, $f(a) = L$ and $\displaystyle\lim_{x\to a} f(x) = L$,
+		we say the function $f(x)$ is continuous at $x=a$.
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.3\textwidth]{figures/calculus/limit_epsilon_delta_f_at_a.png}
+			\caption{The two-sided limit $\lim_{x\to a} f(x)=L$ exists if both the limit from the left and the limit from the right exist and are equal to $L$.}
+			\label{fig:limit_epsilon_delta_f_at_a}
+		\end{figure}
+		
+		
+
+
+
+
+	\subsection{Continuity}
+	\label{limits:continuity}
+	
+		
+		A function is said to be \emph{continuous}														\index{continuous function|textbf}
+		if its graph looks like a smooth curve that doesn't make any sudden jumps and contains no gaps.
+		If you can draw the graph of the function on a piece of paper without lifting your pen,
+		the function is continuous.
+
+		A more mathematically precise way to define continuity is to say the function is equal to its limit for all $x$.
+		We say a function $f(x)$ is \emph{continuous} at $a$ if the limit of $f$ as $x\to a$ converges to $f(a)$:
+		\[
+		 \lim_{x \to a}  f(x) =  f(a).
+		\]
+		Remember,
+		the two-sided limit $\lim_{x\to a}$ requires both the left and the right limit to exist and to be equal.
+		Thus, the definition of continuity implies the following equality:
+		\[
+		 \lim_{x \to a^-}  f(x) =  f(a) = \lim_{x \to a^+}  f(x).
+		\]
+		In words,
+		this means that a function $f(x)$ is continuous at $x=a$
+		if the limit from the left $\lim_{x \to a^-}  f(x)$
+		and the limit from the right $\lim_{x \to a^+}  f(x)$
+		are both equal to the value of the function at $x=a$.
+
+		Take a moment to think about the mathematical definition of continuity at a point.
+		Can you connect the math definition to the intuitive idea that functions are continuous if they can be drawn without lifting the pen?
+
+		Most functions we'll study in calculus are continuous,
+		but not all functions are.
+		Functions that are not defined for some value, as well as functions that make sudden jumps, are not continuous.
+		%		Another examples is the function $f(x)=\frac{2x+1}{x}$ which is discontinuous at $x=0$
+		%		(because the limit $\lim_{x \to 0}  f(x)$ doesn't exist and $f(0)$ is not defined).
+
+		For example,
+		consider the function $f : \mathbb{R} \setminus \{0\} \to \mathbb{R}$ defined by
+		\[
+			f(x)
+			=\frac{ | x-3| }{x-3} 
+			= \left\{ 	\begin{array}{rl}
+					1	\quad	&  \mathrm{  if } \;  x > 3, \\
+					-1	\quad	&  \mathrm{  if } \;  x < 3.
+			                        \end{array}                    \right.
+		\]
+		The function $f$ is continuous everywhere on the real line except at $x=3$.
+		Since this function $f$ is ``missing'' only at a single point,
+		we can try to ``patch it'' by filling in the missing value.
+		Consider the function $g : \mathbb{R} \to \mathbb{R}$ defined as
+		\[
+			g(x)
+			= \left\{ 	\begin{array}{rl}
+					1	\quad	&  \mathrm{  if }\;  x > 3, \\
+					1	\quad	&  \mathrm{  if }\;  x = 3, \\
+					-1	\quad	&  \mathrm{  if } \;  x < 3.
+			                        \end{array}                    \right.		
+		\]
+		The function $g$ is \emph{continuous from the right} at the point $x=3$,
+		since $\lim_{x \to 3^+} g(x)=1=g(3)$.
+		However,
+		taking the limit from the left,
+		we find $\lim_{x \to 3^-} g(x)=-1 \neq g(3)$,
+		which tells us $g$ is not continuous from the left.
+		We say the function $g$ has a \emph{jump discontinuity} at $x=3$.
+
+		% Khan Academy
+		% https://www.youtube.com/watch?v=Y7sqB1e4RBI
+
+
+		\paragraph{Example 3}	
+			We can calculate the limit $\displaystyle\lim_{x\to 5} \frac{2x+1}{x}$ as follows:
+			\[
+			 \lim_{x\to 5} \frac{2x+1}{x}
+			  = \frac{2(5)+1}{5}
+			  = \frac{11}{5}.
+			\]
+			There is nothing tricky going on here---we plug the number $5$ into the equation, and voila. 
+			The function $f(x)=\frac{2x+1}{x}$ is continuous at the value $x=5$, so the limit of the function 
+			as $x\to 5$ is equal to the value of the function $\displaystyle\lim_{x\to 5} f(x) = f(5)$.
+			% This is true in general for any continuous function.
+			
+
+
+
+
+
+	\subsection{Applications of limits}
+
+		Limits are fundamentally important for calculus.															\index{limit}
+		Indeed, the three main calculus topics we'll discuss in the remainder of this chapter are
+		derivatives, integrals, and series---all of which are defined using limits.
+	
+	
+		\subsubsection{Limits for derivatives}
+		\label{limits:limits_for_derivatives}
+	
+			The formal definition of a function's derivative is expressed in terms
+			of the rise-over-run formula for an infinitely short run:
+			\[
+			 f'(x) 
+			 \; = \; \lim_{\textrm{run} \to 0} \frac{\text{rise}}{\text{run}} 
+			 \; = \;  \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{x+\delta \; - \;  x}.
+			\]
+			We'll continue the discussion of this formula in Section~\ref{sec:derivatives}.
+	
+	
+		\subsubsection{Limit for integrals}
+		\label{limits:limits_for_integrals}
+	
+			One way to approximate the area under the curve $f(x)$ between $x=a$ and $x=b$
+			is to split the area into $N$ little rectangles of width $\epsilon = \frac{b-a}{N}$ and height $f(x)$,
+			and then calculate the sum of the areas of the rectangles:
+			\[ 
+			  A(a,b) \approx \underbrace{ \epsilon f(a) + \epsilon f(a+\epsilon) 
+			  						+ \epsilon f(a+2\epsilon) + \cdots 
+									+ \epsilon f(b-\epsilon)}_{N \textrm{ terms}}.
+			\]
+			We obtain the exact value of the area in the limit where we split the area into an infinite
+			number of rectangles with infinitely small width:
+			{ \small
+			\[ 
+			  \!\!\int_a^b\!\!\!f(x) \: dx
+			  = \!A(a,b)
+			   = \!\!\lim_{N \to \infty}\!\!\left[ 
+			   	\epsilon f(a) + \epsilon f(a+\epsilon) + \epsilon f(a+2\epsilon) + \cdots + \epsilon f(b-\epsilon) 
+				\right].
+			\]}
+			
+			\noindent 
+			Computing the area under a function by splitting the area into infinitely 
+			many rectangles is an approach known as a \emph{Riemann sum},										\index{Riemann sum}
+			which we'll discuss in Section~\ref{sec:riemann_sum}.
+				
+			%	\subsection{Limits for sequences}	TODOv7
+			%	\label{limits:limits_for_sequences}
+	
+	
+		
+		\subsubsection{Limits for series}
+		\label{limits:limits_for_series}
+		
+			We use limits to describe the convergence properties of series.											\index{convergence}
+			For example, the partial sum of the first $N$ terms of the geometric series
+			$a_n= r^n$ corresponds to the following expression:
+			\[
+			  S_N 
+			   = \sum_{n=0}^N r^n 
+			   = 1 + r + r^2 + r^3 + \cdots + r^N.
+			\]
+			The \emph{series} $a_n$ is defined as the limit $N\to \infty$ of the above expression.
+			For values of $r$ that obey $|r|<1$,
+			the series converges:
+			\[ 
+			  S_\infty 
+			   = \lim_{N \to \infty} S_N 
+			   = \sum_{n=0}^\infty r^n
+			   = 1 + r + r^2 +  r^3 + \cdots 
+			   =\frac{1}{1-r}.
+			\]
+			To convince yourself the above formula is correct,
+			observe how the infinite sum $S_\infty$ is similar to a shifted version of itself: $S_\infty=1+rS_\infty$.
+			Now solve for $S_\infty$ in the equation $S_\infty=1+rS_\infty$.
+			
+			You'll find more about series in Section~\ref{sec:series}.
+	

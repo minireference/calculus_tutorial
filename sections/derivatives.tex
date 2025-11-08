@@ -88,6 +88,10 @@
 
 
 
+
+
+	\subsection{Numerical derivative calculations}
+
 LETS SEE SOME CODE
 
 
@@ -189,7 +193,7 @@ LETS SEE SOME CODE
 %	using the function SymPy function \tt{diff} allows you to compute the derivative function for any function $f(x)$.
 
 
-		\subsubsection{Derivative formulas}
+		\subsection{Derivative formulas}
 		\label{mathematical_preliminiaries:derivative_formulas}
 		
 			You don't need to apply the complicated derivative formula $f'(x) \equiv \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
@@ -240,7 +244,7 @@ LETS SEE SOME CODE
 
 
 
-		\subsubsection{Derivative rules}
+		\subsection{Derivative rules}
 
 			In addition to the table of derivative formulas show above,
 			there are some important derivatives rules that you should know about.
@@ -317,7 +321,7 @@ LETS SEE SOME CODE
 				\]
 
 
-		\subsubsection{Examples}
+		\subsection{Examples}
 		
 			The above rules define \emph{all} you need to know to take the derivative of any function, 
 			no matter how complicated.
@@ -366,7 +370,7 @@ LETS SEE SOME CODE
 
 
     
-		\subsubsection{Applications of derivatives}
+		\subsection{Applications of derivatives}
 
 			We use derivatives to solve problems in physics, chemistry, computing, biology, business,
 			and many other areas of science.
@@ -443,107 +447,3 @@ LETS SEE SOME CODE
 
 
 
-
-	\subsection{Fundamental theorem of calculus}
-	
-		The fundamental theorem of calculus (FTC) is a deep insight about the
-		inverse relation that exists between the operations of integration $\int \cdot dx$
-		and differentiation $\frac{d}{dx}[\cdot]$.
-
-		The integral function $F_a(x)$ is obtained from the original function $f(x)$ using integration,
-		$F_a(x) = \int_a^x f(u) du$.
-		Another way to describe this is to say we \emph{applied} the integration operator $\int \cdot dx$
-		on the function $f(x)$ to obtain the integral function $F_a(x)$.
-		The derivative function $f'(x)$ is defined by the formula $f'(x) = \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}$.
-		We can also say we \emph{applied} the derivative operator $\frac{d}{dx}[\cdot]$
-		to the function $f(x)$ to obtain the derivative function $f'(x)$.
-		I use the word ``operator'' here to refer to an operation that acts on functions.
-
-		There is no reason \emph{a priori} to think that integration and differentiation might be related:
-		the former is a calculation about areas,
-		while the latter is a calculation about slopes.
-		The fundamental theorem of calculus reveals that they are in fact inverse operations:
-		we can obtain the original function $f(x)$ from the integral function $F_a(x)$ by computing it's derivative:
-		\[
-			\frac{d}{dx}\big[F_a(x)\big] 	= 	\frac{d}{dx}\left[\int_a^x f(u) \; du \right]  	= 	f(x).
-		\]
-		Note we used a temporary variable $u$ as the integration variable,
-		since $x$ is already used to denote the upper limit of integration.
-
-		In order to understand the inverse relationship between integration and differentiation,
-		we can draw an analogy with the inverse relationship between a function $f$ and its inverse function $f^{-1}$,
-		which \emph{undoes} the effects of $f$.
-		See Figure~\ref{fig:functions-inverse} on page~\pageref{fig:functions-inverse}.
-		Given some initial value $x$,
-		if we apply the function $f$ to obtain the number $f(x)$,
-		and apply the inverse function $f^{-1}$ on the number $f(x)$,
-		then the result will be the initial value $x$ we started from:
-		\[
-			f^{-1}\!\left( f(x) \right)	=	x.
-		\]
-		Similarly,
-		the derivative operator is the ``inverse operator'' of the integral operator.
-		If you perform the integral operation followed by the derivative operation on some function,
-		you'll obtain the same function:
-		\[
-			\tt{diff( }\tt{integrate(} f(x) \tt{) )} = f(x),
-		\]
-		where we've used the SymPy functions \tt{integrate} for computing the integrals,
-		and \tt{diff} (short for ``differentiate'') for computing derivatives.
-
-		The code example below shows how we can construct a complicated-looking function \tt{f}
-		and compute its integral function \tt{F} using SymPy.
-
-		\begin{codeblock}[sympy-FTC-obtain-F]
-		>>> from sympy import diff, integrate, log, exp, sin
-		>>> f =  log(x) + exp(x) + sin(x)
-		>>> F = integrate(f)
-		>>> F
-		x*log(x) - x + exp(x) - cos(x)
-		\end{codeblock}
-
-
-		\noindent
-		If we now take the derivative of the function \tt{F},
-		we get back the original function \tt{f}.
-
-		\begin{codeblock}[sympy-FTC-get-back-f]
-		>>> diff(F)
-		log(x) + exp(x) + sin(x)
-		>>> diff(integrate(f)) == f  # FTC part 1
-		True
-		\end{codeblock}
-
-		\noindent
-		The inverse relationship also holds for the opposite order of application:
-		if we take the derivative of some function,
-		then compute the integral of the derivative,
-		then we arrive back at the original function (up to an additive constant factor).  % due to the arbitrary choice of the starting point for integration
-
-		\begin{codeblock}[sympy-FTC-part-2]
-		>>> integrate(diff(f)) == f  # FTC part 2
-		True
-		\end{codeblock}
-
-		\noindent
-		That's kind of cool, no?
-		% TODO: mention application integration by finding anti-derivative functions
-		% TODO: explain what it means for integral not to have closed form
-
-		\bigskip
-		
-		\noindent
-		In probability theory,
-		the FTC tells us that the probability density can be obtained from the cumulative distribution using differentiation
-		\[
-			f_X(x) = \frac{d}{dx}\!\left[ F_X(x) \right] = \frac{dF_X}{dx}(x) = F'_X(x).
-		\]
-		The fact that we can obtain $f_X$ from $F_X$ and vice versa,
-		means we only need to define one of the two functions,
-		and obtain the other function using differentiation or integration.
-		In this book,
-		we define the random variable $X$ through its probability distribution function $f_X$,
-		then define $F_X$ as the integral of $f_X$.
-		In other books,
-		you might see the random variable $X$ being defined through its cumulative distribution function $F_X$,
-		with its probability density function $f_X$ defined as the derivative of $F_X$.

@@ -44,6 +44,50 @@
 		where the sample space $\mathcal{X}$ is some subset of the real numbers $\mathbb{R}$.
 
 
+	\subsection{Plotting function graphs using NumPy and Seaborn}
+
+		
+		We can use a combination of the \tt{numpy} and \tt{seaborn} modules
+		to plot the graph of the function $g(x) = \frac{1}{2}x^2$,
+		as shown in the code example below.
+
+		\begin{codeblock}[plot-gx-0-10]
+		>>> def g(x):
+		        return 0.5 * x**2
+		>>> import numpy as np
+		>>> import seaborn as sns
+		>>> xs = np.linspace(0, 10, 1000)
+		>>> gxs = g(xs)
+		>>> sns.lineplot(x=xs, y=gxs, label="Graph of g(x)")
+		See Figure ¡\ref{fig:graph_of_function_g_eq_halfx2}¡ for the output.
+		\end{codeblock}
+
+		\noindent
+		We import the module \tt{numpy} under the alias \tt{np}.
+		We use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs},
+		which contains 1000 input values that range from $x=0$ until $x=10$.
+		Next we apply the function $g$ to the array of inputs \tt{xs} and store the result in the array \tt{gxs},
+		which contains all the output values of the function for the input values \tt{xs}.
+		At this point,
+		the arrays \tt{xs} and \tt{gxs} contain $1000$ input-output pairs of the form $(x, g(x))$,
+		which is exactly what we need to plot the graph of the function.
+		On the last line,
+		we call the function \tt{lineplot} to create the graph of $g(x)$,
+		which produces the plot shown in Figure~\ref{fig:graph_of_function_g_eq_halfx2}.
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.4\textwidth]{figures/graph_of_function_g_eq_halfx2.pdf}
+			\vspace{-2mm}
+			\caption{	Graph of the function $g(x)=x$ from $x=0$ until $x=10$.}
+			\label{fig:graph_of_function_g_eq_halfx2}
+\vspace{-4mm}
+		\end{figure}
+
+%			Note the steps we used to obtain the function graph in code~\ref{plot-gx-0-10}
+%			correspond exactly to the mathematical procedure for drawing the graph of $f(x)$:
+%			draw the line that passes through all $(x, f(x))$ input-output pairs.
+
 
 
 
