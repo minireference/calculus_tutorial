@@ -158,6 +158,10 @@
 
 
 
+\usepackage{ifthen}
+\newboolean{FORSTATSBOOK}		% for prob-related calculus topics 
+\setboolean{FORSTATSBOOK}{false}	% used in calc_tutorial.tex (Appendix F)
+
 
 
 \begin{document}
@@ -194,54 +198,47 @@ aaa
 
 
 \clearpage
-\input{sections/introduction.tex}
-
-
-\clearpage
-\input{sections/definitions.tex}
-
-
-\input{sections/sets_and_intervals.tex}
-
-
+\input{sections/introduction1.tex}
+% \input{sections/introduction2.tex}
 
 \clearpage
-\input{sections/functions.tex}
+\input{sections/math_prerequisites1.tex}
+% \input{sections/math_prerequisites2.tex}
 
 
-
+%  LIMITS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\input{sections/limits.tex}
+\input{sections/limits1.tex}
+% \input{sections/limits2.tex}
 
-
+%  DERIVATIVES  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \input{sections/derivatives.tex}
 
 
+%  INTEGRALS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \input{sections/integrals.tex}
 \input{sections/integrals_as_area_calculations.tex}
+\input{sections/computing_integrals_numerically.tex}
 \input{sections/integrals_as_functions.tex}
 \input{sections/computing_integrals_symbolically.tex}
-\clearpage
 \input{sections/fundamental_theorem_of_calculus.tex}
 \clearpage
-\input{sections/tecniques_of_integration.tex}
-\input{sections/computing_integrals_numerically.tex}
-\input{sections/applicatoins_of_integration.tex}
+\input{sections/techniques_of_integration.tex}
+\input{sections/applications_of_integration.tex}
 
 
-
-
-
-
+%  SEQUENCES & SERIES  %%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \input{sections/sequences_and_series.tex}
 
 
+
+%  ADVANCED CALC  %%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \input{sections/multivariable_calculus.tex}
-
+\input{sections/vector_calculus.tex}
 
 
 
@@ -254,46 +251,33 @@ aaa
 
 
 \clearpage
-\section*{Exercises}
-\label{calculus_prerequisites:exercises}	
+\section*{Practice problems}
 
-	TODO: 10x exercises on sets, functions, and integrals (geometric, numeric, and symbolic)
+	This means learning calculus is all about getting practical experience
+	calculating limits, derivatives, and integrals of functions,
+	which is best achieved by solving lots of problems.
 
+	TODO: add exercises 
+
+	TODO: link to notebook for solutions
 
 %		\input{statsprobs/chapter21_integrals_fEQc_and_gEQmx.tex}
 
 	
-	TODO: 3 more
-
 
 
 \section*{Links}
 \label{calculus_prerequisites:links}
 
-
-
-	\subsection{Recommended calculus learning resources}
-	
-
-		Above all,
-		my advice is not to think of calculus as ``advanced math theory'' that might be difficult to understand,
-		but instead as practical, useful math that allows you to do calculations---just look at the name of the thing!
-		% ALT: Just look at the name of the thing: if it's called \emph{calculus} then you know it's all about calculations!
-		This means learning calculus is all about getting practical experience
-		calculating limits, derivatives, and integrals of functions,
-		which is best achieved by solving lots of problems.
-		The problems and exercises in the books \emph{Calculus made simple} and \emph{No bullshit guide to math and physics}
-		are therefore your best route for learning calculus,
-		if you choose to pursue this subject.
-
-
-
+	I hope this tutorial helped you see as practical and useful math
+	that allows you to do calculations---just look at the name of the thing!
+	% ALT: Just look at the name of the thing: if it's called \emph{calculus} then you know it's all about calculations!
 
 	[ \emph{Essence of calculus} series by 3Blue1Brown ] \\
 	\href{https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr}
 	{\texttt{https://tinyurl.com/CALCess}}
 
-	\medskip
+	\smallskip
 	\noindent
 	[ \emph{Calculus made simple} by Silvanus P. Thompson ] \\
 	\href{https://gutenberg.org/ebooks/33283}
@@ -343,7 +327,7 @@ aaa
 	\end{wrapfigure}
 
 	This book contains short lessons on mechanics,
-	differential calculus, and integral calculus
+	differential and integral calculus
 	written in a style that is jargon-free and to the point.
 	% The main focus of the book is to show the intricate connections between the concepts of mechanics and calculus.
 	%	Often calculus and mechanics are taught as separate subjects.
@@ -355,12 +339,12 @@ aaa
 
 	Contents:
 	\begin{itemize}
-		\item	{\sc high school math}%: (40pp) %Review of algebra, functions and trigonometry.
-		\item	{\sc vectors}%: (20pp) 
-		\item	{\sc mechanics} (just 70 pages!)
-		\item	{\sc differential calculus}%: (30pp)
-		\item	{\sc integral calculus}%: (20pp)
-		\item	{\sc sequences and series}%: (20pp)
+		\item	{\sc high school math}
+		\item	{\sc vectors}
+		\item	{\sc mechanics}
+		\item	{\sc differential calculus}
+		\item	{\sc integral calculus}
+		\item	{\sc sequences and series}
 	\end{itemize}
 
 	\vspace{1mm}

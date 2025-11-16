@@ -1,0 +1,219 @@
+%!TEX root = ../calculus_tutorial.tex
+
+\section{Vector calculus}
+
+	Vector calculus is the study of vector fields $\mathbf{F}$,
+	which are functions of the form $\mathbf{F}:\mathbb{R}^3 \to \mathbb{R}^3$,
+	which defines $3$-dimensional output vector
+	at each point $(x,y,z)$ in space.
+	For example,
+	the electric field $\mathbf{E}(x,y,z)$ describes the strength and the direction of the
+	electric force that a changed particle would experience if placed at $(x,y,z)$.
+
+	Vector calculus is \emph{waaaaay} out of scope for an introductory calculus tutorial,
+	so I will just show you some simple definitions of the building blocks.	
+
+
+	\subsection{Definitions}
+
+		\begin{itemize}
+		
+			\item $\nabla \eqdef \big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \big)$:
+				the vector derivative operator (\emph{nabla}).
+
+			\item	$\nabla \cdot \vec{F}(x,y,z)$: the \emph{divergence} of the field $\vec{F}$
+				tells us if field $\vec{F}$ is acting as a ``source'' or a ``sink'' at the point $(x,y,z)$.
+				% For example, positive charges are sources of electric field lines
+				% while negative charges are sinks (arrows go into them).
+				% Example: electric charge
+				% Positive charges have positive divergence---we say they are the ``sources'' of the electric field.
+				% In contrast, negative charges have negative divergence and we say they are the ``sinks'' of the electric field.
+
+			\item	$\nabla \times  \vec{F}(x,y,z)$: the \emph{curl} of the field $\vec{F}$
+				tells us the ``rotational tendency'' of the vector field $\vec{F}$ at $(x,y,z)$.
+				% Example: current carrying wire
+				%	A current carrying wire causes a magnetic field everywhere around it.
+				%	The magnetic field lines will circle around the wire.
+				%	We say $\mathbf{B}$ has a circulation, or curl.
+
+		\end{itemize}
+		
+
+		% INTUITION DIV and CURL
+		%	In electromagnetic phenomena, 
+		%	we have the electric field and the magnetic field.
+		%	You can think of this these as two separate fields,
+		%	but it's better to understand the two fields as ``components'' of the electromagnetic field,
+		%	in analogy with the classical motion which splits into linear motion and rotational motion.
+		%
+		%	We need two different derivatives to capture different aspects of the electromagnetic field.
+		%	Electric field calculations depend on the divergence, while magnetic calculations involve the cross product and the right-hand rule.
+
+
+
+	\subsection{Path integrals}
+
+		 path integrals of vectors fields,
+
+		Scalar path integral.
+			\[
+				\int_C f(\mathbf{r})\, dr 
+				\equiv 
+				\int_{t_i}^{t_f} f(\mathbf{r}) \, \|\mathbf{r}'(t)\| \, dt.
+			\]
+			Here the curve $C \in \mathbb{R}^3$ is described by the parametrization $\mathbf{r}: \mathbb{R} \to \mathbb{R}^3$,
+			which assigns a coordinate $\mathbf{r}=(x,y,z)$ for each value of the parameter (denoted $t$ in the above).
+			Note $dr \equiv \|\mathbf{r}'(t)\| \, dt$,
+			which involves computing the derivative of $\mathbf{r}(t)$ then computing the length.
+			
+		Vector path integral. 
+			\[
+				\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} 
+				\equiv 
+				\int_{t_i}^{t_f} \mathbf{F}(\mathbf{r})  \cdot \mathbf{r}'(t) \, dt.
+			\]
+			This integral computes the total of the vector field $\mathbf{F}$ in the direction of the tangent line to the curve $C$ describe by $\mathbf{r}(t)$.
+			To obtain the component of $\mathbf{F}$ in the direction of the tangent line,
+			we take the dot product with $d\mathbf{r}  \equiv \mathbf{r}'(t) dt$ during each step.
+
+	
+	
+	\subsection{Surface integrals}
+	
+		flux integrals of vectors fields through surfaces,
+
+
+		Scalar surface integral.
+			\[
+				\iint_S f(\mathbf{r})\, dS
+				\equiv 
+				\int_{v_i}^{v_f} \int_{u_i}^{u_f} f(\mathbf{r}) \, \| \mathbf{r}_u^\prime \times \mathbf{r}_v^\prime \| \, dudv.
+			\]
+			Here the surface $S \in \mathbb{R}^3$ is described by the parametrization $\mathbf{r}: \mathbb{R}^2  \to \mathbb{R}^3$,
+			which assigns a coordinate $\mathbf{r}=(x,y,z)$ for each pair of the parameter $u$ and $v$.
+			Note $dS 	= \| \mathbf{r}^\prime_u \times \mathbf{r}^\prime_v \| \, dudv$,
+			which involves computing the partial derivatives of $\mathbf{r}(u,v)$ with respect to the two parameters,
+			taking the cross product, then computing the length.
+			
+		Vector surface integral. 
+			\[
+				\iint\limits_S \mathbf{F}(\mathbf{r}) \cdot d\mathbf{S}
+				\equiv 
+				\int_{v_i}^{v_f} \int_{u_i}^{u_f} \mathbf{F}(\mathbf{r})  \cdot (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) \, dudv.
+			\]
+			This integral computes the total \emph{flux} of the vector field $\mathbf{F}$ flowing
+			perpendicularly through the surface $S$.
+			To obtain the component of $\mathbf{F}$ in the direction of the surface normal,
+			we take the dot product with $d\mathbf{S}  \equiv \hat{\mathbf{n}}dS \equiv (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) dudv$,
+			for each piece of the surface.
+
+
+	
+
+	% PARAMETRIZATION
+	The main thing we'll have to learn is how to parametrize regions of space.
+	In fact, we could even say that the main purpose of this course is to get you comfortable with parameterizations of curves, surfaces, and volumes.
+	Once you have a parametrization for a region you can perform any integral calculation over this region.
+	%	A big part of the day today activities in vector calculus involves manual labour like defining regions of integration, 
+	%	changing variables, setting up boundaries. 
+
+
+	\subsection{Vector calculus theorems}
+
+		The main results in vector calculus are two theorems:
+		\emph{Gauss' divergence theorem} and \emph{Stokes theorem}.
+		Both theorems can be understood as extensions of the fundamental theorem of calculus (FTC),
+		which relates the integral of the differential of some quantity over a region $R$ to the value of this quantity on the boundary of a region,
+		denoted $\partial R$.
+		In the case of the fundamental theorem of calculus,
+		the region is the interval $I = [a,b] \subseteq \mathbb{R}$ whose boundary $\partial I$ consists of the two points $a$ and $b$.
+		The fundamental theorem of calculus is
+		\[
+		  \int_a^b f^\prime(x) \; dx = \int_I f^\prime(x) \; dx  = f_{\partial I}  = f(b) - f(a),
+		\]
+		
+		\noindent
+		\textbf{Gauss' Divergence Theorem} relates the volume integral of the quantity $\nabla \cdot \vec{F}$, 
+		which is called the divergence of $\vec{F}$,
+		to the total flux of the vector field through the surface  $\partial\mathrm{V}$,
+		which is the boundary of the volume $V$.
+		%which states the integral of the divergence $\textrm{div}(\vec{F}) \equiv \nabla \cdot \vec{F}$ 
+		%of the field $\vec{F}$ over the volume $\mathrm{V}$ 
+		%is equal to the flux of $\vec{F}$ through the volume's boundary $\partial\mathrm{V}$.
+		Gauss' divergence theorem is:
+		\[
+		    \iiint_{\mathrm{V}} \nabla \cdot \vec{F} \ d\mathrm{V} 
+		    = \int\!\!\!\int_{\partial    \mathrm{V}} \vec{F} \cdot d \vec{S}
+		\] 
+		Intuitively, the \emph{divergence} of a vector field describes how much of the vector field emanates from a given point in space.
+		The \emph{flux} of a vector field over a surface $S$ accounts for the strength of the vector field flowing through the surface.
+		%
+		In the above example, we saw Gauss' divergence theorem applied to the electric field,
+		but the vector field $\vec{F}$ could also represent thermal flows, or fluid flows.
+		
+		\noindent
+		\textbf{Stokes' Theorem} uses the ``other'' vector derivative $\nabla \times \vec{F}$, which is called the \emph{curl} of $\vec{F}$.
+		The curl of a vector field, denoted $(\nabla \times \vec{F})(x,y,z)$
+		describes the local rotational tendency of the vector field $\vec{F}$ at the point $(x,y,z)$.	
+		%
+		Given any surface $S$ in space,
+		we can cut up the surface into tiny little rectangles and calculate the total surface area as a double integral $S = \int dS$.
+		Stokes' theorem is the application of this ``splitting up into little squares'' idea and the fundamental theorem of calculus, 
+		which leads us to the following equation.
+		\[
+		    \iint_{\Sigma} \nabla \times \vec{F} \cdot d\vec{S} 
+		    = \int_{\partial\Sigma} \vec{F} \cdot d \vec{r},
+		\] 
+		The surface integral of the curl $\nabla \times \vec{F}$ over any surface $\Sigma$ 
+		is equal to the circulation of $\vec{F}$ along the boundary of the surface  $\partial\Sigma$.
+		%
+		Both the left and right sides of this equation correspond to scalar numbers.
+		The left side is the vector surface integral of a vector quantity (the curl of $\vec{F}$),
+		the right side corresponds to a vector path integral of a vector quantity over an oriented curve $\partial \Sigma$.
+		
+
+		%\begin{itemize}
+		%    \item   	Stokes' Theorem: 
+		%    		\[
+		%		    \int\!\!\!\int_{\Sigma} \nabla \times \vec{F} \cdot d\vec{S} 
+		%		    = \int_{\partial\Sigma} \vec{F} \cdot d \vec{r},
+		%		\] 
+		%		which states that the integral of the curl, $\textrm{curl}(\vec{F}) \eqdef \nabla \times \vec{F}$, 
+		%		of the field $\vec{F}$ over the surface $\Sigma$ 
+		%		is equal to the circulation of $\vec{F}$ along the boundary of the surface  $\partial\Sigma$.
+		%
+		%    \item   	Gauss' Divergence Theorem: 
+		%    		\[
+		%		    \int\!\!\!\int\!\!\!\int_{\mathrm{V}}
+		%		    		\nabla \cdot \vec{F} \; dV
+		%		    = 	\int\!\!\!\int_{\partial    \mathrm{V}}
+		%		    		\vec{F} \cdot d \vec{S},
+		%		\]
+		%    		which states the integral of the divergence, $\textrm{div}(\vec{F}) \eqdef \nabla \cdot \vec{F}$, 
+		%		of the field $\vec{F}$ over the volume $\mathrm{V}$ 
+		%		is equal to the flux of $\vec{F}$ through the volume's boundary $\partial\mathrm{V}$.
+		%\end{itemize}
+		%	Both theorems relate the total of the derivative of a quantity over some region $R$ 
+		%	to the value of that quantity on the boundary of the region,
+		%	which we denote $\partial R$. 
+		%	The fundamental theorem of calculus can also be interpreted in this manner:
+		%	\[
+		%	  \int_a^b F^\prime(x) \, dx
+		%	  	= \int_I F^\prime(x) \, dx
+		%		= F_{\partial I}
+		%		= F(b) - F(a),
+		%	\]
+		%	where $I=[a,b]$ is the \emph{interval} from $a$ to $b$ on the real line and the
+		%	two points $a$ and $b$ form its boundary $\partial I$.
+
+
+
+	\subsection{Applications}
+	
+		% Vector calculus is of interest mainly for physicists and engineers.
+
+		Vector calculus is the math machinery used for electricity and magnetism,
+		which is the study electric field $\mathbf{E}(x,y,z)$,
+		the magnetic field $\mathbf{B}(x,y,z)$,
+		and the interactions between them.
+

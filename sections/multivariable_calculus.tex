@@ -1,164 +1,205 @@
 %!TEX root = ../calculus_tutorial.tex
 
 \section{Multivariable calculus}
-\label{mathematical_preliminiaries:multivariable_calculus}
 
-		Multivariable calculus is the extension of the ideas of differential and integral calculus
-		to functions like $f(x,y)$ that depend on multiple input variables.
-		You can plot a function $f: \mathbb{R} \times \mathbb{R}  \to \mathbb{R}$ as a \emph{surface},
-		where the height $z$ of the surface above the point $(x,y)$ is function output $z=f(x,y)$.
+	Multivariable calculus is the extension of the ideas of differential and integral calculus
+	to functions like $f(x,y)$ that depend on multiple input variables.
+	You can plot a function $f: \mathbb{R} \times \mathbb{R}  \to \mathbb{R}$ as a \emph{surface},
+	where the height $z$ of the surface above the point $(x,y)$ is function output $z=f(x,y)$.
 
-		If you know single-variable calculus (derivatives and integrals),
-		then then you won't have much new math to learn in multivariable calculus:
-		it's essentially the same concepts but with more variables.
+	If you know single-variable calculus (derivatives and integrals),
+	then then you won't have much new math to learn in multivariable calculus:
+	it's essentially the same concepts but with more variables.
 
-			
-		\subsection{Partial derivatives}
-			
-			For a function of two variables $f(x,y)$,
-			there is an ``$x$-derivative'' operator $\frac{\partial}{\partial x}$
-			and a ``$y$-derivative'' operator $\frac{\partial}{\partial y}$.
-			The operation $\frac{\partial}{\partial x}f(x,y)$ describes taking the derivative of $f(x,y)$ with respect to the input variable $x$,
-			while keeping the input  variable $y$ constant.
-			Taking the derivative of a multivariable function with respect to one of its input variables is called a \emph{partial derivative}
-			and denoted with the symbol $\partial$.
+	\subsection{Plotting multivariable functions}
 
-			The partial derivative of $f(x,y)$ with respect to $x$ is
-			\[
-				\frac{\partial}{\partial x}f(x,y)
-				\equiv
-				\frac{\partial f}{\partial x}
-				\equiv
-				\lim_{ \delta \rightarrow 0}	\frac{f(x+\delta, y)-f(x,y)}{\delta}.
-			\]
-			Similarly the partial derivative of with respect to $y$ is
-			\[
-				\frac{\partial}{\partial y}f(x,y)
-				\equiv
-				\frac{\partial f}{\partial y}
-				\equiv
-				\lim_{ \delta \rightarrow 0}	\frac{f(x, y+\delta)-f(x,y)}{\delta}.
-			\]
-			Note that both $\frac{\partial f}{\partial x}$  and $\frac{\partial f}{\partial y}$ are function of $x$ and $y$.
-			Indeed, we can ask the questions ``what is the slope in the $x$-direction''
-			and ``what is the slope in the $y$-direction'' at any point $(x,y)$ on the surface of the function.
-			That's precisely the information returned by the functions $\frac{\partial f}{\partial x}(x,y)$ and $\frac{\partial f}{\partial y}(x,y)$.
+		Suppose the height of a mountain is described by the function $f(x,y)$.
+		The coordinates $(x,y)$ tell us the horizontal position point in the $xy$-plane
+		and the value of the function $f(x,y)$ represents the height of the mountain at those coordinate.
 
-			TODO: example
-			
-			
-		\subsection{Gradient}
-		\label{mathematical_preliminiaries:gradient}
+		We identify the $z$ coordinate with the hight of the mountain $z=f(x,y)$
+		and graph the function $f(x,y)$ is as a surface in 3D as illustrated in Figure~\ref{fig:multivariable_caclulus_3d_surface_plot}.
+
+		\begin{figure}[htb]
+			\centering
+			TODO: redo using plt
+			\includegraphics[width=0.3\textwidth]{figures/calculus/multivariable_caclulus_3d_surface_plot.pdf}
+			\vspace{-2mm}
+			\caption{The 3D surface plot of the the function $f(x,y)$.}
+			\label{fig:multivariable_caclulus_3d_surface_plot}
+		\end{figure}
 
 
-			The operator $\nabla$ is a combination of both the $x$ and $y$ derivatives:
-			\[
-				\nabla f(x,y)
-				\equiv
-				\left(
-					\frac{\partial f}{\partial x},
-					\frac{\partial f}{\partial y}
-				\right).
-			\]
-			Note that $\nabla$ acts on a function $f(x,y)$ to produce a vector output.
-			This vector is called the \emph{gradient} vector and it tells you the combined $x$- and $y$-slopes of the surface.
-			More specifically,
-			the gradient vector tells you the direction of the function's maximum increase---the
-			``uphill'' direction at the surface of graph of $f(x,y)$ at the point $(x,y)$.
-			
-			
-			\paragraph{Mountain map}
-				Suppose the height of a mountain is described by the function $h(x,y)$.
-				The coordinates $(x,y)$ tell us the horizontal position point in the $xy$-plane
-				and the value of the function $h(x,y)$ represents the height of the mountain at those coordinate.
+		\noindent			
+		Three dimensional surface plots are very good for visualizing multivariable functions,
+		but they can be difficult to draw by hand.
 
-				We identify the $z$ coordinate with the hight of the mountain $z=h(x,y)$
-				and graph the function $h(x,y)$ is as a surface in 3D as illustrated in Figure~\ref{fig:multivariable_caclulus_3d_surface_plot}.
-
-				\begin{figure}[htb]
-				\centering
-				\includegraphics[width=0.3\textwidth]{figures/calculus/multivariable_caclulus_3d_surface_plot.pdf}
-				\vspace{-2mm}
-				\caption{The 3D surface plot of the the function $h(x,y)$.}
-				\label{fig:multivariable_caclulus_3d_surface_plot}
-				\end{figure}
-
-				\noindent			
-				Three dimensional surface plots are very good for visualizing multivariable functions,
-				but they can be difficult to draw by hand.
-
-				Another approach for representing function of the form $h(x,y)$ is to use a two-dimensional plot that shows the ``view from above'' of the surface $h(x,y)$.
-				We can use colour to represent the height of the function through different sharing:
-				darker-shading to represent large values of $h(x,y)$ and lighter-shading to represent small values of $h(x,y)$.			% TODO: update plot to show shading
-				We can also trace \emph{level curves} in the plot,
-				which is the same approach used for topographic maps:
-				each level curve show the points that are at a certain height.
-				
-				\begin{figure}[htb]
-				\centering
-				\includegraphics[width=0.3\textwidth]{figures/calculus/multivariable_caclulus_topographic_map.png}
-				\vspace{-4mm}
-				\caption{The topographic map that shows the height of the function $h(x,y)$ using sharing to represent height.
-						The level curves at each 10m intervals are also shown.}
-				\label{fig:multivariable_caclulus_topographic_map}
-				\end{figure}
-				
-				\noindent
-				The curve labeled 30m line you see in Figure~\ref{fig:multivariable_caclulus_topographic_map} represents
-				the solution to the equation $30= h(x,y)$,
-				where $h(x,y)$ is the height of this hill for all coordinates $(x,y)$ on the map.
-				
-				Recall that the gradient vector $\nabla f(x,y)$ at any point $(x,y)$ tells you which way is ``uphill'' on the surface,
-				and by extension,
-				the negative of the gradient vector points ``downhill.''
-				The gradient vector is always perpendicular to the \emph{level curve} at that point.
-
-				The notion of an uphill or downhill direction for the surface $h(x,y)$ turns out to be very useful for optimization.
-				If you want to find the local maximum of a function,
-				you can start at some point and keep moving uphill (in the direction of $\nabla f(x,y)$ and you'll arrive at a local peak of the mountain.
-				Similarly,
-				to find the lowest point on the surface (minimum value of $h(x,y)$),
-				you can start at some point and keep moving in the opposite direction to the gradient $-\nabla f(x,y)$.
-
-				Figure~\ref{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom} illustrates this process.
-				Consider the path of a water stream whose source in some arbitrary point on the surface of the mountain.
-				The water stream will naturally move downhill
-				and descend the slope of the mountain until it reaches the minimum at the bottom of a valley.
-				This intuitive notion of ``keep moving downhill until you get to a local minimum'' is
-				the general idea behind the \emph{gradient descent} optimization algorithm which is very important for machine learning applications.
-							
-				\begin{figure}[htb]
-				\centering
-				\includegraphics[width=0.3\textwidth]{figures/calculus/multivariable_caclulus_topographic_map_waterflow_to_bottom.png}
-				\vspace{-4mm}
-				\caption{This graph shows the path taken by a hypothetical water as it flows to the bottom of the valley $h(x,y)$.}
-				\label{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom}
-				\end{figure}
-
-				We know we've reached the bottom of the valley,
-				since the the gradient vector will be zero at the minimum of the function $h(x,y)$,
-				since surface is locally flat there.
-
-
-
-		\subsection{Multivariable integrals}
+		Another approach for representing function of the form $f(x,y)$ is to use a two-dimensional plot that shows the ``view from above'' of the surface $f(x,y)$.
+		We can use colour to represent the height of the function through different sharing:
+		darker-shading to represent large values of $f(x,y)$ and lighter-shading to represent small values of $f(x,y)$.			% TODO: update plot to show shading
+		We can also trace \emph{level curves} in the plot,
+		which is the same approach used for topographic maps:
+		each level curve show the points that are at a certain height.
 		
-			The multivariable generalization of the integral $\int_{x \in I} f(x) \, dx$
-			that computes the ``total'' amount of $f(x)$ on some interval $I=[a,b]$
-			is the multivariable integral of the form:
-			\[
-				\int \! \int_{(x,y) \in R} f(x,y) \, dxdy,
-			\]
-			where $R$ is called the \emph{region of integration} and corresponds to some subset of the cartesian plane $\mathbb{R} \times \mathbb{R}$.
-			The idea behind multivariable integrals is the same as for single variable integrals---to compute the total amount of some function for some range of input values.
-			For single-variable integrals,
-			we split the region into thing rectangular strips of width $dx$.
-			For double integrals we split the two-dimensional region of integration into small squares of area $dxdy$,
-			and compute the total volume of a many vertical columns whose base area is $dxdy$
-			and whose height is given by the function $f(x,y)$.
-			
-			TODO: insert graphic of 3D integral split into vertical columns
-			
-			TODO: explain "sweep along x then sweep along y" idea + hint at change-of-variables techniques
-			\vspace{1in}
+		\begin{figure}[htb]
+			\centering
+			TODO: redo using plt surf
+			\includegraphics[width=0.3\textwidth]{figures/calculus/multivariable_caclulus_topographic_map.png}
+			\vspace{-4mm}
+			\caption{The topographic map that shows the height of the function $f(x,y)$ using sharing to represent height.
+					The level curves at each 10m intervals are also shown.}
+			\label{fig:multivariable_caclulus_topographic_map}
+		\end{figure}
+
+
+		\noindent
+		The curve labeled 30m line you see in Figure~\ref{fig:multivariable_caclulus_topographic_map} represents
+		the solution to the equation $30= f(x,y)$,
+		where $f(x,y)$ is the height of this hill for all coordinates $(x,y)$ on the map.
+
+
+		
+	\subsection{Partial derivatives}
+		
+		For a function of two variables $f(x,y)$,
+		there is an ``$x$-derivative'' operator $\frac{\partial}{\partial x}$
+		and a ``$y$-derivative'' operator $\frac{\partial}{\partial y}$.
+		The operation $\frac{\partial}{\partial x}f(x,y)$ describes taking the derivative of $f(x,y)$ with respect to the input variable $x$,
+		while keeping the input  variable $y$ constant.
+		Taking the derivative of a multivariable function with respect to one of its input variables is called a \emph{partial derivative}
+		and denoted with the symbol $\partial$.
+
+		The partial derivative of $f(x,y)$ with respect to $x$ is
+		\[
+			\frac{\partial}{\partial x}f(x,y)
+			=
+			\frac{\partial f}{\partial x}
+			\eqdef
+			\lim_{ \delta \rightarrow 0}	\frac{f(x+\delta, y)-f(x,y)}{\delta}.
+		\]
+		Similarly the partial derivative of with respect to $y$ is
+		\[
+			\frac{\partial}{\partial y}f(x,y)
+			=
+			\frac{\partial f}{\partial y}
+			\eqdef
+			\lim_{ \delta \rightarrow 0}	\frac{f(x, y+\delta)-f(x,y)}{\delta}.
+		\]
+		Note that both $\frac{\partial f}{\partial x}$  and $\frac{\partial f}{\partial y}$ are function of $x$ and $y$.
+		Indeed, we can ask the questions ``what is the slope in the $x$-direction''
+		and ``what is the slope in the $y$-direction'' at any point $(x,y)$ on the surface of the function.
+		That's precisely the information returned by the functions $\frac{\partial f}{\partial x}(x,y)$ and $\frac{\partial f}{\partial y}(x,y)$.
+
+		TODO: example
+
+		
+	\subsection{Gradient}
+
+		The operator $\nabla$ is a combination of both the $x$ and $y$ derivatives:
+		\[
+			\nabla f(x,y)
+			\eqdef
+			\left(
+				\frac{\partial f}{\partial x},
+				\frac{\partial f}{\partial y}
+			\right).
+		\]
+		Note that $\nabla$ acts on a function $f(x,y)$ to produce a vector output.
+		This vector is called the \emph{gradient} vector and it tells you the combined $x$- and $y$-slopes of the surface.
+		More specifically,
+		the gradient vector tells you the direction of the function's maximum increase---the
+		``uphill'' direction at the surface of graph of $f(x,y)$ at the point $(x,y)$.
+		The gradient vector is always perpendicular to the \emph{level curve} at that point.
+
+
+	\subsection{Partial integration}
+	
+		We can perform integration with respect to one of the input variables:
+		\[
+			f(y) = \int_{x \in \mathbb{R}} \!\! f(x,y) \, dx
+			\quad\text{and}\quad
+			f(x) = \int_{y \in \mathbb{R}} \!\! f(x,y) \, dy.
+		\]
+		The result of this partial integration is a function of the variable that we didn't integrate.
+
+
+
+	\subsection{Double integrals}
+	
+		The multivariable generalization of the integral $\int_{x \in I} f(x) \, dx$
+		that computes the ``total'' amount of $f(x)$ on some interval $I=[a,b]$
+		is the multivariable integral of the form:
+		\[
+			\int \! \int_{(x,y) \in R} f(x,y) \, dxdy,
+		\]
+		where $R$ is called the \emph{region of integration} and corresponds to some subset of the cartesian plane $\mathbb{R} \times \mathbb{R}$.
+		The idea behind multivariable integrals is the same as for single variable integrals---to compute the total amount of some function for some range of input values.
+		For single-variable integrals,
+		we split the region into thing rectangular strips of width $dx$.
+		For double integrals we split the two-dimensional region of integration into small squares of area $dxdy$,
+		and compute the total volume of a many vertical columns whose base area is $dxdy$
+		and whose height is given by the function $f(x,y)$.
+		
+		TODO: insert graphic of 3D integral split into vertical columns
+		
+		TODO: explain "sweep along x then sweep along y" idea + hint at change-of-variables techniques
+
+
+		%	% EXAMPLE		
+		%	In the second part of multivariable calculus you'll learn how to do double integrals,
+		%	which are integrals over two variables:
+		%	\[
+		%	  \int_{y=0}^{y=1}\! \int_{x=0}^{x=1} \!\! yx\;dxdy
+		%	  	= \int_{y=0}^{y=1} \!\! \left[  y\frac{x^2}{2}\right]_{x=0}^{x=1} dy
+		%	  	= \int_{y=0}^{y=1} \! \frac{y}{2}\, dy
+		%		= \left[  \frac{1}{4}y^2\right]_{0}^{1}
+		%		= \frac{1}{4}.
+		%	\]
+		%	Once you get over the initial shock of seeing two integral signs,
+		%	you should be able to understand the above integral calculation.
+		%	Proceeding from inside-out,
+		%	a double integral is nothing more than two integral operators applied in succession.
+		%	Instead of an interval of integration split into tiny integration steps $dx$,
+		%	we have a \emph{region of integration} split into tiny integration boxes with area $dxdy$.
+		%	In the above example, the region of integration is a unit square in the $xy$-plane.
+
+
+
+	\subsection{Applications of multivariable calculus}
+
+		\paragraph{Optimization}
+		
+			The notion of an uphill or downhill direction for the surface $f(x,y)$ turns out to be very useful for optimization.
+			%	If you want to find the local maximum of a function,
+			%	you can start at some point and keep moving uphill (in the direction of $\nabla f(x,y)$ and you'll arrive at a local peak of the mountain.
+			%	Similarly,
+			To find the lowest point on the surface (minimum value of $f(x,y)$),
+			you can start at some point and keep moving downhill,
+			that is in the opposite direction to the gradient $-\nabla f(x,y)$.
+			% Figure~\ref{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom} illustrates this process.
+			% Consider the path of a water stream whose source in some arbitrary point on the surface of the mountain.
+			Intuitively,
+			this is the path that a water stream would take as it descends down the slope of the mountain until it reaches the minimum at the bottom of a valley.
+			This intuitive notion of ``keep moving downhill until you get to a local minimum'' is
+			the general idea behind the \emph{gradient descent} optimization algorithm which is very important for machine learning applications.
+
+		%	\begin{figure}[htb]
+		%	\centering
+		%	\includegraphics[width=0.3\textwidth]{figures/calculus/multivariable_caclulus_topographic_map_waterflow_to_bottom.png}
+		%	\vspace{-4mm}
+		%	\caption{This graph shows the path taken by a hypothetical water as it flows to the bottom of the valley $f(x,y)$.}
+		%	\label{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom}
+		%	\end{figure}
+
+		%	We know we've reached the bottom of the valley,
+		%	since the the gradient vector will be zero at the minimum of the function $f(x,y)$,
+		%	since surface is locally flat there.
+
+		\ifthenelse{\boolean{FORSTATSBOOK}}{
+			\paragraph{Probability calculations}
+
+				Partial and multiple integrals are also used a lot in probability theory.
+				The partial integral corresponds to the marginal probability distributions,
+				and double integrals are used to compute probabilities and expectations.
+		}{}
 

@@ -1,0 +1,329 @@
+%!TEX root = ../calculus_tutorial.tex
+
+\section{Math prerequisites}
+
+	\subsection{Notation for sets and intervals}
+	
+		Sets are arbitrary collections of math objects.
+		Many math ideas are expressed using the language of sets,
+		so it's worth going over the basic definitions and notation conventions.
+	
+		\begin{itemize}
+	
+			\item $S,T$: the usual variable names for sets
+	
+			\item $s \in S$: this statement is read ``$s$ is an element of $S$'' or ``$s$ is in $S$''
+	
+			% seems not needed; put back if needed somewhere in the book (grep for it)
+			%	\item $\emptyset$: the \emph{empty set} is a set that contains no elements.
+			%		Mathematicians adopted the symbol $\emptyset$ because the notation $\{ \, \}$ is confusing.
+	
+			\item $\{ \textrm{  definition  } \}$: the curly brackets surround the definition of a set,
+				and the expression inside the curly brackets describes what the set contains.
+				% The math symbol ``$|$'' is shorthand for the phrase ``such that'' and it is often used in definitions.
+	
+			\item	$S^c$: the \emph{complement} of the set $S$,
+				is defined as all elements that are not in the set $S$.
+				% TODO: explain assumption of "universe" and complement as all elements of the universe that are not in $S$.
+	
+			\item $\mathbb{N}$: the set of natural numbers $\mathbb{N}\eqdef\{0,1,2,\ldots\}$
+	
+			\item $\mathbb{Z}$: the set of integers $\mathbb{Z}\eqdef\{\ldots,-2,-1,0,1,2,3,\ldots\}$
+	
+			\item $\mathbb{Q}$: the set of rational numbers,
+				$\mathbb{Q} \eqdef \left\{  \frac{m}{n} \; \Big| \; m \in \mathbb{Z}, \; n \in \mathbb{N}, \; n \neq 0  \right\}$.
+				The set $\mathbb{Q}$ consists of all numbers that can be expressed as \emph{fractions} of the form $\frac{m}{n}$,
+				where $m$ is an integer, $n$ is a natural number, and $n \neq 0$.
+	
+			\item	$\mathbb{R}$: the set of real numbers
+	
+			\item	$\mathbb{R}_+$: the set of nonnegative real numbers.
+				The definition of the nonnegative is written as
+				$\mathbb{R}_+ \eqdef  \{ \text{all } x \text{ in } \mathbb{R} \text{ such that } x \geq 0 \}$,
+				or it can be expressed more compactly as $\mathbb{R}_+ \eqdef \{ x \in \mathbb{R} \; | \; x \geq 0 \}$.
+	
+		\end{itemize}
+	
+		\noindent
+		Note the multiple ways we use the  curly-brackets notation $\{ \}$ to denote sets.
+		A \emph{finite set} is defined by simply listing all its elements.
+		For example,
+		the set of possible outcomes of a coin flip is $\{ \texttt{heads}, \texttt{tails} \}$.
+		For an infinite set we can't write down all the elements,
+		but we can show the pattern like $\mathbb{N} \eqdef \{0,1,2,3,4,\ldots\}$.
+		The meaning of the three dots is ``and so on, continuing the same pattern.''
+		Another way to define a set is to use the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$.
+		Inside the curly brackets we first describe the general kind of mathematical objects we are talking about,
+		followed by the symbol ``$|$'' (read ``such that''),
+		followed by the conditions that must be satisfied by all elements of the set.
+		The definitions of the rational numbers $\mathbb{Q}$ and the nonnegative real numbers $\mathbb{R}_+$ above are examples of the set-builder notation.
+	
+		The \emph{number line} is a visual representation of the set of real numbers $\mathbb{R}$,
+		as shown in Figure~\ref{fig:number_line_rationals_and_reals}.
+		The real numbers correspond to all the points on the number line,
+		from $-\infty$ to $\infty$.
+	
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.4\textwidth]{figures/calculus/number_line_rationals_and_reals.pdf}
+			\vspace{-2mm}
+			\caption{The real numbers $\mathbb{R}$ cover the entire number line.}
+			\label{fig:number_line_rationals_and_reals}
+		\end{figure}
+	
+		\noindent
+		The set of real numbers includes all the rational numbers like $-\frac{3}{2}$, $\frac{1}{2}$, and $\frac{9}{2}$,
+		as well as irrational numbers like $\sqrt{2}$, $e$, and $\pi$.
+		This means any number you are likely to run into when solving math problems
+		can be visualized as a point on the number line.
+	
+		\subsubsection{Number intervals}
+	
+			The number line can also be used to represent subsets of the real numbers,
+			which we call \emph{intervals}.
+			Figure~\ref{fig:interval_2closed_to_4closed} shows an illustration of the interval $[2,4] = \{ x \in \mathbb{R} \;|\; 2 \leq x \leq 4 \}$,
+			which is a subset of the real numbers.
+	
+			Here are some more examples of various intervals:
+			\begin{itemize}
+	
+				\item	$[a,b]$: the interval from $a$ to $b$.
+					This corresponds to the set of real numbers between $a$ and~$b$,
+					including the endpoints $a$ and~$b$.
+					The interval $[a,b]$ corresponds to the set $\{ x\in \mathbb{R}\ | \ a \leq x \leq b \}$.
+	
+				\item	$[a,\infty)$: the interval from $a$ until infinity,
+					which corresponds to the set $\{ x\in \mathbb{R}\ | \ a \leq x \}$.
+	
+				\item	$(-\infty,b]$: the interval from negative infinity until $b$,
+					which corresponds to the set $\{ x\in \mathbb{R}\ | \ x \leq b \}$.
+	
+			\end{itemize}
+	
+			\noindent
+			The notation $[a,b]$ describes the \emph{closed} interval from $a$ to $b$,
+			which means the endpoints $a$ and $b$ are included in the interval.
+			The notation $(a,b)$ describes the \emph{open} interval from $a$ to $b$,
+			defined as the set $\{ x\in \mathbb{R}\ | \ a < x < b \}$,
+			which doesn't include the endpoints $a$ and $b$.
+			In other words,
+			intervals defined using square brackets ``$[$'' include the endpoints (defined using less-than-or-equal conditions)
+			while intervals defined with round brackets ``$($'' do not include their endpoints (defined using strictly-less-than conditions).
+			The distinction between open and closed intervals is important in general,
+			but makes no difference in the context of probability theory,
+			so you don't need to worry about the difference between $[a,b]$ and $(a,b)$ in this book.
+	
+			% \SIDENOTE{ @Ivan: If not relevant to the book, why are we explaining it? }
+	
+			\begin{figure}[htb]
+				\centering	
+				\includegraphics[width=0.4\textwidth]{figures/calculus/interval_2closed_to_4closed.pdf}
+				\vspace{-3mm}
+				\caption{The interval $[2,4] \protect\eqdef \{ x \in \mathbb{R} \; | \; 2 \leq x \leq 4 \}$. }
+				\label{fig:interval_2closed_to_4closed}
+			\end{figure}
+	
+	
+	
+		\noindent
+		I hope these definitions and examples made you feel more comfortable with sets,
+		and the weird-looking curly bracket notation that mathematicians use to define sets.
+		It might look a little complicated at first,
+		but you'll get used to it in the rest of the book.
+		% Robyn said: I love these reassuring paragraphs, though it's a bit repetative in this chapter. Just something to be aware of.
+	
+	
+	
+	\subsection{Functions}
+	
+		A \emphindexdef{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
+		We use the notation
+		\[
+			f \colon A \to B
+		\]
+		to denote a function from the input set $A$ to the output set $B$.
+		For every input $x$, the output value of $f$ for that input is denoted $f(x)$.
+	
+		\subsubsection{Function graph}
+	
+			The \emph{graph} of a function is a line that passes through all input-output pairs of a function.
+			Imagine we take out a piece of paper and draw a coordinate system with a horizontal axis and a vertical axis.
+			The horizontal axis describes the different input values $x$,
+			while the vertical axis describes the output values $f(x)$.
+			Each input-output pair of the function $f$ corresponds to the point $(x,f(x))$ in the coordinate system.
+			We obtain the graph of the function by varying the input coordinate $x$ and plotting all the points $(x, f(x))$,
+			as illustrated in Figure~\ref{fig:graph_of_f_nonnegative}.
+	
+			\begin{figure}[htb]
+				\centering
+				\includegraphics[width=0.3\textwidth]{figures/calculus/graph_of_f_nonnegative.pdf}
+	% REPLACE WITH original (x, 0.5 x^2)
+				\caption{	The graph of the function $f$ consists of all the points with coordinates $(x,f(x))$ over some interval of $x$ values.}
+				\label{fig:graph_of_f_nonnegative}
+			\end{figure}
+	
+			The graph of the function $f$ allows us to see at a glance the behaviour of the function for all possible inputs,
+			and forms an essential visualization tool.
+			Indeed,
+			many phenomena and calculations related to functions
+			can be understood geometrically as operations based on the graph of the function.
+	
+			In probability theory,
+			we use functions to describe the probability distributions of random variables.
+			Discrete random variables are described by a probability mass function of the form $f\colon \mathcal{X} \to \mathbb{R}$,
+			where the sample space $\mathcal{X}$ is either a finite set or a countably infinite set like the natural numbers $\mathbb{N}$.
+			Continuous random variables are described by probability density functions of the form 
+			$f\colon \mathcal{X} \to \mathbb{R}$,
+			where the sample space $\mathcal{X}$ is some subset of the real numbers $\mathbb{R}$.
+	
+	
+		\subsubsection{Plotting function graphs}
+		%  using NumPy and Seaborn
+	
+			
+			We can use a combination of the \tt{numpy} and \tt{seaborn} modules
+			to plot the graph of the function $g(x) = \frac{1}{2}x^2$,
+			as shown in the code example below.
+	
+			\begin{codeblock}[plot-gx-0-10]
+			>>> def g(x):
+			        return 0.5 * x**2
+			>>> import numpy as np
+			>>> import seaborn as sns
+			>>> xs = np.linspace(0, 10, 1000)
+			>>> gxs = g(xs)
+			>>> sns.lineplot(x=xs, y=gxs, label="Graph of g(x)")
+			See Figure ¡\ref{fig:graph_of_function_g_eq_halfx2}¡ for the output.
+			\end{codeblock}
+	
+			\noindent
+			We import the module \tt{numpy} under the alias \tt{np}.
+			We use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs},
+			which contains 1000 input values that range from $x=0$ until $x=10$.
+			Next we apply the function $g$ to the array of inputs \tt{xs} and store the result in the array \tt{gxs},
+			which contains all the output values of the function for the input values \tt{xs}.
+			At this point,
+			the arrays \tt{xs} and \tt{gxs} contain $1000$ input-output pairs of the form $(x, g(x))$,
+			which is exactly what we need to plot the graph of the function.
+			On the last line,
+			we call the function \tt{lineplot} to create the graph of $g(x)$,
+			which produces the plot shown in Figure~\ref{fig:graph_of_function_g_eq_halfx2}.
+	
+			\begin{figure}[htb]
+				\centering
+				\includegraphics[width=0.4\textwidth]{figures/graph_of_function_g_eq_halfx2.pdf}
+				\vspace{-2mm}
+				\caption{	Graph of the function $g(x)=x$ from $x=0$ until $x=10$.}
+				\label{fig:graph_of_function_g_eq_halfx2}
+	\vspace{-4mm}
+			\end{figure}
+	
+	%			Note the steps we used to obtain the function graph in code~\ref{plot-gx-0-10}
+	%			correspond exactly to the mathematical procedure for drawing the graph of $f(x)$:
+	%			draw the line that passes through all $(x, f(x))$ input-output pairs.
+	
+	
+	
+	
+	
+	
+	
+		\subsubsection{Inverse functions}
+	
+			The inverse function $f^{-1} \colon B \to A$ performs the \emph{inverse operation} of the function $f \colon A \to B$.
+			If you start from some $x$, apply $f$, and then apply $f^{-1}$,
+			you'll arrive---full circle---back to the original input $x$:
+			\[
+				f^{-1}\!\big( \; f(x) \; \big) = x.
+			\]
+			In Figure~\ref{fig:functions-inverse} the function $f$ is represented as a forward arrow,
+			and the inverse function $f^{-1}$ is represented as a backward arrow
+			that puts the value $f(x)$ back to the $x$ it came from.
+	
+			\begin{figure}[htb]
+				\centering
+				\includegraphics[width=0.25\textwidth]{figures/calculus/functions-inverse.pdf}
+				\caption{The inverse $f^{-1}$ undoes the operation of the function $f$.}
+				\label{fig:functions-inverse}
+			\end{figure}
+	
+			For example,
+			if we compute the square root of a number, then square the result,
+			we obtain the original number,
+			since the quadratic function $x^2$ is the inverse of the square-root function $\sqrt{x}$.
+	
+			\begin{codeblock}[fun-inv-fun-combo-sqrt]
+			>>> np.sqrt(4)**2
+			4.0
+			\end{codeblock}
+	
+			\noindent
+			The exponential function $e^x$ is the inverse of the logarithmic function $\log_e(x)$,
+			so if we compute the logarithm of a number then apply the exponential function,
+			we get back the original input.
+	
+			\begin{codeblock}[fun-inv-fun-combo-log]
+			>>> np.exp(np.log(4))
+			4.0
+			\end{codeblock}
+	
+			\noindent
+			In probability theory,
+			we often do calculations using the cumulative distribution function (CDF) $F_X \colon \calX \to [0,1]$,
+			and also use the inverse of the cumulative distribution function $F_X^{-1}\colon [0,1] \to \calX$.
+			Knowing about inverse functions (and the weird superscript $^{-1}$ notation used to describe them)
+			is useful for your conceptual understanding of these concepts:
+			instead of thinking about the inverse-CDF $F_X^{-1}$ as some new complicated concept you have to memorize,
+			you can think of $F_X^{-1}$ as the ``undo operation'' for $F_X$.
+			In other words,
+			$F_X$ and $F_X^{-1}$ describe the same mapping,
+			but used in opposite directions.
+	
+			%		$F_X(b) = q_b$
+			%		vs. $F_X^{-1}(q) = b_q$  how far in the sample space do I have to go to encompass proportion $q$ of the total probability.
+
+
+		\subsubsection{Function properties}
+
+			domain and range
+			
+			continuity:  informal definition + FWD ref to limit definition
+
+
+
+
+
+	\subsection{Function inventory}
+	
+		% (10 essential functions)
+		%|x|
+		%line
+		%quadratic
+		%square root
+		%polynomial
+		%exp
+		%log
+		%gaussian-like erf $e^{-x^2}$
+		%sigmoid $\frac{1}{1-e^{-x}}$
+
+		\vspace{5in}
+
+	\subsection{Geometry}
+
+		%area of a circle
+		%perimeter of a circle
+		%area of a rectangle
+		%area of a triangle
+
+		\vspace{2in}
+
+
+	\subsection{Trigonometry}
+
+
+		%FIGURE  right-angle triangle with hypotenuse r, adj = rcosθ, opp = rsinθ
+		%define functions: sin, cos
+		%FIGURE  plot of cos and sin functions
+		%applications: vector
+
+		\vspace{2in}

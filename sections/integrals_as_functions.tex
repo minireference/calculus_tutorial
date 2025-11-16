@@ -20,17 +20,17 @@
 
 	Note that choosing $x=0$ for the starting point of the integral function was an arbitrary choice,
 	and we obtain another integral function if we use $x=a$ as the starting point,
-	$F_a(b)=\int_a^b \! f(x)\:dx$.
+	$F_a(b)=\int_a^b \! f(x)\,dx$.
 	Two integral functions differ only by a constant term.
 	For example,
 	$F_0(b) = F_a(b) + C$,
-	where $C = \int_{x=0}^{x=a} f(x)dx$.
+	where $C = \int_{x=0}^{x=a} f(x)\,dx$.
 
 	The integral function $F(b)$ contains the ``precomputed'' information about the area under the graph of $f(x)$.
 	% The integral function $F(b)$ tells us the ``area under the graph'' property of the function $f(x)$ for \emph{all} possible limits of integration.
 	The area under $f(x)$ between $x=a$ and $x=b$ can be obtained by calculating the \emph{change} in the integral function as follows:
 	\[
-		A_f(a,b) = \int_a^b \! f(x)\:dx	=  F(b)-F(a).
+		A_f(a,b) = \int_a^b \! f(x)\,dx	=  F(b)-F(a).
 	\]
 	Intuitively,
 	this formula computes the area $A_f(a,b)$ as the difference between the areas of two regions:
@@ -60,7 +60,7 @@
 		that corresponds to the area under $f(x)$ between $x=0$ and $x=b$
 		as follows:
 		\[ 
-			F_0(b) = A_f(0,b) = \int_0^b \! f(x)\;dx	= 3 b.
+			F_0(b) = A_f(0,b) = \int_0^b \! f(x)\,dx	= 3 b.
 		\]
 		The area is equal to the rectangle's height times its width,
 		as illustrated in Figure~\ref{fig:simple_integral_function_fx_eq_3}.
@@ -86,7 +86,7 @@
 		The general formula for the area under $g(x)$ from $x=0$ until $x=b$
 		is described by the following integral calculation:
 		\[
-			G_0(b) = A_g(0,b) = \int_0^b g(x) \; dx = \tfrac{1}{2} ( b\times b ) = \tfrac{1}{2}b^2.
+			G_0(b) = A_g(0,b) = \int_0^b g(x) \, dx = \tfrac{1}{2} ( b\times b ) = \tfrac{1}{2}b^2.
 		\]
 	
 		\begin{figure}[htb]
@@ -106,6 +106,14 @@
 	%	The integral of a function is the area under the graph of the function,
 	%	which is in some sense the total amount of the function accumulated during some interval of time.
 
+	\subsubsection{Example 3 revisited}
+	
+		\[
+			H_{-1}(b) = A_h(-1,b) = \int_{-1}^b h(x) \, dx = ?
+		\]
+		
+		
+	
 
 
 
@@ -113,18 +121,19 @@
 \bigskip
 \noindent
 We were able to compute the above integrals thanks to the simple geometries of the areas under the graphs.
-Computing integrals of more complicated functions requires more advanced techniques.
-There is an entire course called integral calculus which is dedicated to the task of finding integrals
-using various tricks and techniques.
+%	Computing integrals of more complicated functions requires more advanced techniques.
+%	There is an entire course called integral calculus which is dedicated to the task of finding integrals
+%	using various tricks and techniques.
 
-Taking a calculus course would be useful if you plan to study physics or engineering,
-but for the purpose of learning probability and statistics,
-you're not required to learn all these integration techniques.
-Instead,
-you can rely on computers to do integration for you.
-Specifically,
-you can use the Python modules SciPy and SymPy to compute all the integrals you need,
-as we'll show in the next two sections.
+
+%	Taking a calculus course would be useful if you plan to study physics or engineering,
+%	but for the purpose of learning probability and statistics,
+%	you're not required to learn all these integration techniques.
+%	Instead,
+%	you can rely on computers to do integration for you.
+%	Specifically,
+%	you can use the Python modules SciPy and SymPy to compute all the integrals you need,
+%	as we'll show in the next two sections.
 
 % Robyn said: 	Confusing that before you said that integrals is a topic that can't be skipped,
 %			and here you say that you can rely on computers.

@@ -153,6 +153,23 @@
 		See Figure~\ref{fig:simple_integral_function_gx_eq_x}.
 
 
+
+
+	\subsubsection{Example 3 revisited again}
+
+		\begin{codeblock}[sympy-define-gx]
+		>>> hx = x**3 - 5*x**2 + x + 10
+		>>> hx
+		x**3 - 5*x**2 + x + 10
+		\end{codeblock}
+	
+		TODO code
+		
+		\vspace{4cm}
+
+
+
+
 	\bigskip
 	\noindent
 	Unfortunately,
@@ -162,4 +179,66 @@
 	For most practical calculations in probability and statistics,
 	we'll need to rely on the \tt{scipy.integrate} function \tt{quad(f,a,b)},
 	which computes the integral $\int_a^b f(x)dx$ for \emph{any} function $f(x)$ expressed as a Python function \tt{f}.
+
+
+
+
+
+
+
+
+
+\subsection{Properties of integrals}
+
+	We'll now state some properties of integrals that follow from their interpretation as area calculations.
+
+	\begin{itemize}
+	
+		\item \textbf{Additivity.}
+			The integral from $a$ to $b$ plus the integral from $b$ to $c$ is equal to the integral from $a$ to $c$:
+			\[
+				\int_a^b f(x) \; dx + \int_b^c f(x) \; dx		=	\int_a^c f(x) \; dx.
+			\]
+
+		% TODO: add backward steps giving negative?
+
+%		\item \textbf{Constant multiple of a function.}
+%			The integral of the function $cf(x)$ is equal to $c$ times the integral of $f(x)$,
+%			for any constant $c$:
+%			\[
+%				\int cf(x)\; dx	=	c\int f(x)\; dx.
+%			\]
+%
+%		\item \textbf{Sum of two functions.}
+%			The integral of a sum of two functions is equal to the sum of the integrals of the individual functions:
+%			\[
+%				\int [f(x) + g(x)]\; dx	=	\int f(x)\; dx +  \int g(x)\; dx.
+%			\]
+
+		\item \textbf{Linearity.}
+			% The combination of the above two properties tells us that
+			Integration is a \emph{linear} operation: it preserves linear combinations.
+			The integral of the linear combination of two functions $\alpha f(x) + \beta g(x)$,
+			is equal to the same linear combination of the integrals of the two functions:
+			\[
+				\int [\alpha f(x) + \beta g(x)]\; dx 
+				= \alpha  \int f(x)\; dx  \; \; + \; \; \beta \int g(x)\; dx,
+			\]
+			where $\alpha$ and $\beta$ are two arbitrary constants.
+
+		\item \textbf{Integral at a single point.}
+			Integrals over intervals with zero length have zero value for any function $f(x)$:
+			\[
+				\int_a^a f(x)\; dx	=	0.
+			\]
+			Thinking geometrically,
+			this integral defines a region with height $f(x)$ and width~$0$,
+			so it corresponds to zero area.
+			% see https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/v/same-integration-bounds
+
+	\end{itemize}
+
+	% exercise https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/a/definite-integrals-properties-review
+
+
 

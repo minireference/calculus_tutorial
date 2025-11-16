@@ -1,17 +1,7 @@
 %!TEX root = ../calculus_tutorial.tex
 
 \section{Limits}
-
-	In high school math,
-	we learn all kinds of math procedures for solving problems using a finite number of steps of math operations.
-	Whether you're manipulating expressions using algebra,
-	or applying the inverse function to simplify an equation,
-	all problems in high school math can be solved by using less than five steps,
-	or if your teacher really doesn't like you 10 steps.
-	% INFINITY
-	In calculus,
-	we learn a broader class of problem-solving strategies
-	that include procedures with an infinite number of steps.
+\label{sec:limits}
 
 	% LIMITS
 	Limit expressions provide a precise mathematical language
@@ -27,10 +17,6 @@
 			In words,
 			this limit expression is read as ``limit of $f(x)$ as $n$ goes to infinity.''
 
-		% INFINITELY MANY
-		\item	$\lim_{n \to \infty} \textrm{proc}(n)$: limit expression that describes the value of $\textrm{proc}(n)$ as the integer $n$ tends to infinity.
-			The integer $n$ usually describes the number of steps in a given procedure,
-			and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
 
 		% INFINITELY SMALL
 		\item	$\lim_{\delta \to 0} h(\delta)$: limit expression that describes what happens to
@@ -39,96 +25,122 @@
 			and the limit as delta goes to zero ($\delta \to 0$) describes the behaviour of the expression $h(\delta)$
 			for an infinitely short distance $\delta$.
 
+		% INFINITELY MANY
+		\item	$\lim_{n \to \infty} \textrm{proc}(n)$: limit expression that describes the value of $\textrm{proc}(n)$ as the integer $n$ tends to infinity.
+			The integer $n$ usually describes the number of steps in a given procedure,
+			and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
+
+
 	\end{itemize}
 
 	%	Using limits allows us to obtain answers computed by mathematical procedures with an infinite number of steps!
 
-	\noindent
-	The SymPy function \tt{limit} allows us to compute limit expressions.
-	For example,
-	if we want to see if the exponential function $e^x$ or the polynomial function $x^{100}$ grows faster
-	in the limit as $x$ goes to infinity,
-	The code for computing the limit of the ratio between these two expressions is
 
-	\begin{codeblock}[sympy-limit-exp-over-x-100]
-	>>> from sympy import limit, exp, oo
-	>>> limit(exp(x)/x**100, x, oo) 
-	oo
-	\end{codeblock}
 
-	\noindent
-	The answer $\infty$,
-	written as \tt{oo} (two lowercase letters ``o''),
-	tells us exponential functions grow faster than polynomial functions.
-	%	This result has implications in computer science,
-	%	where algorithms whose running time grows exponentially with the size of their input are considered bad
+	\subsection{Example}
+	
+		The formula for the area of a regular polygon with $n$ sides that fits inside a circle of radius $r$ is...
+		
+		
+		% FIGURE hexagon, octagon, dodecagon side by side with triangle + labels on octagon 
 
-	% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
-	%	splitting with an infinite number of segments
-	%	\begin{codeblock}[sympy-limit-sement-zero-length]
-	%	>>> from sympy import limit, oo, summation
-	%	>>> delta = (b - a)/n
-	%	>>> limit(delta, n, oo)
-	%	0
-	%	\end{codeblock}
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.5\textwidth]{figures/calculus/inscribed-hexagon-octagon-dodecagon.png}
+			\caption{	A hexagon, an octagon, and a dodecagon inscribed inside a circle with radius $r=1$.}
+			\label{fig:inscribed-hexagon-octagon-dodecagon}
+		\end{figure}
+
+
+		
+		
+		As $n$ goes to infinity we get $\pi r^2$,
+		which is the formula for the area of a circle.
+
+
+%		A circle of radius $1$ is inscribed inside a
+%		\emph{regular octagon} (a polygon with eight sides of length $b$).
+%		Calculate the octagon's perimeter and its area.
+%		\begin{center}
+%		\includegraphics[width=0.3\textwidth]{figures/calculus/octagon_inscribed_in_circle.pdf}
+%		\end{center}		
+% cf. \input{../../../MATHPHYSbook/problems/figures/geometry/octagon_inscribed_in_circle.tex}
+		% Split the octagon into eight isosceles triangles.
+
+%				$A_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=8\tan(22.5^\circ)$.
+%
+%			Split the octagon into eight isosceles triangles. 
+%			The height of each triangle will be $1$,
+%			and its angle measure at the centre will be $\frac{360^\circ}{8}=45^\circ$.
+%			Split each of these triangles into two halves down the middle.
+%			The octagon is now split into $16$ similar right-angle triangles
+%			with angle measure $22.5^\circ$ at the centre.
+%			%
+%			In a right-angle triangle with angle $22.5^\circ$ and adjacent side $1$,
+%			what is the length of the opposite side?
+%			The opposite side of each of the $16$ triangles is $\frac{b}{2}=\tan(22.5^\circ)$,
+%%			so the perimeter of the octagon is $P_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=16\tan(22.5^\circ)$.
+%%			In general,
+%%			if a unit circle is inscribed inside an $n$-sided regular polygon,
+%%			the perimeter of the polygon is $P_n = 2n\tan\!\left(\frac{360^\circ}{2n} \right)$.
+%%			%
+%			To find the area of the octagon,
+%			we use the formula $A_{\scriptscriptstyle \triangle}=\frac{1}{2}bh$,
+%			with $b=2\tan(22.5^\circ)$ and $h=1$ to find the area of each isosceles triangle.
+%			The area of the octagon is 
+%			$A_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=8\cdot\frac{1}{2}(2\tan(22.5^\circ))(1)=8\tan(22.5^\circ)$.
+%			For an $n$-sided regular polygon the area formula is $A_n = n\tan\!\left(\frac{360^\circ}{2n} \right)$.
+%			Bonus points if you can tell me what happens to the formulas 
+%			for $P_n$ and $A_n$ as $n$ goes to infinity
+%			(see \href{http://bit.ly/1jGU1Kz}{\texttt{bit.ly/1jGU1Kz}}).
+
+		
+
+
+
+	%	\subsubsection{Example}
 	%
-	%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
-	%	>>> summation(delta, (i, 0, n-1))
-	%	b - a				
-	%	\end{codeblock}
+	%		Let's begin with a simple example.
+	%		Say you have a string of length $\ell$ and you want to divide it into infinitely many, infinitely short segments.
+	%		There are infinitely many segments,
+	%		and they are infinitely short, so together the segments add to the string's total length $\ell$.
+	%
+	%		It's easy enough to describe this process in words.
+	%		Now let's describe the same process using the notion of a limit.
+	%		If we divide the length of the string $\ell$ into $N$ equal pieces then each piece will have a length of
+	%		\[
+	%		   \delta = \frac{\ell}{N}  \,.
+	%		\]
+	%		Let's make sure that $N$ pieces of length $\delta$ added together equal the string's total length: 
+	%		\[
+	%		 N \delta = N \frac{\ell}{N} = \ell.
+	%		\]
+	%		
+	%		\noindent
+	%		Now imagine what happens when the variable $N$ becomes larger and larger.
+	%		The larger $N$ becomes, the shorter the pieces of string will become.
+	%		In fact, if $N$ goes to infinity (written $N \to \infty$),
+	%		then the pieces of string will have zero length:
+	%		\[
+	%		 \lim_{N\to \infty}  \delta = \lim_{N\to \infty} \frac{\ell}{N} = 0.
+	%		\]
+	%		In the limit as $N \to \infty$, the pieces of string are \emph{infinitely small}.
+	%		
+	%		Note we can still add the pieces of string together to obtain the whole length:
+	%		\[
+	%		 \lim_{N\to \infty}  \left( N \delta \right) 
+	%		 = 
+	%		 \lim_{N\to \infty}  \left( N \frac{\ell}{N} \right)
+	%		 = \ell.
+	%		\]
+	%		Even if the pieces of string are \emph{infinitely small},
+	%		because there are \emph{infinitely many} of them,
+	%		they still add to $\ell$.
+	%		
+	%		The take-home message is that as long as you clearly define your limits,
+	%		you can use infinitely small numbers in your calculations.
+	%		The notion of a limit is one of the central ideas in this course.
 
-	Limits are important in calculus because they are used in the formal definitions of the derivative and integral operations.
-	The derivative is defined as a rise-over-run calculation for an infinitely short run.
-	The integral is defined as a Riemann sum with infinitely narrow rectangles.
-	We'll explain both of these in the next sections.
-
-
-
-
-
-
-	\subsubsection{Example}
-
-		Let's begin with a simple example.
-		Say you have a string of length $\ell$ and you want to divide it into infinitely many, infinitely short segments.
-		There are infinitely many segments,
-		and they are infinitely short, so together the segments add to the string's total length $\ell$.
-
-		It's easy enough to describe this process in words.
-		Now let's describe the same process using the notion of a limit.
-		If we divide the length of the string $\ell$ into $N$ equal pieces then each piece will have a length of
-		\[
-		   \delta = \frac{\ell}{N}  \,.
-		\]
-		Let's make sure that $N$ pieces of length $\delta$ added together equal the string's total length: 
-		\[
-		 N \delta = N \frac{\ell}{N} = \ell.
-		\]
-		
-		\noindent
-		Now imagine what happens when the variable $N$ becomes larger and larger.
-		The larger $N$ becomes, the shorter the pieces of string will become.
-		In fact, if $N$ goes to infinity (written $N \to \infty$),
-		then the pieces of string will have zero length:
-		\[
-		 \lim_{N\to \infty}  \delta = \lim_{N\to \infty} \frac{\ell}{N} = 0.
-		\]
-		In the limit as $N \to \infty$, the pieces of string are \emph{infinitely small}.
-		
-		Note we can still add the pieces of string together to obtain the whole length:
-		\[
-		 \lim_{N\to \infty}  \left( N \delta \right) 
-		 = 
-		 \lim_{N\to \infty}  \left( N \frac{\ell}{N} \right)
-		 = \ell.
-		\]
-		Even if the pieces of string are \emph{infinitely small},
-		because there are \emph{infinitely many} of them,
-		they still add to $\ell$.
-		
-		The take-home message is that as long as you clearly define your limits,
-		you can use infinitely small numbers in your calculations.
-		The notion of a limit is one of the central ideas in this course.
 
 
 	\subsection{Limits at infinity}
@@ -204,7 +216,8 @@
 		then the mathematician will be convinced the equation $\displaystyle \lim_{x \to \infty} f(x) = L$ is true.
 
 
-		\paragraph{Example 2}		
+		\paragraph{Example}
+
 			Calculate $\lim\limits_{x\to \infty} \frac{2x+1}{x}\,$.
 
 			You are given the function $f(x)=\frac{2x+1}{x}$
@@ -223,6 +236,9 @@
 			instead, you can assume the result is obvious and needs no proof.
 			As the denominator $x$ becomes larger and larger,
 			the fraction $\frac{1}{x}$ becomes smaller and smaller.
+
+
+
 
 
 
@@ -373,6 +389,76 @@
 			
 
 
+	\subsection{Limit rules?}
+	
+		IMPORT FROM BOOK?
+		
+		\vspace{2cm}
+
+
+	
+
+	\subsection{Computing limits using SymPy}
+
+		The SymPy function \tt{limit} allows us to compute limit expressions.
+
+TODO: introduce oo
+
+TODO: introduce limit usage
+
+
+
+		For example,
+		to compute the limit of the fraction $\frac{2x+1}{x}$ as $x$ goes to infinity,
+		we can use the following code:
+	
+		\begin{codeblock}[sympy-limit-exp-over-x-100]
+		>>> from sympy import limit, oo
+		>>> limit( (2*x+1)/x , x, oo)
+		2
+		\end{codeblock}
+	
+		\noindent
+		To specify $\infty$ we use the \tt{oo} (two lowercase letters ``o'').
+		
+		% BONUS SYMPY EXAMPLES
+		%	\noindent
+		%	The SymPy function \tt{limit} allows us to compute limit expressions.
+		%	For example,
+		%	if we want to see if the exponential function $e^x$ or the polynomial function $x^{100}$ grows faster
+		%	in the limit as $x$ goes to infinity,
+		%	The code for computing the limit of the ratio between these two expressions is
+		%
+		%	\begin{codeblock}[sympy-limit-exp-over-x-100]
+		%	>>> from sympy import limit, exp, oo
+		%	>>> limit(exp(x)/x**100, x, oo) 
+		%	oo
+		%	\end{codeblock}
+		%
+		%	\noindent
+		%	The answer $\infty$,
+		%	written as \tt{oo} (two lowercase letters ``o''),
+		%	tells us exponential functions grow faster than polynomial functions.
+		%	%	This result has implications in computer science,
+		%	%	where algorithms whose running time grows exponentially with the size of their input are considered bad
+		%
+		%	% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
+		%	%	splitting with an infinite number of segments
+		%	%	\begin{codeblock}[sympy-limit-sement-zero-length]
+		%	%	>>> from sympy import limit, oo, summation
+		%	%	>>> delta = (b - a)/n
+		%	%	>>> limit(delta, n, oo)
+		%	%	0
+		%	%	\end{codeblock}
+		%	%
+		%	%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
+		%	%	>>> summation(delta, (i, 0, n-1))
+		%	%	b - a				
+		%	%	\end{codeblock}
+
+
+
+
 
 
 
@@ -381,8 +467,14 @@
 		Limits are fundamentally important for calculus.															\index{limit}
 		Indeed, the three main calculus topics we'll discuss in the remainder of this chapter are
 		derivatives, integrals, and series---all of which are defined using limits.
+
+% MERGE IN
+Limits are important in calculus because they are used in the formal definitions of the derivative and integral operations.
+The derivative is defined as a rise-over-run calculation for an infinitely short run.
+The integral is defined as a Riemann sum with infinitely narrow rectangles.
+We'll explain both of these in the next sections.
 	
-	
+
 		\subsubsection{Limits for derivatives}
 		\label{limits:limits_for_derivatives}
 	
@@ -421,7 +513,7 @@
 			\noindent 
 			Computing the area under a function by splitting the area into infinitely 
 			many rectangles is an approach known as a \emph{Riemann sum},										\index{Riemann sum}
-			which we'll discuss in Section~\ref{sec:riemann_sum}.
+			which we'll discuss in Section~\ref{sec:integrals}.
 				
 			%	\subsection{Limits for sequences}	TODOv7
 			%	\label{limits:limits_for_sequences}
@@ -453,5 +545,9 @@
 			observe how the infinite sum $S_\infty$ is similar to a shifted version of itself: $S_\infty=1+rS_\infty$.
 			Now solve for $S_\infty$ in the equation $S_\infty=1+rS_\infty$.
 			
-			You'll find more about series in Section~\ref{sec:series}.
+			You'll find more about series in Section~\ref{sec:sequences_and_series}.
 	
+
+	% LEAD OUT	
+	In the remainder of this tutorial we'll learn about derivatives, integrals, and series
+	and limit expressions will help us make precise statements in each case.

@@ -1,80 +1,205 @@
 %!TEX root = ../calculus_tutorial.tex
 
-\subsection{Computing integrals numerically}
 
-	There are numerous ways to compute integrals using Python.
-	Computing integrals ``numerically'' means we're splitting the region of integration into thousands or millions of subregions,
-	computing the areas of these subregions,
-	then adding up the areas of the subregions to obtain the total area.
+	\subsection{Computing integrals numerically}
 
-	The Python function \tt{quad} in the module \tt{scipy.integrate} allows us to compute the integral of any function.
-	The name \tt{quad} is short for ``quadrature'' which is the historical math term used for find-the-area procedures.
-	Let's start by importing the \tt{quad} function.
+		Relax, we won't be doing the calculation by hand.
+		We can write a computer program and make a computer performs the integration procedure for us.
+		Here is a sample code that takes an arbitrary function \tt{func}
+		and performs the $n$-rectangle area approximation calculation:
 
-	\begin{codeblock}[import-quad-from-scipy]
-	>>> from scipy.integrate import quad
-	\end{codeblock}
+		\begin{codeblock}[]
+		def integrate(func, a, b, n):
+		    """
+		    Compute the area under `func` between x=`a` and x=`b`
+		    using an approximation with `n` rectangles.
+		    """
+		    dx = (b-a)/n               # width of each rectangle
+		    total = 0.0                # accumulator variable for S_n
+		    k = 1                      # counter variable
+		    x = a + dx                 # start at first right endpoint
+		    while k <= n:              # repeat n times:
+		        total += func(x)*dx    #   s_k = height * width
+		        x += dx                #   move one step to the right
+		        k += 1                 #   increment counter
+		    return total
+		\end{codeblock}
 
-	\noindent
-	Now let's define a Python function \tt{f} that corresponds to the constant function $f(x) = 3$.
+		\noindent
+		The logic of the of the sample code follows closely follows procedure we defined in the equations above.
+		We variable \code{dx} holds the information about the width of the rectangles used in the approximation $\Delta x$,
+		and we use the counter variable \code{k} to step through the interval $[a,b]$ using $n$ steps of width $\Delta x$.
+		
+		We can then use this code to compute the integral of any function.
+		To do this,
+		we must first define the function we want to integrate:
 
-	\begin{codeblock}[deffun-f-eq-3-and-call]
-	>>> def f(x):
-	        return 3
-	>>> f(333)
-	3
-	\end{codeblock}
+		\begin{codeblock} 
+		def h(x):
+		    return x**3 - 5*x**2 + x + 10
+    			\end{codeblock}
+
+		\noindent
+		Then you can compute $S_{25}$ by calling \code{integrate(f, -1, 4, 25)},
+		which returns $S_{25}=12.4$.
+		Calling \code{integrate(f, -1, 4, 50)} you'll obtain $S_{50}=12.6625$.
+		The approximations $S_n$ get better and better as the number of rectangles used in the approximations grows.
+		For $n=100$,
+		the sum of the rectangles' areas is $S_{100} =  12.7906$,
+		for $n=1000$ the approximation gives us $S_{1000} = 12.9041562$,
+		which is accurate to the first decimal.
+
+
+%		We can approximate the total area under the function $f(x)$ between $x=a$ and $x=b$ by splitting the region into $n$ tiny vertical strips of width $\Delta x$,
+%		then adding up the areas of the rectangular strips.
+%		This is known as a \emph{Riemann sum} approximation for an area.
+%		Figure~\ref{fig:riemannsum-25-50} shows the Riemann sum approximations for the area under the function
+%		$f(x)=x^3-5x^2+x+10$ between $x=-1$ and $x=4$,
+%		obtained by using $n=25$ and $n=50$ vertical rectangular strips.
+
+		\begin{figure}[htb]
+			\subfigure[$n=25$]{				
+				\includegraphics[width=0.24\textwidth]{figures/calculus/riemannsum-25.png}
+			}
+			\subfigure[$n=50$]{				
+				\includegraphics[width=0.24\textwidth]{figures/calculus/riemannsum-50.png}
+			}
+			\vspace{-2mm}
+			\caption{An approximation to the area under the graph of the function $f(x)=x^3-5x^2+x+10$ 
+					using $n=25$ and $n=50$ rectangles.}
+			\label{fig:riemannsum-25-50}
+		\end{figure}
+		
+%		As you can see,
+%		the approximations get better and better as we increase the number of rectangles.
+%		Let's come up with some math expression to describe the $n$-rectangle approximate area calculation.
+%		The width of each rectangle is $\Delta x = \frac{4-(-1)}{n}=\frac{5}{n}$.
+%		The left endpoint of the first rectangle is at $x=a$ and its right endpoint is at $x=x_1 \equiv a+\Delta x$.
+%		Since we're using choosing the height of the rectangles according to their right endpoints,
+%		the area of the first rectangle is
+%		\[
+%			s_1 = f(x_1)\Delta x = f(a + \Delta x)\Delta x,
+%		\]
+%		which corresponds to the height of the function $f$ at $a+\Delta x$ times the width $\Delta x$.
+%		To find the $x$ coordinate of the right endpoint of the second rectangle,
+%		we take a step of width $\Delta x$ to the right: $x_2 = x_1 + \Delta x = a + 2 \Delta x$.
+%		The area of the second rectangle is $s_2 = f(a+2\Delta x)\Delta x$.
+%		
+%		We can iterate this one-step-to-the-right procedure to obtain all the right endpoints
+%		\[
+%			x_{k+1} = x_k + \Delta x, % , \quad \textrm{for all}  \ \ k < n.
+%		\]
+%		and compute the area of each rectangle using
+%		\[
+%			s_k = f(x_k)\Delta x =  (x_k^3-5x_k^2+x_k+10)\frac{5}{n}.
+%		\]
+%		The total area of the $n$-rectangle approximation is the sum of the rectangles' areas:
+%		\begin{align*}
+%		  S_{n}(a,b) \equiv \sum_{k=1}^n s_k
+%			&= \sum_{k=1}^{n} f(a + k\Delta x)\Delta x 				\\
+%		  	&= \sum_{k=1}^{n} (x_k^3-5x_k^2+x_k+10)\frac{5}{n}.
+%		\end{align*}
+%		Wow that looks like a mean math expression!
+%		Indeed if you had to do all these calculations by hand,
+%		it would take you forever.
+%		Computing an approximation with $n=1000$ rectangles requires computing $1000$ rectangle areas
+%		and the sum of $1000$ terms!
+
+
+		In the limit as the number of rectangles $n$ approaches $\infty$, 							\index{infinity}
+		the approximation to the area under the curve becomes \emph{arbitrarily close} to the true area.
+		The notion of applying the a rectangular-strip approximation to the area of a function,
+		where the number of rectangles grows to infinity is known as the \emph{Riemann sum}
+		and is the basis for the definitions of the integral:
+
+		The definite integral between $x=a$ and $x=b$ is \emph{defined} as the limit of a 			\index{integral}
+		Riemann sum as $n$ goes to infinity:											\index{Riemann sum|textit}
+		\[
+			\int_{a}^{b}\!f(x)\:dx 
+				\equiv \lim_{n\to\infty} \sum_{k=1}^{n} f(a + k\Delta x)\Delta x \equiv A(a,b).
+		\]
 	
-	\noindent
-	No matter what input $x$ we choose,
-	the output will always be the same $f(x)=3$.
-
-	To compute the integral $\int_0^5 f(x) dx$ we call the function \tt{quad}
-	with inputs \tt{f} as the first argument,
-	and the limits of integration $a=0$ and $b=5$ as the second and third arguments.
-
-	\begin{codeblock}[quad-f-0-5-tuple]
-	>>> quad(f, 0, 5)
-	(15.0, 1.1102230246251565e-13)
-	\end{codeblock}
-
-	\noindent
-	The function \tt{quad} returns a tuple (a pair of numbers) as output: $(A,\epsilon)$.
-	The first number in the tuple is the value of the area calculation.
-	The second number $\epsilon$ tells us the accuracy of the procedure used to calculate the area.
-	In the above calculation,
-	the output tells us the integral $\int_0^5 f(x) dx$ is equal to $15.0$ up to a precision on the order of $10^{-13}$.
-
-	Since we're usually only interested in the value of the area $A$ and not the precision $\epsilon$,
-	we often select the first number in the output of \tt{quad}.
-	This is why you'll often see the expression \tt{quad(...)[0]} in code examples.
-
-	\begin{codeblock}[quad-f-0-5]
-	>>> quad(f, 0, 5)[0]  # extract A
-	15.0
-	\end{codeblock}
-
-	\noindent
-	As a second example,
-	let's calculate the area under the graph of the function $g(x)=x$ between $x=0$ and $x=5$.
-
-	\begin{codeblock}[deffun-g-eq-x-and-quad-g-0-5]
-	>>> def g(x):
-	        return x
-	>>> quad(g, 0, 5)[0]
-	12.5
-	\end{codeblock}
-
-	\noindent
-	The answer we obtained matches the results of the general formula we obtained above,
-	$A_g(0,5) = \frac{1}{2}b^2$,
-	when the upper limit of integration is $b=5$.
-
-	We'll use the function \tt{quad} hundreds of times in the remainder of the book to compute various integrals
-	as part of probability and statistics calculations,
-	so make sure you understand what is going on in the above code examples.
-	The main takeaway message is that the \tt{quad} function is your friend whenever you need to compute integrals.
-	All the scary-looking math equations that contain the $\int$ symbol can be computed using one or two lines of Python code.
 
 
 
+
+
+
+	\subsection{Computing integrals numerically using SciPy}
+	
+		There are numerous ways to compute integrals using Python.
+		Computing integrals ``numerically'' means we're splitting the region of integration into thousands or millions of subregions,
+		computing the areas of these subregions,
+		then adding up the areas of the subregions to obtain the total area.
+	
+		The Python function \tt{quad} in the module \tt{scipy.integrate} allows us to compute the integral of any function.
+		The name \tt{quad} is short for ``quadrature'' which is the historical math term used for find-the-area procedures.
+		Let's start by importing the \tt{quad} function.
+	
+		\begin{codeblock}[import-quad-from-scipy]
+		>>> from scipy.integrate import quad
+		\end{codeblock}
+	
+		\noindent
+		Now let's define a Python function \tt{f} that corresponds to the constant function $f(x) = 3$.
+	
+		\begin{codeblock}[deffun-f-eq-3-and-call]
+		>>> def f(x):
+		        return 3
+		>>> f(333)
+		3
+		\end{codeblock}
+		
+		\noindent
+		No matter what input $x$ we choose,
+		the output will always be the same $f(x)=3$.
+	
+		To compute the integral $\int_0^5 f(x) dx$ we call the function \tt{quad}
+		with inputs \tt{f} as the first argument,
+		and the limits of integration $a=0$ and $b=5$ as the second and third arguments.
+	
+		\begin{codeblock}[quad-f-0-5-tuple]
+		>>> quad(f, 0, 5)
+		(15.0, 1.1102230246251565e-13)
+		\end{codeblock}
+	
+		\noindent
+		The function \tt{quad} returns a tuple (a pair of numbers) as output: $(A,\epsilon)$.
+		The first number in the tuple is the value of the area calculation.
+		The second number $\epsilon$ tells us the accuracy of the procedure used to calculate the area.
+		In the above calculation,
+		the output tells us the integral $\int_0^5 f(x) dx$ is equal to $15.0$ up to a precision on the order of $10^{-13}$.
+	
+		Since we're usually only interested in the value of the area $A$ and not the precision $\epsilon$,
+		we often select the first number in the output of \tt{quad}.
+		This is why you'll often see the expression \tt{quad(...)[0]} in code examples.
+	
+		\begin{codeblock}[quad-f-0-5]
+		>>> quad(f, 0, 5)[0]  # extract A
+		15.0
+		\end{codeblock}
+	
+		\noindent
+		As a second example,
+		let's calculate the area under the graph of the function $g(x)=x$ between $x=0$ and $x=5$.
+	
+		\begin{codeblock}[deffun-g-eq-x-and-quad-g-0-5]
+		>>> def g(x):
+		        return x
+		>>> quad(g, 0, 5)[0]
+		12.5
+		\end{codeblock}
+	
+		\noindent
+		The answer we obtained matches the results of the general formula we obtained above,
+		$A_g(0,5) = \frac{1}{2}b^2$,
+		when the upper limit of integration is $b=5$.
+	
+		We'll use the function \tt{quad} hundreds of times in the remainder of the book to compute various integrals
+		as part of probability and statistics calculations,
+		so make sure you understand what is going on in the above code examples.
+		The main takeaway message is that the \tt{quad} function is your friend whenever you need to compute integrals.
+		All the scary-looking math equations that contain the $\int$ symbol can be computed using one or two lines of Python code.
+	
+	
+	

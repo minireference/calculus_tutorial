@@ -1,0 +1,186 @@
+%!TEX root = ../calculus_tutorial.tex
+
+
+\section{Introduction}
+
+	Calculus = study of functions + operations on functions
+
+
+
+	% Main idea = calculations with infinite number of steps
+	previously = numbers + operations that produce other numbers as outputs
+	in calculus = functions + operators that produce other functions as outputs 
+
+	In high school math,
+	we learn all kinds of math procedures for solving problems using a finite number of steps of math operations.
+	Whether you're manipulating expressions using algebra,
+	or applying the inverse function to simplify an equation,
+	all problems in high school math can be solved by using less than five steps,
+	or if your teacher really doesn't like you 10 steps.
+	% INFINITY
+	In calculus,
+	we learn a broader class of problem-solving strategies
+	that include procedures with an infinite number of steps.
+
+
+	\subsection{Definitions}
+
+
+		\begin{itemize}
+			\item   	$\mathbb{R}$: the set of real numbers
+			\item   	$f(x)$:  a function of the form $f: \mathbb{R} \to \mathbb{R}$,
+				which means $f$ takes real numbers as inputs and produces real numbers as outputs
+			\item	$\lim_{\delta \to 0}$: a limit expression in which the number $\delta$ tends to zero
+			\item	$f'(x)$: the derivative of $f(x)$ is the rate of change of $f$ at $x$: 
+				\[
+					f'(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{\delta}\,.
+				\] 
+				The derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+
+			\item	$A(a,b)$: the value of the \emph{area} under the curve $f(x)$ from $x=a$ until $x=b$.
+		    		The area $A(a,b)$ is computed as the following integral
+		    		\[
+			        	   A(a,b) = \int_a^b f(x)\;dx.
+			    	\] 
+			    	The $\int$ sign stands for \emph{sum}.
+			    	Indeed, the integral is the ``sum'' of $f(x)$ for all values of $x$ between $a$ and $b$.
+
+				\vspace{2mm}
+				
+			\item	$A_0(x)$: the \emph{integral function} of $f(x)$.
+		    		The integral function corresponds to the computation of the area under $f(x)$
+				as a function of the upper limit of integration:
+			       	\[
+			        	   A_0(x) \eqdef A(0,x) = \int_0^{x}\! f(u)\:du.
+			      	\]
+				The choice of $x=0$ as the lower limit of integration is arbitrary.
+
+				\vspace{2mm}
+
+			\item sequence 
+
+			\item series
+
+		\end{itemize}
+
+% cf. \input{../../../MATHPHYSbook/05_calc/02.overview.tex}
+% cf. \input{../../../MATHPHYSbook/02_intro2phys/03.introduction_to_calculus.tex}
+
+
+
+
+	\subsection{Download example}
+	\label{introduction:download_example}
+	
+		Suppose you're downloading a large file to your computer.
+		At $t=0$ you click ``save as'' in your browser and the download starts.
+		Let $f(t)$ represent the size of the downloaded data.
+		At any time $t$,
+		the function $f(t)$ tells you the amount of disk space taken by the partially-downloaded file.
+		You are downloading a $720$[MB] file, so the download progress
+		at time $t$ corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
+
+		\subsubsection{Download rate}
+		\label{introduction:download_rate}
+
+			The derivative function $f^\prime(t)$, pronounced ``\:\!\!$f$ prime,''
+			describes how the function $f(t)$ changes over time.
+			In our example $f^\prime(t)$ is the download speed.
+			If your downloading speed is  $f'(t)=100$[kB/s],
+			then the file size $f(t)$ must increase by 100[kB] each second.
+			If you maintain this download speed, the file size will grow at a constant rate:
+			$f(0)=0$[kB], $f(1)=100$[kB], $f(2)=200$[kB], $\ldots$, $f(100)=10$[MB].
+
+			To calculate the ``estimated time remaining'' until the download's completion,
+			we divide the amount of data that remains to be downloaded by the current download speed:
+			\[
+				\text{time remaining } = \frac{ 720 - f(t) }{ f^\prime(t) } \quad [\textrm{s}].
+			\]
+			The bigger the derivative, the faster the download will finish.
+			If your internet connection were 10 times faster,
+			the download would finish 10 times more quickly.
+
+
+		\subsubsection{Inverse problem}
+		\label{introduction:inverse_problem}
+
+			Let's consider this situation from the point of view of the modem that connects your computer to the internet.			\index{inverse!operation}
+			Any data you download comes through the modem.
+			The modem knows the download rate $f^\prime(t)$[kB/s] at all times during the download.
+
+			However, since the modem is separate from your computer,
+			it does not know the file size $f(t)$ as the download progresses.
+			Nevertheless,
+			the modem can infer the file size at time $t$ from knowing the transmission rate $f^\prime(t)$.
+			The integral of the download rate between $t=0$ and $t=\tau$
+			corresponds to the total amount of downloaded data stored on your computer.
+			During this download period, the change in file size is described by the integral
+			\[
+				\Delta f = f(\tau)-f(0) = \int_0^\tau \! f'(t)\: dt\,.
+			\]
+			Assuming the file size starts from zero $f(0)=0$[kB] at $t=0$,
+			the modem can use the integration procedure to find $f(\tau)$,
+			the file size on your computer at $t=\tau$:
+			\[
+				f(\tau) = \int_0^\tau\! f^\prime(t) dt\,.
+			\]
+			The download rate $f'(t)$ is measured in [kB/s],
+			and each time step $dt$ is $1$[s] long,
+			so the data downloaded during one second is $f'(t)dt$[kB].
+			The file size at time $t=\tau$ is equal to the sum of the data
+			downloaded during each second from $t=0$ until $t=\tau$.			
+
+			The integral $\int_a^b q(t)\:dt$ is the calculation of the \emph{total}
+			of some quantity $q(t)$ that accumulates during the time period from $t=a$ to $t=b$.
+			Integrals are necessary any time you want to calculate the total of a quantity that changes over time.
+			
+			% TODOv6: remind how tau is pronounced and why we need a variable different from t
+
+		\bigskip
+		
+		As demonstrated above,
+		calculus is much more than the theoretical activity reserved for math specialists.
+		Calculus relates to everyday notions you're already familiar with.
+		Indeed, we carry out calculus-like operations in our head every day---we just
+		don't necessarily use calculus terminology when we do so.
+
+		%	Usually, differential calculus and integral calculus are taught as two separate subjects.
+		%	Perhaps teachers and university administrators are worried the undergraduates' little heads will explode
+		%	from sudden exposure to \emph{all} of calculus.
+		%	However, this separation actually makes calculus more difficult,
+		%	and prevents students from discovering the connections between differential and integral calculus.
+		%	We'll have no such split in this book, because I believe you can handle the material in one go.
+		%	Understanding calculus involves figuring out new mathematical concepts like infinity, limits, and summations,
+		%	but these ideas are not \emph{that} complicated.
+		%	By getting this far, you've proven you're more than ready to learn the theory,
+		%	techniques, and applications of derivatives, integrals, sequences, and series.
+		
+		% Let's begin with an overview of the material.
+		
+		
+
+	\subsection{Applications}
+
+		Learning the language of calculus will help you think more clearly about certain types of problems.
+		Understanding the language of calculus is \emph{essential} for learning science
+		because many laws of nature are best described in terms of derivatives and integrals.
+		
+		Using concepts to describe phenomena in:
+		physics,
+		engineering,
+		finance,
+		probability calculations (continuous random variables),
+		optimization (used in business, statistics, machine learning, etc.).
+
+
+
+	\subsection{Doing calculus}
+
+		Symbolic calculations using pen and paper
+
+		Symbolic calculations using SymPy
+
+		Numerical calculations using NumPy and SciPy
+
+
+

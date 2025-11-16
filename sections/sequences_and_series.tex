@@ -1,73 +1,81 @@
 %!TEX root = ../calculus_tutorial.tex
 
-	\section{Sequences and series}
+\section{Sequences and series}
+\label{sec:sequences_and_series}
 
-		A sequence is a function of the form $a: \mathbb{N} \to \mathbb{R}$.	
-		The sequence's input variable is usually denoted $k$ or $n$,
-		and it corresponds to the \emph{index} or number in the sequence.
-		We describe sequences either by specifying the formula $a_k$ for the $k$\textsuperscript{th} term in the sequence
-		or by listing all the values of the sequence:
-		\[
-			a_k, k \in \mathbb{N}  \ \ \Leftrightarrow \ \  \left(a_0, a_1, a_2, a_3, a_4, \ldots \, \right).
-		\]
-		Note the new notation for the input variable as a subscript.
-		This is the standard notation for describing sequences,
-		and is used instead of the standard function notation $a(k)$.
+	A sequence is a function of the form $a: \mathbb{N} \to \mathbb{R}$.	
+	The sequence's input variable is usually denoted $k$ or $n$,
+	and it corresponds to the \emph{index} or number in the sequence.
+	We describe sequences either by specifying the formula $a_k$ for the $k$\textsuperscript{th} term in the sequence
+	or by listing all the values of the sequence:
+	\[
+		a_k, k \in \mathbb{N}  \ \ \Leftrightarrow \ \  \left(a_0, a_1, a_2, a_3, a_4, \ldots \, \right).
+	\]
+	Note the new notation for the input variable as a subscript.
+	This is the standard notation for describing sequences,
+	and is used instead of the standard function notation $a(k)$.
 
-		We're often interested in computing the sum of all the values in this given a sequence $a_k$.
-		To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th} elements of the sequence $a_k$,
-		we turn to summation notation:									\index{summation}
-    		\[
-		      a_3 + a_4 + a_5 
-		      \equiv \sum_{3 \leq k \leq 5}\!\! a_k 
-		      \equiv \sum_{n=3}^{5} a_k \,.      
-		\] 
-		The capital Greek letter \emph{sigma} stands in for the word \emph{sum}, 
-		and the range of index values included in this sum is denoted below and above the summation sign.
+	We're often interested in computing the sum of all the values in this given a sequence $a_k$.
+	To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th} elements of the sequence $a_k$,
+	we turn to summation notation:
+    	\[
+	      a_3 + a_4 + a_5 
+	      \equiv \sum_{3 \leq k \leq 5}\!\! a_k 
+	      \equiv \sum_{k=3}^{5} a_k \,.      
+	\] 
+	The capital Greek letter \emph{sigma} stands in for the word \emph{sum}, 
+	and the range of index values included in this sum is denoted below and above the summation sign.
 
-		The partial sum of the sequence values $a_n$ ranging from $k=0$ until $k=N$  is denoted as
-		\[
-			S_N = \sum_{k=0}^N a_k =  a_0 + a_1 + a_2 + \cdots + a_{N-1} + a_N.
-		\]
+	The partial sum of the sequence values $a_k$ ranging from $k=0$ until $k=n$ is denoted as
+	\[
+		S_n = \sum_{k=0}^n a_k =  a_0 + a_1 + a_2 + \cdots + a_{n-1} + a_n.
+	\]
 
-		In calculus,
-		the notion of a \emph{series} describes the sum of \emph{all} the values in the sequence $a_k$:				\index{series}
-		\[
-		   \sum a_k 
-		    	\equiv 	S_\infty	
-			= 		\lim_{N \to \infty} S_N
-			=		\sum_{n=k}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
-		\]
-		Note if the sequence $a_k$ continues indefinitely,
-		computing the sum requires an infinite number of addition operations.
+	In calculus,
+	the notion of a \emph{series} describes the sum of \emph{all} the values in the sequence $a_k$:
+	\[
+	   \sum a_k 
+	    	\equiv 	S_\infty	
+		= 		\lim_{n \to \infty} S_n
+		=		\sum_{k=0}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
+	\]
+	Note if the sequence $a_k$ continues indefinitely,
+	computing the sum requires an infinite number of addition operations.
 
 
 		\subsubsection{Exact sums}
 		
 			Formulas exist for calculating the sum of certain series, even series with infinite number of terms.
 
-			The formulas for the sum of the first $N$ positive integers is
+			The formulas for the sum of the first $n$ positive integers is
 			\[
-			   \sum_{k=1}^N k = \frac{N(N+1)}{2}.
+			   \sum_{k=1}^n k = \frac{n(n+1)}{2}.
 			\]
-			The the sum of the squares of the first $N$ positive integers is
+			The the sum of the squares of the first $n$ positive integers is
 			\[
-			   \sum_{k=1}^N k^2=\frac{N(N+1)(2N+1)}{6}.
+			   \sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}.
 			\]
+			% MAYBE add k^3 formula too?
 			% See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}} for the derivations of these formulas.
+
+			There is another nice series for powers of $2$:
+			\[
+			   \sum_{k=0}^n 2^k = 1 + 2 + 4 + 8 + \cdots + 2^n = 2^{n+1} -1.
+			\]
+			
 		
 			\noindent
 			The formula for the geometric sequence is $a_k = r^k$.
-			The sum of the first $N$ terms in the geometric sequence is														\index{sequence!geometric}
+			The sum of the first $n$ terms in the geometric sequence is
 			\[
-			  S_N = \sum_{k=0}^N r^k
-			   = 1 + r + r^2 + \cdots + r^N 
-			   =\frac{1-r^{N+1}}{1-r}.
+			  S_n = \sum_{k=0}^n r^k
+			   = 1 + r + r^2 + \cdots + r^n 
+			   =\frac{1-r^{n+1}}{1-r}.
 			\]
-			If $|r|<1$, taking the limit $N\to \infty$ in the above expression leads to
+			If $|r|<1$, taking the limit $n\to \infty$ in the above expression leads to
 			\[ 
 			  S_\infty 
-			   = \lim_{N \to \infty} S_N 
+			   = \lim_{n \to \infty} S_n 
 			   = \sum_{k=0}^\infty r^k
 			   = 1 + r + r^2 +  r^3 + \cdots 
 			   =\frac{1}{1-r}.
@@ -109,7 +117,7 @@ special case when one of the terms is 1:
 	\subsection{Taylor series}
 	\label{series:taylor_series}
 
-		The \emphindexdef{Taylor series} of a function $f(x)$ approximates the function by an infinitely long polynomial:		\index{polynomial}
+		The \emphindexdef{Taylor series} of a function $f(x)$ approximates the function by an infinitely long polynomial:
 		\[
 		    f(x)
 			= \sum_{k=0}^\infty c_k x^k
@@ -150,4 +158,9 @@ special case when one of the terms is 1:
 		The partial sum of the first six terms (as shown above) gives us an approximation of $e^1$ that is accurate to three decimals. 
 		The partial sum of the first 12 terms gives us $e$ to an accuracy of nine decimals.
 		% http://bit.ly/12DrCZY
+
+
+\ifthenelse{\boolean{FORSTATSBOOK}}{
+	TODO: any extra series formulas or concepts required to solve the exercises and problems in noBSstats.
+}{}
 
