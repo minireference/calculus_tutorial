@@ -22,20 +22,18 @@
 				and the expression inside the curly brackets describes what the set contains.
 				% The math symbol ``$|$'' is shorthand for the phrase ``such that'' and it is often used in definitions.
 	
-			\item	$S^c$: the \emph{complement} of the set $S$,
-				is defined as all elements that are not in the set $S$.
-				% TODO: explain assumption of "universe" and complement as all elements of the universe that are not in $S$.
-	
 			\item $\mathbb{N}$: the set of natural numbers $\mathbb{N}\eqdef\{0,1,2,\ldots\}$
 	
-			\item $\mathbb{Z}$: the set of integers $\mathbb{Z}\eqdef\{\ldots,-2,-1,0,1,2,3,\ldots\}$
+			\item $\mathbb{N}_+$: the set of positive natural numbers $\mathbb{N}_+ \eqdef \{1,2,3\ldots\}$.
+
+			%	\item $\mathbb{Z}$: the set of integers $\mathbb{Z}\eqdef\{\ldots,-2,-1,0,1,2,3,\ldots\}$
+			%
+			%	\item $\mathbb{Q}$: the set of rational numbers,
+			%		$\mathbb{Q} \eqdef \left\{  \frac{m}{n} \; \Big| \; m \in \mathbb{Z}, \; n \in \mathbb{N}, \; n \neq 0  \right\}$.
+			%		The set $\mathbb{Q}$ consists of all numbers that can be expressed as \emph{fractions} of the form $\frac{m}{n}$,
+			%		where $m$ is an integer, $n$ is a natural number, and $n \neq 0$.
 	
-			\item $\mathbb{Q}$: the set of rational numbers,
-				$\mathbb{Q} \eqdef \left\{  \frac{m}{n} \; \Big| \; m \in \mathbb{Z}, \; n \in \mathbb{N}, \; n \neq 0  \right\}$.
-				The set $\mathbb{Q}$ consists of all numbers that can be expressed as \emph{fractions} of the form $\frac{m}{n}$,
-				where $m$ is an integer, $n$ is a natural number, and $n \neq 0$.
-	
-			\item	$\mathbb{R}$: the set of real numbers
+			\item	$\mathbb{R}$: the set of real numbers.
 	
 			\item	$\mathbb{R}_+$: the set of nonnegative real numbers.
 				The definition of the nonnegative is written as
@@ -45,18 +43,12 @@
 		\end{itemize}
 	
 		\noindent
-		Note the multiple ways we use the  curly-brackets notation $\{ \}$ to denote sets.
-		A \emph{finite set} is defined by simply listing all its elements.
-		For example,
-		the set of possible outcomes of a coin flip is $\{ \texttt{heads}, \texttt{tails} \}$.
-		For an infinite set we can't write down all the elements,
-		but we can show the pattern like $\mathbb{N} \eqdef \{0,1,2,3,4,\ldots\}$.
-		The meaning of the three dots is ``and so on, continuing the same pattern.''
-		Another way to define a set is to use the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$.
+		We often define sets using the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$.
 		Inside the curly brackets we first describe the general kind of mathematical objects we are talking about,
 		followed by the symbol ``$|$'' (read ``such that''),
 		followed by the conditions that must be satisfied by all elements of the set.
-		The definitions of the rational numbers $\mathbb{Q}$ and the nonnegative real numbers $\mathbb{R}_+$ above are examples of the set-builder notation.
+		The definitions of nonnegative real numbers $\mathbb{R}_+$ above
+		is an example of the set-builder notation.
 	
 		The \emph{number line} is a visual representation of the set of real numbers $\mathbb{R}$,
 		as shown in Figure~\ref{fig:number_line_rationals_and_reals}.
@@ -137,12 +129,25 @@
 	\subsection{Functions}
 	
 		A \emphindexdef{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
-		We use the notation
-		\[
-			f \colon A \to B
-		\]
-		to denote a function from the input set $A$ to the output set $B$.
 		For every input $x$, the output value of $f$ for that input is denoted $f(x)$.
+		For example,
+		the function $f(x) = \frac{1}{2}x^2$
+		takes any number $x$ as input,
+		squares it and divides the result by two to produce the output.
+		For example,
+		$f(3) = \frac{1}{2} 3^2 = \frac{9}{2} = 4.5$.
+		Here is the Python code that defines the function \tt{f}
+		and evaluates it for the input $x=3$.
+
+		\begin{codeblock}[plot-fx-minus3-to-plus3]
+		>>> def f(x):
+		        return x**2 / 2
+		>>> f(3)
+		4.5
+		\end{codeblock}
+		
+		\noindent
+		We'll 
 	
 		\subsubsection{Function graph}
 	
@@ -154,71 +159,55 @@
 			We obtain the graph of the function by varying the input coordinate $x$ and plotting all the points $(x, f(x))$,
 			as illustrated in Figure~\ref{fig:graph_of_f_nonnegative}.
 	
-			\begin{figure}[htb]
-				\centering
-				\includegraphics[width=0.3\textwidth]{figures/calculus/graph_of_f_nonnegative.pdf}
-	% REPLACE WITH original (x, 0.5 x^2)
-				\caption{	The graph of the function $f$ consists of all the points with coordinates $(x,f(x))$ over some interval of $x$ values.}
-				\label{fig:graph_of_f_nonnegative}
-			\end{figure}
-	
 			The graph of the function $f$ allows us to see at a glance the behaviour of the function for all possible inputs,
 			and forms an essential visualization tool.
 			Indeed,
 			many phenomena and calculations related to functions
 			can be understood geometrically as operations based on the graph of the function.
-	
-			In probability theory,
-			we use functions to describe the probability distributions of random variables.
-			Discrete random variables are described by a probability mass function of the form $f\colon \mathcal{X} \to \mathbb{R}$,
-			where the sample space $\mathcal{X}$ is either a finite set or a countably infinite set like the natural numbers $\mathbb{N}$.
-			Continuous random variables are described by probability density functions of the form 
-			$f\colon \mathcal{X} \to \mathbb{R}$,
-			where the sample space $\mathcal{X}$ is some subset of the real numbers $\mathbb{R}$.
-	
+
 	
 		\subsubsection{Plotting function graphs}
 		%  using NumPy and Seaborn
 	
-			
 			We can use a combination of the \tt{numpy} and \tt{seaborn} modules
-			to plot the graph of the function $g(x) = \frac{1}{2}x^2$,
+			to plot the graph of the function $f(x) = \frac{1}{2}x^2$,
 			as shown in the code example below.
 	
-			\begin{codeblock}[plot-gx-0-10]
-			>>> def g(x):
-			        return 0.5 * x**2
+			\begin{codeblock}[plot-fx-minus3-to-plus3]
 			>>> import numpy as np
 			>>> import seaborn as sns
-			>>> xs = np.linspace(0, 10, 1000)
-			>>> gxs = g(xs)
-			>>> sns.lineplot(x=xs, y=gxs, label="Graph of g(x)")
-			See Figure ¡\ref{fig:graph_of_function_g_eq_halfx2}¡ for the output.
+			>>> xs = np.linspace(-3, 3, 1000)
+			>>> fxs = f(xs)
+			>>> sns.lineplot(x=xs, y=fxs)
+			See Figure ¡\ref{fig:graph_of_function_f_eq_halfx2}¡ for the output.
 			\end{codeblock}
 	
 			\noindent
 			We import the module \tt{numpy} under the alias \tt{np}.
 			We use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs},
-			which contains 1000 input values that range from $x=0$ until $x=10$.
-			Next we apply the function $g$ to the array of inputs \tt{xs} and store the result in the array \tt{gxs},
+			which contains 1000 input values that range from $x=-3$ until $x=3$.
+			Next we apply the function $f$ to the array of inputs \tt{xs} and store the result in the array \tt{fxs},
 			which contains all the output values of the function for the input values \tt{xs}.
 			At this point,
-			the arrays \tt{xs} and \tt{gxs} contain $1000$ input-output pairs of the form $(x, g(x))$,
+			the arrays \tt{xs} and \tt{fxs} contain $1000$ input-output pairs of the form $(x, f(x))$,
 			which is exactly what we need to plot the graph of the function.
 			On the last line,
-			we call the function \tt{lineplot} to create the graph of $g(x)$,
-			which produces the plot shown in Figure~\ref{fig:graph_of_function_g_eq_halfx2}.
+			we call the function \tt{lineplot} to create the graph of $f(x)$,
+			which produces the plot shown in Figure~\ref{fig:graph_of_function_f_eq_halfx2}.
 	
 			\begin{figure}[htb]
 				\centering
-				\includegraphics[width=0.4\textwidth]{figures/graph_of_function_g_eq_halfx2.pdf}
+				\includegraphics[width=0.49\textwidth]{figures/calculus/graph_of_function_f_eq_halfx2.pdf}%
 				\vspace{-2mm}
-				\caption{	Graph of the function $g(x)=x$ from $x=0$ until $x=10$.}
-				\label{fig:graph_of_function_g_eq_halfx2}
-	\vspace{-4mm}
+				\caption{	Graph of the function $f(x)=\frac{1}{2}x^2$ from $x=-3$ until $x=+3$.
+						The graph of the function $f$
+						consists of all the coordinate pairs $(x,f(x))$
+						over some interval of $x$ values.
+				}
+				\label{fig:graph_of_function_f_eq_halfx2}
 			\end{figure}
 	
-	%			Note the steps we used to obtain the function graph in code~\ref{plot-gx-0-10}
+	%			Note the steps we used to obtain the function graph in code~\ref{plot-fx-minus3-to-plus3}
 	%			correspond exactly to the mathematical procedure for drawing the graph of $f(x)$:
 	%			draw the line that passes through all $(x, f(x))$ input-output pairs.
 	
@@ -248,49 +237,47 @@
 			\end{figure}
 	
 			For example,
-			if we compute the square root of a number, then square the result,
-			we obtain the original number,
-			since the quadratic function $x^2$ is the inverse of the square-root function $\sqrt{x}$.
-	
-			\begin{codeblock}[fun-inv-fun-combo-sqrt]
-			>>> np.sqrt(4)**2
-			4.0
+			when $x \geq 0$,
+			the inverse of the function $f(x) = \frac{1}{2}x^2$
+			is the function $f^{-1}(x) = \sqrt{2x}$.
+			Earlier we computed $f(3) = 4.5$,
+			and if we apply the inverse operation
+			we get $f^{-1}(4.5) = \sqrt{2 \cdot 4.5} = \sqrt{9} = 3$.
+
+			\begin{codeblock}[fun-inv-applied to input]
+			>>> from math import sqrt
+			>>> sqrt(2 * 4.5)
+			3.0
 			\end{codeblock}
-	
-			\noindent
-			The exponential function $e^x$ is the inverse of the logarithmic function $\log_e(x)$,
-			so if we compute the logarithm of a number then apply the exponential function,
+
+			The logarithmic function $\log_e(x)$ is the inverse of the exponential function $e^x$.
+			If if we compute the exponential function of a number,
+			then apply the logarithmic function,
 			we get back the original input.
 	
 			\begin{codeblock}[fun-inv-fun-combo-log]
-			>>> np.exp(np.log(4))
-			4.0
+			>>> from math import exp, log
+			>>> log(exp(5))
+			5.0
 			\end{codeblock}
 	
-			\noindent
-			In probability theory,
-			we often do calculations using the cumulative distribution function (CDF) $F_X \colon \calX \to [0,1]$,
-			and also use the inverse of the cumulative distribution function $F_X^{-1}\colon [0,1] \to \calX$.
-			Knowing about inverse functions (and the weird superscript $^{-1}$ notation used to describe them)
-			is useful for your conceptual understanding of these concepts:
-			instead of thinking about the inverse-CDF $F_X^{-1}$ as some new complicated concept you have to memorize,
-			you can think of $F_X^{-1}$ as the ``undo operation'' for $F_X$.
-			In other words,
-			$F_X$ and $F_X^{-1}$ describe the same mapping,
-			but used in opposite directions.
-	
-			%		$F_X(b) = q_b$
-			%		vs. $F_X^{-1}(q) = b_q$  how far in the sample space do I have to go to encompass proportion $q$ of the total probability.
-
 
 		\subsubsection{Function properties}
 
-			domain and range
+			It's important to keep track of the possible inputs and outputs for each function.
+			We use the notation $f \colon A \to B$
+			to denote a function from the input set $A$ to the output set $B$.
+			The set of allowed inputs is called the \emph{domain} of the function,
+			while the set of possible outputs is called the \emph{image} or \emph{range} of the function.
+			For example,
+			the domain of the function $f(x)= \frac{1}{2}x^2$
+			is $\mathbb{R}$ (any real number)
+			and it's image is $\mathbb{R}_+$ (nonnegative real numbers),
+			so we write it as $f \colon \mathbb{R} \to \mathbb{R}_+$.
 			
-			continuity:  informal definition + FWD ref to limit definition
-
-
-
+			Another important property is called \emph{continuity},
+			which roughly corresponds to ability to draw a function without lifting the pen.
+			We'll give a formal definition of continuity later in Section~\ref{limits:continuity}.
 
 
 	\subsection{Function inventory}
@@ -306,16 +293,39 @@
 		%gaussian-like erf $e^{-x^2}$
 		%sigmoid $\frac{1}{1-e^{-x}}$
 
-		\vspace{5in}
+		\vspace{2in}
 
 	\subsection{Geometry}
 
-		%area of a circle
-		%perimeter of a circle
-		%area of a rectangle
-		%area of a triangle
+		The area enclosed by a circle of radius $r$ is given by $A = \pi r^2$.
+		A circle of radius $r=1$ has area $\pi$.
 
-		\vspace{2in}
+		The circumference of a circle of radius $r$ is
+		\[
+		 C = 2 \pi r.
+		\]
+		A circle of radius $r=1$ has circumference $2\pi$.
+		%	For example,
+		%	the circumference of a circle of radius $3$\,m is $C=2\pi(3) =18.85$\,m.
+		%	This is how far you'll need to walk to complete a full turn around a circle of radius $r=3$\,m.
+		
+		The area of a rectangle of base $b$ and height $h$ is $A = bh$.
+
+		The area of a triangle is equal to $\frac{1}{2}$ times the length of its base times its height:	
+		\[
+			A = \tfrac{1}{2} a h_a.
+		\]
+		Note that $h_a$ is the height of the triangle \emph{relative to} the side $a$.
+
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.5\textwidth]{figures/calculus/geometry_areas_circle_rect_triangle.pdf}
+			% hexagon-octagon-dodecagon.png}
+			\vspace*{-8mm}
+			\caption{	Area formulas for circles, rectangles, and triangles.}
+			\label{fig:geometry_areas_circle_rect_triangle}
+		\end{figure}
 
 
 	\subsection{Trigonometry}

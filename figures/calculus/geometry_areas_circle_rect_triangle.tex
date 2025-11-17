@@ -1,0 +1,89 @@
+\documentclass[
+  tikz,
+  border=5pt,
+  varwidth=14cm,
+  convert={density=600,outext=.png,convertexe={magick}}
+]{standalone}
+
+\usepackage{tikz}
+
+% ===== Parameters =====
+% Horizontal spacing between panel origins (in TikZ length units, default = cm)
+\pgfmathsetmacro{\PanelSpacing}{4}    % try 2.8, 3.2, etc.
+% Scale factor for rectangle and triangle relative to original
+\pgfmathsetmacro{\RectTriScale}{1.3}    % 1.3 = 30% larger
+% Vertical position of captions
+\pgfmathsetmacro{\CaptionY}{-1}
+% Horizontal caption centers for rect/tri (base length was 2 → half is 1, scaled)
+\pgfmathsetmacro{\RectCaptionX}{\RectTriScale}
+\pgfmathsetmacro{\TriCaptionX}{\RectTriScale}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={font=\small}]
+
+  %----------------------
+  % Panel (a): circle
+  %----------------------
+  \begin{scope}[shift={(0,0)}]
+    % Circle of radius r
+    \draw (0,0.5) circle (1.4);
+    % Radius
+    \draw[<->] (0,0.5) -- (1.4,0.5);
+    \node[below] at (0.6,0.5) {$r$};
+
+    % Caption under panel
+    \node[below] at (0,\CaptionY) {(a) $A = \pi r^2$};
+  \end{scope}
+
+  %----------------------
+  % Panel (b): rectangle (scaled)
+  %----------------------
+  \begin{scope}[shift={(\PanelSpacing-0.7,0)}]
+    % Shape and dimension labels, scaled
+    \begin{scope}[scale=1.5]
+      % Rectangle
+      \draw (0,0) rectangle (2,1);
+      % Base b
+      \draw[<->] (0,-0.3) -- (2,-0.3);
+      \node at (1,-0.45) {$b$};
+      % Height h
+      \draw[<->] (-0.3,0) -- (-0.3,1);
+      \node at (-0.55,0.5) {$h$};
+    \end{scope}
+
+    % Caption (not scaled)
+    \node[below] at (\RectCaptionX,\CaptionY) {(b) $A = b h$};
+  \end{scope}
+
+  %----------------------
+  % Panel (c): right triangle (scaled)
+  %----------------------
+  \begin{scope}[shift={(2*\PanelSpacing,0)}]
+    % Shape and dimension labels, scaled
+    \begin{scope}[scale=\RectTriScale]
+      % Right triangle with base b and height h
+      \coordinate (A) at (0,0);
+      \coordinate (B) at (2,0);    % base b
+      \coordinate (C) at (0,1.2);  % height h
+      \draw (A) -- (B) -- (C) -- cycle;
+
+      % Right-angle marker at A
+      % \draw (0,0) -- (0.25,0) -- (0.25,0.25) -- (0,0.25) -- cycle;
+
+      % Base b
+      \draw[<->] (0,-0.3) -- (2,-0.3);
+      \node at (1,-0.45) {$b$};
+
+      % Height h
+      \draw[<->] (-0.3,0) -- (-0.3,1.2);
+      \node at (-0.55,0.6) {$h$};
+    \end{scope}
+
+    % Caption (not scaled)
+    \node[below] at (\TriCaptionX,\CaptionY) {(c) $A = \frac{1}{2} b h$};
+  \end{scope}
+
+\end{tikzpicture}
+
+\end{document}

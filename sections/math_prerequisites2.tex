@@ -33,6 +33,10 @@
 
 		\end{itemize}
 
+		
+		%	$S^c$: the \emph{complement} of the set $S$,
+		%	is defined as all elements that are not in the set $S$.
+		%	% TODO: explain assumption of "universe" and complement as all elements of the universe that are not in $S$.
 
 % (inP)
 	In probability theory,
@@ -52,8 +56,31 @@
 
 
 	\subsection{Functions}
-	
 
+		In probability theory,
+		we use functions to describe the probability distributions of random variables.
+		Discrete random variables are described by
+		a probability mass function of the form $f\colon \mathcal{X} \to \mathbb{R}$,
+		where the sample space $\mathcal{X}$
+		is either a finite set or a countably infinite set like the natural numbers $\mathbb{N}$.
+		Continuous random variables are described by probability density functions of the form 
+		$f\colon \mathcal{X} \to \mathbb{R}$,
+		where the sample space $\mathcal{X}$ is some subset of the real numbers $\mathbb{R}$.
+
+		\noindent
+		In probability theory,
+		we often do calculations using the cumulative distribution function (CDF) $F_X \colon \calX \to [0,1]$,
+		and also use the inverse of the cumulative distribution function $F_X^{-1}\colon [0,1] \to \calX$.
+		Knowing about inverse functions (and the weird superscript $^{-1}$ notation used to describe them)
+		is useful for your conceptual understanding of these concepts:
+		instead of thinking about the inverse-CDF $F_X^{-1}$ as some new complicated concept you have to memorize,
+		you can think of $F_X^{-1}$ as the ``undo operation'' for $F_X$.
+		In other words,
+		$F_X$ and $F_X^{-1}$ describe the same mapping,
+		but used in opposite directions.
+
+		%		$F_X(b) = q_b$
+		%		vs. $F_X^{-1}(q) = b_q$  how far in the sample space do I have to go to encompass proportion $q$ of the total probability.
 
 
 	\subsection{Function inventory}

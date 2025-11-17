@@ -1,0 +1,101 @@
+\documentclass[
+  tikz,
+  convert={density=600,outext=.png,convertexe={magick}},
+  varwidth=14cm
+]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+
+% PARAMETERS ------------------------------------------------------
+\def\PanelSep{4.8} % horizontal separation between centers (in cm)
+
+% MACRO: Inscribed polygon ---------------------------------------
+% #1 [optional] = "triangle" to highlight right triangle (0 to pi/8 when N=8)
+% #2 = center coordinate, e.g. (0,0)
+% #3 = radius, e.g. 2cm
+% #4 = number of sides, e.g. 6, 8, 12
+\newcommand{\InscribedPolygon}[4][]{%
+  \def\TriangleFlag{#1}%
+  \begin{scope}[shift={#2}]
+    % Circumcircle
+    \draw (0,0) circle (#3);
+
+    % Precompute n, n-1, and rotation offset (pi/n in degrees)
+    \pgfmathtruncatemacro{\N}{#4}
+    \pgfmathtruncatemacro{\NmOne}{\N-1}
+    \pgfmathsetmacro{\Offset}{180/\N}
+
+    % Filled polygon
+    \fill[blue!10]
+      ({\Offset}:#3)
+      \foreach \k in {1,...,\NmOne}{ -- ({\Offset + 360/\N*\k}:#3)}
+      -- cycle;
+
+    % Polygon outline
+    \draw
+      ({\Offset}:#3)
+      \foreach \k in {1,...,\NmOne}{ -- ({\Offset + 360/\N*\k}:#3)}
+      -- cycle;
+
+    % Optional right triangle from 0 to pi/8 (for N=8), with sides a, b, hypotenuse r
+    \ifx\TriangleFlag\empty
+      % do nothing
+    \else
+      % angle theta at the center
+      \pgfmathsetmacro{\Theta}{180/\N} % = pi/8 in degrees when N=8
+
+      % Define points:
+      % O = origin
+      % F = projection of radius at angle theta onto x-axis
+      % H = point on the circle at angle theta
+      \path (0,0) coordinate (O);
+      \path ({#3*cos(\Theta)},0) coordinate (F);
+      \path ({#3*cos(\Theta)},{#3*sin(\Theta)}) coordinate (H);
+
+      % Highlight triangle OFH with line + blue!20 shading
+      \filldraw[blue!20, draw=blue, line width=1pt]
+        (O) -- (F) -- (H) -- cycle;
+
+      % Label hypotenuse r
+      \path (O) -- (H) node[midway, above] {$r$};
+
+      % Label horizontal side a
+      \path (O) -- (F) node[midway, below] {$a$};
+
+      % Label vertical side b
+      \path (F) -- (H) node[midway, left] {$b$};
+
+      % Label angle theta at the center
+      \draw pic[
+        draw=black,
+        -,
+        angle radius=0.5cm,
+        angle eccentricity=1.4,
+        "$\theta$"
+      ] {angle = F--O--H};
+    \fi
+  \end{scope}%
+}
+
+% DOCUMENT --------------------------------------------------------
+\begin{document}
+\begin{tikzpicture}[font=\small]
+
+  % three x-positions based on spacing parameter
+  \pgfmathsetmacro{\Xb}{\PanelSep}        % center of 2nd panel
+  \pgfmathsetmacro{\Xc}{2*\PanelSep}      % center of 3rd panel
+
+  % Panel (a)
+  \InscribedPolygon{(0,0)}{2cm}{6}
+  \node[below=6pt] at (0,-2cm) {\large (a) $n=6$.};
+
+  % Panel (b)
+  \InscribedPolygon[triangle]{(\Xb,0)}{2cm}{8}
+  \node[below=6pt] at (\Xb,-2cm) {\large (b) $n=8$.};
+
+  % Panel (c)
+  \InscribedPolygon{(\Xc,0)}{2cm}{12}
+  \node[below=6pt] at (\Xc,-2cm) {\large (c) $n=12$.};
+
+\end{tikzpicture}
+\end{document}
