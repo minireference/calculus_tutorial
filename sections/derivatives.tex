@@ -3,448 +3,521 @@
 \section{Derivatives}
 \label{sec:derivatives}
 
-		The \emph{derivative} function, denoted $f'(x)$, $\frac{d}{dx}f(x)$, or $\frac{df}{dx}$, 				\index{derivative}
-		describes the \emph{rate of change} of the function $f(x)$.
-		For example,
-		the constant function $f(x)=c$ has derivative $f'(x)=0$ since the function $f(x)$ does not change at all.
-		The derivative function describes the \emph{slope} of the graph of the function $f(x)$.
-		The derivative of a line $f(x)=mx+b$ is $f'(x)=m$,
-		since the slope of this line is equal to $m$.
-		In general,
-		the slope of a function is different at different values of~$x$,
-		so mathematicians invented a new notation for describing ``the slope (rate of change) of the function $f(x)$''
-		and obtained formulas for finding the derivative of any function.
+	The \emph{derivative} function, denoted $f'(x)$, $\frac{d}{dx}f(x)$, or $\frac{df}{dx}$,
+	describes the \emph{rate of change} of the function $f(x)$.
+	For example,
+	the constant function $f(x)=c$ has derivative $f'(x)=0$ since the function $f(x)$ does not change at all.
+	The derivative function describes the \emph{slope} of the graph of the function $f(x)$.
+	The derivative of a line $f(x)=mx+b$ is $f'(x)=m$,
+	since the slope of this line is equal to $m$
+	for all values of $x$.
+	%
+	In general,
+	the slope of a function is different at different values of~$x$,
+	so mathematicians invented a new notation $f'(x)$
+	for describing ``the slope of the function $f$ at $x$.''
 
-		The derivative function $f'(x)$ is defined as the rate of change of the function $f$ at $x$:
-		\[
-			f'(x) = \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}\,.
-		\]
-		In words,
-		this formula describes the general rise-over-run calculation for computing the slope of a line that connects
-		the points $(x,f(x))$ and $(x+\delta, f(x+\delta))$,
-		with the step-length $\delta$ becoming infinitely small.
+	The derivative function $f'(x)$
+	is defined as the rate of change of the function $f$ at $x$,
+	and it is computed using the formula:
+	\[
+		f'(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}\,.
+	\]
+	In words,
+	this formula describes the general rise-over-run calculation for computing the slope of a line that connects
+	the points $(x,f(x))$ and $(x+\delta, f(x+\delta))$,
+	with the step-length $\delta$ becoming infinitely small.
 
-		%	The definition of the derivative comes from the rise-over-run formula for calculating the slope of a line:
-		%	\[
-		%	  \frac{ \textrm{rise} } { \textrm{run} } = \frac{ \Delta y } { \Delta x } 
-		%		=  \frac{y_f - y_i}{x_f - x_i} = 
-		%		\frac{f(x+\delta)\ - \ f(x)}{x + \delta \  -\  x}.
-		%	\]
-		%	By making $\delta$ tend to zero in the above expression,
-		%	we're performing a rise-over-run of the function $f(x)$ at a point.
-
-
-		Geometrically,
-		the derivative function computes the slope of the graph of the function $f(x)$ for all values of $x$.
-		In general,
-		the slope of a function is different for different values of $x$.
-		Figure~\ref{fig:derivative_as_slope_small-0} shows the slope calculation for the function $f(x) = \frac{1}{2}x^2$
-		for two different values of $x$: $x=-0.5$ and $x=1$.
-		% the slope of the function is the same as the line passing through this point
+	%	The definition of the derivative comes from the rise-over-run formula for calculating the slope of a line:
+	%	\[
+	%	  \frac{ \textrm{rise} } { \textrm{run} } = \frac{ \Delta y } { \Delta x } 
+	%		=  \frac{y_f - y_i}{x_f - x_i} = 
+	%		\frac{f(x+\delta)\ - \ f(x)}{x + \delta \  -\  x}.
+	%	\]
+	%	By making $\delta$ tend to zero in the above expression,
+	%	we're performing a rise-over-run of the function $f(x)$ at a point.
 
 
-		\begin{figure}[htb]
-			\centering
-			\includegraphics[width=0.5\textwidth]{figures/calculus/derivative_as_slope_small-0.pdf}
-			\caption{	The derivative of the function at $x=a$ is denoted $f'(a)$ and describes the slope function at that point.}
-			%	\caption{	The diagram illustrates how to compute the derivative of the function $f(x)=\tfrac{1}{2}x^2$
-			%			at three different points on the graph of the function.
-			%			To calculate the derivative of $f(x)$ at $x=1$, 
-			%			we can ``zoom in'' near the point $(1,\tfrac{1}{2})$ and 
-			%			draw a line that has the same slope as the function.
-			%	 	 	We can then calculate the slope of the line using a rise-over-run calculation,
-			%			aided by the mini coordinate system that is provided.
-			%			The derivative calculations for $x=-\tfrac{1}{2}$ and  $x=2$ are also shown.
-			%			Note that the slope of the function is different for each value of $x$. 
-			%			What is the value of the derivative at $x=0$?
-			%			Can you find the general pattern?}
-			\label{fig:derivative_as_slope_small-0}
-		\end{figure}
+	Geometrically,
+	the derivative function computes the slope of the graph of the function $f(x)$ for all values of $x$.
+	In general,
+	the slope of a function is different for different values of $x$.
+	Figure~\ref{fig:derivative_as_slope_small-0} shows the slope calculation for the function $f(x) = \frac{1}{2}x^2$
+	for two different values of $x$: $x=-0.5$ and $x=1$.
+	% the slope of the function is the same as the line passing through this point
 
 
-		%	Derivatives occur so often in math that people have devised many ways to denote them:
-		%	\[
-		%	    Df(x) \equiv f'(x) \equiv  \frac{d}{dx}f(x) \equiv \frac{df}{dx} \equiv \frac{dy}{dx} \equiv \nabla f.
-		%	\]
-		%	Don't be fooled by this multitude of notations---all of them refer to the same concept.
-
-		% TODO: mention the derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
-		The derivative function $f'(x)$ is a property of the function $f(x)$.
-		Indeed, this is where the name \emph{derivative} comes from:
-		$f'(x)$ is not an independent function---it is \emph{derived} from the original function $f(x)$.
-		
-		The \emph{derivative operator}, 
-		denoted $\frac{d}{dx}$ or simply $D$, 
-		takes as input a function $f(x)$ and produces as output the derivative function $f'(x)$,
-		which is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
-		For each input $x_0$ the derivative function tells you the slope of $f(x)$ when $x=x_0$.
-		Applying the derivative operator to a function is also called ``taking the derivative'' of a function.
-		
-		For example, 
-		the derivative of the function $f(x)=\tfrac{1}{2}x^2$ is the function $f'(x)=x$.
-		We can describe this relationship as $(\tfrac{1}{2}x^2)^{\prime} = x$
-		or as $\tfrac{d}{dx}(\tfrac{1}{2}x^2)=x$.
-		Look at Figure~\ref{fig:derivative_as_slope} and use the graph to prove to yourself
-		that the slope of $f(x)=\tfrac{1}{2}x^2$ is described by $f'(x)=x$ everywhere on the graph.
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/calculus/derivative_as_slope_small-0.pdf}
+		\caption{	The derivative of the function at $x=a$ is denoted $f'(a)$ and describes the slope function at that point.}
+		%	\caption{	The diagram illustrates how to compute the derivative of the function $f(x)=\tfrac{1}{2}x^2$
+		%			at three different points on the graph of the function.
+		%			To calculate the derivative of $f(x)$ at $x=1$, 
+		%			we can ``zoom in'' near the point $(1,\tfrac{1}{2})$ and 
+		%			draw a line that has the same slope as the function.
+		%	 	 	We can then calculate the slope of the line using a rise-over-run calculation,
+		%			aided by the mini coordinate system that is provided.
+		%			The derivative calculations for $x=-\tfrac{1}{2}$ and  $x=2$ are also shown.
+		%			Note that the slope of the function is different for each value of $x$. 
+		%			What is the value of the derivative at $x=0$?
+		%			Can you find the general pattern?}
+		\label{fig:derivative_as_slope_small-0}
+	\end{figure}
 
 
+	%	Derivatives occur so often in math that people have devised many ways to denote them:
+	%	\[
+	%	    Df(x) \equiv f'(x) \equiv  \frac{d}{dx}f(x) \equiv \frac{df}{dx} \equiv \frac{dy}{dx} \equiv \nabla f.
+	%	\]
+	%	Don't be fooled by this multitude of notations---all of them refer to the same concept.
 
+	% TODO: mention the derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+	The derivative function $f'(x)$ is a property of the function $f(x)$.
+	Indeed, this is where the name \emph{derivative} comes from:
+	$f'(x)$ is not an independent function---it is \emph{derived} from the original function $f(x)$.
+	
+	The \emph{derivative operator}, 
+	denoted $\frac{d}{dx}$ or simply $D$, 
+	takes as input a function $f(x)$ and produces as output the derivative function $f'(x)$,
+	which is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+	For each input $x_0$ the derivative function tells you the slope of $f(x)$ when $x=x_0$.
+	Applying the derivative operator to a function is also called ``taking the derivative'' of a function.
+	%
+	For example, 
+	the derivative of the function $f(x)=\tfrac{1}{2}x^2$ is the function $f'(x)=x$.
+	We can describe this relationship as $(\tfrac{1}{2}x^2)^{\prime} = x$
+	or as $\tfrac{d}{dx}(\tfrac{1}{2}x^2)=x$.
+	Look at Figure~\ref{fig:derivative_as_slope} and use the graph to prove to yourself
+	that the slope of $f(x)=\tfrac{1}{2}x^2$ is described by $f'(x)=x$ everywhere on the graph.
 
 
 	\subsection{Numerical derivative calculations}
 
-LETS SEE SOME CODE
+		Here is a simple computer program for computing
+		a numerical approximations to the derivative the function \tt{f} at the point \tt{x}:
 
-
-		Here is a simple computer program for computing the numerical approximations to the derivative of any function at any point:
-		
 		\begin{codeblock}[]
-		def differentiate(func, x, delta):
-		    """
-		    Compute the slope of the function `func` at `x` using
-		    the rise-over-run calculation with run of length `delta`.
-		    """
-		    rise = func(x+delta) - func(x)
-		    run = delta
-		    return rise/run
+		>>> def differentiate(f, x, delta=1e-9):
+		        df = f(x+delta) - f(x)
+		        dx = delta
+		        return df / dx
 		\end{codeblock}
 
-
-		
-		\vspace{-3mm}
 		\noindent
-		You can then define the function $f=\frac{1}{2}x^2$ using the code
+		The code performs the same calculation as in the definition of the derivative,
+		but using a finite step $\tt{delta} = 10^{-9}$
+		instead of the infinitely small step $\delta$ described by the limit calculation.
+
+		Consider the Python function \tt{f} that corresponds to the math function $f=\frac{1}{2}x^2$.
+		We can use \tt{differentiate} to evaluate the derivative the function when $x=1$: 
 
 		\begin{codeblock}[]
-		def f(x):
-		    return 0.5*x**2
+		>>> def f(x):
+		        return 0.5 * x**2
+		>>> differentiate(f, 1)
+		1.000000082740371
 		\end{codeblock}
 		
 		\noindent
-		and compute the derivative at any point $x$ by calling the function \texttt{differentiate(f,x,delta)},
-		where \texttt{delta} is some small number.
-		
-		Here are some of the outputs of the differentiation procedure at $x=1$
-		using different values of horizontal ``run'' parameter \texttt{delta}:
-		\begin{itemize}
-			\item	The output of \texttt{differentiate(f,x=1,delta=0.01)} is $1.005$,
-				which is within $0.5\%$ of the exact answer $f'(1)=1$.
-			\item	The output of \texttt{differentiate(f,x=1,delta=0.001)} is $1.0005$,
-				which is within within $0.05\%$ accuracy of the exact answer.
-			\item The output for \texttt{differentiate(f,1,0.0001)} is $1.00005$,
-				which is an even more accurate approximation of the exact value.
-			\item	The output of \texttt{differentiate(f,1,0.00001)} is $1.000005$.
-		\end{itemize}
-		Note the approximations get more and more accurate as the parameter \texttt{delta} decreases.
+		We obtain the approximation $f'(1) = 1.000000082740371$,
+		which is not perfect but pretty close to the true value $f'(1) = 1$.
 		For most practical applications,
-		we can always choose a sufficient small \texttt{delta}
-		so the fact that numeric approximations computed are a little bit ``off'' does not become a problem.
+		this approximation is good enough.
 
-%		The mathematical notion of a limit describes logical continuation of the above thinking with where the parameter $\code{delta}$ becomes infinitely small.
-%		The mathematical definition $f'(x) \equiv \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
-%		allows us to find a closed form expression for the derivative function that applies for all values of $x$.
-%		Finding the exact formula for the derivative requires a little bit more work upfront (to simplify an expressions that involves Greek symbols),
-%		but once you find the exact formula for the derivative $f'(x)$,
-%		you can compute the slope of $f(x)$ at the point $x=c$ by simply evaluating the the derivative function at that point:
-%		$f'(c) = \{ \textrm{the slope of} \ f(x) \ \textrm{at} \ x=c\}$.
-
-
-
-
-% SYMPY DERIVATIVES
-%
-%	The code below shows how to compute the derivative of the function $f(x) = mx +b$.
-%
-%	\begin{codeblock}[sympy-diff-line]
-%	>>> from sympy import diff
-%	>>> f = b + m*x
-%	>>> diff(f, x)
-%	m
-%	\end{codeblock}
-%
-%	\noindent
-%	In words,
-%	this calculation tells us the derivative of the function $f(x) = mx +b$ is the constant function $f'(x)=m$.
-%	The expression \tt{diff(f,x)} tells SymPy to compute the derivative of the expression \tt{f} with respect to the variable \tt{x}.
-%
-%	Let's now define the function $f(x) = \frac{c}{2}x^2$ and compute its derivative.
-%
-%	\begin{codeblock}[sympy-diff-quadratic]
-%	>>> f = c/2 * x**2
-%	>>> diff(f, x)
-%	c*x
-%	\end{codeblock}
-%
-%	\noindent
-%	The derivative function is $f'(x)=cx$.
-%	See the plot in Figure~\ref{fig:derivative_as_slope_small-0} for an illustration of the case when $c=1$.
-%
-%	Here is another example of a complicated-looking function $f$,
-%	that includes an exponential, a trigonometric, and a logarithmic function:
-%
-%	\begin{codeblock}[sympy-diff-fancy-mix]
-%	>>> from sympy import log, exp, sin
-%	>>> f = exp(x) + sin(x) + log(x)
-%	>>> diff(f, x)
-%	exp(x) + cos(x) + 1/x
-%	\end{codeblock}
-%
-%	\noindent
-%	As you can see,
-%	using the function SymPy function \tt{diff} allows you to compute the derivative function for any function $f(x)$.
+		%	The mathematical definition
+		%	$f'(x) \eqdef \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
+		%	allows us to find a closed form expression for the derivative function
+		%	that applies for all values of $x$.
+		%	Finding the exact formula for the derivative requires a little bit more work upfront
+		%	(to simplify an expressions that involves Greek symbols),
+		%	but once you find the exact formula for the derivative $f'(x)$,
+		%	you can compute the slope of $f(x)$ at the point $x=c$
+		%	by simply evaluating the the derivative function at that point:
+		%	$f'(c) = \{ \textrm{the slope of} \ f(x) \ \textrm{at} \ x=c\}$.
 
 
-		\subsection{Derivative formulas}
-		\label{mathematical_preliminiaries:derivative_formulas}
+
+	\subsection{Derivative formulas}
+	
+		You don't need to apply the complicated derivative formula
+		$f'(x) \eqdef \lim_{\delta \to 0}\frac{f(x+\delta)-f(x)}{\delta}$
+		every time you need to find the derivative of a function.
+		For each function $f(x)$,
+		it's enough to use the complicated formula once
+		and record the formula you obtain for $f'(x)$,
+		then you can reuse that formula
+		whenever you need to compute $f'(x)$ in a later calculation.
+
+		The following table shows the derivative formulas
+		for a number of commonly used functions.
+		{\allowdisplaybreaks
+		\begin{align*}
+		f(x)			&  \ -\textrm{derivative}\to  \   		f'(x)		\\
+		%	F(x)			&  \ - \textrm{ derivative } \to  \quad		F'(x)		\\
+		%	\int f(x)\;dx   	& \ \ \leftarrow \textrm{ integral } -   \quad 	f(x)     	\\
+		a			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				0		\\
+		\alpha f(x)+ \beta g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\alpha f'(x)+ \beta g'(x)	\\
+		x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				1		\\
+		mx+b			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				m		\\
+		%	af(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				af'(x)		\\
+		%	f(x)+g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				f'(x)+g'(x)	\\
+		x^n			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				nx^{n-1}	\\
+		\tfrac{1}{x} =  x^{-1}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tfrac{-1}{x^2} = -x^{-2}		\\
+		\sqrt{x} = x^{\frac{1}{2}}	&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tfrac{1}{2\sqrt{x}} = \tfrac{1}{2}x^{-\frac{1}{2}}	\\
+		e^x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				e^x	\\
+		% a^x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				a^x\ln(a)	\\
+		\ln(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\tfrac{1}{x}		\\
+		% \log_a(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				(x\ln(a))^{-1}	\\
+		\sin(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cos(x)		\\
+		\cos(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				-\sin(x)
+		% \tan(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sec^2(x)\equiv\cos^{-2}(x)
+		%	\csc(x) \equiv \frac{1}{\sin(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\sin^{-2}(x)\cos(x)	\\
+		%	\sec(x) \equiv \frac{1}{\cos(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tan(x)\sec(x)	\\
+		%	\cot(x) \equiv \frac{1}{\tan(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\csc^2(x)	\\
+		%	\sin^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{\sqrt{1-x^2}}	\\
+		%	\cos^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{-1}{\sqrt{1-x^2}}	\\
+		%	\tan^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{1+x^2}	\\
+		%	\sinh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cosh(x)	\\
+		%	\cosh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sinh(x)	
+		\end{align*}% 
+		}
 		
-			You don't need to apply the complicated derivative formula $f'(x) \equiv \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
-			every time you need to find the derivative of a function.
-			For each function $f(x)$,
-			it's enough to use the complicated formula once and record the formula you obtain for $f'(x)$,
-			then you can reuse that formula whenever it comes up again in a calculation.
-			Indeed,
-			that's what most scientists and engineers do---whenever they need to know the derivative of some function $f(x)$,
-			the lookup the answer in a table of derivative formulas.
+		\vspace{-2mm}
 
-			The following table shows the derivative formulas for a number of commonly used functions.								\index{derivative} \index{integral}
+		\noindent
+		I invite you to mentally bookmark this page so you can come back to it when derivatives come up.
 
-			{\allowdisplaybreaks
-			\begin{align*}
-			f(x)			&  \ -\textrm{derivative}\to  \   		f'(x)		\\
-			%	F(x)			&  \ - \textrm{ derivative } \to  \quad		F'(x)		\\
-			%	\int f(x)\;dx   	& \ \ \leftarrow \textrm{ integral } -   \quad 	f(x)     	\\
-			a			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				0		\\
-			\alpha f(x)+ \beta g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\alpha f'(x)+ \beta g'(x)	\\
-			x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				1		\\
-			%	af(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				af'(x)		\\
-			%	f(x)+g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				f'(x)+g'(x)	\\
-			x^n			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				nx^{n-1}	\\
-			\frac{1}{x}\equiv x^{-1}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\frac{-1}{x^2} \equiv -x^{-2}		\\
-			\sqrt{x} \equiv x^{\frac{1}{2}}	&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\frac{1}{2\sqrt{x}} \equiv \frac{1}{2}x^{-\frac{1}{2}}	\\
-			e^x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				e^x	\\
-			a^x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				a^x\ln(a)	\\
-			\ln(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{x}		\\
-			\log_a(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				(x\ln(a))^{-1}	\\
-			\sin(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cos(x)		\\
-			\cos(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				-\sin(x)	\\
-			\tan(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sec^2(x)\equiv\cos^{-2}(x)
-			%	\csc(x) \equiv \frac{1}{\sin(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\sin^{-2}(x)\cos(x)	\\
-			%	\sec(x) \equiv \frac{1}{\cos(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tan(x)\sec(x)	\\
-			%	\cot(x) \equiv \frac{1}{\tan(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\csc^2(x)	\\
-			%	\sin^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{\sqrt{1-x^2}}	\\
-			%	\cos^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{-1}{\sqrt{1-x^2}}	\\
-			%	\tan^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{1+x^2}	\\
-			%	\sinh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cosh(x)	\\
-			%	\cosh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sinh(x)	
-			\end{align*}
-			}
+
+	\subsection{Derivative rules}
+
+		In addition to the table of derivative formulas show above,
+		there are some important derivatives rules
+		that allow you to find derivatives of \emph{composite} functions.
+
+		\paragraph{Linearity}		
+			The derivative is a \emph{linear} operation, which means:								\index{linearity}
+			\vspace{1mm}
+			\[
+				\frac{d}{dx} \left[\alpha f(x) + \beta g(x)\right]
+				=
+				\alpha \frac{d}{dx}f(x) + \beta \frac{d}{dx}g(x).
+			\]
 			
 			\noindent
-			We'll be using these derivative formulas a lot in Section~\ref{sec:continuous_prob_distr},
-			so it's a good idea to mentally bookmark this page so you can come back to it when derivatives come up.
+			In other words,
+			the derivative of a linear combination of functions $\alpha f(x) + \beta g(x)$ is equal 
+			to the same linear combination of the derivatives $\alpha f'(x) + \beta g'(x)$.
+
+		\paragraph{Product rule}
+
+			The derivative of a product of two functions is obtained as follows:
+			\[
+				\left[ f(x)g(x) \right]^\prime 	= f^\prime(x)g(x)  + f(x)g^\prime(x).
+			\]
+			In each term,
+			the derivative of one of the functions
+			is multiplied by the other function.
 
 
+		\paragraph{Quotient rule}
 
-		\subsection{Derivative rules}
-
-			In addition to the table of derivative formulas show above,
-			there are some important derivatives rules that you should know about.
-			These rules will allow you to find derivatives of \emph{composite} functions.
-
-			\paragraph{Linearity}		
-				The derivative is a \emph{linear} operation, which means:								\index{linearity}
-				\vspace{1mm}
-				\[
-					\frac{d}{dx} \left[\alpha f(x) + \beta g(x)\right]
-					=
-					\alpha \frac{d}{dx}f(x) + \beta \frac{d}{dx}g(x).
-				\]
-				
-				\noindent
-				In other words,
-				the derivative of a linear combination of functions $\alpha f(x) + \beta g(x)$ is equal 
-				to the same linear combination of the derivatives $\alpha f'(x) + \beta g'(x)$.
-
-			\paragraph{Product rule}
-				The derivative of a product of two functions is obtained as follows:									\index{product rule|textit}
-				\[
-				 \left[ f(x)g(x) \right]^\prime 
-				 = f^\prime(x)g(x)  + f(x)g^\prime(x).
-				\]
-
-				The product rule also applies to the product of three functions $f(x)g(x)h(x)$,
-				for which the derivative is
-				\[
-				 \left[ f(x)g(x)h(x) \right]^\prime 
-					 =
-					 f'(x)g(x)h(x) + 
-					 f(x)g'(x)h(x) + 
-					 f(x)g(x)h'(x).
-				\]
-				For each term,
-				take the derivative of one of the functions and multiply this derivative by the other two functions:
+			The \emphindexdef{quotient rule} tells us how to obtain the derivative of a fraction of two functions:
+			\[
+				\left[ \frac{f(x)}{g(x)}\right]^\prime=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}.
+			\]
+			
+			
+		\paragraph{Chain rule}
+			If you encounter a situation that includes an inner function and an outer function,
+			like $f(g(x))$, you can obtain the derivative by a two-step process:
+			\[
+				\left[ f(g(x)) \right]^\prime = f^\prime(g(x))g^\prime(x).
+			\]
+			
+			\noindent
+			In the first step, leave the inner function $g(x)$ alone,
+			and focus on taking the derivative of the outer function $f(x)$.
+			This step gives us $f'(g(x))$,
+			the value of $f'$ evaluated at $g(x)$.
+			As the second step,
+			we multiply the resulting expression by the derivative of the \emph{inner} function $g'(x)$.
 
 
-			\paragraph{Quotient rule}
-				The \emphindexdef{quotient rule} tells us how to obtain the derivative of a fraction of two functions:
-				
-				\[
-					\left[ \frac{f(x)}{g(x)}\right]^\prime=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}.
-				\]
-				
-				
-			\paragraph{Chain rule}
-				If you encounter a situation that includes an inner function and an outer function,						\index{chain rule|textit}
-				like $f(g(x))$, you can obtain the derivative by a two-step process:		
-				\[
-				 \left[ f(g(x)) \right]^\prime
-				 =
-				 f^\prime(g(x))g^\prime(x).
-				\]%
-				
-				\noindent
-				In the first step, leave the inner function $g(x)$ alone,
-				and focus on taking the derivative of the outer function $f(x)$.
-				This step gives us $f'(g(x))$,
-				the value of $f'$ evaluated at $g(x)$.
-				As the second step,
-				we multiply the resulting expression by the derivative of the \emph{inner} function $g'(x)$.
+	\subsection{Higher derivatives}
 
-				The chain rule so applies to functions of functions of functions $f(g(h(x)))$.
-				To take the derivative,
-				start from the outermost function and work your way toward $x$.
-				\[
-				 \left[ f(g(h(x))) \right]^\prime 
-					 =
-					 f'(g(h(x)))
-					 g'(h(x))
-					 h'(x).
-				\]
+		The second derivative of $f(x)$ is denoted $f^{\prime\prime}(x)$ or $\frac{d^2f}{dx^2}$.
+		It is obtained by applying the derivative operator $\frac{d}{dx}$ to $f(x)$ twice.
+		The second derivative $f^{\prime\prime}(x)$ encodes the information about the \emph{curvature} of $f(x)$.
+		Positive curvature means the function opens upward,
+		and looks like the bottom of a valley.
+		The function $f(x)=\frac{1}{2}x^2$ shown in Figure~\ref{fig:derivative_as_slope_small-0} 
+		has derivative $f'(x)=x$ and second derivative $f''(x)=1$,
+		which means it has positive curvature.
+		Negative curvature means the function opens downward,
+		and looks like a mountain peak.
+		For example, the function $g(x) = -x^2$ has negative curvature.
 
 
-		\subsection{Examples}
-		
-			The above rules define \emph{all} you need to know to take the derivative of any function, 
-			no matter how complicated.
-			Let's look at some examples.
-
-			\paragraph{Example 1}
-				To calculate the derivative of $f(x) = e^{x^2}$,
-				we use the chain rule: $f'(x) = e^{x^2}[x^2]'  = e^{x^2}2x$.
+	\subsection{Examples}
 	
-			\paragraph{Example 2}
-				To find the derivative of $f(x) = \sin(x)e^{x^2}$,
-				we use the product rule and the chain rule: $f'(x) = \cos(x)e^{x^2} + \sin(x)2xe^{x^2}$.
-	
-			\paragraph{Example 3}
-				To compute the derivative of $f(x) = \sin(x)e^{x^2}\ln(x)$,
-				we apply the product rule for three terms: 
-				$f'(x) = \cos(x)e^{x^2}\ln(x) + \sin(x)2xe^{x^2}\ln(x) + \sin(x)e^{x^2}\frac{1}{x}$.
-	
-			\paragraph{Example 4}
-				The derivative of $\sin(x^2)$ requires using the chain rule:
-				$\left[ \sin(x^2) \right]^\prime =  \cos(x^2)\left[x^2\right]' =  \cos(x^2)2x$.
+		Armed with these derivative formulas and rules,
+		you can the derivative of any function,
+		no matter how complicated.
+		Let's look at some examples.
 
-			\paragraph{Example 5}
-				The derivative of $\sin( \ln( x^3) )$ requires the triple chain rule:
-				\begin{align*}
-				   \!\left[ \sin( \ln( x^3) )  \right]^\prime
-				   	&= \cos( \ln(x^3) ) \!\left[ \ln(x^3)  \right]^\prime 			\\
-				   	&= \cos( \ln(x^3) )\tfrac{1}{x^3}\!\left[ x^3 \right]^\prime 	\\
-					%	  = \cos( \ln(x^3) ) \frac{1}{x^3} 3x^2 
-					&= \cos( \ln(x^3) ) \tfrac{3}{x}\,.
-				\end{align*}
-				Simple, right?
+		\paragraph{Example 1}
+			To calculate the derivative of $f(x) = e^{x^2}$,
+			we use the chain rule: $f'(x) = e^{x^2}[x^2]'  = e^{x^2}2x$.
 
-			%	\paragraph{Example 6}
-			%		To find the derivative of $f(x) = \sin\!\left( \cos\!\left( \tan(x) \right) \right)$,
-			%		we need the triple chain rule again:
-			%		\begin{align*}
-			%		 f'(x) 
-			%		 & = \cos\!\left( \cos\!\left( \tan(x) \right) \right)
-			%		  \left[ \cos\!\left( \tan(x) \right) \right]^\prime \\
-			%		 & = -\cos\!\left( \cos\!\left( \tan(x) \right) \right)
-			%		  \sin\!\left( \tan(x) \right)\left[ \tan(x) \right]^\prime \\
-			%		 & = -\cos\!\left( \cos\!\left( \tan(x) \right) \right)
-			%		  \sin\!\left( \tan(x) \right)\sec^2(x).
-			%		\end{align*}
+		\paragraph{Example 2}
+			To find the derivative of $f(x) = \sin(x)e^{x^2}$,
+			we use the product rule and the chain rule: $f'(x) = \cos(x)e^{x^2} + \sin(x)2xe^{x^2}$.
+	
+		\paragraph{Example 3}
+			The derivative of $\sin(x^2)$ requires using the chain rule:
+			$\left[ \sin(x^2) \right]^\prime =  \cos(x^2)\left[x^2\right]' =  \cos(x^2)2x$.
+
+
+
+
+	\subsection{Computing derivatives analytically using SymPy}
+
+		The \texttt{SymPy} function \texttt{diff} computes the derivative of any expression.
+		For example,
+		here is how we can compute the derivative of the function $f(x) = mx +b$:
+
+		\begin{codeblock}[sympy-diff-line]
+		>>> m, x, b = sp.symbols("m x b")
+		>>> sp.diff(m*x + b, x)
+		m
+		\end{codeblock}
+
+		\noindent		
+		Let's also verify the derivative formula $\tfrac{d}{dx}[x^n] = nx^{n-1}$:
+
+		\begin{codeblock}[]
+		>>> x, n = sp.symbols("x n")
+		>>> sp.diff(x**n, x)
+		n * x**(n - 1)
+		\end{codeblock}
+
+		\noindent
+		The exponential function $f(x)=e^x$ is special because it is equal to its derivative:
+
+		\begin{codeblock}[]
+		>>> from sympy import exp
+		>>> sp.diff(exp(x), x)
+		exp(x)
+		\end{codeblock}
+
+		\noindent
+		Let's check the derivative calculations from the above examples:
+
+		\begin{codeblock}[]
+		>>> sp.diff(sp.exp(x**2), x)
+		2*x*exp(x**2)
+		>>> sp.diff(sp.sin(x)*sp.exp(x**2), x)
+		2*x*exp(x**2)*sin(x) + exp(x**2)*cos(x)
+		>>> sp.diff(sp.sin(x**2), x)
+		2*x*cos(x**2)
+		\end{codeblock}
+
+		% SYMPY DERIVATIVES
+		%
+		%
+		%	\noindent
+		%	In words,
+		%	this calculation tells us the derivative of the function $f(x) = mx +b$ is the constant function $f'(x)=m$.
+		%	The expression \tt{diff(f,x)} tells SymPy to compute the derivative of the expression \tt{f} with respect to the variable \tt{x}.
+		%
+		%	Let's now define the function $f(x) = \frac{c}{2}x^2$ and compute its derivative.
+		%
+		%	\begin{codeblock}[sympy-diff-quadratic]
+		%	>>> f = c/2 * x**2
+		%	>>> diff(f, x)
+		%	c*x
+		%	\end{codeblock}
+		%
+		%	\noindent
+		%	The derivative function is $f'(x)=cx$.
+		%	See the plot in Figure~\ref{fig:derivative_as_slope_small-0} for an illustration of the case when $c=1$.
+		%
+		%	Here is another example of a complicated-looking function $f$,
+		%	that includes an exponential, a trigonometric, and a logarithmic function:
+		%
+		%	\begin{codeblock}[sympy-diff-fancy-mix]
+		%	>>> from sympy import log, exp, sin
+		%	>>> f = exp(x) + sin(x) + log(x)
+		%	>>> diff(f, x)
+		%	exp(x) + cos(x) + 1/x
+		%	\end{codeblock}
+		%
+		%	\noindent
+		%	As you can see,
+		%	using the function SymPy function \tt{diff} allows you to compute the derivative function for any function $f(x)$.
 
 
     
-		\subsection{Applications of derivatives}
+	\subsection{Applications of derivatives}
 
-			We use derivatives to solve problems in physics, chemistry, computing, biology, business,
-			and many other areas of science.
-			The derivative operator comes up whenever we study the rate of change of a quantity.
-			Derivatives are also useful for solving optimization problems,
-			which consist of finding the maximum or minimum value of some function $f(x)$.
+		We use derivatives to solve problems in physics, chemistry, computing, biology, business,
+		and many other areas of science.
+		The derivative operator comes up whenever we study the rate of change of a quantity.
+		We use derivatives to obtain local liner approximations to functions (tangent lines).
+
+		\subsubsection{Tangent lines}
+
+			The \emph{tangent line} to the function $f(x)$ at $x=x_0$ is
+			the line that passes through the point $(x_0, f(x_0))$ and has 
+			the same slope as the function at that point.
+			The tangent line to the function $f(x)$ at the point $x=x_0$ is described by the equation
+			\[
+			   T_1(x) =  f(x_0) \; + \;  f'(x_0)(x-x_0).
+			\]
+			For example,
+			the tangent line to $f(x)=\frac{1}{2}x^2$ at $x_0=1$
+			is $T_1(x) = f(1)  +  f'(1)(x-1) = \frac{1}{2} + 1\cdot(x-1) = x - \frac{1}{2}$.
+			Look back at Figure~\ref{fig:derivative_as_slope_small-0} for an illustration.
 			
-			Optimization techniques form a key building block for many machine learning algorithms,
-			so it's good to know a derivative of two if you're going to learn about machine learning topics.
-			In this book,
-			we won't go too far so a ``superficial'' familiarity with the concept will be sufficient,
-			but if you want to pursue machine learning topics in more depth you'll have to read up more on derivatives.
+			The tangent line $T_1$ is also called a \emph{first order approximation} to the function $f$,
+			since it has the same value and the same derivative as the function $f$,
+			$T_1(1)= f(1)$ and $T'_1(1) = f'(1)$.
+			% The tangent line $T_1(x)$ has the same value and slope as the function $f(x)$ at $x=1$.
+			In Section~\ref{series:taylor_series},
+			we'll learn how to build order-$n$ approximations $T_n(x)$.
+
+
+	\subsection{Optimization}
+
+		Derivatives are very useful for solving optimization problems,
+		which consist of finding the maximum or minimum value of some function $f(x)$.
+		% One of the most prominent applications of derivatives is \emph{optimization}:
+		% the process of finding a function's \emph{maximum} and \emph{minimum} values.
+		For example,
+		look the graph of the function $f(x)=\frac{1}{2}x^2$
+		in Figure~\ref{fig:derivative_as_slope_small-0}.
+		The minimum of the function occurs when $x=0$
+		where the slope of the function is zero $f'(0)=0$.
+		Note also the second derivative of is positive at that point $f''(0) > 0$,
+		which tells us the function locally looks like bottom of a bowl.
+
+		\subsubsection{Analytical optimization}
+
+			The values of $x^*$ where the derivative is zero
+			are called the \emph{critical points} of the function.
+			Optimum values (maximum or minimum)
+			occurs at a critical point of the function.
+			We identify a critical point $x^*$ that corresponds to minimum
+			if the second derivative is positive at that point $f''(x^*)>0$ (positive curvature).
+			In contrast,
+			a critical point $x^*$ here $f''(x^*)< 0$ (negative curvature) is a maximum.			
+			This observation suggests a general procedure for finding minima and maxima:
+
+			\begin{enumerate}
+				\item[(1)]	Solve the equation $f'(x)=0$ to find the critical points $x^*$.
+				\item[(2)]	For each critical point $x^*$,
+						check to see if it is a maximum or a minimum
+						by evaluating $f''(x^*)$:
+						% \emph{second derivative test}
+						\begin{itemize}
+							\item	If $f^{\prime\prime}(x^*) < 0$ then $x^*$ is a max (mountain top)
+							\item	If $f^{\prime\prime}(x^*) > 0$ then $x^*$ is a min (bottom of a valley).
+							%	\item	If $f^{\prime\prime}(x^*) = 0$
+							%		then the second derivative test fails.
+							%		We must revert back to checking nearby values
+							%		$f'(x^*-\delta)$ and $f'(x^*+\delta)$
+							%		to determine if $x^*$ is a max, a min, or a saddle point.
+						\end{itemize}
+			\end{enumerate}
+
+			\noindent
+			We can also perform the check in step (2) visually
+			by looking at the graph of the function,
+			or by evaluating the slope of the function near the critical point.
+			If $f'(x^*-0.1)$ is negative and $f'(x^*+0.1)$ is positive,
+			the point $x^*$ is a minimum (as in Figure~\ref{fig:derivative_as_slope_small-0}).
+			If $f'(x^*-0.1)$ is positive and $f'(x^*+0.1)$ is negative,
+			then the point $x^*$ is a maximum.
+			If $f'(x^*-0.1)$ and $f'(x^*+0.1)$ have the same sign,
+			the value $x^*$ is a  \emph{saddle point},
+			which is neither a minimum or a maximum.
+
+			\paragraph{Example}
+				
+				Let's use the two-step procedure
+				to find the minimum and the maximum of the function $f(x)=x^3-2x^2+x$.
+				First we calculate its derivative $f'(x) = 3x^2 - 4x + 1 = 3(x - 1)(x - \frac{1}{3})$.
+				Next we find the critical points
+				by solving the equation $f'(x)=0$,
+				which gives us two critical points $x^*_1 = \frac{1}{3}$ and $x^*_2 = 1$.
+				The second derivative of the function is $f''(x) = 6x -4$.
+				For the critical value $x^*_1 = \frac{1}{3}$,
+				we find $f''(\frac{1}{3}) = -2 < 0$,
+				% $f(x)$ looks like the peak of a mountain near $x=\frac{1}{3}$.
+				which tells us $x^*_1$ is a maximum.
+				For $x^*_2 = 1$,
+				we find $f''(1) = 2$,
+				% looks like the bottom of a valley at $x=1$.
+				which tells us $x^*_1$ is a minimum.
+
+
+
+		\subsubsection{Numerical optimization}
 			
-			The derivative operation is also important because it is the ``inverse operation'' of the integration operation,
-			which is the subject we'll discuss in the next section.
-			Skip ahead to page~\pageref{mathematical_preliminiaries:FTC} if you want spoilers about the inverse 
-			relationship between differentiation and integration,
-			or read on to watch the calculus movie in order.
-
-
-
-
-
-
-
-
-	\subsection{Optimization algorithms}
-
-		One of the most prominent applications of derivatives is \emph{optimization}:              \index{optimization}
-		the process of finding a function's maximum and minimum values.                           \index{maximum} \index{minimum}
-		
-		Consider the shape of the function near a minimum value.
-		The function is decreasing just before it reaches its minimum,
-		and the function increases just after its minimum.
-		This means we can start at any point $x_0$ near the minimum
-		and take ``downhill'' steps following the descending direction of the function,
-		we'll end up at the minimum value.
-		This simple procedure that repeatedly takes steps in the direction where the function is decreasing
-		turns out to be a very powerful tool that can find the minimum of any function.
-		This procedure is called the \emph{gradient descent algorithm},
-		where the name \emph{gradient} % (denoted $\nabla f(x,y)$)
-		refers to the derivative operation for multivariable functions. % like $f(x,y)$.
-		% TODO: say see notebook for implementation of derivative_descent algo. /TODO
-		%	You'll encounter the gradient descent algorithm and its numerous variations
-		%	if you choose to purse the topic of machine learning,
-		%	since they are used in many machine learning applications.	% where multivariable functions are the norm
-
-		In this book,
-		we won't discuss the details behind optimization algorithms,
-		and instead rely on the computational tools available in \tt{numpy}, \tt{scipy}, and \tt{sympy} to do optimization-type calculations for us.
-		We'll encounter optimization ideas (maximization and minimization) in several concepts in statistics:
-		\emph{maximum likelihood} and \emph{least squares},
-		and rely on ``visual proofs'' for these optimization procedures.
-		If you're interested in attaining a deeper understanding of optimization algorithms,
-		you can follow the links provided at the end of this section,
-		but note such ``under the hood'' understanding is not required to continue with the rest of the book.
-		
-		Here is a quick code example that shows how to use the function \tt{minimize} defined in the module \tt{scipy.optimize}
-		to find the minimum value of the function $f(x)=(x-5)^2$.
-
-		\begin{codeblock}[sympy-minimize-fx]
-		>>> from scipy.optimize import minimize
-		>>> def f(x):
-		        return (x-5)**2
-		>>> res = minimize(f, x0=0)
-		>>> res["x"][0]  # = argmin f(x)
-		4.99999997455944
-		\end{codeblock}
-
-		\noindent
-		The \tt{minimize} function takes two arguments:
-		the function to minimize,
-		and a initial value $x_0$ where to start the minimization process.
-
-
-
+			Consider the shape of the function near a minimum value.
+			The function is decreasing just before it reaches its minimum,
+			and the function increases just after its minimum.
+			This means we can start at any point $x=x_0$ % near the minimum
+			and take ``downhill'' steps following the descending direction of the function,
+			we'll end up at the minimum value.
+			This simple procedure that repeatedly takes steps in the direction where the function is decreasing
+			turns out to be a very powerful tool that can find the minimum of any function.
+			This procedure is called the \emph{gradient descent algorithm},
+			where the name \emph{gradient} % (denoted $\nabla f(x,y)$)
+			refers to the derivative operation for multivariable functions. % like $f(x,y)$.
+			% TODO: say see notebook for implementation of derivative_descent algo. /TODO
+			%	You'll encounter the gradient descent algorithm and its numerous variations
+			%	if you choose to purse the topic of machine learning,
+			%	since they are used in many machine learning applications.	% where multivariable functions are the norm
+	
+			\begin{codeblock}[def-derivative_descent]
+			>>> TODO derivative_descent
+			\end{codeblock} 
+	
+	
+			\begin{codeblock}[use-derivative_descent]
+			>>> def f(x):
+			        return x**2 / 2
+			>>> TODO use derivative_descent start at x=10
+			\end{codeblock}
+	
+	
+	
+		\subsubsection{Numerical optimization using SciPy}
+	
+			%	In this book,
+			%	we won't discuss the details behind optimization algorithms,
+			%	and instead rely on the computational tools available in \tt{numpy}, \tt{scipy}, and \tt{sympy} to do optimization-type calculations for us.
+			%	We'll encounter optimization ideas (maximization and minimization) in several concepts in statistics:
+			%	\emph{maximum likelihood} and \emph{least squares},
+			%	and rely on ``visual proofs'' for these optimization procedures.
+			%	If you're interested in attaining a deeper understanding of optimization algorithms,
+			%	you can follow the links provided at the end of this section,
+			%	but note such ``under the hood'' understanding is not required to continue with the rest of the book.
+			
+			Here is a quick code example that shows how to use the function \tt{minimize} defined in the module \tt{scipy.optimize}
+			to find the minimum value of the function $f(x)=(x-5)^2$.
+	
+			\begin{codeblock}[sympy-minimize-fx]
+			>>> from scipy.optimize import minimize
+			>>> res = minimize(f, x0=0)
+			>>> res["x"][0]  # = argmin f(x)
+			4.99999997455944
+			\end{codeblock}
+	
+			\noindent
+			The \tt{minimize} function takes two arguments:
+			the function to minimize,
+			and a initial value $x_0$ where to start the minimization process.
+	
