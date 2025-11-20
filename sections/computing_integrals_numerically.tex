@@ -3,59 +3,96 @@
 
 	\subsection{Computing integrals numerically}
 
-		Relax, we won't be doing the calculation by hand.
-		We can write a computer program and make a computer performs the integration procedure for us.
-		Here is a sample code that takes an arbitrary function \tt{func}
-		and performs the $n$-rectangle area approximation calculation:
+		% There are numerous ways to compute integrals using Python.
+		Computing integral of $f(x)$ ``numerically'' means
+		we're splitting the region of integration into many (think thousands or millions) of strips,
+		computing the areas of these strips,
+		then adding up the areas to obtain the total area under the graph of $f(x)$.
+		The approximation to the area under $f(x)$ between $x=a$ and $x=b$
+		using $n$ rectangular strips corresponds to the following formula:
+		\[
+			A_f(a,b)
+			\approx
+			\sum_{k=1}^{n} f(a + k\Delta x)\,\Delta x,
+		\]
+		where $\Delta x = \frac{b-a}{n}$ is the width of the rectangular strips.
+		The right endpoint of the $k$\textsuperscript{th}
+		is located at $x_k = a + k\Delta x$,
+		so the height of the rectangular strips $f(x_k)$
+		varies as $k$ goes from between $k=1$ (first strip)
+		and $k=n$ (last strip).
+		
+		Let's check that the formula $f(a + k\Delta x)\Delta x$
+		correctly describes the area of the $k$\textsuperscript{th} rectangular strip.
+		Since we're using choosing the height of the rectangles according to their right endpoints,
+		the area of the first rectangle is $f(x_1)\Delta x = f(a + \Delta x)\Delta x$,
+		which is the height of the function $f$ at $a+\Delta x$ times the width $\Delta x$.
+		The second rectangle has height $f(a+2\Delta x)$,
+		the third rectangle will have height $f(a+3\Delta x)$,
+		and so on until the last one which has height $f(a+n\Delta x) = f(a+n\,\frac{b-a}{n} ) =  f(b)$.
+		% we take a step of width $\Delta x$ to the right: $x_2 = x_1 + \Delta x = a + 2 \Delta x$.
+
+		Instead of manually commuting all the $n$ area calculations in the summaiton,
+		we can write Python code that takes an arbitrary function \tt{f} as input
+		and performs the $n$-rectangle area approximation calculation for us:
 
 		\begin{codeblock}[]
-		def integrate(func, a, b, n):
-		    """
-		    Compute the area under `func` between x=`a` and x=`b`
-		    using an approximation with `n` rectangles.
-		    """
-		    dx = (b-a)/n               # width of each rectangle
-		    total = 0.0                # accumulator variable for S_n
-		    k = 1                      # counter variable
-		    x = a + dx                 # start at first right endpoint
-		    while k <= n:              # repeat n times:
-		        total += func(x)*dx    #   s_k = height * width
-		        x += dx                #   move one step to the right
-		        k += 1                 #   increment counter
-		    return total
+		>>> def integrate(f, a, b, n=10000):
+		        """
+		        Computes the area under the graph of `f`
+		        between `x=a` and `x=b` using `n` rectangles.
+		        """
+		        dx = (b - a) / n
+		        xs = [a + k*dx for k in range(1,n+1)]
+		        fxs = [f(x) for x in xs]
+		        area = sum([fx*dx for fx in fxs])
+		        return area
+		\end{codeblock}
+
+
+		\noindent
+		The code implements word-for-word the summation that we defined in the above equation.
+		We first compute the width of the rectangles $\code{dx} = \Delta x$.
+		We then create the list \tt{xs} that contains the $x$-coordinates of the right endpoints
+		of the $\tt{xs} = [a + \Delta x, a + 2k\Delta x, a + 3k\Delta x, \ldots, b]$,
+		and evaluate the function \tt{f} at these $x$-values
+		to obtain $\tt{fxs} = [f(a + \Delta x), f(a + 2k\Delta x), f(a + 3k\Delta x), \ldots, f(b)]$.
+		We obtain the total area
+		by multiplying each $\tt{fx} in \tt{fxs} by the width \tt{dx}$
+		and summing of them together.
+		
+		Let's use the \tt{integrate} procedure
+		to compute the integral of the function $h(x) = x^3 - 5x^22 + x + 10$
+		that we saw in Example~3.
+		First we define a Python function that implements $h$:
+
+		\begin{codeblock} 
+		>>> def h(x):
+		        return x**3 - 5*x**2 + x + 10
+		\end{codeblock}
+		
+		We can now calculate the $n=25$ approximation to the
+		area under the graph of $h(x)$ between $x=-1$ and $x=4$
+		as follows:
+
+		\begin{codeblock} 
+		>>> integrate(h, -1, 4, n=25)
+		12.399999999999997
 		\end{codeblock}
 
 		\noindent
-		The logic of the of the sample code follows closely follows procedure we defined in the equations above.
-		We variable \code{dx} holds the information about the width of the rectangles used in the approximation $\Delta x$,
-		and we use the counter variable \code{k} to step through the interval $[a,b]$ using $n$ steps of width $\Delta x$.
-		
-		We can then use this code to compute the integral of any function.
-		To do this,
-		we must first define the function we want to integrate:
-
-		\begin{codeblock} 
-		def h(x):
-		    return x**3 - 5*x**2 + x + 10
-    			\end{codeblock}
-
-		\noindent
-		Then you can compute $S_{25}$ by calling \code{integrate(f, -1, 4, 25)},
+		Then you can compute $S_{25}$ by calling \code{integrate(f, -1, 4, n=25)},
 		which returns $S_{25}=12.4$.
-		Calling \code{integrate(f, -1, 4, 50)} you'll obtain $S_{50}=12.6625$.
-		The approximations $S_n$ get better and better as the number of rectangles used in the approximations grows.
-		For $n=100$,
-		the sum of the rectangles' areas is $S_{100} =  12.7906$,
-		for $n=1000$ the approximation gives us $S_{1000} = 12.9041562$,
-		which is accurate to the first decimal.
+		
+		
+Calling \code{integrate(f, -1, 4, 50)} you'll obtain $S_{50}=12.6625$.
+		
+		\begin{codeblock} 
+		>>> integrate(h, -1, 4, n=50)
+		12.6625
+		\end{codeblock}
+		
 
-
-%		We can approximate the total area under the function $f(x)$ between $x=a$ and $x=b$ by splitting the region into $n$ tiny vertical strips of width $\Delta x$,
-%		then adding up the areas of the rectangular strips.
-%		This is known as a \emph{Riemann sum} approximation for an area.
-%		Figure~\ref{fig:riemannsum-25-50} shows the Riemann sum approximations for the area under the function
-%		$f(x)=x^3-5x^2+x+10$ between $x=-1$ and $x=4$,
-%		obtained by using $n=25$ and $n=50$ vertical rectangular strips.
 
 		\begin{figure}[htb]
 			\subfigure[$n=25$]{				
@@ -70,41 +107,56 @@
 			\label{fig:riemannsum-25-50}
 		\end{figure}
 		
-%		As you can see,
-%		the approximations get better and better as we increase the number of rectangles.
-%		Let's come up with some math expression to describe the $n$-rectangle approximate area calculation.
-%		The width of each rectangle is $\Delta x = \frac{4-(-1)}{n}=\frac{5}{n}$.
-%		The left endpoint of the first rectangle is at $x=a$ and its right endpoint is at $x=x_1 \equiv a+\Delta x$.
-%		Since we're using choosing the height of the rectangles according to their right endpoints,
-%		the area of the first rectangle is
-%		\[
-%			s_1 = f(x_1)\Delta x = f(a + \Delta x)\Delta x,
-%		\]
-%		which corresponds to the height of the function $f$ at $a+\Delta x$ times the width $\Delta x$.
-%		To find the $x$ coordinate of the right endpoint of the second rectangle,
-%		we take a step of width $\Delta x$ to the right: $x_2 = x_1 + \Delta x = a + 2 \Delta x$.
-%		The area of the second rectangle is $s_2 = f(a+2\Delta x)\Delta x$.
-%		
-%		We can iterate this one-step-to-the-right procedure to obtain all the right endpoints
-%		\[
-%			x_{k+1} = x_k + \Delta x, % , \quad \textrm{for all}  \ \ k < n.
-%		\]
-%		and compute the area of each rectangle using
-%		\[
-%			s_k = f(x_k)\Delta x =  (x_k^3-5x_k^2+x_k+10)\frac{5}{n}.
-%		\]
-%		The total area of the $n$-rectangle approximation is the sum of the rectangles' areas:
-%		\begin{align*}
-%		  S_{n}(a,b) \equiv \sum_{k=1}^n s_k
-%			&= \sum_{k=1}^{n} f(a + k\Delta x)\Delta x 				\\
-%		  	&= \sum_{k=1}^{n} (x_k^3-5x_k^2+x_k+10)\frac{5}{n}.
-%		\end{align*}
-%		Wow that looks like a mean math expression!
-%		Indeed if you had to do all these calculations by hand,
+
+
+		The approximations will get better and better
+		if we increase the number of rectangles $n$.
+		For $n=100$,
+		the sum of the rectangles' areas is $S_{100} =  12.7906$,
+		for $n=1000$ the approximation gives us $S_{1000} = 12.9041562$,
+		which is accurate to the first decimal.
+
+		\begin{codeblock} 
+		>>> integrate(h, -1, 4, n=1000)
+		12.90415625
+		>>> integrate(h, -1, 4, n=100000)
+		12.916654166656249
+		\end{codeblock}
+
+
+The exact value of the area $A_h(-1,4)$ is $\frac{155}{12} = 12.91\overline{6}$.
+We'll see how to compute this in the next section,
+when we learn about symbolic integration,
+which is a math ``shortcut'' that allows us compute exact integral for certain functions.
+For now,
+we content ourselves with numerical approximations,
+which are pretty good already.
+The approximation with $n = 100K$ is accurate to four decimals!
+
+
+
+%We can approximate the total area under the function $f(x)$ between $x=a$ and $x=b$ by splitting the region into $n$ tiny vertical strips of width $\Delta x$,
+%then adding up the areas of the rectangular strips.
+%This is known as a \emph{Riemann sum} approximation for an area.
+%Figure~\ref{fig:riemannsum-25-50} shows the Riemann sum approximations for the area under the function
+%$f(x)=x^3-5x^2+x+10$ between $x=-1$ and $x=4$,
+%obtained by using $n=25$ and $n=50$ vertical rectangular strips.
 %		it would take you forever.
 %		Computing an approximation with $n=1000$ rectangles requires computing $1000$ rectangle areas
 %		and the sum of $1000$ terms!
 
+
+
+
+
+
+
+
+
+
+	\subsection{Formal definition of integral}
+
+% TODO: wrap in shadethrm
 
 		In the limit as the number of rectangles $n$ approaches $\infty$, 							\index{infinity}
 		the approximation to the area under the curve becomes \emph{arbitrarily close} to the true area.
@@ -112,13 +164,14 @@
 		where the number of rectangles grows to infinity is known as the \emph{Riemann sum}
 		and is the basis for the definitions of the integral:
 
-		The definite integral between $x=a$ and $x=b$ is \emph{defined} as the limit of a 			\index{integral}
-		Riemann sum as $n$ goes to infinity:											\index{Riemann sum|textit}
+		The integral between $x=a$ and $x=b$ is \emph{defined}
+		as the limit as $n$ goes to infinity:
 		\[
 			\int_{a}^{b}\!f(x)\:dx 
 				\equiv \lim_{n\to\infty} \sum_{k=1}^{n} f(a + k\Delta x)\Delta x \equiv A(a,b).
 		\]
-	
+		This is sometimes called the \emph{Riemann sum} formula.
+
 
 
 
@@ -126,11 +179,6 @@
 
 
 	\subsection{Computing integrals numerically using SciPy}
-	
-		There are numerous ways to compute integrals using Python.
-		Computing integrals ``numerically'' means we're splitting the region of integration into thousands or millions of subregions,
-		computing the areas of these subregions,
-		then adding up the areas of the subregions to obtain the total area.
 	
 		The Python function \tt{quad} in the module \tt{scipy.integrate} allows us to compute the integral of any function.
 		The name \tt{quad} is short for ``quadrature'' which is the historical math term used for find-the-area procedures.

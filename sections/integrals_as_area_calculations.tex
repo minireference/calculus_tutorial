@@ -1,121 +1,161 @@
 %!TEX root = ../calculus_tutorial.tex
 
-
-\subsection{Integrals as area calculations}
-
-	An integral corresponds to the computation of the \emph{area} enclosed between
-	the curve $f(x)$ and the $x$-axis over some interval of $x$ values:
-	\[
-		A_f(a,b) = \int_{x=a}^{x=b} f(x) \: dx.
-	\]
-	We refer to the numbers $a$ and $b$ as the \emph{limits of integration},
-	and the notation $\int_a^b f(x)\:dx$ is shorthand for $\int_{x=a}^{x=b} f(x)\: dx$.
-
-	\begin{figure}[htb]	% LAYOUT
-		\centering
-		\includegraphics[width=0.3\textwidth]{figures/calculus/integral_as_region_under_curve_Aab.pdf}
-		\vspace{-2mm}
-		\caption{	The integral of the function $f(x)$ between $x=a$ and $x=b$ corresponds to the shaded area.}
-		\label{fig:integral_as_region_under_curve_Aab_repeat}
-	\end{figure}
-
-	\noindent
+	\subsection{Integrals as area calculations}
 	
-	\ifthenelse{\boolean{FORSTATSBOOK}}{
-		The notion of an integral is foundational for understanding continuous random variables.
-		Every time we compute the probability of some outcome of a continuous random variable,
-		there is an integral calculation going on under the hood,
-		so integrals is not a topic you can skip.	%, if you want to represent.
-	}{}
-
-	If this is the first time you're learning about integrals,
-	it's understandable if you feel intimidated by the complicated math notation,
-	but you have to trust me on this one:
-	except for the notation,
-	there is nothing to worry about!
-	In the next few pages,
-	I'll do my best to introduce you to the topic of integrals,
-	and you'll learn three different ways to do compute integrals.
-
-	Let's start with some examples.
-
-
-	\subsubsection{Example 1: integral of a constant function}
-
-		Consider the constant function $f(x)=~3$.
-		No matter what the input $x$ is,
-		the output is always $3$.
-		We can easily find the area under the graph of the function $f(x)$ between any two points,
-		since the region under the graph has a rectangular shape.
-		See Figure~\ref{fig:simple_integral_fx_eq_3} for an illustration.
-
-		The area under $f(x)$ between $x=0$ and $x=5$ corresponds to the following calculation:
+		Figure~\ref{fig:integral_as_region_under_curve_Aab} 
+		illustrates the calculation of the \emph{area} enclosed between
+		the graph of $f(x)$ and the $x$-axis between the vertical lines at $x=a$ and $x=b$.
+		In calculus,
+		we refer to this area calculation as definite integral
+		and denote it:
 		\[
-			A_f(0,5) = \int_0^5 f(x)\;dx = 3\cdot 5 = 15.
+			A_f(a,b) = \int_{x=a}^{x=b} f(x) \, dx.
 		\]
-		The area under the graph of $f(x)$ is a rectangle with height $3$ and width $5$,
-		so its area is $3 \cdot 5 = 15$.
+		The numbers $a$ and $b$ are called the \emph{limits of integration}.
+		We often use the notation $\int_a^b f(x)\,dx$ as shorthand for $\int_{x=a}^{x=b} f(x)\,dx$.
+		We read this expression as ``the integral of $f(x)$ between $a$ and $b$.''
 
-		\begin{figure}[htb]
+		\begin{figure}[htb]	% LAYOUT
 			\centering
-			\includegraphics[width=0.3\textwidth]{figures/calculus/simple_integral_fx_eq_3.pdf}
-			\caption{The area of a rectangle of height $3$ and width $5$ is equal to $15$.}
-			\label{fig:simple_integral_fx_eq_3}
+			\includegraphics[width=0.2\textwidth]{figures/calculus/integral_as_region_under_curve_Aab.pdf}
+			\vspace{-2mm}
+			\caption{	The integral of the function $f(x)$ between $x=a$ and $x=b$
+					corresponds to the shaded area $A_f(a,b)$.}
+			\label{fig:integral_as_region_under_curve_Aab}
 		\end{figure}
-
-
-	\subsubsection{Example 2: integral of a linear function}
-	
-		Consider now the area under the graph of the line $g(x)=x$ between $x=0$ and $x=5$,
-		as shown in Figure~\ref{fig:simple_integral_gx_eq_x}.
-		Since the region under the curve is triangular,
-		we can compute its area using the formula for the area of a triangle,
-		which is ``base times height divided by 2.''
-	
-		The integral of $g(x)$ from $x=0$ until $x=5$ is described by the following calculation:
-		\[
-			A_g(0,5) = \int_0^5 g(x) \; dx = \tfrac{1}{2} 5 \cdot 5 = \tfrac{1}{2}5^2 = \frac{25}{2} = 12.5.
-		\]
-	
-		\begin{figure}[htb]
-			\centering
-			\includegraphics[width=0.3\textwidth]{figures/calculus/simple_integral_gx_eq_x.pdf}
-			\caption{The area of a triangle with base $5$ and height $5$ is equal to $\frac{1}{2}5^2=\frac{25}{2}=12.5$.}
-			\label{fig:simple_integral_gx_eq_x}
-		\end{figure}
-
-
-
-	\subsubsection{Example 3: integral a polynomial}
-	
-		problem statement
-
-		The area under $h(x)$ between $x=-1$ and $x=4$ corresponds to the following integral:
-		\[
-			A_h(0,5) = \int_{-1}^4 h(x)\;dx = ?
-		\]
 		
-		Split up into rectangles
-		
-		
-		FORMULA for n=25
-
-
-		FORMULA for n=50
-		
+		\ifthenelse{\boolean{FORSTATSBOOK}}{
+			The notion of an integral is foundational for understanding continuous random variables.
+			Every time we compute the probability of some outcome of a continuous random variable,
+			there is an integral calculation going on under the hood,
+			so integrals is not a topic you can skip.	%, if you want to represent.
+		}{}
 	
-		
+		\noindent
+		If this is the first time you're seeing the notation $\int_a^b f(x) \,dx$,
+		you're probably freaking out,
+		but bear with me for two more pages,
+		and you'll see this intimidating-looking math notation
+		is nothing to worry about!
+		This's just a fancy way to denote a particular calculation
+		that involves some function $f(x)$.
+		% TODO: explain template
+		You can think of $\int_a^b \tt{<f>} \,dx$
+		as a ``template'' that you can fill in by replacing $\tt{<f>}$
+		with any function $f(x)$ to denote the area-under-the-graph-of-$f(x)$ calculation,
+		which is also denoted $A_f(a,b)$.
+
+%		Remember that is a calculus tutorial,
+%		so it's normal there will be calculations,
+%		and it is a math tutorial,
+%		so you should also expect there will be some 
+
+%	it's understandable if you feel intimidated by the complicated math notation,
+%	but you have to trust me on this one:
+%	except for the notation,
+%	there is 
+%	In the next few pages,
+%	I'll do my best to introduce you to the topic of integrals,
+%	and you'll learn three different ways to do compute integrals.
 	
+		Let's look at some examples.
 
-	\bigskip
-	\noindent
-	I hope these examples helped you see that the scary-looking integral sign is not that complicated after all.
-	It's just a fancy way to describe ``area under the graph of a function'' calculations.
+	
+		\subsubsection{Example 1: constant function}
+	
+			Consider the constant function $f(x)=~3$.
+			No matter what the input $x$ is,
+			the output is always $3$.
+			We can easily find the area under the graph of this function between any two points,
+			since the region under the graph has a rectangular shape.
+			See Figure~\ref{fig:simple_integral_fx_eq_3} for an illustration.
+	
+			The area under $f(x)$ between $x=0$ and $x=5$
+			corresponds to the following integral calculation:
+			\[
+				A_f(0,5) = \int_0^5 f(x)\,dx = 3\cdot 5 = 15.
+			\]
+			The area under the graph of $f(x)$ is a rectangle with height $3$ and width $5$,
+			so its area is $3 \cdot 5 = 15$.
+	
+			\begin{figure}[htb]
+				\centering
+				\includegraphics[width=0.3\textwidth]{figures/calculus/simple_integral_fx_eq_3.pdf}
+				\caption{The area of a rectangle of height $3$ and width $5$ is equal to $15$.}
+				\label{fig:simple_integral_fx_eq_3}
+			\end{figure}
+	
+	
+		\subsubsection{Example 2: integral of a linear function}
+		
+			Consider now the area under the graph of the line $g(x)=x$
+			between $x=0$ and $x=5$,
+			as shown in Figure~\ref{fig:simple_integral_gx_eq_x}.
+			This area is described by the following integral calculation:			
+			\[
+				A_g(0,5) = \int_0^5 g(x) \, dx = \tfrac{1}{2} 5 \cdot 5 = \tfrac{1}{2}5^2 = \frac{25}{2} = 12.5.
+			\]
+			The region under the graph of $g(x)$ has a triangular shape,
+			so we can compute its area using the formula for the area of a triangle,
+			which is ``base times height divided by 2.''
+
+			\begin{figure}[htb]
+				\centering
+				\includegraphics[width=0.3\textwidth]{figures/calculus/simple_integral_gx_eq_x.pdf}
+				\caption{The area of a triangle with base $5$ and height $5$ is  $\frac{1}{2}5^2=\frac{25}{2}=12.5$.}
+				\label{fig:simple_integral_gx_eq_x}
+			\end{figure}
 
 
 
+		\bigskip
+		\noindent
+		I hope these two examples are starting to convince you
+		that the scary-looking integral sign is not that complicated after all.
+		It's just a fancy way to describe ``area under the graph of a function'' calculations.
 
 
+		\subsubsection{Example 3: integral of a polynomial}
+		
+			Consider now the function $h(x) = x^3 - 5x^22 + x + 10$.
+			Suppose we want to know the area under the graph of $h(x)$
+			between $x=-1$ and $x=4$,
+			as illustrated in Figure~XX.
+			We need to calculate the following integral:
+			\[
+				A_h(0,5) \eqdef \int_{-1}^4 h(x)\,dx \; = \; ?.
+			\]
+			Looking at the graph of $h(x)$,
+			we see it doesn't have a recognizable geometric shape with a known area formula.
+			How could we compute the area then?
+
+			One way to approximate the area under $h(x)$
+			is to split it up into bunch of thin vertical rectangular strips of some fixed width,
+			which we'll denote $\Delta x$.
+			The height of each rectangular strip will vary depending on $f(x)$.
+			Look ahead to Figure~\ref{fig:riemannsum-25-50} to see where we're going with this.
+			We can calculate the area of the $k$\textsuperscript{th}
+			strip using the ``base times height'' formula for the area of a rectangle $\Delta x f(x_k)$,
+			where $x_k$ is the left endpoint of the $k$\textsuperscript{th} strip.
+			For example,
+			we splitting up the area $A_h(0,5)$ into $n=25$ strips,
+			calculating the area of the each strip,
+			and summing them together produces the approximation $A_h(0,5) \approx ...$.
+			If we split the area $A_h(0,5)$ into $n=50$ strips,
+			we obtain the more accurate approximation $A_h(0,5) \approx ...$.
+			%
+			The integral $\int_{-1}^4 h(x)\,dx$ is defined as the limit
+			where the number of vertical strips $n$ goes to infinity.
+
+		Relax,
+		we won't be doing the $n=25$ and $n=50$ calculation by hand,
+		let alone the exact version as $n$ goes to infinity!
+		Instead,
+		we'll write a computer program and that performs the integration procedure for us.
+		Computer are really proficient at this stuff,
+		and this is not a coincidence---computers % like there ENIAC
+		were originally invented precisely for computer integrals.
+		
 
 
 

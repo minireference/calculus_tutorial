@@ -102,6 +102,47 @@
 		\end{codeblock}
 
 
+
+
+The integral is the ``inverse operation'' of the derivative.			\index{inverse!operation}
+If you perform the integral operation followed by the derivative operation on some function,
+you'll obtain the same function:
+\[
+  \left(\frac{d}{dx} \circ \int dx \right) f(x) = \frac{d}{dx} \int_c^x f(u)\:du = f(x).
+\]
+
+
+
+\begin{codeblock}[]
+>>> f = x**2
+>>> F = integrate(f, x)
+>>> F
+x**3/3           # + C
+>>> diff(F, x)
+x**2
+\end{codeblock}
+
+\noindent
+Alternately, if you compute the derivative of a function followed by the integral,
+you will obtain the original function $f(x)$ (up to a constant):
+\[
+  \left( \int dx \circ \frac{d}{dx}\right) f(x) = \int_c^x f'(u)\;du = f(x) + C.
+\]
+
+
+
+\begin{codeblock}[]
+>>> f = x**2
+>>> df = diff(f, x)
+>>> df
+2*x
+>>> integrate(df, x)
+x**2    # + C
+\end{codeblock}
+
+
+
+
 			
 
 
