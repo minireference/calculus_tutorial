@@ -61,7 +61,7 @@
 		Let's look at some examples.
 
 	
-		\subsubsection{Example 1: constant function}
+		\subsubsection{Example 1: integral of a constant function}
 	
 			Consider the constant function $f(x)=~3$.
 			No matter what the input $x$ is,
@@ -117,35 +117,36 @@
 
 		\subsubsection{Example 3: integral of a polynomial}
 		
-			Consider now the function $h(x) = x^3 - 5x^22 + x + 10$.
-			Suppose we want to know the area under the graph of $h(x)$
-			between $x=-1$ and $x=4$,
-			as illustrated in Figure~XX.
-			We need to calculate the following integral:
-			\[
-				A_h(0,5) \eqdef \int_{-1}^4 h(x)\,dx \; = \; ?.
-			\]
-			Looking at the graph of $h(x)$,
-			we see it doesn't have a recognizable geometric shape with a known area formula.
-			How could we compute the area then?
+Consider now the function $h(x) = x^3 - 5x^22 + x + 10$.
+Suppose we want to know the area under the graph of $h(x)$
+between $x=-1$ and $x=4$,
+as illustrated in Figure~XX.
+We need to calculate the following integral:
+\[
+	A_h(0,5) \eqdef \int_{-1}^4 h(x)\,dx \; = \; ?.
+\]
+Looking at the graph of $h(x)$,
+we see it doesn't have a recognizable geometric shape with a known area formula.
+How could we compute the area then?
 
-			One way to approximate the area under $h(x)$
-			is to split it up into bunch of thin vertical rectangular strips of some fixed width,
-			which we'll denote $\Delta x$.
-			The height of each rectangular strip will vary depending on $f(x)$.
-			Look ahead to Figure~\ref{fig:riemannsum-25-50} to see where we're going with this.
-			We can calculate the area of the $k$\textsuperscript{th}
-			strip using the ``base times height'' formula for the area of a rectangle $\Delta x f(x_k)$,
-			where $x_k$ is the left endpoint of the $k$\textsuperscript{th} strip.
-			For example,
-			we splitting up the area $A_h(0,5)$ into $n=25$ strips,
-			calculating the area of the each strip,
-			and summing them together produces the approximation $A_h(0,5) \approx ...$.
-			If we split the area $A_h(0,5)$ into $n=50$ strips,
-			we obtain the more accurate approximation $A_h(0,5) \approx ...$.
-			%
-			The integral $\int_{-1}^4 h(x)\,dx$ is defined as the limit
-			where the number of vertical strips $n$ goes to infinity.
+One way to approximate the area under $h(x)$
+is to split it up into bunch of thin vertical rectangular strips of some fixed width,
+which we'll denote $\Delta x$.
+The height of each rectangular strip will vary depending on $f(x)$.
+Look ahead to Figure~\ref{fig:riemannsum-25-50} to see where we're going with this.
+We can calculate the area of the $k$\textsuperscript{th}
+strip using the ``base times height'' formula for the area of a rectangle $\Delta x f(x_k)$,
+where $x_k$ is the left endpoint of the $k$\textsuperscript{th} strip.
+For example,
+we splitting up the area $A_h(0,5)$ into $n=25$ strips,
+calculating the area of the each strip,
+and summing them together produces the approximation $A_h(0,5) \approx ...$.
+If we split the area $A_h(0,5)$ into $n=50$ strips,
+we obtain the more accurate approximation $A_h(0,5) \approx ...$.
+%
+The integral $\int_{-1}^4 h(x)\,dx$ is defined as the limit
+where the number of vertical strips $n$ goes to infinity.
+
 
 		Relax,
 		we won't be doing the $n=25$ and $n=50$ calculation by hand,

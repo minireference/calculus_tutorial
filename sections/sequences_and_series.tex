@@ -3,6 +3,13 @@
 \section{Sequences and series}
 \label{sec:sequences_and_series}
 
+
+
+Sequences are functions that take whole numbers as inputs.
+Instead of continuous inputs $x\in \mathbb{R}$,
+sequences take natural numbers $k\in\mathbb{N}$ as inputs.
+We denote sequences as $a_k$ instead of the usual function notation $a(k)$.
+
 	A sequence is a function of the form $a: \mathbb{N} \to \mathbb{R}$.	
 	The sequence's input variable is usually denoted $k$ or $n$,
 	and it corresponds to the \emph{index} or number in the sequence.
@@ -14,6 +21,12 @@
 	Note the new notation for the input variable as a subscript.
 	This is the standard notation for describing sequences,
 	and is used instead of the standard function notation $a(k)$.
+
+
+Examples
+
+
+
 
 	We're often interested in computing the sum of all the values in this given a sequence $a_k$.
 	To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th} elements of the sequence $a_k$,
@@ -43,64 +56,36 @@
 	computing the sum requires an infinite number of addition operations.
 
 
-		\subsubsection{Exact sums}
-		
-			Formulas exist for calculating the sum of certain series, even series with infinite number of terms.
 
-			The formulas for the sum of the first $n$ positive integers is
-			\[
-			   \sum_{k=1}^n k = \frac{n(n+1)}{2}.
-			\]
-			The the sum of the squares of the first $n$ positive integers is
-			\[
-			   \sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}.
-			\]
-			% MAYBE add k^3 formula too?
-			% See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}} for the derivations of these formulas.
 
-			There is another nice series for powers of $2$:
-			\[
-			   \sum_{k=0}^n 2^k = 1 + 2 + 4 + 8 + \cdots + 2^n = 2^{n+1} -1.
-			\]
-			
-		
-			\noindent
-			The formula for the geometric sequence is $a_k = r^k$.
-			The sum of the first $n$ terms in the geometric sequence is
-			\[
-			  S_n = \sum_{k=0}^n r^k
-			   = 1 + r + r^2 + \cdots + r^n 
-			   =\frac{1-r^{n+1}}{1-r}.
-			\]
-			If $|r|<1$, taking the limit $n\to \infty$ in the above expression leads to
-			\[ 
-			  S_\infty 
-			   = \lim_{n \to \infty} S_n 
-			   = \sum_{k=0}^\infty r^k
-			   = 1 + r + r^2 +  r^3 + \cdots 
-			   =\frac{1}{1-r}.
-			\]
 
-			
-			\paragraph{Example}
-				Consider the geometric series with $r=\frac{1}{2}$.
-				Applying the above formula, we obtain 
-				\[
-				 S_\infty  
-				 	=  \sum_{k=0}^\infty \left(\frac{1}{2}\right)^k
-					= 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{32} + \cdots 
-					=\frac{1}{1-\frac{1}{2}} = 2.
-				\]
-				You can visualize this infinite summation graphically in Figure~\ref{fig:geometric_progression_of_one_half}.
-		
-				\begin{figure}[htb]
-				\centering
-				\includegraphics[width=0.34\textwidth]{figures/calculus/geometric_progression_of_one_half.png}
-				\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
-						The area of each region corresponds to one of the terms in the series.
-						The total area is equal to $\sum_{k=0}^\infty (\frac{1}{2})^k=\frac{1}{1-\frac{1}{2}}=2$.}
-				\label{fig:geometric_progression_of_one_half}
-				\end{figure}
+
+
+
+
+
+
+
+
+	\subsection{Exact sums}
+
+		Formulas exist for calculating the sum of certain series, even series with infinite number of terms.
+
+		The formulas for the sum of the first $n$ positive integers is
+		\[
+		   \sum_{k=1}^n k = \frac{n(n+1)}{2}.
+		\]
+		The the sum of the squares of the first $n$ positive integers is
+		\[
+		   \sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}.
+		\]
+		% MAYBE add k^3 formula too?
+		% See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}} for the derivations of these formulas.
+
+		There is another nice series for powers of $2$:
+		\[
+		   \sum_{k=0}^n 2^k = 1 + 2 + 4 + 8 + \cdots + 2^n = 2^{n+1} -1.
+		\]
 
 
 %TODO explain
@@ -112,6 +97,171 @@ special case when one of the terms is 1:
 \[
 	\sum_{k=0}^n {n \choose k} x^k=(1+x)^n
 \]
+
+
+
+
+
+
+
+
+
+
+We define a sequence by specifying an expression for its $n$\textsuperscript{th} term:
+
+
+\begin{codeblock}[]
+>>> k = sp.symbols("k")
+>>> a_k = 1 / k
+>>> b_k = 1 / sp.factorial(k)
+\end{codeblock}
+
+\noindent
+Substitute the desired value of $n$ to see the value of the $n$\textsuperscript{th} term:
+
+\begin{codeblock}[]
+>>> a_k.subs({k:5})
+1/5
+\end{codeblock}
+
+\noindent
+%We can use 
+The Python list comprehension syntax \texttt{[item for item in list]}
+can be used to print the sequence values for some range of indices:
+
+
+
+\begin{codeblock}[]
+>>> [ a_k.subs({k:i}) for i in range(1,8) ]
+[1, 1/2, 1/3, 1/4,  1/5,   1/6,   1/7]  
+>>> [ b_k.subs({k:i}) for i in range(0,8) ]
+[1,  1, 1/2, 1/6, 1/24, 1/120, 1/720, 1/5040]
+\end{codeblock}
+
+\noindent
+Observe that $a_k$ is not defined for $k=0$
+since $\frac{1}{0}$ is a division-by-zero error.
+In other words,
+the domain of $a_k$ is the nonnegative natural numbers $a_k:\mathbb{N}_+ \to \mathbb{R}$.
+Observe how quickly the `factorial` function $k!=1\cdot2\cdot3\cdots(k-1)\cdot k$ grows:
+$7!= 5040$, $10!=3628800$, $20! > 10^{18}$.
+
+We're often interested in calculating the limits of sequences as $k\to \infty$.
+What happens to the terms in the sequence when $k$ becomes large?
+
+\begin{codeblock}[]
+>>> sp.limit(a_k, k, sp.oo)
+0
+>>> sp.limit(b_k, k, sp.oo)
+0
+\end{codeblock}
+
+\noindent
+Both $a_k=\frac{1}{k}$ and $b_k = \frac{1}{k!}$ \emph{converge} to $0$ as $k \to \infty$.
+
+
+
+
+
+
+	\subsection{Series}
+	
+		Suppose we're given a sequence $a_k$
+		and we want to compute the sum of all the values in this sequence $\sum_{k=-}^\infty a_k$.
+		Series are sums of sequences.
+		Summing the values of a sequence $a_k:\mathbb{N}\to \mathbb{R}$
+		is analogous to taking the integral of a function $f:\mathbb{R}\to \mathbb{R}$.
+
+
+
+
+The formula for the geometric sequence is $a_k = r^k$.
+The sum of the first $n$ terms in the geometric sequence is
+\[
+  S_n = \sum_{k=0}^n r^k
+   = 1 + r + r^2 + \cdots + r^n 
+   =\frac{1-r^{n+1}}{1-r}.
+\]
+If $|r|<1$, taking the limit $n\to \infty$ in the above expression leads to
+\[ 
+  S_\infty 
+   = \lim_{n \to \infty} S_n 
+   = \sum_{k=0}^\infty r^k
+   = 1 + r + r^2 +  r^3 + \cdots 
+   =\frac{1}{1-r}.
+\]
+
+		
+		\paragraph{Example}
+
+			Consider the geometric series with $r=\frac{1}{2}$.
+			Applying the above formula, we obtain 
+			\[
+			 S_\infty  
+			 	=  \sum_{k=0}^\infty \left(\frac{1}{2}\right)^k
+				= 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{32} + \cdots 
+				=\frac{1}{1-\frac{1}{2}} = 2.
+			\]
+			You can visualize this infinite summation graphically in Figure~\ref{fig:geometric_progression_of_one_half}.
+	
+			\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.34\textwidth]{figures/calculus/geometric_progression_of_one_half.png}
+			\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
+					The area of each region corresponds to one of the terms in the series.
+					The total area is equal to $\sum_{k=0}^\infty (\frac{1}{2})^k=\frac{1}{1-\frac{1}{2}}=2$.}
+			\label{fig:geometric_progression_of_one_half}
+			\end{figure}
+
+
+
+
+
+
+
+To work with series in \texttt{SymPy},
+use the \texttt{summation} function whose syntax is analogous to the \texttt{integrate} function: 						\index{summation}
+																							\index{sequence!harmonic}
+
+\begin{codeblock}[]
+>>> a_k = 1 / k
+>>> sp.summation(a_k, (k,1,sp.oo))
+oo
+>>> b_k = 1 / sp.factorial(k)
+>>> sp.summation(b_k, (k,0,sp.oo))
+E
+\end{codeblock}
+
+
+We say the series $\sum a_k$ \emph{diverges} to infinity (or \emph{is divergent})
+while the series $\sum b_k$ converges (or \emph{is convergent}).
+As we sum together more and more terms of the sequence $b_k$,
+the total becomes closer and closer to some finite number.
+In this case,
+the infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$ converges to the number $e=2.71828\ldots$.
+
+
+The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
+but for most practical applications we don't need to take an infinite number of terms in a series to obtain a good approximation. 
+This is why series are so neat: they represent a great way to obtain approximations.
+
+Using standard Python commands,  
+we can obtain an approximation to $e^5$ that is accurate to six decimals by summing 10 terms in the series: 
+
+
+\begin{codeblock}[]
+>>> import math
+>>> def b_kf(n): 
+        return 1.0/math.factorial(n)
+>>> sum( [b_kf(k) for k in range(0, 10)] )
+2.7182815255731922
+>>> sp.E.evalf()
+2.718281 82845905       # true value
+\end{codeblock}
+
+
+
+
 
 
 	\subsection{Taylor series}
@@ -158,6 +308,78 @@ special case when one of the terms is 1:
 		The partial sum of the first six terms (as shown above) gives us an approximation of $e^1$ that is accurate to three decimals. 
 		The partial sum of the first 12 terms gives us $e$ to an accuracy of nine decimals.
 		% http://bit.ly/12DrCZY
+
+
+
+
+
+A \emph{power series} is a series whose terms contain different powers of the variable $x$.
+The $k$\textsuperscript{th} term in a power series
+is a function of both the sequence index $k$ and the input variable $x$.
+
+For example, the power series of the function $\exp(x)=e^x$ is 
+\[
+ \exp(x) \equiv  1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots         
+  =       \sum_{k=0}^\infty \frac{x^k}{k!}.
+\]
+This is, IMHO, one of the most important ideas in calculus:
+you can compute the value of $\exp(5)$ by taking the infinite sum of the terms in the power series with $x=5$:
+
+
+
+\begin{codeblock}[]
+>>> exp_xk = x**k / sp.factorial(k)
+>>> sp.summation( exp_xk.subs({x:5}), (k,0,sp.oo)).evalf()
+148.413159102577
+>>> sp.exp(5).evalf()  # the true value
+148.413159102577
+\end{codeblock}
+
+\noindent
+Note that \texttt{SymPy} is actually smart enough to recognize that the infinite series
+you're computing corresponds to the closed-form expression $e^5$:
+
+
+
+\begin{codeblock}[]
+>>> sp.summation( exp_xk.subs({x:5}), (k,0,sp.oo))
+exp(5)
+\end{codeblock}
+
+%	Taking as few as 35 terms in the series is sufficient to obtain an approximation to $e^5$
+%	that is accurate to $16$ decimals:
+%	%so series are not some abstract thing for mathematicians but a practical trick you can when you code:
+%	
+%	\begin{codeblock}[]
+%	>>> import math                    # redo using only python 
+%	>>> def exp_xnf(x,n): 
+%	        return x**n/math.factorial(n)
+%	>>> sum( [exp_xnf(5.0,i) for i in range(0,35)] )
+%	148.413159102577
+%	\end{codeblock}
+
+\noindent
+The coefficients in the power series of a function (also known as the \emph{Taylor series})
+depend on the value of the higher derivatives of the function. 
+The formula for the $k$\textsuperscript{th} term in the Taylor series of $f(x)$ expanded at $x=c$
+is $a_k(x) = \frac{f^{(n)}(c)}{k!}(x-c)^k$,
+where $f^{(k)}(c)$ is the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=c$.
+
+The \texttt{SymPy} function \texttt{series} is a convenient way to obtain the Taylor series of any function.
+Calling \texttt{series(expr,var,at,nmax)} 
+will show you the series expansion of \texttt{expr} 
+near \texttt{var}=\texttt{at} 
+up to power \texttt{nmax}:
+
+\begin{codeblock}[]
+>>> x = sp.symbols("x")
+>>> sp.series( sp.sin(x), x, x0=0, n=8)
+x - x**3/6 + x**5/120 - x**7/5040 + O(x**8)
+>>> sp.series( sp.cos(x), x, x0=0, n=8)
+1 - x**2/2 + x**4/24 - x**6/720 + O(x**8)
+\end{codeblock}
+
+
 
 
 \ifthenelse{\boolean{FORSTATSBOOK}}{

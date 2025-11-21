@@ -12,6 +12,9 @@
 %We use limits to describe, with mathematical precision, infinitely large quantities,
 %infinitely small quantities, and procedures with infinitely many steps.
 
+%Many important math quantities are defined as limit expressions.
+
+
 
 	\begin{itemize}
 
@@ -55,6 +58,22 @@
 			\caption{	A hexagon, an octagon, and a dodecagon inscribed inside a circle with radius $r=1$.}
 			\label{fig:inscribed-hexagon-octagon-dodecagon}
 		\end{figure}
+
+
+
+%	An interesting example to consider is the number $\pi$, 
+%	which is defined as the area of a circle of radius $1$.
+%	We can approximate the area of the unit circle by drawing a many-sided regular polygon around the circle.
+%	Splitting the $n$-sided regular polygon into identical triangular splices,
+%	we can obtain a formula for its area $A_n$.
+%	In the limit as $n\to \infty$, 
+%	the $n$-sided-polygon approximation to the area of the unit-circle becomes exact:
+%	
+%	\begin{codeblock}[]
+%	>>> A_n = n*tan(2*pi/(2*n))
+%	>>> limit(A_n, n, oo)
+%	pi
+%	\end{codeblock}
 
 
 		
