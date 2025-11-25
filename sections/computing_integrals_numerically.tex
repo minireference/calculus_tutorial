@@ -100,11 +100,12 @@ Calling \code{integrate(f, -1, 4, 50)} you'll obtain $S_{50}=12.6625$.
 
 
 \begin{figure}[htb]
+	\centering
 	\subfigure[$n=25$]{				
-		\includegraphics[width=0.24\textwidth]{figures/calculus/riemannsum-25.png}
+		\includegraphics[width=0.45\columnwidth]{figures/calculus/riemannsum-25.png}
 	}
 	\subfigure[$n=50$]{				
-		\includegraphics[width=0.24\textwidth]{figures/calculus/riemannsum-50.png}
+		\includegraphics[width=0.45\columnwidth]{figures/calculus/riemannsum-50.png}
 	}
 	\vspace{-2mm}
 	\caption{An approximation to the area under the graph of the function $f(x)=x^3-5x^2+x+10$ 
@@ -238,7 +239,7 @@ The approximation with $n = 100K$ is accurate to four decimals!
 		This is why you'll often see the expression \tt{quad(...)[0]} in code examples.
 	
 		\begin{codeblock}[quad-f-0-5]
-		>>> quad(f, 0, 5)[0]  # extract A
+		>>> quad(f, 0, 5)[0]  # extract the value A_f(0,5)
 		15.0
 		\end{codeblock}
 

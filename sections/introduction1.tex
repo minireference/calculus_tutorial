@@ -3,107 +3,62 @@
 
 \section{Introduction}
 
-	Calculus = study of functions + operations on functions
+	% STUDY OF FUNCTIONS + OPERATIONS ON FUNCTIONS
+	Calculus is the study of functions that change over time.
+	We use calculus concepts to describe
+	various quantities in physics, chemistry, biology, engineering, business,
+	and other fields where quantitative math models are used.
+	If we know that some quantity of interest is described by the function $f(t)$ at time $t$,
+	then the techniques of calculus allow us to do all kinds of useful calculations
+	based on the function $f(t)$.
+	%
+	The two main techniques of calculus
+	involve calculating how functions \emph{change} over time (derivatives),
+	and how to compute the total \emph{accumulation} of functions over time (integrals).
+	Derivatives and integrals might sound like fancy math jargon,
+	but actually they are common-sense concepts
+	that you're already familiar with,
+	as you'll see in the following example.
 
-Calculus is the study of the properties of functions.
-The operations of calculus are used to describe the limit behaviour of functions,
-calculate their rates of change,
-and calculate the areas under their graphs.
-In this section we'll learn about the \texttt{SymPy} functions for calculating
-limits, derivatives, integrals, and summations.
-
-
-
-	% Main idea = calculations with infinite number of steps
-	previously = numbers + operations that produce other numbers as outputs
-	in calculus = functions + operators that produce other functions as outputs 
-
-	In high school math,
-	we learn all kinds of math procedures for solving problems using a finite number of steps of math operations.
-	Whether you're manipulating expressions using algebra,
-	or applying the inverse function to simplify an equation,
-	all problems in high school math can be solved by using less than five steps,
-	or if your teacher really doesn't like you 10 steps.
-	% INFINITY
-	In calculus,
-	we learn a broader class of problem-solving strategies
-	that include procedures with an infinite number of steps.
-
-
-	\subsection{Definitions}
-
-
-		\begin{itemize}
-			\item   	$\mathbb{R}$: the set of real numbers
-			\item   	$f(x)$:  a function of the form $f: \mathbb{R} \to \mathbb{R}$,
-				which means $f$ takes real numbers as inputs and produces real numbers as outputs
-			\item	$\lim_{\delta \to 0}$: a limit expression in which the number $\delta$ tends to zero
-			\item	$f'(x)$: the derivative of $f(x)$ is the rate of change of $f$ at $x$: 
-				\[
-					f'(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{\delta}\,.
-				\] 
-				The derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
-
-			\item	$A(a,b)$: the value of the \emph{area} under the curve $f(x)$ from $x=a$ until $x=b$.
-		    		The area $A(a,b)$ is computed as the following integral
-		    		\[
-			        	   A(a,b) = \int_a^b f(x)\;dx.
-			    	\] 
-			    	The $\int$ sign stands for \emph{sum}.
-			    	Indeed, the integral is the ``sum'' of $f(x)$ for all values of $x$ between $a$ and $b$.
-
-				\vspace{2mm}
-				
-			\item	$A_0(x)$: the \emph{integral function} of $f(x)$.
-		    		The integral function corresponds to the computation of the area under $f(x)$
-				as a function of the upper limit of integration:
-			       	\[
-			        	   A_0(x) \eqdef A(0,x) = \int_0^{x}\! f(u)\:du.
-			      	\]
-				The choice of $x=0$ as the lower limit of integration is arbitrary.
-
-				\vspace{2mm}
-
-			\item sequence 
-
-			\item series
-
-		\end{itemize}
-
-% cf. \input{../../../MATHPHYSbook/05_calc/02.overview.tex}
-% cf. \input{../../../MATHPHYSbook/02_intro2phys/03.introduction_to_calculus.tex}
-
-
+	% cf. \input{../../../MATHPHYSbook/05_calc/02.overview.tex}
+	% cf. \input{../../../MATHPHYSbook/02_intro2phys/03.introduction_to_calculus.tex}
 
 
 	\subsection{Example 1: file download}
 	\label{introduction:download_example}
 	
-		Suppose you're downloading a large file to your computer.
+		Suppose you're downloading a $720$[MB] file from the internet to your computer.
 		At $t=0$ you click ``save as'' in your browser and the download starts.
-		Let $f(t)$ represent the size of the downloaded data.
-		At any time $t$,
-		the function $f(t)$ tells you the amount of disk space taken by the partially-downloaded file.
-		You are downloading a $720$[MB] file, so the download progress
-		at time $t$ corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
+		Consider the function $f(t)$
+		that describes the amount of disk space taken by the partially-downloaded file at time $t$.
+		At time $t$,
+		your browser reports the download progress as a percentage
+		that corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
 
 		\subsubsection{Download rate}
 		\label{introduction:download_rate}
 
-			The derivative function $f^\prime(t)$, pronounced ``\:\!\!$f$ prime,''
+			The \emph{derivative function} $f^\prime(t)$,
+			pronounced ``\:\!\!$f$ prime,''
 			describes how the function $f(t)$ changes over time.
 			In our example $f^\prime(t)$ is the download speed.
-			If your downloading speed is  $f'(t)=100$[kB/s],
-			then the file size $f(t)$ must increase by 100[kB] each second.
-			If you maintain this download speed, the file size will grow at a constant rate:
-			$f(0)=0$[kB], $f(1)=100$[kB], $f(2)=200$[kB], $\ldots$, $f(100)=10$[MB].
+			If your downloading speed is $f'(t)=2$[MB/s],
+			then the file size $f(t)$ will increase by 2[MB] each second.
+			If you maintain this download speed,
+			the file size will grow at a constant rate:
+			$f(0)=0$[MB], $f(1)=2$[MB], $f(2)=4$[MB], $\ldots$, $f(100)=200$[MB],
+			and so on until $t=360$[s] when we expect the download to complete.
 
-			To calculate the ``estimated time remaining'' until the download's completion,
-			we divide the amount of data that remains to be downloaded by the current download speed:
+			Let's look at how your browser calculates the ``estimated time remaining''
+			for the download at time $t$.
+			To calculate the time until the download completes,
+			we divide the amount of data that remains to be downloaded
+			by the current download speed:
 			\[
-				\text{time remaining } = \frac{ 720 - f(t) }{ f^\prime(t) } \quad [\textrm{s}].
+				\text{time remaining at } t = \frac{ 720 - f(t) }{ f^\prime(t) } \quad [\textrm{s}].
 			\]
-			The bigger the derivative, the faster the download will finish.
+			The bigger the derivative $f^\prime(t)$,
+			the faster the download will finish.
 			If your internet connection were 10 times faster,
 			the download would finish 10 times more quickly.
 
@@ -111,80 +66,131 @@ limits, derivatives, integrals, and summations.
 		\subsubsection{Inverse problem}
 		\label{introduction:inverse_problem}
 
-			Let's consider this situation from the point of view of the modem that connects your computer to the internet.			\index{inverse!operation}
-			Any data you download comes through the modem.
-			The modem knows the download rate $f^\prime(t)$[kB/s] at all times during the download.
+			Let's now consider the download scenario
+			from the point of view of the modem that connects your computer to the internet.
+			Any data you download comes through the modem,
+			so the modem knows the download rate $f^\prime(t)$[MB/s]
+			at all times during the download.
 
-			However, since the modem is separate from your computer,
-			it does not know the file size $f(t)$ as the download progresses.
+			The modem is separate from your computer,
+			so it doesn't know the file size $f(t)$ as the download progresses.
 			Nevertheless,
-			the modem can infer the file size at time $t$ from knowing the transmission rate $f^\prime(t)$.
-			The integral of the download rate between $t=0$ and $t=\tau$
-			corresponds to the total amount of downloaded data stored on your computer.
-			During this download period, the change in file size is described by the integral
+			the modem can infer the file size at time $t$
+			from the transmission rate $f^\prime(t)$.
+			Think about it---if the modem sees data flowing through at the rate of $f'(t)=2$[MB/s],
+			then it knows that the data accumulated on your computer
+			is growing at the rate of $2$[MB] each second.
+			In calculus,
+			we describe the total file size accumulated until time $t=\tau$ (the Greek letter \emph{tau})
+			as the \emph{integral} of the download rate $f'(x)$ between $t=0$ and $t=\tau$:
 			\[
-				\Delta f = f(\tau)-f(0) = \int_0^\tau \! f'(t)\: dt\,.
+				f(\tau) \; = \; \int_{t=0}^{t=\tau}  f'(t)\, dt.
 			\]
-			Assuming the file size starts from zero $f(0)=0$[kB] at $t=0$,
-			the modem can use the integration procedure to find $f(\tau)$,
-			the file size on your computer at $t=\tau$:
-			\[
-				f(\tau) = \int_0^\tau\! f^\prime(t) dt\,.
-			\]
-			The download rate $f'(t)$ is measured in [kB/s],
-			and each time step $dt$ is $1$[s] long,
-			so the data downloaded during one second is $f'(t)dt$[kB].
-			The file size at time $t=\tau$ is equal to the sum of the data
-			downloaded during each second from $t=0$ until $t=\tau$.			
+			The symbol $\int$ is an elongated $S$ that stands for \emph{sum}.
+			Indeed,
+			the ``integral of $f^\prime(t)$ between $0$ and $\tau$''
+			is in some sense the sum of $f^\prime(t)$
+			during each time instant $dt$ between $t=0$ and $t=\tau$.
+			To calculate the total accumulated file size,
+			we split the time interval between $t=0$ and $t=\tau$
+			into many short time intervals $dt$ of length $1$[s].
+			During each second,
+			the file size grows by $f'(t)\,dt$,
+			where $f'(t)$ is the the download rate measured in [MB/s],
+			and $dt$ is $1$ [s].
+			Note the units check out,
+			the data downloaded during one second is $f'(t)dt$[MB].
+			The file size on your computer at $t=\tau$
+			is the sum of these 1-second contributions $f'(t)\,dt$
+			as $t$ varies from $t=0$ to $t=\tau$.
+			% during each second from $t=0$ until $t=\tau$.
+			% The file size at time $t=\tau$ is equal to the sum of the data downloaded 
 
-			The integral $\int_a^b q(t)\:dt$ is the calculation of the \emph{total}
-			of some quantity $q(t)$ that accumulates during the time period from $t=a$ to $t=b$.
-			Integrals are necessary any time you want to calculate the total of a quantity that changes over time.
-			
-			% TODOv6: remind how tau is pronounced and why we need a variable different from t
-
-		\bigskip
-		
-		As demonstrated above,
-		calculus is much more than the theoretical activity reserved for math specialists.
-		Calculus relates to everyday notions you're already familiar with.
-		Indeed, we carry out calculus-like operations in our head every day---we just
-		don't necessarily use calculus terminology when we do so.
-
-		%	Usually, differential calculus and integral calculus are taught as two separate subjects.
-		%	Perhaps teachers and university administrators are worried the undergraduates' little heads will explode
-		%	from sudden exposure to \emph{all} of calculus.
-		%	However, this separation actually makes calculus more difficult,
-		%	and prevents students from discovering the connections between differential and integral calculus.
-		%	We'll have no such split in this book, because I believe you can handle the material in one go.
-		%	Understanding calculus involves figuring out new mathematical concepts like infinity, limits, and summations,
-		%	but these ideas are not \emph{that} complicated.
-		%	By getting this far, you've proven you're more than ready to learn the theory,
-		%	techniques, and applications of derivatives, integrals, sequences, and series.
-		
-		% Let's begin with an overview of the material.
+			%	corresponds to the total amount of downloaded data stored on your computer.
+			%	During this download period,
+			%	the change in file size is described by the integral
 
 
-	Derivatives and integrals are two main actors in calculus.
-	The other supporting actors are limits and series,
-	which we'll briefly introduce in the following example.
+	\noindent
+	The situation described in the above example
+	shows that calculus concepts are not some theoretical constructs reserved for math specialists,
+	but something you encounter everyday.
+	The derivative $q'(t)$ describe the rate of change of the quantity $q(t)$.
+	The integral $\int_a^b q(t)\:dt$ measures the total accumulation of the quantity $q(t)$
+	 during the time period from $t=a$ to $t=b$.
+	
+%	Derivatives and integrals are particularly important
+%	for quantities that change over time.
 
+%	Indeed,
+%	we carry out calculus-like operations in our head every day---we just
+%	don't necessarily use calculus terminology when we do so.
+
+
+	\subsection{Infinity}
+	
+		The math symbol $\infty$ describes the concept of \emph{infinity}.
+		Infinity is the key building block for everything we do in calculus,
+		so it's important that you develop the right way to think about infinity.
+		% so I want you to have a good way to think about it.
+
+		\textbf{Infinity is not a number but a process}.
+		Consider the set of natural numbers $\mathbb{N} \eqdef \{0, 1, 2, 3, 4, 5, 6, \ldots \}$.
+		The natural numbers describe the process of counting starting at $0$.
+		The natural number $n$
+		is obtained by starting at $0$ and performing the $+1$ operation $n$ times.
+		% Look ahead to the number line shown in Figure~XX.
+		Geometrically,
+		you can think of the $+1$ operation as taking one step to the right on the number line
+		shown in Figure~\ref{fig:number_line_rationals_and_reals}
+		(page~\pageref{fig:number_line_rationals_and_reals}).
+		In this context,
+		you can think of infinity $\infty$ as performing the $+1$ operation forever.
+		Infinity is greater than any natural number $n$.
+		Indeed,
+		getting to $n$ takes a finite number of steps,
+		but $\infty$ describes taking an infinite number of steps
+		so $\infty$ must be to the right of $n$.
+
+		Infinity is the main new concept in calculus.
+		Everything else we'll talk about (numbers, variables, expressions, algebra, equations, functions, etc.)
+		are standard topics from high school math,
+		which I assume you're familiar with.
+		Indeed,
+		calculus can be described as the ``infinity upgrade''
+		to the high school math calculations you're familiar with
+		that gives you a language for describing and solving a new class of problems.
+
+		Let's look at another example.
+		% an example where infinity comes up.
 
 
 	\subsection{Example 2: Euler's number}
 	\label{introduction:eulers_number}
 	
-		Suppose you take out a loan with a 100\% annual interest rate.
-		If the interest is calculated once per year,
-		this means at the end of the year you'll owe double the amount you borrowed.
+		Suppose you take out a loan with 100\% nominal interest rate.
+		This is a very bad loan that nobody would agree to the real world,
+		but we'll use it for this example to make the math come out simpler.
+		An interest of $100\%$ calculated yearly means at the end of one year,
+		you'll owe $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
+
 		However,
-		if the interest rate is calculated more often,
-		you'll owe more at the end of the year.
-		For example,
-		if the interest rate is computed twice per year,
+		most banks don't calculate the interest owed only once per year,
+		but more often.
+		If the bank calculates the interest twice per year,
+		during the first six months you'll have accrued $\frac{100\%}{2} = 50\%$ of interest,
+		so you'll owe them $(1+50\%) = (1+\frac{1}{2}) = 1.5$ times the initial amount.
+		Then during the second six months,
+		the amount owed will grow by an additional $(1+50\%) = (1+\frac{1}{2}) = 1.5$,
+		so at the end of the year,
 		you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
-		If computed three times per year,
-		$(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
+
+		If the bank computes the interest three times per year,
+		the amounted owed after one year will be $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
+		If they compute the interest four times per year (quarterly),
+		then you'll owe $(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})  = 2.441$.
+		Note the amount owed after one year keeps changing,
+		as the compounding is performed more frequently.
 		In general,
 		when the compounding is performed $n$ times per year,
 		the amount owed at the end of the year will be
@@ -198,54 +204,318 @@ limits, derivatives, integrals, and summations.
 			= 
 			\left(1 + \tfrac{1}{n} \right)^{\!n}.
 		\]
-		Euler's number is defined as the \emph{limit} of the expression $\left(1 + \frac{1}{n} \right)^{\!n}$
-		as $n$ grows to infinity,
-		which we write as
-		\[
-			e 	\eqdef 	\lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{n}
-				= 		2.718281828\ldots.
-		\]
-		This limit expression describes the annual growth rate of a loan
-		with infinitely frequent compounding.
-		If we borrow $\$1000$,
-		we'll owe $\$2718.28$ at the end of one~year.
 
-		Euler's number $e$ can also be obtained from another expression:
+		\noindent
+		With monthly compounding ($n=12$),
+		the amount owed will be $(1 + \tfrac{1}{12})^{12} = 2.613$
+		at the end of one year.
+		With daily compounding,
+		the amount would be $(1 + \tfrac{1}{365})^{365} = 2.715$.
+		If computing the interest $n=1000$ times per year,
+		the amount ill be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
+		The amount owed keeps increasing,
+		but it seems to ``stabilize'' around the value $2.71$.
+
+		What happens if we perform the compounding even more frequently?
+		Specifically,
+	 	we want to know what happens if the compound interest interest is calculated infinitely often.
+		The infinitely-often calculation corresponds
+		to computing the \emph{limit} of expression  $(1 + \frac{1}{n})^n$,
+		as $n$ goes to infinity,
+		which is written as follows using math notation:
 		\[
-			e	\eqdef	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \frac{1}{5!} + \cdots
-				= 		\sum_{k=0}^\infty \frac{1}{k!}
-				= 		2.718281828\ldots.
+			\lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{\!n}
+				\;\; = \;\; e
+				\;\;= \;\; 2.718281828\ldots.
 		\]
-		Note this is a math expression with an infinite number of terms.
-		Each term is comes from a common ``pattern'' $\frac{1}{k!}$,
+		This limit expression \emph{converges} to the value $e = 2.71828\ldots$,
+		which is known as \emph{Euler's number}.
+		% The number $e$ describes the limit of the annual growth rate of a loan
+		% with 
+		If we borrow $\$1000$,
+		we'll owe $\$1000e = \$2718.28$ at the end of one~year.
+		
+		The definition of the number $e$ as a limit
+		is a fascinating new concept that goes beyond the ``regular'' math operations
+		that we learn in high school math.
+		We're not talking about any particular large number $n$
+		when calculating the expression $(1 + \frac{1}{n})^n$,
+		but the \emph{process} of plugging in large and larger $n$s.
+		This is what the limit notation $\displaystyle \lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
+		it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
+		as $n$ goes to infinity.
+		We'll learn more about limits in Section~\ref{sec:limits}.
+
+		Euler's number $e$ can also be obtained from another limit expression:
+		\[
+			e	=	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!}  + \cdots
+				= 	\lim_{n\to \infty} \sum_{k=0}^n \frac{1}{k!}
+				= 	2.718281828\ldots.
+		\]
+		This alternative expression
+		tells us we can compute $e$ as the sum ($\sum$)
+		with an infinite number of terms.
+		Each term comes from a common ``pattern'' $\frac{1}{k!}$,
 		where $k! = k\cdot (k-1) \cdot (k-2) \cdots 3\cdot 2 \cdot 1$
 		is the factorial function.
-		This kind of expression is called a \emph{series},
+		The notation $\sum_{k=0}^n$
+		describes the summation starting at $k=0$ and going all the way to $k=n$.
+		The limit $\lim_{n\to \infty}$ tells us the summation has infinitely many terms.
+		This kind of infinite sum expression are called a \emph{series},
 		and provides a powerful way to compute quantities by summing together a bunch of terms.
+		We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
 
 
 	\subsection{Applications}
 
-		Learning the language of calculus will help you think more clearly about certain types of problems.
-		Understanding the language of calculus is \emph{essential} for learning science
-		because many laws of nature are best described in terms of derivatives and integrals.
+		Many laws of nature are expressed in terms of derivatives and integrals.
+		It is therefore essential that you learn the language of calculus if you want
+		to understand physics, chemistry, biology, ecology, and other sciences.
+		Calculus is also heavily used in engineering, business, economics, 
+		any many other subjects based on quantitative analysis.
+		We also use calculus in probability, statistics, and machine learning.
+
+		In all this areas,
+		there are quantities described by functions,
+		and we use derivatives and integrals to do useful calculations.
+		For example,
+		optimization,
+		solving differential equations,
+		computing probabilities involving continuous random variables,
+		etc.
 		
-		Using concepts to describe phenomena in:
-		physics,
-		engineering,
-		finance,
-		probability calculations (continuous random variables),
-		optimization (used in business, statistics, machine learning, etc.).
+		The goal of this tutorial is to show you the basics of derivatives and integrals,
+		so that you you can think more clearly about these types of problems.
+		This is the power of math:
+		we learn techniques to analyze functions in general,
+		which means our technique apply to any domain.
 
 
 
 	\subsection{Doing calculus}
 
-		Symbolic calculations using pen and paper
+		In the previous section I made a lot of promises about the usefulness of calculus,
+		as motivation talk
+		to motivate you to read the rest of this tutorial
+		so that you'll be interested in learning all the complicated-looking topics 
+		concepts, symbols, etc.
+		Befogging getting to this,
+		it's worth describing more specifically what doing calculus looks like.
 
-		Symbolic calculations using SymPy
+		\subsubsection{Symbolic calculations using pen and paper}
 
-		Numerical calculations using NumPy and SciPy
+			The key ideas of calculus and were developed by Isaac Newton
+			and Wilhelm Leibnitz in the 17th century
+			using mostly pen and paper calculations.
+			The pen-and-paper approach continues to be the best way to learn about
+			limits, derivatives, and integrals even to this day.
+
+			I encourage you to keep a notebook or use printer paper
+			to reproduce the calculations presented in this tutorial on your own.
+			The goal is for you to get used to manipulating functions, variables,
+			and get used to the new calculus notation.
 
 
+		\subsubsection{Symbolic calculations using SymPy}
+
+			We're no longer in the 17th century,
+			so we don't \emph{have} to use pen and paper for symbolic math calculations.
+			Using a computer algebra system like SymPy
+			allows us to do symbolic math calculations very similar to
+			what we could do on paper.
+			SymPy is a Python module for 
+			When using SymPy,
+			we can define a symbols \tt{x}
+			that works like the math variable $x$.
+			We can then write arbitrary math expressions that involve $\tt{x}$
+			and ask SymPy to \tt{simplify}, \tt{factor}, \tt{expand}, etc.
+
+			\begin{codeblock}[]
+			>>> import sympy as sp
+			>>> TODO
+			\end{codeblock}
+
+
+			You can also \tt{subs}itue particular values for $\tt{x}$
+			into the expression and evaluate the expression
+			to obtain an exact symbolic value
+			or a numerical approximation as a floating point number.
+
+			\begin{codeblock}[]
+			>>> import sympy as sp
+			>>> TODO
+			\end{codeblock}
+
+			You can also solve equaiton
+
+			\begin{codeblock}[]
+			>>> import sympy as sp
+			>>> TODO
+			\end{codeblock}
+
+
+		\subsubsection{Numerical computing using NumPy}
+		
+			Calculus also has an engineering lineage.
+			From the first mechanical calculators to modern CPUs and GPUs,
+			there has been many computational developments in industry too.
+			An engineer doesn't care about exact analytical results like knowing that
+			$\sqrt{2}$ (the length of the diagonal of a square with side length 1)
+			is an irrational number (requires infinitely many digits after the decimal to describe exactly).
+			For most engineering concerts,
+			if we can represent $\sqrt{2}$ approximately as  $1.4......15$
+			then they're good.
+			In fact probably $1.4143521$ would be enough for most use cases.
+
+			What engineers give up in mathematical exactitude,
+			they gain manyfold in the form of computational power.
+			Defining the specific data format for representing numbers (float32, float64, etc.)
+			allows computer engineers to build high-performance hardware for doing math calculations.
+
+
+			\begin{codeblock}[]
+			>>> import sympy as sp
+			>>> TODO
+			\end{codeblock}
+			
+
+			
+		\subsubsection{Scientific computing using SciPy}
+
+			The Python module SciPy is a toolbox of scientific computing helper functions
+			that greatly simplify our life.
+			For example,
+			computing integral of the function \tt{f} between $x=-2$ and $x=2$ requires only two lines of code:
+
+			\begin{codeblock}[]
+			>>> from scipy.integrate import quad
+			>>> quad(h, -2, 2)
+			(10.666666666666666, 1.1842378929335001e-13)
+			\end{codeblock}
+			
+			\noindent
+			The answer is $10.\overline{6}$ (the first number in the output)
+			and the precision of this answer is $\pm 1.8\times 10^{-13}$,
+			which tells us the first $12$ digits of the answer are exact.
+			
+These two lines of code represent the complete level of WIN
+humankind has achieved over practical math calculations.
+Calculus ideas started with Archimedes,
+then levelled up by Newton and Leibniz,
+and formalized as analysis (pure math) and numerical analysis (applied math).
+In parallel,
+compute hardware has improved its raw performance exponentially for many years.
+This means today you can perform the integrals like the ones the ancients only dreamed of in less than a second.
+
+
+
+
+			
+
+			
+			%	One of the only exponential trends that has the longest track record,
+			%	is the number of floating point operations you have access to 
+			
+			
+
+
+
+% CUT MATERIAL
+
+
+%	Usually, differential calculus and integral calculus are taught as two separate subjects.
+%	Perhaps teachers and university administrators are worried the undergraduates' little heads will explode
+%	from sudden exposure to \emph{all} of calculus.
+%	However, this separation actually makes calculus more difficult,
+%	and prevents students from discovering the connections between differential and integral calculus.
+%	We'll have no such split in this book, because I believe you can handle the material in one go.
+%	Understanding calculus involves figuring out new mathematical concepts like infinity, limits, and summations,
+%	but these ideas are not \emph{that} complicated.
+%	By getting this far, you've proven you're more than ready to learn the theory,
+%	techniques, and applications of derivatives, integrals, sequences, and series.
+		
+
+
+%	\subsection{Definitions}
+%
+%		\begin{itemize}
+%
+%			\item	$\mathbb{N} \eqdef \{0, 1, 2, 3, \ldots \}$: the set of natural numbers.
+%
+%			\item	$\mathbb{R}$: the set of real numbers.
+%
+%			\item	$f: \mathbb{R} \to \mathbb{R}$:
+%				a \emph{function} that takes real numbers as inputs
+%				and produces real numbers as outputs.
+%
+%			\item	$\lim_{\delta \to 0}$: a limit expression in which the number $\delta$ tends to zero
+%
+%			\item	$f'(x)$: the derivative of the function $f(x)$.
+%				The derivative $f'(x)$ describes the rate of change of the function $f(x)$
+%				and it is defined using the following formula:
+%				\[
+%					f'(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{\delta}\,.
+%				\] 
+%				The derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+%
+%			\item	$A_f(a,b)$: the \emph{area} under the graph of the function $f(x)$
+%				between $x=a$ and $x=b$.
+%				The area $A_f(a,b)$ is computed as the following integral
+%				\[
+%					A_f(a,b) = \int_a^b f(x)\;dx.
+%				\] 
+%				
+%			\item	$A_0(x)$: the \emph{integral function} of $f(x)$.
+%		    		The integral function describes the area calculation
+%				with variable upper limit of integration:
+%			       	\[
+%			        	   A_0(x) \eqdef A(0,x) = \int_0^{x}\! f(u)\:du.
+%			      	\]
+%				The choice of $x=0$ as the lower limit of integration is arbitrary.
+%
+%			\item $a_k:\mathbb{N} \to \mathbb{R}$: a \emph{sequence} of 
+%
+%			\item series
+%
+%		\end{itemize}
+
+
+
+
+%so we should probably say a few about this as well.
+
+		
+%we learn a broader class of problem-solving strategies
+%that include procedures with an infinite number of steps.
+
+
+%	Infinity is a powerful math concept 
+%	The concept of infinity is a powerful building block that    
+
+		
+	
+%	% HIGH SCHOOL MATH
+%	In high school math,
+%	we learn all kinds of math procedures for solving problems using a finite number of steps of math operations.
+%	Whether you're manipulating expressions using algebra,
+%	or applying the inverse function to simplify an equation,
+%	all problems in high school math can be solved by using less than five steps,
+%	or if your teacher really doesn't like you 10 steps.
+%	% INFINITY
+%	In calculus,
+%	we learn a broader class of problem-solving strategies
+%	that include procedures with an infinite number of steps.
+%	
+%	% Main idea = calculations with infinite number of steps
+%	previously = numbers + operations that produce other numbers as outputs
+%	in calculus = functions + operators that produce other functions as outputs 
+
+
+%	Derivatives and integrals are two main actors in calculus.
+%	The other supporting actors are limits and series,
+%	which we'll briefly introduce in the following example.
+
+%	The operations of calculus are used to describe the limit behaviour of functions,
+
+% We can also use calculus to describe the long-term tendency of quantities over time (limits).
 

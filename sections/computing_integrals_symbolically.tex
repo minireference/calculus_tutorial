@@ -175,15 +175,15 @@ and the function \tt{integrate} that we'll use for computing integrals.
 In \texttt{SymPy} we use \texttt{integrate(f, x)} to obtain the integral function $F(x)$ of any function $f(x)$:					\index{integral}
 $F(x) = \int_0^x f(u)\,du$.
 
-\begin{codeblock}[]
->>> integrate(x**3, x)
-x**4/4
->>> integrate(sin(x), x)
--cos(x)
->>> integrate(ln(x), x)
-x*log(x) - x
-\end{codeblock}
-This is known as an \emph{indefinite integral} since the limits of integration are not defined. 
+%\begin{codeblock}[]
+%>>> integrate(x**3, x)
+%x**4/4
+%>>> integrate(sin(x), x)
+%-cos(x)
+%>>> integrate(ln(x), x)
+%x*log(x) - x
+%\end{codeblock}
+%This is known as an \emph{indefinite integral} since the limits of integration are not defined. 
 
 In contrast, 
 a \emph{definite integral} computes the area under $f(x)$ between $x=a$ and $x=b$.

@@ -4,89 +4,149 @@
 \label{sec:limits}
 
 	% LIMITS
-	Limit expressions provide a precise mathematical language
+	Limit expressions are a precise mathematical language
 	for talking about infinitely large numbers, infinitely small lengths,
 	and mathematical procedures with an infinite number of steps.
-	Here are three representative examples of limit expressions:
+	% Many important math and science quantities are defined as limit expressions.
+	% For example
+	The shorthand ``$\lim$'' is common to all limit expressions,
+	with the specifics of the limiting behaviour described below.
+	Here are some examples:
 
-%We use limits to describe, with mathematical precision, infinitely large quantities,
+% We use limits to describe, with mathematical precision, infinitely large quantities,
 %infinitely small quantities, and procedures with infinitely many steps.
 
-%Many important math quantities are defined as limit expressions.
-
+	% of each different situations where limit expressions:
 
 
 	\begin{itemize}
 
 		% ASYMPTOTICS
-		\item	$\lim_{x \to \infty} f(x)$: limit expression that describes what happens to $f(x)$
+		\item	$\displaystyle \lim_{x \to \infty} f(x)$: limit expression that describes what happens to $f(x)$
 			when the input to the function $x$ tends to infinity (gets larger and larger).
 			In words,
-			this limit expression is read as ``limit of $f(x)$ as $n$ goes to infinity.''
+			this limit expression is read as ``limit of $f(x)$ as $x$ goes to infinity.''
 
 
 		% INFINITELY SMALL
-		\item	$\lim_{\delta \to 0} h(\delta)$: limit expression that describes what happens to
-			$h(\delta)$ as the real number $\delta$ tends to zero.
+		\item	$\displaystyle  \lim_{\delta \to 0} f(\delta)$:
+			limit expression that describes the value $f(\delta)$
+			as the input $\delta$ tends to zero.
 			The number $\delta$ (the Greek letter delta) usually describes a small distance,
-			and the limit as delta goes to zero ($\delta \to 0$) describes the behaviour of the expression $h(\delta)$
-			for an infinitely short distance $\delta$.
+			and the limit as delta goes to zero ($\delta \to 0$)
+			describes the behaviour of the function $f(\delta)$ for infinitely short distance $\delta$.
 
-		% INFINITELY MANY
-		\item	$\lim_{n \to \infty} \textrm{proc}(n)$: limit expression that describes the value of $\textrm{proc}(n)$ as the integer $n$ tends to infinity.
+		% INFINITELY MANY STEPS
+		\item	$\displaystyle  \lim_{n \to \infty} \textrm{proc}(n)$:
+			limit expression that describes the value of $\textrm{proc}(n)$
+			as the integer $n$ tends to infinity.
 			The integer $n$ usually describes the number of steps in a given procedure,
 			and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
-
 
 	\end{itemize}
 
 	%	Using limits allows us to obtain answers computed by mathematical procedures with an infinite number of steps!
 
 
-
-	\subsection{Example}
+	\noindent
+	Let's look at an example of an example of a math procedure with infinite number of steps
+	that was invented by Archimedes,
+	one of the OGs of calculus.
 	
-		The formula for the area of a regular polygon with $n$ sides that fits inside a circle of radius $r$ is...
-		
-		
-		% FIGURE hexagon, octagon, dodecagon side by side with triangle + labels on octagon 
+
+	\subsection{Example: area of a circle}
+
+		Suppose we want to prove that area of a circle of radius $r$
+		is described by the formula $A = \pi r^2$.
+		We can approximate the circle as a regular polygon with $n$ sides
+		inscribed in the circle.
+		Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}
+		shows the hexagonal (6-sides),
+		octagonal (8-sides),
+		and dodecagonal (12-sides) approximations to the circle.
+		% side by side with triangle + labels on octagon 
 
 		\begin{figure}[htb]
 			\centering
-			\includegraphics[width=0.47\textwidth]{figures/calculus/inscribed-polygons.pdf}
-			% hexagon-octagon-dodecagon.png}
-			\caption{	A hexagon, an octagon, and a dodecagon inscribed inside a circle with radius $r=1$.}
+			\includegraphics[width=0.99\columnwidth]{figures/calculus/inscribed-polygons.pdf}%
+			\vspace{-3mm}
+			\caption{	Approximations to the area of circle using a hexagon,
+					an octagon, and a dodecagon inscribed inside a circle with radius $r$.}
 			\label{fig:inscribed-hexagon-octagon-dodecagon}
 		\end{figure}
 
+		We can compute the area of the $n$-sided regular polygons
+		by selling them up into triangular slices,
+		and commuting the area of these slices using the formula for the area of a triangle $\frac{1}{2}bh$
+		and trigonometric functions $\sin$ and $\cos$.
+		Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}~(b)
+		highlights one of the $16$ identical triangular slices in the case when $n=8$.
+		The hypotenuse of this triangle has length $r$,
+		the angle $\theta$ is $\frac{360\circ}{16} = \frac{2\pi}{16} = \frac{\pi}{8}$[rad],
+		and its sides have length $a=r\cos(\frac{\pi}{8})$ and $b=r\sin(\frac{\pi}{8})$.
+		\[
+			 2n \times \tfrac{1}{2}ab 
+			 = n \times  r\cos(\tfrac{\pi}{n})  \, r\sin(\tfrac{\pi}{n})
+			 = n \times r^2  \cos(\tfrac{\pi}{n})\sin(\tfrac{\pi}{n}).
+		\]
+		In the limit as $n\to \infty$, 
+		the $n$-sided-polygon approximation to the area of the circle 
+		becomes more and more accurate.
+		
+		Here is the code that computes the approximations to the area
+		of a circle of radius $r=1$ with polygons with higher and higher number of sides.
 
+		\begin{codeblock}[]
+		>>> import math
+		>>> def calc_area(n, r=1):
+		        theta = 2 * math.pi / (2 * n)
+		        a = r * math.cos(theta)
+		        b = r * math.sin(theta)
+		        area = 2 * n * a * b / 2
+		        return area
+		>>> for n in [6, 8, 10, 50, 100, 1000, 10000]:
+		        area_n = calc_area(n)
+		        error = area_n - math.pi
+		        print(f"{n=}, {area_n=}, {error=}")
+		n=6, area_n=2.5980762113533156, error=-0.5435
+		n=8, area_n=2.8284271247461903, error=-0.3132
+		n=10, area_n=2.938926261462365, error=-0.2027
+		n=50, area_n=3.133330839107606, error=-0.00826
+		n=100, area_n=3.1395259764656687, error=-0.002067
+		n=1000, area_n=3.141571982779476, error=-2.067e-05
+		n=10000, area_n=3.1415924468812855, error=-2.067e-07
+		\end{codeblock}
+
+		As $n$ goes to infinity we get $\pi r^2$,
+		which is the formula for the area of a circle.
+
+		
+		\begin{codeblock}[]
+		>>> n, r = sp.symbols("n r")
+		>>> A_n = n * r**2 * sp.cos(sp.pi/n) * sp.sin(sp.pi/n)
+		>>> sp.limit(A_n, n, sp.oo)
+		pi * r**2
+		\end{codeblock}
 
 %	An interesting example to consider is the number $\pi$, 
 %	which is defined as the area of a circle of radius $1$.
 %	We can approximate the area of the unit circle by drawing a many-sided regular polygon around the circle.
-%	Splitting the $n$-sided regular polygon into identical triangular splices,
-%	we can obtain a formula for its area $A_n$.
-%	In the limit as $n\to \infty$, 
-%	the $n$-sided-polygon approximation to the area of the unit-circle becomes exact:
-%	
-%	\begin{codeblock}[]
-%	>>> A_n = n*tan(2*pi/(2*n))
-%	>>> limit(A_n, n, oo)
-%	pi
-%	\end{codeblock}
 
 
-		
-		
-		As $n$ goes to infinity we get $\pi r^2$,
-		which is the formula for the area of a circle.
+This example shows practically why considering the limiting behaviour 
+can lead us to computing quantities.
+
+
+
+
+
 
 
 %		A circle of radius $1$ is inscribed inside a
 %		\emph{regular octagon} (a polygon with eight sides of length $b$).
 %		Calculate the octagon's perimeter and its area.
 %		\begin{center}
-%		\includegraphics[width=0.3\textwidth]{figures/calculus/octagon_inscribed_in_circle.pdf}
+%		\includegraphics[width=0.63212\columnwidth]{figures/calculus/octagon_inscribed_in_circle.pdf}
 %		\end{center}		
 % cf. \input{../../../MATHPHYSbook/problems/figures/geometry/octagon_inscribed_in_circle.tex}
 		% Split the octagon into eight isosceles triangles.
@@ -167,16 +227,21 @@
 
 
 
+
+
 	\subsection{Limits at infinity}
 	\label{limits:limits_to_infinity}
 
-		We're often interested in describing what happens to a certain function when its input variable tends to infinity.			\index{infinity}
+		We're often interested in describing what happens to a certain function
+		when its input variable tends to infinity.
 		Does $f(x)$ approach a finite number,
 		or does it keep on growing to $\infty$?
 		For example,
 		consider the limit of the function $f(x)=\tfrac{1}{x}$ as $x$ goes to infinity:
 		\[
-		 \lim_{x \to \infty} f(x) = \lim_{x \to \infty} \tfrac{1}{x} = 0.
+			\lim_{x \to \infty} f(x)
+				= 	\lim_{x \to \infty} \tfrac{1}{x}
+				= 	0.
 		\]
 		The function $\tfrac{1}{x}$ never \emph{actually} reaches zero,
 		so it would be wrong to write $f(x)=0$.
@@ -186,10 +251,10 @@
 		even though $f(x)\neq 0$ for any number $x$.
 		% MAYBE: limit = tendency
 
-		The function $f(x)$ is said to \emph{converge} to the number $L$											\index{convergence}
+		The function $f(x)$ is said to \emph{converge} to the number $L$
 		if the function approaches the value $L$ for large values of $x$:
 		\[
-		 \lim_{x \to \infty} f(x) = L.
+			\lim_{x \to \infty} f(x)  =  L.
 		\]
 		We say ``The limit of $f(x)$ as $x$ goes to infinity is the number $L$.''
 		See Figure~\ref{fig:limit-at-infinity-graph} for an illustration.
@@ -199,7 +264,7 @@
 
 		\begin{figure}[htb]
 			\centering
-			\includegraphics[width=0.25\textwidth]{figures/calculus/limit-at-infinity-graph.png}
+			\includegraphics[width=0.63212\columnwidth]{figures/calculus/limit-at-infinity-graph.png}
 			\vspace{-3mm}
 			\caption{	A function $f(x)$ that oscillates up and down initially,
 					but after a while ``settles down'' close to the value $L$.}
