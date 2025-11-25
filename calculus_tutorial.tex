@@ -7,6 +7,7 @@
 \usepackage{ifxetex,ifluatex}
 
 
+\renewcommand{\figurename}{Figure}
 
 
 
@@ -47,7 +48,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
-\setcounter{secnumdepth}{0}
+% \setcounter{secnumdepth}{0}
 
 \usepackage{etoolbox}
 
@@ -89,8 +90,22 @@
 
 %\usepackage{listings}
 \usepackage{moreverb}
+% FINAL IEEEtran format with reduced margins
 \usepackage[letterpaper,bmargin=1.3cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1.1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
+% /FINAL IEEEtran 
 
+% ON-SCREEN DRAFT
+%\usepackage[papersize={5.5in,8.5in},bmargin=1.3cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1.1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
+%\usepackage{setspace}
+%\singlespacing
+%%\onehalfspacing
+% /ON-SCREEN DRAFT
+
+%%%   FONTS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{mathpazo}   % PALATINO (chosen Sep 10 2017)
+\usepackage{mathabx}
+%%%   /FONTS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
 \usepackage{bbm}
 \usepackage{wrapfig}
 \usepackage{graphicx}
@@ -103,8 +118,8 @@
 \newcommand{\printcp}{}
 \newcommand{\printni}{}
 
-\setcounter{secnumdepth}{2}
-\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{4}
 \usepackage{setspace}
 
 
@@ -198,47 +213,47 @@ aaa
 
 
 \clearpage
-\input{sections/introduction1.tex}
+\input{sections/10_introduction1.tex}
 % \input{sections/introduction2.tex}
 
 \clearpage
-\input{sections/math_prerequisites1.tex}
+\input{sections/20_math_prerequisites1.tex}
 % \input{sections/math_prerequisites2.tex}
 
 
 %  LIMITS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\input{sections/limits1.tex}
+\input{sections/30_limits1.tex}
 % \input{sections/limits2.tex}
 
 %  DERIVATIVES  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\input{sections/derivatives.tex}
+\input{sections/40_derivatives.tex}
 
 
 %  INTEGRALS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\input{sections/integrals.tex}
-\input{sections/integrals_as_area_calculations.tex}
-\input{sections/computing_integrals_numerically.tex}
-\input{sections/integrals_as_functions.tex}
-\input{sections/computing_integrals_symbolically.tex}
-\input{sections/fundamental_theorem_of_calculus.tex}
+\input{sections/50_integrals.tex}
+\input{sections/51_integrals_as_area_calculations.tex}
+\input{sections/52_computing_integrals_numerically.tex}
+\input{sections/53_integrals_as_functions.tex}
+\input{sections/54_computing_integrals_symbolically.tex}
+\input{sections/55_fundamental_theorem_of_calculus.tex}
 \clearpage
-\input{sections/techniques_of_integration.tex}
-\input{sections/applications_of_integration.tex}
+\input{sections/56_techniques_of_integration.tex}
+\input{sections/57_applications_of_integration.tex}
 
 
 %  SEQUENCES & SERIES  %%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\input{sections/sequences_and_series.tex}
+\input{sections/60_sequences_and_series.tex}
 
 
 
 %  ADVANCED CALC  %%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\input{sections/multivariable_calculus.tex}
-\input{sections/vector_calculus.tex}
+\input{sections/70_multivariable_calculus.tex}
+\input{sections/80_vector_calculus.tex}
 
 
 
