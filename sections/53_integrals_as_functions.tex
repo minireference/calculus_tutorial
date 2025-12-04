@@ -1,64 +1,59 @@
 %!TEX root = ../calculus_tutorial.tex
 
 
-	\subsection{Integrals as functions}
-	
-		The \emph{integral function} $F_0(b)$ corresponds to the area calculation
-		with a variable upper limit of integration $A_f(0,b)$.
-		The variable $b$,
-		which serves as the input for the integral function $F_0$,
-		corresponds to the upper limit of integration in the following calculation:
+
+	\subsection{Act 2: Integrals as functions}
+
+		The \emph{integral function} $F_0(b)$
+		corresponds to the area calculation with a variable upper limit of integration $A_f(0,b)$:
 		\[
-			F_0(b) \;\; \eqdef \;\; A_f(0,b) = \int_{x=0}^{x=b} \! f(x)\:dx\,.
+			F_0(b) \; \eqdef \; A_f(0,b) = \int_{x=0}^{x=b} \! f(x)\:dx\,.
 		\]
-		There are two variables and one constant in this formula.
-		The input variable $b$ describes the upper limit of integration.
-		The \emph{integration variable} $x$ performs a sweep from $x=0$ until $x=b$.
-		The constant $0$ describes the lower limit of integration.
+		%	Depending on the choice of the variable $b$,
+		%	the integral function $F_0(b)$ describes the results of the integral calculation
+		%	starting at $x=0$ and going until $x=b$.
 		As a matter of convention,
-		we'll always denote the integral function using the capital letter of the same letter as the original function.
-	
-		Note that choosing $x=0$ for the starting point of the integral function was an arbitrary choice,
-		and we obtain another integral function if we use $x=a$ as the starting point,
+		we denote the integral function using the capital letter of the same letter as the original function.
+		% The \emph{integration variable} $x$ performs a sweep from $x=0$ until $x=b$
+
+		Choosing $x=0$ for the starting point of the integral function is an arbitrary choice.
+		We can obtain another integral function if we use $x=a$ as the starting point,
 		$F_a(b)=\int_a^b \! f(x)\,dx$.
-		Two integral functions differ only by a constant term.
-		For example,
-		$F_0(b) = F_a(b) + C$,
-		where $C = \int_{x=0}^{x=a} f(x)\,dx$.
-	
-		The integral function $F(b)$ contains the ``precomputed'' information about the area under the graph of $f(x)$.
-		% The integral function $F(b)$ tells us the ``area under the graph'' property of the function $f(x)$ for \emph{all} possible limits of integration.
-		The area under $f(x)$ between $x=a$ and $x=b$ can be obtained by calculating the \emph{change} in the integral function as follows:
+		The integral functions $F_a$ and $F_0$ differ only by a constant term:
+		$F_0(b) = F_a(b) + C$, where $C = \int_{x=0}^{x=a} f(x)\,dx$.
+
+		The integral function $F_0(b)$
+		contains the ``precomputed'' information about the area under the graph of $f(x)$.
+		Knowing $F_0$ allows us to compute the area using simple algebra calculations:
+		the area under $f(x)$ between $x=a$ and $x=b$
+		is equal to the \emph{change} in the integral function:
 		\[
-			A_f(a,b) = \int_a^b \! f(x)\,dx	=  F(b)-F(a).
+			A_f(a,b) = \int_a^b \! f(x)\,dx	=  F(b) - F(a).
 		\]
 		Intuitively,
 		this formula computes the area $A_f(a,b)$ as the difference between the areas of two regions:
 		the area until $x=b$ minus the area until $x=a$,
 		as illustrated in Figure~\ref{fig:integral_as_difference_off}.
-	
+
 		\begin{figure}[htb]
 			\centering
-			\includegraphics[width=0.9\columnwidth]{figures/calculus/integral_as_difference_off.pdf}%
+			\includegraphics[width=0.95\columnwidth]{figures/calculus/integral_as_difference_off.pdf}%
 			\vspace{-3mm}
-			\caption{	The area under $f(x)$ between $x=a$ and $x=b$ is computed using the formula $A_f(a,b)=F_0(b)-F_0(a)$,
+			\caption{	The area under $f(x)$ between $x=a$ and $x=b$
+					is computed using the formula $A_f(a,b)=F_0(b)-F_0(a)$,
 					which describes the change in the output of $F_0(x)$ between $x=a$ and $x=b$.}
 			\label{fig:integral_as_difference_off}
 		\end{figure}
-	
+		
 
-TODO: warn there is no general F for any f
-only for certain special cases
-have exact symbolic formula
-for all other cases
-we're forced to do the split-into-vertical-strips --- i.e. there is no analytical shortcut.
+%TODO: warn there is no general F for any f
+%only for certain special cases
+%have exact symbolic formula
+%for all other cases
+%we're forced to do the split-into-vertical-strips --- i.e. there is no analytical shortcut.
 
 
-	
-		% TODO: explain intuition: area until b  minus area until a equals area between a and b
-	
-	
-	
+
 		\subsubsection{Example 1 revisited}
 	
 			We can easily find the integral function for the constant function $f(x)=~3$,
@@ -70,19 +65,20 @@ we're forced to do the split-into-vertical-strips --- i.e. there is no analytica
 			\[ 
 				F_0(b) = A_f(0,b) = \int_0^b \! f(x)\,dx	= 3 b.
 			\]
-			The area is equal to the rectangle's height times its width,
+			The region is a rectangle of height $3$ and with width $b$,
 			as illustrated in Figure~\ref{fig:simple_integral_function_fx_eq_3}.
 	
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.7\columnwidth]{figures/calculus/simple_integral_function_fx_eq_3.pdf}
 				\vspace{-3mm}
-				\caption{The area of a rectangle of height $3$ and width $b$ is equal to $3b$.}
+				\caption{	The integral function of the function $f(x) = 3$ is $F_0(b)=3b$.}
 				\label{fig:simple_integral_function_fx_eq_3}
 			\end{figure}
 			
 			Knowing the function $F_0(b)$ allows us to compute the area under the graph of $f(x)$
-			between any two points $x=a$ and $x=b$ using the formula $A_f(a,b) = F_0(b) - F_0(a) = 3(b-a)$.
+			between $x=0$ and $x=5$ as the difference
+			$A_f(0,5) = F_0(5) - F_0(0) = 3\cdot 5 - 3\cdot 0 = 15$.
 	
 	
 		\subsubsection{Example 2 revisited}
@@ -98,16 +94,20 @@ we're forced to do the split-into-vertical-strips --- i.e. there is no analytica
 				G_0(b) = A_g(0,b) = \int_0^b g(x) \, dx = \tfrac{1}{2} ( b\times b ) = \tfrac{1}{2}b^2.
 			\]
 		
+		The area of a triangle with base $b$ and height $b$ is equal to $\frac{1}{2}b^2$.
+
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.63212\columnwidth]{figures/calculus/simple_integral_function_gx_eq_x.pdf}
 				\vspace{-3mm}
-				\caption{The area of a triangle with base $b$ and height $b$ is equal to $\frac{1}{2}b^2$.}
+
+				\caption{	The integral function of the function $g(x) = x$ is $G_0(b)=\tfrac{1}{2}b^2$.}
 				\label{fig:simple_integral_function_gx_eq_x}
 			\end{figure}
 			
 			Knowing the function $G_0(b)$ allows us to compute the area under the graph of $g(x)$
-			between $x=a$ and $x=b$ as the difference $A_g(a,b) = G_0(b) - G_0(a) = \frac{1}{2}b^2 - \frac{1}{2}a^2$.
+			between $x=0$ and $x=5$ as the difference
+			$A_g(0,5) = G_0(5) - G_0(0) = \frac{1}{2}5^2 - \frac{1}{2}0^2 = 12.5$.
 	
 	
 		%	But don't worry,
@@ -116,26 +116,36 @@ we're forced to do the split-into-vertical-strips --- i.e. there is no analytica
 		%	The integral of a function is the area under the graph of the function,
 		%	which is in some sense the total amount of the function accumulated during some interval of time.
 	
+
 		\subsubsection{Example 3 revisited}
 		
-			We 
+			The the area under $h(x) = 4 - x^2$ from $x=0$ until $x=b$
+			is described by the following integral calculation:
 			\[
-				H_{-1}(b) = A_h(-1,b) = \int_{-1}^b h(x) \, dx = ?
+				H_{-2}(b) = A_h(-2,b) = \int_{-2}^b h(x) \, dx = \; ?.
 			\]
+			We were able to compute the integrals $\int f(x)\,dx$ and $\int g(x)\,dx$
+			thanks to the simple geometries of the areas under the graphs,
+			but $h(x)$ is a curved region so it requires some new integration methods.
+			In the next few pages,
+			we'll learn about symbolic integration techniques that we can use
+			to find the integral function $H_{-2}(b)$.
+			% $H_{-2}(b) = -\frac{1}{3}b^3 + 4b + \frac{16}{3}$.
+
+			\begin{figure}[htb]
+				\centering
+				TODO: FIGURE
+				% \includegraphics[width=0.63212\columnwidth]{figures/calculus/integral_function_hx_eq_x.pdf}
+				\vspace{-3mm}
+				\caption{The integral of the function $h(x) = 4 - x^2$ from $x=-2$ to $x=b$.}
+				\label{fig:integral_function_hx_eq_x}
+			\end{figure}
+
 			
-			one of the special cases where there IS a shotctu
-			
-			
-		
-	
-	
-	
-\bigskip
-\noindent
-We were able to compute the above integrals thanks to the simple geometries of the areas under the graphs.
-%	Computing integrals of more complicated functions requires more advanced techniques.
 %	There is an entire course called integral calculus which is dedicated to the task of finding integrals
 %	using various tricks and techniques.
+
+
 
 
 %	Taking a calculus course would be useful if you plan to study physics or engineering,
@@ -150,3 +160,15 @@ We were able to compute the above integrals thanks to the simple geometries of t
 % Robyn said: 	Confusing that before you said that integrals is a topic that can't be skipped,
 %			and here you say that you can rely on computers.
 % 			If they don't need to know the math, then perhaps this section could be made even shorter.
+
+
+
+
+
+
+	\subsection{Intermission}
+	
+
+A
+
+	

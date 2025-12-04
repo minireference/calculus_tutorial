@@ -9,25 +9,26 @@
 		The Python module \tt{sympy} provides the functionality for doing symbolic math calculations
 		similar to the calculation you could do using pen and paper.
 
-We can literally do the same calculations as in previous examples and obtain the same answers.
+		We'll now revisit the integral calculations from the three examples
+		using symbolic math calculations and obtain the same answers.
+
+		\begin{codeblock}[define-symbols-xabcm]
+		>>> import sympy as sp
+		>>> x, a, b, c = sp.symbols('x a b c')
+		\end{codeblock}
+		% TODO: explain symbol variables like x, a, b, c is symbol can be used in expressions
 
 
 The following code block imports the SymPy function \tt{symbols},
 which is used to define new symbolic variables,
 and the function \tt{integrate} that we'll use for computing integrals.
 	
-		\begin{codeblock}[import-sympy-symbols-and-integrate]
-		>>> from sympy import symbols, integrate
-		\end{codeblock}
+
 		
 		\noindent
 		Next we define four symbols \tt{x}, \tt{a}, \tt{b}, and \tt{c},
 		which we'll use to denote mathematical variables and constants in the following code examples.
 	
-		\begin{codeblock}[define-symbols-xabcm]
-		>>> x, a, b, c = symbols('x a b c')
-		\end{codeblock}
-		% TODO: explain symbol variables like x, a, b, c is symbol can be used in expressions
 	
 		\subsubsection{Example 1S: constant function}
 	
@@ -45,7 +46,8 @@ and the function \tt{integrate} that we'll use for computing integrals.
 			The variable \tt{fx} is defined as the constant \tt{c},
 			one of the SymPy symbols we defined earlier,
 			which we assume corresponds to some unspecified constant value.
-	
+
+%In \texttt{SymPy} we use \texttt{integrate(f, x)} to obtain the integral function $F(x)$ of any function $f(x)$:
 			To compute the integral $\int_a^b f(x) dx$,
 			we call the SymPy function \tt{integrate},
 			passing in the expression we want to integrate as the first argument.
@@ -152,28 +154,62 @@ and the function \tt{integrate} that we'll use for computing integrals.
 	
 			\noindent
 			Note the expression for $G_0(b)$ we obtain from SymPy is identical
-			to the formula we obtained earlier using a geometrical calculation (the area of a triangle with base $b$ and height $b$).
+			to the formula we obtained earlier using a geometrical calculation
+			(the area of a triangle with base $b$ and height $b$).
 			See Figure~\ref{fig:simple_integral_function_gx_eq_x}.
 	
 	
 	
 	
-		\subsubsection{Example 3 revisited again}
-	
-			\begin{codeblock}[sympy-define-gx]
-			>>> hx = x**3 - 5*x**2 + x + 10
+		\subsubsection{Example 3S: polynomial function}
+
+			Define 
+
+			\begin{codeblock}[sympy-define-hx]
+			>>> hx = 4 - x**2
 			>>> hx
-			x**3 - 5*x**2 + x + 10
+			4 - x**2
 			\end{codeblock}
 		
-			TODO code
+			\noindent
+			The 
 			
-			\vspace{4cm}
-	
+			\begin{codeblock}[]
+			>>> H0 = sp.integrate(hx, (x,0,b))
+			>>> H0
+			-b**3/3 + 4*b
+			\end{codeblock}
+			
+			\noindent
+			The integral function $H_{0}(b) = 4b - \frac{1}{3}b^3$
+			corresponds to the area calculation under $h(x)$
+			starting at $x=0$,
+			which only covers the right side of the region.
+
+TODO FIGURE
+\vspace{2in}
+
+			To find the whole area of the region $A_h(-2,2)$,
+			we can find the value $H_{0}(2)$
+			and double is $A_h(-2,2) = 2H_{0}(2) = 2(4\times 2 - \frac{1}{3}2^3) = 
+			\frac{32}{3} = 10\frac{2}{3} = 10.\overline{6} = 10.666666666666\ldots$.
+
+			% NOTEBOOK ONLY
+			%	\begin{codeblock}[]
+			%	>>> H_from_neg2 = sp.integrate(hx, (x,-2,b))
+			%	>>> H_from_neg2
+			%	-b**3/3 + 4*b + 16/3
+			%	\end{codeblock}
+			%	\noindent
+			%	We $H_{-2}(b) = -\frac{1}{3}b^3 + 4b + \frac{16}{3}$.
+			%	\begin{codeblock}[]
+			%	>>> H_from_neg2.subs({b:2})
+			%	32/3			
+			%	\end{codeblock}
 
 
-In \texttt{SymPy} we use \texttt{integrate(f, x)} to obtain the integral function $F(x)$ of any function $f(x)$:					\index{integral}
-$F(x) = \int_0^x f(u)\,du$.
+
+%$F(x) = \int_0^x f(u)\,du$.
 
 %\begin{codeblock}[]
 %>>> integrate(x**3, x)
@@ -185,99 +221,59 @@ $F(x) = \int_0^x f(u)\,du$.
 %\end{codeblock}
 %This is known as an \emph{indefinite integral} since the limits of integration are not defined. 
 
-In contrast, 
-a \emph{definite integral} computes the area under $f(x)$ between $x=a$ and $x=b$.
-Use \texttt{integrate(f, (x,a,b))} to compute the definite integrals of the form $A(a,b)=\int_a^b f(x) \, dx$:
-
-\begin{codeblock}[]
->>> integrate(x**3, (x,0,1))    
-1/4              # the area under x^3 from x=0 to x=1
-\end{codeblock}
-
-\noindent
-We can obtain the same area by first calculating the indefinite integral $F(c)=\int_0^c \!f(x)\,dx$,
-then using $A(a,b) = F(x)\big\vert_a^b = F(b) - F(a)$:
-
-
-
-\begin{codeblock}[]
->>> F = integrate(x**3, x)
->>> F.subs({x:1}) - F.subs({x:0})   
-1/4
-\end{codeblock}
+%	In contrast, 
+%	a \emph{definite integral} computes the area under $f(x)$ between $x=a$ and $x=b$.
+%	Use \texttt{integrate(f, (x,a,b))} to compute the definite integrals of the form $A_f(a,b)=\int_a^b f(x) \, dx$:
+%	
+%	\begin{codeblock}[]
+%	>>> integrate(x**3, (x,0,1))    
+%	1/4              # the area under x^3 from x=0 to x=1
+%	\end{codeblock}
+%	
+%	\noindent
+%	We can obtain the same area by first calculating the indefinite integral $F(c)=\int_0^c \!f(x)\,dx$,
+%	then using $A_f(a,b) = F(x)\big\vert_a^b = F(b) - F(a)$:
+%	
+%	
+%	
+%	\begin{codeblock}[]
+%	>>> F = integrate(x**3, x)
+%	>>> F.subs({x:1}) - F.subs({x:0})   
+%	1/4
+%	\end{codeblock}
 
 
 
 	\bigskip
 	\noindent
-% TODO: sync with first warning in previous section earlier  + reinforce idea
-	Unfortunately,
-	it's not always possible to use symbolic manipulations to find integrals.
-	We can only use \tt{sympy.integrate} for certain simple examples
-	where it is possible to obtain exact expressions for integral functions.
-	For most practical calculations in probability and statistics,
-	we'll need to rely on the \tt{scipy.integrate} function \tt{quad(f,a,b)},
-	which computes the integral $\int_a^b f(x)dx$ for \emph{any} function $f(x)$ expressed as a Python function \tt{f}.
+	Note the pattern in the formulas for the integral functions
+	$F_0(b)$, $G_0(b)$, and $H_0(b)$.
+	The integral function of the constant function $f(x)=c$ was a linear function $F_0(b) = cb$
+	with slope $c$.
+	The integral of the linear function $g(x) = mx$ is a quadratic function $G_0(x) = \frac{1}{2}mb^2$.
+	The integral of the quadratic polynomial $h(x) = 4 - x^2$
+	the third degree polynomial $H_0(b) = 4b - \frac{1}{3}b^3$.
+	In each case,
+	the integral function seems to increase the degree of the function.
+	What is up with that?
+	Can we use this pattern to find the integral function of any polynomial?
 
-
-
-
-
-
-
-
-
-\subsection{Properties of integrals}
-
-	We'll now state some properties of integrals that follow from their interpretation as area calculations.
-
-	\begin{itemize}
 	
-		\item \textbf{Additivity.}
-			The integral from $a$ to $b$ plus the integral from $b$ to $c$ is equal to the integral from $a$ to $c$:
-			\[
-				\int_a^b f(x) \; dx + \int_b^c f(x) \; dx		=	\int_a^c f(x) \; dx.
-			\]
+% TODO: sync with first warning in previous section earlier  + reinforce idea
+%		Unfortunately,
+%		it's not always possible to use symbolic manipulations to find integrals.
+%		We can only use \tt{sympy.integrate} for certain simple examples
+%		where it is possible to obtain exact expressions for integral functions.
+%		For most practical calculations in probability and statistics,
+%		we'll need to rely on the \tt{scipy.integrate} function \tt{quad(f,a,b)},
+%		which computes the integral $\int_a^b f(x)dx$ for \emph{any} function $f(x)$ expressed as a Python function \tt{f}.
 
-		% TODO: add backward steps giving negative?
 
-%		\item \textbf{Constant multiple of a function.}
-%			The integral of the function $cf(x)$ is equal to $c$ times the integral of $f(x)$,
-%			for any constant $c$:
-%			\[
-%				\int cf(x)\; dx	=	c\int f(x)\; dx.
-%			\]
-%
-%		\item \textbf{Sum of two functions.}
-%			The integral of a sum of two functions is equal to the sum of the integrals of the individual functions:
-%			\[
-%				\int [f(x) + g(x)]\; dx	=	\int f(x)\; dx +  \int g(x)\; dx.
-%			\]
 
-		\item \textbf{Linearity.}
-			% The combination of the above two properties tells us that
-			Integration is a \emph{linear} operation: it preserves linear combinations.
-			The integral of the linear combination of two functions $\alpha f(x) + \beta g(x)$,
-			is equal to the same linear combination of the integrals of the two functions:
-			\[
-				\int [\alpha f(x) + \beta g(x)]\; dx 
-				= \alpha  \int f(x)\; dx  \; \; + \; \; \beta \int g(x)\; dx,
-			\]
-			where $\alpha$ and $\beta$ are two arbitrary constants.
 
-		\item \textbf{Integral at a single point.}
-			Integrals over intervals with zero length have zero value for any function $f(x)$:
-			\[
-				\int_a^a f(x)\; dx	=	0.
-			\]
-			Thinking geometrically,
-			this integral defines a region with height $f(x)$ and width~$0$,
-			so it corresponds to zero area.
-			% see https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/v/same-integration-bounds
 
-	\end{itemize}
 
-	% exercise https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/a/definite-integrals-properties-review
+
 
 
 

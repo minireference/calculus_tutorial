@@ -582,17 +582,19 @@ can lead us to computing quantities.
 			is to split the area into $n$ little rectangles of width $\Delta x = \frac{b-a}{n}$ and height $f(x)$,
 			and then calculate the sum of the areas of the rectangles:
 			\[ 
-				A(a,b) \approx \underbrace{ \Delta x f(a)
-									\!+\! \Delta x f(a+\Delta x) 
-			  						% \!+\! \Delta x f(a+2\Delta x) + \cdots 
-									\!+\! \Delta x f(b-\Delta x)}_{n \textrm{ terms}}.
+				A_f(a,b) \approx \underbrace{
+								\Delta x f(a)
+								\!+\! \Delta x f(a+\Delta x) 
+		  						% \!+\! \Delta x f(a+2\Delta x) + \cdots 
+								\!+\! \Delta x f(b-\Delta x)
+							}_{n \textrm{ terms}}.
 			\]
 			We obtain the exact value of the area in the limit where we split the area into an infinite
 			number of rectangles with infinitely small width:
 			{ \small
 			\[ 
-			  \!\!\int_a^b\!\!\!\!f(x) \, dx
-			  = \!A(a,b)
+			  \!\!\int_a^b\!\!\!f(x) \, dx
+			  = \!A_f(a,b)
 			   = \!\!\lim_{n \to \infty}\!\! \Delta x \left[ 
 			   	 f(a) \!+\! f(a+\Delta x) \!+\! \cdots \!+\!  f(b-\Delta x) 
 				\right].
