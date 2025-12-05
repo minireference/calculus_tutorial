@@ -83,18 +83,16 @@
 	
 		\subsubsection{Example 2 revisited}
 		
-			Consider now the area under the graph of the line $g(x)=x$, starting from $x=0$.
-			Since the region under the curve is triangular,
+			Consider now the area under the graph of the line $g(x)=x$,
+			starting from $x=0$.
+			Since the region is triangular,
 			we can compute its area using the formula for the area of a triangle:
 			base times height divided by two.
-		
-			The general formula for the area under $g(x)$ from $x=0$ until $x=b$
-			is described by the following integral calculation:
+			The integral function of $g(x)$ is:
 			\[
-				G_0(b) = A_g(0,b) = \int_0^b g(x) \, dx = \tfrac{1}{2} ( b\times b ) = \tfrac{1}{2}b^2.
+				G_0(b) = A_g(0,b) = \int_0^b g(x) \, dx = \tfrac{1}{2} ( b \cdot b ) = \tfrac{1}{2}b^2.
 			\]
-		
-		The area of a triangle with base $b$ and height $b$ is equal to $\frac{1}{2}b^2$.
+			% The area of a triangle with base $b$ and height $b$ is equal to $\frac{1}{2}b^2$.
 
 			\begin{figure}[htb]
 				\centering
@@ -122,44 +120,23 @@
 			The the area under $h(x) = 4 - x^2$ from $x=0$ until $x=b$
 			is described by the following integral calculation:
 			\[
-				H_{-2}(b) = A_h(-2,b) = \int_{-2}^b h(x) \, dx = \; ?.
+				H_{0}(b) = A_h(0,b) = \int_{0}^b h(x) \, dx = \; ???.
 			\]
-			We were able to compute the integrals $\int f(x)\,dx$ and $\int g(x)\,dx$
+			We were able to compute the integral functions $\int f(x)dx$ and $\int g(x)dx$
 			thanks to the simple geometries of the areas under the graphs,
 			but $h(x)$ is a curved region so it requires some new integration methods.
 			In the next few pages,
 			we'll learn about symbolic integration techniques that we can use
-			to find the integral function $H_{-2}(b)$.
-			% $H_{-2}(b) = -\frac{1}{3}b^3 + 4b + \frac{16}{3}$.
+			to find the integral function $H_{0}(b)$.
 
 			\begin{figure}[htb]
 				\centering
-				TODO: FIGURE
-				% \includegraphics[width=0.63212\columnwidth]{figures/calculus/integral_function_hx_eq_x.pdf}
+				\includegraphics[width=0.9\columnwidth]{figures/calculus/integral_function_hx_eq_x.pdf}
 				\vspace{-3mm}
-				\caption{The integral of the function $h(x) = 4 - x^2$ from $x=-2$ to $x=b$.}
+				\caption{	The integral of the function $h(x) = 4 - x^2$ from $x=0$ to $x=b$.}
 				\label{fig:integral_function_hx_eq_x}
 			\end{figure}
 
-			
-%	There is an entire course called integral calculus which is dedicated to the task of finding integrals
-%	using various tricks and techniques.
-
-
-
-
-%	Taking a calculus course would be useful if you plan to study physics or engineering,
-%	but for the purpose of learning probability and statistics,
-%	you're not required to learn all these integration techniques.
-%	Instead,
-%	you can rely on computers to do integration for you.
-%	Specifically,
-%	you can use the Python modules SciPy and SymPy to compute all the integrals you need,
-%	as we'll show in the next two sections.
-
-% Robyn said: 	Confusing that before you said that integrals is a topic that can't be skipped,
-%			and here you say that you can rely on computers.
-% 			If they don't need to know the math, then perhaps this section could be made even shorter.
 
 
 
@@ -168,7 +145,60 @@
 
 	\subsection{Intermission}
 	
+		% (M)
+		The integral in Example~3 was carefully chosen to motivate the need to learn more advanced
+		methods for integration. How can we compute the integral function $H_{0}(b)$?
+		Is there some formula that describes the area $A_h(0,b)$
+		of the region shown in Figure~\ref{fig:integral_function_hx_eq_x}.
+		% (M2)
+		We previously used numerical methods to compute the particular area $A_h(0,2)$
+		when $b=2$,
+		but now we're looking for a general math formula that computes the value
+		$H_{0}(b) = A_h(0,b)$ for any $b$.		
+		% (M3)
+		In the next few pages we'll use \emph{symbolic} calculations to fill in the ???
+		with an exact formula obtained by manipulating math equations.
+		% (M4)
+		The secret weapon that will allow us to compute integrals using symbolic math
+		is called the \emph{fundamental theorem of calculus},
+		which we'll discuss next.
+		% First use SymPy, which is like doing pen and paper calculations using Python as you scribe.
+		% (M5)
+		The section is the ``Intermission'' in the calculus show.
+		I want you,
+		dear reader,
+		to have a break before next pages where the level of ``mathyness'' will increase significantly % ALT. substantially.
+		As in a real-world intermission,
+		this is also your chance to skip the rest of the ``Integration show.''
+		Perhaps you have better things to do right now than being subjected to
+		Ivan's teaching of advanced concepts you ``might'' want to know through model means of computation
+		like Python and old-school math techniques like pen and paper.
+		I won't get offended if you skip ahead---no worries!
+		As a teacher,
+		i'm happy that you now know that integrals are ``area under the graph of'' geometrically % calculations 
+		and can be approximated numerically using Riemann sums.
+		This are the key takeaways so I feel I've done my job!
+		I think you should stay though---you might enjoy the knowledge buzz moments
+		that are coming your way in the next few pages.		
+My college calculus professor 
+TODO FINISH STORY
+``you might be experiencing something similar to when you smoke some of that funny stuff.''
+%	Differential calculus and integral calculus are two sides of the same coin.
+%	If you understand why the theorem is true, 
+%	you will understand something very deep about calculus. 
+%	Differentiation is the inverse operation of integration.
+		%
+		%		
+		% (M6)
+		With your consent we continue ....,
+		else skip ahead to Section TODO REF
+		for some tech talk about high performance numerical integrals,
+		or straight away to Section TODO REF to learn about sequences and series,
+		which is the third foundational topics in calculus.
+		
+		
+		
 
-A
 
 	
+

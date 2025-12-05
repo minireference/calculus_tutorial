@@ -1,0 +1,250 @@
+%!TEX root = ../calculus_tutorial.tex
+
+
+	\subsection{Computing integrals functions symbolically using SymPy}
+
+		We can use Python to do \emph{symbolic} integration using variables (symbols) instead of numbers.
+		The SymPy function \tt{sp.integrate} allows us to obtain the formulas for integrals and integral functions.
+		We'll now revisit the integral calculations from the three examples
+		using symbolic math calculations.
+		Before we can begin,
+		we must define symbolic symbols variables \tt{x}, \tt{a}, and \tt{b},
+		which we'll use to express the function $f$, $g$, and $h$
+		and the limits of integration.
+
+		\begin{codeblock}[define-symbols-xabcm]
+		>>> import sympy as sp
+		>>> x, a, b = sp.symbols("x a b")
+		\end{codeblock}
+
+		
+		\subsubsection{Example 1S: Constant function}
+	
+			Consider the constant function $f(x) = 3$,
+			which we can define as follows:
+	
+			\begin{codeblock}[sympy-define-fx]
+			>>> fx = 3
+			>>> fx
+			3
+			\end{codeblock}
+	
+			\noindent
+			To compute the integral $\int_a^b f(x) dx$,
+			we call the SymPy function \tt{sp.integrate},
+			passing in the function as the first argument,
+			and the triple $\tt{(x,a,b)}$ as the second argument,
+			where $x$ specifies the variable of integration,
+			and $a$ and $b$ are the limits of integration:
+
+			\begin{codeblock}[sympy-integrate-fx-a-b]
+			>>> sp.integrate(fx, (x,a,b))  # = A_f(a,b)
+			3*(b-a)
+			\end{codeblock}
+
+			\noindent
+			Since $a$ and $b$ are arbitrary constants,
+			the answer we obtain for $A_f(a,b) = \int_a^b f(x) dx$
+			is a general-purpose formula
+			that works for all possible intervals of integration $[a,b]$.
+			Geometrically,
+			we recognize the result as the height-times-width formula
+			for the area of a rectangle,
+			which we have seen several times already.
+	
+			To compute the definite integral between $a=0$ and $b=5$,
+			we specify the numerical limits of integration instead of the symbols \tt{a} and \tt{b}.
+	
+			\begin{codeblock}[integrate-fx-subs-vals]
+			>>> sp.integrate(fx, (x,0,5))
+			15
+			\end{codeblock}
+	
+			\noindent
+			This result matches the value we obtained using
+			geometrical calculation in Figure~\ref{fig:simple_integral_fx_eq_3},
+			and the approximation we obtained using numerical integration \tt{quad(f,0,5)}.
+	
+			We can also compute the integral function $F_0(b)$,
+			which is defined as $F_0(b) \eqdef \int_0^b f(x) dx$,
+			for the function $f(x) = \tt{fx}$.
+	
+			\begin{codeblock}[sympy-integral-function-F]
+			>>> F0b = sp.integrate(fx, (x,0,b))  # = F_0(b)
+			>>> F0b
+			3*b
+			\end{codeblock}
+
+			\noindent	
+			Recall that the integral function $F_0$ is the area-under-the-graph calculation
+			with a variable upper limit of integration $b$.
+			See Figure~\ref{fig:simple_integral_function_fx_eq_3} for an illustration of the integral function $F_0(b)$.
+			
+			Given $F_0(b)$, %  = \tt{F0b}$,
+			we can compute the definite integral between $a=0$ and $b=5$
+			using the formula $\int_0^5 f(x) dx = F_0(5) - F_0(0)$.
+			We'll need to used the method \tt{subs} (short for substitute)
+			on the expression \tt{F0b} to ``plug in'' the values $b=5$ and $b=0$.
+
+			\begin{codeblock}[]
+			>>> F0b.subs({b:5}) - F0b.subs({b:0})
+			15
+			\end{codeblock}
+
+			\noindent
+			The \tt{subs} method expects as inputs a Python dictionary whose keys are symbols,
+			and whose values represent the numbers we want to plug into the expression.
+
+
+
+
+
+
+
+
+
+
+
+
+
+		\subsubsection{Example 2S: Linear function}
+	
+			Let's now compute the integral function of the linear function $g(x) = x$,
+			which corresponds to the following SymPy expression:
+	
+			\begin{codeblock}[sympy-define-gx]
+			>>> gx = 1*x
+			>>> gx
+			x
+			\end{codeblock}
+	
+			\noindent
+			To compute the integral function $G_0(b) \eqdef \int_0^b g(x) dx$,
+			we call \tt{sp.integrate} using the symbol \tt{b} for the upper limit of integration:
+	
+			\begin{codeblock}[sympy-integral-function-G]
+			>>> G0b = sp.integrate(gx, (x,0,b))  # = G_0(b)
+			>>> G0b
+			b**2 / 2
+			\end{codeblock}
+	
+			\noindent
+			The expression $G_0(b) = \frac{1}{2}b^2$ we obtain
+			is identical to the formula we obtained
+			from the geometric calculation in Figure~\ref{fig:simple_integral_function_gx_eq_x}.
+			% = the area of a triangle with base $b$ and height $b$
+
+			\noindent
+			Given $G_0(b)= \tt{G0b}$,
+			we can compute the definite integral $\int_0^5 g(x)\,dx$
+			using the formula $\int_0^5 g(x)\,dx = G_0(5) - G_0(0)$.
+			We plug in $b=5$ and $b=0$ using the \tt{subs} method:
+	
+			\begin{codeblock}[integrate-gx-subs-vals]
+			>>> G0b.subs({b:5}) - G0b.subs({b:0})
+			25/2
+			\end{codeblock}
+
+			\noindent
+			SymPy computed the exact answer for us as a fraction $\frac{25}{2}$.
+			This answer matches the value we obtained earlier
+			using numerical integration, $\tt{quad(g,0,5)[0]} = \tt{12.5}$.
+
+			%	We sometimes want to force the answer to be computed as a floating-point number (a Python \tt{float}),
+			%	which we can do by calling the \tt{.evalf()} method on the SymPy expression.				
+			%	\begin{codeblock}[integrate-gx-subs-vals-evalf]
+			%	>>> sp.integrate(gx, (x,a,b)).subs({a:0, b:5}).evalf()
+			%	12.5
+			%	\end{codeblock}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+		\subsubsection{Example 3S: Polynomial function}
+
+			Define $h(x) = 4 -x^2$ 
+
+			\begin{codeblock}[sympy-define-hx]
+			>>> hx = 4 - x**2
+			>>> hx
+			4 - x**2
+			\end{codeblock}
+		
+			\noindent
+			The 
+			
+			\begin{codeblock}[]
+			>>> H0 = sp.integrate(hx, (x,0,b))
+			>>> H0
+			4*b - b**3/3
+			\end{codeblock}
+			
+			\noindent
+			The integral function $H_{0}(b) = 4b - \frac{1}{3}b^3$
+			corresponds to the area calculation under $h(x)$
+			starting at $x=0$,
+			which only covers the right side of the region.
+
+
+
+
+	
+% TODO: sync with first warning in previous section earlier  + reinforce idea
+%		Unfortunately,
+%		it's not always possible to use symbolic manipulations to find integrals.
+%		We can only use \tt{sympy.integrate} for certain simple examples
+%		where it is possible to obtain exact expressions for integral functions.
+%		For most practical calculations in probability and statistics,
+%		we'll need to rely on the \tt{scipy.integrate} function \tt{quad(f,a,b)},
+%		which computes the integral $\int_a^b f(x)dx$ for \emph{any} function $f(x)$ expressed as a Python function \tt{f}.
+
+
+
+
+
+
+
+
+
+
+
+% SYMPY INTEGRALS CUT MATERIAL 
+
+%$F(x) = \int_0^x f(u)\,du$.
+
+%\begin{codeblock}[]
+%>>> integrate(x**3, x)
+%x**4/4
+%>>> integrate(sin(x), x)
+%-cos(x)
+%>>> integrate(ln(x), x)
+%x*log(x) - x
+%\end{codeblock}
+
+%	In contrast, 
+%	a \emph{definite integral} computes the area under $f(x)$ between $x=a$ and $x=b$.
+%	Use \texttt{integrate(f, (x,a,b))} to compute the definite integrals of the form $A_f(a,b)=\int_a^b f(x) \, dx$:
+%	
+%	\begin{codeblock}[]
+%	>>> integrate(x**3, (x,0,1))    
+%	1/4              # the area under x^3 from x=0 to x=1
+%	\end{codeblock}
+%	
+%	\noindent
+%	We can obtain the same area by first calculating the indefinite integral $F(c)=\int_0^c \!f(x)\,dx$,
+%	then using $A_f(a,b) = F(x)\big\vert_a^b = F(b) - F(a)$:
+%	
+%	\begin{codeblock}[]
+%	>>> F = integrate(x**3, x)
+%	>>> F.subs({x:1}) - F.subs({x:0})   
+%	1/4
+%	\end{codeblock}

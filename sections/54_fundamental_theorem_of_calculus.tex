@@ -1,0 +1,317 @@
+%!TEX root = ../calculus_tutorial.tex
+
+	\subsection{Act 3: Fundamental theorem of calculus}
+
+Note the pattern in the formulas for the integral functions
+$F_0(b)$, $G_0(b)$, and $H_0(b)$.
+The integral function of the constant function $f(x)=3$ was a linear function $F_0(b) = 3b$.
+The integral of the linear function $g(x) = x$ is a quadratic function $G_0(x) = \frac{1}{2}b^2$.
+%	The integral of the quadratic polynomial $h(x) = 4 - x^2$
+%	is a third degree polynomial $H_0(b) = 4b - \frac{1}{3}b^3$.
+In each case,
+the integral function seems to increase the degree of the function.
+What is up with that?
+Is this a coincidence,
+or some fundamental math pattern
+we could use to ``guess'' the integral function of any polynomial?
+
+	
+		The fundamental theorem of calculus (FTC)
+		describes the inverse relation that exists between
+		the integration operation $\int \tt{<f>}\,dx$
+		and the differentiation operation $\frac{d}{dx}[\tt{<f>}]$.
+		%
+		A priori,
+		there is no reason to suspect that integrals would be related to derivatives.
+		The integral corresponds to the computation of an area,
+		whereas the derivative operation computes the slope of a function.
+		Yet behold:
+
+		\begin{shadetheorem}[fundamental theorem of calculus]
+			Let $f(x)$  be a continuous function,
+			and let $a \in \mathbb{R}$ be a constant.
+			Define the function $F_a(x)$ as follows:
+			\[
+				F_a(x)  \eqdef A_f(a, x) =  \int_a^x f(u) \: du.
+			\]
+			Then,
+			the derivative of $F_a(x)$ with respect to $x$ is equal to $f(x)$:
+			\[
+				\frac{d}{dx}\!\big[F_a(x)\big] = f(x),
+			\]
+			for any $x \in (a,b)$.
+		\end{shadetheorem}
+
+\noindent
+In words,
+the FTC tells us that ...
+	
+		In order to understand the inverse relationship between integration and differentiation,
+		we can draw an analogy with the inverse relationship between a function $f$ and its inverse function $f^{-1}$,
+		which \emph{undoes} the effects of $f$.
+		See Figure~\ref{fig:functions-inverse} on page~\pageref{fig:functions-inverse}.
+		Given some initial value $x$,
+		if we apply the function $f$ to obtain the number $f(x)$,
+		and apply the inverse function $f^{-1}$ on the number $f(x)$,
+		then the result will be the initial value $x$ we started from:
+		\[
+			f^{-1}\!\left( f(x) \right)	=	x.
+		\]
+		Similarly,
+		\textbf{the derivative operation is the inverse of the integral operation}.
+		If you perform the integral operation $\int \tt{<f>}\,dx$
+		followed by the derivative operation $\frac{d}{dx}[\tt{<f>}]$ on any function $\tt{<f>}$,
+		you'll get back to original function:
+		\[
+			\frac{d}{dx} \int_c^x f(u)\:du = f(x).
+		\]
+
+		\noindent
+		We can verify this using SymPy
+		by starting with some function $\tt{f} = f(x) = x^2$,
+		computing its integral function $\tt{F}$,
+		then using \tt{sp.integrate} then take the derivative of $\tt{F}$:
+
+		\begin{codeblock}[]
+		>>> f = x**2
+		>>> F = integrate(f, x)
+		>>> F
+		x**3/3           # + C
+		>>> diff(F, x)
+		x**2
+		\end{codeblock}
+
+
+
+		% DIRECTION 2
+		For ordinary math functions,
+		we know that if the function $f^{-1}$ is the undo action for the function $f$,
+		then $f$ is also the undo action for $f^{-1}$:
+		$f\!\left( f^{-1}(y) \right) = y$.
+		Similarly,
+		the inverse relationship between integrals and derivative holds in the other direction too.
+		%	Going back to the analogy with ordinary math functions,
+		% if we apply $f^{-1}$ followed by $f$,
+		% we get back the original number we started from:
+		\textbf{The integral operation is the inverse operator of the derivative operation}.
+		If we start with some function $G(x)$,
+		calculate the derivative function $G'(x)$,
+		then compute the integral of the derivative function $G'(x)$,
+		we arrive back at the original function $G(x)$
+		(up to an additive constant):
+		\[
+			G(x) = \int_c^x G'(u)\;du = G(x) + C.
+		\]
+		% The constant $C$ 
+		%  choice of the starting point for integration
+
+		\noindent
+		Let's use SymPy to verify the fundamental theorem of calculus.
+		Recall that the function \tt{sp.diff} computes derivative functions
+		and \tt{sp.integrate} computes integral functions.
+		To verify $\int_c^x G'(u)\;du = G(x) + C$,
+		we start with some expression \tt{G} for the function $G(x) = x^3$.
+
+		\begin{codeblock}[]
+		>>> G = x**3
+		>>> dGdx = diff(F, x)
+		>>> dGdx
+		3*x**2
+		>>> integrate(dGdx, x)
+		x**3    # + C
+		\end{codeblock}
+
+
+
+
+
+%(A)
+Define the anti-derivative function $F(x)$,
+which is a function whose derivative equals $f(x)$:
+$F'(x) = f(x)$.
+
+Note the anti-derivative function is not unique;
+it is only defined up to an additive constant $F(x) + C$.
+
+For example...
+
+
+
+
+		\subsubsection{Computing integrals using anti-derivatives}
+		% Using integrals by reverse engineering derivatives}
+  
+	  		% ALT. by anti-differentiation
+			The fundamental theorem of calculus
+			gives us a way for computing integrals functions
+			using ``reverse engineering'' thinking
+			and the table of derivative formulas
+			(see page~\pageref{mathematical_preliminiaries:derivative_formulas}).
+			To find an integral function of $f(x)$,
+			we can look for a function $F(x)$
+			whose derivative is the the function $f(x)$.
+			% MAYBE: introduce noton of anti-derivatives
+			If we can find a function $F(x)$ such that $F'(x) = f(x)$,
+			then we know the integral function of $f(x)$ is $F_a(x)$ 
+			\[
+				\int_a^b  f(x)\,dx = F_a(b) + C.
+			\]
+% MERGE
+%The fundamental theorem of calculus gives us a symbolic trick for computing
+%the integrals functions $\int f(x)\,dx$ for many simple functions.
+%If you can find a function $F(x)$ such that $F'(x) = f(x)$,
+%then 
+	
+			\paragraph{Example 3 continued}
+	
+				Suppose you're given a function $h(x) = 4 - x^2$
+				and asked to find its integral function $H_0(b) = \int_0^b  h(x)\, dx$.
+				This fundamental theorem of calculus tells us this problem
+				is equivalent to finding a function $H(x)$ whose derivative is $h(x)$.
+				% $H'(x) = h(x)$.
+				%	For example,
+				%	suppose you want to find the indefinite integral $\int x^2\,dx$.
+				%	We can rephrase this problem as the search for some function $H(x)$ such that $H'(x) = x^2$.
+				The function $h(x) = 4 - x^2$ has two terms.
+				The first term is a constant $4$.
+				We can guess that the corresponding term in the anti-derivative function $H(x)$
+				will be $4x$,
+				since $\frac{d}{dx}[ 4x ] = 4$.
+				Now for the quadratic term $-x^2$.
+				Remembering the derivative formulas for polynomials,
+				we can guess that anti-derivative $H(x)$ must contain a $x^3$ term,
+				because taking the derivative of a cubic term results in a quadratic term.
+				Therefore,
+				the anti-derivative function we're looking for has the form $H(x)=3x - cx^3$,
+				for some constant $c$.
+				Pick the constant $c$ that makes this equation true: $H'(x) = 4 - 3cx^2 = 4 - x^2$.
+				Solving $3c=1$,
+				we find $c=\frac{1}{3}$ and so the anti-derivative function
+				we're looking for is $H(x) = 4x - \frac{1}{3}x^3 + C$.
+				% We can now compute the integral $\int x^2 \:dx = 
+%	In other words,
+%	the area under the graph of $f(x)=x^2$ is described by the family of functions $F(x) = \frac{1}{3}x^3 + C$.
+	% The constant $C$ varies depending on the choice of lower limit of integration $a$ for the area calculation $A_f(a, x)$.
+	% You can verify that $\frac{d}{dx}\left[\frac{1}{3}x^3 + C\right] = x^2$.
+	
+
+
+		%	The integral is the ``inverse operation'' of the derivative.
+		%	If you perform the integral operation followed by the derivative operation on some function, 
+		%	you'll obtain the same function:
+		%	Note we need a new variable $u$ inside the integral since $x$ is already 
+		%	used to denote the upper limit of integration.
+
+		% That's kind of cool, no?
+		% TODO: mention application integration by finding anti-derivative functions
+		% TODO: explain what it means for integral not to have closed form
+
+
+		\subsubsection{Using derivative formulas in reverse}
+		
+			This procedure based on using the derivative formulas
+			in reverse to guess the value of $F(x)$
+			is very useful.
+			We can use it for all the function listed in the table of derivative formulas.
+			For example,
+			the table tells us that the derivative of the linear function $f(x) = mx+b$
+			is the constant function $f'(x) = m$,
+			which means the integral of a constant function is a linear function
+			$\int m\,dx = mx + C$.
+			The integral function of an exponential is also an exponential $\int e^x \,dx = e^x + C$,
+			since $\frac{d}{dx}[e^x] = e^x$.
+			The derivative of $\log_e(x)$ is $\frac{1}{x}$,
+			therefore the integral of $\frac{1}{x}$ is $\log(x)$.
+			Similarly for the trigonometric functions $\int \cos(x) \,dx = \sin(x)$
+			and $\int - \sin(x) \,dx = \cos(x)$.
+			For economy of space,
+			we'll verify all these integral formulas by computing
+			the integral of the function $f(x) = m + e^x + \frac{1}{x} + \cos(x) - \sin(x)$
+			that contain the mix of several functions on the right side of the table
+			of the derivative formulas table.
+
+			\begin{codeblock}[]
+			>>> fx = m + sp.exp(x) + 1/x + sp.cos(x) - sp.sin(x)
+			>>> sp.integrate(fx, x)
+			m*x + exp(x) + log(x) + sin(x) + cos(x)
+			\end{codeblock}
+			
+			\noindent
+			SymPy tells us the integral function
+			$F_0$ is $F_0(x) = mx + e^x + \log(x) + \sin(x) + \cos(x)$,
+			% $F_0(b) = mb + e^b + log(b) + sin(b) + cos(b)$,
+			which are all the corresponding terms on the left side of the table of derivative fromulas.
+
+
+
+%LEAD OUT: what do we do when there is no simple formula?
+\bigskip
+Okay,
+but what do we do if the function we want to integrate
+doesn't appear on the right side of the table?
+
+
+
+
+		\ifthenelse{\boolean{FORSTATSBOOK}}{
+
+			\noindent
+			In probability theory,
+			the FTC tells us that the probability density can be obtained from the cumulative distribution using differentiation
+			\[
+				f_X(x) = \frac{d}{dx}\!\left[ F_X(x) \right] = \frac{dF_X}{dx}(x) = F'_X(x).
+			\]
+			The fact that we can obtain $f_X$ from $F_X$ and vice versa,
+			means we only need to define one of the two functions,
+			and obtain the other function using differentiation or integration.
+			In this book,
+			we define the random variable $X$ through its probability distribution function $f_X$,
+			then define $F_X$ as the integral of $f_X$.
+			In other books,
+			you might see the random variable $X$ being defined through its cumulative distribution function $F_X$,
+			with its probability density function $f_X$ defined as the derivative of $F_X$.
+
+		}{}
+
+
+
+% FTC CUT MATERIAL
+
+%	The integral function $F_a(x)$ is obtained from the original function $f(x)$ using integration,
+%	$F_a(x) = \int_a^x f(u) du$.
+%	Another way to describe this is to say we \emph{applied} the integration operator $\int \cdot dx$
+%	on the function $f(x)$ to obtain the integral function $F_a(x)$.
+%	The derivative function $f'(x)$ is defined by the formula
+%	$f'(x) = \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}$.
+%	We can also say we \emph{applied} the derivative operator $\frac{d}{dx}[\cdot]$
+%	to the function $f(x)$ to obtain the derivative function $f'(x)$.
+%	I use the word ``operator'' here to refer to an operation that acts on functions.
+
+
+		% The fundamental theorem of calculus describes the relationship between
+		% derivatives and integrals.
+		%	The fundamental theorem of calculus establishes an equivalence between the set 
+		%	of integral functions and the set of antiderivative functions:
+		%	\[
+		%		A_a(x)=F(x)+C.
+		%	\]
+		%	All integral functions $F_a(x)$ are antiderivatives of $f(x)$.
+
+
+		%	There is no reason \emph{a priori} to think that integration and differentiation might be related:
+		%	the former is a calculation about areas,
+		%	while the latter is a calculation about slopes.
+		%	The fundamental theorem of calculus reveals that they are in fact inverse operations:
+		%	we can obtain the original function $f(x)$ from the integral function $F_a(x)$ by computing it's derivative:
+		%	\[
+		%		\frac{d}{dx}\big[F_a(x)\big] 	= 	\frac{d}{dx}\left[\int_a^x f(u) \; du \right]  	= 	f(x).
+		%	\]
+		%	Note we used a temporary variable $u$ as the integration variable,
+		%	since $x$ is already used to denote the upper limit of integration.
+
+
+%		if you compute the derivative of a function followed by the integral,
+%		you will obtain the original function $f(x)$ (up to a constant):
+%		\[
+%		  \left( \int dx \circ \frac{d}{dx}\right) f(x) = \int_c^x f'(u)\;du = f(x) + C.
+%		\]

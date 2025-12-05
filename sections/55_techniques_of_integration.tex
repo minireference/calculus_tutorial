@@ -1,0 +1,183 @@
+%!TEX root = ../calculus_tutorial.tex
+
+
+	\subsection{Act 4: Techniques of integration}
+	
+% (A4)
+Okay we're getting into the fourth act of the calculus show,
+and I want you to remind you that you can ``tap out'' at any time.
+The material we'll show % (briefly and superficially)
+in the in this act is some of the most boring topics
+that CALC~II students are forced to endure.
+% that  only for students who are currently taking CALC~II class.
+If you're taking a CALC~II class (a.k.a. CALC 102, Integral calculus),
+then you need to know this stuff because it is going to be your final exam.
+Everyone else,
+feel free to skip ahead to the next section.		% MAYBE: explicit FWD reference
+
+
+
+
+
+		There are a bunch of tricks that extend the reach of analytical integration methods 
+		(anti-differentiation) to more complicated functions.
+		We don't have space to discuss all these tricks in this tutorial,
+		so we'll focus on the two most important ones.
+		% MAYBE link to Sec 5.15 in the book 
+
+
+		\subsubsection{Substitution trick}
+		
+			Suppose the function we want to integrate has the structure $f(u(x))u'(x)$,
+			which consists of inner function wrapped in an outer function multiplied by the derivative of the inner function.
+			We can use the \emph{substitution trick} to rewrite this integral
+			in terms of the function $f(u)$ using $u$ as the variable of integration:
+			\[
+				\int_{x = a}^{x = b} f(u(x)) \, u'(x) dx
+					\;\; = \;\; 	\int_{u = u_a}^{u = u_b} f(u) \; du.
+					% \;\; \text{where} \;\; u = u(x).
+				%	\int_{x=a}^{x=b} f(u(x)) \; u'(x) \; dx
+				%		&=  \int_{u(a)}^{u(b)} f(u) \; du.					
+			\]
+			
+			\noindent
+			The substitution trick is also called a \emph{change of variable} operation:
+			we're replacing the variable $x$ with the variable $u$,
+			similar to a search-and-replace operation when editing a text file.
+			Because we're doing the substitution ``inside'' an integral operation,
+			we must also change the region of interval of integration (form $[a,b]$ to $[u_a, u_b]$)
+			and change of the ``step'' parameter (from $dx$ to $du$).
+
+			\begin{shadebox}
+			\vspace{1mm}
+			\noindent
+			Follow these three steps to apply the substitution trick:
+
+			\begin{enumerate}
+				\item	Replace $dx$ with $\frac{1}{u'(x)}du$.
+				\item	Replace all occurrences of $u(x)$ with $u$.
+				\item	Replace the $x$-limits of integration $x=a$ and $x=b$
+					with $u$-limits of integration: $u_a = u(a)$ and $u_b = u(b)$.
+			\end{enumerate}
+			\vspace{-1mm}
+			\end{shadebox}	
+
+			\paragraph{Example}
+
+				Let's compute the integral $\int_a^b \frac{1}{x - \sqrt{x}} \, dx$.
+				This looks like a scary integral,
+				but we can use the substitution trick to compute this integral. 
+				% ALT. becomes more manageable 
+				We'll apply the substitution $u=\sqrt{x}$,
+				which implies $u'(x) =  \frac{1}{2\sqrt{x}}$,
+				and the new limits of integration $u_a = \sqrt{a}$ and $u_b = \sqrt{b}$.
+				Performing the three steps of the substitution trick gives us:
+
+				{\allowdisplaybreaks
+				\begin{align*}
+				     \int_{x=a}^{x=b} \frac{1}{x - \sqrt{x}} \, dx  
+					&=  \int_{x=a}^{x=b}  \frac{1}{x - \sqrt{x}} \, \frac{1}{2\sqrt{x}} \, du			\\
+					&=  \int_{x=a}^{x=b} \frac{1}{u^2 - u} \; 2u\,du							\\
+					&=  \int_{u(a)}^{u(b)} \frac{1}{u^2 - u} \; 2u\,du
+						= \int_{u(a)}^{u(b)} \frac{2u}{u^2 - u} \, du							\\
+					&=  \int_{u(a)}^{u(b)} \frac{2}{u - 1} \, du
+						=  2\ln(u-1) \bigg|_{u(a)}^{u(b)}									\\
+					% &=  2\ln(\sqrt{x}-1) \bigg|_{x=a}^{x=b}								\\
+					&=  2\ln(\sqrt{b}-1) - 2\ln(\sqrt{a}-1).
+				\end{align*}
+				}
+
+				\noindent
+				Read this sequence of equations slowly
+				and try to identify the what changes in each step.
+				I know it looks like alien scribbles,
+				but if you read it carefully you'll see the scribbles make sense logically.
+				We're simply doing the search-and-replace on $u = \sqrt{x}$,
+				but to do this right we need to also replace $dx$ with $du$,
+				and use the new limits of integration.
+
+				In the fourth line,
+				we recognized the general form of the function inside the integral, $f(u)=\frac{2}{u-1}$,
+				to be similar to the function $f(u)=\frac{1}{u}$ whose integral function is $\ln(u)$.
+				Accounting for the $-1$ horizontal shift and the factor of $2$ in the numerator,
+				we obtain the answer $2\ln(u-1)$.
+				In the last step,
+				we changed back from $u$-variables to $x$-variables to compute the final answer.
+
+
+			The substitution trick for integrals comes from the chain rule for derivatives
+			$\left[ f(u(x)) \right]^\prime = f^\prime(u(x))u^\prime(x)$.
+			The substitution rule only works for computing integrals of function
+			that have the special structure $f'(u(x))u'(x)$.
+			
+% TODO: mention it has great power -- basis of multivariable calculus when using parameterization FWD REF
+
+
+		\subsubsection{Integration by parts}
+
+			Integration by parts is useful when the function you're integrating
+			has the special structure $f(x)g'(x)$.
+
+			\begin{shadebox}
+			\vspace{1mm}
+			\[
+				\int f(x) \; g'(x)\:dx	\; \; = \; \;	f(x) g(x) \; \; -  \int f'(x)g(x) \; dx.
+			\]
+			\vspace{-2mm}
+			\end{shadebox}	
+			
+			\noindent
+			It is easier to remember the integration by parts formula in its shorthand notation,
+			$\int u\; dv = uv - \int v\; du$.
+			You can think of integration by parts as a form of ``double substitution,''
+			where you simultaneously replace $u$ and $dv$.
+			For definite integrals,
+			integration by parts requires evaluating the product of the functions at the limits:
+			\[
+			 \int_a^b u\; dv = \left(uv\right)\Big|_a^b \ \  - \ \ \int_a^b v \; du.
+			\]
+			
+			\paragraph{Example}
+				Let's calculate $\int_0^5 x e^x \, dx$ using the integration by parts procedure.
+				We apply the substitutions $u=x$ and $dv=e^x dx$,
+				which means $du=dx$ and $v= e^x$.
+				Applying the formula for integration by parts gives us
+	
+				\begin{align*} 
+				\int_0^5 x \; e^x dx 
+					 &= \left( x e^x \right) \Big|_0^5  \ - \  \int_0^5 e^x \; dx  		\\
+					 &= \left( x e^x \right) \Big|_0^5      \ - \  e^x\Big|_0^5			\\[1mm]
+					 &=  \left[ 5 e^5 - 0e^0 \right]    \ - \  \left[  e^5 - e^0 \right] 	\\
+					 &= 5 e^5 - e^5 + 1 								\\
+					 &= 4e^5 + 1 .
+				\end{align*}
+	
+
+		\subsubsection{Other tricks}
+
+			The two tricks we showed are only the tip of the iceberg.
+			Mathematicians and physicist have come up with hundreds of formulas and tricks
+			for calculating integrals,
+			since for centuries people were forced to use pen and paper calculations.			
+			There are tricks for trigonometric functions,
+			square roots,
+			fractions that that involve $x^2 + a^2$,
+			etc.
+			There is an entire course called integral calculus (CALC II),
+			which is dedicated to learning integration tricks.
+			CALC II is a required course for physicists and engineers.
+% CLEANUP
+%	but for the purpose of learning probability and statistics,
+%	you're not required to learn all these integration techniques.
+%	Instead,
+%	you can rely on computers to do integration for you.
+%	Specifically,
+%	you can use the Python modules SciPy and SymPy to compute all the integrals you need,
+%	as we'll show in the next two sections.
+
+% Robyn said: 	Confusing that before you said that integrals is a topic that can't be skipped,
+%			and here you say that you can rely on computers.
+% 			If they don't need to know the math, then perhaps this section could be made even shorter.
+
+			
+			

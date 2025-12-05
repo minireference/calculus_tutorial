@@ -4,7 +4,7 @@
 	\subsection{Applications of integration}
 
 		Intuitively,
-		we can use integration whenever we want to
+		we use integrals whenever we want to
 		compute the ``total'' of some quantity that changes over time.
 
 
@@ -33,24 +33,30 @@
 			\]
 			The probability density $f_X$ varies for different values of $x$,
 			so if we want to compute the total probability of $X$ falling between $x=a$ and $x=b$,
-			we must compute the integral of $f_X$ between $x=a$ and $x=b$.
-			
-			We also use integration to compute \emph{expectations} for quantities that depend on continuous random variables.
-			The expected value of the quantity $G=g(X)$ under the randomness of a continuous random variable $X$
-			is defined as the following integral calculation:
-			\[
-				\EE_X [G]
-				\equiv
-				\EE_X[g(X)]
-				\equiv
-				\int_{x \in \calX} g(x)f_X(x)\:dx.
-			\]
-			The expected value is computed by ``weighing'' each value of $g(x)$ by the corresponding probability density for the event $\{X=x\}$,
-			summed over all possible values for the random variable $X$.
-	
-			The mean $\mu = \EE_X[X]$ and the variance $\sigma^2 = \EE_X[(X-\mu)^2]$
-			are two central concepts in probability theory and statistics that are computed as expectation integrals.
-			Every time we use the $\EE_X$ notation in Section~\ref{sec:continuous_prob_distr},
-			there will be some integral calculation going on behind the scenes,
-			so if you want know what's going on you need to know a thing or two about integrals.
+			we must compute the integral of $f_X$.
 
+
+			\ifthenelse{\boolean{FORSTATSBOOK}}{
+				We also use integration to compute \emph{expectations}
+				for quantities that depend on continuous random variables.
+				The expected value of the quantity $G=g(X)$
+				under the randomness of a continuous random variable $X$
+				is defined as the following integral calculation:
+				\[
+					\EE_X [G]
+					\equiv
+					\EE_X[g(X)]
+					\equiv
+					\int_{x \in \calX} g(x)f_X(x)\:dx.
+				\]
+				The expected value is computed by ``weighing'' each value of $g(x)$
+				by the corresponding probability density for the event $\{X=x\}$,
+				summed over all possible values for the random variable $X$.
+		
+				The mean $\mu = \EE_X[X]$ and the variance $\sigma^2 = \EE_X[(X-\mu)^2]$
+				are two central concepts in probability theory and statistics
+				that are computed as expectation integrals.
+				Every time we use the $\EE_X$ notation in Section~\ref{sec:continuous_prob_distr},
+				there will be some integral calculation going on behind the scenes,
+				so if you want know what's going on you need to know a thing or two about integrals.
+			}{}
