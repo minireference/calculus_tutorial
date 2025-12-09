@@ -1,7 +1,7 @@
 %!TEX root = ../calculus_tutorial.tex
 
 
-	\subsection{Computing integrals functions symbolically using SymPy}
+	\subsection{Computing integrals functions using SymPy}
 
 		We can use Python to do \emph{symbolic} integration using variables (symbols) instead of numbers.
 		The SymPy function \tt{sp.integrate} allows us to obtain the formulas for integrals and integral functions.
@@ -171,7 +171,7 @@
 
 		\subsubsection{Example 3S: Polynomial function}
 
-			Define $h(x) = 4 -x^2$ 
+			Recall $h(x) = 4 -x^2$.
 
 			\begin{codeblock}[sympy-define-hx]
 			>>> hx = 4 - x**2
@@ -180,7 +180,8 @@
 			\end{codeblock}
 		
 			\noindent
-			The 
+			The integral function $H_0(b) = \int_0^b h(x)\,dx$
+			is given by:
 			
 			\begin{codeblock}[]
 			>>> H0 = sp.integrate(hx, (x,0,b))
@@ -191,8 +192,7 @@
 			\noindent
 			The integral function $H_{0}(b) = 4b - \frac{1}{3}b^3$
 			corresponds to the area calculation under $h(x)$
-			starting at $x=0$,
-			which only covers the right side of the region.
+			starting at $x=0$.
 
 
 

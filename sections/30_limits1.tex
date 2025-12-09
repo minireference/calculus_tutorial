@@ -358,20 +358,18 @@ can lead us to computing quantities.
 		\]
 		Remember,
 		the two-sided limit $\lim_{x\to a}$ requires both the left and the right limit to exist and to be equal.
-		Thus, the definition of continuity implies the following equality:
-		\[
-		 \lim_{x \to a^-}  f(x) =  f(a) = \lim_{x \to a^+}  f(x).
-		\]
-		In words,
-		this means that a function $f(x)$ is continuous at $x=a$
-		if the limit from the left $\lim_{x \to a^-}  f(x)$
-		and the limit from the right $\lim_{x \to a^+}  f(x)$
-		are both equal to the value of the function at $x=a$.
-
-		Take a moment to think about the mathematical definition of continuity at a point.
-		Can you connect the math definition to the intuitive idea that functions are continuous if they can be drawn without lifting the pen?
-		Most functions we'll study in calculus are continuous,
-		but not all functions are.
+		Thus, the definition of continuity implies the equality $\lim_{x \to a^-}  f(x) =  f(a)$
+		and $f(a) = \lim_{x \to a^+}  f(x)$,
+		which correspond to the idea of ``not lifting the pen'' when drawing the graph at $x=a$.
+%		In words,
+%		this means that a function $f(x)$ is continuous at $x=a$
+%		if the limit from the left $\lim_{x \to a^-}  f(x)$
+%		and the limit from the right $\lim_{x \to a^+}  f(x)$
+%		are both equal to the value of the function at $x=a$.
+		% Take a moment to think about the mathematical definition of continuity at a point.
+		% Can you connect the math definition to the intuitive idea that functions are continuous if they can be drawn without lifting the pen?
+%		Most functions we'll study in calculus are continuous,
+%		but not all functions are.
 % /SHORTEN
 
 
@@ -505,8 +503,8 @@ can lead us to computing quantities.
 		\end{codeblock}
 
 		\noindent
-		Note SymPy produced the exact value $\tt{E} = 2.718281828\ldots$
-		and not an approximation.
+		Note SymPy produced the exact value $\tt{E} = 2.718281828\ldots$.
+		% and not an approximation.
 
 		% TODO: ADD MORE LIMIT EXAMPLES
 		%	\noindent
@@ -640,8 +638,8 @@ can lead us to computing quantities.
 
 	% LEAD OUT	
 	In the remainder of this tutorial we'll use limits to evaluate derivatives, integrals, and series expressions.
-	In each of these domains,
-	limit expressions will help us make precise statements
-	that describe calculus procedures with infinite small lengths and infinite number of steps.
+%	In each of these domains,
+%	limit expressions will help us make precise statements
+%	that describe calculus procedures with infinite small lengths and infinite number of steps.
 
 

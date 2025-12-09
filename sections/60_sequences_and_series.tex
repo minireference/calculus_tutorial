@@ -3,94 +3,251 @@
 \section{Sequences and series}
 \label{sec:sequences_and_series}
 
+	A \emph{sequence} $a_k$ is a function that take whole numbers as inputs
+	and produce real numbers as outputs: $a_k : \mathbb{N} \to \mathbb{R}$.
+	The \emph{series} $\sum a_k$ describes the sum of the terms in the sequence $a_k$.
+	Series are a powerful computational tool
+	that allow us to describe procedures with infinite number of steps
+	and use these procedures to approximate irrational numbers like $e$,
+	and transcendental functions like the exponential function $f(x) = e^x$.	
+	Sequences and series are the third pillar of the basic calculus knowledge I want you to have.
+
+	\subsection{Sequences are functions with discrete inputs}
+	\label{sequences_and_series:sequences}
+
+		We use the notation $f: \mathbb{R} \to \mathbb{R}$
+		to describe the functions that take real numbers $x \in \mathbb{R}$ as inputs
+		and produce real numbers as outputs $f(x) \in \mathbb{R}$.
+		When studying functions that take natural numbers $k \in \mathbb{N}$ as inputs,
+		we use a different notation: $a_k: \mathbb{N} \to \mathbb{R}$,
+		where $a_k$ describes the $k$\textsuperscript{th} term in the sequence.
+		The sequence's input variable is usually denoted $k$.
+		and corresponds to the \emph{index} within the sequence.
+		Usually $k$ is a natural number $k \in \mathbb{N} \eqdef \{0,1,2,3,4,\ldots\}$
+		but some sequences are only defined nor positive natural numbers $k \in \mathbb{N}_+ \eqdef \{1,2,3,4,\ldots\}$.
+		Note the chance in notation:
+		we use $a_k$ for sequences instead of the usual function notation $a(k)$.
+		% TODO: MERGE
+		%	Note the new notation for the input variable as a subscript.
+		%	This is the standard notation for describing sequences,
+		%	and is used instead of the standard function notation $a(k)$.
+
+		
+		We can define a sequence by specifying the formula for the $k$\textsuperscript{th} term in the sequence $a_k$.
+		For example,
+		the \emph{harmonic sequence} is defined by the formula $a_k = \frac{1}{n}$.
+		Another way to define a sequence is by listing the first few values in the sequence:
+		$[a_0, a_1, a_2, a_3, \ldots]$,
+		which correspond to evaluating formula $a_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
+		We'll now look at some common examples sequences
+		specified both as functions of $k$ and show the the first few values in each sequence.
 
 
-	\subsection{Sequences}
+		\paragraph{The natural numbers}
+		
+			The simplest possible example of a sequence is the identity function,
+			that returns the index input $k$ as output:
+			\[
+				n_k\eqdef k, \text{ for } k \in \mathbb{N}
+				  \ \ \Leftrightarrow \ \ 
+				  \left(0, 1, 2, 3, 4, 5, 6, 7, \ldots \, \right),
+			\]
+			This is the fundamental counting sequence that describes
+			the process of taking ``unit step'' to the right on the number line,
+			starting at the origin.
+		
 
-Sequences are functions that take whole numbers as inputs.
-Instead of continuous inputs $x\in \mathbb{R}$,
-sequences take natural numbers $k\in\mathbb{N}$ as inputs.
-We denote sequences as $a_k$ instead of the usual function notation $a(k)$.
-
-	A sequence is a function of the form $a: \mathbb{N} \to \mathbb{R}$.	
-	The sequence's input variable is usually denoted $k$ or $n$,
-	and it corresponds to the \emph{index} or number in the sequence.
-	We describe sequences either by specifying the formula $a_k$ for the $k$\textsuperscript{th} term in the sequence
-	or by listing all the values of the sequence:
-	\[
-		a_k, k \in \mathbb{N}  \ \ \Leftrightarrow \ \  \left(a_0, a_1, a_2, a_3, a_4, \ldots \, \right).
-	\]
-	Note the new notation for the input variable as a subscript.
-	This is the standard notation for describing sequences,
-	and is used instead of the standard function notation $a(k)$.
-
-
-Examples
-
-
-
-
-	We're often interested in computing the sum of all the values in this given a sequence $a_k$.
-	To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th} elements of the sequence $a_k$,
-	we turn to summation notation:
-    	\[
-	      a_3 + a_4 + a_5 
-	      \equiv \sum_{3 \leq k \leq 5}\!\! a_k 
-	      \equiv \sum_{k=3}^{5} a_k \,.      
-	\] 
-	The capital Greek letter \emph{sigma} stands in for the word \emph{sum}, 
-	and the range of index values included in this sum is denoted below and above the summation sign.
-
-	The partial sum of the sequence values $a_k$ ranging from $k=0$ until $k=n$ is denoted as
-	\[
-		S_n = \sum_{k=0}^n a_k =  a_0 + a_1 + a_2 + \cdots + a_{n-1} + a_n.
-	\]
-
-	In calculus,
-	the notion of a \emph{series} describes the sum of \emph{all} the values in the sequence $a_k$:
-	\[
-	   \sum a_k 
-	    	\equiv 	S_\infty	
-		= 		\lim_{n \to \infty} S_n
-		=		\sum_{k=0}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
-	\]
-	Note if the sequence $a_k$ continues indefinitely,
-	computing the sum requires an infinite number of addition operations.
+		\paragraph{Squares of natural numbers}
+			
+			The sequence-equivalent of the quadratic function $f(x)=x^2$
+			is the sequence of squares of the integers:
+			\[
+				q_k\eqdef k^2, \text{ for } k \in \mathbb{N}
+				  \ \ \Leftrightarrow \ \ 
+				  \left(0, 1, 4, 9, 16, 25, 36, 49, \ldots \, \right),
+			\]
 
 
+		\paragraph{Harmonic sequence}
+			
+			Another ...
+			\[
+				h_k\eqdef \frac{1}{k}, \text{ for } k \in \mathbb{N}_+
+				  \ \ \Leftrightarrow \ \ 
+				  \left(1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \tfrac{1}{5}, \tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \right),
+			\]
+			The \emph{harmonic sequence} appears in music.
+			For most music instruments,
+			when we want to play the note that corresponds to the frequency $f$,
+			we also hear notes with frequencies that are integer multiple of the ``dominant'' frequency:
+			$2f$, $3f$, $4f$, etc.,
+			which are called the harmonics.
+			The harmonic sequence describes the wavelengths of the harmonics frequencies.
+			On a string instrument,
+			the harmonic sequence tells you where to place your fingers if you want to play higher harmonics.
+			%	The harmonic series is a really old concept,
+			%	since it is a common 			
+			%	that was well known by ancient civi Greeks knew about it
+			%	played by the instrument consists of a ``main vibration'' with 
+			%	Most music instrument that produce a given note and higher harmonics,
+			%	which are frequencies 
+			%	each note played by a musical instrument has a ``dominant'' frequency
+
+
+		\paragraph{The alternating harmonic sequence}
+
+			Consider now a harmonic sequence with alternating positive an negative outputs:
+			\[
+				a_k\eqdef \frac{(-1)^{k+1}}{k}, \text{ for } k \in \mathbb{N}_+
+				  \ \ \Leftrightarrow \ \ 
+				  \left(1, -\tfrac{1}{2}, \tfrac{1}{3}, -\tfrac{1}{4}, \tfrac{1}{5}, -\tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \right),
+			\]
+			The factor $(-1)^{k+1}$ is positive for all odd inputs $k \in \{1,3,5,7,\ldots \}$
+			since $(-1)^m=+1$ for any even number $m$.
+			The factor $(-1)^{k+1}$ is negative
+			for all even inputs $k \in \{2,4,6,8,\ldots \}$,
+			hence the values in the sequence oscillate between positive and negative.
+
+
+		\paragraph{Inverse factorial sequence}
+
+			The factorial function is denoted $k!$
+			and describes the product of the first $k$ positive natural numbers;
+			$k! \;\; \eqdef \;\; k \cdot (k-1) \cdots 3 \cdot 2 \cdot 1$.
+			We'll see factorials in several formulas in this section.
+			In particular,
+			the following sequence is of particular interest:
+			\[
+				f_k\eqdef \tfrac{1}{k!}, \text{ for } k \in \mathbb{N}_+
+				  \ \ \Leftrightarrow \ \ 
+				  \left(1, \tfrac{1}{2!}, \tfrac{1}{3!}, \tfrac{1}{4!}, \tfrac{1}{5!}, \tfrac{1}{6!}, \tfrac{1}{7!}, \ldots \, \right),
+			\]
+			The values in the \emph{inverse factorial sequence} quickly become very small,
+			because the factorial function grows very quickly:
+			$2!=2$,
+			$3!=6$,
+			$4!=24$,
+			$5!=120$,
+			$6!=720$,
+			$7! = 5040$, \ldots,
+			$10! = 3628800$, \ldots, 
+			$13! \approx 6.2 \times 10^9$, \ldots, 
+			$70! \approx 1.2 \times 10^{100}$,
+			etc.
+			% This sequence is a will be ingredient in power-series expansions such as the exponential function.
+
+
+		\paragraph{Geometric sequence}
+
+			The sequences-equivalent of the exponential function $f(x) = e^x$
+			is the \emph{geometric sequence}
+			where the $k$\textsuperscript{th} value in the sequence
+			is the $k$\textsuperscript{th} powers of some number $r$:
+			\[
+				g_k\eqdef r^k, \text{ for } k \in \mathbb{N}
+				  \ \ \Leftrightarrow \ \ 
+				  \left(1, r, r^2, r^3, r^4, r^5, r^6, r^7, \ldots \, \right),
+			\]
+			Each term in the sequence equals $r$ times the previous term,
+			which describes \emph{geometric process} that repeatedly grows/shrinks by the amount $r$.
+			When $r < 1$ the values in sequence $g_k$ quickly go to zero,
+			similar to how exponential function $e^{-x}$ goes to zero for large value of $x$.
+			When $r > 1$ the sequence $g_k$ increases quickly,
+			similar to how exponential function $e^{x}$ increases for large value of $x$.
+
+
+		\paragraph{Powers of two}
+
+			The special case of the geometric series with $r=2$ is of particular interest,
+			so we'll alias-define it as the sequence $b_k$:
+			\[
+				b_k \eqdef 2^k, \text{ for } k \in \mathbb{N}
+				  \ \ \Leftrightarrow \ \ 
+				  \left(1, 2, 4, 8, 16, 32, 64, 128, \ldots \, \right),
+			\]
+			This sequence comes up all over the place in computer science
+			because it is describes the number of different numbers we can store in $k$ bits of memory.
 
 
 
 
 
 
+	\subsection{Summation notation}
+	\label{sequences_and_series:summation_notation}
+	
+		We're often interested in computing the sum of all the values in this given a sequence $a_k$.
+		To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th}
+		elements of the sequence $a_k$,
+		we turn to summation notation:
+	    	\[
+		      a_3 + a_4 + a_5 
+			     = \sum_{3 \leq k \leq 5}\!! a_k 
+			      = \sum_{k=3}^{5} a_k \,.      
+		\] 
+		The capital Greek letter \emph{sigma} stands in for the word \emph{sum}, 
+		and the range of index values included in this sum is denoted below and above the summation sign.
+	
+		The sum of the values in the sequence $a_k$ from $k=0$ until $k=n$
+		is denoted as
+		\[
+			\sum_{k=0}^n a_k =  a_0 + a_1 + a_2 + \cdots + a_{n-1} + a_n.
+		\]
+		% This is called \emph{finite series} 
 
-
+		\noindent
+		Since this is a calculus tutorial,
+		you should expect that an infinity of some kind will show up soon,
+		and indeed we'll learn about \emph{infinite series},
+		that describe the sum of \emph{all} the values in the sequence $a_k$:
+		$\sum a_k  \eqdef 	\lim_{n \to \infty} \sum_{k=0}^n a_k$.
+		% =		\sum_{k=0}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
+		%	In calculus,
+		%	the notion of a \emph{series} describes the sum of \emph{all} the values in the sequence $a_k$:
+		%	\[
+		%	   \sum a_k 
+		%	    	\eqdef 	\lim_{n \to \infty} \sum_{k=0}^n a_k
+		%		=		\sum_{k=0}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
+		%	\]
+		%	Note if the sequence $a_k$ continues indefinitely,
+		%	computing the sum requires an infinite number of addition operations.
+		%
+		%
+		But before we get to infinite sums,
+		let's start at some finite sums to get a feel of this thing.	
 
 
 
 	\subsection{Exact sums}
 
-		Formulas exist for calculating the sum of certain series, even series with infinite number of terms.
-
-		The formulas for the sum of the first $n$ positive integers is
+		We'll now show some useful formulas for calculating sum of the terms in certain sequences.
+		For example,
+		here is a formula for the sum of the first $n$ terms in the geometric sequence:
 		\[
-		   \sum_{k=1}^n k = \frac{n(n+1)}{2}.
+			% \sum_{k=0}^n g_k=
+			G_n = 
+			\sum_{k=0}^n r^k 
+				= 1 + r + r^2 + \cdots + r^n 
+				= \frac{1-r^{n+1}}{1-r}.
 		\]
-		The the sum of the squares of the first $n$ positive integers is
+		We can use this formula to find the sum of the powers of $2$:
 		\[
-		   \sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}.
+		   \sum_{k=0}^n 2^k = 1 + 2 + 4 + 8 + \cdots + 2^n = \frac{1-2^{n+1}}{1-2} = 2^{n+1} -1.
+		\]
+
+
+		The sum of the first $n$ positive integers and the sum of their squares are:
+		\[
+			\sum_{k=1}^n k = \frac{n(n+1)}{2}
+			\qquad \text{and} \qquad
+			\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}.
 		\]
 		% MAYBE add k^3 formula too?
-		% See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}} for the derivations of these formulas.
-
-		There is another nice series for powers of $2$:
-		\[
-		   \sum_{k=0}^n 2^k = 1 + 2 + 4 + 8 + \cdots + 2^n = 2^{n+1} -1.
-		\]
+		% 	See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}}
+		%	for the derivations of these formulas.
 
 
-%TODO explain
+TODO explain: 
 The Binomial series
 \[
 	\sum_{k=0}^n {n \choose k} a^{n-k} b^k=(a+b)^n
@@ -100,66 +257,63 @@ special case when one of the terms is 1:
 	\sum_{k=0}^n {n \choose k} x^k=(1+x)^n
 \]
 
+\vspace{2in}
 
 
+% NOTEBOOK ONLY
+%	We define a sequence by specifying an expression for its $n$\textsuperscript{th} term:
+%	
+%	
+%	\begin{codeblock}[]
+%	>>> k = sp.symbols("k")
+%	>>> a_k = 1 / k
+%	>>> b_k = 1 / sp.factorial(k)
+%	\end{codeblock}
+%	
+%	\noindent
+%	Substitute the desired value of $n$ to see the value of the $n$\textsuperscript{th} term:
+%	
+%	\begin{codeblock}[]
+%	>>> a_k.subs({k:5})
+%	1/5
+%	\end{codeblock}
+%	
+%	\noindent
+%	%We can use 
+%	The Python list comprehension syntax \texttt{[item for item in list]}
+%	can be used to print the sequence values for some range of indices:
+%	
+%	
+%	
+%	\begin{codeblock}[]
+%	>>> [ a_k.subs({k:i}) for i in range(1,8) ]
+%	[1, 1/2, 1/3, 1/4,  1/5,   1/6,   1/7]  
+%	>>> [ b_k.subs({k:i}) for i in range(0,8) ]
+%	[1,  1, 1/2, 1/6, 1/24, 1/120, 1/720, 1/5040]
+%	\end{codeblock}
+%	
+%	\noindent
+%	Observe that $a_k$ is not defined for $k=0$
+%	since $\frac{1}{0}$ is a division-by-zero error.
+%	In other words,
+%	the domain of $a_k$ is the nonnegative natural numbers $a_k:\mathbb{N}_+ \to \mathbb{R}$.
+%	Observe how quickly the `factorial` function $k!=1\cdot2\cdot3\cdots(k-1)\cdot k$ grows:
+%	$7!= 5040$, $10!=3628800$, $20! > 10^{18}$.
+%	
+%	We're often interested in calculating the limits of sequences as $k\to \infty$.
+%	What happens to the terms in the sequence when $k$ becomes large?
+%	
+%	\begin{codeblock}[]
+%	>>> sp.limit(a_k, k, sp.oo)
+%	0
+%	>>> sp.limit(b_k, k, sp.oo)
+%	0
+%	\end{codeblock}
+%	
+%	\noindent
+%	Both $a_k=\frac{1}{k}$ and $b_k = \frac{1}{k!}$ \emph{converge} to $0$ as $k \to \infty$.
 
 
-
-
-
-
-
-We define a sequence by specifying an expression for its $n$\textsuperscript{th} term:
-
-
-\begin{codeblock}[]
->>> k = sp.symbols("k")
->>> a_k = 1 / k
->>> b_k = 1 / sp.factorial(k)
-\end{codeblock}
-
-\noindent
-Substitute the desired value of $n$ to see the value of the $n$\textsuperscript{th} term:
-
-\begin{codeblock}[]
->>> a_k.subs({k:5})
-1/5
-\end{codeblock}
-
-\noindent
-%We can use 
-The Python list comprehension syntax \texttt{[item for item in list]}
-can be used to print the sequence values for some range of indices:
-
-
-
-\begin{codeblock}[]
->>> [ a_k.subs({k:i}) for i in range(1,8) ]
-[1, 1/2, 1/3, 1/4,  1/5,   1/6,   1/7]  
->>> [ b_k.subs({k:i}) for i in range(0,8) ]
-[1,  1, 1/2, 1/6, 1/24, 1/120, 1/720, 1/5040]
-\end{codeblock}
-
-\noindent
-Observe that $a_k$ is not defined for $k=0$
-since $\frac{1}{0}$ is a division-by-zero error.
-In other words,
-the domain of $a_k$ is the nonnegative natural numbers $a_k:\mathbb{N}_+ \to \mathbb{R}$.
-Observe how quickly the `factorial` function $k!=1\cdot2\cdot3\cdots(k-1)\cdot k$ grows:
-$7!= 5040$, $10!=3628800$, $20! > 10^{18}$.
-
-We're often interested in calculating the limits of sequences as $k\to \infty$.
-What happens to the terms in the sequence when $k$ becomes large?
-
-\begin{codeblock}[]
->>> sp.limit(a_k, k, sp.oo)
-0
->>> sp.limit(b_k, k, sp.oo)
-0
-\end{codeblock}
-
-\noindent
-Both $a_k=\frac{1}{k}$ and $b_k = \frac{1}{k!}$ \emph{converge} to $0$ as $k \to \infty$.
 
 
 
@@ -168,84 +322,76 @@ Both $a_k=\frac{1}{k}$ and $b_k = \frac{1}{k!}$ \emph{converge} to $0$ as $k \to
 
 	\subsection{Series}
 	
-		Suppose we're given a sequence $a_k$
-		and we want to compute the sum of all the values in this sequence $\sum_{k=-}^\infty a_k$.
-		Series are sums of sequences.
-		Summing the values of a sequence $a_k:\mathbb{N}\to \mathbb{R}$
-		is analogous to taking the integral of a function $f:\mathbb{R}\to \mathbb{R}$.
+		% Series are sums of sequences.
+		Series are defined as the sums computed from the terms in the sequence $a_k$.
+		The \emph{finite series} $\sum_{k=1}^n a_k$ computes the first $n$ terms of the sequence:
+		\[
+			\sum_{k=1}^n a_k
+				= a_1 + a_2 + a_3 + a_4 + a_5  + \cdots  + a_{n-1} + a_n.
+		\]
+		The \emph{infinite series} $\sum a_k$ computes \emph{all} the terms in the sequence:
+		\[
+			\sum a_k
+				\;\; \eqdef \;\;	\lim_{n\to \infty}  \sum_{k=1}^n a_k
+				= a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + \cdots.
+		\]
+		%	and we want to compute the sum of all the values in this sequence $\sum_{k=-}^\infty a_k$.
+		The computing the infinite series $\sum a_k$
+		of the sequence $a_k : \mathbb{N} \to \mathbb{R}$
+		is analogous to the integral $\int_0^\infty f(x) \,dx$
+		of a function $f : \mathbb{R} \to \mathbb{R}$.
 
-
-
-
-The formula for the geometric sequence is $a_k = r^k$.
-The sum of the first $n$ terms in the geometric sequence is
-\[
-  S_n = \sum_{k=0}^n r^k
-   = 1 + r + r^2 + \cdots + r^n 
-   =\frac{1-r^{n+1}}{1-r}.
-\]
-If $|r|<1$, taking the limit $n\to \infty$ in the above expression leads to
-\[ 
-  S_\infty 
-   = \lim_{n \to \infty} S_n 
-   = \sum_{k=0}^\infty r^k
-   = 1 + r + r^2 +  r^3 + \cdots 
-   =\frac{1}{1-r}.
-\]
-
+		For example,
+		when $|r|<1$,
+		the limit as $n \to \infty$ of the geometric series is described
+		converges to the following value:
+		\[
+			G_\infty 
+				= \lim_{n \to \infty} G_n 
+				= \sum_{k=0}^\infty r^k
+				= 1 + r + r^2 +  r^3 + \cdots 
+				= \frac{1}{1-r}.
+		\]
+		This expression describes an infinite sum,
+		which is not possible to compute in practice,
+		but we can see the truth of this equation using our mind's eye.
+		The term $r^{n+1}$ in the formula for $G_n = \frac{1-r^{n+1}}{1-r}$
+		goes to zero as $n \to \infty$,
+		so the only part of the formula that remains is $\frac{1}{1-r}$.
 		
-		\paragraph{Example}
 
-			Consider the geometric series with $r=\frac{1}{2}$.
-			Applying the above formula, we obtain 
+		\paragraph{Example: sum of a geometric series}
+
+			Let's compute infinite series of the geometric sequence with $r=\frac{1}{2}$.
+			Applying the above formula,
+			we obtain 
 			\[
-			 S_\infty  
-			 	=  \sum_{k=0}^\infty \left(\frac{1}{2}\right)^k
-				= 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{32} + \cdots 
-				=\frac{1}{1-\frac{1}{2}} = 2.
+				%G_\infty = 
+				\sum_{k=0}^\infty \big(\tfrac{1}{2}\big)^k
+					= 1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \tfrac{1}{16} + \tfrac{1}{32} + \cdots 
+					=\frac{1}{1-\frac{1}{2}} = 2.
 			\]
-			You can visualize this infinite summation graphically in Figure~\ref{fig:geometric_progression_of_one_half}.
+			You can visualize this infinite summation graphically
+			in Figure~\ref{fig:geometric_progression_of_one_half}.
 	
 			\begin{figure}[htb]
-			\centering
-			\includegraphics[width=0.56\columnwidth]{figures/calculus/geometric_progression_of_one_half.png}
-			\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
-					The area of each region corresponds to one of the terms in the series.
-					The total area is equal to $\sum_{k=0}^\infty (\frac{1}{2})^k=\frac{1}{1-\frac{1}{2}}=2$.}
-			\label{fig:geometric_progression_of_one_half}
+				\centering
+				\includegraphics[width=0.69\columnwidth]{figures/calculus/geometric_progression_of_one_half.png}
+				\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
+						The area of each region corresponds to one of the terms in the series.
+						The total area is equal to $\sum_{k=0}^\infty (\frac{1}{2})^k=\frac{1}{1-\frac{1}{2}}=2$.}
+				\label{fig:geometric_progression_of_one_half}
 			\end{figure}
 
 
+		\paragraph{Example 2: sum of the inverse factorial sequence}
 
+			\[
+				F_k = \sum f_k	
+					= e
+					= 2.71828\ldots.
+			\]
 
-
-
-
-To work with series in \texttt{SymPy},
-use the \texttt{summation} function whose syntax is analogous to the \texttt{integrate} function: 						\index{summation}
-																							\index{sequence!harmonic}
-
-\begin{codeblock}[]
->>> a_k = 1 / k
->>> sp.summation(a_k, (k,1,sp.oo))
-oo
->>> b_k = 1 / sp.factorial(k)
->>> sp.summation(b_k, (k,0,sp.oo))
-E
-\end{codeblock}
-
-
-We say the series $\sum a_k$ \emph{diverges} to infinity (or \emph{is divergent})
-while the series $\sum b_k$ converges (or \emph{is convergent}).
-As we sum together more and more terms of the sequence $b_k$,
-the total becomes closer and closer to some finite number.
-In this case,
-the infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$ converges to the number $e=2.71828\ldots$.
-
-
-The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
-but for most practical applications we don't need to take an infinite number of terms in a series to obtain a good approximation. 
-This is why series are so neat: they represent a great way to obtain approximations.
 
 Using standard Python commands,  
 we can obtain an approximation to $e^5$ that is accurate to six decimals by summing 10 terms in the series: 
@@ -253,15 +399,58 @@ we can obtain an approximation to $e^5$ that is accurate to six decimals by summ
 
 \begin{codeblock}[]
 >>> import math
->>> def b_kf(n): 
-        return 1.0/math.factorial(n)
->>> sum( [b_kf(k) for k in range(0, 10)] )
+>>> def f_k(n): 
+        return 1 / math.factorial(n)
+>>> sum( [f_k(k) for k in range(0, 10)] )
 2.7182815255731922
->>> sp.E.evalf()
-2.718281 82845905       # true value
 \end{codeblock}
+% >>> sp.E.evalf()
+% 2.718281 82845905       # true value
 
 
+			The infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
+			converges to the number $e=2.71828\ldots$
+			% NOTEBOOK ONLY
+			%	\begin{codeblock}[]
+			%	>>> f_k = 1 / sp.factorial(k)
+			%	>>> sp.summation(f_k, (k,0,sp.oo))
+			%	E
+			%	\end{codeblock}
+
+%To work with series in \texttt{SymPy},
+%use the \texttt{summation} function whose syntax is analogous to the \texttt{integrate} function: 	
+%The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
+%but for most practical applications we don't need to take an infinite number of terms in a series to obtain a good approximation. 
+%This is why series are so neat: they represent a great way to obtain approximations.
+
+
+
+	\subsubsection{Convergent and divergent series}
+
+		The geometric series $G_\infty = \sum g_k$
+		and the inverse factorial series $F_k = \sum f_k	$ converges (or \emph{is convergent}).
+		As we sum together more and more terms of the sequences $g_k$ and $f_k$,
+		the total becomes closer and finite numbers.
+		In this case,
+		of $G_\infty$ we conserve to the faction $\frac{1}{1-r}$,
+		while the infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
+		converges to the number $e=2.71828\ldots$.
+
+
+		In contrast,
+		the harmonic series $\sum h_k$ \emph{diverges} to infinity (or \emph{is divergent})
+
+
+
+	\subsection{Power series}
+	\label{series:power_series}
+
+		The term \emph{power series} describes a series whose terms contain different powers of the variable $x$.
+		The $k$\textsuperscript{th} term in a power series
+		is a function of both the sequence index $k$ and the input variable $x$:
+		\[
+			a
+		\]
 
 
 
@@ -312,17 +501,43 @@ we can obtain an approximation to $e^5$ that is accurate to six decimals by summ
 		% http://bit.ly/12DrCZY
 
 
+Table~\ref{table:taylor_series} shows 
+$f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k$
+
+		\begin{table}[htb]
+		\centering
+		\caption{Taylor series formulas for commonly used functions}
+		\begin{shadebox}%
+		\vspace{-2mm}
+		\begin{align*}
+		% f(x)			&=	\sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k		\\
+		\frac{1}{1-x}	&=	\sum_{k=0}^\infty x^k
+						= 1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + \cdots \\
+		\frac{1}{1+x}	&=	\sum_{k=0}^\infty (-x)^k
+						= 1 - x + x^2 - x^3 + x^4 - x^5 + x^6 + \cdots \\
+		e^x			&=	\sum_{k=0}^\infty \frac{x^k}{k!}
+						= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots \\
+		 \sin(x)  		& = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \: x^{2n+1}
+		 	  			= x - \frac{x^3}{3!}  + \frac{x^5}{5!} - \frac{x^7}{7!} % + \frac{x^9}{9!} - \frac{x^{11}}{11!} 
+						+ \cdots \\
+		 \cos(x)  		& = \sum_{n=0}^\infty \frac{(-1)^n }{(2n)!}\:x^{2n} 
+		 				=  1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} % +  \frac{x^8}{8!}  - \frac{x^{10}}{10!}  
+						+  \cdots \\
+		\!\!\ln(x+1) 		& = \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\:x^n
+		 				=  x - \frac{x^2}2 + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5}   % - \frac{x^6}{6} 
+							+ \cdots 		 		
+		\end{align*}%
+		\end{shadebox}
+		\label{table:taylor_series}
+		\end{table}
 
 
 
-A \emph{power series} is a series whose terms contain different powers of the variable $x$.
-The $k$\textsuperscript{th} term in a power series
-is a function of both the sequence index $k$ and the input variable $x$.
 
 For example, the power series of the function $\exp(x)=e^x$ is 
 \[
- \exp(x) \equiv  1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots         
-  =       \sum_{k=0}^\infty \frac{x^k}{k!}.
+	\exp(x)	\eqdef  	1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots         
+			=       	\sum_{k=0}^\infty \frac{x^k}{k!}.
 \]
 This is, IMHO, one of the most important ideas in calculus:
 you can compute the value of $\exp(5)$ by taking the infinite sum of the terms in the power series with $x=5$:
@@ -388,3 +603,5 @@ x - x**3/6 + x**5/120 - x**7/5040 + O(x**8)
 	TODO: any extra series formulas or concepts required to solve the exercises and problems in noBSstats.
 }{}
 
+
+\vfill

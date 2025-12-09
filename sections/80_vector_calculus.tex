@@ -58,23 +58,23 @@
 		Scalar path integral.
 			\[
 				\int_C f(\mathbf{r})\, dr 
-				\equiv 
+				\eqdef
 				\int_{t_i}^{t_f} f(\mathbf{r}) \, \|\mathbf{r}'(t)\| \, dt.
 			\]
 			Here the curve $C \in \mathbb{R}^3$ is described by the parametrization $\mathbf{r}: \mathbb{R} \to \mathbb{R}^3$,
 			which assigns a coordinate $\mathbf{r}=(x,y,z)$ for each value of the parameter (denoted $t$ in the above).
-			Note $dr \equiv \|\mathbf{r}'(t)\| \, dt$,
+			Note $dr \eqdef \|\mathbf{r}'(t)\| \, dt$,
 			which involves computing the derivative of $\mathbf{r}(t)$ then computing the length.
 			
 		Vector path integral. 
 			\[
 				\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} 
-				\equiv 
+				\eqdef 
 				\int_{t_i}^{t_f} \mathbf{F}(\mathbf{r})  \cdot \mathbf{r}'(t) \, dt.
 			\]
 			This integral computes the total of the vector field $\mathbf{F}$ in the direction of the tangent line to the curve $C$ describe by $\mathbf{r}(t)$.
 			To obtain the component of $\mathbf{F}$ in the direction of the tangent line,
-			we take the dot product with $d\mathbf{r}  \equiv \mathbf{r}'(t) dt$ during each step.
+			we take the dot product with $d\mathbf{r}  \eqdef \mathbf{r}'(t) dt$ during each step.
 
 	
 	
@@ -86,7 +86,7 @@
 		Scalar surface integral.
 			\[
 				\iint_S f(\mathbf{r})\, dS
-				\equiv 
+				\eqdef
 				\int_{v_i}^{v_f} \int_{u_i}^{u_f} f(\mathbf{r}) \, \| \mathbf{r}_u^\prime \times \mathbf{r}_v^\prime \| \, dudv.
 			\]
 			Here the surface $S \in \mathbb{R}^3$ is described by the parametrization $\mathbf{r}: \mathbb{R}^2  \to \mathbb{R}^3$,
@@ -98,13 +98,13 @@
 		Vector surface integral. 
 			\[
 				\iint\limits_S \mathbf{F}(\mathbf{r}) \cdot d\mathbf{S}
-				\equiv 
+				\eqdef 
 				\int_{v_i}^{v_f} \int_{u_i}^{u_f} \mathbf{F}(\mathbf{r})  \cdot (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) \, dudv.
 			\]
 			This integral computes the total \emph{flux} of the vector field $\mathbf{F}$ flowing
 			perpendicularly through the surface $S$.
 			To obtain the component of $\mathbf{F}$ in the direction of the surface normal,
-			we take the dot product with $d\mathbf{S}  \equiv \hat{\mathbf{n}}dS \equiv (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) dudv$,
+			we take the dot product with $d\mathbf{S}  \eqdef \hat{\mathbf{n}}dS \eqdef (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) dudv$,
 			for each piece of the surface.
 
 
@@ -137,7 +137,7 @@
 		which is called the divergence of $\vec{F}$,
 		to the total flux of the vector field through the surface  $\partial\mathrm{V}$,
 		which is the boundary of the volume $V$.
-		%which states the integral of the divergence $\textrm{div}(\vec{F}) \equiv \nabla \cdot \vec{F}$ 
+		%which states the integral of the divergence $\textrm{div}(\vec{F}) \eqdef \nabla \cdot \vec{F}$ 
 		%of the field $\vec{F}$ over the volume $\mathrm{V}$ 
 		%is equal to the flux of $\vec{F}$ through the volume's boundary $\partial\mathrm{V}$.
 		Gauss' divergence theorem is:

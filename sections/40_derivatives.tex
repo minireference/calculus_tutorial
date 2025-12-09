@@ -37,7 +37,6 @@
 	%	By making $\delta$ tend to zero in the above expression,
 	%	we're performing a rise-over-run of the function $f(x)$ at a point.
 
-
 	Geometrically,
 	the derivative function computes the slope of the graph of the function $f(x)$ for all values of $x$.
 	In general,
@@ -68,7 +67,7 @@
 
 	%	Derivatives occur so often in math that people have devised many ways to denote them:
 	%	\[
-	%	    Df(x) \equiv f'(x) \equiv  \frac{d}{dx}f(x) \equiv \frac{df}{dx} \equiv \frac{dy}{dx} \equiv \nabla f.
+	%	    Df(x) =  f'(x) =  \frac{d}{dx}f(x) = \frac{df}{dx} = \frac{dy}{dx} = \nabla f.
 	%	\]
 	%	Don't be fooled by this multitude of notations---all of them refer to the same concept.
 
@@ -76,13 +75,14 @@
 	The derivative function $f'(x)$ is a property of the function $f(x)$.
 	Indeed, this is where the name \emph{derivative} comes from:
 	$f'(x)$ is not an independent function---it is \emph{derived} from the original function $f(x)$.
-	
-	The \emph{derivative operator}, 
-	denoted $\frac{d}{dx}$ or simply $D$, 
-	takes as input a function $f(x)$ and produces as output the derivative function $f'(x)$,
-	which is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
-	For each input $x_0$ the derivative function tells you the slope of $f(x)$ when $x=x_0$.
-	Applying the derivative operator to a function is also called ``taking the derivative'' of a function.
+
+	The \emph{derivative operation}, 
+	denoted $\frac{d}{dx}[\tt{<f>}]$,		% ALT. derivative operator $\frac{d}{dx}$
+	takes as input a function $f(x)$ and produces as output the derivative function $f'(x)$.
+	% which is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
+	% For each input $x_0$ the derivative function tells you the slope of $f(x)$ when $x=x_0$.
+	Applying the derivative operation to a function
+	is also called ``taking the derivative'' of a function.
 	%
 	For example, 
 	the derivative of the function $f(x)=\tfrac{1}{2}x^2$ is the function $f'(x)=x$.
@@ -149,9 +149,15 @@
 		then you can reuse that formula
 		whenever you need to compute $f'(x)$ in a later calculation.
 
-		The following table shows the derivative formulas
+		Table~\ref{table:derivatives} shows the derivative formulas
 		for a number of commonly used functions.
-		{\allowdisplaybreaks
+		I invite you to mentally bookmark this page so you can come back to it when derivatives come up.
+
+		\begin{table}[htb]
+		\centering
+		\caption{Derivative formulas for commonly used functions}
+		\begin{shadebox}%
+		\vspace{-2mm}
 		\begin{align*}
 		f(x)			&  \ -\textrm{derivative}\to  \   		f'(x)		\\
 		%	F(x)			&  \ - \textrm{ derivative } \to  \quad		F'(x)		\\
@@ -171,22 +177,20 @@
 		% \log_a(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				(x\ln(a))^{-1}	\\
 		\sin(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cos(x)		\\
 		\cos(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				-\sin(x)
-		% \tan(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sec^2(x)\equiv\cos^{-2}(x)
-		%	\csc(x) \equiv \frac{1}{\sin(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\sin^{-2}(x)\cos(x)	\\
-		%	\sec(x) \equiv \frac{1}{\cos(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tan(x)\sec(x)	\\
-		%	\cot(x) \equiv \frac{1}{\tan(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\csc^2(x)	\\
+		% \tan(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sec^2(x) = \cos^{-2}(x)
+		%	\csc(x) = \frac{1}{\sin(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\sin^{-2}(x)\cos(x)	\\
+		%	\sec(x) = \frac{1}{\cos(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tan(x)\sec(x)	\\
+		%	\cot(x) = \frac{1}{\tan(x)}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	-\csc^2(x)	\\
 		%	\sin^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{\sqrt{1-x^2}}	\\
 		%	\cos^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{-1}{\sqrt{1-x^2}}	\\
 		%	\tan^{-1}(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\frac{1}{1+x^2}	\\
 		%	\sinh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\cosh(x)	\\
 		%	\cosh(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				\sinh(x)	
-		\end{align*}% 
-		}
-		
-		\vspace{-2mm}
+		\end{align*}%
+		\end{shadebox}
+		\label{table:derivatives}
+		\end{table}
 
-		\noindent
-		I invite you to mentally bookmark this page so you can come back to it when derivatives come up.
 
 
 	\subsection{Derivative rules}
@@ -196,7 +200,8 @@
 		that allow you to find derivatives of \emph{composite} functions.
 
 		\paragraph{Linearity}		
-			The derivative is a \emph{linear} operation, which means:								\index{linearity}
+
+			The derivative is a \emph{linear} operation, which means:
 			\vspace{1mm}
 			\[
 				\frac{d}{dx} \left[\alpha f(x) + \beta g(x)\right]
@@ -208,6 +213,7 @@
 			In other words,
 			the derivative of a linear combination of functions $\alpha f(x) + \beta g(x)$ is equal 
 			to the same linear combination of the derivatives $\alpha f'(x) + \beta g'(x)$.
+
 
 		\paragraph{Product rule}
 
@@ -247,7 +253,8 @@
 	\subsection{Higher derivatives}
 
 		The second derivative of $f(x)$ is denoted $f^{\prime\prime}(x)$ or $\frac{d^2f}{dx^2}$.
-		It is obtained by applying the derivative operator $\frac{d}{dx}$ to $f(x)$ twice.
+		It is obtained by applying the derivative operation to $f(x)$ \emph{twice}:
+		$\frac{d}{dx}\big[ \frac{d}{dx}[\tt{<f>}] \big]$.
 		The second derivative $f^{\prime\prime}(x)$ encodes the information about the \emph{curvature} of $f(x)$.
 		Positive curvature means the function opens upward,
 		and looks like the bottom of a valley.
@@ -415,7 +422,7 @@
 			This observation suggests a general procedure for finding minima and maxima:
 
 			\begin{enumerate}
-				\item[(1)]	Solve the equation $f'(x)=0$ to find the critical points $x^*$.
+				\item[(1)]	Solve $f'(x)=0$ to find the critical points $x^*$.
 				\item[(2)]	For each critical point $x^*$,
 						check to see if it is a maximum or a minimum
 						by evaluating $f''(x^*)$:
@@ -481,19 +488,44 @@
 			%	if you choose to purse the topic of machine learning,
 			%	since they are used in many machine learning applications.	% where multivariable functions are the norm
 	
+	
 			\begin{codeblock}[def-derivative_descent]
-			>>> TODO derivative_descent
+			>>> def gradient_descent(f,x0=0,alpha=0.05,tol=1e-10):
+			        current_x = x0
+			        change = 1
+			        while change > tol:
+			            df_at_x = differentiate(f, current_x)
+			            next_x = current_x - alpha * df_at_x
+			            change = abs(next_x - current_x)
+			            current_x = next_x
+			        return current_x
 			\end{codeblock} 
+
+
+			\noindent
+			The \tt{gradient\_descent} procedure takes two arguments as inputs:
+			the function to minimize,
+			and a initial value $x_0$ where to start the minimization process.
+
+			We can use use this procedure to find the minimum of any function.
+			For example,
+			let's see what happens when we call \tt{gradient\_descent}
+			on the function $q(x)=(x-5)^2$
+			using the initial initial value \tt{x0=10}.
 	
-	
-			\begin{codeblock}[use-derivative_descent]
-			>>> def f(x):
-			        return x**2 / 2
-			>>> TODO use derivative_descent start at x=10
+			\begin{codeblock}[use-gradient_descent-on-f]
+			>>> def q(x):
+			        return (x - 5)**2
+			>>> gradient_descent(q, x0=0)
+			5.000000000396651
 			\end{codeblock}
-	
-	
-	
+			
+			\noindent
+			The procedure repeats the ``move downhill'' operation several times,
+			until it reaches the point $x^*=5.00$,
+			which is the minimum of the function $q(x)$.
+
+		
 		\subsubsection{Numerical optimization using SciPy}
 	
 			%	In this book,
@@ -506,18 +538,21 @@
 			%	you can follow the links provided at the end of this section,
 			%	but note such ``under the hood'' understanding is not required to continue with the rest of the book.
 			
-			Here is a quick code example that shows how to use the function \tt{minimize} defined in the module \tt{scipy.optimize}
-			to find the minimum value of the function $f(x)=(x-5)^2$.
-	
+			The module \tt{scipy.optimize}
+			provides a high-performance numerical optimization procedure called \tt{minimize}.
+			Here is a quick example that shows how to use this procedure
+			on the $q(x)=(x-5)^2$.
+
 			\begin{codeblock}[sympy-minimize-fx]
 			>>> from scipy.optimize import minimize
-			>>> res = minimize(f, x0=0)
-			>>> res["x"][0]  # = argmin f(x)
-			4.99999997455944
+			>>> res = minimize(q, x0=0)
+			>>> res["x"][0]  # = argmin q(x)
+			4.9999999737
 			\end{codeblock}
 	
 			\noindent
-			The \tt{minimize} function takes two arguments:
-			the function to minimize,
-			and a initial value $x_0$ where to start the minimization process.
+			The answer is roughly the same as the procedure we defined,
+			but the optimization was done much faster.
+
+
 	

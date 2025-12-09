@@ -186,7 +186,7 @@
 		you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
 
 		If the bank computes the interest three times per year,
-		the amounted owed after one year will be $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
+		the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
 		If they compute the interest four times per year (quarterly),
 		then you'll owe $(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})  = 2.441$.
 		Note the amount owed after one year keeps changing,
@@ -256,7 +256,7 @@
 		tells us we can compute $e$ as the sum ($\sum$)
 		with an infinite number of terms.
 		Each term comes from a common ``pattern'' $\frac{1}{k!}$,
-		where $k! = k\cdot (k-1) \cdot (k-2) \cdots 3\cdot 2 \cdot 1$
+		where $k! = k\!\cdot\!(k-1) \cdots 3\!\cdot\!2\!\cdot\!1$
 		is the factorial function.
 		The notation $\sum_{k=0}^n$
 		describes the summation starting at $k=0$ and going all the way to $k=n$.
@@ -376,10 +376,10 @@
 
 
 			\begin{codeblock}[]
-			>>> import sympy as sp
+			>>> import numpy as np
 			>>> TODO
 			\end{codeblock}
-			
+
 
 			
 		\subsubsection{Scientific computing using SciPy}
@@ -391,10 +391,10 @@
 
 			\begin{codeblock}[]
 			>>> from scipy.integrate import quad
-			>>> quad(h, -2, 2)
-			(10.666666666666666, 1.1842378929335001e-13)
+			>>> quad(h, -2, 2)[0]
+			10.666666666666666
 			\end{codeblock}
-			
+
 			\noindent
 			The answer is $10.\overline{6}$ (the first number in the output)
 			and the precision of this answer is $\pm 1.8\times 10^{-13}$,
