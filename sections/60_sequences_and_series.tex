@@ -5,12 +5,12 @@
 
 	A \emph{sequence} $a_k$ is a function that take whole numbers as inputs
 	and produce real numbers as outputs: $a_k : \mathbb{N} \to \mathbb{R}$.
-	The \emph{series} $\sum a_k$ describes the sum of the terms in the sequence $a_k$.
+	The \emph{series} $\sum a_k$ describes the sum of all the terms in the sequence $a_k$.
 	Series are a powerful computational tool
 	that allow us to describe procedures with infinite number of steps
 	and use these procedures to approximate irrational numbers like $e$,
 	and transcendental functions like the exponential function $f(x) = e^x$.	
-	Sequences and series are the third pillar of the basic calculus knowledge I want you to have.
+	Sequences and series are the third pillar of the basic calculus knowledge that I want you to have.
 
 	\subsection{Sequences are functions with discrete inputs}
 	\label{sequences_and_series:sequences}
@@ -50,7 +50,7 @@
 			\[
 				n_k\eqdef k, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
-				  \left(0, 1, 2, 3, 4, 5, 6, 7, \ldots \, \right),
+				  \left[0, 1, 2, 3, 4, 5, 6, 7, \ldots \, \right].
 			\]
 			This is the fundamental counting sequence that describes
 			the process of taking ``unit step'' to the right on the number line,
@@ -64,17 +64,17 @@
 			\[
 				q_k\eqdef k^2, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
-				  \left(0, 1, 4, 9, 16, 25, 36, 49, \ldots \, \right),
+				  \left[0, 1, 4, 9, 16, 25, 36, 49, \ldots \, \right].
 			\]
 
 
 		\paragraph{Harmonic sequence}
 			
-			Another ...
+			We obtain another useful sequence by computing the fraction $\frac{1}{k}$:
 			\[
-				h_k\eqdef \frac{1}{k}, \text{ for } k \in \mathbb{N}_+
+				h_k\eqdef \tfrac{1}{k}, \text{ for } k \in \mathbb{N}_+
 				  \ \ \Leftrightarrow \ \ 
-				  \left(1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \tfrac{1}{5}, \tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \right),
+				  \big[1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \tfrac{1}{5}, \tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \big].
 			\]
 			The \emph{harmonic sequence} appears in music.
 			For most music instruments,
@@ -95,19 +95,18 @@
 
 
 		\paragraph{The alternating harmonic sequence}
-
+	
 			Consider now a harmonic sequence with alternating positive an negative outputs:
 			\[
-				a_k\eqdef \frac{(-1)^{k+1}}{k}, \text{ for } k \in \mathbb{N}_+
+				a_k \eqdef \tfrac{(-1)^{k+1}}{k}, \text{ for } k \in \mathbb{N}_+
 				  \ \ \Leftrightarrow \ \ 
-				  \left(1, -\tfrac{1}{2}, \tfrac{1}{3}, -\tfrac{1}{4}, \tfrac{1}{5}, -\tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \right),
+				  \big[ 1, -\tfrac{1}{2}, \tfrac{1}{3}, -\tfrac{1}{4}, \tfrac{1}{5}, -\tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \big].
 			\]
 			The factor $(-1)^{k+1}$ is positive for all odd inputs $k \in \{1,3,5,7,\ldots \}$
 			since $(-1)^m=+1$ for any even number $m$.
 			The factor $(-1)^{k+1}$ is negative
 			for all even inputs $k \in \{2,4,6,8,\ldots \}$,
 			hence the values in the sequence oscillate between positive and negative.
-
 
 		\paragraph{Inverse factorial sequence}
 
@@ -120,9 +119,9 @@
 			\[
 				f_k\eqdef \tfrac{1}{k!}, \text{ for } k \in \mathbb{N}_+
 				  \ \ \Leftrightarrow \ \ 
-				  \left(1, \tfrac{1}{2!}, \tfrac{1}{3!}, \tfrac{1}{4!}, \tfrac{1}{5!}, \tfrac{1}{6!}, \tfrac{1}{7!}, \ldots \, \right),
+				  \big[ 1, \tfrac{1}{2!}, \tfrac{1}{3!}, \tfrac{1}{4!}, \tfrac{1}{5!}, \tfrac{1}{6!}, \tfrac{1}{7!}, \ldots \, \big].
 			\]
-			The values in the \emph{inverse factorial sequence} quickly become very small,
+			The values in the inverse factorial sequence quickly become very small,
 			because the factorial function grows very quickly:
 			$2!=2$,
 			$3!=6$,
@@ -146,7 +145,7 @@
 			\[
 				g_k\eqdef r^k, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
-				  \left(1, r, r^2, r^3, r^4, r^5, r^6, r^7, \ldots \, \right),
+				  \big[ 1, r, r^2, r^3, r^4, r^5, r^6, r^7, \ldots \, \big].
 			\]
 			Each term in the sequence equals $r$ times the previous term,
 			which describes \emph{geometric process} that repeatedly grows/shrinks by the amount $r$.
@@ -163,35 +162,77 @@
 			\[
 				b_k \eqdef 2^k, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
-				  \left(1, 2, 4, 8, 16, 32, 64, 128, \ldots \, \right),
+				  [ 1, 2, 4, 8, 16, 32, 64, 128, \ldots \, ].
 			\]
 			This sequence comes up all over the place in computer science
 			because it is describes the number of different numbers we can store in $k$ bits of memory.
 
 
 
+	\subsection{Convergence of sequences}
+	\label{sequences_and_series:convergence_of_sequences}
+	
+		What happens to sequences as $k$ goes to infinity?
+		We can use the limit notation $\lim_{k \to \infty}$ to describe this process.
+		There are to possible behaviours:
+		either the values of the sequence blow up to infinity,
+		or they approach some fixed number.
 
+		For example,
+		the sequences $n_k \eqdef k$, $q_k \eqdef k^2$, and $b_k \eqdef 2^k$
+		keep getting larger and larger as $k$ goes to infinity:
+		\[
+			%\lim_{k \to \infty} n_k = 
+			\lim_{k \to \infty} k = \infty,
+			\qquad
+			% \lim_{k \to \infty} q_k = 
+			\lim_{k \to \infty} k^2 = \infty,
+			\qquad
+			% \lim_{k \to \infty} b_k = 
+			\lim_{k \to \infty} 2^k = \infty.
+		\]
+		We say these sequences are \emph{divergent}.
+		%
+		In contrast,
+		the values in the sequences $h_k \eqdef \tfrac{1}{k}$,
+		$a_k \eqdef \tfrac{(-1)^{k+1}}{k}$,
+		and $f_k \eqdef \tfrac{1}{k!}$ \emph{converge}
+		to the value $0$ in the limit as $k$ goes to infinity.
+		\[
+			% \lim_{k \to \infty} h_k =
+			\lim_{k \to \infty} \tfrac{1}{k} = 0,
+			\qquad
+			\lim_{k \to \infty} \tfrac{(-1)^{k+1}}{k} = 0,
+			\qquad
+			% \lim_{k \to \infty} f_k =
+			\lim_{k \to \infty} \tfrac{1}{k!} =  0.
+		\]
+		The geometric series $g_k \eqdef r^k$
+		converges only if absolute value of $r$ is less than one:
+		$\lim_{k \to \infty} r^k = 0$,
+		$|r| < 1$.
+
+		The limit of a sequence as $k$ goes to infinity
+		is directly analogous to the limit of function $f(x)$ as $x$ goes to infinity.
 
 
 	\subsection{Summation notation}
 	\label{sequences_and_series:summation_notation}
 	
-		We're often interested in computing the sum of all the values in this given a sequence $a_k$.
+		We're often interested in computing sums of values in a sequence.
 		To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th}
-		elements of the sequence $a_k$,
+		elements of the sequence $c_k$,
 		we turn to summation notation:
 	    	\[
-		      a_3 + a_4 + a_5 
-			     = \sum_{3 \leq k \leq 5}\!! a_k 
-			      = \sum_{k=3}^{5} a_k \,.      
-		\] 
+			\sum_{k=3}^{5} c_k	=	c_3 + c_4 + c_5.
+		\]
 		The capital Greek letter \emph{sigma} stands in for the word \emph{sum}, 
 		and the range of index values included in this sum is denoted below and above the summation sign.
 	
-		The sum of the values in the sequence $a_k$ from $k=0$ until $k=n$
+		The sum of the values in the sequence $c_k$ from $k=0$ until $k=n$
 		is denoted as
 		\[
-			\sum_{k=0}^n a_k =  a_0 + a_1 + a_2 + \cdots + a_{n-1} + a_n.
+			\sum_{k=0}^n c_k =  c_0 + c_1 + c_2 + \cdots + c_{n-1} + c_n.
 		\]
 		% This is called \emph{finite series} 
 
@@ -199,17 +240,17 @@
 		Since this is a calculus tutorial,
 		you should expect that an infinity of some kind will show up soon,
 		and indeed we'll learn about \emph{infinite series},
-		that describe the sum of \emph{all} the values in the sequence $a_k$:
-		$\sum a_k  \eqdef 	\lim_{n \to \infty} \sum_{k=0}^n a_k$.
-		% =		\sum_{k=0}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
+		that describe the sum of \emph{all} the values in the sequence $c_k$:
+		$\sum c_k  \eqdef 	\lim_{n \to \infty} \sum_{k=0}^n c_k$.
+		% =		\sum_{k=0}^\infty c_k = c_0+ c_1 + c_2 + c_3 + c_4 + \cdots .
 		%	In calculus,
-		%	the notion of a \emph{series} describes the sum of \emph{all} the values in the sequence $a_k$:
+		%	the notion of a \emph{series} describes the sum of \emph{all} the values in the sequence $c_k$:
 		%	\[
-		%	   \sum a_k 
-		%	    	\eqdef 	\lim_{n \to \infty} \sum_{k=0}^n a_k
-		%		=		\sum_{k=0}^\infty a_k = a_0+ a_1 + a_2 + a_3 + a_4 + \cdots .
+		%	   \sum c_k 
+		%	    	\eqdef 	\lim_{n \to \infty} \sum_{k=0}^n c_k
+		%		=		\sum_{k=0}^\infty c_k = c_0+ c_1 + c_2 + c_3 + c_4 + \cdots .
 		%	\]
-		%	Note if the sequence $a_k$ continues indefinitely,
+		%	Note if the sequence $c_k$ continues indefinitely,
 		%	computing the sum requires an infinite number of addition operations.
 		%
 		%
@@ -246,19 +287,525 @@
 		% 	See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}}
 		%	for the derivations of these formulas.
 
+		% COMBINATIONS AND THE BINOMIAL COEFFICIENT
+		The \emph{binomial coefficient} is denoted using the symbol ${n \choose k}$,
+		which is read as ``$n$ choose $k$.''
+		The binomial coefficient counts the number of combinations of $k$ items
+		we can choose from a set of $n$ items,
+		and it is computed using the formula:
+		${n \choose k} \eqdef \frac{n!}{(n-k)! \, k!}$.
+		% ALT. set of $n$ items and we want to choose $k$ of them
+		For example,
+		the number of combinations of size $2$ selected from a list of $5$ items is 
+		${5 \choose 2}	= \frac{5!}{(5-2)!\,2!} = \frac{5!}{3!\,2!}
+					= \frac{5\cdot 4 \cdot 3 \cdot 2 \cdot 1}{3 \cdot 2 \cdot 1 \;\; \cdot \;\; 2 \cdot 1  } 
+					= \frac{120}{6 \cdot 2} = 10$.
+		%	We can use the function \tt{comb(n,k)} from the \tt{scipy.special} module
+		%	to compute ${n \choose k}$.
+		%	Here is the code for computing ${5 \choose 2}$.
+		%	\begin{codeblock}[calc-comb-5-2]
+		%	>>> from scipy.special import comb
+		%	>>> comb(5,2)  # == "n choose k"
+		%	10
+		%	\end{codeblock}
+		The binomial coefficient
+		appears in the expansion of the binomial expression $(a + b)^n$,
+		which can written as the following summation:
+		\begin{align*}
+			(a+b)^n	&= \textstyle {n \choose 0}a^n
+						+ {n \choose 1}a^{n-1}b 
+						% + {n \choose 2}a^{n-2}b^2
+						+ \cdots
+						+ {n \choose n-1 }ab^{n-1}
+						+ {n \choose n}b^n	\\
+					&= \textstyle \sum_{k=0}^n {n \choose k} a^{n-k} b^k.
+		\end{align*}
+		This sum appears in several calculations in probability theory.
+		%	In the special case when one of the terms is 1:
+		%	\[
+		%		\sum_{k=0}^n {n \choose k} x^k=(1+x)^n
+		%	\]
 
-TODO explain: 
-The Binomial series
-\[
-	\sum_{k=0}^n {n \choose k} a^{n-k} b^k=(a+b)^n
-\]
-special case when one of the terms is 1:
-\[
-	\sum_{k=0}^n {n \choose k} x^k=(1+x)^n
-\]
+		% The binomial coefficient also appears in various calculations in probability theory.
+		%	we use the ``$n$ choose $k$'' formula to calculate certain probabilities
+		%	by counting the combinations of outcomes that produce a certain event.
+		%	For example,
+		%	the probability of exactly $2$ heads in $5$ coin tosses is ${5 \choose 2}0.5^5$.
 
-\vspace{2in}
 
+
+
+
+	\subsection{Series}
+
+		% Series are sums of sequences.
+		Series are defined as the sums computed from the terms in the sequence $c_k$.
+		The \emph{finite series} $\sum_{k=1}^n c_k$ computes the first $n$ terms of the sequence:
+		\[
+			\sum_{k=1}^n c_k
+				= c_1 + c_2 + c_3 + c_4 + c_5  + \cdots  + c_{n-1} + c_n.
+		\]
+		The \emph{infinite series} $\sum c_k$ computes \emph{all} the terms in the sequence:
+		\[
+			\sum c_k
+				\;\; \eqdef \;\;	\lim_{n\to \infty}  \sum_{k=1}^n c_k
+				= c_1 + c_2 + c_3 + c_4 + c_5 + c_6 + \cdots.
+		\]
+		%	and we want to compute the sum of all the values in this sequence $\sum_{k=-}^\infty c_k$.
+		The infinite series $\sum c_k$
+		of the sequence $c_k : \mathbb{N} \to \mathbb{R}$
+		is analogous to the integral $\int_0^\infty f(x) \,dx$
+		of a function $f : \mathbb{R} \to \mathbb{R}$.
+		
+		Some infinite series converge to a finite value.
+		For example,
+		when $|r|<1$,
+		the limit as $n \to \infty$ of the geometric series converges to the following value:
+		\[
+			G_\infty 
+				= \lim_{n \to \infty} G_n 
+				= \sum_{k=0}^\infty r^k
+				= 1 + r + r^2 +  r^3 + \cdots 
+				= \frac{1}{1-r}.
+		\]
+		This expression describes an infinite sum,
+		which is not possible to compute in practice,
+		but we can see the truth of this equation using our mind's eye.
+		The formula for first $n$ terms is the geometric series is $G_n = \frac{1-r^{n+1}}{1-r}$.
+		The term $r^{n+1}$ goes to zero as $n \to \infty$,
+		so the only part of the formula that remains is $\frac{1}{1-r}$.
+
+		\paragraph{Example 1: sum of a geometric series}
+
+			Let's use the formula to compute infinite series
+			of the geometric sequence with $r=\frac{1}{2}$:
+			\[
+				\sum_{k=0}^\infty \big(\tfrac{1}{2}\big)^k
+					= 1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \tfrac{1}{16} + \tfrac{1}{32} + \cdots 
+					=\frac{1}{1-\frac{1}{2}} = 2.
+			\]
+			Figure~\ref{fig:geometric_progression_of_one_half}
+			shows a visualization for this infinite sum.
+	
+			\begin{figure}[htb]
+				\centering
+				\includegraphics[width=0.69\columnwidth]{figures/calculus/geometric_progression_of_one_half.png}
+				\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
+						The area of each region corresponds to one of the terms in the series.
+						The total area is equal to $\sum_{k=0}^\infty (\frac{1}{2})^k=\frac{1}{1-\frac{1}{2}}=2$.}
+				\label{fig:geometric_progression_of_one_half}
+			\end{figure}
+
+		\noindent
+		That's kind of cool, no?
+		We're able to compute the value of a summation with infinitely meany terms,
+		because we have the general pattern $G_n$ for the sum with $n$ terms
+		then evaluate the limit as $n$ goes to infinity.
+
+
+	\subsubsection{Convergent and divergent series}
+
+		We say the geometric series $G_\infty = \sum g_k = \sum_{k=0}^\infty r^k$ \emph{converges}
+		to the value $\frac{1}{1-r}$.
+		We can also say that the infinite geometric series $\sum g_k$ \emph{is convergent},
+		meaning it has a finite value and doesn't blow up.
+		Another example of a converged infinite series is $F_\infty = \sum f_k$,
+		which converges to the number $e$,
+		as we'll see in Example~2 below.
+
+		In contrast,
+		the regular harmonic series $\sum h_k$ \emph{diverges}.
+		When we sum together more and more terms of the sequences $h_k$,
+		the total computed keeps growing and the series blows up to infinity
+		$\sum h_k = \infty$,
+		We say the harmonic series \emph{is divergent}.
+		
+
+
+%	and the inverse factorial series $F_k = \sum f_k	$ converges (or ).
+%	As we sum together more and more terms of the sequences $g_k$ and $f_k$,
+%	the total becomes closer and finite numbers.
+%	In this case,
+%	of $G_\infty$ we conserve to the faction $\frac{1}{1-r}$,
+%	while the infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
+%	converges to the number $e=2.71828\ldots$.
+%	The alternating harmonic series $\sum a_k$ converges to the value $\ln(2)$.
+
+			%	In words,
+			%	we say infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
+			%	converges to the number $e=2.71828\ldots$
+
+	\subsubsection{Using convergent series for practical calculations}
+
+		We can use infinite series to compute the value of irrational numbers.
+
+		\paragraph{Example 2: Euler's number}
+			
+			The infinite sum of the sequence $f_k \eqdef \tfrac{1}{k!}$
+			converges to Euler's number $e = 2.71828\ldots$:
+			\[
+				F_\infty 
+					= \lim_{n \to \infty} F_n 
+					= \sum_{k=0}^\infty \tfrac{1}{k!}
+					= 1 + 1 + \tfrac{1}{2} + \tfrac{1}{6} + \tfrac{1}{24} + \tfrac{1}{720} + \cdots
+					= e.
+					% = 2.71828\ldots. 
+			\]
+		
+		\noindent
+		The calculation above is not just cool math fact,
+		but a useful computational procedure
+		that we can use to compute the value of $e = 2.71828\ldots$
+		using only basic arithmetic operations like repeated multiplication (factorial), division, and addition.
+
+		Let's look at some practical calculations where we compute
+		the first $n=10$, $n=15$, and $n=20$ terms in the infinite series.
+
+		\begin{codeblock}[]
+		>>> import math
+		>>> def f_k(n): 
+		        return 1 / math.factorial(n)
+		>>> sum([f_k(k) for k in range(0,10)])
+		2.718281...
+		>>> sum([f_k(k) for k in range(0,15)])
+		2.71828182845...
+		>>> sum([f_k(k) for k in range(0,20)])
+		2.71828182845905...
+		\end{codeblock}
+
+		\noindent
+		Summing together the first $10$ terms in the infinite series
+		gives us an approximation to Euler's number $e$ that is accurate to six decimals.
+		With $15$ terms we get an approximation that is accurate to $11$ decimals.
+		The more terms we include in the summation,
+		the closer we get to the true value of $e = 2.71828182845905\ldots$.
+
+		If we want to compute the \emph{exact} value of $e$,
+		we would need to compute the infinite series $\sum_{k=0}^\infty \tfrac{1}{k!}$.
+		We can do this using SymPy
+		by calling the function \texttt{sp.summation}
+		whose syntax is similar to the function \texttt{sp.integrate} we used to compute integrals.
+		The first argument is an the expression for the $k$\textsuperscript{th}
+		term in the sequence,
+		then we specify the index variable,
+		the starting point and the end point of the summation:
+
+		\begin{codeblock}[]
+		>>> import sympy as sp
+		>>> k = sp.symbols("k")
+		>>> sp.summation(1/sp.factorial(k), (k,0,sp.oo))
+		E
+		\end{codeblock}
+
+		\noindent
+		We use \tt{sp.oo} to instruct SymPy to perform the infinite sum,
+		which produced the exact symbolic answer $\tt{E} = e$.
+		%The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
+
+		There other series we can use to compute values of interest.
+
+		\paragraph{Example 3}
+
+			We can calculate the value $\ln(2)$ 
+			by computing the infinite sum of the alternating harmonic sequence
+			$a_k \eqdef \tfrac{(-1)^{k+1}}{k}$:
+			\[
+				A_\infty
+					= \lim_{n \to \infty} \sum_{k=1}^n \tfrac{(-1)^{k+1}}{k}
+					 = 1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4} + \tfrac{1}{5} - \tfrac{1}{6}  + \tfrac{1}{7} + \cdots
+					= \ln(2).
+			\]
+			To obtain the exact value $\ln(2)$,
+			we need to sum together an infinite number of terms in the series $\sum a_k$,
+			but we can obtain successively better approximations
+			to $\ln(2)$ using finite sums.
+
+			\begin{codeblock}[]
+			>>> def a_k(k):
+			        return (-1)**(k+1) / k
+			>>> sum([a_k(k) for k in range(1,100+1)])
+			0.6...
+			>>> sum([a_k(k) for k in range(1,1000+1)])
+			0.69...
+			>>> sum([a_k(k) for k in range(1,1_000_000+1)])
+			0.69314...
+			\end{codeblock}
+			
+			\noindent
+			The series approximation to $\ln(2)$ converges more slowly
+			that the series approximation to $e$ we saw in the previous example.
+			We need to sum $1$M terms in the series to obtain
+			and approximation %to $\ln(2)$
+			that is accurate to five decimals.
+			Nevertheless if we keep calculating the series with more and more terms,
+			we can obtain an approximation that arbitrarily close
+			to the true value $\ln(2) = 0.6931471805599453\ldots$.
+			
+			To get the exact value $\ln(2)$,
+			we can make SymPy compute the infinite series:
+
+			\begin{codeblock}[]
+			>>> sp.summation((-1)**(k+1) / k, (k,1,sp.oo))
+			log(2)
+			\end{codeblock}
+
+		\noindent
+		In this manner,
+		we can come up with all kinds of other infinite series expression
+		to calculate other number of interest like $\pi$.
+		Instead of showing you other series for approximating numbers,
+		I'll show you something even more powerful:
+		a technique for approximating functions as infinite series.
+
+
+
+	\subsection{Power series}
+	\label{series:power_series}
+
+		The term \emph{power series} describes a series
+		whose terms contain different powers of the variable $x$.
+		The $k$\textsuperscript{th} term in a power series
+		consists of some coefficient $c_k$ and $k$\textsuperscript{th} power of the variable $x$:
+		\[
+			P_n(x)
+				= \sum_{k=0}^n c_k x^k
+				= c_0 + c_1x + c_2x^2 + c_3x^3 % + c_4x^4 + c_5x^5
+					+ \cdots + c_nx^n.
+		\]
+		The math expression we obtain in this way is a \emph{polynomial} of degree $n$ in $x$,
+		which we'll denote $P_n(x)$.
+		Depending on the choice of the coefficients $(c_0, c_1, c_2, c_3, \ldots, c_n)$
+		we can make the polynomial function $P_n(x)$
+		\emph{approximate} some other function $f : \mathbb{R} \to \mathbb{R}$.
+		To find such approximations,
+		we need to figure out how to choose the coefficients $c_k$ of the power series.
+
+
+	\subsection{Taylor series}
+	\label{series:taylor_series}
+
+		The \emphindexdef{Taylor series approximation} to the function $f(x)$
+		is a power series whose coefficients $c_k$
+		are computed by evaluating the $k$\textsuperscript{th} derivative of the function $f(x)$ at $x=0$,
+		which we'll denote $f^{(k)}(0)$.
+		Specifically,
+		the $k$\textsuperscript{th} coefficient in the Taylor series approximation
+		for the function $f(x)$ is $c_k \eqdef \frac{f^{(k)}(0)}{k!}$.
+%The coefficients in the power series of a function (also known as the \emph{Taylor series})
+%depend on the value of the higher derivatives of the function. 
+%The formula for the $k$\textsuperscript{th} term in the Taylor series of $f(x)$ expanded at $x=c$
+%is $a_k(x) = \frac{f^{(n)}(c)}{k!}(x-c)^k$,
+%where $f^{(k)}(c)$ is the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=c$.
+		%
+		The finite series with $n$ % such 
+		terms produces the following approximation:
+		\[
+			f(x)
+		 		\approx f(0)
+					+f'(0)x
+					+\tfrac{f^{\prime\prime}(0)}{2!}x^2
+					% +\tfrac{f^{(3)}(0)}{3!}x^3
+					+ \cdots
+					+\tfrac{f^{(n)}(0)}{n!}x^n  \\
+					% +\tfrac{f^{\prime\prime\prime}(0)}{3!}x^3
+					% +\tfrac{f^{(4)}(0)}{4!}x^4 + \cdots \\
+		 		= \sum_{k=0}^n \tfrac{f^{(k)}(0)}{k!}x^k.
+		\]
+		In the limit as $n$ goes to infinity,
+		the approximation becomes exact:
+		\[
+			f(x) = f(0)
+					+f'(0)x
+					+\tfrac{f^{\prime\prime}(0)}{2!}x^2
+					+\tfrac{f^{(3)}(0)}{3!}x^3 + \cdots \\
+		 		= \sum_{k=0}^\infty \tfrac{f^{(k)}(0)}{k!}x^k.
+		\]
+		%	Each term in the series is of the form $a_k=c_k x^k$, 
+		%	where the coefficient $c_k$ depends on the properties of the function $f(x)$.
+		%	Specifically,
+		%	$c_k = \frac{f^{(k)}(0)}{k!}$,
+		%	where $f^{(k)}(0)$ is the $k$\textsuperscript{th} derivative of $f(x)$ and $k!$ is the factorial function:
+
+		Using this formula and your knowledge of derivative formulas,
+		you can compute the Taylor series of any function $f(x)$.
+		For example,
+		let's find the Taylor series of the function $f(x)=e^x$ at $x=0$.
+		The first derivative of $f(x)=e^x$ is $f'(x)=e^x$.
+		The second derivative of $f(x)=e^x$ is $f''(x)=e^x$.
+		In fact,
+		all the derivatives of $f(x)$ will be $e^x$ because the derivative of $e^x$ is equal to $e^x$.
+		The $k$\textsuperscript{th} coefficient in the power series of $f(x)=e^x$ at the point $x=0$ 
+		is equal to the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=0$.
+		In the case of $f(x)=e^x$ we have $f^{(k)}(0)=e^0=1$,
+		so the coefficient of the $k$\textsuperscript{th} term is $c_k = \tfrac{f^{(k)}(0)}{k!}  = \tfrac{1}{k!}$,
+		so the Taylor series of $f(x)=e^x$ is
+		\[
+		 e^x      	= \sum_{k=0}^\infty \tfrac{1}{k!}x^k
+		 	 	= 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{3!} + \tfrac{x^4}{4!} + \tfrac{x^5}{5!} + \tfrac{x^6}{6!} + \tfrac{x^7}{7!}  + \cdots 
+		 \]
+		Series are a powerful computational tool for approximating numbers and functions.
+%This is, IMHO, one of the most important ideas in calculus:
+%you can compute the value of $e^x$ by taking the infinite sum of the terms in the power series
+		As we compute more terms from the above series,
+		our the polynomial approximation to the function $f(x)=e^x$ becomes more accurate.
+.
+
+%	The exact value of the function at $x=1$ is $f(1) = e^1 = e$.
+%	The partial sum of the first six terms (as shown above) gives us an approximation of $e^1$ that is accurate to three decimals. 
+%	The partial sum of the first 12 terms gives us $e$ to an accuracy of nine decimals.
+%	# Your calculator computes the number e as the infinite sum
+%	#     e  =  1 + 1 + 1/2 + 1/3! + 1/4! + ... 
+%	# where n! is the factorial function, 5!=5*4*3*2*1.
+%	#--
+%	# The equation for the i'th term is
+%	an_e = 1.0/factorial(n)
+%	#--
+%	# The sum of the first 40 terms in the series is
+%	summation( an_e, (n,0,40) )
+%	#--
+%	# The exact value of e according to the computer is:
+%	#--
+%	E.evalf()
+%	#--
+
+		Table~\ref{table:taylor_series} shows
+		the Taylor series obtained using the formula
+		$f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k$
+		for several important functions.
+
+		\begin{table}[htb]
+		\centering
+		\caption{Taylor series expansions for commonly used functions}
+		\begin{shadebox}%
+		\vspace{-2mm}
+		\begin{align*}
+		% f(x)			&=	\sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k		\\
+		\frac{1}{1-x}	&=	\sum_{k=0}^\infty x^k
+						= 1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + \cdots \\
+		\frac{1}{1+x}	&=	\sum_{k=0}^\infty (-x)^k
+						= 1 - x + x^2 - x^3 + x^4 - x^5 + x^6 + \cdots \\
+		e^x			&=	\sum_{k=0}^\infty \frac{x^k}{k!}
+						= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots \\
+		 \sin(x)  		& = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \: x^{2n+1}
+		 	  			= x - \frac{x^3}{3!}  + \frac{x^5}{5!} - \frac{x^7}{7!} % + \frac{x^9}{9!} - \frac{x^{11}}{11!} 
+						+ \cdots \\
+		 \cos(x)  		& = \sum_{n=0}^\infty \frac{(-1)^n }{(2n)!}\:x^{2n} 
+		 				=  1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} % +  \frac{x^8}{8!}  - \frac{x^{10}}{10!}  
+						+  \cdots \\
+		\!\!\ln(x+1) 		& = \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\:x^n
+		 				=  x - \frac{x^2}2 + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5}   % - \frac{x^6}{6} 
+							+ \cdots 		 		
+		\end{align*}%
+		\end{shadebox}
+		\label{table:taylor_series}
+		\end{table}
+
+		% POLYNOMIAL BASIS
+		Reader who are familiar with the concept of a basis from linear algebra
+		can think of the Taylor series shown in Table~\ref{table:taylor_series}
+		as \emph{representations} of the corresponding functions
+		with respect to the basis of polynomial functions:
+		$(1, x, x^2, x^3, x^4, x^5, \ldots)$.
+		The Taylor series coefficients $c_k = \tfrac{f^{(k)}(0)}{k!}$
+		are the coordinates of the function $f(x)$ in the polynomial basis.
+		
+
+	\subsection{Obtaining Taylor series using SymPy}
+	\label{series:taylor_series_using_sympy}
+
+		The \texttt{SymPy} function \texttt{series} is a convenient way to obtain the Taylor series of any function.
+		Calling \texttt{series(fun,var,x0,n)} 
+		will show you the series expansion of any function \texttt{fun} 
+		near \texttt{var}=\texttt{x0} up to powers of \texttt{n}.
+		We can quickly fact-check the Taylor series given in Table~\ref{table:taylor_series} using SymPy.
+%The SymPy function series is a convenient way to obtain the series of any function fun. Calling sp.series(fun,var,x0,n) will show you the series expansion of expr near var=x0 including all powers of var less than n.
+
+		\begin{codeblock}[]
+		>>> import sympy as sp
+		>>> x = sp.symbols("x")
+		>>> sp.series(1/(1-x), x, x0=0, n=7)
+		1 + x + x**2 + x**3 + x**4 + x**5 + x**6 + O(x**7)
+		>>> sp.series(1/(1+x), x, x0=0, n=7)
+		1 - x + x**2 - x**3 + x**4 - x**5 + x**6 + O(x**7)
+		>>> sp.series(sp.E**x, x, x0=0, n=6)
+		1 + x + x**2/2 + x**3/6 + x**4/24 + x**5/120 + O(x**6)
+		>>> sp.series(sp.sin(x), x, x0=0, n=8)
+		x - x**3/6 + x**5/120 - x**7/5040 + O(x**8)
+		>>> sp.series(sp.cos(x), x, x0=0, n=8)
+		1 - x**2/2 + x**4/24 - x**6/720 + O(x**8)
+		>>> sp.series(sp.ln(x+1), x, x0=0, n=6)
+		x - x**2/2 + x**3/3 - x**4/4 + x**5/5 + O(x**6)
+		\end{codeblock}
+		
+		\noindent
+		The big-O notation \tt{O(x**n)} appears in all the above outputs
+		as a reminder that the exact Taylor series contains additional terms,
+		and the Taylor series approximations shows are
+		only accurate up to an error ``on the order of'' $x^n$.
+
+
+
+
+	\subsection{Series applications}
+	\label{series:applications}
+
+		We've already seen we can use compute $e$
+		using the infinite series $\sum f_k$.
+		Now that we know the Taylor series of $e^x$,
+		we can also compute $e^5$ as ...
+
+		Another application of Taylor series representation for the function $f(x)$,
+		is the relative easy with which we can compute 
+		its derivative function $f'(x)$
+		and its integral function $F_0(x) \eqdef \int_0^x f(u)\,du$.
+		Since the Taylor series approximation consists only of polynomial terms
+		of the form $c_n x^n$,
+		we just need to compute the derivative function $f'(x)$
+		we simply compute the derivative of each term: $nc_n x^{n-1}$.
+		Similarly,
+		to compute the integral function $F_0(x) \eqdef \int_0^x f(u)\,du$,
+		we compute the integrals of the individual terms,
+		which gives us $\frac{c_n}{n+1}x^{n+1}$.
+		
+EXAMPLE
+\vspace{2cm}
+		
+		
+		This example is of historical importance,
+		since it was issued as challenge by Isaac Newton to Wilhelm Leibnitz.
+		No formulas for the integral of ln x was not know at the time,
+		and was considered a difficult computation problem.
+		Newton had discover the Taylor series approximation formula 
+		for ln x
+		but had not published his result.
+		A bit like closed source software.
+		Leibnitz had independently discovered calculus and series
+		so he was able to compute the answer.
+		When Newton saw that Leibnitz was able to solve the challenge,
+		he was motivated to publish his results,
+		which is why we still credit calculus to him.
+
+
+TODO
+ODEs
+\vspace{2cm}
+
+
+
+
+	\ifthenelse{\boolean{FORSTATSBOOK}}{
+		While we're on the topic of series,
+		I want to show you some extra series formulas and tricks
+		that you need to know to solve the exercises ???? and problems ??? in Chapter~2.
+	}{}
+
+
+
+
+
+
+
+% CUT MATERIAL
 
 % NOTEBOOK ONLY
 %	We define a sequence by specifying an expression for its $n$\textsuperscript{th} term:
@@ -315,293 +862,3 @@ special case when one of the terms is 1:
 
 
 
-
-
-
-
-
-	\subsection{Series}
-	
-		% Series are sums of sequences.
-		Series are defined as the sums computed from the terms in the sequence $a_k$.
-		The \emph{finite series} $\sum_{k=1}^n a_k$ computes the first $n$ terms of the sequence:
-		\[
-			\sum_{k=1}^n a_k
-				= a_1 + a_2 + a_3 + a_4 + a_5  + \cdots  + a_{n-1} + a_n.
-		\]
-		The \emph{infinite series} $\sum a_k$ computes \emph{all} the terms in the sequence:
-		\[
-			\sum a_k
-				\;\; \eqdef \;\;	\lim_{n\to \infty}  \sum_{k=1}^n a_k
-				= a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + \cdots.
-		\]
-		%	and we want to compute the sum of all the values in this sequence $\sum_{k=-}^\infty a_k$.
-		The computing the infinite series $\sum a_k$
-		of the sequence $a_k : \mathbb{N} \to \mathbb{R}$
-		is analogous to the integral $\int_0^\infty f(x) \,dx$
-		of a function $f : \mathbb{R} \to \mathbb{R}$.
-
-		For example,
-		when $|r|<1$,
-		the limit as $n \to \infty$ of the geometric series is described
-		converges to the following value:
-		\[
-			G_\infty 
-				= \lim_{n \to \infty} G_n 
-				= \sum_{k=0}^\infty r^k
-				= 1 + r + r^2 +  r^3 + \cdots 
-				= \frac{1}{1-r}.
-		\]
-		This expression describes an infinite sum,
-		which is not possible to compute in practice,
-		but we can see the truth of this equation using our mind's eye.
-		The term $r^{n+1}$ in the formula for $G_n = \frac{1-r^{n+1}}{1-r}$
-		goes to zero as $n \to \infty$,
-		so the only part of the formula that remains is $\frac{1}{1-r}$.
-		
-
-		\paragraph{Example: sum of a geometric series}
-
-			Let's compute infinite series of the geometric sequence with $r=\frac{1}{2}$.
-			Applying the above formula,
-			we obtain 
-			\[
-				%G_\infty = 
-				\sum_{k=0}^\infty \big(\tfrac{1}{2}\big)^k
-					= 1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \tfrac{1}{16} + \tfrac{1}{32} + \cdots 
-					=\frac{1}{1-\frac{1}{2}} = 2.
-			\]
-			You can visualize this infinite summation graphically
-			in Figure~\ref{fig:geometric_progression_of_one_half}.
-	
-			\begin{figure}[htb]
-				\centering
-				\includegraphics[width=0.69\columnwidth]{figures/calculus/geometric_progression_of_one_half.png}
-				\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
-						The area of each region corresponds to one of the terms in the series.
-						The total area is equal to $\sum_{k=0}^\infty (\frac{1}{2})^k=\frac{1}{1-\frac{1}{2}}=2$.}
-				\label{fig:geometric_progression_of_one_half}
-			\end{figure}
-
-
-		\paragraph{Example 2: sum of the inverse factorial sequence}
-
-			\[
-				F_k = \sum f_k	
-					= e
-					= 2.71828\ldots.
-			\]
-
-
-Using standard Python commands,  
-we can obtain an approximation to $e^5$ that is accurate to six decimals by summing 10 terms in the series: 
-
-
-\begin{codeblock}[]
->>> import math
->>> def f_k(n): 
-        return 1 / math.factorial(n)
->>> sum( [f_k(k) for k in range(0, 10)] )
-2.7182815255731922
-\end{codeblock}
-% >>> sp.E.evalf()
-% 2.718281 82845905       # true value
-
-
-			The infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
-			converges to the number $e=2.71828\ldots$
-			% NOTEBOOK ONLY
-			%	\begin{codeblock}[]
-			%	>>> f_k = 1 / sp.factorial(k)
-			%	>>> sp.summation(f_k, (k,0,sp.oo))
-			%	E
-			%	\end{codeblock}
-
-%To work with series in \texttt{SymPy},
-%use the \texttt{summation} function whose syntax is analogous to the \texttt{integrate} function: 	
-%The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
-%but for most practical applications we don't need to take an infinite number of terms in a series to obtain a good approximation. 
-%This is why series are so neat: they represent a great way to obtain approximations.
-
-
-
-	\subsubsection{Convergent and divergent series}
-
-		The geometric series $G_\infty = \sum g_k$
-		and the inverse factorial series $F_k = \sum f_k	$ converges (or \emph{is convergent}).
-		As we sum together more and more terms of the sequences $g_k$ and $f_k$,
-		the total becomes closer and finite numbers.
-		In this case,
-		of $G_\infty$ we conserve to the faction $\frac{1}{1-r}$,
-		while the infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
-		converges to the number $e=2.71828\ldots$.
-
-
-		In contrast,
-		the harmonic series $\sum h_k$ \emph{diverges} to infinity (or \emph{is divergent})
-
-
-
-	\subsection{Power series}
-	\label{series:power_series}
-
-		The term \emph{power series} describes a series whose terms contain different powers of the variable $x$.
-		The $k$\textsuperscript{th} term in a power series
-		is a function of both the sequence index $k$ and the input variable $x$:
-		\[
-			a
-		\]
-
-
-
-
-	\subsection{Taylor series}
-	\label{series:taylor_series}
-
-		The \emphindexdef{Taylor series} of a function $f(x)$ approximates the function by an infinitely long polynomial:
-		\[
-		    f(x)
-			= \sum_{k=0}^\infty c_k x^k
-			=  c_0 + c_1x + c_2x^2 + c_3x^3 + c_4x^4 + \cdots \,.
-		\]
-		Each term in the series is of the form $a_k=c_k x^k$, 
-		where the coefficient $c_k$ depends on the properties of the function $f(x)$.
-		Specifically,
-		$c_k = \frac{f^{(k)}(0)}{k!}$,
-		where $f^{(k)}(0)$ is the $k$\textsuperscript{th} derivative of $f(x)$ and $k!$ is the factorial function:
-		\begin{align*}
-		  f(x)
-		 	& =f(0)+f'(0)x+\frac{f^{\prime\prime}(0)}{2!}x^2+\frac{f^{\prime\prime\prime}(0)}{3!}x^3 +\frac{f^{(4)}(0)}{4!}x^4 + \cdots \\
-		 	& = \sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k.
-		\end{align*}
-		Using this formula and your knowledge of derivatives,
-		you can compute the Taylor series of any function $f(x)$.
-
-		For example,
-		let's find the Taylor series of the function $f(x)=e^x$ at $x=0$.
-		The first derivative of $f(x)=e^x$ is $f'(x)=e^x$.
-		The second derivative of $f(x)=e^x$ is $f''(x)=e^x$.
-		In fact,
-		all the derivatives of $f(x)$ will be $e^x$ because the $e^x$ is a special function that is equal to its derivative!
-		The $k$\textsuperscript{th} coefficient in the power series of $f(x)=e^x$ at the point $x=0$ 
-		is equal to the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=0$.
-		In the case of $f(x)=e^x$ we have $f^{(k)}(0)=e^0=1$,
-		so the coefficient of the $k$\textsuperscript{th} term is $c_k = \tfrac{f^{(k)}(0)}{k!}  = \tfrac{1}{k!}$.
-		The Taylor series of $f(x)=e^x$ is
-		\[
-		 e^x      	= \sum_{k=0}^\infty \frac{1}{k!}x^k
-		 	 	= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots 
-		 \]
-		Series are a powerful computational tool for approximating numbers and functions.
-		As we compute more terms from the above series,
-		our the polynomial approximation to the function $f(x)=e^x$ becomes more accurate.
-		The exact value of the function at $x=1$ is $f(1) = e^1 = e$.
-		The partial sum of the first six terms (as shown above) gives us an approximation of $e^1$ that is accurate to three decimals. 
-		The partial sum of the first 12 terms gives us $e$ to an accuracy of nine decimals.
-		% http://bit.ly/12DrCZY
-
-
-Table~\ref{table:taylor_series} shows 
-$f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k$
-
-		\begin{table}[htb]
-		\centering
-		\caption{Taylor series formulas for commonly used functions}
-		\begin{shadebox}%
-		\vspace{-2mm}
-		\begin{align*}
-		% f(x)			&=	\sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k		\\
-		\frac{1}{1-x}	&=	\sum_{k=0}^\infty x^k
-						= 1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + \cdots \\
-		\frac{1}{1+x}	&=	\sum_{k=0}^\infty (-x)^k
-						= 1 - x + x^2 - x^3 + x^4 - x^5 + x^6 + \cdots \\
-		e^x			&=	\sum_{k=0}^\infty \frac{x^k}{k!}
-						= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots \\
-		 \sin(x)  		& = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \: x^{2n+1}
-		 	  			= x - \frac{x^3}{3!}  + \frac{x^5}{5!} - \frac{x^7}{7!} % + \frac{x^9}{9!} - \frac{x^{11}}{11!} 
-						+ \cdots \\
-		 \cos(x)  		& = \sum_{n=0}^\infty \frac{(-1)^n }{(2n)!}\:x^{2n} 
-		 				=  1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} % +  \frac{x^8}{8!}  - \frac{x^{10}}{10!}  
-						+  \cdots \\
-		\!\!\ln(x+1) 		& = \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\:x^n
-		 				=  x - \frac{x^2}2 + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5}   % - \frac{x^6}{6} 
-							+ \cdots 		 		
-		\end{align*}%
-		\end{shadebox}
-		\label{table:taylor_series}
-		\end{table}
-
-
-
-
-For example, the power series of the function $\exp(x)=e^x$ is 
-\[
-	\exp(x)	\eqdef  	1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots         
-			=       	\sum_{k=0}^\infty \frac{x^k}{k!}.
-\]
-This is, IMHO, one of the most important ideas in calculus:
-you can compute the value of $\exp(5)$ by taking the infinite sum of the terms in the power series with $x=5$:
-
-
-
-\begin{codeblock}[]
->>> exp_xk = x**k / sp.factorial(k)
->>> sp.summation( exp_xk.subs({x:5}), (k,0,sp.oo)).evalf()
-148.413159102577
->>> sp.exp(5).evalf()  # the true value
-148.413159102577
-\end{codeblock}
-
-\noindent
-Note that \texttt{SymPy} is actually smart enough to recognize that the infinite series
-you're computing corresponds to the closed-form expression $e^5$:
-
-
-
-\begin{codeblock}[]
->>> sp.summation( exp_xk.subs({x:5}), (k,0,sp.oo))
-exp(5)
-\end{codeblock}
-
-%	Taking as few as 35 terms in the series is sufficient to obtain an approximation to $e^5$
-%	that is accurate to $16$ decimals:
-%	%so series are not some abstract thing for mathematicians but a practical trick you can when you code:
-%	
-%	\begin{codeblock}[]
-%	>>> import math                    # redo using only python 
-%	>>> def exp_xnf(x,n): 
-%	        return x**n/math.factorial(n)
-%	>>> sum( [exp_xnf(5.0,i) for i in range(0,35)] )
-%	148.413159102577
-%	\end{codeblock}
-
-\noindent
-The coefficients in the power series of a function (also known as the \emph{Taylor series})
-depend on the value of the higher derivatives of the function. 
-The formula for the $k$\textsuperscript{th} term in the Taylor series of $f(x)$ expanded at $x=c$
-is $a_k(x) = \frac{f^{(n)}(c)}{k!}(x-c)^k$,
-where $f^{(k)}(c)$ is the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=c$.
-
-The \texttt{SymPy} function \texttt{series} is a convenient way to obtain the Taylor series of any function.
-Calling \texttt{series(expr,var,at,nmax)} 
-will show you the series expansion of \texttt{expr} 
-near \texttt{var}=\texttt{at} 
-up to power \texttt{nmax}:
-
-\begin{codeblock}[]
->>> x = sp.symbols("x")
->>> sp.series( sp.sin(x), x, x0=0, n=8)
-x - x**3/6 + x**5/120 - x**7/5040 + O(x**8)
->>> sp.series( sp.cos(x), x, x0=0, n=8)
-1 - x**2/2 + x**4/24 - x**6/720 + O(x**8)
-\end{codeblock}
-
-
-
-
-\ifthenelse{\boolean{FORSTATSBOOK}}{
-	TODO: any extra series formulas or concepts required to solve the exercises and problems in noBSstats.
-}{}
-
-
-\vfill
