@@ -3,9 +3,8 @@
 
 	\subsection{Computing integrals numerically}
 
-		Computing the integral $\int_{a}^b f(x)dx$ \emph{numerically} means using a computer
-		to find the approximation to $A_f(a,b)$
-% TODO: simply to say     \emph{Riemann sum} approximation using a computer
+		Computing the integral $\int_{a}^b f(x)dx$ \emph{numerically}
+		means using a computer to compute the Riemann sum approximation to $A_f(a,b)$
 		by splitting the region of integration into many (think thousands or millions) of strips,
 		computing the areas of each strip,
 		then adding up the areas to obtain the total area under the graph of $f(x)$.
@@ -38,10 +37,10 @@
 		Looking at figure Figure~\ref{fig:riemann_sum_n10_n20}~(a),
 		we can clearly see that the approximation computed in this way is an underestimate
 		to the true area under the curve.
-		% TODO: revisit this sentence
-		Let's ignore this fact for now,
-		and ``trust the process'' because the ``quality'' of the approximations improve
-		when we split up the region into finer and finer strips.
+		Let's trust the process,
+		and continue with the calculations,
+		knowing that the ``quality'' of the approximations
+		will improve when we split up the region into finer and finer strips.
 
 		The procedure we used for $n=10$ works more generally for any $n$.
 		In the general case,

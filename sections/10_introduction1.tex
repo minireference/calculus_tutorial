@@ -330,13 +330,22 @@
 			we can define a symbols \tt{x}
 			that works like the math variable $x$.
 			We can then write arbitrary math expressions that involve $\tt{x}$
-			and ask SymPy to \tt{simplify}, \tt{factor}, \tt{expand}, etc.
+			and ask SymPy to \tt{factor}, \tt{expand}, \tt{simplify}, etc.
+
 
 			\begin{codeblock}[]
 			>>> import sympy as sp
-			>>> TODO
+			>>> x = sp.symbols("x")
+			>>> expr = 4 - x**2
+			>>> expr
+			4 - x**2
+			>>> sp.factor(expr)
+			-(x - 2)*(x + 2)
+			>>> sp.expand( (x-4)*(x+2) )
+			x**2 - 2*x - 8
+			>>> sp.simplify(2*x + 3*x - sp.sin(x) + 42)
+			5*x - sin(x) + 42
 			\end{codeblock}
-
 
 			You can also \tt{subs}itue particular values for $\tt{x}$
 			into the expression and evaluate the expression
@@ -344,15 +353,17 @@
 			or a numerical approximation as a floating point number.
 
 			\begin{codeblock}[]
-			>>> import sympy as sp
-			>>> TODO
+			>>> expr.subs({x:1})
+			3
 			\end{codeblock}
 
 			You can also solve equaiton
 
 			\begin{codeblock}[]
-			>>> import sympy as sp
-			>>> TODO
+			>>> sp.solve(expr, x)
+			[-2, 2]
+			>>> sp.solve(x**2 + 2*x - 8, x)
+			[-4, 2]
 			\end{codeblock}
 
 
@@ -374,10 +385,12 @@
 			Defining the specific data format for representing numbers (float32, float64, etc.)
 			allows computer engineers to build high-performance hardware for doing math calculations.
 
-
 			\begin{codeblock}[]
 			>>> import numpy as np
-			>>> TODO
+			>>> np.array([1.0, 1.1, 1.2, 1.3, 1.4, 1.5])
+			array([1. , 1.1, 1.2, 1.3, 1.4, 1.5])
+			>>> np.linspace(1.0, 1.5, 6)
+			array([1. , 1.1, 1.2, 1.3, 1.4, 1.5])
 			\end{codeblock}
 
 
@@ -387,28 +400,32 @@
 			The Python module SciPy is a toolbox of scientific computing helper functions
 			that greatly simplify our life.
 			For example,
-			computing integral of the function \tt{f} between $x=-2$ and $x=2$ requires only two lines of code:
+			computing integral of the function $h(x) = 4 - x^2$
+			between $x=0$ and $x=2$ requires only two lines of code:
 
 			\begin{codeblock}[]
+			>>> def h(x):
+			        return 4 - x**2
 			>>> from scipy.integrate import quad
-			>>> quad(h, -2, 2)[0]
-			10.666666666666666
+			>>> quad(h, a=0, b=2)[0]
+			5.333333333333333
 			\end{codeblock}
 
-			\noindent
-			The answer is $10.\overline{6}$ (the first number in the output)
-			and the precision of this answer is $\pm 1.8\times 10^{-13}$,
-			which tells us the first $12$ digits of the answer are exact.
-			
-These two lines of code represent the complete level of WIN
-humankind has achieved over practical math calculations.
-Calculus ideas started with Archimedes,
-then levelled up by Newton and Leibniz,
-and formalized as analysis (pure math) and numerical analysis (applied math).
-In parallel,
-compute hardware has improved its raw performance exponentially for many years.
-This means today you can perform the integrals like the ones the ancients only dreamed of in less than a second.
+			% The answer is $5.\overline{3}$
+			%  (the first number in the output)
+			% and the precision of this answer is $\pm 1.8\times 10^{-13}$,
+			% which tells us the first $12$ digits of the answer are exact.
 
+			\noindent
+			The above code example shows the complete level of WIN
+			humankind has achieved over practical math calculations.
+			Calculus ideas started with Archimedes,
+			then levelled up by Newton and Leibniz,
+			and formalized as analysis (pure math) and numerical analysis (applied math).
+			In parallel,
+			compute hardware has improved its raw performance exponentially for many years.
+			This means today you can perform the integrals like the ones the ancients only dreamed of in less than a second.
+			
 
 
 

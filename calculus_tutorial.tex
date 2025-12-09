@@ -88,18 +88,7 @@
 
 
 
-%\usepackage{listings}
-\usepackage{moreverb}
-% FINAL IEEEtran format with reduced margins
-\usepackage[letterpaper,bmargin=1.3cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1.1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
-% /FINAL IEEEtran 
 
-% ON-SCREEN DRAFT
-%\usepackage[papersize={5.5in,8.5in},bmargin=1.3cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1.1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
-%\usepackage{setspace}
-%\singlespacing
-%%\onehalfspacing
-% /ON-SCREEN DRAFT
 
 %%%   FONTS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{mathpazo}   % PALATINO (chosen Sep 10 2017)
@@ -118,8 +107,8 @@
 \newcommand{\printcp}{}
 \newcommand{\printni}{}
 
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
 \usepackage{setspace}
 
 
@@ -169,7 +158,6 @@
 \usepackage{shadethm}
 \newshadetheorem{shadetheorem}{Theorem}
 \renewcommand{\theshadeshadetheorem}{}			% turn off theorem numbering
-\setlength\shadedtextwidth{0.49\textwidth}
 
 
 
@@ -177,6 +165,19 @@
 \newboolean{FORSTATSBOOK}		% for prob-related calculus topics 
 \setboolean{FORSTATSBOOK}{false}	% used in calc_tutorial.tex (Appendix F)
 
+
+
+% FINAL IEEEtran format with reduced margins
+\usepackage[letterpaper,bmargin=1.3cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1.1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
+\setlength\shadedtextwidth{1.1\columnwidth}
+% /FINAL IEEEtran 
+
+% ON-SCREEN DRAFT
+%\usepackage[papersize={5.5in,8.5in},bmargin=1.3cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1.1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
+%\usepackage{setspace}
+%\singlespacing
+%\onehalfspacing
+% /ON-SCREEN DRAFT
 
 
 \begin{document}
@@ -220,7 +221,7 @@ Click this link to view the tutorial online: \href{https://bit.ly/calctut3}{\tt{
 \input{sections/10_introduction1.tex}
 % \input{sections/introduction2.tex}
 
-%\clearpage
+\clearpage
 \input{sections/20_math_prerequisites1.tex}
 % \input{sections/math_prerequisites2.tex}
 
@@ -257,6 +258,7 @@ Click this link to view the tutorial online: \href{https://bit.ly/calctut3}{\tt{
 %  ADVANCED CALC  %%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \input{sections/70_multivariable_calculus.tex}
+\clearpage
 \input{sections/80_vector_calculus.tex}
 
 
@@ -324,7 +326,7 @@ Click this link to view the tutorial online: \href{https://bit.ly/calctut3}{\tt{
 
 	% TODO add more links to intro-calculus material
 
-\vspace{1in}
+%\vspace{1in}
 
 
 	% BOOK PLUG
