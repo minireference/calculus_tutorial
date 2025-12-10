@@ -1,0 +1,23 @@
+\documentclass[convert={density=600,outext=.png,convertexe={magick}},varwidth=14cm]{standalone}
+%\usepackage{../../../figures/styles/noBSfigureStyles}
+\usepackage{graphicx}
+\usepackage[labelfont=small,
+		labelformat=parens, labelsep=space,
+		%labelformat=empty,
+		justification=centering]{caption,subfig} %%% Center the caption
+% via https://tex.stackexchange.com/a/79925
+
+\begin{document}%
+	\begin{figure}[htb]%
+	   \subfloat{}\addtocounter{subfigure}{-1}\!\! % hack required for labels to appear vertically aligned
+            \subfloat[\footnotesize 	Slices % though $f(x,y)$ %=4-x^2-\frac{1}{4}y^2$
+            					at different values of $x$.]{
+            	\includegraphics[width=2in]{mulivar_x_slices_through_paraboloid.pdf}%
+            }%
+            \qquad\quad%
+            \subfloat[\footnotesize Slices at different values of $y$.]{%
+                \raisebox{0mm}{\includegraphics[width=2in]{mulivar_y_slices_through_paraboloid.pdf}}%
+            }%
+	\end{figure}
+\end{document}
+
