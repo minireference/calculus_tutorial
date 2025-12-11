@@ -3,22 +3,34 @@
 \section{Multivariable calculus}
 
 	Multivariable calculus is the extension of the ideas of differential and integral calculus
-	to functions like $f(x,y)$ that depend on multiple input variables.
-	You can plot a function $f: \mathbb{R} \times \mathbb{R}  \to \mathbb{R}$ as a \emph{surface},
-	where the height $z$ of the surface above the point $(x,y)$ is function output $z=f(x,y)$.
-
-	If you know single-variable calculus (derivatives and integrals),
-	then then you won't have much new math to learn in multivariable calculus:
+	to functions like take multiple variables as inputs.
+	If you were able to follow the single-variable calculus concepts,
+	then you won't have much new math to learn in multivariable calculus:
 	it's essentially the same concepts but with more variables.
 
-	\subsection{Plotting multivariable functions}
-
-		Suppose the height of a mountain is described by the function $f(x,y)$.
-		The coordinates $(x,y)$ tell us the horizontal position point in the $xy$-plane
-		and the value of the function $f(x,y)$ represents the height of the mountain at those coordinate.
-
-		We identify the $z$ coordinate with the hight of the mountain $z=f(x,y)$
-		and graph the function $f(x,y)$ is as a surface in 3D as illustrated in Figure~\ref{fig:mulivar_surface_plot_paraboloid}.
+	\subsection{Multivariable functions}
+	
+		A single variable function $f: \mathbb{R} \to \mathbb{R}$
+		takes a real number $x \in \mathbb{R}$ as input
+		and produces the real number $f(x) \in \mathbb{R}$ as output.
+		A \emph{multivariable function} takes multiple real numbers as inputs
+		and produces real number as output.
+		For example,
+		a bivariate function $f: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$
+		takes two real numbers as inputs $(x,y) \in \mathbb{R} \times \mathbb{R}$
+		and produces the real number $f(x,y) \in \mathbb{R}$ as output.
+		We'll use the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
+		for all plots and calculations in the remainder of this section.
+	
+		We can plot the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
+		as a \emph{surface} in a three dimensional space,
+		as shown in Figure~\ref{fig:mulivar_surface_plot_paraboloid}.
+		The height of the surface above the point $(x,y)$ is function output $f(x,y)$.
+		%	Suppose the height of a mountain is described by the function $f(x,y)$.
+		%	The coordinates $(x,y)$ tell us the horizontal position point in the $xy$-plane
+		%	and the value of the function $f(x,y)$ represents the height of the mountain at those coordinate.
+		%	We identify the $z$ coordinate with the hight of the mountain $z=f(x,y)$
+		%	and graph the function $f(x,y)$ is as a surface in 3D as illustrated in 
 
 		\begin{figure}[htb]
 			\centering
@@ -29,35 +41,28 @@
 			\label{fig:mulivar_surface_plot_paraboloid}
 		\end{figure}
 
-
-
 		\noindent			
 		Three dimensional surface plots are very good for visualizing multivariable functions,
 		but they can be difficult to draw by hand.
-
-		Another approach for representing function of the form $f(x,y)$ is to use a two-dimensional plot that shows the ``view from above'' of the surface $f(x,y)$.
-		We can use colour to represent the height of the function through different sharing:
-		darker-shading to represent large values of $f(x,y)$ and lighter-shading to represent small values of $f(x,y)$.			% TODO: update plot to show shading
-		We can also trace \emph{level curves} in the plot,
-		which is the same approach used for topographic maps:
-		each level curve show the points that are at a certain height.
+		Another approach for representing the functoin $f(x,y)$
+		is to use a two-dimensional plot that shows the ``view from above'' of the surface $f(x,y)$.
+		We can trace \emph{level curves} in the surface,
+		to produce a ``topographic map'' of the surface
+		where each level curve show the points that are at a certain height.
 		
 		\begin{figure}[htb]
 			\centering
 			\includegraphics[width=0.8\columnwidth]{figures/calculus/mulivar_countour_plot_paraboloid.pdf}
 			\vspace{-4mm}
-			\caption{The topographic map that shows the height of the function $f(x,y)$ using sharing to represent height.
-					The level curves at each 10m intervals are also shown.}
+			\caption{	Topographic map that shows the function $f(x,y)$ as level curves.}
 			\label{fig:mulivar_countour_plot_paraboloid}
 		\end{figure}
 
-
 		\noindent
-		The curve labeled 30m line you see in Figure~\ref{fig:mulivar_countour_plot_paraboloid} represents
-		the solution to the equation $30= f(x,y)$,
-		where $f(x,y)$ is the height of this hill for all coordinates $(x,y)$ on the map.
-
-
+		The curve labeled $0.0$ you see in Figure~\ref{fig:mulivar_countour_plot_paraboloid}
+		represents the solution to the equation $f(x,y) = 0$,
+		which is where the function $f(x,y)$ intersects the $xy$-plane.
+		% where $f(x,y)$ is the height of this hill for all coordinates $(x,y)$ on the map.
 
 
 	\subsection{Partial derivatives}

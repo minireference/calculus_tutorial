@@ -330,8 +330,8 @@
 			we can define a symbols \tt{x}
 			that works like the math variable $x$.
 			We can then write arbitrary math expressions that involve $\tt{x}$
-			and ask SymPy to \tt{factor}, \tt{expand}, \tt{simplify}, etc.
-
+			and ask SymPy to \tt{factor}, \tt{expand}, or \tt{simplify} them,
+			which are the standard algebra operations we normally perform using pen and paper.
 
 			\begin{codeblock}[]
 			>>> import sympy as sp
@@ -347,6 +347,7 @@
 			5*x - sin(x) + 42
 			\end{codeblock}
 
+			\noindent
 			You can also \tt{subs}itue particular values for $\tt{x}$
 			into the expression and evaluate the expression
 			to obtain an exact symbolic value
@@ -357,15 +358,20 @@
 			3
 			\end{codeblock}
 
-			You can also solve equaiton
+			\noindent
+			We can also also ask SymPy to \emph{solve} the equation \t{expr = 0},
+			which means to find the values of $x$ that satisfy the equation $4 - x^2 = 0$.
 
 			\begin{codeblock}[]
 			>>> sp.solve(expr, x)
 			[-2, 2]
-			>>> sp.solve(x**2 + 2*x - 8, x)
-			[-4, 2]
 			\end{codeblock}
+			%	>>> sp.solve(x**2 + 2*x - 8, x)
+			%	[-4, 2]
 
+			\noindent
+			We'll use SymPy code examples to illustrate some concepts.
+			
 
 		\subsubsection{Numerical computing using NumPy}
 		
@@ -424,8 +430,8 @@
 			and formalized as analysis (pure math) and numerical analysis (applied math).
 			In parallel,
 			compute hardware has improved its raw performance exponentially for many years.
-			This means today you can perform the integrals like the ones the ancients only dreamed of in less than a second.
-			
+			This means today you can perform the integrals
+			like the ones the ancients only dreamed of in less than a second.
 
 
 
