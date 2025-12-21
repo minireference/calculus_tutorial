@@ -163,12 +163,12 @@
 		%	F(x)			&  \ - \textrm{ derivative } \to  \quad		F'(x)		\\
 		%	\int f(x)\;dx   	& \ \ \leftarrow \textrm{ integral } -   \quad 	f(x)     	\\
 		a			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				0		\\
-		\alpha f(x)+ \beta g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\alpha f'(x)+ \beta g'(x)	\\
+%		\alpha f(x)+ \beta g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\alpha f'(x)+ \beta g'(x)	\\
 		x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				1		\\
 		mx+b			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				m		\\
 		%	af(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				af'(x)		\\
 		%	f(x)+g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				f'(x)+g'(x)	\\
-		x^n			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				nx^{n-1}	\\
+		x^n, \text{ for } n\neq 0	&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				nx^{n-1}	\\
 		\tfrac{1}{x} =  x^{-1}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tfrac{-1}{x^2} = -x^{-2}		\\
 		\sqrt{x} = x^{\frac{1}{2}}	&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tfrac{1}{2\sqrt{x}} = \tfrac{1}{2}x^{-\frac{1}{2}}	\\
 		e^x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				e^x	\\
@@ -199,16 +199,15 @@
 		there are some important derivatives rules
 		that allow you to find derivatives of \emph{composite} functions.
 
-		\paragraph{Linearity}		
+		\paragraph{Sum rule}
 
 			The derivative is a \emph{linear} operation, which means:
-			\vspace{1mm}
 			\[
 				\frac{d}{dx} \left[\alpha f(x) + \beta g(x)\right]
 				=
 				\alpha \frac{d}{dx}f(x) + \beta \frac{d}{dx}g(x).
 			\]
-			
+
 			\noindent
 			In other words,
 			the derivative of a linear combination of functions $\alpha f(x) + \beta g(x)$ is equal 

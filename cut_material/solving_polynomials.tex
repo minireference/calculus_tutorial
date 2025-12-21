@@ -1,0 +1,158 @@
+
+\subsection*{Solving polynomial equations}
+
+	Very often in math,
+	you will have to \emph{solve} polynomial equations of the form
+	\[
+	 A(x) = B(x),
+	\]
+	where $A(x)$ and $B(x)$ are both polynomials.
+	Recall from earlier that to \emph{solve},
+	we must find the values of $x$ that make the equality true.
+
+	Say the revenue of your company is a function of the number of products sold $x$,
+	and can be expressed as $R(x)=2x^2 + 2x$.
+	Say also the cost you incur to produce $x$ objects is $C(x)=x^2+5x+10$.
+	You want to determine the amount of product you need to produce to break even, that is,
+	so that revenue equals cost: $R(x)=C(x)$.
+	To find the break-even value $x$, solve the equation
+	\[
+	  2x^2 + 2x = x^2+5x+10.
+	\]
+
+	\noindent
+	This may seem complicated since there are $x$s all over the place.
+	No worries!
+	We can turn the equation into its ``standard form,'' and then use the quadratic formula.					\index{quadratic!formula}
+	First, move all the terms to one side until only zero remains on the other side:							\index{term}
+	\begin{align*}
+		2x^2 + 2x \; \; \; -x^2  	&= \cancel{x^2}+5x+10  \; \; \;  - \cancel{x^2} 	\\
+		x^2 + 2x \; \; \; -5x   	&= \cancel{5x}+10  \; \; \; -\cancel{5x}	\\
+		x^2 - 3x \; \; \; -10   	&= \cancel{10}  \; \; \; -\cancel{10}		\\
+		x^2 - 3x -10         	&= 0.		
+	\end{align*}
+
+	\noindent
+	Remember,
+	if we perform the same operations on both sides of the equation,
+	the resulting equation has the same solutions.
+	Therefore, the values of $x$ that satisfy $x^2 - 3x -10  = 0$,
+	namely $x=-2$ and $x=5$, also satisfy $2x^2 + 2x = x^2+5x+10$,
+	which is the original problem we're trying to solve.
+	
+	This ``shuffling of terms'' approach will work for any polynomial equation $A(x)=B(x)$.
+	We can always rewrite it as $C(x)=0$,
+	where $C(x)$ is a new polynomial with coefficients equal to the difference of the coefficients of $A$ and $B$.
+	Don't worry about which side you move all the coefficients to
+	because $C(x)=0$ and $0=-C(x)$ have exactly the same solutions.
+	Furthermore, the degree of the polynomial $C$ can be no greater than that of $A$ or $B$.
+
+	The form $C(x)=0$ is the \emph{standard form} of a polynomial,
+	and we'll explore several formulas you can use to find its solution(s).
+
+
+	\subsubsection{Formulas}
+
+		The formula for solving the polynomial equation $P(x)=0$ depends on the \emph{degree} of the polynomial in question.
+
+		% FIRST
+		For a first-degree polynomial equation, $P_1(x) = mx + b = 0$,
+		the solution is $x=\frac{-b}{m}$: just move $b$ to the other side and divide by~$m$.
+
+		% SECOND
+		For a second-degree polynomial,														\index{quadratic}
+		\[
+		  P_2(x) = ax^2 + bx + c = 0,
+		\]
+		the solutions are $x_1=\frac{-b + \sqrt{ b^2 -4ac}}{2a}$
+		and $x_2=\frac{-b - \sqrt{b^2-4ac}}{2a}$.
+
+		If $b^2-4ac < 0$,
+		the solutions will involve taking the square root of a negative number.
+		In those cases, we say no real solutions exist.
+	
+		% HIGHER DEGREES
+		There is also a formula for polynomials of degree $3$ and $4$, but they are complicated.
+		For polynomials with order $\geq 5$,
+		there does not exist a general analytical solution.
+
+
+	\subsubsection{Using a computer}
+
+		When solving real-world problems,
+		you'll often run into much more complicated equations.
+		To find the solutions of anything more complicated than the quadratic equation,
+		I recommend using a computer algebra system like \texttt{SymPy}:
+		\texttt{\href{http://live.sympy.org}{http://live.sympy.org}}.
+
+		To make \texttt{SymPy} solve the standard-form equation $C(x)=0$,
+		call the function \texttt{solve(expr,var)},
+		where the expression \texttt{expr} corresponds to $C(x)$,
+		and \texttt{var} is the variable you want to solve for.
+		For example,
+		to solve $x^2-3x+2=0$,
+		type in the following:
+		\small
+		\begin{verbatimtab}
+ >>> solve(x**2 - 3*x + 2, x)          # usage: solve(expr, var)
+ [1, 2]		\end{verbatimtab}
+		\normalsize
+
+		\noindent
+		The function \texttt{solve} will find the solutions to any equation of the form \texttt{expr = 0}.
+		In this case,
+		we see the solutions are $x=1$ and $x=2$.
+		
+		Another way to solve the equation is to factor the polynomial $C(x)$
+		using the function \texttt{factor} like this:
+		\small
+		\begin{verbatimtab}
+ >>> factor(x**2 - 3*x + 2)            # usage: factor(expr)
+ (x - 1)*(x - 2)	\end{verbatimtab}
+		\normalsize
+
+		\noindent
+		We see that $x^2-3x+2 = (x-1)(x-2)$,
+		which confirms the two roots are indeed $x=1$ and $x=2$.
+		
+		\bigskip
+		\noindent
+		To learn more about \texttt{SymPy},
+		check out Appendix~\ref{appendix:sympy_tutorial} on page~\pageref{appendix:sympy_tutorial},
+		which talks about all the \texttt{SymPy} functions that are available to you.
+
+
+	\subsubsection{Substitution trick}
+	
+		% TODOv6: consider cutting since it's not that interesting...
+
+		Sometimes you can solve fourth-degree polynomials by using the quadratic formula.
+		Say you're asked to solve for $x$ in
+		\[
+		   x^4 - 7x^2 + 10  = 0.
+		\]
+		Imagine this problem is on your exam, 
+		where you are not allowed to use a computer. 
+		How does the teacher expect you to solve for $x$? 
+		The trick is to substitute $y=x^2$ and rewrite the same equation as									\index{substitution}
+		\[
+		   y^2 - 7y + 10  = 0,
+		\]
+		which you can solve by applying the quadratic formula.
+		If you obtain the solutions $y=\alpha$ and $y=\beta$,
+		then the solutions to the original fourth-degree polynomial are $x=\pm\sqrt{\alpha}$ and $x=\pm\sqrt{\beta}$, since $y=x^2$.
+
+		Since we're not taking an exam right now, we are allowed to use the computer to find the roots:
+		\small
+		\begin{verbatimtab}
+ >>> solve(y**2 - 7*y + 10, y)
+ [2, 5]
+ >>> solve(x**4 - 7*x**2 + 10, x)
+ [sqrt(2), -sqrt(2), sqrt(5), -sqrt(5)]\end{verbatimtab}
+		\normalsize
+		Note how the second-degree polynomial has two roots, 
+		while the fourth-degree polynomial has four roots.
+
+
+
+

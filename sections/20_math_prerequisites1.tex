@@ -256,16 +256,30 @@
 
 	\subsection{Function inventory}
 	
-		% (10 essential functions)
-		%|x|
-		%line
-		%quadratic
-		%square root
-		%polynomial
-		%exp
-		%log
-		%gaussian-like erf $e^{-x^2}$
-		%sigmoid $\frac{1}{1-e^{-x}}$
+		Your \emph{function vocabulary} determines which math expressions you'll be able to read
+		in the same way your English vocabulary determines determines which English sentences you'll be able to read.
+		We'll now list then essential functions that you should know about.
+
+%explore these functions on your own via Wikipedia
+%and by plotting their graphs on WolframAlpha.
+%This section is a concise review of $10$ functions which are of paramount 
+%important for all areas of mathematical modelling. 
+%In order for you to be able to ``see'' the math behind science,
+%you need to be familiar with these functions.
+		
+%	If you're seeing these functions for the first time, 
+%	don't worry about remembering all the facts and properties on the first reading.
+%	We'll use these functions throughout the rest of the book, so you'll 
+%	have plenty of time to become familiar with them.
+%	Remember to return to this section if you ever get stuck on a function.
+
+%	% GRAPH PITCH
+%	To build mathematical intuition, it's essential you understand functions' graphs.
+%	Memorizing the definitions and properties of functions gets a lot easier with visual accompaniment.
+%	Indeed, remembering what the function ``looks like'' is a great way to train yourself to recognize various types of functions.
+%	Figure~\ref{fig:3x3_functions_miniplots} shows the graphs of some of the most important functions we'll use in this book.
+
+
 
 			\begin{figure}[htb]
 				\centering
@@ -277,7 +291,179 @@
 
 
 
-%		\vspace{2in}
+
+
+		\subsubsection{Constant function}
+		
+			The constant function $f(x) \eqdef c$ produces the same output $c$ for all inputs $x$.
+
+
+
+
+		\subsubsection{Linear function}
+		
+			The linear function $f(x) \eqdef mx$ describes an input-output relationship
+			where the output value $f(x)$ are \emph{proportional} to the input value $x$,
+			and the constant of proportionality is $m$.
+			Geometrically,
+			$m$ is the slope in the graph of $f(x)$.
+			Figure~\ref{fig:panel_function_graphs1}
+			show the graph of $f(x) \eqdef x$ which is the linear function with $m=1$
+			for which the outputs $f(x)$ is equal to the input $x$.
+			%
+			More generally,
+			we can define the line $f(x) \eqdef mx+b$,
+			where $m$ describes the slope of the line,
+			and $b$ describes the value of the function when $x=0$.
+			% The inverse to the line $f(x)=mx+b$ is $f^{-1}(x)=\frac{1}{m}(x-b)$, which is also a line.
+
+		%quadratic
+		%square root
+		%polynomial
+		%exp
+		%log
+
+
+		\subsubsection{Quadratic function}
+			
+			The quadratic function $f(x) \eqdef x^2$ calculates the square of the input $x$.
+			The name ``quadratic'' comes from the Latin \emph{quadratus} for square.
+			Geometrically,
+			$x^2$ is the area of a square with side length $x$.
+			See Figure~\ref{fig:panel_function_graphs1}~(b) for the graph.
+			%
+			The outputs the quadratic function are always nonnegative numbers
+			since $x^2 \geq 0$, for all real numbers $x$.
+			%	$f(x)=x^2$ is \emph{two-to-one}: 
+			%	it sends both $x$ and $-x$ to the same output value $x^2=(-x)^2$.
+
+
+
+		\subsubsection{Polynomial functions}
+		
+			We can combine the constant, linear, and quadratic functions
+			to obtain the polynomial function $f(x) \eqdef a_2x^2 + a_1x +a_0$,
+			where $a_2$, $a_1$, $a_0$ are arbitrary constants,
+			which are called the \emph{coefficients} of the polynomial.
+			This is called a second degree polynomial,
+			since the highest power of $x$ it contains is $x^2$.
+			%
+			The general equation for a polynomial function of degree $n$ is
+			\[
+				P_n(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n.
+			\]
+			% A polynomial of degree $n$ has  $n+1$ coefficients: $a_0,a_1,a_2,\ldots, a_n$.
+			Polynomials are a very useful family of functions.
+			%	We call $a_0$ the constant term.
+			%	$a_1$: the \emph{linear} coefficient, or \emph{first-order} coefficient
+			%	$a_2$: the \emph{quadratic} coefficient
+			%	$a_3$: the \emph{cubic} coefficient
+			%	$a_n$: the $n$\textsuperscript{th} order coefficient
+			%	$n$: the \emph{degree} of the polynomial.
+			%	The degree of $f(x)$ is the largest power of $x$ that appears in the polynomial.
+
+			% The roots of $f(x)$ are the values of $x$ for which $f(x)=0$.
+
+
+
+
+
+
+
+		\subsubsection{Exponential function}
+
+			The exponential function base $e=2.7182818\ldots$ is defined
+			as $f(x) \eqdef e^{x} = \exp(x)$.
+			The graph in Figure~\ref{fig:panel_function_graphs1}~(c) shows
+			the values of the exponential function on the interval $[-2,2]$.
+			%
+			The graph of the exponential function $f(x)=e^x$
+			passes through the following points:
+			$(-2,\frac{1}{e^2})$, 
+			$(-1,\frac{1}{e})$, 
+			$(0,1)$, 
+			$(1,e)$, 
+			and $(2,e^2)$.
+			%	
+			%	For larger inputs 
+			%	$(3,e^3)$, 
+			%	$(4,e^4)$, etc.
+			
+			% $f(a)f(b)=f(a+b)$ since $e^ae^b=e^{a+b}$
+
+			% The derivative (the slope of the graph) of the exponential function 
+			%    		is the exponential function: $f(x) = e^x  \; \; \Rightarrow \; \; f'(x)=e^x$
+			%	The function $e^x$ is the only function which is equal to its own derivative: $f(x)=f'(x)$.
+
+
+
+
+
+
+
+		\subsubsection{Absolute value function}
+		
+			The \emphindexdef{absolute value} function tells us the size of numbers
+			without paying attention to whether the number is positive or negative.
+			We compute the absolute value of the number $x$ by \emph{forgetting} the the sign of $x$.
+			Geometrically,
+			$|x|$ corresponds to its distance between $x$ and the origin of the number line.
+			%
+			We see the absolute values whenever we apply
+			the combination of squaring followed by square-root on some number,
+			$\sqrt{ x^2 }  = |x|$,
+			since squaring destroys the sign.
+
+
+
+
+		\subsubsection{Square root function}
+		
+			The square root function is denoted $f(x) \eqdef \sqrt{x}$.
+			The square root $\sqrt{x}$ is the inverse function of the square function $x^2$,
+			when $x \geq 0$.
+			% when the two functions are defined as $f : \mathbb{R}_+ \to \mathbb{R}_+$.
+			The symbol $\sqrt{c}$ refers to the \emph{positive} solution to the equation $x^2=c$.
+			Note that $-\sqrt{c}$ is also a solution of $x^2=c$.
+			%
+			Another notation for the square root function is $f(x) \eqdef x^{\frac{1}{2}}$,
+			where the fractional exponent $\frac{1}{2}$ makes sense
+			since if we square $x^{\frac{1}{2}}$,
+			we get back to $x$:
+			$\left(x^{\frac{1}{2}}\right)^2 = x^{\frac{2}{2}} = x^{1} = x$.
+			%
+			In addition to \emph{square} root,
+			there is also \emph{cube} root $f(x) = \sqrt[3]{x}  = x^{\frac{1}{3}}$,
+			which is the inverse function for the cubic function $f(x)=x^3$.
+			We have $\sqrt[3]{8}=2$ since $2\times2\times2=8$.
+
+
+
+
+
+
+
+		\subsubsection{Logarithmic function}
+		
+			The natural logarithm function is denoted
+			$f(x) \eqdef \ln(x) = \log_e(x)$.
+			The function $\ln(x)$ is the inverse function of the exponential $e^x$.
+
+
+			The graph of the function $\ln(x)$
+			passes through the following coordinates:
+			$(\frac{1}{e^2},-2)$, 
+			$(\frac{1}{e},-1)$, 
+			$(1,0)$, 
+			$(e, 1)$, 
+			$(e^2, 2)$, 
+			$(e^3, 3)$, 
+			$(e^4, 4)$, etc.
+
+
+% MAYBE
+%gaussian-like erf $e^{-x^2}$
+%sigmoid $\frac{1}{1-e^{-x}}$
 
 
 
@@ -335,23 +521,141 @@
 
 
 
-	\subsection{Trigonometry}
+
+
+
+	\subsection{Trigonometric functions}
 	
-		
+		Consider a circle with radius $r=1$
+		as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}.
+		% The \emphindexdef{unit circle} is a circle of radius one centred at the origin.
+		The unit circle consists of all points $(x,y)$ that satisfy the equation $x^2 + y^2 = 1$.
+		% and a point $P$ on that circle
+		A point $P$ on the unit circle has coordinates $(P_x,P_y)=(\cos\theta,\sin\theta)$,
+		where $\theta$ is the angle $P$ makes with the $x$-axis.
 
 		
+		%FIGURE  right-angle triangle with hypotenuse r, adj = rcosθ, opp = rsinθ
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.99\columnwidth]{figures/calculus/trigonometric_functions_as_point_or_as_triangle.pdf}%
+			\vspace{-2mm}
+			\caption{	% The unit circle corresponds to the equation $x^2+y^2=1$. 
+					The coordinates of the point $P$ are $P_x= \cos\theta$  and $P_y=\sin\theta$.}
+			\label{fig:trigonometric_functions_as_point_or_as_triangle}
+		\end{figure}
+
+		% RADIANS
+		In math,
+		we use \emph{radians} to measure angles.
+
+
+		\subsubsection{Sine function}
+
+			The graph of the sine function $f(\theta) \eqdef \sin(\theta)$
+			\emph{oscillates} up and down and crosses the $x$-axis multiple times,
+			as shown in Figure~\ref{fig:panel_function_graphs2}~(a).
+	
+			%	The graph of the function $\sin(\theta)$  passes through the following $(x,y)$ coordinates:
+			%	$(0,0)$, $(\frac{\pi}{6},\frac{1}{2})$, $(\frac{\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{\pi}{3},\frac{\sqrt{3}}{2})$, 
+			%	$(\frac{\pi}{2},1)$, $(\frac{2\pi}{3},\frac{\sqrt{3}}{2})$, $(\frac{3\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{5\pi}{6},\frac{1}{2})$, and $(\pi,0)$.
+			%	For $\theta$ between $\pi$ and $2\pi$,
+			%	the function's graph has the same shape it has for $\theta$ between $0$ and $\pi$, but with negative values.
+			%	
+			%		Let's start at $\theta=0$ and follow the graph of the function $\sin(x)$
+			%		as it goes up and down.
+			%		The graph starts from $(0,0)$ and smoothly increases until it reaches 
+			%		the maximum value at \mbox{$\theta=\frac{\pi}{2}$}. 
+			%		Afterward, the function comes back down to cross the $x$-axis at $x=\pi$.
+			%		After $\pi$, the function drops below the $x$-axis and reaches
+			%		its minimum value of $-1$ at $x=\frac{3\pi}{2}$.
+			%		It then travels up again to cross the $x$-axis at $x=2\pi$.
+			%		This $2\pi$-long cycle repeats after $x=2\pi$.
+			%		This is why we call the function \emph{periodic}---the shape of the graph repeats.
+			
+			%	    \item 	Domain: $\mathbb{R}$.
+			%	    		The function $f(x)=\sin(x)$ is defined for all input values.
+			%	    \item	Image: $\{ y \in \mathbb{R} \; | \;  -1 \leq y \leq 1 \}$.
+			%	    		The outputs of the sine function are always between $-1$ and $1$.
+			%	    \item	Roots: $\{\,\ldots, -3\pi, -2\pi,-\pi,0,\pi,2\pi,3\pi, \ldots\,\}$.\\
+			%	    		The function $\sin(x)$ has roots at all multiples of $\pi$.
+			%	    \item   	The function is periodic, with period $2\pi$: $\sin(x) = \sin(x+2\pi)$.
+			%	    \item   	The $\sin$ function is \emph{odd}: $\sin(x)=-\sin(-x)$
+			%	    \item   	Relation to $\cos$: $\sin^2 x + \cos^2 x = 1$
+			%	    \item   	Relation to $\csc$: $\csc(x) = \frac{1}{\sin x}$ ($\csc$ is read \emph{cosecant})
+			%	    \item   	The inverse function of $\sin(x)$ is denoted as $\sin^{-1}(x)$ or $\arcsin(x)$,
+			%	    		not  to be confused with $(\sin(x))^{-1}=\frac{1}{\sin(x)} = \csc(x)$.
+			%	    \item	The number $\sin(\theta)$ is the length-ratio of the
+			%	    		vertical side and the hypotenuse in a right-angle triangle with angle $\theta$ at the base.
+
+
+		\subsubsection{Cosine function}
+
+			The cosine function is the same as the sine function \emph{shifted} by $\frac{\pi}{2}$ to the left:
+			$\cos(\theta) = \sin(\theta+\frac{\pi}{2})$,
+			as shown in Figure~\ref{fig:panel_function_graphs2}~(b).
+
+			%	The graph of the function $y=\cos(x)$  passes through the following $(x,y)$ coordinates:
+			%	$(0,1)$, $(\frac{\pi}{6},\frac{\sqrt{3}}{2})$, $(\frac{\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{\pi}{3},\frac{1}{2})$, 
+			%	$(\frac{\pi}{2},0)$, $(\frac{2\pi}{3},-\frac{1}{2})$, 
+			%	$(\frac{3\pi}{4}, -\frac{\sqrt{2}}{2})$, $(\frac{5\pi}{6}, -\frac{\sqrt{3}}{2})$, and $(\pi,-1)$.
+			%		
+			%		The cos function starts at $\cos(0)=1$, then drops down to 
+			%		cross the $x$-axis at $x=\frac{\pi}{2}$.
+			%		Cos continues until it reaches its minimum value at $x=\pi$. 
+			%		The function then moves upward, crossing the $x$-axis again at 
+			%		$x=\frac{3\pi}{2}$, and reaching its maximum value again at $x=2\pi$.
+
+			%	    \item	Domain: $\mathbb{R}$
+			%	    \item	Image: $\{ y \in \mathbb{R} \; | \;  -1 \leq y \leq 1 \}$
+			%	    \item	Roots: $\{\, \ldots, \, -\frac{3\pi}{2}, \, -\frac{\pi}{2}, \frac{\pi}{2}, \frac{3\pi}{2},  \frac{5\pi}{2}, \, \ldots\,\}$
+			%	    \item	Relation to $\sin$: $\sin^2 x + \cos^2 x = 1$
+			%	    \item	Relation to $\sec$: $\sec(x) = \frac{1}{\cos x}$ ($\sec$ is read \emph{secant})
+			%	    \item	The inverse function of $\cos(x)$ is denoted $\cos^{-1}(x)$ or $\arccos(x)$.
+			%	    \item	The $\cos$ function is \emph{even}: $\cos(x) = \cos(-x)$
+			%    	    \item	The number $\cos(\theta)$ is the length-ratio of the
+			%    			horizontal side and the hypotenuse in a right-angle triangle with angle $\theta$ at the base
+
+
+
+		\subsubsection{Tangent function}
+
+			The tangent function is defined as the ratio of the sine and cosine functions:
+			$\tan(\theta) \eqdef \frac{ \sin(\theta) } { \cos(\theta) }$.
+			The graph of the function $f(x) = \tan(\theta)$ is shown in Figure~\ref{fig:panel_function_graphs2}~(c).
+
+			%    \item	Domain: $\{ x\in \mathbb{R} \;|\; x\neq \frac{(2n+1)\pi}{2} \textrm{ for any } n \in \mathbb{Z} \} $
+			%    \item	Image: $\mathbb{R}$
+			%    \item	The function $\tan$ is periodic with period $\pi$.
+			%    \item	The $\tan$ function ``blows up'' at values of $x$ where $\cos x=0$.
+			%    		These are called \emph{asymptotes} of the function
+			%		and their locations are $x=\ldots, \frac{-3\pi}{2},\frac{-\pi}{2},\frac{\pi}{2},\frac{3\pi}{2},\ldots$.
+			%		% The values of $\tan$ approaches $\infty$ from the left, and $-\infty$ from the right.
+			%    \item   	Value at $x=0$: $\tan(0)=\frac{0}{1}=0$, because $\sin(0)=0$.
+			%    \item   	Value at $x=\frac{\pi}{4}$: $\tan\left(\frac{\pi}{4} \right) 
+			%		       = \frac{ \sin(\frac{\pi}{4}) }{ \cos(\frac{\pi}{4}) }
+			%		       = \frac{ \frac{\sqrt{2}}{2}  }{ \frac{\sqrt{2}}{2}  }
+			%		       = 1$.
+			%    			    \item	The number $\tan(\theta)$ is the length-ratio of the
+			%    		vertical and the horizontal sides in a right-angle triangle with angle $\theta$.
+			%    \item	The inverse function of $\tan(x)$ is denoted $\tan^{-1}(x)$ or $\arctan(x)$.
+			%    \item 	The inverse tangent function is used to compute the angle at the base 
+			%    		in a right-angle triangle with horizontal side length~$\ell_h$ and vertical side length $\ell_v$: 
+			%		$\theta=\tan^{-1}\!\left(\frac{\ell_v}{\ell_h}\right)$.
+
+
+
 		\begin{figure}[htb]
 			\centering
 			\includegraphics[width=0.99\columnwidth]{figures/calculus/panel_function_graphs2.pdf}%
 			\vspace{-2mm}
-			\caption{	Graph of trigonometric functions $\sin\theta$, $\cos\theta$, and $\tan\theta$.}
+			\caption{	Graphs of the trigonometric functions $\sin(\theta)$, $\cos(\theta)$, and $\tan(\theta)$.}
 			\label{fig:panel_function_graphs2}
 		\end{figure}
 
 
-		%FIGURE  right-angle triangle with hypotenuse r, adj = rcosθ, opp = rsinθ
-		%define functions: sin, cos
-		%FIGURE  plot of cos and sin functions
-		%applications: vector
+		% APPLICATIONS
+		We can use the trigonometric functions $\sin(\theta)$, $\cos(\theta)$, and $\tan(\theta)$
+		to calculate the \emph{components} of vectors.
+		Sines and cosines are also describe waves and periodic motion in physics.
 
-%		\vspace{2in}
