@@ -54,7 +54,114 @@
 	one of the OGs of calculus.
 	
 
-	\subsection{Example: area of a circle}
+
+Let's look at another example.
+% an example where infinity comes up.
+
+
+\subsection{Example 2: Euler's number}
+\label{introduction:eulers_number}
+
+Suppose you take out a loan with 100\% nominal interest rate.
+This is a very bad loan that nobody would agree to the real world,
+but we'll use it for this example to make the math come out simpler.
+An interest of $100\%$ calculated yearly means at the end of one year,
+you'll owe $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
+
+However,
+most banks don't calculate the interest owed only once per year,
+but more often.
+If the bank calculates the interest twice per year,
+during the first six months you'll have accrued $\frac{100\%}{2} = 50\%$ of interest,
+so you'll owe them $(1+50\%) = (1+\frac{1}{2}) = 1.5$ times the initial amount.
+Then during the second six months,
+the amount owed will grow by an additional $(1+50\%) = (1+\frac{1}{2}) = 1.5$,
+so at the end of the year,
+you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
+
+If the bank computes the interest three times per year,
+the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
+If they compute the interest four times per year (quarterly),
+then you'll owe $(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})  = 2.441$.
+Note the amount owed after one year keeps changing,
+as the compounding is performed more frequently.
+In general,
+when the compounding is performed $n$ times per year,
+the amount owed at the end of the year will be
+\[
+	\underbrace{
+	\left(1 + \tfrac{1}{n} \right)
+	\left(1 + \tfrac{1}{n} \right)
+	\cdots
+	\left(1 + \tfrac{1}{n} \right)
+	}_{n \text{ times}}
+	= 
+	\left(1 + \tfrac{1}{n} \right)^{\!n}.
+\]
+
+\noindent
+With monthly compounding ($n=12$),
+the amount owed will be $(1 + \tfrac{1}{12})^{12} = 2.613$
+at the end of one year.
+With daily compounding,
+the amount would be $(1 + \tfrac{1}{365})^{365} = 2.715$.
+If computing the interest $n=1000$ times per year,
+the amount ill be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
+The amount owed keeps increasing,
+but it seems to ``stabilize'' around the value $2.71$.
+
+What happens if we perform the compounding even more frequently?
+Specifically,
+ 	we want to know what happens if the compound interest interest is calculated infinitely often.
+The infinitely-often calculation corresponds
+to computing the \emph{limit} of expression  $(1 + \frac{1}{n})^n$,
+as $n$ goes to infinity,
+which is written as follows using math notation:
+\[
+	\lim_{n\to \infty} \left( 1 + \tfrac{1}{n}\right)^{\!n}
+		\;\; = \;\; e
+		\;\;= \;\; 2.718281828\ldots.
+\]
+This limit expression \emph{converges} to the value $e = 2.71828\ldots$,
+which is known as \emph{Euler's number}.
+% The number $e$ describes the limit of the annual growth rate of a loan
+% with 
+If we borrow $\$1000$,
+we'll owe $\$1000e = \$2718.28$ at the end of one~year.
+
+The definition of the number $e$ as a limit
+is a fascinating new concept that goes beyond the ``regular'' math operations
+that we learn in high school math.
+We're not talking about any particular large number $n$
+when calculating the expression $(1 + \frac{1}{n})^n$,
+but the \emph{process} of plugging in large and larger $n$s.
+This is what the limit notation $\lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
+it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
+as $n$ goes to infinity.
+We'll learn more about limits in Section~\ref{sec:limits}.
+
+Euler's number $e$ can also be obtained from another limit expression:
+\[
+	e	=	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!}  + \cdots
+		= 	\lim_{n\to \infty} \sum_{k=0}^n \frac{1}{k!}
+		= 	2.718281828\ldots.
+\]
+This alternative expression
+tells us we can compute $e$ as the sum ($\sum$)
+with an infinite number of terms.
+Each term comes from a common ``pattern'' $\frac{1}{k!}$,
+where $k! = k\!\cdot\!(k-1) \cdots 3\!\cdot\!2\!\cdot\!1$
+is the factorial function.
+The notation $\sum_{k=0}^n$
+describes the summation starting at $k=0$ and going all the way to $k=n$.
+The limit $\lim_{n\to \infty}$ tells us the summation has infinitely many terms.
+This kind of infinite sum expression are called a \emph{series},
+and provides a powerful way to compute quantities by summing together a bunch of terms.
+We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
+
+
+
+	\subsection{Example: the area of a circle}
 
 		Suppose we want to prove that area of a circle of radius $r$
 		is described by the formula $A = \pi r^2$.
@@ -566,7 +673,7 @@ can lead us to computing quantities.
 			The formal definition of a function's derivative is expressed in terms
 			of the rise-over-run formula for an infinitely short run:
 			\[
-				f'(x) 
+				f^{\prime\!}(x) 
 					\; = \; \lim_{\textrm{run} \to 0} \frac{\text{rise}}{\text{run}} 
 					\; = \;  \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{x+\delta \; - \;  x}.
 			\]

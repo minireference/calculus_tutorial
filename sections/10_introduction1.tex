@@ -4,9 +4,9 @@
 \section{Introduction}
 
 	% STUDY OF FUNCTIONS + OPERATIONS ON FUNCTIONS
-	Calculus is the study of functions that change over time.
-	We use calculus concepts to describe
-	various quantities in physics, chemistry, biology, engineering, business,
+	Calculus studies the properties of functions.
+	We use calculus concepts
+	to describe various quantities in physics, chemistry, biology, engineering, business,
 	and other fields where quantitative math models are used.
 	If we know that some quantity of interest is described by the function $f(t)$ at time $t$,
 	then the techniques of calculus allow us to do all kinds of useful calculations
@@ -28,9 +28,9 @@
 	\label{introduction:download_example}
 	
 		Suppose you're downloading a $720$[MB] file from the internet to your computer.
-		At $t=0$ you click ``save as'' in your browser and the download starts.
+		At $t=0$ you click ``save as'' to start the download.
 		Consider the function $f(t)$
-		that describes the amount of disk space taken by the partially-downloaded file at time $t$.
+		that describes the amount of disk space taken by the partially-downloaded file.
 		At time $t$,
 		your browser reports the download progress as a percentage
 		that corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
@@ -38,26 +38,26 @@
 		\subsubsection{Download rate}
 		\label{introduction:download_rate}
 
-			The \emph{derivative function} $f^\prime(t)$,
+			The \emph{derivative function} $f^{\prime\!}(t)$,
 			pronounced ``\:\!\!$f$ prime,''
 			describes how the function $f(t)$ changes over time.
-			In our example $f^\prime(t)$ is the download speed.
-			If your downloading speed is $f'(t)=2$[MB/s],
+			In our example $f^{\prime\!}(t)$ is the download speed.
+			If your download speed is $f^{\prime\!}(t)=2$[MB/s],
 			then the file size $f(t)$ will increase by 2[MB] each second.
 			If you maintain this download speed,
 			the file size will grow at a constant rate:
 			$f(0)=0$[MB], $f(1)=2$[MB], $f(2)=4$[MB], $\ldots$, $f(100)=200$[MB],
-			and so on until $t=360$[s] when we expect the download to complete.
+			and so on until $t=360$[s] when we expect the download will be done.
 
-			Let's look at how your browser calculates the ``estimated time remaining''
+			Let's look at how to calculate the ``estimated time remaining''
 			for the download at time $t$.
 			To calculate the time until the download completes,
 			we divide the amount of data that remains to be downloaded
 			by the current download speed:
 			\[
-				\text{time remaining at } t = \frac{ 720 - f(t) }{ f^\prime(t) } \quad [\textrm{s}].
+				\text{time remaining at } t = \frac{ 720 - f(t) }{ f^{\prime\!}(t) } \quad [\textrm{s}].
 			\]
-			The bigger the derivative $f^\prime(t)$,
+			The bigger the derivative $f^{\prime\!}(t)$,
 			the faster the download will finish.
 			If your internet connection were 10 times faster,
 			the download would finish 10 times more quickly.
@@ -69,39 +69,39 @@
 			Let's now consider the download scenario
 			from the point of view of the modem that connects your computer to the internet.
 			Any data you download comes through the modem,
-			so the modem knows the download rate $f^\prime(t)$[MB/s]
+			so the modem knows the download rate $f^{\prime\!}(t)$[MB/s]
 			at all times during the download.
 
 			The modem is separate from your computer,
 			so it doesn't know the file size $f(t)$ as the download progresses.
 			Nevertheless,
 			the modem can infer the file size at time $t$
-			from the transmission rate $f^\prime(t)$.
-			Think about it---if the modem sees data flowing through at the rate of $f'(t)=2$[MB/s],
+			from the transmission rate $f^{\prime\!}(t)$.
+			Think about it---if the modem sees data flowing through at the rate of $f^{\prime\!}(t)=2$[MB/s],
 			then it knows that the data accumulated on your computer
 			is growing at the rate of $2$[MB] each second.
 			In calculus,
 			we describe the total file size accumulated until time $t=\tau$ (the Greek letter \emph{tau})
-			as the \emph{integral} of the download rate $f'(x)$ between $t=0$ and $t=\tau$:
+			as the \emph{integral} of the download rate $f^{\prime\!}(x)$ between $t=0$ and $t=\tau$:
 			\[
-				f(\tau) \; = \; \int_{t=0}^{t=\tau}  f'(t)\, dt.
+				f(\tau) \; = \; \int_{t=0}^{t=\tau}  f^{\prime\!}(t)\, dt.
 			\]
 			The symbol $\int$ is an elongated $S$ that stands for \emph{sum}.
 			Indeed,
-			the ``integral of $f^\prime(t)$ between $0$ and $\tau$''
-			is in some sense the sum of $f^\prime(t)$
+			the ``integral of $f^{\prime\!}(t)$ between $0$ and $\tau$''
+			is in some sense the sum of $f^{\prime\!}(t)$
 			during each time instant $dt$ between $t=0$ and $t=\tau$.
 			To calculate the total accumulated file size,
 			we split the time interval between $t=0$ and $t=\tau$
 			into many short time intervals $dt$ of length $1$[s].
 			During each second,
-			the file size grows by $f'(t)\,dt$,
-			where $f'(t)$ is the the download rate measured in [MB/s],
+			the file size grows by $f^{\prime\!}(t)\,dt$,
+			where $f^{\prime\!}(t)$ is the the download rate measured in [MB/s],
 			and $dt$ is $1$ [s].
-			Note the units check out,
-			the data downloaded during one second is $f'(t)dt$[MB].
+			Note the units check out:
+			the data downloaded during one second is $f^{\prime\!}(t)dt$[MB].
 			The file size on your computer at $t=\tau$
-			is the sum of these 1-second contributions $f'(t)\,dt$
+			is the sum of these 1-second contributions $f^{\prime\!}(t)\,dt$
 			as $t$ varies from $t=0$ to $t=\tau$.
 			% during each second from $t=0$ until $t=\tau$.
 			% The file size at time $t=\tau$ is equal to the sum of the data downloaded 
@@ -115,8 +115,8 @@
 	The situation described in the above example
 	shows that calculus concepts are not some theoretical constructs reserved for math specialists,
 	but something you encounter everyday.
-	The derivative $q'(t)$ describe the rate of change of the quantity $q(t)$.
-	The integral $\int_a^b q(t)\:dt$ measures the total accumulation of the quantity $q(t)$
+	The derivative $q^{\prime\!}(t)$ describe the rate of change of the quantity $q(t)$.
+	The integral $\int_a^b q(t)dt$ measures the total accumulation of the quantity $q(t)$
 	 during the time period from $t=a$ to $t=b$.
 	
 %	Derivatives and integrals are particularly important
@@ -130,8 +130,8 @@
 	\subsection{Infinity}
 	
 		The math symbol $\infty$ describes the concept of \emph{infinity}.
-		Infinity is the key building block for everything we do in calculus,
-		so it's important that you develop the right way to think about infinity.
+		Infinity is the key building block for calculus,
+		so it's important that you develop the right way to think about this concept.
 		% so I want you to have a good way to think about it.
 
 		\textbf{Infinity is not a number but a process}.
@@ -143,7 +143,7 @@
 		Geometrically,
 		you can think of the $+1$ operation as taking one step to the right on the number line
 		shown in Figure~\ref{fig:number_line_rationals_and_reals}
-		(page~\pageref{fig:number_line_rationals_and_reals}).
+		(see page~\pageref{fig:number_line_rationals_and_reals}).
 		In this context,
 		you can think of infinity $\infty$ as performing the $+1$ operation forever.
 		Infinity is greater than any natural number $n$.
@@ -155,126 +155,23 @@
 		Infinity is the main new concept in calculus.
 		Everything else we'll talk about (numbers, variables, expressions, algebra, equations, functions, etc.)
 		are standard topics from high school math,
-		which I assume you're familiar with.
+		which you're familiar with.
 		Indeed,
-		calculus can be described as the ``infinity upgrade''
-		to the high school math calculations you're familiar with
+		calculus can be described as the ``infinity upgrade'' to the high school math
 		that gives you a language for describing and solving a new class of problems.
 
-		Let's look at another example.
-		% an example where infinity comes up.
 
+	\subsection{Applications of calculus}
 
-	\subsection{Example 2: Euler's number}
-	\label{introduction:eulers_number}
-	
-		Suppose you take out a loan with 100\% nominal interest rate.
-		This is a very bad loan that nobody would agree to the real world,
-		but we'll use it for this example to make the math come out simpler.
-		An interest of $100\%$ calculated yearly means at the end of one year,
-		you'll owe $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
-
-		However,
-		most banks don't calculate the interest owed only once per year,
-		but more often.
-		If the bank calculates the interest twice per year,
-		during the first six months you'll have accrued $\frac{100\%}{2} = 50\%$ of interest,
-		so you'll owe them $(1+50\%) = (1+\frac{1}{2}) = 1.5$ times the initial amount.
-		Then during the second six months,
-		the amount owed will grow by an additional $(1+50\%) = (1+\frac{1}{2}) = 1.5$,
-		so at the end of the year,
-		you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
-
-		If the bank computes the interest three times per year,
-		the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
-		If they compute the interest four times per year (quarterly),
-		then you'll owe $(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})  = 2.441$.
-		Note the amount owed after one year keeps changing,
-		as the compounding is performed more frequently.
-		In general,
-		when the compounding is performed $n$ times per year,
-		the amount owed at the end of the year will be
-		\[
-			\underbrace{
-			\left(1 + \tfrac{1}{n} \right)
-			\left(1 + \tfrac{1}{n} \right)
-			\cdots
-			\left(1 + \tfrac{1}{n} \right)
-			}_{n \text{ times}}
-			= 
-			\left(1 + \tfrac{1}{n} \right)^{\!n}.
-		\]
-
-		\noindent
-		With monthly compounding ($n=12$),
-		the amount owed will be $(1 + \tfrac{1}{12})^{12} = 2.613$
-		at the end of one year.
-		With daily compounding,
-		the amount would be $(1 + \tfrac{1}{365})^{365} = 2.715$.
-		If computing the interest $n=1000$ times per year,
-		the amount ill be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
-		The amount owed keeps increasing,
-		but it seems to ``stabilize'' around the value $2.71$.
-
-		What happens if we perform the compounding even more frequently?
-		Specifically,
-	 	we want to know what happens if the compound interest interest is calculated infinitely often.
-		The infinitely-often calculation corresponds
-		to computing the \emph{limit} of expression  $(1 + \frac{1}{n})^n$,
-		as $n$ goes to infinity,
-		which is written as follows using math notation:
-		\[
-			\lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{\!n}
-				\;\; = \;\; e
-				\;\;= \;\; 2.718281828\ldots.
-		\]
-		This limit expression \emph{converges} to the value $e = 2.71828\ldots$,
-		which is known as \emph{Euler's number}.
-		% The number $e$ describes the limit of the annual growth rate of a loan
-		% with 
-		If we borrow $\$1000$,
-		we'll owe $\$1000e = \$2718.28$ at the end of one~year.
-		
-		The definition of the number $e$ as a limit
-		is a fascinating new concept that goes beyond the ``regular'' math operations
-		that we learn in high school math.
-		We're not talking about any particular large number $n$
-		when calculating the expression $(1 + \frac{1}{n})^n$,
-		but the \emph{process} of plugging in large and larger $n$s.
-		This is what the limit notation $\displaystyle \lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
-		it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
-		as $n$ goes to infinity.
-		We'll learn more about limits in Section~\ref{sec:limits}.
-
-		Euler's number $e$ can also be obtained from another limit expression:
-		\[
-			e	=	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!}  + \cdots
-				= 	\lim_{n\to \infty} \sum_{k=0}^n \frac{1}{k!}
-				= 	2.718281828\ldots.
-		\]
-		This alternative expression
-		tells us we can compute $e$ as the sum ($\sum$)
-		with an infinite number of terms.
-		Each term comes from a common ``pattern'' $\frac{1}{k!}$,
-		where $k! = k\!\cdot\!(k-1) \cdots 3\!\cdot\!2\!\cdot\!1$
-		is the factorial function.
-		The notation $\sum_{k=0}^n$
-		describes the summation starting at $k=0$ and going all the way to $k=n$.
-		The limit $\lim_{n\to \infty}$ tells us the summation has infinitely many terms.
-		This kind of infinite sum expression are called a \emph{series},
-		and provides a powerful way to compute quantities by summing together a bunch of terms.
-		We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
-
-
-	\subsection{Applications}
-
-		Many laws of nature are expressed in terms of derivatives and integrals.
-		It is therefore essential that you learn the language of calculus if you want
-		to understand physics, chemistry, biology, ecology, and other sciences.
-		Calculus is also heavily used in engineering, business, economics, 
-		any many other subjects based on quantitative analysis.
-		We also use calculus in probability, statistics, and machine learning.
-
+% REPEATS
+Many laws of nature are expressed in terms of derivatives and integrals.
+It is therefore essential that you learn the language of calculus if you want
+to understand physics, chemistry, biology, ecology, and other sciences.
+Calculus is also heavily used in engineering, business, economics, 
+any many other subjects based on quantitative analysis.
+% /REPEATS
+		Calculus operation also appear in probability, statistics, and machine learning.
+		%
 		In all this areas,
 		there are quantities described by functions,
 		and we use derivatives and integrals to do useful calculations.
@@ -283,9 +180,9 @@
 		solving differential equations,
 		computing probabilities involving continuous random variables,
 		etc.
-		
+		%
 		The goal of this tutorial is to show you the basics of derivatives and integrals,
-		so that you you can think more clearly about these types of problems.
+so you can think more clearly about these types of problems.
 		This is the power of math:
 		we learn techniques to analyze functions in general,
 		which means our technique apply to any domain.
@@ -294,43 +191,39 @@
 
 	\subsection{Doing calculus}
 
-		In the previous section I made a lot of promises about the usefulness of calculus,
-		as motivation talk
-		to motivate you to read the rest of this tutorial
-		so that you'll be interested in learning all the complicated-looking topics 
-		concepts, symbols, etc.
-		Befogging getting to this,
-		it's worth describing more specifically what doing calculus looks like.
+		%	In the previous section I made a lot of promises about the usefulness of calculus,
+		%	as motivation talk
+		%	to motivate you to read the rest of this tutorial
+		%	so that you'll be interested in learning all the complicated-looking topics 
+		%	concepts, symbols, etc.
+		%	Befogging getting to this,
+
+		Let's describe what doing calculus looks like.
 
 		\subsubsection{Symbolic calculations using pen and paper}
 
-			The key ideas of calculus and were developed by Isaac Newton
-			and Wilhelm Leibnitz in the 17th century
-			using mostly pen and paper calculations.
-			The pen-and-paper approach continues to be the best way to learn about
-			limits, derivatives, and integrals even to this day.
-
-			I encourage you to keep a notebook or use printer paper
-			to reproduce the calculations presented in this tutorial on your own.
-			The goal is for you to get used to manipulating functions, variables,
-			and get used to the new calculus notation.
+			The key ideas of calculus were developed by Newton and Leibniz in the 17\textsuperscript{th} century
+			using pen and paper calculations.
+			The pen-and-paper approach continues to be the best way to learn about derivatives and integrals even to this day.
+			%
+			I encourage you to keep a notebook
+			and reproduce the calculations presented in this tutorial on your own.
+			The goal is for you to get used to manipulating the new calculus concepts and notation.
 
 
 		\subsubsection{Symbolic calculations using SymPy}
 
-			We're no longer in the 17th century,
-			so we don't \emph{have} to use pen and paper for symbolic math calculations.
+			We're not in the \textsuperscript{th} century
+			and we're no longer limited to using pen-and-paper calculations.
 %	The Python module \tt{sympy} provides the functionality for doing symbolic math calculations
 %	similar to the calculation you could do using pen and paper.
 			Using a computer algebra system like SymPy
-			allows us to do symbolic math calculations very similar to
-			what we could do on paper.
-			SymPy is a Python module for 
-			When using SymPy,
-			we can define a symbols \tt{x}
+			allows us to do symbolic math calculations very much faster than we could do on paper.
+			To use SymPy,
+			we define a symbols \tt{x}
 			that works like the math variable $x$.
 			We can then write arbitrary math expressions that involve $\tt{x}$
-			and ask SymPy to \tt{factor}, \tt{expand}, or \tt{simplify} them,
+			and ask SymPy to \tt{factor}, \tt{expand}, and \tt{simplify} them,
 			which are the standard algebra operations we normally perform using pen and paper.
 
 			\begin{codeblock}[]
@@ -343,46 +236,46 @@
 			-(x - 2)*(x + 2)
 			>>> sp.expand( (x-4)*(x+2) )
 			x**2 - 2*x - 8
-			>>> sp.simplify(2*x + 3*x - sp.sin(x) + 42)
-			5*x - sin(x) + 42
+			>>> sp.simplify(5*x - 3*x + 42)
+			2*x + 42
 			\end{codeblock}
 
-			\noindent
-			You can also \tt{subs}itue particular values for $\tt{x}$
-			into the expression and evaluate the expression
-			to obtain an exact symbolic value
-			or a numerical approximation as a floating point number.
-
-			\begin{codeblock}[]
-			>>> expr.subs({x:1})
-			3
-			\end{codeblock}
-
-			\noindent
-			We can also also ask SymPy to \emph{solve} the equation \t{expr = 0},
-			which means to find the values of $x$ that satisfy the equation $4 - x^2 = 0$.
-
-			\begin{codeblock}[]
-			>>> sp.solve(expr, x)
-			[-2, 2]
-			\end{codeblock}
-			%	>>> sp.solve(x**2 + 2*x - 8, x)
-			%	[-4, 2]
-
-			\noindent
-			We'll use SymPy code examples to illustrate some concepts.
+			% NOTEBOOK ONLY
+			%	You can also \tt{subs}itue particular values for $\tt{x}$
+			%	into the expression and evaluate the expression
+			%	to obtain an exact symbolic value
+			%	or a numerical approximation as a floating point number.
+			%
+			%	\begin{codeblock}[]
+			%	>>> expr.subs({x:1})
+			%	3
+			%	\end{codeblock}
+			%
+			%	\noindent
+			%	We can also also ask SymPy to \emph{solve} the equation \t{expr = 0},
+			%	which means to find the values of $x$ that satisfy the equation $4 - x^2 = 0$.
+			%
+			%	\begin{codeblock}[]
+			%	>>> sp.solve(expr, x)
+			%	[-2, 2]
+			%	\end{codeblock}
+			%	%	>>> sp.solve(x**2 + 2*x - 8, x)
+			%	%	[-4, 2]
+			%
+			%	\noindent
+			%	We'll use SymPy code examples to illustrate some concepts.
 			
 
 		\subsubsection{Numerical computing using NumPy}
 		
 			Calculus also has an engineering lineage.
-			From the first mechanical calculators to modern CPUs and GPUs,
-			there has been many computational developments in industry too.
-			An engineer doesn't care about exact analytical results like knowing that
+			From the first mechanical calculators to modern GPUs,
+			there has been many computational developments in industry.
+			Engineers don't care about exact analytical results like knowing that
 			$\sqrt{2}$ (the length of the diagonal of a square with side length 1)
-			is an irrational number (requires infinitely many digits after the decimal to describe exactly).
-			For most engineering concerts,
-			if we can represent $\sqrt{2}$ approximately as  $1.4......15$
+			is an irrational number. % (requires infinitely many digits after the decimal to describe exactly).
+			For most engineering contexts,
+			if we can represent $\sqrt{2}$ approximately as  $1.4142135623730951$
 			then they're good.
 			In fact probably $1.4143521$ would be enough for most use cases.
 
@@ -391,23 +284,13 @@
 			Defining the specific data format for representing numbers (float32, float64, etc.)
 			allows computer engineers to build high-performance hardware for doing math calculations.
 
-			\begin{codeblock}[]
-			>>> import numpy as np
-			>>> np.array([1.0, 1.1, 1.2, 1.3, 1.4, 1.5])
-			array([1. , 1.1, 1.2, 1.3, 1.4, 1.5])
-			>>> np.linspace(1.0, 1.5, 6)
-			array([1. , 1.1, 1.2, 1.3, 1.4, 1.5])
-			\end{codeblock}
-
-
 			
 		\subsubsection{Scientific computing using SciPy}
 
-			The Python module SciPy is a toolbox of scientific computing helper functions
-			that greatly simplify our life.
+			The Python module SciPy is a toolbox of scientific computing helper functions.
 			For example,
-			computing integral of the function $h(x) = 4 - x^2$
-			between $x=0$ and $x=2$ requires only two lines of code:
+			computing the integral of the function $h(x) = 4 - x^2$
+			between $x=0$ and $x=2$ requires only a few lines of code:
 
 			\begin{codeblock}[]
 			>>> def h(x):
@@ -424,7 +307,7 @@
 
 			\noindent
 			The above code example shows the complete level of WIN
-			humankind has achieved over practical math calculations.
+			humankind has achieved for practical math calculations.
 			Calculus ideas started with Archimedes,
 			then levelled up by Newton and Leibniz,
 			and formalized as analysis (pure math) and numerical analysis (applied math).
@@ -475,11 +358,11 @@
 %
 %			\item	$\lim_{\delta \to 0}$: a limit expression in which the number $\delta$ tends to zero
 %
-%			\item	$f'(x)$: the derivative of the function $f(x)$.
-%				The derivative $f'(x)$ describes the rate of change of the function $f(x)$
+%			\item	$f^{\prime\!}(x)$: the derivative of the function $f(x)$.
+%				The derivative $f^{\prime\!}(x)$ describes the rate of change of the function $f(x)$
 %				and it is defined using the following formula:
 %				\[
-%					f'(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{\delta}\,.
+%					f^{\prime\!}(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{\delta}\,.
 %				\] 
 %				The derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
 %

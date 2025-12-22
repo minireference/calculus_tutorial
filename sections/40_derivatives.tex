@@ -3,25 +3,25 @@
 \section{Derivatives}
 \label{sec:derivatives}
 
-	The \emph{derivative} function, denoted $f'(x)$, $\frac{d}{dx}f(x)$, or $\frac{df}{dx}$,
+	The \emph{derivative} function, denoted $f^{\prime\!}(x)$, $\frac{d}{dx}f(x)$, or $\frac{df}{dx}$,
 	describes the \emph{rate of change} of the function $f(x)$.
 	For example,
-	the constant function $f(x)=c$ has derivative $f'(x)=0$ since the function $f(x)$ does not change at all.
+	the constant function $f(x)=c$ has derivative $f^{\prime\!}(x)=0$ since the function $f(x)$ does not change at all.
 	The derivative function describes the \emph{slope} of the graph of the function $f(x)$.
-	The derivative of a line $f(x)=mx+b$ is $f'(x)=m$,
+	The derivative of a line $f(x)=mx+b$ is $f^{\prime\!}(x)=m$,
 	since the slope of this line is equal to $m$
 	for all values of $x$.
 	%
 	In general,
 	the slope of a function is different at different values of~$x$,
-	so mathematicians invented a new notation $f'(x)$
+	so mathematicians invented a new notation $f^{\prime\!}(x)$
 	for describing ``the slope of the function $f$ at $x$.''
 
-	The derivative function $f'(x)$
+	The derivative function $f^{\prime\!}(x)$
 	is defined as the rate of change of the function $f$ at $x$,
 	and it is computed using the formula:
 	\[
-		f'(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}\,.
+		f^{\prime\!}(x) \eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}\,.
 	\]
 	In words,
 	this formula describes the general rise-over-run calculation for computing the slope of a line that connects
@@ -49,7 +49,7 @@
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=0.99\columnwidth]{figures/calculus/derivative_as_slope_small-0.pdf}
-		\caption{	The derivative of the function at $x=a$ is denoted $f'(a)$ and describes the slope function at that point.}
+		\caption{	The derivative of the function at $x=a$ is denoted $f^{\prime\!}(a)$ and describes the slope function at that point.}
 		%	\caption{	The diagram illustrates how to compute the derivative of the function $f(x)=\tfrac{1}{2}x^2$
 		%			at three different points on the graph of the function.
 		%			To calculate the derivative of $f(x)$ at $x=1$, 
@@ -67,29 +67,29 @@
 
 	%	Derivatives occur so often in math that people have devised many ways to denote them:
 	%	\[
-	%	    Df(x) =  f'(x) =  \frac{d}{dx}f(x) = \frac{df}{dx} = \frac{dy}{dx} = \nabla f.
+	%	    Df(x) =  f^{\prime\!}(x) =  \frac{d}{dx}f(x) = \frac{df}{dx} = \frac{dy}{dx} = \nabla f.
 	%	\]
 	%	Don't be fooled by this multitude of notations---all of them refer to the same concept.
 
 	% TODO: mention the derivative is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
-	The derivative function $f'(x)$ is a property of the function $f(x)$.
+	The derivative function $f^{\prime\!}(x)$ is a property of the function $f(x)$.
 	Indeed, this is where the name \emph{derivative} comes from:
-	$f'(x)$ is not an independent function---it is \emph{derived} from the original function $f(x)$.
+	$f^{\prime\!}(x)$ is not an independent function---it is \emph{derived} from the original function $f(x)$.
 
 	The \emph{derivative operation}, 
 	denoted $\frac{d}{dx}[\tt{<f>}]$,		% ALT. derivative operator $\frac{d}{dx}$
-	takes as input a function $f(x)$ and produces as output the derivative function $f'(x)$.
+	takes as input a function $f(x)$ and produces as output the derivative function $f^{\prime\!}(x)$.
 	% which is a function of the form $f': \mathbb{R} \to \mathbb{R}$.
 	% For each input $x_0$ the derivative function tells you the slope of $f(x)$ when $x=x_0$.
 	Applying the derivative operation to a function
 	is also called ``taking the derivative'' of a function.
 	%
 	For example, 
-	the derivative of the function $f(x)=\tfrac{1}{2}x^2$ is the function $f'(x)=x$.
+	the derivative of the function $f(x)=\tfrac{1}{2}x^2$ is the function $f^{\prime\!}(x)=x$.
 	We can describe this relationship as $(\tfrac{1}{2}x^2)^{\prime} = x$
 	or as $\tfrac{d}{dx}(\tfrac{1}{2}x^2)=x$.
 	Look at Figure~\ref{fig:derivative_as_slope} and use the graph to prove to yourself
-	that the slope of $f(x)=\tfrac{1}{2}x^2$ is described by $f'(x)=x$ everywhere on the graph.
+	that the slope of $f(x)=\tfrac{1}{2}x^2$ is described by $f^{\prime\!}(x)=x$ everywhere on the graph.
 
 
 	\subsection{Numerical derivative calculations}
@@ -120,34 +120,34 @@
 		\end{codeblock}
 		
 		\noindent
-		We obtain the approximation $f'(1) = 1.000000082740371$,
-		which is not perfect but pretty close to the true value $f'(1) = 1$.
+		We obtain the approximation $f^{\prime\!}(1) = 1.000000082740371$,
+		which is not perfect but pretty close to the true value $f^{\prime\!}(1) = 1$.
 		For most practical applications,
 		this approximation is good enough.
 
 		%	The mathematical definition
-		%	$f'(x) \eqdef \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
+		%	$f^{\prime\!}(x) \eqdef \lim_{ \delta \rightarrow 0}\frac{f(x+\delta)-f(x)}{\delta}$
 		%	allows us to find a closed form expression for the derivative function
 		%	that applies for all values of $x$.
 		%	Finding the exact formula for the derivative requires a little bit more work upfront
 		%	(to simplify an expressions that involves Greek symbols),
-		%	but once you find the exact formula for the derivative $f'(x)$,
+		%	but once you find the exact formula for the derivative $f^{\prime\!}(x)$,
 		%	you can compute the slope of $f(x)$ at the point $x=c$
 		%	by simply evaluating the the derivative function at that point:
-		%	$f'(c) = \{ \textrm{the slope of} \ f(x) \ \textrm{at} \ x=c\}$.
+		%	$f^{\prime\!}(c) = \{ \textrm{the slope of} \ f(x) \ \textrm{at} \ x=c\}$.
 
 
 
 	\subsection{Derivative formulas}
 	
 		You don't need to apply the complicated derivative formula
-		$f'(x) \eqdef \lim_{\delta \to 0}\frac{f(x+\delta)-f(x)}{\delta}$
+		$f^{\prime\!}(x) \eqdef \lim_{\delta \to 0}\frac{f(x+\delta)-f(x)}{\delta}$
 		every time you need to find the derivative of a function.
 		For each function $f(x)$,
 		it's enough to use the complicated formula once
-		and record the formula you obtain for $f'(x)$,
+		and record the formula you obtain for $f^{\prime\!}(x)$,
 		then you can reuse that formula
-		whenever you need to compute $f'(x)$ in a later calculation.
+		whenever you need to compute $f^{\prime\!}(x)$ in a later calculation.
 
 		Table~\ref{table:derivatives} shows the derivative formulas
 		for a number of commonly used functions.
@@ -159,15 +159,15 @@
 		\begin{shadebox}%
 		\vspace{-2mm}
 		\begin{align*}
-		f(x)			&  \ -\textrm{derivative}\to  \   		f'(x)		\\
-		%	F(x)			&  \ - \textrm{ derivative } \to  \quad		F'(x)		\\
+		f(x)			&  \ -\textrm{derivative}\to  \   		f^{\prime\!}(x)		\\
+		%	F(x)			&  \ - \textrm{ derivative } \to  \quad		F^{\prime\!}(x)		\\
 		%	\int f(x)\;dx   	& \ \ \leftarrow \textrm{ integral } -   \quad 	f(x)     	\\
 		a			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				0		\\
-%		\alpha f(x)+ \beta g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\alpha f'(x)+ \beta g'(x)	\\
+%		\alpha f(x)+ \beta g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\alpha f^{\prime\!}(x)+ \beta g^{\prime\!}(x)	\\
 		x			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				1		\\
 		mx+b			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad				m		\\
-		%	af(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				af'(x)		\\
-		%	f(x)+g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				f'(x)+g'(x)	\\
+		%	af(x)			&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				af^{\prime\!}(x)		\\
+		%	f(x)+g(x)		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				f^{\prime\!}(x)+g^{\prime\!}(x)	\\
 		x^n, \text{ for } n\neq 0	&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 				nx^{n-1}	\\
 		\tfrac{1}{x} =  x^{-1}		&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tfrac{-1}{x^2} = -x^{-2}		\\
 		\sqrt{x} = x^{\frac{1}{2}}	&\qquad  \raisebox{.52ex}{\rule{0.9em}{.4pt}}\;\tfrac{d}{dx} \rightarrow \qquad 	\tfrac{1}{2\sqrt{x}} = \tfrac{1}{2}x^{-\frac{1}{2}}	\\
@@ -211,14 +211,14 @@
 			\noindent
 			In other words,
 			the derivative of a linear combination of functions $\alpha f(x) + \beta g(x)$ is equal 
-			to the same linear combination of the derivatives $\alpha f'(x) + \beta g'(x)$.
+			to the same linear combination of the derivatives $\alpha f^{\prime\!}(x) + \beta g^{\prime\!}(x)$.
 
 
 		\paragraph{Product rule}
 
 			The derivative of a product of two functions is obtained as follows:
 			\[
-				\left[ f(x)g(x) \right]^\prime 	= f^\prime(x)g(x)  + f(x)g^\prime(x).
+				\left[ f(x)g(x) \right]^\prime 	= f^{\prime\!}(x)g(x)  + f(x)g^{\prime\!}(x).
 			\]
 			In each term,
 			the derivative of one of the functions
@@ -229,7 +229,7 @@
 
 			The \emphindexdef{quotient rule} tells us how to obtain the derivative of a fraction of two functions:
 			\[
-				\left[ \frac{f(x)}{g(x)}\right]^\prime=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}.
+				\left[ \frac{f(x)}{g(x)}\right]^\prime=\frac{f^{\prime\!}(x)g(x)-f(x)g^{\prime\!}(x)}{g(x)^2}.
 			\]
 			
 			
@@ -237,28 +237,28 @@
 			If you encounter a situation that includes an inner function and an outer function,
 			like $f(g(x))$, you can obtain the derivative by a two-step process:
 			\[
-				\left[ f(g(x)) \right]^\prime = f^\prime(g(x))g^\prime(x).
+				\left[ f(g(x)) \right]^\prime = f^{\prime\!}(g(x))g^{\prime\!}(x).
 			\]
 			
 			\noindent
 			In the first step, leave the inner function $g(x)$ alone,
 			and focus on taking the derivative of the outer function $f(x)$.
-			This step gives us $f'(g(x))$,
-			the value of $f'$ evaluated at $g(x)$.
+			This step gives us $f^{\prime\!}(g(x))$,
+			the value of $f^{\prime}$ evaluated at $g(x)$.
 			As the second step,
-			we multiply the resulting expression by the derivative of the \emph{inner} function $g'(x)$.
+			we multiply the resulting expression by the derivative of the \emph{inner} function $g^{\prime\!}(x)$.
 
 
 	\subsection{Higher derivatives}
 
-		The second derivative of $f(x)$ is denoted $f^{\prime\prime}(x)$ or $\frac{d^2f}{dx^2}$.
+		The second derivative of $f(x)$ is denoted $f^{\prime\prime\!}(x)$ or $\frac{d^2f}{dx^2}$.
 		It is obtained by applying the derivative operation to $f(x)$ \emph{twice}:
 		$\frac{d}{dx}\big[ \frac{d}{dx}[\tt{<f>}] \big]$.
-		The second derivative $f^{\prime\prime}(x)$ encodes the information about the \emph{curvature} of $f(x)$.
+		The second derivative $f^{\prime\prime\!}(x)$ encodes the information about the \emph{curvature} of $f(x)$.
 		Positive curvature means the function opens upward,
 		and looks like the bottom of a valley.
 		The function $f(x)=\frac{1}{2}x^2$ shown in Figure~\ref{fig:derivative_as_slope_small-0} 
-		has derivative $f'(x)=x$ and second derivative $f''(x)=1$,
+		has derivative $f^{\prime\!}(x)=x$ and second derivative $f^{\prime\prime\!}(x)=1$,
 		which means it has positive curvature.
 		Negative curvature means the function opens downward,
 		and looks like a mountain peak.
@@ -274,11 +274,11 @@
 
 		\paragraph{Example 1}
 			To calculate the derivative of $f(x) = e^{x^2}$,
-			we use the chain rule: $f'(x) = e^{x^2}[x^2]'  = e^{x^2}2x$.
+			we use the chain rule: $f^{\prime\!}(x) = e^{x^2}[x^2]'  = e^{x^2}2x$.
 
 		\paragraph{Example 2}
 			To find the derivative of $f(x) = \sin(x)e^{x^2}$,
-			we use the product rule and the chain rule: $f'(x) = \cos(x)e^{x^2} + \sin(x)2xe^{x^2}$.
+			we use the product rule and the chain rule: $f^{\prime\!}(x) = \cos(x)e^{x^2} + \sin(x)2xe^{x^2}$.
 	
 		\paragraph{Example 3}
 			The derivative of $\sin(x^2)$ requires using the chain rule:
@@ -334,7 +334,7 @@
 		%
 		%	\noindent
 		%	In words,
-		%	this calculation tells us the derivative of the function $f(x) = mx +b$ is the constant function $f'(x)=m$.
+		%	this calculation tells us the derivative of the function $f(x) = mx +b$ is the constant function $f^{\prime\!}(x)=m$.
 		%	The expression \tt{diff(f,x)} tells SymPy to compute the derivative of the expression \tt{f} with respect to the variable \tt{x}.
 		%
 		%	Let's now define the function $f(x) = \frac{c}{2}x^2$ and compute its derivative.
@@ -346,7 +346,7 @@
 		%	\end{codeblock}
 		%
 		%	\noindent
-		%	The derivative function is $f'(x)=cx$.
+		%	The derivative function is $f^{\prime\!}(x)=cx$.
 		%	See the plot in Figure~\ref{fig:derivative_as_slope_small-0} for an illustration of the case when $c=1$.
 		%
 		%	Here is another example of a complicated-looking function $f$,
@@ -379,16 +379,16 @@
 			the same slope as the function at that point.
 			The tangent line to the function $f(x)$ at the point $x=x_0$ is described by the equation
 			\[
-			   T_1(x) =  f(x_0) \; + \;  f'(x_0)(x-x_0).
+			   T_1(x) =  f(x_0) \; + \;  f^{\prime\!}(x_0)(x-x_0).
 			\]
 			For example,
 			the tangent line to $f(x)=\frac{1}{2}x^2$ at $x_0=1$
-			is $T_1(x) = f(1)  +  f'(1)(x-1) = \frac{1}{2} + 1\cdot(x-1) = x - \frac{1}{2}$.
+			is $T_1(x) = f(1)  +  f^{\prime\!}(1)(x-1) = \frac{1}{2} + 1\cdot(x-1) = x - \frac{1}{2}$.
 			Look back at Figure~\ref{fig:derivative_as_slope_small-0} for an illustration.
 			
 			The tangent line $T_1$ is also called a \emph{first order approximation} to the function $f$,
 			since it has the same value and the same derivative as the function $f$,
-			$T_1(1)= f(1)$ and $T'_1(1) = f'(1)$.
+			$T_1(1)= f(1)$ and $T'_1(1) = f^{\prime\!}(1)$.
 			% The tangent line $T_1(x)$ has the same value and slope as the function $f(x)$ at $x=1$.
 			In Section~\ref{series:taylor_series},
 			we'll learn how to build order-$n$ approximations $T_n(x)$.
@@ -404,8 +404,8 @@
 		look the graph of the function $f(x)=\frac{1}{2}x^2$
 		in Figure~\ref{fig:derivative_as_slope_small-0}.
 		The minimum of the function occurs when $x=0$
-		where the slope of the function is zero $f'(0)=0$.
-		Note also the second derivative of is positive at that point $f''(0) > 0$,
+		where the slope of the function is zero $f^{\prime\!}(0)=0$.
+		Note also the second derivative of is positive at that point $f'^{\prime\!}(0) > 0$,
 		which tells us the function locally looks like bottom of a bowl.
 
 		\subsubsection{Analytical optimization}
@@ -415,16 +415,16 @@
 			Optimum values (maximum or minimum)
 			occurs at a critical point of the function.
 			We identify a critical point $x^*$ that corresponds to minimum
-			if the second derivative is positive at that point $f''(x^*)>0$ (positive curvature).
+			if the second derivative is positive at that point $f'^{\prime\!}(x^*)>0$ (positive curvature).
 			In contrast,
-			a critical point $x^*$ here $f''(x^*)< 0$ (negative curvature) is a maximum.			
+			a critical point $x^*$ here $f'^{\prime\!}(x^*)< 0$ (negative curvature) is a maximum.			
 			This observation suggests a general procedure for finding minima and maxima:
 
 			\begin{enumerate}
-				\item[(1)]	Solve $f'(x)=0$ to find the critical points $x^*$.
+				\item[(1)]	Solve $f^{\prime\!}(x)=0$ to find the critical points $x^*$.
 				\item[(2)]	For each critical point $x^*$,
 						check to see if it is a maximum or a minimum
-						by evaluating $f''(x^*)$:
+						by evaluating $f'^{\prime\!}(x^*)$:
 						% \emph{second derivative test}
 						\begin{itemize}
 							\item	If $f^{\prime\prime}(x^*) < 0$ then $x^*$ is a max (mountain top)
@@ -432,7 +432,7 @@
 							%	\item	If $f^{\prime\prime}(x^*) = 0$
 							%		then the second derivative test fails.
 							%		We must revert back to checking nearby values
-							%		$f'(x^*-\delta)$ and $f'(x^*+\delta)$
+							%		$f^{\prime\!}(x^*-\delta)$ and $f^{\prime\!}(x^*+\delta)$
 							%		to determine if $x^*$ is a max, a min, or a saddle point.
 						\end{itemize}
 			\end{enumerate}
@@ -441,11 +441,11 @@
 			We can also perform the check in step (2) visually
 			by looking at the graph of the function,
 			or by evaluating the slope of the function near the critical point.
-			If $f'(x^*-0.1)$ is negative and $f'(x^*+0.1)$ is positive,
+			If $f^{\prime\!}(x^*-0.01)$ is negative and $f^{\prime\!}(x^*+0.01)$ is positive,
 			the point $x^*$ is a minimum (as in Figure~\ref{fig:derivative_as_slope_small-0}).
-			If $f'(x^*-0.1)$ is positive and $f'(x^*+0.1)$ is negative,
+			If $f^{\prime\!}(x^*-0.01)$ is positive and $f^{\prime\!}(x^*+0.01)$ is negative,
 			then the point $x^*$ is a maximum.
-			If $f'(x^*-0.1)$ and $f'(x^*+0.1)$ have the same sign,
+			If $f^{\prime\!}(x^*-0.01)$ and $f^{\prime\!}(x^*+0.01)$ have the same sign,
 			the value $x^*$ is a  \emph{saddle point},
 			which is neither a minimum or a maximum.
 
@@ -453,17 +453,17 @@
 				
 				Let's use the two-step procedure
 				to find the minimum and the maximum of the function $f(x)=x^3-2x^2+x$.
-				First we calculate its derivative $f'(x) = 3x^2 - 4x + 1 = 3(x - 1)(x - \frac{1}{3})$.
+				First we calculate its derivative $f^{\prime\!}(x) = 3x^2 - 4x + 1 = 3(x - 1)(x - \frac{1}{3})$.
 				Next we find the critical points
-				by solving the equation $f'(x)=0$,
+				by solving the equation $f^{\prime\!}(x)=0$,
 				which gives us two critical points $x^*_1 = \frac{1}{3}$ and $x^*_2 = 1$.
-				The second derivative of the function is $f''(x) = 6x -4$.
+				The second derivative of the function is $f'^{\prime\!}(x) = 6x -4$.
 				For the critical value $x^*_1 = \frac{1}{3}$,
-				we find $f''(\frac{1}{3}) = -2 < 0$,
+				we find $f'^{\prime\!}(\frac{1}{3}) = -2 < 0$,
 				% $f(x)$ looks like the peak of a mountain near $x=\frac{1}{3}$.
 				which tells us $x^*_1$ is a maximum.
 				For $x^*_2 = 1$,
-				we find $f''(1) = 2$,
+				we find $f'^{\prime\!}(1) = 2$,
 				% looks like the bottom of a valley at $x=1$.
 				which tells us $x^*_1$ is a minimum.
 
