@@ -3,34 +3,43 @@
 \section{Math prerequisites}
 
 	Before we dig into the new calculus topics,
-	let's do a quick review of some key concepts from high school math.
-	These are the basic building blocks I assume you've seen before,
-	or at least heard about them.
+	let's do a quick review of key concepts from high school math.
+	These are the basic building blocks I assume you've seen before.
 
 	\subsection{Notation for sets and intervals}
 	
 		Sets are collections of math objects.
 		Many math ideas are expressed in the language of sets,
-		so it's worth knowing the notation conventions for sets.
+		so it's worth knowing the notation for sets.
 	
 		\begin{itemize}
 
 			% \item $S,T$: the usual variable names for sets
 
-			\item $\{ \textrm{  definition  } \}$: the curly brackets surround the definition of a set,
-				and the expression inside the curly brackets describes what the set contains.
+			\item $\{ \textrm{  definition  } \}$:
+				we use curly brackets to define sets.
+				The definition in the curly brackets is either a math description of the set's contents,
+				or a list of elements in the set.
 				% The math symbol ``$|$'' is shorthand for the phrase ``such that'' and it is often used in definitions.
 
-			\item $s \in S$: this statement is read ``$s$ is an element of $S$'' or ``$s$ is in $S$''
+			\item $\mathbb{N}$: the set of natural numbers $\mathbb{N}\eqdef \{0,1,2,3,4,5,\ldots\}$
+	
+			\item $\mathbb{N}_+$: the positive natural numbers $\mathbb{N}_+ \eqdef \{1,2,3,4,5,\ldots\}$.
+
+			\item	$\mathbb{R}$: the set of real numbers.
+	
+			\item	$\mathbb{R}_+$: the set of nonnegative real numbers.
+
+			\item $x \in S$: this statement is read ``$x$ is an element of $S$.'' % or ``$x$ is in $S$.''
+				We use this notation to indicate the ``type'' of the variable~$x$.
+				For example,
+				writing ``$x \in \mathbb{R}$'' tells us $x$ is a real number.
 	
 			% seems not needed; put back if needed somewhere in the book (grep for it)
 			%	\item $\emptyset$: the \emph{empty set} is a set that contains no elements.
 			%		Mathematicians adopted the symbol $\emptyset$ because the notation $\{ \, \}$ is confusing.
 	
 	
-			\item $\mathbb{N}$: the set of natural numbers $\mathbb{N}\eqdef \{0,1,2,3,4,5,\ldots\}$
-	
-			\item $\mathbb{N}_+$: the set of positive natural numbers $\mathbb{N}_+ \eqdef \{1,2,3,4,5,\ldots\}$.
 
 			%	\item $\mathbb{Z}$: the set of integers $\mathbb{Z}\eqdef\{\ldots,-2,-1,0,1,2,3,\ldots\}$
 			%
@@ -39,13 +48,11 @@
 			%		The set $\mathbb{Q}$ consists of all numbers that can be expressed as \emph{fractions} of the form $\frac{m}{n}$,
 			%		where $m$ is an integer, $n$ is a natural number, and $n \neq 0$.
 	
-			\item	$\mathbb{R}$: the set of real numbers.
-	
-			\item	$\mathbb{R}_+$: the set of nonnegative real numbers.
 	
 		\end{itemize}
 	
 		\noindent
+		We use the math symbol $\eqdef$ to define new concepts.
 		We often use the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$ to define sets.
 		Inside the curly brackets,
 		we first describe the general kind of mathematical objects we are talking about,
@@ -54,7 +61,7 @@
 		For example,
 		the nonnegative real numbers $\mathbb{R}_+$
 		are defined as ``all real numbers $x$ such that $x \geq 0$,''
-		which can be expressed more compactly as 
+		which is expressed more compactly as 
 		$\mathbb{R}_+ \eqdef \{ x \in \mathbb{R} \; | \; x \geq 0 \}$
 		using the set-builder notation.
 
@@ -68,7 +75,7 @@
 		
 			\begin{figure}[htb]
 				\centering
-				\includegraphics[width=0.9\columnwidth]{figures/calculus/number_line_rationals_and_reals.pdf}
+				\includegraphics[width=0.98\columnwidth]{figures/calculus/number_line_rationals_and_reals.pdf}
 				\vspace{-2mm}
 				\caption{The real numbers $\mathbb{R}$ cover the entire number line.}
 				\label{fig:number_line_rationals_and_reals}
@@ -78,21 +85,29 @@
 			The set of real numbers includes
 			the natural numbers $\{0,1,2,3,\ldots\}$,
 			the integers $\{\ldots, -3,-2,-1,0,1,2,3,\ldots\}$,
-			the rational numbers like $\frac{5}{3}$, $\frac{22}{7}$, $1.5$,
+			rational numbers like $-\frac{3}{2}$, $0.5$, and $\frac{9}{2}$,
 			as well as irrational numbers like $\sqrt{2}$, $e$, and $\pi$.
-			This means any number you run into when solving a math problem
+			All the number you will run into when doing math
 			can be visualized as a point on the number line.
-	
+
 			The number line extends forever to the left and to the right.
 			We use the notation $-\infty$ (negative infinity)
 			to describe larger and larger negative numbers,
 			and $+\infty$ to describe larger and larger positive numbers.
-			Remember what we said in the introduction,
-			$\infty$ is not a number but a process.
-			% ALT. not a destination you can get to 
+			
+Note that infinity is not a number but a \emph{process}.
+We denote $+\infty$ the prices of adding $+1$ forever.
+More on this in Section~\ref{sec:limits}.
+
+Remember what we said in the introduction,
+$\infty$ is not a number but a process.
+			% ALT. not a destination you can get to
+			
+TODO: INSERT INFINITY FROM INTRO
+ 
 
 
-
+% NEEDED?  USED?
 		\subsubsection{Number intervals}
 	
 			The number line can be used to represent subsets of the real numbers,
@@ -109,7 +124,7 @@
 						is a subset of $\mathbb{R}$.} % the real numbers.
 				\label{fig:interval_2closed_to_4closed}
 			\end{figure}
-	
+% /NEEDED?  USED?
 	
 	
 	\subsection{Functions}
@@ -122,7 +137,11 @@
 		squares it and divides the result by two to produce the output.
 		For example,
 		$f(3) = \frac{1}{2} 3^2 = \frac{9}{2} = 4.5$.
-		Here is the Python code that defines the function \tt{f}
+		
+		In this tutorial,
+		we'll often show code examples that mirror the math calculations.
+		For example, 
+		here is the Python code that defines the function \tt{f}
 		and evaluates it for the input $x=3$.
 
 		\begin{codeblock}[def-fx-one-half-x-squared]
@@ -133,29 +152,31 @@
 		\end{codeblock}
 		
 		\noindent
-		Not the Python syntax for evaluating the function \tt{f} on the input \tt{3}
+		Note the Python syntax for evaluating the function \tt{f} on the input \tt{3}
 		is the same as the math syntax $f(3)$.
 	
 		\subsubsection{Function graphs}
 
-			The \emph{graph} of a function is a line that passes through all input-output pairs of a function.
+			The \emph{graph} of a function is a curve that passes through all input-output pairs of a function.
 			%	Imagine we take out a piece of paper and draw a coordinate system
 			%	with a horizontal axis and a vertical axis.
 			%	The horizontal axis describes the different input values $x$,
 			%	while the vertical axis describes the output values $f(x)$.
-			Each input-output pair of the function $f$ corresponds to the point $(x,f(x))$ in a coordinate system.
+			Each input-output pair corresponds to a point $(x,f(x))$ in a Cartesian coordinate system.
 			We obtain the graph of the function by varying the input coordinate $x$ and plotting all the points $(x, f(x))$,
-			as illustrated in Figure~\ref{fig:graph_of_f_nonnegative}.
+			as illustrated in Figure~\ref{fig:graph_of_function_f_eq_halfx2}.
 			%
-			The graph of the function $f$ allows us to see at a glance the behaviour of the function for all possible inputs,
-			and forms an essential visualization tool.
-			Calculus calculations can be understood geometrically as operations based on the graph of the function.
+			The graph of the function $f$ allows us to see at a glance the behaviour of the function for many inputs.
+			Function graphs are an essential visualization tool for calculus calculations.
 
-			We can use the Python modules \tt{numpy} and \tt{seaborn} to plot the graph of any function.
-			For example,
-			consider the function $f(x) \eqdef \frac{1}{2}x^2$ that we defined earlier.
-			We start by importing the module \tt{numpy} under the alias \tt{np},
-			and evaluating the function for all inputs $x$ in the interval $[-3,3]$.
+			Let's see how we can use the Python modules \tt{numpy} and \tt{seaborn}
+			to plot the graph of the function $f(x) \eqdef \frac{1}{2}x^2$ that we defined in the previous code block.
+			We start by importing the module \tt{numpy} under the alias \tt{np}.
+			Next,
+			we use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs}
+			that contains 1000 input $x$-values that range between $x=-3$ and $x=3$.
+			We then evaluate the function for all inputs \tt{xs}
+			and store the outputs of the function in an array called \tt{fxs}.
 
 			\begin{codeblock}[plot-fx-minus3-to-plus3]
 			>>> import numpy as np
@@ -163,14 +184,13 @@
 			>>> fxs = f(xs)
 			\end{codeblock}
 
-			We used the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs},
-			which contains 1000 input values that range from $x=-3$ until $x=3$.
-			Next we applied the function $f$ to the array of inputs \tt{xs}
-			and stored the outputs of the function in the array \tt{fxs}.
-			% which contains all the output values of the function for the input values \tt{xs}.
+			\noindent
 			At this point,
-			the arrays \tt{xs} and \tt{fxs} contain $1000$ input-output pairs of the form $(x, f(x))$,
-			which is exactly what we need to plot the graph of the function.
+			the arrays \tt{xs} and \tt{fxs} contain $1000$ input-output coordinate pairs of the form $(x, f(x))$.
+			To generate the graph of $f(x)$,
+			we just need to trace a line passing through these coordinate pairs.
+			We can do this by importing the \tt{seaborn} module (alias \tt{sns})
+			and calling the function \tt{sns.lineplot}.
 	
 			\begin{codeblock}[plot-fx-minus3-to-plus3]
 			>>> import seaborn as sns
@@ -178,22 +198,20 @@
 			See Figure ¡\ref{fig:graph_of_function_f_eq_halfx2}¡ for the output.
 			\end{codeblock}
 	
-			\noindent
-			We imported the \tt{seaborn} module under the alias \tt{sns}
-			then called the function \tt{sns.lineplot} to produce the graph of $f(x)$
-			shown in Figure~\ref{fig:graph_of_function_f_eq_halfx2}.
-
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.9\columnwidth]{figures/calculus/graph_of_function_f_eq_halfx2.pdf}%
 				\vspace{-3mm}
 				\caption{	Graph of the function $f(x)=\frac{1}{2}x^2$ from $x=-3$ until $x=+3$.
-						The graph of the function $f$
-						consists of all the coordinate pairs $(x,f(x))$
-						over some interval of $x$ values.	}
+						The graph of the function $f$ passes through the coordinates pairs $(x,f(x))$
+						for all $x$-values in the interval $[-3,3]$.}
 				\label{fig:graph_of_function_f_eq_halfx2}
 			\end{figure}
-	
+
+			\noindent
+			We can use this combination of \tt{np.linspace}, function evaluation, and \tt{sns.lineplot}
+			whenever we need to plot the graph of any function.
+			% The function \tt{plot\_func(f, xlim=[-3,3])} produces the same output.
 	
 	
 		\subsubsection{Inverse functions}
@@ -224,14 +242,14 @@
 			the inverse of the function $f(x) = \frac{1}{2}x^2$
 			is the function $f^{-1}(x) = \sqrt{2x}$.
 			Earlier we computed $f(3) = 4.5$.
-			If we apply the inverse function to $4.5$,
-			we get $f^{-1}(4.5) = \sqrt{2 \cdot 4.5} = \sqrt{9} = 3$.
+			If we apply the inverse function $f^{-1}(x) = \sqrt{2x}$ to $4.5$,
+			we get back to the number $3$ that we started from
+			$f^{-1}(4.5) = \sqrt{2 \cdot 4.5} = \sqrt{9} = 3$.
 
-	
 			\begin{codeblock}[fun-inv-fun-combo-log]
-			>>> from math import exp, log
-			>>> log(exp(5))
-			5.0
+			>>> from math import sqrt
+			>>> sqrt(2*4.5)
+			3.0
 			\end{codeblock}
 	
 
@@ -242,7 +260,8 @@
 			We use the notation $f \colon A \to B$
 			to denote a function from the input set $A$ to the output set $B$.
 			The set of allowed inputs is called the \emph{domain} of the function,
-			while the set of possible outputs is called the \emph{image} or \emph{range} of the function.
+			while the set of possible outputs is called the \emph{image} % or \emph{range}
+			of the function.
 			For example,
 			the domain of the function $f(x)= \frac{1}{2}x^2$
 			is $\mathbb{R}$ (any real number)
@@ -285,7 +304,7 @@
 				\centering
 				\includegraphics[width=0.99\columnwidth]{figures/calculus/panel_function_graphs1.pdf}%
 				\vspace{-2mm}
-				\caption{	Graph of six math functions you should know about.}
+				\caption{	Graph of six math functions that you should know about.}
 				\label{fig:panel_function_graphs1}
 			\end{figure}
 
@@ -472,47 +491,47 @@
 		Later in this tutorial,
 		we'll study functions with discrete inputs,
 		$a_k : \mathbb{N} \to \mathbb{R}$,
-		which are called sequences.
-		We often express sequences by writing explicitly the first possible value
-		$[a_0, a_1, a_2, a_3, \ldots]$,
+		which are called \emph{sequences}.
+		We often express sequences by writing explicitly the first few values
+		the sequence $[a_0, a_1, a_2, a_3, \ldots]$,
 		which correspond to evaluating $a_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
 
 
 
-	\subsection{Geometry}
+	\subsection{Geometry of rectangles and triangles}
 	
-		We'll now briefly review some geometry formulas.
+		% We'll now briefly review some geometry formulas.
 		
-		\subsubsection{Circle}
-		
-			The area enclosed by a circle of radius $r$ is given by $A = \pi r^2$,
-			where $\pi = 3.14159\ldots$.
-			A circle of radius $r=1$ has area $\pi$.
-			The circumference of a circle of radius $r$ is $C = 2 \pi r$.
-			A circle of radius $r=1$ has circumference $2\pi$.
+
+%		\subsubsection{Circle}
+%		
+%			The area enclosed by a circle of radius $r$ is given by $A = \pi r^2$,
+%			where $\pi = 3.14159\ldots$.
+%			A circle of radius $r=1$ has area $\pi$.
+%			The circumference of a circle of radius $r$ is $C = 2 \pi r$.
+%			A circle of radius $r=1$ has circumference $2\pi$.
 
 		
-		\subsubsection{Rectangle}
+		%\subsubsection{Rectangle}
 
-			The area of a rectangle of base $b$ and height $h$ is $A = bh$.
+		The area of a rectangle of base $b$ and height $h$ is $A = bh$,
+		as illustrated in Figure~\ref{fig:geometry_areas_circle_rect_triangle}~(a).
+		% \subsubsection{Triangle}
+		The area of a triangle
+		is equal to $\frac{1}{2}$ times the length of its base $b$ times its height $h$:
+		$A = \tfrac{1}{2} b h$,
+		as shown in Figure~\ref{fig:geometry_areas_circle_rect_triangle}~(b).
+		% Note that $h_a$ is the height of the triangle \emph{relative to} the side $a$.
 
-
-		\subsubsection{Triangle}
-
-			The area of a triangle
-			is equal to $\frac{1}{2}$ times the length of its base $b$ times its height $h$
-			$A = \tfrac{1}{2} b h$.
-			% Note that $h_a$ is the height of the triangle \emph{relative to} the side $a$.
-
-		\noindent
-		The three area formulas are illustrated in Figure~\ref{fig:geometry_areas_circle_rect_triangle}.
+		% \noindent
+		% The three area formulas are illustrated in Figure~\ref{fig:geometry_areas_circle_rect_triangle}.
 
 		\begin{figure}[htb]
 			\centering
-			\includegraphics[width=0.99\columnwidth]{figures/calculus/geometry_areas_circle_rect_triangle.pdf}
+			\includegraphics[width=0.8\columnwidth]{figures/calculus/geometry_areas_circle_rect_triangle.pdf}
 			% hexagon-octagon-dodecagon.png}
-			\vspace*{-6mm}
-			\caption{	Area formulas for a circle, a rectangle, and a triangle.}
+			\vspace*{-5mm}
+			\caption{	Formulas for calculating the area of a rectangle and a triangle.}
 			\label{fig:geometry_areas_circle_rect_triangle}
 		\end{figure}
 

@@ -44,7 +44,7 @@
 		\noindent			
 		Three dimensional surface plots are very good for visualizing multivariable functions,
 		but they can be difficult to draw by hand.
-		Another approach for representing the functoin $f(x,y)$
+		Another approach for representing the function $f(x,y)$
 		is to use a two-dimensional plot that shows the ``view from above'' of the surface $f(x,y)$.
 		We can trace \emph{level curves} in the surface,
 		to produce a ``topographic map'' of the surface
@@ -117,16 +117,26 @@
 		``uphill'' direction at the surface of graph of $f(x,y)$ at the point $(x,y)$.
 		The gradient vector is always perpendicular to the \emph{level curve} at that point.
 
+	\medskip
+	\noindent
+	The other half of multivariable calculus involves
+	applying the integration operation to multivariable functions.
 
 	\subsection{Partial integration}
 	
-		We can perform integration with respect to one of the input variables:
+		We can integrate with respect to one of the input variables
+		to produce a function that depends only on the other input variable:
 		\[
-			f(y) = \int_{x \in \mathbb{R}} \!\! f(x,y) \, dx
+			f(y) = \int_{x=-\infty}^{x=\infty} \! f(x,y) \, dx
 			\quad\text{and}\quad
-			f(x) = \int_{y \in \mathbb{R}} \!\! f(x,y) \, dy.
+			f(x) = \int_{y=-\infty}^{y=\infty} \! f(x,y) \, dy.
 		\]
-		The result of this partial integration is a function of the variable that we didn't integrate.
+		The functions $f(y)$ and $f(x)$ are called the \emph{partial integrals}
+		or \emph{marginals} of the function $f(x,y)$.
+		For example,
+		the partial integrals of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
+		are obtained by computing the areas of ``slices'' throughout he function $f(x,y)$,
+		as illustrate in Figure~\ref{fig:multivar_combined_slices_through_paraboloid}.
 
 		\begin{figure}[htb]
 			\centering
@@ -138,21 +148,24 @@
 
 
 	\subsection{Double integrals}
-	
+
 		The multivariable generalization of the integral $\int_{x \in I} f(x) \, dx$
 		that computes the ``total'' amount of $f(x)$ on some interval $I=[a,b]$
 		is the multivariable integral of the form:
 		\[
 			\int \! \int_{(x,y) \in R} f(x,y) \, dxdy,
 		\]
-		where $R$ is called the \emph{region of integration} and corresponds to some subset of the cartesian plane $\mathbb{R} \times \mathbb{R}$.
-		The idea behind multivariable integrals is the same as for single variable integrals---to compute the total amount of some function for some range of input values.
-		For single-variable integrals,
-		we split the region into thing rectangular strips of width $dx$.
-		For double integrals we split the two-dimensional region of integration into small squares of area $dxdy$,
+		where $R$ is called the \emph{region of integration}
+		and corresponds to some subset of the cartesian plane $\mathbb{R} \times \mathbb{R}$.
+		The idea behind multivariable integrals is the same as for single variable integrals---to
+		compute the total amount of some function for some range of input values.
+		For single-variable functions,
+		we integrate by splitting the region into thing rectangular strips of width $dx$.
+		For double integrals,
+		we split the two-dimensional region of integration into small squares of area $dxdy$,
 		and compute the total volume of a many vertical columns whose base area is $dxdy$
 		and whose height is given by the function $f(x,y)$.
-		
+
 		TODO: insert graphic of 3D integral split into vertical columns
 		
 		TODO: explain "sweep along x then sweep along y" idea + hint at change-of-variables techniques
