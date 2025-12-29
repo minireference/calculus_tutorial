@@ -1,0 +1,37 @@
+\documentclass[
+	convert={density=600,outext=.png,convertexe={magick}},
+	tikz,crop=true,border=0pt]{standalone}
+\usepackage{noBSfigureStyles}
+
+\begin{document}
+\begin{tikzpicture}
+
+	% === variables
+	\def				\startnum	{-5};	% lowest number on number line
+	\def				\endnum	{5};	% highest number on number line
+			
+	\newcommand{\numlinetwoway}[2]{
+		\draw   [line width=0.07cm, black, arrows={Latex[width=0.2cm, length=0.2cm, fill=black]-Latex[width=0.2cm, length=0.2cm, fill=black]}]	(#1-1,0) -- (#2+1,0);
+%	    \draw   [arrow-twoway]     (#1-1,0) -- (#2+1,0);
+		\foreach \x in {#1,...,#2}
+			\draw (\x,0.15cm)--(\x,-0.15cm) node [anchor=north, below=3pt] {$\x$};
+	}
+	\begin{scope}[scale=1]
+		\numlinetwoway{\startnum}{\endnum};
+		\path
+			(-5.8,0) node[] {} node[anchor=south,above=3pt] {$-\infty$}
+			(-1.5,0) node[emphasis-node] {} node[anchor=south,above=3pt] {$\!\!-\frac{3}{2}$}
+			(0.5,0) node[emphasis-node] {} node[anchor=south,above=3pt] {$\frac{1}{2}$}
+%			(0.3333333,0) node[emphasis-node] {} node[anchor=south,above=3pt] {$\frac{1}{3}$}
+%			(0.25,0) node[emphasis-node] {} node[anchor=south,above=3pt] {$\frac{1}{4}$}
+			({sqrt(2)}, 0) node[emphasis-node] {} node[anchor=south,above=3pt] {\small $\sqrt{2}$}
+			(e, 0) node[emphasis-node] {} node[anchor=south,above=3pt] {$e$}
+			(pi, 0) node[emphasis-node] {} node[anchor=south,above=3pt] {$\pi$}
+			(4.5,0) node[emphasis-node] {} node[anchor=south,above=3pt] {$\frac{9}{2}$}
+			(5.8,0) node[] {} node[anchor=south,above=3pt] {$\infty$}
+		;
+	\end{scope}
+	
+	%\showsize;
+\end{tikzpicture}
+\end{document}

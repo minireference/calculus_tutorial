@@ -1,0 +1,345 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01] % TODO:  which version of TeX or LaTeX is required at least to run package
+\ProvidesPackage{../styles/noBSfigureStyles}[2020/10/07 Custom Package]
+
+% ================================================
+% =====             PACKAGES               =======
+% ================================================
+
+\RequirePackage{tikz}
+\RequirePackage{amsmath}
+\RequirePackage{mathpazo}
+\RequirePackage{mathabx}
+\RequirePackage{xfrac}
+\RequirePackage{xstring}
+
+% ================================================
+% =====            TIKZ LIBRARIES          =======
+% ================================================
+
+\usetikzlibrary{
+	angles,
+	arrows.meta,
+	backgrounds,
+	calc,
+	datavisualization,
+	datavisualization.formats.functions,
+	decorations.pathreplacing,
+	decorations.markings,
+	fit,	
+	intersections,
+	positioning,
+	quotes,
+	shadings,
+	shadows,
+	shapes
+}
+				
+% ================================================
+% =====               COLOURS              =======
+% ================================================
+
+% define colours within this funciton:
+\newcommand{\colourmode}[1]{%
+	\IfEqCase{#1}{%
+		{colour}{
+			\definecolor	{primary-light}		{HTML}	{efefed}	% light grey
+			\definecolor	{primary-dark}		{HTML}	{000000}	% black
+			\definecolor	{primary-accent}	{HTML}	{008852}	% green
+			\definecolor	{secondary-accent}	{HTML}	{daa200}	% yellow
+			\definecolor	{tertiary-accent}		{HTML}	{ec6224}	% orange
+			\definecolor	{quaternary-accent}	{HTML}	{b764c0}	% purple
+			\definecolor	{quinary-accent}	{HTML}	{009CB8}	% blue / cyan
+		}%
+		{greyscale}{
+			\definecolor	{primary-light}		{HTML}	{efefed}	% light grey == {gray}{0.930}
+			\definecolor	{primary-dark}		{HTML}	{000000}	% black
+			\definecolor	{primary-accent}	{gray}	{0.2}		% almost black
+			\definecolor	{secondary-accent}	{gray}	{0.3}		%
+			\definecolor	{tertiary-accent}		{gray}	{0.7}		%
+			\definecolor	{quaternary-accent}	{gray}	{0.4}		%
+			\definecolor	{quinary-accent}	{gray}	{0.6}		%
+		}%
+	}[\PackageError{colourmode}{Undefined option to tree: #1}{}]%
+}%
+
+% choose whether to print in colour or greyscale here:
+\colourmode{colour}
+
+% ================================================
+% =====           CUSTOM FUNCTIONS         =======
+% ================================================
+
+% === help function - shows the bounding box and dimensions (in cm) of figure at current position
+\newcommand{\showsize}{%
+	\draw[red, opacity=0.6] (current bounding box.south west) grid (current bounding box.north east);
+	\draw[blue] (current bounding box.south west) rectangle (current bounding box.north east);
+		\path let
+			\p1 = (current bounding box.north east),
+			\p2 = (current bounding box.south west),
+			\n1 = {scalar(\x1-\x2)*0.035146},
+			\n2 = {scalar(\y1-\y2)*0.035146}
+			in node[anchor=south] at (current bounding box.north)
+				{w: \pgfmathprintnumber{\n1} h: \pgfmathprintnumber{\n2}}
+}
+
+% === use path. Allows you to use path previously given a name
+% source: https://tex.stackexchange.com/questions/26382/calling-a-previously-named-path-in-tikz
+\tikzset{
+  use path for main/.code={%
+    \tikz@addmode{%
+      \expandafter\pgfsyssoftpath@setcurrentpath\csname tikz@intersect@path@name@#1\endcsname
+    }%
+  },
+  use path for actions/.code={%
+    \expandafter\def\expandafter\tikz@preactions\expandafter{\tikz@preactions\expandafter\let\expandafter\tikz@actions@path\csname tikz@intersect@path@name@#1\endcsname}%
+  },
+  use path/.style={%
+    use path for main=#1,
+    use path for actions=#1,
+  }
+}
+
+% ================================================
+% =====            TIKZ STYLES            =======
+% ================================================
+
+\tikzset{
+	% global default styles
+	every picture/.style={
+		line width		=	0.025cm,
+		draw			=	primary-dark,
+		fill			=	primary-light,
+		font			=	\normalsize},
+	% small black circular nodes (dots that emphasize important coordinates)	
+	emphasis-node/.style={
+		circle,
+		fill			=	primary-dark,
+		minimum width	=	0.1cm,
+		inner sep		=	0pt},
+	% green circle, larger than emphasis-node	
+	super-emphasis-node/.style={
+		circle,
+		fill			=	primary-accent,
+		minimum width	=	0.22cm,
+		inner sep		=	0pt},
+	% green circle, larger than emphasis-node, outline instead of fill
+	super-emphasis-node-open/.style={
+		circle, draw, primary-accent,
+		fill			=	primary-light,
+		minimum width	=	0.22cm,
+		inner sep		=	0pt},	
+	% bright/bold lines
+	emphasis-line/.style={
+		draw 			=	#1,
+		line width		=	0.06cm},
+	emphasis-line/.default	=	primary-accent,
+	% even bolder lines	than emphasis-line
+	super-emphasis-line/.style={
+		draw 			=	#1,
+		line width		=	0.11cm},
+	super-emphasis-line/.default	=	primary-accent,
+	% lines that stand out less than regular lines (i.e. dashed)
+	soft-line/.style ={
+		densely dashed,
+		color			=	primary-dark!90,
+		line width 		=	0.020cm },
+	% lines more subtle than soft-line (i.e. densely dashed)
+	super-soft-line/.style={
+		densely dotted,
+		color			=	primary-dark!80,		
+		line width		=	0.015cm	},
+	% a line thinner than default line
+	thin-line/.style={
+		line width		=	0.015cm },
+	% a line that's both thin and slightly lighter
+	thin-light-line/.style={
+		line width		=	0.015cm,
+		color			=	primary-dark!80 },
+	% fill colour for areas of emphasis (i.e. coloured shapes)
+	emphasis-fill/.style={
+		fill			=	#1,
+		fill opacity	=	0.7},
+	emphasis-fill/.default	=	primary-accent,	
+	% text that should stand outmore
+	emphasis-text/.style={
+		text			=	primary-accent},
+	% node style: for nodes with text, rectangle background	
+	emphasis-label/.style={
+		rectangle,
+		fill			=	#1,
+		fill opacity	=	0.7,
+		inner sep		=	0.04cm,
+		rounded corners	=	0.02cm
+	},
+	% node style: for nodes with text. White background allows better
+		% clarity when placed above lines/shapes/details
+	whitebackground-label/.style={
+		fill			=	white,
+		inner sep		=	0.04cm
+	},
+	emphasis-label/.default=	primary-accent,
+	% lines with arrow on one end
+	arrow-oneway/.style={
+		arrows				=	{-Latex[width=0.2cm, length=0.2cm, fill=#1]}},
+	arrow-oneway/.default	=	primary-dark,
+	% lines with arrow on opposite end (backwards)
+	arrow-oneway-bw/.style={
+		arrows				=	{Latex[width=0.2cm, length=0.2cm, fill=#1]}-},
+	arrow-oneway-bw/.default	=	primary-dark,
+	% axes in 2D and 3D plots
+	arrow-axis/.style={
+		arrows				=	{-Latex[width=0.2cm, length=0.2cm, fill=#1]}},
+	arrow-axis/.default	=	primary-dark,
+	% axes in 2D and 3D plots - when we want arrows to extend both directions
+	arrow-axis-twoway/.style={
+		arrows				=	{Latex[width=0.2cm, length=0.2cm, fill=#1]}-{Latex[width=0.2cm, length=0.2cm, fill=#1]}},
+	arrow-axis-twoway/.default	=	primary-dark,
+	% lines with arrow on both ends
+	arrow-twoway/.style={
+		arrows				=	{Latex[width=0.2cm, length=0.2cm, fill=#1]}-{Latex[width=0.2cm, length=0.2cm, fill=#1]}},	
+	arrow-twoway/.default	=	primary-dark,	
+	% angle style - areas denoting/emphasizing angles
+	emphasis-angle/.style ={
+		draw				=	primary-dark!50!black,
+		angle radius		=	0.45cm},
+	% angle indicated with a curved arrow
+	arrow-angle/.style ={
+		->,
+		draw				=	primary-dark!50!black,
+		angle radius		=	1.3cm,
+		angle eccentricity	=	0.8},
+	% for when font should be smaller
+	small-font/.style={
+		font				=	\scriptsize
+	},
+	% very slight shadow
+	z-depth-2/.style={
+		drop shadow			=	{shadow xshift=-5mm,shadow yshift=-5mm,black},
+	},
+	% style for pins
+	every pin/.style={pin edge={line width = 0.025cm}},
+	% shading for 3D objects (used only for sphere in calculus chapter)
+	% these were gradients previously, but have been replaced with flat colours
+	% because gradients don't print well
+	sideshading/.style={
+		left color 			=	primary-accent!50!white,
+		right color			=	primary-accent!50!white,
+		% middle color		=	primary-accent!50!white,
+		shading				=	axis,
+		opacity=1},
+	topshading/.style={
+		top color			=	primary-accent!30!white,
+		bottom color		=	primary-accent!30!white,
+		% middle color		=	primary-accent!30!white,
+		shading				=	axis,
+		opacity=1}
+}
+
+
+% ================================================
+% ===== DATA VISUALIZATION LIBRARY STYLES: =======
+% ================================================
+
+% styles for plotting with datavisualization library
+\pgfdvdeclarestylesheet{plotting colour scheme}{
+1/.style={primary-accent},
+2/.style={secondary-accent},
+3/.style={tertiary-accent},
+4/.style={quaternary-accent},
+5/.style={quinary-accent},
+default style/.style={primary-dark}
+}
+
+% the following puts the axis nodes (0,1,2..) behind the data/function lines.
+\tikzdatavisualizationset{
+  ticks node layer/.style=on background layer
+}
+% to put labels in front of a specific plot, add the following code to any \datavisualization [**here**]
+% ticks node layer/.style=,
+
+% school-plot
+% this style is based on 'school book axes'
+% which tend to keep x and y units uniform and
+% and which puts a thicker line through origin.
+% x and y axes are auto labelled
+\tikzdatavisualizationset {
+school-plot/.style={
+		school book axes={unit=#1},
+		all axes={padding=0cm, grid, grid={minor steps between steps=3}},
+		x axis = {label={[node style={anchor=south east, yshift=0.2cm, inner sep = 0.005cm}]{$x$}}},%visualize axis={style=-Latex} adds a second arrow
+		y axis = {label={[node style={anchor=north west, xshift=0.2cm, inner sep = 0.005cm}]{$y$}}},
+		every minor grid/.style = {style={primary-dark!05}},	
+		every major grid/.style = {style={primary-dark!40, thin}},
+		every major ticks/.style = {tick length=0},
+		every visualizer/.style = {line width=0.045cm},
+		every axis/.style={style=primary-dark},
+		every ticks/.style={node style={
+				fill=white,
+				font=\scriptsize,
+				inner sep=0.05cm,
+				outer sep=0.05cm,
+				rounded corners=0.02cm,
+				}},
+		style sheet=plotting colour scheme},
+	school-plot/.default=1
+}
+% exatly the same as 'school-plot' above,
+% except y-axis node numbers will appear on right hand side of axis
+\tikzdatavisualizationset {
+school-plot-yright/.style={
+		school-plot=#1,
+		y axis = {ticks={major={options at = 0 as [no tick text]}, node style={anchor=west}},
+			label={[node style={anchor=north east, xshift=-0.2cm, inner sep = 0.005cm}]{$y$}}},
+		x axis = {ticks={major={also at = (#1*0.15) as [] $0$}}}
+	},
+	school-plot-yright/.default=1
+}
+
+% no axis tick labels, no grid:
+\tikzdatavisualizationset {
+school-plot-clean/.style={
+	school book axes,
+	every visualizer/.style = {line width=0.045cm},
+	x axis = {label={[node style={anchor=south east, yshift=0.2cm, inner sep = 0.005cm}]{$x$}}},
+	y axis = {ticks={major={options at = 0 as [no tick text]}, node style={anchor=west}},
+		label={[node style={anchor=north west, xshift=0.2cm, inner sep = 0.005cm}]{$y$}}},
+	all axes={ticks={tick typesetter/.code=}},
+	every major ticks/.style = {tick length=0},
+	style sheet=plotting colour scheme
+}
+}
+
+
+% no axis tick labels, no grid, small font:
+\tikzdatavisualizationset {
+school-plot-clean-smallfont/.style={
+	school book axes,
+	every visualizer/.style = {line width=0.045cm},
+	x axis = {label={[node style={anchor=south east, yshift=0.2cm, inner sep = 0.005cm, small-font}]{$x$}}},
+	y axis = {ticks={major={options at = 0 as [no tick text]}, node style={anchor=west}},
+		label={[node style={anchor=north west, xshift=0.2cm, inner sep = 0.005cm, small-font}]{$y$}}},
+	all axes={ticks={tick typesetter/.code=}},
+	every major ticks/.style = {tick length=0},
+	style sheet=plotting colour scheme
+}
+}
+
+
+% No longer using science-plot style anywhere.
+% The following chunk of code can probably be removed.
+% Keep in case we have a plot that doesn't include (0,0):
+% science-plot
+% this style is based on 'scientific axes'
+% which allow x and y units to vary flexibly,
+% and which does not put a thicker line through origin.
+%\tikzdatavisualizationset {
+%	science-plot/.style={
+%		scientific axes,
+%		all axes={grid,
+%			grid={minor steps between steps}},
+%		every minor grid/.style = {style={primary-dark!05}},	
+%		every major grid/.style = {style={primary-dark!40, thin}},
+%		every visualizer/.style = {line width=0.045cm},
+%		style sheet=plotting colour scheme}
+%}
+\endinput
