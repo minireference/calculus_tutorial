@@ -363,51 +363,57 @@ can lead us to computing quantities.
 		when its input variable tends to infinity.
 		Does $f(x)$ approach a finite number,
 		or does it keep growing to $\infty$?
-		For example,
-		consider the limit of the function $f(x)=\tfrac{1}{x}$ as $x$ goes to infinity:
-		\[
-			\lim_{x \to \infty} f(x)
-				= 	\lim_{x \to \infty} \tfrac{1}{x}
-				= 	0.
-		\]
-		The function $\tfrac{1}{x}$ never \emph{actually} reaches zero,
-		so it would be wrong to write $f(x)=0$ for any $x \in \mathbb{R}$.
-		However,
-		the expression $\frac{1}{x}$ gets closer and closer to $0$ as $x$ goes to infinity.
-		Limits are useful because they allow us describe this tendency as $\displaystyle \lim_{x\to \infty} f(x)=0$.
-		% even though $f(x)\neq 0$ for any number $x$.
 
 		The function $f(x)$ is said to \emph{converge} to $L$
 		if the function approaches the value $L$ for large values of $x$:
 		\[
 			\lim_{x \to \infty} f(x)  =  L.
 		\]
-		We say ``The limit of $f(x)$ as $x$ goes to infinity is the number $L$.''
+		We say ``the limit of $f(x)$ as $x$ goes to infinity is $L$.''
 		See Figure~\ref{fig:limit-at-infinity-graph} for an illustration.
 		% ALT.
 		%	The limit equation $\displaystyle \lim_{x \to \infty} f(x) = L$
 		%	states that the  ``limit at infinity'' of the function $f(x)$ is equal to the number $L$.
 
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[width=0.63212\columnwidth]{figures/calculus/limit-at-infinity-graph.png}
-%	\vspace{-3mm}
-%	\caption{	A function $f(x)$ that oscillates up and down initially,
-%			but  it ``settles down'' close to the value $L$ for large values of $x$.}
-%	\label{fig:limit-at-infinity-graph}
-%\end{figure}
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.63212\columnwidth]{figures/calculus/limit-at-infinity-graph.png}
+			\vspace{-3mm}
+			\caption{	A function $f(x)$ that oscillates up and down initially,
+					but  it ``settles down'' close to the value $L$ for large values of $x$.}
+			\label{fig:limit-at-infinity-graph}
+		\end{figure}
 
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=0.99\columnwidth]{figures/calculus/limits_examples.pdf}
-	\vspace{-6mm}
-	\caption{	Visual representation of the limit calculations for three functions.}
-			%	$\lim_{x\to \infty} \frac{1}{x}$,
-			%	$\lim_{x\to \infty} \frac{2x+1}{x}$,
-			%	$\lim_{x\to 0^-} H(x)$, and $\lim_{x\to 0^+} H(x)$.}
-	\label{fig:limits_examples}
-\end{figure}
+		\subsubsection{Example 1}
+
+			Consider the limit of the function $f(x) = \frac{1}{x}$ as $x$ goes to infinity,
+			as illustrated in Figure~\ref{fig:limits_examples}~(a):
+			\[
+				\lim_{x \to \infty} f(x)
+					= 	\lim_{x \to \infty} \tfrac{1}{x}
+					= 	0.
+			\]
+			The function $\tfrac{1}{x}$ never \emph{actually} reaches zero,
+			so it would be wrong to write $f(x)=0$ for any $x \in \mathbb{R}$.
+			However,
+			the expression $\frac{1}{x}$ gets closer and closer to $0$ as $x$ goes to infinity.
+			Limits are useful because they allow us describe this tendency as $\displaystyle \lim_{x\to \infty} f(x)=0$.
+			% even though $f(x)\neq 0$ for any number $x$.
+
+
+
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.99\columnwidth]{figures/calculus/limits_examples.pdf}
+			% TODO: redo figure with xmax=8
+			\vspace{-6mm}
+			\caption{	Visual representation of the limit calculations for three functions.}
+					%	$\lim_{x\to \infty} \frac{1}{x}$,
+					%	$\lim_{x\to \infty} \frac{2x+1}{x}$,
+					%	$\lim_{x\to 0^-} H(x)$, and $\lim_{x\to 0^+} H(x)$.}
+			\label{fig:limits_examples}
+		\end{figure}
 
 
 
@@ -454,7 +460,7 @@ can lead us to computing quantities.
 		can bring the limit calculations ``inside'' basic arithmetic operations.
 
 
-		\paragraph{Example}
+		\subsubsection{Example 2}
 
 			Calculate $\lim\limits_{x\to \infty} \frac{2x+1}{x}\,$.
 			We're given the function $f(x)=\frac{2x+1}{x}$
@@ -523,24 +529,27 @@ can lead us to computing quantities.
 
 		In contrast,
 		functions that blow up to infinity or make sudden jumps are not continuous.
-		Consider for example the \emph{Heaviside step function},
-		which is defined as follows:
-		\[
-			H(x) \eqdef \begin{cases}
-						\; 1, 	& \text{if } x \geq 0 \\
-						\; 0, 	& \text{if } x < 0.
-					\end{cases}
-		\]
+		
+		\subsubsection{Example 3}
 
-		\noindent
-		The Heaviside function is zero for all negative values of $x$,
-		then suddenly jumps to one at $x=0$,
-		as illustrated in Figure~\ref{fig:limits_examples}~(c).
-		The limit as $x$ approaches $x=0$ from the left
-		has the value $\lim_{x\to 0^-} H(x) = 0$.
-		The limit as $x$ approaches $x=0$ from the right is $\lim_{x\to 0^+} H(x) = 1$.
-		Since the two limits are different,
-		we know the function is discontinuous at $x=0$.
+			Consider the \emph{Heaviside step function},
+			which is defined as follows:
+			\[
+				H(x) \eqdef \begin{cases}
+							\; 1, 	& \text{if } x \geq 0 \\
+							\; 0, 	& \text{if } x < 0.
+						\end{cases}
+			\]
+	
+			\noindent
+			The Heaviside function is zero for all negative values of $x$,
+			then suddenly jumps to one at $x=0$,
+			as illustrated in Figure~\ref{fig:limits_examples}~(c).
+			The limit as $x$ approaches $x=0$ from the left
+			has the value $\lim_{x\to 0^-} H(x) = 0$.
+			The limit as $x$ approaches $x=0$ from the right is $\lim_{x\to 0^+} H(x) = 1$.
+			Since the two limits are different,
+			we know the function is discontinuous at $x=0$.
 
 
 		%	A more mathematically precise way to define continuity is to say the function is equal to its limit for all $x$.
@@ -625,43 +634,41 @@ can lead us to computing quantities.
 		
 
 		% EXAMPLE  e
-		Recall the definition of Euler's number $e \eqdef \lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{n}$
-		that we showed in the introduction.
-		We can check this definition by making SymPy compute the limit.
+		Recall the limit expression for Euler's number
+		$e \eqdef \lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{n}$.
+		To compute this limit using SymPy,
+		we start by importing the \tt{sympy} module under the alias \tt{sp},
+		defining the symbolic variable $\tt{n} = n$,
+		then calling \tt{sp.limit}.
 
 		\begin{codeblock}[sympy-e-from-limit]
-		
+		>>> import sympy as sp
 		>>> n = sp.symbols("n")
-		>>> limit((1+1/n)**n, n, oo)
+		>>> limit((1+1/n)**n, n, sp.oo)
 		E
 		\end{codeblock}
 		
+		\noindent
+		SymPy produced the exact value $\tt{E} = e = 2.718281828\ldots$.
+		% and not an approximation.
+		Note we use the symbol \texttt{sp.oo} (two lowercase \texttt{o}s) to denote infinity,
+		which is a clever name since it resembles the infinity symbol $\infty$.
+
+
 		% EXAMPLE 1/x
-		For example,
-		here is the code for computing the limit $\lim_{x \to \infty} \tfrac{1}{x}$:
+		Let's now look at the code for computing the limit $\lim_{x \to \infty} \tfrac{1}{x}$.
+		We define the symbol \tt{x}
+		then call the function \tt{sp.limit} to evaluate the limit of the expression $\tt{1/x} = \frac{1}{x}$
+		as $\tt{x}=x$ goes to infinity $\tt{sp.oo}=\infty$.
 
 		\begin{codeblock}[]
-		>>> import sympy as sp
 		>>> x = sp.symbols("x")
-		>>> sp.limit(1/x, x, oo)
+		>>> sp.limit(1/x, x, sp.oo)
 		0
 		\end{codeblock}
-		
+
+		% EXAMPLE (2x+1)/x		
 		\noindent
-Note we use the symbol \texttt{oo} (two lowercase \texttt{o}s) to denote infinity $\infty$.
-
-
-		The first line imports the \tt{sympy} module under the alias \tt{sp}.
-		The second line defines the symbol \tt{x}.
-		% The syntax for the function \tt{sp.limit(expr, var, val)}
-		We provide the expression \tt{1/x} as the first first argument to the function \tt{sp.limit},
-		then specify the variable \tt{x} the value \tt{sp.oo}.
-		
-		%	Consider the function $f(x)=\frac{1}{x}$.
-		%	The \texttt{limit} command shows us what happens to $f(x)$ near $x=0$ and as $x$ goes to infinity:
-
-
-		% EXAMPLE (2x+1)/x
 		Here is another example,
 		that computes the limit of the fraction $\frac{2x+1}{x}$ as $x$ goes to infinity,
 		which is illustrated in Figure~\ref{fig:limits_examples}~(b).
@@ -676,7 +683,7 @@ Note we use the symbol \texttt{oo} (two lowercase \texttt{o}s) to denote infinit
 		To calculate the limit form the left and the right of a number,
 		we must provide a fourth argument \tt{"-"} or \tt{"+"}.
 		The following SymPy calculations confirm the limits of the Heaviside step function
-		illustrated in Figure~\ref{fig:limits_examples}~(c).
+		when approaching $x=0$ from the left and from the right.
 
 		\begin{codeblock}[]
 		>>> from sympy import Heaviside
@@ -687,28 +694,11 @@ Note we use the symbol \texttt{oo} (two lowercase \texttt{o}s) to denote infinit
 		\end{codeblock}
 		
 		\noindent
-
-	
-
-
-		\noindent
-		Note SymPy produced the exact value $\tt{E} = 2.718281828\ldots$.
-		% and not an approximation.
+		See Figure~\ref{fig:limits_examples}~(c) for an illustration.
 
 
 		% TODO: ADD MORE LIMIT EXAMPLES
-		%	\noindent
 		%	Here are some other examples of limits:
-		%
-		%	\begin{codeblock}[]
-		%	>>> limit(sin(x)/x, x, 0)
-		%	1
-		%	>>> limit(sin(x)**2/x, x, 0)
-		%	0
-		%	>>> limit(exp(x)/x**100,x,oo) # which is bigger e^x or x^100 ?
-		%	oo                            # exp f >> all poly f for big x  
-		%	\end{codeblock}
-
 
 		% NOTEBOOK ONLY
 		%	Infinity is not a number but a process: the process of counting forever.
@@ -725,7 +715,6 @@ Note we use the symbol \texttt{oo} (two lowercase \texttt{o}s) to denote infinit
 
 
 		% BONUS SYMPY EXAMPLES
-		%	\noindent
 		%	The SymPy function \tt{limit} allows us to compute limit expressions.
 		%	For example,
 		%	if we want to see if the exponential function $e^x$ or the polynomial function $x^{100}$ grows faster
@@ -744,20 +733,21 @@ Note we use the symbol \texttt{oo} (two lowercase \texttt{o}s) to denote infinit
 		%	tells us exponential functions grow faster than polynomial functions.
 		%	%	This result has implications in computer science,
 		%	%	where algorithms whose running time grows exponentially with the size of their input are considered bad
+
+	
+		% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
+		%	splitting with an infinite number of segments
+		%	\begin{codeblock}[sympy-limit-sement-zero-length]
+		%	>>> from sympy import limit, oo, summation
+		%	>>> delta = (b - a)/n
+		%	>>> limit(delta, n, oo)
+		%	0
+		%	\end{codeblock}
 		%
-		%	% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
-		%	%	splitting with an infinite number of segments
-		%	%	\begin{codeblock}[sympy-limit-sement-zero-length]
-		%	%	>>> from sympy import limit, oo, summation
-		%	%	>>> delta = (b - a)/n
-		%	%	>>> limit(delta, n, oo)
-		%	%	0
-		%	%	\end{codeblock}
-		%	%
-		%	%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
-		%	%	>>> summation(delta, (i, 0, n-1))
-		%	%	b - a				
-		%	%	\end{codeblock}
+		%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
+		%	>>> summation(delta, (i, 0, n-1))
+		%	b - a				
+		%	\end{codeblock}
 
 
 	\subsection{Applications of limits}
@@ -775,76 +765,70 @@ Note we use the symbol \texttt{oo} (two lowercase \texttt{o}s) to denote infinit
 					\; = \; \lim_{\textrm{run} \to 0} \frac{\text{rise}}{\text{run}} 
 					\; = \;  \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{x+\delta \; - \;  x}.
 			\]
-			We'll continue the discussion of this formula in Section~\ref{sec:derivatives}.
+			We'll continue the discussion of derivatives in Section~\ref{sec:derivatives}.
 
 
 		\subsubsection*{Limit for integrals}
 		\label{limits:limits_for_integrals}
 
-			One way to approximate the area under the curve $f(x)$ between $x=a$ and $x=b$
-			is to split the area into $n$ little rectangles of width $\Delta x = \frac{b-a}{n}$ and height $f(x)$,
+			One way to approximate the area under the graph of the function $f(x)$ between $x=a$ and $x=b$
+			is to split the area into $n$ rectangular strips of width $\Delta x = \frac{b-a}{n}$ and height $f(x)$,
 			and then calculate the sum of the areas of the rectangles:
 			\[ 
 				A_f(a,b) \approx \underbrace{
-								\Delta x f(a)
-								\!+\! \Delta x f(a+\Delta x) 
+								\Delta x f(a+\Delta x)
+								\!+\! \Delta x f(a+2\Delta x) 
 		  						% \!+\! \Delta x f(a+2\Delta x) + \cdots 
-								\!+\! \Delta x f(b-\Delta x)
+								\!+\! \Delta x f(b)
 							}_{n \textrm{ terms}}.
 			\]
 			We obtain the exact value of the area in the limit where we split the area into an infinite
-			number of rectangles with infinitely small width:
+			number of rectangles of infinitely small width:
 			{ \small
 			\[ 
 			  \!\!\int_a^b\!\!\!f(x) \, dx
 			  = \!A_f(a,b)
 			   = \!\!\lim_{n \to \infty}\!\! \Delta x \left[ 
-			   	 f(a) \!+\! f(a+\Delta x) \!+\! \cdots \!+\!  f(b-\Delta x) 
+			   	 f(a+\Delta x) \!+\! f(a+2\Delta x) \!+\! \cdots \!+\!  f(b) 
 				\right].
 			\]}
 			
 			\noindent 
-			Computing the area under a function by splitting the area into infinitely 
-			many rectangles is an approach known as a \emph{Riemann sum},
-			which we'll discuss in Section~\ref{sec:integrals}.
-				
-			%	\subsection{Limits for sequences}	TODOv7
-			%	\label{limits:limits_for_sequences}
-	
+			%	Computing the area under a function by splitting the area into infinitely 
+			%	many rectangles is an approach known as a \emph{Riemann sum},
+			%	which we'll discuss
+			We'll have a lot more to say about integrals in Section~\ref{sec:integrals}.
+
 	
 		
 		\subsubsection*{Limits for series}
 		\label{limits:limits_for_series}
 		
 			We use limits to describe the convergence properties of series.
-			For example, the partial sum of the first $n$ terms of the geometric series
-			$a_k= r^k$ corresponds to the following expression:
+			For example,
+			the sum of the first $n$ terms of the geometric series $a_k= r^k$
+			corresponds to the following expression:
 			\[
-			  S_n
-			   = \sum_{k=0}^n r^k 
-			   = 1 + r + r^2 + r^3 + \cdots + r^n.
+				\sum_{k=0}^n r^k = 1 + r + r^2 + r^3 + \cdots + r^n.
 			\]
-			The \emph{series} $\sum a_k$ is defined as the limit $n\to \infty$ of the above expression.
-			For values of $r$ that obey $|r|<1$,
+			The \emph{series} $\sum a_k$
+			is defined as the limit $n\to \infty$ of the above expression.
+			When $|r|<1$,
 			the series \emph{converges} to the a finite value:
-			\[ 
-			  S_\infty 
-			   = \lim_{k \to \infty} S_k 
-			   = \sum_{k=0}^\infty r^k
-			   = 1 + r + r^2 +  r^3 + \cdots 
-			   =\frac{1}{1-r}.
-			\]
-			%	% PROOF
-			%	To convince yourself the above formula is correct,
-			%	observe how the infinite sum $S_\infty$ is similar to a shifted version of itself: $S_\infty=1+rS_\infty$.
-			%	Now solve for $S_\infty$ in the equation $S_\infty=1+rS_\infty$.			
-			We'll learn more about series in Section~\ref{sec:sequences_and_series}.
+			\[
+				\lim_{n \to \infty} \sum_{k=0}^n r^k
+					= 1 + r + r^2 +  r^3 + \cdots 
+					= \frac{1}{1-r}.
+			\]	
+			We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
 	
 
-	% LEAD OUT	
-	In the remainder of this tutorial we'll use limits to evaluate derivatives, integrals, and series expressions.
-%	In each of these domains,
-%	limit expressions will help us make precise statements
-%	that describe calculus procedures with infinite small lengths and infinite number of steps.
+			% LEAD OUT	
+			%	In the remainder of this tutorial we'll use limits to evaluate derivatives, integrals, and series expressions.
+			%	In each of these domains,
+			%	limit expressions will help us make precise statements
+			%	that describe calculus procedures with infinite small lengths and infinite number of steps.
 
+
+% TODO: Limit exercises
 

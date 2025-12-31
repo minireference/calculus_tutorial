@@ -9,17 +9,19 @@
 		\subsubsection{Kinematics}
 
     			Calculus was originally invented
-			to describing the equations of motion $x(t)$, $v(t)$, and $a(t)$ as a function of time $t$.
-			%  given the forces acting on them.
+			to describe the equations of motion $x(t)$, $v(t)$, and $a(t)$,
+			which correspond to the object's \emph{position}, \emph{velocity},
+			and \emph{acceleration} at time $t$.
 			We call these the \emph{kinematics} equations,
 			from the Greek word \emph{kinema} for motion.
 			The velocity function $v(t)$ is the derivative of the position function,
-			and the acceleration $a(t)$ is the derivative of the velocity:
+			and the acceleration $a(t)$ is the derivative of the velocity,
+			which we can summarize as follows:
 			\[
 				a(t) \overset{\frac{d}{dt} }{\longleftarrow} v(t) \overset{\frac{d}{dt} }{\longleftarrow} x(t).
 			\]
-			The starting point of kinematics the Newton's second law,
-			which tells us the acceleration of the object of mass $m$
+			The starting point of kinematics is Newton's second law,
+			which tells us that the acceleration of an object of mass $m$
 			that has a net force $\vec{F}_{\textrm{net}}$ acting on it is:
 			$\tfrac{1}{m}\vec{F}_{\textrm{net}}(t) = a(t)$.
 			Given the knowledge of acceleration $a(t)$,
@@ -36,25 +38,26 @@
 				  x(t) 
 				}_{\text{kinematics}}.
 			\]
-			
+
 			\noindent
-			We use our knowledge of $a(t)$ and the initial velocity $v_i$ to obtain $v(t)$.
+We use our knowledge of $a(t)$ and the initial velocity $v_i$ to obtain $v(t)$.
 			We then use integration a second time to obtain $x(t)$ from $v(t)$,
 			taking into account the initial position $x_i$ as the integration constant.			
 
-			The case of \emph{uniform accelerated motion} (UAM) is of particular interest,
-			since it describes the the trajectory of falling objects under the effect of gravity.
-			An object of mass $m$ that has a constant net $\vec{F}_{\textrm{net}}$
-			acting on it will experience a constant acceleration $a(t) = a$.
-			We can use integration to find the velocity of this object at a later time $t=\tau$,
+			The case of \emph{uniform accelerated motion} (UAM) is of particular interest.
+			% since it describes the trajectory of objects falling under the effect of gravity.
+			%	Consider an object of mass $m$ that has a constant net $\vec{F}_{\textrm{net}}$
+			%	acting on it will experience 
+			Consider an object that experiences a constant acceleration $a(t) = a$.
+			We can use integration to find the velocity of this object at a later time $t=\tau$:
 			\[ 
 				v(\tau)	= v_i + \int_0^\tau a(t)\,dt
 						= v_i +  \int_0^\tau a \,dt
 						= v_i + a\tau.
 			\]
 			% where $v_i$ is the initial velocity of the object at $t=0$.
-			Now that we know the velocity as a function of time $v(t)$,
-			we can use integration a second time to find the position
+			Knowing the velocity as a function of time $v(t)$,
+			we can use integration a second time to find its position at time $\tau$:
 			\[
 				x(\tau)	= x_i + \int_0^\tau v(t) \, dt
 						= x_i +  \int_0^\tau (v_i+at) \, dt
@@ -65,10 +68,13 @@
 			which describes the motion of objects undergoing constant acceleration $a$. % $a(t) = a$.
 			Students taking a physics class are normally presented with this equation
 			and it seems to come out of nowhere,
-			but if you know calculus you don't have memorize it,
-			you can always derive from first principles $a(t) = a$,
-			and initial conditions $x_i \eqdef x(0)$ and $v_i \eqdef v(0)$.
-
+			but if you know calculus you know where it comes from:
+			the integration operation applied to the acceleration function $a(t) = a$
+			and the initial conditions $x_i \eqdef x(0)$ and $v_i \eqdef v(0)$.
+			
+			% don't have memorize it,
+			% you can always derive from first principles $a(t) = a$,
+			%
 			%	Note that the above calculations required knowing the initial conditions $x_i$ and $v_i$.
 			%	These initial values were required
 			%	because the integral calculations we performed only told us the \emph{change} in the quantities relative to their initial values.
@@ -77,45 +83,46 @@
 		\subsubsection{Solving differential equations}
 		
 			Many important laws in science and engineering are described by \emph{differential equations}
-			that specify unknown function $f(t)$ in terms of their derivatives $f'(t)$, $f''(t)$, etc.
-			For example,
-			in the starting point of the kinematics equations with constant acceleration
-			is the differential equation $x''(t) = a$,
-			and we use use integration (twice) to find the unknown function
-			$x(t) = x_i + v_it + \tfrac{1}{2}at^2$,
-			which is a \emph{solution} to the differential equation $x''(t) = a$.
-			We can verify this by taking the second derivative of $x(t)$
-			to confirm it satisfies $x''(t) = a$.
+			that specify unknown function $f(t)$ in terms of their derivatives $f^{\prime\!}(t)$, $f^{\prime\prime\!}(t)$, etc.
 
-			Here are some other examples of differential equations and their solutions;
+			Here are some examples of differential equations and their solutions;
 			
 			\begin{itemize}
 			
+				\item	The kinematics equations when the acceleration is constant
+					come front he differential equation $x^{\prime\prime\!}(t) = a$.
+					We use integration (twice) to find the unknown function
+					$x(t) = x_i + v_it + \tfrac{1}{2}at^2$.
+					We can verify that $x(t)$ is a solution to the differential equation $x^{\prime\prime\!}(t) = a$
+					by computing the the second derivative of $x(t)$.
+					% which is $x^{\prime\prime\!}(t) = a$.
+			
 				\item In biology,
-					unconstrained bacterial growth is described by the equation $b'(t) = kb(t)$,
+					unconstrained bacterial growth is described by the equation $b^{\prime\!}(t) = kb(t)$,
 					where $b(t)$ is the number of bacteria at time $t$.
 					Intuitively,
-					the number of new bacteria $b'(t)$ is proportional to the number of existing bacteria.
-					The solution to this equation is $b(t) = Ce^{\lambda t}$,
-					where $C$ describes the number of bacteria at time $t=0$.
+					the bacterial growth rate $b^{\prime\!}(t)$
+					is proportional to the number of existing bacteria.
+					The solution to this equation is $b(t) = b_0e^{\lambda t}$,
+					where $b_0$ describes the number of bacteria at time $t = 0$.
 
 				\item Radioactive decay is described by the differential equation
-					$r'(t) = -\lambda r(t)$,
+					$r^{\prime\!}(t) = -\lambda r(t)$,
 					where $r(t)$ describes the number of atoms of some radioactive element.
-					The solution % to radioactive decays
-					is $r(t) = Ce^{-\lambda t}$.
+					The solution is $r(t) = r_0e^{-\lambda t}$.
 
-				\item Simple harmonic motion is described by the second order
-					differential equation $x''(t) + \omega^2 x(t) = 0$,
-					which has solution $x(t) = C_1 \sin(\omega t) + C_2 \cos(\omega t)$.
+				\item Simple harmonic motion is described by the
+					differential equation $x^{\prime\prime\!}(t) + \omega^2 x(t) = 0$,
+					which has solution $x(t) = c_1 \sin(\omega t) + c_2 \cos(\omega t)$,
+					for some constants $c_1$ and $c_2$.
 
 			\end{itemize}
 			
 			\noindent
-			Taking a course on differential equations
+			If you take a course on differential equations,
 			you'll learn all kind of tricks and techniques for solving differential equations.
-			Integration plays key roles in all the techniques,
-			since it allows us to ``reverse engineer'' the derivative operation.			
+			Integration plays a key role in all these techniques,
+			since it allows us to ``undo'' the derivative operation.			
 			%	We use integrals to solve differential equations.
 			%	If we have to solve for $f(x)$ in the differential equation $\frac{d}{dx}f(x) = g(x)$,
 			%	we can take the integral on both sides of the equation to obtain the answer $f(x) = \int g(x)\,dx + C$.
@@ -127,20 +134,17 @@
 			Integration is an essential tool for computing probabilities of continuous random variables.
 			A continuous random variable $X$ is described by its \emph{probability density function} $f_X$
 			and the probability of the event $\{ a \leq X \leq b\}$ is defined as the following integral:
-			\[
-				\Pr( \{ a \leq X \leq b\} )
-				\eqdef
-				\int_a^b f_X(x) \, dx.
-			\]
-			The probability density $f_X$ varies for different values of $x$,
-			so if we want to compute the total probability of $X$ falling between $x=a$ and $x=b$,
-			we must compute the integral of $f_X$.
+			$\Pr( \{ a \leq X \leq b\} ) \eqdef \int_a^b f_X(x) \, dx$.
+			%	The probability density $f_X$ varies for different values of $x$,
+			%	so if we want to compute the total probability of $X$ falling between $x=a$ and $x=b$,
+			%	we must compute the integral of $f_X$.
 			%
 			For example,
 			the standard normal random variable $Z$
-			is described by the probability $f_Z(z) = \tfrac{1}{\sqrt{2\pi}} e^{ -\frac{1}{2}z^2 }$.
+			is described by the probability density function
+			$f_Z(z) = \tfrac{1}{\sqrt{2\pi}} e^{ -\frac{1}{2}z^2 }$.
 			To calculate the probability of the event $\{ -1 \leq Z \leq 1\}$,
-			we must evaluate the integral $\int_{-1}^1 f_Z(z) \, dz$,
+			we evaluate the integral $\int_{-1}^1 f_Z(z) \, dz$,
 			which is easy to do using SciPy helper function $\tt{quad(fZ,a=-1,b=1)}=0.68269$.
 
 			\ifthenelse{\boolean{FORSTATSBOOK}}{
@@ -149,11 +153,7 @@
 				The expected value of the quantity $G=g(X)$
 				under the randomness of a continuous random variable $X$
 				is defined as the following integral calculation:
-				\[
-					\EE_X[g(X)]
-					\eqdef
-					\int_{x \in \calX} g(x)f_X(x)\:dx.
-				\]
+				$\EE_X[g(X)] \eqdef \int_{x \in \calX} g(x)f_X(x)\,dx$.
 				The expected value is computed by ``weighing'' each value of $g(x)$
 				by the corresponding probability density for the event $\{X=x\}$,
 				summed over all possible values for the random variable $X$.

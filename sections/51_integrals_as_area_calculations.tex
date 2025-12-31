@@ -1,7 +1,7 @@
 %!TEX root = ../calculus_tutorial.tex
 
 	\subsection{Act 1: Integrals as area calculations}
-	
+
 		Figure~\ref{fig:integral_as_region_under_curve_Aab} 
 		shows a shaded region enclosed between the graph of $f(x)$ from above,
 		the $x$-axis from below,
@@ -19,32 +19,32 @@
 
 		\begin{figure}[htb]	% LAYOUT
 			\centering
-			\includegraphics[width=0.4\columnwidth]{figures/calculus/integral_as_region_under_curve_Aab.pdf}
-			\vspace{-2mm}
+			\includegraphics[width=0.36\columnwidth]{figures/calculus/integral_as_region_under_curve_Aab.pdf}
+			\vspace{-3mm}
 			\caption{	The integral of the function $f(x)$ between $x=a$ and $x=b$
 					corresponds to the area of the shaded region $A_f(a,b)=\int_a^b f(x)\,dx$.}
 			\label{fig:integral_as_region_under_curve_Aab}
 		\end{figure}
-		
+
 		\ifthenelse{\boolean{FORSTATSBOOK}}{
 			The notion of an integral is foundational for understanding continuous random variables.
 			Every time we compute the probability of some outcome of a continuous random variable,
 			there is an integral calculation going on under the hood,
 			so integrals is not a topic you can skip.	%, if you want to represent.
 		}{}
-	
+
 
 		\noindent
 		We often use the simplified notation $\int_a^b f(x)\,dx$ as shorthand for $\int_{x=a}^{x=b} f(x)\,dx$
 		and read this expression as ``the integral of $f(x)$ between $a$ and $b$.''
 		If this is the first time you're seeing the notation for integrals,
-		it might seem very intimidating and complicated to you,
+		it might seem very intimidating and complicated,
 		but don't freak out and bear with me for two more pages.
 		You'll see this fancy-looking math notation is nothing to worry about!
 		It's just the calculus way to denote a particular calculation that involves the function $f(x)$.
 		You can think of $\int_a^b \tt{<f>} \,dx$
 		as a ``template'' that you fill in by replacing $\tt{<f>}$
-		with the function $f(x)$ you're interested in
+		with the function $f(x)$ you're interested in,
 		whenever you need to compute the area $A_f(a,b)$.
 		% to denote the area-under-the-graph-of-$f(x)$ calculation,
 
@@ -67,15 +67,15 @@
 	\subsection{Properties of integrals}
 
 		We'll now state some properties of integrals that follow from their interpretation as area calculations.
-	
+
 		\begin{itemize}
-		
+
 			% \textbf{Additivity.}
 			\item The sum of the integral from $a$ to $b$
 				and the integral from $b$ to $c$
 				is equal to the integral starting from $a$ going all the way to $c$:
 				$\int_a^b f(x) \, dx + \int_b^c f(x) \, dx = \int_a^c f(x) \, dx$.
-	
+
 			% TODO: add backward steps giving negative?
 
 			% \textbf{Constant multiple of a function.}
@@ -83,7 +83,7 @@
 				is equal to $k$ times the integral of $f(x)$:
 				% for any constant $k$:
 				$\int_a^b kf(x)\, dx = k\int_a^b f(x)\, dx$.
-	
+
 			% \textbf{Sum of two functions.}
 			\item The integral of the sum of two functions
 				is the sum of their integrals:
@@ -99,7 +99,7 @@
 			%			= \alpha  \int f(x)\, dx  \, \, + \, \, \beta \int g(x)\, dx,
 			%		\]
 			%		where $\alpha$ and $\beta$ are two arbitrary constants.
-	
+
 			% \textbf{Integral at a single point.}
 			\item Integrals over intervals with zero length have zero value:
 				$\int_a^a f(x)\, dx = 0$.
@@ -107,7 +107,7 @@
 				this integral defines a region with height $f(x)$ and width~$0$,
 				so it has zero area.
 				% see https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/v/same-integration-bounds
-	
+
 		\end{itemize}
 
 	% exercise https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/a/definite-integrals-properties-review
@@ -118,16 +118,19 @@
 
 		Let's look at some examples.
 
-	
+
 		\subsubsection{Example 1. Integral of a constant function}
-	
+
 			Consider the constant function $f(x) = 3$.
-			We can easily find the area under the graph of this function between any two points,
-			since the region under the graph has a rectangular shape.	
+			We can easily find the area under the graph of this function
+			because the region has a rectangular shape.
 			The area under $f(x)$ between $x=0$ and $x=5$
 			is described by the following integral calculation:
 			\[
-				A_f(0,5) = \int_0^5 f(x)\,dx = 3\cdot 5 = 15.
+				A_f(0,5)
+					= \int_0^5 f(x)\,dx
+					= 3\cdot 5
+					= 15.
 			\]
 			The area under the graph of $f(x)$ is a rectangle with height $3$ and width $5$,
 			so its area is $3 \cdot 5 = 15$,
@@ -149,7 +152,12 @@
 			as shown in Figure~\ref{fig:simple_integral_gx_eq_x}.
 			This area is described by the following integral calculation:			
 			\[
-				A_g(0,5) = \int_0^5 g(x) \, dx = \tfrac{1}{2} 5 \cdot 5 = \tfrac{1}{2}5^2 = \tfrac{25}{2} = 12.5.
+				A_g(0,5)
+					= \int_0^5 g(x) \, dx
+					= \tfrac{1}{2} 5 \cdot 5
+					= \tfrac{1}{2}5^2
+					= \tfrac{25}{2}
+					= 12.5.
 			\]
 			The region under the graph of $g(x)$ has a triangular shape,
 			so we can compute its area using the formula for the area of a triangle:
@@ -178,25 +186,26 @@
 			as illustrated in Figure~\ref{fig:simple_integral_hx_eq_x}.
 			We need to calculate the following integral:
 			\[
-				A_h(0,2) = \int_{0}^2 h(x)\,dx \, = \; ???.
+				A_h(0,2)
+					= \int_{0}^2 h(x)\,dx \,
+					= \; ???.
 			\]
-			The area under the graph of $h(x)$ is a curved region
+			The region under the graph of $h(x)$ is curved
 			and not a simple recognizable geometric shape with a known area formula.
 			How could we compute the area in this case?
 
 			\begin{figure}[htb]
 				\centering
-				\includegraphics[width=0.7\columnwidth]{figures/calculus/simple_integral_hx_eq_x.pdf}
+				\includegraphics[width=0.85\columnwidth]{figures/calculus/simple_integral_hx_eq_x.pdf}
 				\vspace{-3mm}
 				\caption{The area under the graph of $h(x)$ between $x=0$ and $x=2$.}
 				\label{fig:simple_integral_hx_eq_x}
 			\end{figure}
 
-			One way to approximate the area under $h(x)$
+			One way to approximate the area under the graph of $h(x)$
 			is to compute the \emph{Riemann sum} approximation,
-			which splits the region into bunch of vertical rectangular strips of some fixed width,
-			which we'll denote $\Delta x$.
-			The height of each rectangular strip will vary depending on $h(x)$.
+			which splits the region into bunch of vertical rectangular strips of fixed width.
+			The height of each rectangular strip varies depending on $h(x)$.
 			Look ahead to figures \ref{fig:riemann_sum_n10_n20} and \ref{fig:riemann_sum_n50_n100}
 			to see where we're going with this.
 			Splitting up the area $A_h(0,2)$ into $n=10$ strips,
@@ -204,8 +213,8 @@
 			and summing them together produces the approximation $A_h(0,2) \approx 4.92$.
 			If we split the area $A_h(0,2)$ into $n=20$ strips,
 			we obtain the more accurate approximation $A_h(0,2) \approx 5.13$.
-			The approximation with $n=1000$ rectangular strips gives us $A_h(0,2) \approx 5.329332$,
-			and with $n=1\,000\,000$ rectangles is $A_h(0,2) \approx 5.333329333332$.
+			The approximation with $n=1000$ rectangular strips gives us $A_h(0,2) \approx 5.329$,
+			and $n=1\,000\,000$ rectangles produces $A_h(0,2) \approx 5.333329$.
 			The more finely we chop up the region into rectangles,
 			the closer we get to the \emph{exact} value,
 			which is $\int_{0}^2 h(x)\,dx=5\frac{1}{3} = 5.\overline{3} = 5.333333333333333\ldots$.
@@ -213,7 +222,7 @@
 
 
 		In the next section,
-		we'll learn more about split-into-rectangles are area calculations (a.k.a. \emph{integration}).
+		we'll learn more about the split-area-into-rectangles calculation (a.k.a. \emph{integration}).
 		Don't worry,
 		I won't make you calculate sums with $n=10$ or $n=20$ terms by hand,
 		let alone the sum with $n=1\,000\,000$ terms!

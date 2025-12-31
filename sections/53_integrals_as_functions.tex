@@ -1,7 +1,6 @@
 %!TEX root = ../calculus_tutorial.tex
 
 
-
 	\subsection{Act 2: Integrals as functions}
 
 		The \emph{integral function} $F_0(b)$
@@ -13,22 +12,21 @@
 		%	the integral function $F_0(b)$ describes the results of the integral calculation
 		%	starting at $x=0$ and going until $x=b$.
 		As a matter of convention,
-		we denote the integral function using the capital letter of the same letter as the original function.
+		we denote the integral function using the capital of the letter used to denote the original function.
 		% The \emph{integration variable} $x$ performs a sweep from $x=0$ until $x=b$
-
+		%
 		Choosing $x=0$ for the starting point of the integral function is an arbitrary choice.
 		We can obtain another integral function if we use $x=a$ as the starting point,
-		$F_a(b)=\int_a^b \! f(x)\,dx$.
+		$F_a(b) \eqdef \int_a^b \! f(x)\,dx$.
 		The integral functions $F_a$ and $F_0$ differ only by a constant term:
 		$F_0(b) = F_a(b) + C$, where $C = \int_{x=0}^{x=a} f(x)\,dx$.
 
 		The integral function $F_0(b)$
 		contains the ``precomputed'' information about the area under the graph of $f(x)$.
-		Knowing $F_0$ allows us to compute the area using simple algebra calculations:
-		the area under $f(x)$ between $x=a$ and $x=b$
-		is equal to the \emph{change} in the integral function:
+		Knowing $F_0$ allows us to compute the area under $f(x)$ between $x=a$ and $x=b$
+		as the \emph{change} in the integral function:
 		\[
-			A_f(a,b) = \int_a^b \! f(x)\,dx	=  F(b) - F(a).
+			A_f(a,b) = \int_a^b \! f(x)\,dx	=  F_0(b) - F_0(a).
 		\]
 		Intuitively,
 		this formula computes the area $A_f(a,b)$ as the difference between the areas of two regions:
@@ -44,7 +42,7 @@
 					which describes the change in the output of $F_0(x)$ between $x=a$ and $x=b$.}
 			\label{fig:integral_as_difference_off}
 		\end{figure}
-		
+
 
 %TODO: warn there is no general F for any f
 %only for certain special cases
@@ -55,8 +53,8 @@
 
 
 		\subsubsection{Example 1 revisited}
-	
-			We can easily find the integral function for the constant function $f(x)=~3$,
+
+			We can easily find the integral function for the constant function $f(x)=~3$
 			because the region under the curve is rectangular.
 			Choosing $x=0$ as the starting point,
 			we obtain the integral function $F_0(b)$
@@ -65,9 +63,9 @@
 			\[ 
 				F_0(b) = A_f(0,b) = \int_0^b \! f(x)\,dx	= 3 b.
 			\]
-			The region is a rectangle of height $3$ and with width $b$,
-			as illustrated in Figure~\ref{fig:simple_integral_function_fx_eq_3}.
-	
+			The integral function corresponds to the area of a rectangle of height $3$ and with width $b$,
+			as shown in Figure~\ref{fig:simple_integral_function_fx_eq_3}.
+
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.7\columnwidth]{figures/calculus/simple_integral_function_fx_eq_3.pdf}
@@ -75,14 +73,14 @@
 				\caption{	The integral function of the function $f(x) = 3$ is $F_0(b)=3b$.}
 				\label{fig:simple_integral_function_fx_eq_3}
 			\end{figure}
-			
+
 			Knowing the function $F_0(b)$ allows us to compute the area under the graph of $f(x)$
 			between $x=0$ and $x=5$ as the difference
 			$A_f(0,5) = F_0(5) - F_0(0) = 3\cdot 5 - 3\cdot 0 = 15$.
-	
-	
+
+
 		\subsubsection{Example 2 revisited}
-		
+
 			Consider now the area under the graph of the line $g(x)=x$,
 			starting from $x=0$.
 			Since the region is triangular,
@@ -102,11 +100,11 @@
 				\caption{	The integral function of the function $g(x) = x$ is $G_0(b)=\tfrac{1}{2}b^2$.}
 				\label{fig:simple_integral_function_gx_eq_x}
 			\end{figure}
-			
+
 			Knowing the function $G_0(b)$ allows us to compute the area under the graph of $g(x)$
 			between $x=0$ and $x=5$ as the difference
 			$A_g(0,5) = G_0(5) - G_0(0) = \frac{1}{2}5^2 - \frac{1}{2}0^2 = 12.5$.
-	
+
 	
 		%	But don't worry,
 		%	you don't need to take an integral calculus to learn statistics.
@@ -122,16 +120,17 @@
 			\[
 				H_{0}(b) = A_h(0,b) = \int_{0}^b h(x) \, dx = \; ???.
 			\]
-			We were able to compute the integral functions $\int f(x)dx$ and $\int g(x)dx$
+			We were able to compute the integral functions $F_0(b)$ and $G_0(b)$
 			thanks to the simple geometries of the areas under the graphs,
-			but $h(x)$ is a curved region so it requires some new integration methods.
+			but $h(x)$ is a curve so it requires some new integration methods.
 			In the next few pages,
-			we'll learn about symbolic integration techniques that we can use
-			to find the integral function $H_{0}(b)$.
+			we'll learn about symbolic integration techniques
+			that will allow us to find the integral function $H_{0}(b)$.
 
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.9\columnwidth]{figures/calculus/integral_function_hx_eq_x.pdf}
+				% TODO: redo figure using usetex=True
 				\vspace{-3mm}
 				\caption{	The integral of the function $h(x) = 4 - x^2$ from $x=0$ to $x=b$.}
 				\label{fig:integral_function_hx_eq_x}
@@ -145,59 +144,48 @@
 
 	\subsection{Intermission}
 	
-		% (M)
-		The integral in Example~3 was carefully chosen to motivate the need to learn more advanced
-		methods for integration. How can we compute the integral function $H_{0}(b)$?
-		Is there some formula that describes the area $A_h(0,b)$
-		of the region shown in Figure~\ref{fig:integral_function_hx_eq_x}.
-		% (M2)
-		We previously used numerical methods to compute the particular area $A_h(0,2)$
-		when $b=2$,
-		but now we're looking for a general math formula that computes the value
-		$H_{0}(b) = A_h(0,b)$ for any $b$.		
-		% (M3)
-		In the next few pages we'll use \emph{symbolic} calculations to fill in the ???
-		with an exact formula obtained by manipulating math equations.
-		% (M4)
-		The secret weapon that will allow us to compute integrals using symbolic math
-		is called the \emph{fundamental theorem of calculus},
-		which we'll discuss next.
-		% First use SymPy, which is like doing pen and paper calculations using Python as you scribe.
-		% (M5)
-		The section is the ``Intermission'' in the calculus show.
-		I want you,
-		dear reader,
-		to have a break before next pages where the level of ``mathyness'' will increase significantly % ALT. substantially.
+		The integral in Example~3 was chosen
+		to motivate the need for more advanced methods for integration.
+		Is there a math formula that describes the area $A_h(0,b)$
+		of the region shown in Figure~\ref{fig:integral_function_hx_eq_x}?
+		We previously used numerical methods to compute the particular area $A_h(0,2)$ for $b=2$,
+		but now we're looking for a general math formula that computes the integral function $H_{0}(b) = A_h(0,b)$ for any $b$.		
+		In the next section,
+		we'll learn about the \emph{fundamental theorem of calculus},
+		which will allow us to find the exact formula for $H_{0}(b)$.
+
+		The section is like the intermission in the calculus show.
+		%	I want you, dear reader,
+		%	to have a break before the next pages where the level of ``mathyness'' will increase substantially.
 		As in a real-world intermission,
-		this is also your chance to skip the rest of the ``Integration show.''
-		Perhaps you have better things to do right now than being subjected to
-		Ivan's teaching of advanced concepts you ``might'' want to know through model means of computation
-		like Python and old-school math techniques like pen and paper.
-		I won't get offended if you skip ahead---no worries!
+		this is also your chance to skip the rest of the show.
+		Perhaps you have better things to do right now than learning about advanced calculus concepts.
+		I won't get offended---no worries!
+		Feel free to skip ahead to Section~\ref{integrals:scipy}
+		for more technical details about high-performance numerical integration,
+		or jump straight to Section~\ref{sec:sequences_and_series} to learn about sequences and series.
+		%which is the third foundational topics in calculus.
+
 		As a teacher,
-		i'm happy that you now know that integrals are ``area under the graph of'' geometrically % calculations 
+		I'm happy that you know
+		that integrals compute areas under the graph of functions,
 		and can be approximated numerically using Riemann sums.
-		This are the key takeaways so I feel I've done my job!
-		I think you should stay though---you might enjoy the knowledge buzz moments
+		These are the two key ideas related to integrals,
+		so I feel I've done my job!
+		I think you should stay though---you might enjoy the \emph{knowledge buzz} moments
 		that are coming your way in the next few pages.		
-		My college calculus professor in college
-		described the realization you get after understanding the FTC
-		as similar to the feeling you you get smoke some of that funny stuff.
-%	Differential calculus and integral calculus are two sides of the same coin.
-%	If you understand why the theorem is true, 
-%	you will understand something very deep about calculus. 
-%	Differentiation is the inverse operation of integration.
-		%
-		%		
-		% (M6)
-		With your consent we continue with the integrals,
-		else skip ahead to Section~\ref{integrals:scipy}
-		for some tech talk about high performance numerical integrals,
-		or straight away to Section~\ref{sec:sequences_and_series} to learn about sequences and series,
-		which is the third foundational topics in calculus.
-		
-		
-		
+		My calculus teacher in college
+		described the realization you get after understanding the fundamental theorem of calculus
+		as similar to the feeling you get when smoking some of that ``funny stuff.''
+		%	Differential calculus and integral calculus are two sides of the same coin.
+		%	If you understand why the theorem is true, 
+		%	you will understand something very deep about calculus. 
+		%	Differentiation is the inverse operation of integration.
+
+		Still with me?
+		Okay,
+		with your consent,
+		let's continue with the calculus show.
 
 
 	

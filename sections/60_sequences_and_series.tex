@@ -3,64 +3,61 @@
 \section{Sequences and series}
 \label{sec:sequences_and_series}
 
-	A \emph{sequence} $a_k$ is a function that take whole numbers as inputs
+	A \emph{sequence} $a_k$ is a function that take natural numbers as inputs
 	and produce real numbers as outputs: $a_k : \mathbb{N} \to \mathbb{R}$.
 	The \emph{series} $\sum a_k$ describes the sum of all the terms in the sequence $a_k$.
-	Series are a powerful computational tool
-	that allow us to describe procedures with infinite number of steps
-	and use these procedures to approximate irrational numbers like $e$,
-	and transcendental functions like the exponential function $f(x) = e^x$.	
-	Sequences and series are the third pillar of the basic calculus knowledge that I want you to have.
+	%
+	Sequences and series are the third pillar of the basic calculus knowledge that I want you to have
+	because they are powerful computational tools  
+	that allow us to describe procedures with infinite number of steps.
 
 	\subsection{Sequences are functions with discrete inputs}
 	\label{sequences_and_series:sequences}
 
 		We use the notation $f: \mathbb{R} \to \mathbb{R}$
-		to describe the functions that take real numbers $x \in \mathbb{R}$ as inputs
+		to describe functions that take real numbers $x \in \mathbb{R}$ as inputs
 		and produce real numbers as outputs $f(x) \in \mathbb{R}$.
 		When studying functions that take natural numbers $k \in \mathbb{N}$ as inputs,
 		we use a different notation: $a_k: \mathbb{N} \to \mathbb{R}$,
 		where $a_k$ describes the $k$\textsuperscript{th} term in the sequence.
-		The sequence's input variable is usually denoted $k$.
+		The sequence's input variable is usually denoted~$k$
 		and corresponds to the \emph{index} within the sequence.
 		Usually $k$ is a natural number $k \in \mathbb{N} \eqdef \{0,1,2,3,4,\ldots\}$
-		but some sequences are only defined nor positive natural numbers $k \in \mathbb{N}_+ \eqdef \{1,2,3,4,\ldots\}$.
+		but some sequences are only defined for positive natural numbers
+		$k \in \mathbb{N}_+ \eqdef \{1,2,3,4,\ldots\}$.
 		Note the chance in notation:
-		we use $a_k$ for sequences instead of the usual function notation $a(k)$.
-		% TODO: MERGE
-		%	Note the new notation for the input variable as a subscript.
-		%	This is the standard notation for describing sequences,
-		%	and is used instead of the standard function notation $a(k)$.
-
+		we use subscript to denote the input variable of a sequence $a_k$
+		instead of the usual notation for functions $a(k)$.
 		
-		We can define a sequence by specifying the formula for the $k$\textsuperscript{th} term in the sequence $a_k$.
+		We can define a sequence by specifying the formula for the $k$\textsuperscript{th} term in the sequence.
 		For example,
-		the \emph{harmonic sequence} is defined by the formula $a_k = \frac{1}{n}$.
+		the \emph{harmonic sequence} is defined by the formula $h_k \eqdef \frac{1}{n}$.
 		Another way to define a sequence is by listing the first few values in the sequence:
-		$[a_0, a_1, a_2, a_3, \ldots]$,
-		which correspond to evaluating formula $a_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
-		We'll now look at some common examples sequences
-		specified both as functions of $k$ and show the the first few values in each sequence.
+		$[h_0, h_1, h_2, h_3, \ldots]$,
+		which correspond to evaluating formula $h_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
+		We'll now look at some examples of sequences,
+		specifying both their formulas
+		and showing the the first few values of each sequence.
 
 
 		\paragraph{The natural numbers}
 		
 			The simplest possible example of a sequence is the identity function,
-			that returns the index input $k$ as output:
+			which returns the index input $k$ as output:
 			\[
 				n_k\eqdef k, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
 				  \left[0, 1, 2, 3, 4, 5, 6, 7, \ldots \, \right].
 			\]
 			This is the fundamental counting sequence that describes
-			the process of taking ``unit step'' to the right on the number line,
+			the process of taking a ``unit step'' to the right on the number line,
 			starting at the origin.
 		
 
 		\paragraph{Squares of natural numbers}
 			
 			The sequence-equivalent of the quadratic function $f(x)=x^2$
-			is the sequence of squares of the integers:
+			is the sequence of squares of the natural numbers:
 			\[
 				q_k\eqdef k^2, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
@@ -70,15 +67,17 @@
 
 		\paragraph{Harmonic sequence}
 			
-			We obtain another useful sequence by computing the fraction $\frac{1}{k}$:
+			We obtain another useful sequence by computing the fractions $\frac{1}{k}$
+			for each $k \in \{1,2,3,\ldots\} = \mathbb{N}_+$:
 			\[
 				h_k\eqdef \tfrac{1}{k}, \text{ for } k \in \mathbb{N}_+
 				  \ \ \Leftrightarrow \ \ 
 				  \big[1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \tfrac{1}{5}, \tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \big].
 			\]
-			The \emph{harmonic sequence} appears in music.
-			For most music instruments,
-			when we want to play the note that corresponds to the frequency $f$,
+			This is called the \emph{harmonic sequence}
+			because it describes the wavelengths of harmonic frequencies produced by musical instruments.
+			% For most music instruments,
+			When we play the note that corresponds to the frequency $f$,
 			we also hear notes with frequencies that are integer multiple of the ``dominant'' frequency:
 			$2f$, $3f$, $4f$, etc.,
 			which are called the harmonics.
@@ -96,7 +95,7 @@
 
 		\paragraph{The alternating harmonic sequence}
 	
-			Consider now a harmonic sequence with alternating positive an negative outputs:
+			Consider now a harmonic sequence with alternating positive an negative terms:
 			\[
 				a_k \eqdef \tfrac{(-1)^{k+1}}{k}, \text{ for } k \in \mathbb{N}_+
 				  \ \ \Leftrightarrow \ \ 
@@ -105,23 +104,25 @@
 			The factor $(-1)^{k+1}$ is positive for all odd inputs $k \in \{1,3,5,7,\ldots \}$
 			since $(-1)^m=+1$ for any even number $m$.
 			The factor $(-1)^{k+1}$ is negative
-			for all even inputs $k \in \{2,4,6,8,\ldots \}$,
+			for all even indices $k \in \{2,4,6,8,\ldots \}$,
 			hence the values in the sequence oscillate between positive and negative.
+
 
 		\paragraph{Inverse factorial sequence}
 
-			The factorial function is denoted $k!$
-			and describes the product of the first $k$ positive natural numbers;
+			The factorial function is denoted~$k!$
+			and describes the product of the first $k$ positive natural numbers:
 			$k! \;\; \eqdef \;\; k \cdot (k-1) \cdots 3 \cdot 2 \cdot 1$.
 			We'll see factorials in several formulas in this section.
 			In particular,
-			the following sequence is of particular interest:
+			the following sequence will be of interest:
 			\[
 				f_k\eqdef \tfrac{1}{k!}, \text{ for } k \in \mathbb{N}_+
 				  \ \ \Leftrightarrow \ \ 
 				  \big[ 1, \tfrac{1}{2!}, \tfrac{1}{3!}, \tfrac{1}{4!}, \tfrac{1}{5!}, \tfrac{1}{6!}, \tfrac{1}{7!}, \ldots \, \big].
+				% WHY NOT START AT 0 ?		TODO
 			\]
-			The values in the inverse factorial sequence quickly become very small,
+			The values in the inverse factorial sequence quickly become very small
 			because the factorial function grows very quickly:
 			$2!=2$,
 			$3!=6$,
@@ -148,8 +149,9 @@
 				  \big[ 1, r, r^2, r^3, r^4, r^5, r^6, r^7, \ldots \, \big].
 			\]
 			Each term in the sequence equals $r$ times the previous term,
-			which describes \emph{geometric process} that repeatedly grows/shrinks by the amount $r$.
-			When $r < 1$ the values in sequence $g_k$ quickly go to zero,
+			which describes a \emph{geometric} process that repeatedly grows/shrinks by the amount $r$.
+			When $r < 1$,
+			the values in the sequence $g_k$ quickly go to zero,
 			similar to how exponential function $e^{-x}$ goes to zero for large value of $x$.
 			When $r > 1$ the sequence $g_k$ increases quickly,
 			similar to how exponential function $e^{x}$ increases for large value of $x$.
@@ -157,8 +159,8 @@
 
 		\paragraph{Powers of two}
 
-			The special case of the geometric series with $r=2$ is of particular interest,
-			so we'll alias-define it as the sequence $b_k$:
+			We'll also use the label $b_k$
+			for the special case of the geometric series with $r=2$:
 			\[
 				b_k \eqdef 2^k, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
@@ -172,11 +174,11 @@
 	\subsection{Convergence of sequences}
 	\label{sequences_and_series:convergence_of_sequences}
 	
-		What happens to sequences as $k$ goes to infinity?
+		What happens to a sequence as $k$ goes to infinity?
 		We can use the limit notation $\lim_{k \to \infty}$ to describe this process.
-		There are to possible behaviours:
-		either the values of the sequence blow up to infinity,
-		or they approach some fixed number.
+		There are two behaviours we're interested in:
+		sequences that blow up to infinity,
+		and sequences that approach some fixed number as $k$ goes to $\infty$.
 
 		For example,
 		the sequences $n_k \eqdef k$, $q_k \eqdef k^2$, and $b_k \eqdef 2^k$
@@ -197,7 +199,7 @@
 		the values in the sequences $h_k \eqdef \tfrac{1}{k}$,
 		$a_k \eqdef \tfrac{(-1)^{k+1}}{k}$,
 		and $f_k \eqdef \tfrac{1}{k!}$ \emph{converge}
-		to the value $0$ in the limit as $k$ goes to infinity.
+		to the value $0$ in the limit as $k$ goes to infinity:
 		\[
 			% \lim_{k \to \infty} h_k =
 			\lim_{k \to \infty} \tfrac{1}{k} = 0,
@@ -208,9 +210,8 @@
 			\lim_{k \to \infty} \tfrac{1}{k!} =  0.
 		\]
 		The geometric series $g_k \eqdef r^k$
-		converges only if absolute value of $r$ is less than one:
-		$\lim_{k \to \infty} r^k = 0$,
-		$|r| < 1$.
+		converges only if the absolute value of $r$ is less than one:
+		$\lim_{k \to \infty} r^k = 0$, when $|r| < 1$.
 
 		The limit of a sequence as $k$ goes to infinity
 		is directly analogous to the limit of function $f(x)$ as $x$ goes to infinity.
@@ -222,24 +223,17 @@
 		We're often interested in computing sums of values in a sequence.
 		To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th}
 		elements of the sequence $c_k$,
-		we turn to summation notation:
-	    	\[
-			\sum_{k=3}^{5} c_k	=	c_3 + c_4 + c_5.
-		\]
+		we turn to summation notation: $\sum_{k=3}^{5} c_k	= c_3 + c_4 + c_5$.
 		The capital Greek letter \emph{sigma} stands in for the word \emph{sum}, 
 		and the range of index values included in this sum is denoted below and above the summation sign.
-	
+		%
 		The sum of the values in the sequence $c_k$ from $k=0$ until $k=n$
-		is denoted as
-		\[
-			\sum_{k=0}^n c_k =  c_0 + c_1 + c_2 + \cdots + c_{n-1} + c_n.
-		\]
+		is denoted as $\sum_{k=0}^n c_k =  c_0 + c_1 + c_2 + \cdots + c_{n-1} + c_n$.
 		% This is called \emph{finite series} 
 
-		\noindent
 		Since this is a calculus tutorial,
-		you should expect that an infinity of some kind will show up soon,
-		and indeed we'll learn about \emph{infinite series},
+		you should expect that an infinity of some kind will show up,
+		and indeed we'll soon learn about \emph{infinite series}
 		that describe the sum of \emph{all} the values in the sequence $c_k$:
 		$\sum c_k  \eqdef 	\lim_{n \to \infty} \sum_{k=0}^n c_k$.
 		% =		\sum_{k=0}^\infty c_k = c_0+ c_1 + c_2 + c_3 + c_4 + \cdots .
@@ -255,11 +249,12 @@
 		%
 		%
 		But before we get to infinite sums,
-		let's start at some finite sums to get a feel of this thing.	
+		we'll start by looking at some finite sums
+		to gain some experience with the summation notation.
 
 
-
-	\subsection{Exact sums}
+	\subsection{Exact formulas for finite summations}
+	% WAS Exact sums
 
 		We'll now show some useful formulas for calculating sum of the terms in certain sequences.
 		For example,
@@ -277,7 +272,8 @@
 		\]
 
 
-		The sum of the first $n$ positive integers and the sum of their squares are:
+		The sum of the first $n$ positive integers and the sum of their squares
+		are described by the following formulas:
 		\[
 			\sum_{k=1}^n k = \frac{n(n+1)}{2}
 			\qquad \text{and} \qquad
@@ -287,50 +283,52 @@
 		% 	See problem \textbf{P\ref{problem:infinite_sum_formulas_derivation}}
 		%	for the derivations of these formulas.
 
-		% COMBINATIONS AND THE BINOMIAL COEFFICIENT
-		The \emph{binomial coefficient} is denoted using the symbol ${n \choose k}$,
-		which is read as ``$n$ choose $k$.''
-		The binomial coefficient counts the number of combinations of $k$ items
-		we can choose from a set of $n$ items,
-		and it is computed using the formula:
-		${n \choose k} \eqdef \frac{n!}{(n-k)! \, k!}$.
-		% ALT. set of $n$ items and we want to choose $k$ of them
-		For example,
-		the number of combinations of size $2$ selected from a list of $5$ items is 
-		${5 \choose 2}	= \frac{5!}{(5-2)!\,2!} = \frac{5!}{3!\,2!}
-					= \frac{5\cdot 4 \cdot 3 \cdot 2 \cdot 1}{3 \cdot 2 \cdot 1 \;\; \cdot \;\; 2 \cdot 1  } 
-					= \frac{120}{6 \cdot 2} = 10$.
-		%	We can use the function \tt{comb(n,k)} from the \tt{scipy.special} module
-		%	to compute ${n \choose k}$.
-		%	Here is the code for computing ${5 \choose 2}$.
-		%	\begin{codeblock}[calc-comb-5-2]
-		%	>>> from scipy.special import comb
-		%	>>> comb(5,2)  # == "n choose k"
-		%	10
-		%	\end{codeblock}
-		The binomial coefficient
-		appears in the expansion of the binomial expression $(a + b)^n$,
-		which can written as the following summation:
-		\begin{align*}
-			(a+b)^n	&= \textstyle {n \choose 0}a^n
-						+ {n \choose 1}a^{n-1}b 
-						% + {n \choose 2}a^{n-2}b^2
-						+ \cdots
-						+ {n \choose n-1 }ab^{n-1}
-						+ {n \choose n}b^n	\\
-					&= \textstyle \sum_{k=0}^n {n \choose k} a^{n-k} b^k.
-		\end{align*}
-		This sum appears in several calculations in probability theory.
-		%	In the special case when one of the terms is 1:
-		%	\[
-		%		\sum_{k=0}^n {n \choose k} x^k=(1+x)^n
-		%	\]
+		\ifthenelse{\boolean{FORSTATSBOOK}}{
+			% COMBINATIONS AND THE BINOMIAL COEFFICIENT
+			The \emph{binomial coefficient} is denoted using the symbol ${n \choose k}$,
+			which is read as ``$n$ choose $k$.''
+			The binomial coefficient counts the number of combinations of $k$ items
+			we can choose from a set of $n$ items,
+			and it is computed using the formula:
+			${n \choose k} \eqdef \frac{n!}{(n-k)! \, k!}$.
+			% ALT. set of $n$ items and we want to choose $k$ of them
+			For example,
+			the number of combinations of size $2$ selected from a list of $5$ items is 
+			${5 \choose 2}	= \frac{5!}{(5-2)!\,2!} = \frac{5!}{3!\,2!}
+						= \frac{5\cdot 4 \cdot 3 \cdot 2 \cdot 1}{3 \cdot 2 \cdot 1 \;\; \cdot \;\; 2 \cdot 1  } 
+						= \frac{120}{6 \cdot 2} = 10$.
+			%	We can use the function \tt{comb(n,k)} from the \tt{scipy.special} module
+			%	to compute ${n \choose k}$.
+			%	Here is the code for computing ${5 \choose 2}$.
+			%	\begin{codeblock}[calc-comb-5-2]
+			%	>>> from scipy.special import comb
+			%	>>> comb(5,2)  # == "n choose k"
+			%	10
+			%	\end{codeblock}
+			The binomial coefficient
+			appears in the expansion of the binomial expression $(a + b)^n$,
+			which can written as the following summation:
+			\begin{align*}
+				(a+b)^n	&= \textstyle {n \choose 0}a^n
+							+ {n \choose 1}a^{n-1}b 
+							% + {n \choose 2}a^{n-2}b^2
+							+ \cdots
+							+ {n \choose n-1 }ab^{n-1}
+							+ {n \choose n}b^n	\\
+						&= \textstyle \sum_{k=0}^n {n \choose k} a^{n-k} b^k.
+			\end{align*}
+			This sum appears in several calculations in probability theory.
+			%	In the special case when one of the terms is 1:
+			%	\[
+			%		\sum_{k=0}^n {n \choose k} x^k=(1+x)^n
+			%	\]
 
-		% The binomial coefficient also appears in various calculations in probability theory.
-		%	we use the ``$n$ choose $k$'' formula to calculate certain probabilities
-		%	by counting the combinations of outcomes that produce a certain event.
-		%	For example,
-		%	the probability of exactly $2$ heads in $5$ coin tosses is ${5 \choose 2}0.5^5$.
+			% The binomial coefficient also appears in various calculations in probability theory.
+			%	we use the ``$n$ choose $k$'' formula to calculate certain probabilities
+			%	by counting the combinations of outcomes that produce a certain event.
+			%	For example,
+			%	the probability of exactly $2$ heads in $5$ coin tosses is ${5 \choose 2}0.5^5$.
+		}{}
 
 
 
@@ -342,14 +340,14 @@
 		Series are defined as the sums computed from the terms in the sequence $c_k$.
 		The \emph{finite series} $\sum_{k=1}^n c_k$ computes the first $n$ terms of the sequence:
 		\[
-			\sum_{k=1}^n c_k
+			C_n = \sum_{k=1}^n c_k
 				= c_1 + c_2 + c_3 + c_4 + c_5  + \cdots  + c_{n-1} + c_n.
 		\]
 		The \emph{infinite series} $\sum c_k$ computes \emph{all} the terms in the sequence:
 		\[
-			\sum c_k
-				\;\; \eqdef \;\;	\lim_{n\to \infty}  \sum_{k=1}^n c_k
-				= c_1 + c_2 + c_3 + c_4 + c_5 + c_6 + \cdots.
+			C_\infty	= \sum c_k
+					= \lim_{n\to \infty}  \sum_{k=1}^n c_k
+					= c_1 + c_2 + c_3 + c_4 + c_5 + \cdots.
 		\]
 		%	and we want to compute the sum of all the values in this sequence $\sum_{k=-}^\infty c_k$.
 		The infinite series $\sum c_k$
@@ -409,16 +407,16 @@
 		to the value $\frac{1}{1-r}$.
 		We can also say that the infinite geometric series $\sum g_k$ \emph{is convergent},
 		meaning it has a finite value and doesn't blow up.
-		Another example of a converged infinite series is $F_\infty = \sum f_k$,
+		Another example of a converging infinite series is $F_\infty = \sum f_k$,
 		which converges to the number $e$,
 		as we'll see in Example~2 below.
 
 		In contrast,
-		the regular harmonic series $\sum h_k$ \emph{diverges}.
+		the harmonic series $\sum h_k$ \emph{diverges}.
 		When we sum together more and more terms of the sequences $h_k$,
-		the total computed keeps growing and the series blows up to infinity
-		$\sum h_k = \infty$,
-		We say the harmonic series \emph{is divergent}.
+		the total computed keeps growing and the infinite series blows up to infinity
+		$\sum h_k = \infty$.
+		We say that the harmonic series \emph{is divergent}.
 		
 
 
@@ -437,12 +435,12 @@
 
 	\subsubsection{Using convergent series for practical calculations}
 
-		We can use infinite series to compute the value of irrational numbers.
+		We can use infinite series to compute irrational numbers.
 
 		\paragraph{Example 2: Euler's number}
 			
 			The infinite sum of the sequence $f_k \eqdef \tfrac{1}{k!}$
-			converges to Euler's number $e = 2.71828\ldots$:
+			converges to Euler's number $e = 2.71828182845905\ldots$:
 			\[
 				F_\infty 
 					= \lim_{n \to \infty} F_n 
@@ -455,11 +453,11 @@
 		\noindent
 		The calculation above is not just cool math fact,
 		but a useful computational procedure
-		that we can use to compute the value of $e = 2.71828\ldots$
+		that we can use to approximate the value of $e = 2.71828\ldots$
 		using only basic arithmetic operations like repeated multiplication (factorial), division, and addition.
 
 		Let's look at some practical calculations where we compute
-		the first $n=10$, $n=15$, and $n=20$ terms in the infinite series.
+		the first $n=10$ and $n=15$ terms in the series $\sum_{k=0}^m f_k$: 
 
 		\begin{codeblock}[]
 		>>> import math
@@ -469,16 +467,16 @@
 		2.718281...
 		>>> sum([f_k(k) for k in range(0,15)])
 		2.71828182845...
-		>>> sum([f_k(k) for k in range(0,20)])
-		2.71828182845905...
 		\end{codeblock}
 
 		\noindent
-		Summing together the first $10$ terms in the infinite series
-		gives us an approximation to Euler's number $e$ that is accurate to six decimals.
-		With $15$ terms we get an approximation that is accurate to $11$ decimals.
+		Summing together the first $10$ terms in the series
+		gives us an approximation to $e$ that is accurate to six decimals.
+		With $15$ terms,
+		we get an approximation that is accurate to $11$ decimals.
 		The more terms we include in the summation,
-		the closer we get to the true value of $e = 2.71828182845905\ldots$.
+		the closer we get to the true value of $e$,
+		which is $2.71828182845905\ldots$.
 
 		If we want to compute the \emph{exact} value of $e$,
 		we would need to compute the infinite series $\sum_{k=0}^\infty \tfrac{1}{k!}$.
@@ -488,17 +486,18 @@
 		The first argument is an the expression for the $k$\textsuperscript{th}
 		term in the sequence,
 		then we specify the index variable,
-		the starting point and the end point of the summation:
+		the starting point,
+		and the end point of the summation:
 
 		\begin{codeblock}[]
 		>>> import sympy as sp
 		>>> k = sp.symbols("k")
-		>>> sp.summation(1/sp.factorial(k), (k,0,sp.oo))
+		>>> sp.summation(1/sp.factorial(k), (k, 0, sp.oo))
 		E
 		\end{codeblock}
 
 		\noindent
-		We use \tt{sp.oo} to instruct SymPy to perform the infinite sum,
+		We used \tt{sp.oo} to make SymPy compute the infinite sum,
 		which produced the exact symbolic answer $\tt{E} = e$.
 		%The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
 
@@ -537,25 +536,25 @@
 			We need to sum $1$M terms in the series to obtain
 			and approximation %to $\ln(2)$
 			that is accurate to five decimals.
-			Nevertheless if we keep calculating the series with more and more terms,
-			we can obtain an approximation that arbitrarily close
+			Nevertheless,
+			if we keep calculating sums with more and more terms,
+			we can obtain an approximation that is arbitrarily close
 			to the true value $\ln(2) = 0.6931471805599453\ldots$.
 			
 			To get the exact value $\ln(2)$,
 			we can make SymPy compute the infinite series:
 
 			\begin{codeblock}[]
-			>>> sp.summation((-1)**(k+1) / k, (k,1,sp.oo))
+			>>> sp.summation((-1)**(k+1)/k, (k, 1, sp.oo))
 			log(2)
 			\end{codeblock}
 
 		\noindent
-		In this manner,
-		we can come up with all kinds of other infinite series expression
-		to calculate other number of interest like $\pi$.
+		We can come up with all kinds of other infinite series expression
+		for calculating other numbers.
 		Instead of showing you other series for approximating numbers,
-		I'll show you something even more powerful:
-		a technique for approximating functions as infinite series.
+		I'll show you an even more powerful calculus technique:
+		a way to approximate \emph{functions} as infinite series.
 
 
 
@@ -565,7 +564,8 @@
 		The term \emph{power series} describes a series
 		whose terms contain different powers of the variable $x$.
 		The $k$\textsuperscript{th} term in a power series
-		consists of some coefficient $c_k$ and $k$\textsuperscript{th} power of the variable $x$:
+		consists of some coefficient $c_k$
+		and the $k$\textsuperscript{th} power of the variable $x$:
 		\[
 			P_n(x)
 				= \sum_{k=0}^n c_k x^k
@@ -573,12 +573,14 @@
 					+ \cdots + c_nx^n.
 		\]
 		The math expression we obtain in this way is a \emph{polynomial} of degree $n$ in $x$,
-		which we'll denote $P_n(x)$.
+		which we denote $P_n(x)$.
 		Depending on the choice of the coefficients $(c_0, c_1, c_2, c_3, \ldots, c_n)$
 		we can make the polynomial function $P_n(x)$
 		\emph{approximate} some other function $f : \mathbb{R} \to \mathbb{R}$.
 		To find such approximations,
-		we need to figure out how to choose the coefficients $c_k$ of the power series.
+		we need some way to choose the coefficients $c_k$ of the power series,
+		so that the resulting polynomial approximates the function:
+		$P_n(x) \approx f(x)$.
 
 
 	\subsection{Taylor series}
@@ -587,7 +589,7 @@
 		The \emphindexdef{Taylor series approximation} to the function $f(x)$
 		is a power series whose coefficients $c_k$
 		are computed by evaluating the $k$\textsuperscript{th} derivative of the function $f(x)$ at $x=0$,
-		which we'll denote $f^{(k)}(0)$.
+		which we denote $f^{(k)}(0)$.
 		Specifically,
 		the $k$\textsuperscript{th} coefficient in the Taylor series approximation
 		for the function $f(x)$ is $c_k \eqdef \frac{f^{(k)}(0)}{k!}$.
@@ -635,15 +637,17 @@
 		In fact,
 		all the derivatives of $f(x)$ will be $e^x$ because the derivative of $e^x$ is equal to $e^x$.
 		The $k$\textsuperscript{th} coefficient in the power series of $f(x)=e^x$ at the point $x=0$ 
-		is equal to the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=0$.
-		In the case of $f(x)=e^x$ we have $f^{(k)}(0)=e^0=1$,
-		so the coefficient of the $k$\textsuperscript{th} term is $c_k = \tfrac{f^{(k)}(0)}{k!}  = \tfrac{1}{k!}$,
-		so the Taylor series of $f(x)=e^x$ is
+		is equal to the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=0$
+		divided by $k!$.
+		In the case of $f(x)=e^x$,
+		we have $f^{(k)}(0)=e^0=1$,
+		so the coefficient of the $k$\textsuperscript{th} term is $c_k = \tfrac{f^{(k)}(0)}{k!}  = \tfrac{1}{k!}$.
+		The Taylor series of $f(x)=e^x$ is
 		\[
-		 e^x      	= \sum_{k=0}^\infty \tfrac{1}{k!}x^k
+			e^x	= \sum_{k=0}^\infty \tfrac{1}{k!}x^k
 		 	 	= 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{3!} + \tfrac{x^4}{4!} + \tfrac{x^5}{5!} + \tfrac{x^6}{6!} + \tfrac{x^7}{7!}  + \cdots 
 		 \]
-		Series are a powerful computational tool for approximating numbers and functions.
+		Taylor series are a powerful computational tool for approximating functions.
 %This is, IMHO, one of the most important ideas in calculus:
 %you can compute the value of $e^x$ by taking the infinite sum of the terms in the power series
 		As we compute more terms from the above series,
@@ -701,19 +705,19 @@
 		\end{table}
 
 		% POLYNOMIAL BASIS
-		Reader who are familiar with the concept of a basis from linear algebra
+		Readers who are familiar with the concept of a basis from linear algebra
 		can think of the Taylor series shown in Table~\ref{table:taylor_series}
 		as \emph{representations} of the corresponding functions
 		with respect to the basis of polynomial functions:
 		$(1, x, x^2, x^3, x^4, x^5, \ldots)$.
 		The Taylor series coefficients $c_k = \tfrac{f^{(k)}(0)}{k!}$
-		are the coordinates of the function $f(x)$ in the polynomial basis.
+		are the \emph{coordinates} of the function $f(x)$ in the \emph{polynomial basis}.
 		
 
 	\subsection{Obtaining Taylor series using SymPy}
 	\label{series:taylor_series_using_sympy}
 
-		The \texttt{SymPy} function \texttt{series} is a convenient way to obtain the Taylor series of any function.
+		The \texttt{SymPy} function \texttt{sp.series} is a convenient way to obtain the Taylor series of any function.
 		Calling \texttt{series(fun,var,x0,n)} 
 		will show you the series expansion of any function \texttt{fun} 
 		near \texttt{var}=\texttt{x0} up to powers of \texttt{n}.
@@ -741,7 +745,7 @@
 		The big-O notation \tt{O(x**n)} appears in all the above outputs
 		as a reminder that the exact Taylor series contains additional terms,
 		and the Taylor series approximations shows are
-		only accurate up to an error ``on the order of'' $x^n$.
+		only accurate up to an error on the \emph{order of} $x^n$.		% TODO: REVISIT THIS
 
 
 
@@ -749,48 +753,47 @@
 	\subsection{Applications of series}
 	\label{series:applications}
 
-		We've already seen we can use compute $e$
-		using the infinite series $\sum f_k$.
-		Now that we know the Taylor series of $e^x$,
-		we can also compute $e^5$ as ...
+		%	We've already seen we can approximate the value of $e$
+		%	using the series $\sum_{k=0}^{20} f_k = \tt{sum([f_k(k) for k in range(0,15)])}$.
+		%	Now that we know the Taylor series of $e^x$,
+		%	we can also compute $e^5$ 
 
-		Another application of Taylor series representation for the function $f(x)$,
-		is the relative easy with which we can compute 
-		its derivative function $f'(x)$
-		and its integral function $F_0(x) \eqdef \int_0^x f(u)\,du$.
-		Since the Taylor series approximation consists only of polynomial terms
-		of the form $c_n x^n$,
-		we just need to compute the derivative function $f'(x)$
-		we simply compute the derivative of each term: $nc_n x^{n-1}$.
-		Similarly,
-		to compute the integral function $F_0(x) \eqdef \int_0^x f(u)\,du$,
-		we compute the integrals of the individual terms,
+		The Taylor series representation for the function $f(x)$
+		provides a relatively easy way
+		to compute its integral function $F_0(x) \eqdef \int_0^x f(u)\,du$.
+		% for any function $f(x)$.
+		The Taylor series of $f(x)$ consists only of polynomial terms of the form $c_n x^n$.
+		%	We can compute the derivative function $f'(x)$
+		%	by simply computing the derivative of each term: $nc_n x^{n-1}$.
+		To compute the integral function $F_0(x) \eqdef \int_0^x f(u)\,du$,
+		we can compute the integrals of the individual terms,
 		which gives us $\frac{c_n}{n+1}x^{n+1}$.
+		For example,
+		if we want to compute the integral of $\cos(x)$,
+		$\int \cos(x) \, dx =  ??$.
+		\[
+			a
+		\]
+		we can recognize this is the series for $\sin(x)$,
+		so we conclude that $\int \cos(x) \, dx = \sin(x)$.
+
 		
-EXAMPLE
-\vspace{2cm}
-		
-		
-		This example is of historical importance,
-		since it was issued as challenge by Isaac Newton to Wilhelm Leibnitz.
-		No formulas for the integral of ln x was not know at the time,
-		and was considered a difficult computation problem.
-		Newton had discover the Taylor series approximation formula 
-		for ln x
-		but had not published his result.
-		A bit like closed source software.
-		Leibnitz had independently discovered calculus and series
-		so he was able to compute the answer.
-		When Newton saw that Leibnitz was able to solve the challenge,
-		he was motivated to publish his results,
-		which is why we still credit calculus to him.
+		%	This example is of historical importance,
+		%	since it was issued as challenge by Isaac Newton to Wilhelm Leibnitz.
+		%	No formulas for the integral of ln x was not know at the time,
+		%	and was considered a difficult computation problem.
+		%	Newton had discover the Taylor series approximation formula 
+		%	for ln x
+		%	but had not published his result.
+		%	A bit like closed source software.
+		%	Leibniz had independently discovered calculus and series
+		%	so he was able to compute the answer.
+		%	When Newton saw that Leibniz was able to solve the challenge,
+		%	he was motivated to publish his results,
+		%	which is why we still credit calculus to him.
 
 
-TODO
-ODEs
-\vspace{2cm}
-
-
+		% MAYBE: ODEs ?
 
 
 	\ifthenelse{\boolean{FORSTATSBOOK}}{

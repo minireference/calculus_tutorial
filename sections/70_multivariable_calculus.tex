@@ -3,9 +3,9 @@
 \section{Multivariable calculus}
 
 	Multivariable calculus is the extension of the ideas of differential and integral calculus
-	to functions like take multiple variables as inputs.
+	to functions that take multiple variables as inputs.
 	If you were able to follow the single-variable calculus concepts,
-	then you won't have much new math to learn in multivariable calculus:
+	then you can easily learn multivariable calculus:
 	it's essentially the same concepts but with more variables.
 
 	\subsection{Multivariable functions}
@@ -96,7 +96,18 @@
 		and ``what is the slope in the $y$-direction'' at any point $(x,y)$ on the surface of the function.
 		That's precisely the information returned by the functions $\frac{\partial f}{\partial x}(x,y)$ and $\frac{\partial f}{\partial y}(x,y)$.
 
-		TODO: example
+		\subsubsection{Example}
+		
+			The partial derivatives of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
+			are as follows:
+			\[
+				\frac{\partial f}{\partial x} = -2x
+				\qquad
+				\frac{\partial f}{\partial y} = -\tfrac{1}{2}y.
+			\]
+Intuitively,
+we ignore the other variable.
+
 
 		
 	\subsection{The gradient operator}
@@ -116,6 +127,19 @@
 		the gradient vector tells you the direction of the function's maximum increase---the
 		``uphill'' direction at the surface of graph of $f(x,y)$ at the point $(x,y)$.
 		The gradient vector is always perpendicular to the \emph{level curve} at that point.
+		
+		\subsubsection{Example}
+		
+			The gradient of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
+			is
+			\[
+				\nabla f(x,y)
+					= \left(	\frac{\partial f}{\partial x},
+							\frac{\partial f}{\partial y}	\right)
+					= \left(	-2x,	 -\tfrac{1}{2}y	\right).
+			\]
+
+
 
 	\medskip
 	\noindent
@@ -145,6 +169,7 @@
 			\caption{	Visualization of the partial integration procedures.}
 			\label{fig:multivar_combined_slices_through_paraboloid}
 		\end{figure}
+
 
 
 	\subsection{Double integrals}
@@ -195,6 +220,12 @@
 
 		\paragraph{Optimization}
 		
+
+Gradients are the key for the optimization algorithms used in modern machine learning techniques.
+Indeed,
+we ``learn'' model parameters of a machine learning model by minimizing some objective function,
+which involves repeated ``downhill'' steps in the direction of the gradient $-\nabla f(x,y)$.
+
 			The notion of an uphill or downhill direction for the surface $f(x,y)$ turns out to be very useful for optimization.
 			%	If you want to find the local maximum of a function,
 			%	you can start at some point and keep moving uphill (in the direction of $\nabla f(x,y)$ and you'll arrive at a local peak of the mountain.
@@ -224,8 +255,9 @@
 		\ifthenelse{\boolean{FORSTATSBOOK}}{
 			\paragraph{Probability calculations}
 
-				Partial and multiple integrals are also used a lot in probability theory.
+				We use partial and multiple integrals a lot in probability theory.
 				The partial integral corresponds to the marginal probability distributions,
-				and double integrals are used to compute probabilities and expectations.
+				and double integrals are used to compute probabilities and expectations.				
+				
 		}{}
 

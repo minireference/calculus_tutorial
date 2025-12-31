@@ -90,6 +90,10 @@
 			All the number you will run into when doing math
 			can be visualized as a point on the number line.
 
+
+
+		\subsubsection{Infinity and negative infinity}
+
 			The number line extends forever to the left and to the right.
 			We use the notation $-\infty$ (negative infinity)
 			to describe larger and larger negative numbers,
@@ -104,6 +108,24 @@ $\infty$ is not a number but a process.
 			% ALT. not a destination you can get to
 			
 TODO: INSERT INFINITY FROM INTRO
+
+Consider the set of natural numbers $\mathbb{N} \eqdef \{0, 1, 2, 3, 4, 5, 6, \ldots \}$.
+The natural numbers describe the process of counting starting at $0$.
+The natural number $n$
+is obtained by starting at $0$ and performing the $+1$ operation $n$ times.
+% Look ahead to the number line shown in Figure~XX.
+Geometrically,
+you can think of the $+1$ operation as taking one step to the right on the number line
+shown in Figure~\ref{fig:number_line_rationals_and_reals}
+(see page~\pageref{fig:number_line_rationals_and_reals}).
+In this context,
+you can think of infinity $\infty$ as performing the $+1$ operation forever.
+Infinity is greater than any natural number $n$.
+Indeed,
+getting to $n$ takes a finite number of steps,
+but $\infty$ describes taking an infinite number of steps
+so $\infty$ must be to the right of $n$.
+
  
 
 
@@ -132,11 +154,11 @@ TODO: INSERT INFINITY FROM INTRO
 		A \emphindexdef{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
 		The output of the function $f$ for the input $x$ is denoted $f(x)$.
 		For example,
-		the function $f(x) \eqdef \frac{1}{2}x^2$
+		the function $f(x) \eqdef x^2$
 		takes any number $x$ as input,
 		squares it and divides the result by two to produce the output.
 		For example,
-		$f(3) = \frac{1}{2} 3^2 = \frac{9}{2} = 4.5$.
+		$f(3) = 3^2 = 9$.
 		
 		In this tutorial,
 		we'll often show code examples that mirror the math calculations.
@@ -146,9 +168,9 @@ TODO: INSERT INFINITY FROM INTRO
 
 		\begin{codeblock}[def-fx-one-half-x-squared]
 		>>> def f(x):
-		        return 0.5 * x**2
+		        return x**2
 		>>> f(3)
-		4.5
+		9.0
 		\end{codeblock}
 		
 		\noindent
@@ -164,13 +186,13 @@ TODO: INSERT INFINITY FROM INTRO
 			%	while the vertical axis describes the output values $f(x)$.
 			Each input-output pair corresponds to a point $(x,f(x))$ in a Cartesian coordinate system.
 			We obtain the graph of the function by varying the input coordinate $x$ and plotting all the points $(x, f(x))$,
-			as illustrated in Figure~\ref{fig:graph_of_function_f_eq_halfx2}.
+			as illustrated in Figure~\ref{fig:graph_of_function_f_eq_x2}.
 			%
 			The graph of the function $f$ allows us to see at a glance the behaviour of the function for many inputs.
 			Function graphs are an essential visualization tool for calculus calculations.
 
 			Let's see how we can use the Python modules \tt{numpy} and \tt{seaborn}
-			to plot the graph of the function $f(x) \eqdef \frac{1}{2}x^2$ that we defined in the previous code block.
+			to plot the graph of the function $f(x) \eqdef x^2$ that we defined in the previous code block.
 			We start by importing the module \tt{numpy} under the alias \tt{np}.
 			Next,
 			we use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs}
@@ -195,17 +217,17 @@ TODO: INSERT INFINITY FROM INTRO
 			\begin{codeblock}[plot-fx-minus3-to-plus3]
 			>>> import seaborn as sns
 			>>> sns.lineplot(x=xs, y=fxs)
-			See Figure ¡\ref{fig:graph_of_function_f_eq_halfx2}¡ for the output.
+			See Figure ¡\ref{fig:graph_of_function_f_eq_x2}¡ for the output.
 			\end{codeblock}
 	
 			\begin{figure}[htb]
 				\centering
-				\includegraphics[width=0.9\columnwidth]{figures/calculus/graph_of_function_f_eq_halfx2.pdf}%
+				\includegraphics[width=0.9\columnwidth]{figures/calculus/graph_of_function_f_eq_x2.pdf}%
 				\vspace{-3mm}
-				\caption{	Graph of the function $f(x)=\frac{1}{2}x^2$ from $x=-3$ until $x=+3$.
+				\caption{	Graph of the function $f(x) = x^2$ from $x=-3$ until $x=+3$.
 						The graph of the function $f$ passes through the coordinates pairs $(x,f(x))$
 						for all $x$-values in the interval $[-3,3]$.}
-				\label{fig:graph_of_function_f_eq_halfx2}
+				\label{fig:graph_of_function_f_eq_x2}
 			\end{figure}
 
 			\noindent
@@ -239,17 +261,17 @@ TODO: INSERT INFINITY FROM INTRO
 	
 			For example,
 			when $x \geq 0$,
-			the inverse of the function $f(x) = \frac{1}{2}x^2$
-			is the function $f^{-1}(x) = \sqrt{2x}$.
-			Earlier we computed $f(3) = 4.5$.
-			If we apply the inverse function $f^{-1}(x) = \sqrt{2x}$ to $4.5$,
+			the inverse of the function $f(x) = x^2$
+			is the function $f^{-1}(x) = \sqrt{x}$.
+			Earlier we computed $f(3) = 9$.
+			If we apply the inverse function $f^{-1}(x) = \sqrt{x}$ to $9$,
 			we get back to the number $3$ that we started from
-			$f^{-1}(4.5) = \sqrt{2 \cdot 4.5} = \sqrt{9} = 3$.
+			$f^{-1}(9) = \sqrt{9} = 3$.
 
 			\begin{codeblock}[fun-inv-fun-combo-log]
 			>>> from math import sqrt
-			>>> sqrt(2*4.5)
-			3.0
+			>>> sqrt(9)
+			3
 			\end{codeblock}
 	
 
@@ -263,7 +285,7 @@ TODO: INSERT INFINITY FROM INTRO
 			while the set of possible outputs is called the \emph{image} % or \emph{range}
 			of the function.
 			For example,
-			the domain of the function $f(x)= \frac{1}{2}x^2$
+			the domain of the function $f(x) = x^2$
 			is $\mathbb{R}$ (any real number)
 			and it's image is $\mathbb{R}_+$ (nonnegative real numbers),
 			so we write it as $f \colon \mathbb{R} \to \mathbb{R}_+$.
@@ -299,23 +321,19 @@ TODO: INSERT INFINITY FROM INTRO
 %	Figure~\ref{fig:3x3_functions_miniplots} shows the graphs of some of the most important functions we'll use in this book.
 
 
-
-			\begin{figure}[htb]
-				\centering
-				\includegraphics[width=0.99\columnwidth]{figures/calculus/panel_function_graphs1.pdf}%
-				\vspace{-2mm}
-				\caption{	Graph of six math functions that you should know about.}
-				\label{fig:panel_function_graphs1}
-			\end{figure}
-
-
+		\begin{figure}[htb]
+			\centering
+			\includegraphics[width=0.99\columnwidth]{figures/calculus/panel_function_graphs1.pdf}%
+			\vspace{-2mm}
+			\caption{	Graph of six math functions that you should know about.}
+			\label{fig:panel_function_graphs1}
+		\end{figure}
 
 
 
 		\subsubsection{Constant function}
 		
 			The constant function $f(x) \eqdef c$ produces the same output $c$ for all inputs $x$.
-
 
 
 
@@ -336,11 +354,6 @@ TODO: INSERT INFINITY FROM INTRO
 			and $b$ describes the value of the function when $x=0$.
 			% The inverse to the line $f(x)=mx+b$ is $f^{-1}(x)=\frac{1}{m}(x-b)$, which is also a line.
 
-		%quadratic
-		%square root
-		%polynomial
-		%exp
-		%log
 
 
 		\subsubsection{Quadratic function}
@@ -350,7 +363,6 @@ TODO: INSERT INFINITY FROM INTRO
 			Geometrically,
 			$x^2$ is the area of a square with side length $x$.
 			See Figure~\ref{fig:panel_function_graphs1}~(b) for the graph.
-			%
 			The outputs the quadratic function are always nonnegative numbers
 			since $x^2 \geq 0$, for all real numbers $x$.
 			%	$f(x)=x^2$ is \emph{two-to-one}: 
@@ -480,9 +492,10 @@ TODO: INSERT INFINITY FROM INTRO
 			$(e^4, 4)$, etc.
 
 
-% MAYBE
-%gaussian-like erf $e^{-x^2}$
-%sigmoid $\frac{1}{1-e^{-x}}$
+		% MAYBE OTHER FUNCTIONS
+		%gaussian-like erf $e^{-x^2}$
+		%sigmoid $\frac{1}{1-e^{-x}}$
+
 
 
 
@@ -500,36 +513,25 @@ TODO: INSERT INFINITY FROM INTRO
 
 	\subsection{Geometry of rectangles and triangles}
 	
-		% We'll now briefly review some geometry formulas.
-		
-
-%		\subsubsection{Circle}
-%		
-%			The area enclosed by a circle of radius $r$ is given by $A = \pi r^2$,
-%			where $\pi = 3.14159\ldots$.
-%			A circle of radius $r=1$ has area $\pi$.
-%			The circumference of a circle of radius $r$ is $C = 2 \pi r$.
-%			A circle of radius $r=1$ has circumference $2\pi$.
-
-		
-		%\subsubsection{Rectangle}
+		% 	We'll now briefly review some geometry formulas.
+		%	\subsubsection{Circle}
+		%		The area enclosed by a circle of radius $r$ is given by $A = \pi r^2$,
+		%		where $\pi = 3.14159\ldots$.
+		%		A circle of radius $r=1$ has area $\pi$.
+		%		The circumference of a circle of radius $r$ is $C = 2 \pi r$.
+		%		A circle of radius $r=1$ has circumference $2\pi$.
 
 		The area of a rectangle of base $b$ and height $h$ is $A = bh$,
 		as illustrated in Figure~\ref{fig:geometry_areas_circle_rect_triangle}~(a).
-		% \subsubsection{Triangle}
 		The area of a triangle
 		is equal to $\frac{1}{2}$ times the length of its base $b$ times its height $h$:
 		$A = \tfrac{1}{2} b h$,
 		as shown in Figure~\ref{fig:geometry_areas_circle_rect_triangle}~(b).
 		% Note that $h_a$ is the height of the triangle \emph{relative to} the side $a$.
 
-		% \noindent
-		% The three area formulas are illustrated in Figure~\ref{fig:geometry_areas_circle_rect_triangle}.
-
 		\begin{figure}[htb]
 			\centering
 			\includegraphics[width=0.8\columnwidth]{figures/calculus/geometry_areas_circle_rect_triangle.pdf}
-			% hexagon-octagon-dodecagon.png}
 			\vspace*{-5mm}
 			\caption{	Formulas for calculating the area of a rectangle and a triangle.}
 			\label{fig:geometry_areas_circle_rect_triangle}

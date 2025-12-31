@@ -8,16 +8,16 @@
 		We'll now revisit the integral calculations from the three examples
 		using symbolic math calculations.
 		Before we can begin,
-		we must define symbolic symbols variables \tt{x}, \tt{a}, and \tt{b},
-		which we'll use to express the function $f$, $g$, and $h$
-		and the limits of integration.
+		we must define symbolic symbols variables \tt{x}, \tt{a}, and \tt{b}:
 
 		\begin{codeblock}[define-symbols-xabcm]
 		>>> import sympy as sp
 		>>> x, a, b = sp.symbols("x a b")
 		\end{codeblock}
 
-		
+		\noindent
+		We'll use these symbols to express the functions and the limits of integration.
+
 		\subsubsection{Example 1S: Constant function}
 	
 			Consider the constant function $f(x) = 3$,
@@ -33,9 +33,9 @@
 			To compute the integral $\int_a^b f(x) dx$,
 			we call the SymPy function \tt{sp.integrate},
 			passing in the function as the first argument,
-			and the triple $\tt{(x,a,b)}$ as the second argument,
-			where $x$ specifies the variable of integration,
-			and $a$ and $b$ are the limits of integration:
+			and the triple $\tt{(x,a,b)}$ as the second argument
+			to specify the variable of integration
+			and the limits of integration $a$ and $b$.
 
 			\begin{codeblock}[sympy-integrate-fx-a-b]
 			>>> sp.integrate(fx, (x,a,b))  # = A_f(a,b)
@@ -45,14 +45,14 @@
 			\noindent
 			Since $a$ and $b$ are arbitrary constants,
 			the answer we obtain for $A_f(a,b) = \int_a^b f(x) dx$
-			is a general-purpose formula
+			is a general formula
 			that works for all possible intervals of integration $[a,b]$.
 			Geometrically,
-			we recognize the result as the height-times-width formula
+			we recognize the result \tt{3*(b-a)} as the height-times-width formula
 			for the area of a rectangle,
 			which we have seen several times already.
 	
-			To compute the definite integral between $a=0$ and $b=5$,
+			To compute the definite integral $\int_0^5 f(x)\,dx$,
 			we specify the numerical limits of integration instead of the symbols \tt{a} and \tt{b}.
 	
 			\begin{codeblock}[integrate-fx-subs-vals]
@@ -63,14 +63,14 @@
 			\noindent
 			This result matches the value we obtained using
 			geometrical calculation in Figure~\ref{fig:simple_integral_fx_eq_3},
-			and the approximation we obtained using numerical integration \tt{quad(f,0,5)}.
+			and the approximation we obtained using numerical integration \tt{quad(f,0,5)[0]}.
 	
 			We can also compute the integral function $F_0(b)$,
 			which is defined as $F_0(b) \eqdef \int_0^b f(x) dx$,
-			for the function $f(x) = \tt{fx}$.
+			for the function $\tt{fx} = f(x) = 3$.
 	
 			\begin{codeblock}[sympy-integral-function-F]
-			>>> F0b = sp.integrate(fx, (x,0,b))  # = F_0(b)
+			>>> F0b = sp.integrate(fx, (x,0,b))
 			>>> F0b
 			3*b
 			\end{codeblock}
@@ -83,7 +83,7 @@
 			Given $F_0(b)$, %  = \tt{F0b}$,
 			we can compute the definite integral between $a=0$ and $b=5$
 			using the formula $\int_0^5 f(x) dx = F_0(5) - F_0(0)$.
-			We'll need to used the method \tt{subs} (short for substitute)
+			We'll use the method \tt{subs} (short for substitute)
 			on the expression \tt{F0b} to ``plug in'' the values $b=5$ and $b=0$.
 
 			\begin{codeblock}[]
@@ -91,9 +91,9 @@
 			15
 			\end{codeblock}
 
-			\noindent
-			The \tt{subs} method expects as inputs a Python dictionary whose keys are symbols,
-			and whose values represent the numbers we want to plug into the expression.
+			%	\noindent
+			%	The \tt{subs} method expects as inputs a Python dictionary whose keys are symbols,
+			%	and whose values represent the numbers we want to plug into the expression.
 
 
 
@@ -123,7 +123,7 @@
 			we call \tt{sp.integrate} using the symbol \tt{b} for the upper limit of integration:
 	
 			\begin{codeblock}[sympy-integral-function-G]
-			>>> G0b = sp.integrate(gx, (x,0,b))  # = G_0(b)
+			>>> G0b = sp.integrate(gx, (x,0,b))
 			>>> G0b
 			b**2 / 2
 			\end{codeblock}
@@ -171,7 +171,8 @@
 
 		\subsubsection{Example 3S: Polynomial function}
 
-			Recall $h(x) = 4 -x^2$.
+			We start by defining a SymPy expression
+			that corresponds to the function $h(x) = 4 - x^2$.
 
 			\begin{codeblock}[sympy-define-hx]
 			>>> hx = 4 - x**2
@@ -180,18 +181,18 @@
 			\end{codeblock}
 		
 			\noindent
-			The integral function $H_0(b) = \int_0^b h(x)\,dx$
-			is given by:
+			We can now make SymPy compute the integral function $H_0(b) = \int_0^b h(x)\,dx$
+			by calling \tt{sp.integrate}:
 			
 			\begin{codeblock}[]
-			>>> H0 = sp.integrate(hx, (x,0,b))
-			>>> H0
+			>>> H0b = sp.integrate(hx, (x,0,b))
+			>>> H0b
 			4*b - b**3/3
 			\end{codeblock}
 			
 			\noindent
 			The integral function $H_{0}(b) = 4b - \frac{1}{3}b^3$
-			corresponds to the area calculation under $h(x)$
+			corresponds to the area calculation under $h(x) = 4 - x^2$
 			starting at $x=0$.
 
 
