@@ -2,16 +2,15 @@
 
 \section{Math prerequisites}
 
-	Before we dig into the new calculus topics,
+	Before we get started with the new calculus topics,
 	let's do a quick review of key concepts from high school math.
 	These are the basic building blocks I assume you've seen before.
 
-	\subsection{Notation for sets and intervals}
-	
+	\subsection{Set notation}
+
 		Sets are collections of math objects.
 		Many math ideas are expressed in the language of sets,
-		so it's worth knowing the notation for sets.
-	
+		so it's worth knowing the notation for sets.	
 		\begin{itemize}
 
 			% \item $S,T$: the usual variable names for sets
@@ -92,66 +91,83 @@
 
 
 
-		\subsubsection{Infinity and negative infinity}
+		\subsubsection{Infinity}
 
-			The number line extends forever to the left and to the right.
-			We use the notation $-\infty$ (negative infinity)
-			to describe larger and larger negative numbers,
-			and $+\infty$ to describe larger and larger positive numbers.
-			
-Note that infinity is not a number but a \emph{process}.
-We denote $+\infty$ the prices of adding $+1$ forever.
-More on this in Section~\ref{sec:limits}.
+			The math symbol $\infty$ describes the concept of \emph{infinity}.
+			We use the symbol $\infty$ to represent an infinitely large quantity,
+			that is greater than any number you can think of.
+			Geometrically speaking,
+			we can imagine the number line extends to the right forever towards infinity,
+			as illustrated in Figure~\ref{fig:number_line_rationals_and_reals}.
+			The number line also extends forever to the left,
+			which we denote as negative infinity $-\infty$.
+			% to describe larger and larger negative numbers,
 
-Remember what we said in the introduction,
-$\infty$ is not a number but a process.
+			Infinity is not a number but a \emph{process}.
 			% ALT. not a destination you can get to
-			
-TODO: INSERT INFINITY FROM INTRO
+			When we use the symbol $+\infty$,
+			we're describing the process of moving to the right on the number line \emph{forever}.
+			We go past larger and larger positive numbers and never stop.
 
-Consider the set of natural numbers $\mathbb{N} \eqdef \{0, 1, 2, 3, 4, 5, 6, \ldots \}$.
-The natural numbers describe the process of counting starting at $0$.
-The natural number $n$
-is obtained by starting at $0$ and performing the $+1$ operation $n$ times.
-% Look ahead to the number line shown in Figure~XX.
-Geometrically,
-you can think of the $+1$ operation as taking one step to the right on the number line
-shown in Figure~\ref{fig:number_line_rationals_and_reals}
-(see page~\pageref{fig:number_line_rationals_and_reals}).
-In this context,
-you can think of infinity $\infty$ as performing the $+1$ operation forever.
-Infinity is greater than any natural number $n$.
-Indeed,
-getting to $n$ takes a finite number of steps,
-but $\infty$ describes taking an infinite number of steps
-so $\infty$ must be to the right of $n$.
+			Infinity is a key concepts in calculus,
+			so it's important that you develop the right way to think about
+			infinitely large numbers,
+			infinitely small distances,
+			and procedures with infinite number of steps.
+			We'll continue the discussion of infinity-related topics in Section~\ref{sec:limits}.
+			%  we'll learn about \emph{limits}, which allow us to describe 
 
- 
+			%	Infinity is the main new concept in calculus.
+			%	Everything else we'll talk about (numbers, variables, expressions, algebra, equations, functions, etc.)
+			%	are standard topics from high school math, which you're familiar with.
+			%	Indeed, calculus can be described as the ``infinity upgrade'' to the high school math
+			%	that gives you a language for describing and solving a new class of problems.
+
+			% COUNTABLE INFINITY
+			%	Consider the set of natural numbers $\mathbb{N} \eqdef \{0, 1, 2, 3, 4, 5, 6, \ldots \}$.
+			%	The natural numbers describe the process of counting starting at $0$.
+			%	The natural number $n$
+			%	is obtained by starting at $0$ and performing the $+1$ operation $n$ times.
+			%	% Look ahead to the number line shown in Figure~XX.
+			%	Geometrically,
+			%	you can think of the $+1$ operation as taking one step to the right on the number line
+			%	shown in Figure~\ref{fig:number_line_rationals_and_reals}
+			%	(see page~\pageref{fig:number_line_rationals_and_reals}).
+			%	In this context,
+			%	you can think of infinity $\infty$ as performing the $+1$ operation forever.
+			%	Infinity is greater than any natural number $n$.
+			%	Indeed,
+			%	getting to $n$ takes a finite number of steps,
+			%	but $\infty$ describes taking an infinite number of steps
+			%	so $\infty$ must be to the right of $n$.
 
 
-% NEEDED?  USED?
-		\subsubsection{Number intervals}
-	
-			The number line can be used to represent subsets of the real numbers,
-			which we call \emph{intervals}.
-			Figure~\ref{fig:interval_2closed_to_4closed}
-			shows an illustration of the interval $[2,4] \eqdef \{ x \in \mathbb{R} \;|\; 2 \leq x \leq 4 \}$,
-			which is the subset of the real numbers between $2$ and $4$.
-		
-			\begin{figure}[htb]
-				\centering	
-				\includegraphics[width=0.9\columnwidth]{figures/calculus/interval_2closed_to_4closed.pdf}
-				\vspace{-3mm}
-				\caption{	The interval $[2,4] \protect\eqdef \{ x \in \mathbb{R} \; | \; 2 \leq x \leq 4 \}$
-						is a subset of $\mathbb{R}$.} % the real numbers.
-				\label{fig:interval_2closed_to_4closed}
-			\end{figure}
-% /NEEDED?  USED?
-	
-	
+	% CUT BECAUSE NOT ESSENTIAL
+	%	\subsubsection{Number intervals}
+	%
+	%		The number line can be used to represent subsets of the real numbers,
+	%		which we call \emph{intervals}.
+	%		Figure~\ref{fig:interval_2closed_to_4closed}
+	%		shows an illustration of the interval $[2,4] \eqdef \{ x \in \mathbb{R} \;|\; 2 \leq x \leq 4 \}$,
+	%		which is the subset of the real numbers between $2$ and $4$.
+	%	
+	%		\begin{figure}[htb]
+	%			\centering	
+	%			\includegraphics[width=0.9\columnwidth]{figures/calculus/interval_2closed_to_4closed.pdf}
+	%			\vspace{-3mm}
+	%			\caption{	The interval $[2,4] \protect\eqdef \{ x \in \mathbb{R} \; | \; 2 \leq x \leq 4 \}$
+	%					is a subset of $\mathbb{R}$.} % the real numbers.
+	%			\label{fig:interval_2closed_to_4closed}
+	%		\end{figure}
+
+
+
+
+
+
 	\subsection{Functions}
 	
-		A \emphindexdef{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
+		A \emph{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
 		The output of the function $f$ for the input $x$ is denoted $f(x)$.
 		For example,
 		the function $f(x) \eqdef x^2$
@@ -226,7 +242,7 @@ so $\infty$ must be to the right of $n$.
 				\vspace{-3mm}
 				\caption{	Graph of the function $f(x) = x^2$ from $x=-3$ until $x=+3$.
 						The graph of the function $f$ passes through the coordinates pairs $(x,f(x))$
-						for all $x$-values in the interval $[-3,3]$.}
+						for all $x$-values between $x=-3$ and $x=3$.}
 				\label{fig:graph_of_function_f_eq_x2}
 			\end{figure}
 
@@ -234,8 +250,8 @@ so $\infty$ must be to the right of $n$.
 			We can use this combination of \tt{np.linspace}, function evaluation, and \tt{sns.lineplot}
 			whenever we need to plot the graph of any function.
 			% The function \tt{plot\_func(f, xlim=[-3,3])} produces the same output.
-	
-	
+
+
 		\subsubsection{Inverse functions}
 	
 			The inverse function $f^{-1}$ % $f^{-1} \colon B \to A$
@@ -297,29 +313,12 @@ so $\infty$ must be to the right of $n$.
 
 	\subsection{Function inventory}
 	
-		Your \emph{function vocabulary} determines which math expressions you'll be able to read
-		in the same way your English vocabulary determines determines which English sentences you'll be able to read.
-		We'll now list then essential functions that you should know about.
-
-%explore these functions on your own via Wikipedia
-%and by plotting their graphs on WolframAlpha.
-%This section is a concise review of $10$ functions which are of paramount 
-%important for all areas of mathematical modelling. 
-%In order for you to be able to ``see'' the math behind science,
-%you need to be familiar with these functions.
-		
-%	If you're seeing these functions for the first time, 
-%	don't worry about remembering all the facts and properties on the first reading.
-%	We'll use these functions throughout the rest of the book, so you'll 
-%	have plenty of time to become familiar with them.
-%	Remember to return to this section if you ever get stuck on a function.
-
-%	% GRAPH PITCH
-%	To build mathematical intuition, it's essential you understand functions' graphs.
-%	Memorizing the definitions and properties of functions gets a lot easier with visual accompaniment.
-%	Indeed, remembering what the function ``looks like'' is a great way to train yourself to recognize various types of functions.
-%	Figure~\ref{fig:3x3_functions_miniplots} shows the graphs of some of the most important functions we'll use in this book.
-
+		Your function ``vocabulary'' determines which math expressions you'll be able to read and understand
+		in the same way your English vocabulary
+		determines determines which English sentences you'll be able to read and understand.
+		Figure~\ref{fig:panel_function_graphs1}
+		shows the graphs of six important functions
+		that are used in many areas of mathematical modelling.
 
 		\begin{figure}[htb]
 			\centering
@@ -334,7 +333,6 @@ so $\infty$ must be to the right of $n$.
 		\subsubsection{Constant function}
 		
 			The constant function $f(x) \eqdef c$ produces the same output $c$ for all inputs $x$.
-
 
 
 		\subsubsection{Linear function}
@@ -405,11 +403,9 @@ so $\infty$ must be to the right of $n$.
 
 			The exponential function base $e=2.7182818\ldots$ is defined
 			as $f(x) \eqdef e^{x} = \exp(x)$.
-			The graph in Figure~\ref{fig:panel_function_graphs1}~(c) shows
-			the values of the exponential function on the interval $[-2,2]$.
-			%
-			The graph of the exponential function $f(x)=e^x$
-			passes through the following points:
+			Figure~\ref{fig:panel_function_graphs1}~(c)
+			shows the graph of the exponential function $f(x)=e^x$,
+			which passes through the following points:
 			$(-2,\frac{1}{e^2})$, 
 			$(-1,\frac{1}{e})$, 
 			$(0,1)$, 
@@ -434,9 +430,9 @@ so $\infty$ must be to the right of $n$.
 
 		\subsubsection{Absolute value function}
 		
-			The \emphindexdef{absolute value} function tells us the size of numbers
+			The \emph{absolute value} function tells us the size of numbers
 			without paying attention to whether the number is positive or negative.
-			We compute the absolute value of the number $x$ by \emph{forgetting} the the sign of $x$.
+			We compute the absolute value of the number $x$ by \emph{forgetting} the sign of $x$.
 			Geometrically,
 			$|x|$ corresponds to its distance between $x$ and the origin of the number line.
 			%
@@ -471,16 +467,11 @@ so $\infty$ must be to the right of $n$.
 
 
 
-
-
-
 		\subsubsection{Logarithmic function}
 		
 			The natural logarithm function is denoted
 			$f(x) \eqdef \ln(x) = \log_e(x)$.
 			The function $\ln(x)$ is the inverse function of the exponential $e^x$.
-
-
 			The graph of the function $\ln(x)$
 			passes through the following coordinates:
 			$(\frac{1}{e^2},-2)$, 
@@ -508,6 +499,7 @@ so $\infty$ must be to the right of $n$.
 		We often express sequences by writing explicitly the first few values
 		the sequence $[a_0, a_1, a_2, a_3, \ldots]$,
 		which correspond to evaluating $a_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
+
 
 
 
@@ -541,19 +533,14 @@ so $\infty$ must be to the right of $n$.
 
 
 
-
-
-
-
 	\subsection{Trigonometric functions}
 	
-		Consider a circle with radius $r=1$
+		The \emph{unit circle} is a circle of radius one centred at the origin,
 		as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}.
-		% The \emphindexdef{unit circle} is a circle of radius one centred at the origin.
+		% 
 		The unit circle consists of all points $(x,y)$ that satisfy the equation $x^2 + y^2 = 1$.
-		% and a point $P$ on that circle
-		A point $P$ on the unit circle has coordinates $(P_x,P_y)=(\cos\theta,\sin\theta)$,
-		where $\theta$ is the angle $P$ makes with the $x$-axis.
+		A point on the unit circle has coordinates $(\cos\theta,\sin\theta)$,
+		where $\theta$ is the angle the point makes with the $x$-axis.
 
 		
 		%FIGURE  right-angle triangle with hypotenuse r, adj = rcosθ, opp = rsinθ
@@ -561,14 +548,18 @@ so $\infty$ must be to the right of $n$.
 			\centering
 			\includegraphics[width=0.99\columnwidth]{figures/calculus/trigonometric_functions_as_point_or_as_triangle.pdf}%
 			\vspace{-2mm}
-			\caption{	% The unit circle corresponds to the equation $x^2+y^2=1$. 
-					The coordinates of the point $P$ are $P_x= \cos\theta$  and $P_y=\sin\theta$.}
+			\caption{	The coordinates of the point on the unit circle are $\cos\theta$  and $\sin\theta$.}
 			\label{fig:trigonometric_functions_as_point_or_as_triangle}
 		\end{figure}
 
 		% RADIANS
 		In math,
-		we use \emph{radians} to measure angles.
+		we use \emph{radians} to measure angles instead of degrees~$^\circ$.
+		One full circle is $360^\circ$ or $2\pi$ radians.
+		Some common angle measures are $30^\circ = \frac{\pi}{6}$,
+		$45^\circ\!=\!\frac{\pi}{4}$, $60^\circ = \frac{\pi}{3}$, and $90^\circ = \frac{\pi}{2}$.
+		The trigonometric functions $\sin$, $\cos$, and $\tan$ expect inputs in radians,
+		so we often convert angles from degrees to radians. % and back.
 
 
 		\subsubsection{Sine function}
@@ -576,7 +567,11 @@ so $\infty$ must be to the right of $n$.
 			The graph of the sine function $f(\theta) \eqdef \sin(\theta)$
 			\emph{oscillates} up and down and crosses the $x$-axis multiple times,
 			as shown in Figure~\ref{fig:panel_function_graphs2}~(a).
-	
+			This graph corresponds to the vertical position of the point turning around on the unit circle,
+			as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}~(a).
+			We also use the sine function to find the $y$-component of unit length,
+			as shown in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}~(b).
+			
 			%	The graph of the function $\sin(\theta)$  passes through the following $(x,y)$ coordinates:
 			%	$(0,0)$, $(\frac{\pi}{6},\frac{1}{2})$, $(\frac{\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{\pi}{3},\frac{\sqrt{3}}{2})$, 
 			%	$(\frac{\pi}{2},1)$, $(\frac{2\pi}{3},\frac{\sqrt{3}}{2})$, $(\frac{3\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{5\pi}{6},\frac{1}{2})$, and $(\pi,0)$.
@@ -613,8 +608,12 @@ so $\infty$ must be to the right of $n$.
 		\subsubsection{Cosine function}
 
 			The cosine function is the same as the sine function \emph{shifted} by $\frac{\pi}{2}$ to the left:
-			$\cos(\theta) = \sin(\theta+\frac{\pi}{2})$,
+			$f(\theta) = \cos(\theta) = \sin(\theta+\frac{\pi}{2})$,
 			as shown in Figure~\ref{fig:panel_function_graphs2}~(b).
+			The cosine function represents the horizontal position of the unit circle,
+			and the $x$-component of unit length,
+			as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}.
+
 
 			%	The graph of the function $y=\cos(x)$  passes through the following $(x,y)$ coordinates:
 			%	$(0,1)$, $(\frac{\pi}{6},\frac{\sqrt{3}}{2})$, $(\frac{\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{\pi}{3},\frac{1}{2})$, 
@@ -642,8 +641,8 @@ so $\infty$ must be to the right of $n$.
 		\subsubsection{Tangent function}
 
 			The tangent function is defined as the ratio of the sine and cosine functions:
-			$\tan(\theta) \eqdef \frac{ \sin(\theta) } { \cos(\theta) }$.
-			The graph of the function $f(x) = \tan(\theta)$ is shown in Figure~\ref{fig:panel_function_graphs2}~(c).
+			$f(\theta) = \tan(\theta) \eqdef \frac{ \sin(\theta) } { \cos(\theta) }$.
+			The graph of the tangent functionis shown in Figure~\ref{fig:panel_function_graphs2}~(c).
 
 			%    \item	Domain: $\{ x\in \mathbb{R} \;|\; x\neq \frac{(2n+1)\pi}{2} \textrm{ for any } n \in \mathbb{Z} \} $
 			%    \item	Image: $\mathbb{R}$
@@ -679,4 +678,5 @@ so $\infty$ must be to the right of $n$.
 		We can use the trigonometric functions $\sin(\theta)$, $\cos(\theta)$, and $\tan(\theta)$
 		to calculate the \emph{components} of vectors.
 		Sines and cosines are also describe waves and periodic motion in physics.
+
 

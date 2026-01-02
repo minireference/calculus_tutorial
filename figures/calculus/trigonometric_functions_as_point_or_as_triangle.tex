@@ -1,0 +1,51 @@
+\documentclass[
+	convert={density=600,outext=.png,convertexe={magick}},
+	tikz,crop=true,border=0pt]{standalone}
+\usepackage{noBSfigureStyles}
+
+\begin{document}
+
+	  \begin{tikzpicture}[scale=1,every node/.style={font=\small}]
+	  
+	 \begin{scope}[shift={(+6.5,0)}]
+		 \draw[primary-dark!60,line width=0.3pt,-latex] (-2,0) -- (2,0) node[right] {$x$};
+		 \draw[primary-dark!60,line width=0.3pt,-latex] (0,-2) -- (0,2) node[above] {$y$};
+		 \draw [soft-line] (0:1.5) arc (0:360:1.5);
+		 
+		 % === triangle ===
+		 \draw [line width=1pt, miter limit=1]
+		 	(0,0) --
+		 	(60:1.5) node[primary-dark,midway,above] {$1\ $} --
+		 	(0.75,0) node[primary-dark,fill=white,midway,right=0.008cm] {$\sin\theta$} --
+		 	(0,0) node[primary-dark,midway,below] {$\cos\theta $};
+
+		 \draw [soft-line] (0:0.5) arc (0:60:0.5);
+		 \node at (30:0.35) {$\theta$};
+		 \node [below right] at (0:1.5) {$1$};
+		 \node [below left] at (0:0) {$0$};
+	%		 \node [above right] at (60:1.5) {$(P_x,P_y)=(\cos\theta,\sin\theta)$};
+	%		 \node [right] at (-2.5,1.5) {$x^2 + y^2 = 1$};
+	\end{scope}
+	
+	 \draw[primary-dark!60,line width=0.3pt,-latex] (-2,0) -- (2,0) node[right] {$x$};
+	 \draw[primary-dark!60,line width=0.3pt,-latex] (0,-2) -- (0,2) node[above] {$y$};
+	 \draw [line width=0.3pt] (60:1.5) arc (60:360:1.5);
+	%		 \node [right] at (35:1.5) {\ $s=r\theta$};
+	 \draw [soft-line] (0,0) -- (60:1.5) node[primary-dark,midway,above] {$1\ $};
+	 \draw [soft-line] (0:0.6) arc (0:60:0.6);
+	 \draw [emphasis-line,arrow-oneway=primary-accent] (0:1.5) arc (0:59:1.5);
+	 %\node[emphasis-node] at (0:1.5) {};
+	 \node[emphasis-node] at (60:1.5) {};
+	 \node at (35:0.4) {$\theta$};
+	 \node [below right] at (0:1.5) {$1$};
+	 \node [below left] at (0:0) {$0$};
+	 \node [above right] at (60:1.5) {$(\cos\theta,\sin\theta)$};
+	 \node [right] at (-50:1.65) {$x^2 + y^2 = 1$};
+	
+	%\showsize;	 
+	 
+	\end{tikzpicture}%
+
+
+\end{document}
+

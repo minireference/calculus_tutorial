@@ -5,7 +5,8 @@
 
 	% LIMITS
 	Limit expressions are a precise mathematical language
-	for talking about infinitely large numbers, infinitely small lengths,
+	for talking about infinitely large numbers,
+	infinitely small lengths,
 	and mathematical procedures with an infinite number of steps.
 	% Many important math and science quantities are defined as limit expressions.
 	% For example
@@ -520,13 +521,12 @@ can lead us to computing quantities.
 		If the function $f(x)$ obeys, $f(a) = L$ and $\lim_{x\to a} f(x) = L$,
 		we say the function $f(x)$ is \emph{continuous} at $x=a$.
 		Geometrically,
-		the graph of the function at $x=a$ is ``smooth'' and doesn't make a sudden jump there.
-		We say a function is \emph{continuous on the interval} $[a,b]$
-		if is continuous for values in that interval.
+		the graph of the function at $x=a$ is ``smooth'' and
+		doesn't make a sudden jump at $x=a$.
 		Intuitively,
-		continuity means the function's graph looks like a smooth curve
-		that we can draw in a single stroke without lifting the pen.
-
+		when a function is continuous,
+		we can draw its graph using a single stroke without lifting the pen.
+		% means the function's graph looks like a smooth curve
 		In contrast,
 		functions that blow up to infinity or make sudden jumps are not continuous.
 		
@@ -542,14 +542,14 @@ can lead us to computing quantities.
 			\]
 	
 			\noindent
-			The Heaviside function is zero for all negative values of $x$,
+			The Heaviside function is zero for negative values of $x$,
 			then suddenly jumps to one at $x=0$,
-			as illustrated in Figure~\ref{fig:limits_examples}~(c).
-			The limit as $x$ approaches $x=0$ from the left
-			has the value $\lim_{x\to 0^-} H(x) = 0$.
+			as shown in Figure~\ref{fig:limits_examples}~(c).
+			The limit as $x$ approaches $x=0$ from the left is $\lim_{x\to 0^-} H(x) = 0$.
 			The limit as $x$ approaches $x=0$ from the right is $\lim_{x\to 0^+} H(x) = 1$.
-			Since the two limits are different,
-			we know the function is discontinuous at $x=0$.
+			The two limits are different,
+			$\lim_{x\to 0^-} H(x) = 0 \neq 1 = \lim_{x\to 0^+} H(x)$,
+			so the function is discontinuous at $x=0$.
 
 
 		%	A more mathematically precise way to define continuity is to say the function is equal to its limit for all $x$.

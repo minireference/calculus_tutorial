@@ -4,24 +4,19 @@
 \section{Introduction}
 
 	% STUDY OF FUNCTIONS + OPERATIONS ON FUNCTIONS
-	Calculus studies the properties of functions.
-	We use calculus concepts
-	to describe various quantities in physics, chemistry, biology, engineering, business,
-	and other fields where quantitative math models are used.
-	If we know that some quantity of interest is described by the function $f(t)$ at time $t$,
-	then the techniques of calculus allow us to do all kinds of useful calculations
-	based on the function $f(t)$.
-	%
-	The two main techniques of calculus
-	involve calculating how functions \emph{change} over time (derivatives),
-	and how to compute the total \emph{accumulation} of functions over time (integrals).
+	Calculus is the study of functions and their properties.
+	The two calculus techniques we'll learn in this tutorial
+	are \emph{derivatives},
+	which tell how functions \emph{change} over time,
+	and \emph{integrals},
+	which compute the total \emph{accumulation} of functions over time.
 	Derivatives and integrals might sound like fancy math jargon,
 	but actually they are common-sense concepts
 	that you're already familiar with,
 	as you'll see in the following example.
 
-	% cf. \input{../../../MATHPHYSbook/05_calc/02.overview.tex}
-	% cf. \input{../../../MATHPHYSbook/02_intro2phys/03.introduction_to_calculus.tex}
+	% cf. MATHPHYSbook/05_calc/02.overview.tex
+	% cf. MATHPHYSbook/02_intro2phys/03.introduction_to_calculus.tex
 
 
 	\subsection{Example 1: file download}
@@ -55,7 +50,7 @@
 			we divide the amount of data that remains to be downloaded
 			by the current download speed:
 			\[
-				\text{time remaining at } t = \frac{ 720 - f(t) }{ f^{\prime\!}(t) } \quad [\textrm{s}].
+				\text{time remaining at } t = \tfrac{ 720 - f(t) }{ f^{\prime\!}(t) } \quad [\textrm{s}].
 			\]
 			The bigger the derivative $f^{\prime\!}(t)$,
 			the faster the download will finish.
@@ -97,12 +92,12 @@
 			During each second,
 			the file size grows by $f^{\prime\!}(t)\,dt$,
 			where $f^{\prime\!}(t)$ is the the download rate measured in [MB/s],
-			and $dt$ is $1$ [s].
-			Note the units check out:
-			the data downloaded during one second is $f^{\prime\!}(t)dt$[MB].
-			The file size on your computer at $t=\tau$
-			is the sum of these 1-second contributions $f^{\prime\!}(t)\,dt$
-			as $t$ varies from $t=0$ to $t=\tau$.
+			and $dt$ is a time interval of duration $1$[s].
+			%	Note the units work out:
+			%	the data downloaded during one second is $f^{\prime\!}(t)dt$[MB].
+			%	The file size on your computer at $t=\tau$
+			%	is the sum of these 1-second contributions $f^{\prime\!}(t)\,dt$
+			%	as $t$ varies from $t=0$ to $t=\tau$.
 			% during each second from $t=0$ until $t=\tau$.
 			% The file size at time $t=\tau$ is equal to the sum of the data downloaded 
 
@@ -119,61 +114,21 @@
 	The integral $\int_a^b q(t)dt$ measures the total accumulation of the quantity $q(t)$
 	 during the time period from $t=a$ to $t=b$.
 	
-%	Derivatives and integrals are particularly important
-%	for quantities that change over time.
+	%	Derivatives and integrals are particularly important
+	%	for quantities that change over time.
 
-%	Indeed,
-%	we carry out calculus-like operations in our head every day---we just
-%	don't necessarily use calculus terminology when we do so.
-
-
-% MAYBE MOVE TO MATH PREREQUISITES
-	\subsection{Infinity}
-	
-		The math symbol $\infty$ describes the concept of \emph{infinity}.
-		Infinity is the key building block for calculus,
-		so it's important that you develop the right way to think about this concept.
-		% so I want you to have a good way to think about it.
-
-		\textbf{Infinity is not a number but a process}.
-
-		Infinity is the main new concept in calculus.
-		Everything else we'll talk about (numbers, variables, expressions, algebra, equations, functions, etc.)
-		are standard topics from high school math,
-		which you're familiar with.
-		Indeed,
-		calculus can be described as the ``infinity upgrade'' to the high school math
-		that gives you a language for describing and solving a new class of problems.
-
-% /MAYBE MOVE TO MATH PREREQUISITES
+	%	Indeed,
+	%	we carry out calculus-like operations in our head every day---we just
+	%	don't necessarily use calculus terminology when we do so.
 
 
 
-	\subsection{Applications of calculus}
 
-% REPEATS
-Many laws of nature are expressed in terms of derivatives and integrals.
-It is therefore essential that you learn the language of calculus if you want
-to understand physics, chemistry, biology, ecology, and other sciences.
-Calculus is also heavily used in engineering, business, economics, 
-any many other subjects based on quantitative analysis.
-% /REPEATS
-		Calculus operation also appear in probability, statistics, and machine learning.
-		%
-		In all this areas,
-		there are quantities described by functions,
-		and we use derivatives and integrals to do useful calculations.
-		For example,
-		optimization,
-		solving differential equations,
-		computing probabilities involving continuous random variables,
-		etc.
-		%
-		The goal of this tutorial is to show you the basics of derivatives and integrals,
-so you can think more clearly about these types of problems.
-		This is the power of math:
-		we learn techniques to analyze functions in general,
-		which means our technique apply to any domain.
+
+
+
+
+
 
 
 
@@ -181,56 +136,74 @@ so you can think more clearly about these types of problems.
 % - words only; no code
 % - explain why we need + how we use in class, self-study, industry
 
-	\subsection{Doing calculus}
+	\subsection{Doing calculus: then and now}
 
-		%	In the previous section I made a lot of promises about the usefulness of calculus,
-		%	as motivation talk
-		%	to motivate you to read the rest of this tutorial
-		%	so that you'll be interested in learning all the complicated-looking topics 
-		%	concepts, symbols, etc.
-		%	Befogging getting to this,
+		The key ideas of calculus were developed by Newton and Leibniz in the 17\textsuperscript{th} century
+		using pen and paper calculations.
+		We're not in the 17\textsuperscript{th} century anymore,
+		%and we're no longer limited to using pen-and-paper calculations.
+		% In modern times,
+		and today we have computers at our disposal
+		that are extremely good at certain calculus operations.
+		Let's briefly outline the different ways of doing calculus to learn their use cases and benefits.
 
-		Let's describe what doing calculus looks like.
 
-		\subsubsection{Symbolic calculations using pen and paper}
+		\subsubsection{Symbolic calculations}
 
-			The key ideas of calculus were developed by Newton and Leibniz in the 17\textsuperscript{th} century
-			using pen and paper calculations.
-			The pen-and-paper approach continues to be the best way to learn about derivatives and integrals even to this day.
-			%
-			I encourage you to keep a notebook
-			and reproduce the calculations presented in this tutorial on your own.
-			The goal is for you to get used to manipulating the new calculus concepts and notation.
+			The pen-and-paper approach
+			continues to be the best way to learn calculus to this day.
+			% EXACT ANSWERS
+			Writing math symbols on paper
+			allows us to focus calculations at a high level of abstraction
+			and arrive at exact symbolic answers.
+			% INTUITION + PROCEDURE
+			Manipulating math symbols gives you hands-on experience with calculus procedures
+			and builds your intuitive understanding.
+			%	I encourage you to keep a notebook
+			%	and reproduce the calculations presented in this tutorial on your own.
+			%	The goal is for you to get used to manipulating the new calculus concepts and notation.
 
 
 		\subsubsection{Symbolic calculations using SymPy}
 
-			We're not in the \textsuperscript{th} century
-			and we're no longer limited to using pen-and-paper calculations.
-%	The Python module \tt{sympy} provides the functionality for doing symbolic math calculations
-%	similar to the calculation you could do using pen and paper.
-			Using a computer algebra system like SymPy
-			allows us to do symbolic math calculations very much faster than we could do on paper.
-			To use SymPy,
-			we define a symbols \tt{x}
-			that works like the math variable $x$.
-			We can then write arbitrary math expressions that involve $\tt{x}$
-			and ask SymPy to \tt{factor}, \tt{expand}, and \tt{simplify} them,
-			which are the standard algebra operations we normally perform using pen and paper.
+			The Python library SymPy allows us to do symbolic math calculations on a computer.
+			% similar to the calculation you could do using pen and paper, but much faster.
+			% EXTEND REACH TO MORE ADVANCED
+			Using a computer algebra system like SymPy extends
+			the reach of symbolic calculus operations to broader set of problems
+			by doing some of the tedious steps for you and jumping straight to the answers.
+			% CHECK ANSWERS
+			In this tutorial,
+			we'll show how to use SymPy to check the answers we obtained using pen and paper calculations.
+			% DON'T CHEAT
+			% like using ChatGPT
+			% win the round by doing less effort today,
+			% lose the fight by learning nothing from this course
+			% CREATE PROBLEMS
+			% You can also use SymPy to create new exercises for yourself.
+			
 
-			\begin{codeblock}[]
-			>>> import sympy as sp
-			>>> x = sp.symbols("x")
-			>>> expr = 4 - x**2
-			>>> expr
-			4 - x**2
-			>>> sp.factor(expr)
-			-(x - 2)*(x + 2)
-			>>> sp.expand( (x-4)*(x+2) )
-			x**2 - 2*x - 8
-			>>> sp.simplify(5*x - 3*x + 42)
-			2*x + 42
-			\end{codeblock}
+			% NOTEBOOK ONLY
+			%	To use SymPy,
+			%	we define a symbols \tt{x}
+			%	that works like the math variable $x$.
+			%	We can then write arbitrary math expressions that involve $\tt{x}$
+			%	and ask SymPy to \tt{factor}, \tt{expand}, and \tt{simplify} them,
+			%	which are the standard algebra operations we normally perform using pen and paper.
+			%
+			%	\begin{codeblock}[]
+			%	>>> import sympy as sp
+			%	>>> x = sp.symbols("x")
+			%	>>> expr = 4 - x**2
+			%	>>> expr
+			%	4 - x**2
+			%	>>> sp.factor(expr)
+			%	-(x - 2)*(x + 2)
+			%	>>> sp.expand( (x-4)*(x+2) )
+			%	x**2 - 2*x - 8
+			%	>>> sp.simplify(5*x - 3*x + 42)
+			%	2*x + 42
+			%	\end{codeblock}
 
 			% NOTEBOOK ONLY
 			%	You can also \tt{subs}itue particular values for $\tt{x}$
@@ -258,65 +231,108 @@ so you can think more clearly about these types of problems.
 			%	We'll use SymPy code examples to illustrate some concepts.
 			
 
-		\subsubsection{Numerical computing using NumPy}
-		
-			Calculus also has an engineering lineage.
-			From the first mechanical calculators to modern GPUs,
-			there has been many computational developments in industry.
-			Engineers don't care about exact analytical results like knowing that
-			$\sqrt{2}$ (the length of the diagonal of a square with side length 1)
-			is an irrational number. % (requires infinitely many digits after the decimal to describe exactly).
-			For most engineering contexts,
-			if we can represent $\sqrt{2}$ approximately as  $1.4142135623730951$
-			then they're good.
-			In fact probably $1.4143521$ would be enough for most use cases.
+		\subsubsection{Numerical computing using NumPy and SciPy}
 
-			What engineers give up in mathematical exactitude,
-			they gain manyfold in the form of computational power.
-			Defining the specific data format for representing numbers (float32, float64, etc.)
-			allows computer engineers to build high-performance hardware for doing math calculations.
+			Most practical applications of calculus don't use exact symbolic calculations,
+			but instead work with numerical approximations.
+			Engineers don't care about the exact value of square root of two $\sqrt{2}$,
+			% (the length of the diagonal of a square with side length 1)
+			and instead represent $\sqrt{2}$ approximately the floating point number
+			$1.4142135623730951$ on a computer.
+			This approximation is good enough for most engineering and scientific use cases.
+			What we give up in mathematical exactitude,
+			we gain manyfold in the form of computational power:
+			modern computers can perform trillions ($10^{12}$) of floating point operations per second!
 
+			The Python libraries NumPy and SciPy make it easy to access all this computational power
+			for doing calculus operations.
+			The calculus answer we obtain using numerical computing
+			are not exact like the answer we obtain using pen-and-paper or SymPy,
+			but engineers are willing to accept that trade-off
+			for the ability to perform any derivative, integral, or summations almost instantly.
+			%	like the ones the ancients only dreamed of in less than a second.
+
+			% Defining the specific data format for representing numbers (float32, float64, etc.)
+			% allows computer engineers to build high-performance hardware for doing math calculations.
 			
-		\subsubsection{Scientific computing using SciPy}
+			% Outside the classroom setting,
+			% the importance of exact symbolic manipulations 
+			% is an irrational number. % (requires infinitely many digits after the decimal to describe exactly).
+			
+			%	Calculus also has an engineering lineage.
+			%	From the first mechanical calculators to modern GPUs,
+			%	there has been many computational developments in industry.
+			%	Engineers don't care about exact analytical results like knowing that
+			%	$\sqrt{2}$ (the length of the diagonal of a square with side length 1)
+			%	is an irrational number. % (requires infinitely many digits after the decimal to describe exactly).
+			%	For most engineering contexts,
+			%	if we can represent $\sqrt{2}$ approximately as  $1.4142135623730951$
+			%	then they're good.
+			%	In fact probably $1.4143521$ would be enough for most use cases.
 
-			The Python module SciPy is a toolbox of scientific computing helper functions.
-			For example,
-			computing the integral of the function $h(x) = 4 - x^2$
-			between $x=0$ and $x=2$ requires only a few lines of code:
 
-			\begin{codeblock}[]
-			>>> def h(x):
-			        return 4 - x**2
-			>>> from scipy.integrate import quad
-			>>> quad(h, a=0, b=2)[0]
-			5.333333333333333
-			\end{codeblock}
-
+			% NOTEBOOK ONLY
+			% \subsubsection{Scientific computing using SciPy}
+			%	The Python module SciPy is a toolbox of scientific computing helper functions.
+			%	For example,
+			%	computing the integral of the function $h(x) = 4 - x^2$
+			%	between $x=0$ and $x=2$ requires only a few lines of code:
+			%	\begin{codeblock}[]
+			%	>>> def h(x):
+			%	        return 4 - x**2
+			%	>>> from scipy.integrate import quad
+			%	>>> quad(h, a=0, b=2)[0]
+			%	5.333333333333333
+			%	\end{codeblock}
 			% The answer is $5.\overline{3}$
 			%  (the first number in the output)
 			% and the precision of this answer is $\pm 1.8\times 10^{-13}$,
 			% which tells us the first $12$ digits of the answer are exact.
 
-			\noindent
-			The above code example shows the complete level of WIN
-			humankind has achieved for practical math calculations.
-			Calculus ideas started with Archimedes,
-			then levelled up by Newton and Leibniz,
-			and formalized as analysis (pure math) and numerical analysis (applied math).
-			In parallel,
-			compute hardware has improved its raw performance exponentially for many years.
-			This means today you can perform the integrals
-			like the ones the ancients only dreamed of in less than a second.
-
-
-
-			
-
+			%	The above code example shows the complete level of WIN
+			%	humankind has achieved for practical math calculations.
+			%	Calculus ideas started with Archimedes,
+			%	then levelled up by Newton and Leibniz,
+			%	and formalized as analysis (pure math) and numerical analysis (applied math).
+			%	In parallel,
+			%	compute hardware has improved its raw performance exponentially for many years.
+			%	This means today you can perform the integrals
+			%	like the ones the ancients only dreamed of in less than a second.
 			
 			%	One of the only exponential trends that has the longest track record,
 			%	is the number of floating point operations you have access to 
 			
 			
+
+
+	\subsection{Applications of calculus}
+
+		We use calculus concepts
+		to describe various quantities in physics, chemistry, biology, engineering,
+		% machine learning,
+		business, economics and other domain where quantitative analysis is used.
+		Many laws of nature are expressed in terms of derivatives and integrals,
+		so it's essential that you learn the language of calculus if you want to study science.
+		%
+		In all this areas,
+		the quantities of interest are described by functions
+		and we use derivatives and integrals to do various useful calculations based on these functions.
+		For example,
+		derivatives are used to for optimization and to find function approximations.
+		Integrals are used to solve differential equations
+		and to compute probabilities in statistics and machine learning.
+		%
+		The goal of this tutorial is to introduce you to the language and key ideas of calculus.
+		This is the power of math:
+		you learn some techniques for analyzing functions in general,
+		then you're able to solve real-world problems in any domain.
+		% ALT. apply these techniques in any domain.
+		% ALT. think more clearly about these types of problems
+		% ALT. the techniques of calculus allow us to do all kinds of useful calculations based on the function $f(t)$.
+
+
+
+
 
 
 
@@ -419,3 +435,11 @@ so you can think more clearly about these types of problems.
 
 % We can also use calculus to describe the long-term tendency of quantities over time (limits).
 
+
+
+%	In the previous section I made a lot of promises about the usefulness of calculus,
+%	as motivation talk
+%	to motivate you to read the rest of this tutorial
+%	so that you'll be interested in learning all the complicated-looking topics 
+%	concepts, symbols, etc.
+%	Before getting to this,
