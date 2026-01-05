@@ -50,7 +50,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 	\subsection{Definitions}
 
 		\begin{itemize}
-		
+
 			\item $\mathbf{r} = (x,y,z)$: position in space with coordinates $(x,y,z)$.
 			\item $\nabla \eqdef \big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \big)$:
 				the vector derivative operator (\emph{nabla}).
@@ -71,7 +71,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 				%	We say $\mathbf{B}$ has a circulation, or curl.
 
 		\end{itemize}
-		
+
 
 		% INTUITION DIV and CURL
 		%	In electromagnetic phenomena, 
@@ -86,7 +86,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 
 
 	\subsection{Path integrals}
-	
+
 		Consider the curve $C$ traced by $r(t)$ as $t$ varies from $t_i$ and $t_f$.
 
 		 path integrals of vectors fields,
@@ -101,7 +101,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 			which assigns a coordinate $\mathbf{r}=(x,y,z)$ for each value of the parameter (denoted $t$ in the above).
 			Note $dr \eqdef \|\mathbf{r}'(t)\| \, dt$,
 			which involves computing the derivative of $\mathbf{r}(t)$ then computing the length.
-			
+
 		Vector path integral. 
 			\[
 				\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} 
@@ -112,10 +112,10 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 			To obtain the component of $\mathbf{F}$ in the direction of the tangent line,
 			we take the dot product with $d\mathbf{r}  \eqdef \mathbf{r}'(t) dt$ during each step.
 
-	
-	
+
+
 	\subsection{Surface integrals}
-	
+
 		flux integrals of vectors fields through surfaces,
 
 
@@ -130,7 +130,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 			Note $dS 	= \| \mathbf{r}^\prime_u \times \mathbf{r}^\prime_v \| \, dudv$,
 			which involves computing the partial derivatives of $\mathbf{r}(u,v)$ with respect to the two parameters,
 			taking the cross product, then computing the length.
-			
+
 		Vector surface integral. 
 			\[
 				\iint\limits_S \mathbf{F}(\mathbf{r}) \cdot d\mathbf{S}
@@ -144,7 +144,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 			for each piece of the surface.
 
 
-	
+
 
 	% PARAMETRIZATION
 	The main thing we'll have to learn is how to parametrize regions of space.
@@ -167,7 +167,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 		\[
 		  \int_a^b f^\prime(x) \; dx = \int_I f^\prime(x) \; dx  = f_{\partial I}  = f(b) - f(a),
 		\]
-		
+
 		\noindent
 		\textbf{Gauss' Divergence Theorem} relates the volume integral of the quantity $\nabla \cdot \vec{F}$, 
 		which is called the divergence of $\vec{F}$,
@@ -186,7 +186,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 		%
 		In the above example, we saw Gauss' divergence theorem applied to the electric field,
 		but the vector field $\vec{F}$ could also represent thermal flows, or fluid flows.
-		
+
 		\noindent
 		\textbf{Stokes' Theorem} uses the ``other'' vector derivative $\nabla \times \vec{F}$, which is called the \emph{curl} of $\vec{F}$.
 		The curl of a vector field, denoted $(\nabla \times \vec{F})(x,y,z)$
@@ -206,7 +206,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 		Both the left and right sides of this equation correspond to scalar numbers.
 		The left side is the vector surface integral of a vector quantity (the curl of $\vec{F}$),
 		the right side corresponds to a vector path integral of a vector quantity over an oriented curve $\partial \Sigma$.
-		
+
 
 		%\begin{itemize}
 		%    \item   	Stokes' Theorem: 
@@ -245,7 +245,7 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 
 
 	\subsection{Applications of vector calculus}
-	
+
 		% Vector calculus is of interest mainly for physicists and engineers.
 
 		Vector calculus is the math machinery used for electricity and magnetism,

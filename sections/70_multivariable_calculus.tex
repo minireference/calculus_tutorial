@@ -9,7 +9,7 @@
 	it's essentially the same concepts but with more variables.
 
 	\subsection{Multivariable functions}
-	
+
 		A single variable function $f: \mathbb{R} \to \mathbb{R}$
 		takes a real number $x \in \mathbb{R}$ as input
 		and produces the real number $f(x) \in \mathbb{R}$ as output.
@@ -21,7 +21,7 @@
 		and produces the real number $f(x,y) \in \mathbb{R}$ as output.
 		We'll use the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
 		for all plots and calculations in the remainder of this section.
-	
+
 		We can plot the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
 		as a \emph{surface} in a three dimensional space,
 		as shown in Figure~\ref{fig:mulivar_surface_plot_paraboloid}.
@@ -49,7 +49,7 @@
 		We can trace \emph{level curves} in the surface,
 		to produce a ``topographic map'' of the surface
 		where each level curve show the points that are at a certain height.
-		
+
 		\begin{figure}[htb]
 			\centering
 			\includegraphics[width=0.8\columnwidth]{figures/calculus/mulivar_countour_plot_paraboloid.pdf}
@@ -66,7 +66,7 @@
 
 
 	\subsection{Partial derivatives}
-		
+
 		For a function of two variables $f(x,y)$,
 		there is an ``$x$-derivative'' operator $\frac{\partial}{\partial x}$
 		and a ``$y$-derivative'' operator $\frac{\partial}{\partial y}$.
@@ -97,7 +97,7 @@
 		That's precisely the information returned by the functions $\frac{\partial f}{\partial x}(x,y)$ and $\frac{\partial f}{\partial y}(x,y)$.
 
 		\subsubsection{Example}
-		
+
 			The partial derivatives of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
 			are as follows:
 			\[
@@ -109,7 +109,7 @@ Intuitively,
 we ignore the other variable.
 
 
-		
+
 	\subsection{The gradient operator}
 
 		The operator $\nabla$ is a combination of both the $x$ and $y$ derivatives:
@@ -127,9 +127,9 @@ we ignore the other variable.
 		the gradient vector tells you the direction of the function's maximum increase---the
 		``uphill'' direction at the surface of graph of $f(x,y)$ at the point $(x,y)$.
 		The gradient vector is always perpendicular to the \emph{level curve} at that point.
-		
+
 		\subsubsection{Example}
-		
+
 			The gradient of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
 			is
 			\[
@@ -147,7 +147,7 @@ we ignore the other variable.
 	applying the integration operation to multivariable functions.
 
 	\subsection{Partial integration}
-	
+
 		We can integrate with respect to one of the input variables
 		to produce a function that depends only on the other input variable:
 		\[
@@ -192,7 +192,7 @@ we ignore the other variable.
 		and whose height is given by the function $f(x,y)$.
 
 		TODO: insert graphic of 3D integral split into vertical columns
-		
+
 		TODO: explain "sweep along x then sweep along y" idea + hint at change-of-variables techniques
 
 
@@ -219,7 +219,7 @@ we ignore the other variable.
 	\subsection{Applications of multivariable calculus}
 
 		\paragraph{Optimization}
-		
+
 
 Gradients are the key for the optimization algorithms used in modern machine learning techniques.
 Indeed,
@@ -258,6 +258,6 @@ which involves repeated ``downhill'' steps in the direction of the gradient $-\n
 				We use partial and multiple integrals a lot in probability theory.
 				The partial integral corresponds to the marginal probability distributions,
 				and double integrals are used to compute probabilities and expectations.				
-				
+
 		}{}
 

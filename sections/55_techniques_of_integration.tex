@@ -2,7 +2,7 @@
 
 
 	\subsection{Act 4: Techniques of integration}
-	
+
 		Okay we're getting into the fourth act of the calculus show,
 		and I want you to remind you that you can ``tap out'' at any time.
 		The material in this act is some of the most boring stuff.
@@ -18,7 +18,7 @@
 		but we'll show the two most important tricks.
 
 		\subsubsection{Substitution trick}
-		
+
 			Suppose the function we want to integrate has the structure $f(u(x))u^{\prime\!}(x)$,
 			which consists of inner function wrapped in an outer function multiplied by the derivative of the inner function.
 			We can use the \emph{substitution trick} to rewrite this integral
@@ -30,7 +30,7 @@
 				%	\int_{x=a}^{x=b} f(u(x)) \; u^{\prime\!}(x) \; dx
 				%		&=  \int_{u(a)}^{u(b)} f(u) \; du.					
 			\]
-			
+
 			\noindent
 			The substitution trick is also called a \emph{change of variable} operation:
 			we're replacing the variable $x$ with the variable $u$,
@@ -68,7 +68,7 @@
 					\int_{x=a}^{x=b} \frac{1}{x - \sqrt{x}} \, dx 
 						\;\; = \; \int_{u(a)}^{u(b)} \frac{1}{u^2 - u} \; 2u\,du.
 				\]
-				
+
 				\noindent
 				We're simply doing the search-and-replace on $u = \sqrt{x}$,
 				but to do this right we need to also replace $dx$ with $du$,
@@ -84,7 +84,7 @@ we obtain the answer $2\ln(u-1)$.
 In the last step,
 we changed back from $u$-variables to $x$-variables to compute the final answer.
 
-				
+
 \begin{align*}				     
 	&=  \int_{x=a}^{x=b}  \frac{1}{x - \sqrt{x}} \, \frac{1}{2\sqrt{x}} \, du			\\
 	&=  							\\
@@ -108,7 +108,7 @@ we changed back from $u$-variables to $x$-variables to compute the final answer.
 			$\left[ f(u(x)) \right]^\prime = f^\prime(u(x))u^\prime(x)$.
 			The substitution rule only works for computing integrals of function
 			that have the special structure $f^{\prime\!}(u(x))u^{\prime\!}(x)$.
-			
+
 % TODO: mention it has great power -- basis of multivariable calculus when using parameterization FWD REF
 
 
@@ -147,7 +147,7 @@ TODO: Explain
 						&= \big[ 5 e^5 - 0e^0 \big] - \big[  e^5 - e^0 \big] 						\\
 						&= 5 e^5 - e^5 + 1  = 4e^5 + 1.
 				\end{align*}
-	
+
 			%	\begin{align*}
 			%		 &= \left( x e^x \right) \Big|_0^5  \ - \  \int_0^5 e^x \; dx  		\\
 			%		 &= \left( x e^x \right) \Big|_0^5      \ - \  e^x\Big|_0^5			\\[1mm]
@@ -165,7 +165,7 @@ TODO: Explain
 			%	\[
 			%	 \int_a^b u\; dv = \left(uv\right)\Big|_a^b \ \  - \ \ \int_a^b v \; du.
 			%	\]
-			
+
 
 
 		\subsubsection{Other tricks}
@@ -196,4 +196,4 @@ TODO: Explain
 
 
 % MAYBE link to Sec 5.15 in the book 
-	
+

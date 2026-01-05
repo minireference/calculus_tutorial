@@ -13,7 +13,7 @@
 		Is this a coincidence,
 		or is there some fundamental math pattern
 		we could follow to ``guess'' integral functions?
-	
+
 		The fundamental theorem of calculus (FTC)
 		describes the inverse relation that exists between
 		the integration operation $\int \tt{<f>}\,dx$
@@ -116,7 +116,7 @@
 		>>> sp.integrate(dGdx, x)
 		x**3    # + C
 		\end{codeblock}
-		
+
 		\noindent
 		We see the operations $\tt{integrate(diff(}G(x)\tt{))} = \int_0^x G^{\prime\!}(u)\,du$
 		bring us back to the original $G(x)$ we started from.
@@ -154,9 +154,9 @@ whose derivative is the the function $f(x)$.
 			\[
 				\int_a^b  f(x)\,dx = F(b) - F(a).
 			\]
-			
+
 		\subsubsection{Computing integral functions using anti-derivatives}
-		
+
 			Recall that all integral functions differ by a constant $+C$,
 			which is related to the starting point of the integral function:
 			\[
@@ -168,10 +168,10 @@ whose derivative is the the function $f(x)$.
 %The fundamental theorem of calculus gives us a symbolic trick for computing
 %the integrals functions $\int f(x)\,dx$ for many simple functions.
 %If you can find a function $F(x)$ such that $F^{\prime\!}(x) = f(x)$, then 
-	
+
 
 			\paragraph{Example 3 continued}
-	
+
 				Suppose you're given a function $h(x) = 4 - x^2$
 				and asked to find its integral function $H_0(b) = \int_0^b  h(x)\, dx$.
 				This fundamental theorem of calculus tells us this problem
@@ -201,7 +201,7 @@ whose derivative is the the function $f(x)$.
 %	the area under the graph of $f(x)=x^2$ is described by the family of functions $F(x) = \frac{1}{3}x^3 + C$.
 	% The constant $C$ varies depending on the choice of lower limit of integration $a$ for the area calculation $A_f(a, x)$.
 	% You can verify that $\frac{d}{dx}\left[\frac{1}{3}x^3 + C\right] = x^2$.
-	
+
 
 
 		%	The integral is the ``inverse operation'' of the derivative.
@@ -216,7 +216,7 @@ whose derivative is the the function $f(x)$.
 
 
 		\subsubsection{Using derivative formulas in reverse}
-		
+
 			This procedure based on using the derivative formulas
 			in reverse to guess the value of $F(x)$ is very powerful.
 			We can use it for all the function listed in the table of derivative formulas
@@ -243,7 +243,7 @@ whose derivative is the the function $f(x)$.
 			>>> sp.integrate(fx, x)
 			m*x + exp(x) + log(x) + sin(x) + cos(x)
 			\end{codeblock}
-			
+
 			\noindent
 			SymPy tells us the integral function
 			$F_0$ is $F_0(x) = mx + e^x + \log(x) + \sin(x) + \cos(x)$,

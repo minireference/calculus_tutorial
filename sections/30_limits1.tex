@@ -100,7 +100,7 @@
 		the amount owed will grow by an additional $(1+50\%) = (1+\frac{1}{2}) = 1.5$,
 		so at the end of the year,
 		you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
-		
+
 		If the bank computes the interest three times per year,
 		the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
 		If they compute the interest four times per year (quarterly),
@@ -120,7 +120,7 @@
 			= 
 			\left(1 + \tfrac{1}{n} \right)^{\!n}.
 		\]
-		
+
 		\noindent
 		With monthly compounding ($n=12$),
 		the amount owed will be $(1 + \tfrac{1}{12})^{12} = 2.613$
@@ -131,7 +131,7 @@
 		the amount ill be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
 		The amount owed keeps increasing,
 		but it seems to ``stabilize'' around the value $2.71$.
-		
+
 		What happens if we perform the compounding even more frequently?
 		Specifically,
 		we want to know what happens if the compound interest interest is calculated infinitely often.
@@ -276,7 +276,7 @@
 
 
 	\subsection{Limit formulas}
-	
+
 		The limit of the sum, difference, product, and quotient of two functions
 		are can be computed as follows:
 		% is equal to the corresponding operation of the limits of the two functions:
@@ -318,7 +318,7 @@
 
 	\subsection{Limits to zero}
 	\label{limits:limits_to_zero}
-	
+
 		The limit expression $\lim_{x \to 0} f(\delta)$
 		describes the behaviour of the function $f$ for infinitely small values of $x$.
 		The limit $\lim_{x \to 0} f(x)$,
@@ -383,7 +383,7 @@
 		% means the function's graph looks like a smooth curve
 		In contrast,
 		functions that blow up to infinity or make sudden jumps are not continuous.
-		
+
 		\subsubsection{Example 3}
 
 			The \emph{Heaviside step function} is an example of a function
@@ -395,7 +395,7 @@
 							\; 0, 	& \text{if } x < 0.
 						\end{cases}
 			\]
-	
+
 			\noindent
 			The function is zero for negative values of $x$,
 			then suddenly jumps to one at $x=0$,
@@ -476,7 +476,7 @@
 		%		The function $f(x)=\frac{2x+1}{x}$ is continuous at the value $x=5$, so the limit of the function 
 		%		as $x\to 5$ is equal to the value of the function $\displaystyle\lim_{x\to 5} f(x) = f(5)$.
 		%		% This is true in general for any continuous function.
-				
+
 
 
 
@@ -514,7 +514,7 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 		>>> limit((1+1/n)**n, n, sp.oo)
 		E
 		\end{codeblock}
-		
+
 		\noindent
 		SymPy produced the exact value $\tt{E} = e = 2.718281828\ldots$.
 		% and not an approximation.
@@ -535,7 +535,7 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 		>>> sp.limit(1/x, x, 0)
 		oo
 		\end{codeblock}
-		
+
 		\noindent
 		SymPy confirms that $\lim_{x \to \infty} \tfrac{1}{x} = 0$
 		and $\lim_{x \to 0^+} \tfrac{1}{x} = \infty$,
@@ -547,12 +547,12 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 		Here is another example,
 		that computes the limit of the fraction $\frac{2x+1}{x}$ as $x$ goes to infinity,
 		which is illustrated in Figure~\ref{fig:limits_examples}~(b).
-	
+
 		\begin{codeblock}[]
 		>>> sp.limit((2*x+1)/x, x, sp.oo)
 		2
 		\end{codeblock}
-	
+
 		% EXAMPLE  Heaviside
 		\noindent
 		To calculate the limit form the left and the right of a number,
@@ -567,7 +567,7 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 		>>> sp.limit(Heaviside(x,1), x, 0, "+")
 		1
 		\end{codeblock}
-		
+
 		\noindent
 		See Figure~\ref{fig:limits_examples}~(c) for an illustration.
 
@@ -609,21 +609,21 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 		%	%	This result has implications in computer science,
 		%	%	where algorithms whose running time grows exponentially with the size of their input are considered bad
 
-	
+
 
 
 
 	\subsection{Applications of limits}
 
 		Limits are important because they are used in the formal definitions of derivatives, integrals, and series:
-		
+
 		\begin{itemize}
-		
+
 			\item The derivative function $f^{\prime\!}(x)$
 				describe the instantaneous rate change of the function $f(x)$.
 				In Section~\ref{sec:derivatives} we'll learn how to calculate derivatives
 				by evaluating a limit of the form $\lim_{\delta \to 0}$.
-			
+
 			\item The integral $\int_a^b f(x) \, dx$
 				describes the area under the graph of the function $f(x)$ between $x=a$ and $x=b$.
 				In Section~\ref{sec:integrals}
@@ -634,7 +634,7 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 				the sum of all the first $n$ terms in the sequence $a_k$.
 				In Section~\ref{sec:sequences_and_series},
 				we'll learn how to compute infinite series by taking $\lim_{n \to \infty}$.
-		
+
 		\end{itemize}
 
 
@@ -648,7 +648,7 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 
 
 
-	
+
 
 
 

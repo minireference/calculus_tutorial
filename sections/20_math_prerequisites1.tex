@@ -22,23 +22,23 @@
 				% The math symbol ``$|$'' is shorthand for the phrase ``such that'' and it is often used in definitions.
 
 			\item $\mathbb{N}$: the set of natural numbers $\mathbb{N}\eqdef \{0,1,2,3,4,5,\ldots\}$
-	
+
 			\item $\mathbb{N}_+$: the positive natural numbers $\mathbb{N}_+ \eqdef \{1,2,3,4,5,\ldots\}$.
 
 			\item	$\mathbb{R}$: the set of real numbers.
-	
+
 			\item	$\mathbb{R}_+$: the set of nonnegative real numbers.
 
 			\item $x \in S$: this statement is read ``$x$ is an element of $S$.'' % or ``$x$ is in $S$.''
 				We use this notation to indicate the ``type'' of the variable~$x$.
 				For example,
 				writing ``$x \in \mathbb{R}$'' tells us $x$ is a real number.
-	
+
 			% seems not needed; put back if needed somewhere in the book (grep for it)
 			%	\item $\emptyset$: the \emph{empty set} is a set that contains no elements.
 			%		Mathematicians adopted the symbol $\emptyset$ because the notation $\{ \, \}$ is confusing.
-	
-	
+
+
 
 			%	\item $\mathbb{Z}$: the set of integers $\mathbb{Z}\eqdef\{\ldots,-2,-1,0,1,2,3,\ldots\}$
 			%
@@ -46,10 +46,10 @@
 			%		$\mathbb{Q} \eqdef \left\{  \frac{m}{n} \; \Big| \; m \in \mathbb{Z}, \; n \in \mathbb{N}, \; n \neq 0  \right\}$.
 			%		The set $\mathbb{Q}$ consists of all numbers that can be expressed as \emph{fractions} of the form $\frac{m}{n}$,
 			%		where $m$ is an integer, $n$ is a natural number, and $n \neq 0$.
-	
-	
+
+
 		\end{itemize}
-	
+
 		\noindent
 		We use the math symbol $\eqdef$ to define new concepts.
 		We often use the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$ to define sets.
@@ -66,12 +66,12 @@
 
 
 		\subsubsection{The number line}
-	
+
 			The \emph{number line} is a visual representation of the set of real numbers $\mathbb{R}$,
 			as shown in Figure~\ref{fig:number_line_rationals_and_reals}.
 			The real numbers correspond to all the points on the number line,
 			from $-\infty$ to $\infty$.
-		
+
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.98\columnwidth]{figures/calculus/number_line_rationals_and_reals.pdf}
@@ -79,7 +79,7 @@
 				\caption{The real numbers $\mathbb{R}$ cover the entire number line.}
 				\label{fig:number_line_rationals_and_reals}
 			\end{figure}
-		
+
 			\noindent
 			The set of real numbers includes
 			the natural numbers $\{0,1,2,3,\ldots\}$,
@@ -166,7 +166,7 @@
 
 
 	\subsection{Functions}
-	
+
 		A \emph{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
 		The output of the function $f$ for the input $x$ is denoted $f(x)$.
 		For example,
@@ -175,7 +175,7 @@
 		squares it and divides the result by two to produce the output.
 		For example,
 		$f(3) = 3^2 = 9$.
-		
+
 		In this tutorial,
 		we'll often show code examples that mirror the math calculations.
 		For example, 
@@ -188,11 +188,11 @@
 		>>> f(3)
 		9.0
 		\end{codeblock}
-		
+
 		\noindent
 		Note the Python syntax for evaluating the function \tt{f} on the input \tt{3}
 		is the same as the math syntax $f(3)$.
-	
+
 		\subsubsection{Function graphs}
 
 			The \emph{graph} of a function is a curve that passes through all input-output pairs of a function.
@@ -229,13 +229,13 @@
 			we just need to trace a line passing through these coordinate pairs.
 			We can do this by importing the \tt{seaborn} module (alias \tt{sns})
 			and calling the function \tt{sns.lineplot}.
-	
+
 			\begin{codeblock}[plot-fx-minus3-to-plus3]
 			>>> import seaborn as sns
 			>>> sns.lineplot(x=xs, y=fxs)
 			See Figure ¡\ref{fig:graph_of_function_f_eq_x2}¡ for the output.
 			\end{codeblock}
-	
+
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.9\columnwidth]{figures/calculus/graph_of_function_f_eq_x2.pdf}%
@@ -253,7 +253,7 @@
 
 
 		\subsubsection{Inverse functions}
-	
+
 			The inverse function $f^{-1}$ % $f^{-1} \colon B \to A$
 			performs the \emph{inverse operation} of the function $f$. % $f \colon A \to B$.
 			If you start from some $x$,
@@ -267,14 +267,14 @@
 			the function $f$ is represented as a forward arrow,
 			and the inverse function $f^{-1}$ is represented as a backward arrow
 			that puts the value $f(x)$ back to the $x$ it came from.
-	
+
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.4\columnwidth]{figures/calculus/functions-inverse.pdf}
 				\caption{The inverse $f^{-1}$ undoes the operation of the function $f$.}
 				\label{fig:functions-inverse}
 			\end{figure}
-	
+
 			For example,
 			when $x \geq 0$,
 			the inverse of the function $f(x) = x^2$
@@ -289,7 +289,7 @@
 			>>> sqrt(9)
 			3
 			\end{codeblock}
-	
+
 
 
 		\subsubsection{Function properties}
@@ -305,14 +305,14 @@
 			is $\mathbb{R}$ (any real number)
 			and it's image is $\mathbb{R}_+$ (nonnegative real numbers),
 			so we write it as $f \colon \mathbb{R} \to \mathbb{R}_+$.
-			
+
 			%	Another important property is called \emph{continuity},
 			%	which roughly corresponds to ability to draw a function without lifting the pen.
 			%	We'll give a formal definition of continuity later in Section~\ref{limits:continuity}.
 
 
 	\subsection{Function inventory}
-	
+
 		Your function ``vocabulary'' determines which math expressions you'll be able to read and understand
 		in the same way your English vocabulary
 		determines determines which English sentences you'll be able to read and understand.
@@ -331,12 +331,12 @@
 
 
 		\subsubsection{Constant function}
-		
+
 			The constant function $f(x) \eqdef c$ produces the same output $c$ for all inputs $x$.
 
 
 		\subsubsection{Linear function}
-		
+
 			The linear function $f(x) \eqdef mx$ describes an input-output relationship
 			where the output value $f(x)$ are \emph{proportional} to the input value $x$,
 			and the constant of proportionality is $m$.
@@ -355,7 +355,7 @@
 
 
 		\subsubsection{Quadratic function}
-			
+
 			The quadratic function $f(x) \eqdef x^2$ calculates the square of the input $x$.
 			The name ``quadratic'' comes from the Latin \emph{quadratus} for square.
 			Geometrically,
@@ -369,7 +369,7 @@
 
 
 		\subsubsection{Polynomial functions}
-		
+
 			We can combine the constant, linear, and quadratic functions
 			to obtain the polynomial function $f(x) \eqdef a_2x^2 + a_1x +a_0$,
 			where $a_2$, $a_1$, $a_0$ are arbitrary constants,
@@ -415,7 +415,7 @@
 			%	For larger inputs 
 			%	$(3,e^3)$, 
 			%	$(4,e^4)$, etc.
-			
+
 			% $f(a)f(b)=f(a+b)$ since $e^ae^b=e^{a+b}$
 
 			% The derivative (the slope of the graph) of the exponential function 
@@ -429,7 +429,7 @@
 
 
 		\subsubsection{Absolute value function}
-		
+
 			The \emph{absolute value} function tells us the size of numbers
 			without paying attention to whether the number is positive or negative.
 			We compute the absolute value of the number $x$ by \emph{forgetting} the sign of $x$.
@@ -467,7 +467,7 @@
 
 
 		\subsubsection{Logarithmic function}
-		
+
 			The natural logarithm function is denoted
 			$f(x) \eqdef \ln(x) = \log_e(x)$.
 			The function $\ln(x)$ is the inverse function of the exponential $e^x$.
@@ -503,7 +503,7 @@
 
 
 	\subsection{Geometry of rectangles and triangles}
-	
+
 		% 	We'll now briefly review some geometry formulas.
 		%	\subsubsection{Circle}
 		%		The area enclosed by a circle of radius $r$ is given by $A = \pi r^2$,
@@ -533,7 +533,7 @@
 
 
 	\subsection{Trigonometric functions}
-	
+
 		The \emph{unit circle} is a circle of radius one centred at the origin,
 		as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}.
 		% 
@@ -541,7 +541,7 @@
 		A point on the unit circle has coordinates $(\cos\theta,\sin\theta)$,
 		where $\theta$ is the angle the point makes with the $x$-axis.
 
-		
+
 		%FIGURE  right-angle triangle with hypotenuse r, adj = rcosθ, opp = rsinθ
 		\begin{figure}[htb]
 			\centering
@@ -570,7 +570,7 @@
 			as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}~(a).
 			We also use the sine function to find the $y$-component of unit length,
 			as shown in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}~(b).
-			
+
 			%	The graph of the function $\sin(\theta)$  passes through the following $(x,y)$ coordinates:
 			%	$(0,0)$, $(\frac{\pi}{6},\frac{1}{2})$, $(\frac{\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{\pi}{3},\frac{\sqrt{3}}{2})$, 
 			%	$(\frac{\pi}{2},1)$, $(\frac{2\pi}{3},\frac{\sqrt{3}}{2})$, $(\frac{3\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{5\pi}{6},\frac{1}{2})$, and $(\pi,0)$.
@@ -587,7 +587,7 @@
 			%		It then travels up again to cross the $x$-axis at $x=2\pi$.
 			%		This $2\pi$-long cycle repeats after $x=2\pi$.
 			%		This is why we call the function \emph{periodic}---the shape of the graph repeats.
-			
+
 			%	    \item 	Domain: $\mathbb{R}$.
 			%	    		The function $f(x)=\sin(x)$ is defined for all input values.
 			%	    \item	Image: $\{ y \in \mathbb{R} \; | \;  -1 \leq y \leq 1 \}$.

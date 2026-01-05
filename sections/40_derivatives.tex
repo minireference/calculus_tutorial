@@ -139,7 +139,7 @@ but what about the instantaneous slope at one instant?
 		>>> differentiate(f, 1)
 		2.000000165480742
 		\end{codeblock}
-		
+
 		\noindent
 		Using the numerical method,
 		we obtain the approximation $f^{\prime\!}(1) = 2.000000165480742$,
@@ -264,15 +264,15 @@ but what about the instantaneous slope at one instant?
 			\[
 				\left[ \frac{f(x)}{g(x)} \right]^\prime =	\frac{f^{\prime\!}(x)g(x)-f(x)g^{\prime\!}(x)}{g(x)^2}.
 			\]
-			
-			
+
+
 		\paragraph{Chain rule}
 			If you encounter a situation that includes an inner function and an outer function,
 			like $f(g(x))$, you can obtain the derivative by a two-step process:
 			\[
 				\big[ f(g(x)) \big]^\prime	= 	f^{\prime\!}(g(x))g^{\prime\!}(x).
 			\]
-			
+
 			\noindent
 			In the first step,
 			we leave the inner function $g(x)$ alone
@@ -303,7 +303,7 @@ but what about the instantaneous slope at one instant?
 
 
 	\subsection{Examples}
-	
+
 		Armed with the derivative formulas from Table~\ref{table:derivatives} and the derivative rules from the previous section,
 		you can the derivative of any function,
 		no matter how complicated.
@@ -316,7 +316,7 @@ but what about the instantaneous slope at one instant?
 		\paragraph{Example 2}
 			To find the derivative of $f(x) = \sin(x)e^{x^2}$,
 			we use the product rule and the chain rule: $f^{\prime\!}(x) = \cos(x)e^{x^2} + \sin(x)2xe^{x^2}$.
-	
+
 		\paragraph{Example 3}
 			The derivative of $\sin(x^2)$ requires using the chain rule:
 			$\left[ \sin(x^2) \right]^\prime =  \cos(x^2)\left[x^2\right]' =  \cos(x^2)2x$.
@@ -424,7 +424,7 @@ but what about the instantaneous slope at one instant?
 			is $T_1(x) = f(1)  +  f^{\prime\!}(1)(x-1) = 1 + 2(x-1) = 2x - 1$.
 			Look at the right side of Figure~\ref{fig:derivative_as_slope_xsq}
 			for an illustration of this tangent line.
-			
+
 			The tangent line $T_1$ is also called a \emph{first order approximation} to the function $f$,
 			since it has the same value and the same derivative as the function $f$,
 			$T_1(1)= f(1)$ and $T'_1(1) = f^{\prime\!}(1)$.
@@ -499,7 +499,7 @@ a strategy for finding the minimum(s) and the maximum(s) of a function.
 			which is neither a minimum or a maximum.
 
 			\paragraph{Example}
-				
+
 				Let's use the analytical optimization procedure
 				to find the minimum and the maximum of the function $f(x)=x^3-2x^2+x$.
 				First we calculate its derivative $f^{\prime\!}(x) = 3x^2 - 4x + 1 = 3(x - 1)(x - \frac{1}{3})$.
@@ -534,8 +534,8 @@ a strategy for finding the minimum(s) and the maximum(s) of a function.
 			%	You'll encounter the gradient descent algorithm and its numerous variations
 			%	if you choose to purse the topic of machine learning,
 			%	since they are used in many machine learning applications.	% where multivariable functions are the norm
-	
-	
+
+
 			\begin{codeblock}[def-derivative_descent]
 			>>> def gradient_descent(f,x0=0,alpha=0.05,tol=1e-10):
 			        current_x = x0
@@ -557,14 +557,14 @@ a strategy for finding the minimum(s) and the maximum(s) of a function.
 			Let's use this procedure to find the minimum of the function $q(x)=(x-5)^2$
 			using the initial initial value $\tt{x0} = 10$
 			as the starting point of the gradient descent algorithm.
-	
+
 			\begin{codeblock}[use-gradient_descent-on-f]
 			>>> def q(x):
 			        return (x - 5)**2
 			>>> gradient_descent(q, x0=0)
 			5.000000000396651
 			\end{codeblock}
-			
+
 			\noindent
 			The \tt{while} loop inside the \tt{gradient\_descent} function ran several times,
 			and in each iteration takes a small ``downhill'' step
@@ -573,9 +573,9 @@ a strategy for finding the minimum(s) and the maximum(s) of a function.
 			which is close to true minimum of the function $q(x)$.
 			% $\textrm{argmin}_x q(x) = 5$.
 
-		
+
 		\subsubsection{Numerical optimization using SciPy}
-	
+
 			%	In this book,
 			%	we won't discuss the details behind optimization algorithms,
 			%	and instead rely on the computational tools available in \tt{numpy}, \tt{scipy}, and \tt{sympy} to do optimization-type calculations for us.
@@ -585,7 +585,7 @@ a strategy for finding the minimum(s) and the maximum(s) of a function.
 			%	If you're interested in attaining a deeper understanding of optimization algorithms,
 			%	you can follow the links provided at the end of this section,
 			%	but note such ``under the hood'' understanding is not required to continue with the rest of the book.
-			
+
 			The module \tt{scipy.optimize}
 			provides a high-performance numerical optimization procedure called \tt{minimize}
 			that runs much faster than the function \tt{gradient\_descent} that we defined above.
@@ -598,7 +598,7 @@ a strategy for finding the minimum(s) and the maximum(s) of a function.
 			>>> res["x"][0]  # = argmin q(x)
 			4.9999999737
 			\end{codeblock}
-	
+
 			\noindent
 			Once more,
 			the value we obtain $4.9999999737$
@@ -606,4 +606,4 @@ a strategy for finding the minimum(s) and the maximum(s) of a function.
 
 
 
-	
+

@@ -28,7 +28,7 @@
 		Note the chance in notation:
 		we use subscript to denote the input variable of a sequence $a_k$
 		instead of the usual notation for functions $a(k)$.
-		
+
 		We can define a sequence by specifying the formula for the $k$\textsuperscript{th} term in the sequence.
 		For example,
 		the \emph{harmonic sequence} is defined by the formula $h_k \eqdef \frac{1}{n}$.
@@ -41,7 +41,7 @@
 
 
 		\paragraph{The natural numbers}
-		
+
 			The simplest possible example of a sequence is the identity function,
 			which returns the index input $k$ as output:
 			\[
@@ -52,10 +52,10 @@
 			This is the fundamental counting sequence that describes
 			the process of taking a ``unit step'' to the right on the number line,
 			starting at the origin.
-		
+
 
 		\paragraph{Squares of natural numbers}
-			
+
 			The sequence-equivalent of the quadratic function $f(x)=x^2$
 			is the sequence of squares of the natural numbers:
 			\[
@@ -66,7 +66,7 @@
 
 
 		\paragraph{Harmonic sequence}
-			
+
 			We obtain another useful sequence by computing the fractions $\frac{1}{k}$
 			for each $k \in \{1,2,3,\ldots\} = \mathbb{N}_+$:
 			\[
@@ -94,7 +94,7 @@
 
 
 		\paragraph{The alternating harmonic sequence}
-	
+
 			Consider now a harmonic sequence with alternating positive an negative terms:
 			\[
 				a_k \eqdef \tfrac{(-1)^{k+1}}{k}, \text{ for } k \in \mathbb{N}_+
@@ -173,7 +173,7 @@
 
 	\subsection{Convergence of sequences}
 	\label{sequences_and_series:convergence_of_sequences}
-	
+
 		What happens to a sequence as $k$ goes to infinity?
 		We can use the limit notation $\lim_{k \to \infty}$ to describe this process.
 		There are two behaviours we're interested in:
@@ -219,7 +219,7 @@
 
 	\subsection{Summation notation}
 	\label{sequences_and_series:summation_notation}
-	
+
 		We're often interested in computing sums of values in a sequence.
 		To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th}
 		elements of the sequence $c_k$,
@@ -354,7 +354,7 @@
 		of the sequence $c_k : \mathbb{N} \to \mathbb{R}$
 		is analogous to the integral $\int_0^\infty f(x) \,dx$
 		of a function $f : \mathbb{R} \to \mathbb{R}$.
-		
+
 		Some infinite series converge to a finite value.
 		For example,
 		when $|r|<1$,
@@ -384,7 +384,7 @@
 			\]
 			Figure~\ref{fig:geometric_progression_of_one_half}
 			shows a visualization for this infinite sum.
-	
+
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.69\columnwidth]{figures/calculus/geometric_progression_of_one_half.png}
@@ -417,7 +417,7 @@
 		the total computed keeps growing and the infinite series blows up to infinity
 		$\sum h_k = \infty$.
 		We say that the harmonic series \emph{is divergent}.
-		
+
 
 
 %	and the inverse factorial series $F_k = \sum f_k	$ converges (or ).
@@ -438,7 +438,7 @@
 		We can use infinite series to compute irrational numbers.
 
 		\paragraph{Example 2: Euler's number}
-			
+
 			The infinite sum of the sequence $f_k \eqdef \tfrac{1}{k!}$
 			converges to Euler's number $e = 2.71828182845905\ldots$:
 			\[
@@ -449,7 +449,7 @@
 					= e.
 					% = 2.71828\ldots. 
 			\]
-		
+
 		\noindent
 		The calculation above is not just cool math fact,
 		but a useful computational procedure
@@ -529,7 +529,7 @@
 			>>> sum([a_k(k) for k in range(1,1_000_000+1)])
 			0.69314...
 			\end{codeblock}
-			
+
 			\noindent
 			The series approximation to $\ln(2)$ converges more slowly
 			that the series approximation to $e$ we saw in the previous example.
@@ -540,7 +540,7 @@
 			if we keep calculating sums with more and more terms,
 			we can obtain an approximation that is arbitrarily close
 			to the true value $\ln(2) = 0.6931471805599453\ldots$.
-			
+
 			To get the exact value $\ln(2)$,
 			we can make SymPy compute the infinite series:
 
@@ -712,7 +712,7 @@
 		$(1, x, x^2, x^3, x^4, x^5, \ldots)$.
 		The Taylor series coefficients $c_k = \tfrac{f^{(k)}(0)}{k!}$
 		are the \emph{coordinates} of the function $f(x)$ in the \emph{polynomial basis}.
-		
+
 
 	\subsection{Obtaining Taylor series using SymPy}
 	\label{series:taylor_series_using_sympy}
@@ -740,7 +740,7 @@
 		>>> sp.series(sp.ln(x+1), x, x0=0, n=6)
 		x - x**2/2 + x**3/3 - x**4/4 + x**5/5 + O(x**6)
 		\end{codeblock}
-		
+
 		\noindent
 		The big-O notation \tt{O(x**n)} appears in all the above outputs
 		as a reminder that the exact Taylor series contains additional terms,
@@ -777,7 +777,7 @@
 		we can recognize this is the series for $\sin(x)$,
 		so we conclude that $\int \cos(x) \, dx = \sin(x)$.
 
-		
+
 		%	This example is of historical importance,
 		%	since it was issued as challenge by Isaac Newton to Wilhelm Leibnitz.
 		%	No formulas for the integral of ln x was not know at the time,

@@ -119,7 +119,7 @@
 
 
 		\subsubsection{Example 3 continued}
-	
+
 			Let's use the \tt{integrate} procedure
 			to compute the integral of the function $h(x) = 4- x^2$.
 			Recall we previously defined the Python function \tt{h}
@@ -129,10 +129,10 @@
 			>>> def h(x):
 			        return 4 - x**2
 			\end{codeblock}
-			
+
 			To calculate the $n=10$ approximation to the area under the graph of $h(x)$ between $x=0$ and $x=2$,
 			we call the \tt{integrate} procedure with the desired arguments.
-			
+
 			\begin{codeblock}[]
 			integrate(h, a=0, b=2, n=10)
 			4.92
@@ -140,7 +140,7 @@
 
 			\noindent
 			We can compute the approximation with $n=20$ rectangles just as easily:
-			
+
 			\begin{codeblock}[]
 			>>> integrate(h, a=0, b=2, n=20)
 			5.13
@@ -148,7 +148,7 @@
 
 			%	\noindent
 			%	This approximation with $n=20$ rectangles is accurate to the first decimal.
-				
+
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.98\columnwidth]{figures/calculus/riemann_sum_n10_n20.pdf}
@@ -157,17 +157,17 @@
 						computed using $n=10$ and $n=20$ rectangles.}
 				\label{fig:riemann_sum_n10_n20}
 			\end{figure}
-			
+
 
 			Let's keep going to see what happens with $n=50$ and $n=100$:
-			
+
 			\begin{codeblock}[]
 			>>> integrate(h, a=0, b=2, n=50)
 			5.2528
 			>>> integrate(h, a=0, b=2, n=100)
 			5.2932
 			\end{codeblock}
-			
+
  
 			 \begin{figure}[htb]
 				\centering
@@ -273,7 +273,7 @@
 				\eqdef \lim_{n\to\infty} \sum_{k=1}^{n} f(a + k\Delta x)\Delta x.
 		\]
 		\end{shadebox}
-		
+
 		\noindent
 		In words,
 		the integral a Riemann sum
@@ -306,9 +306,9 @@
 		are essential tools that allow us to perform these calculus operations on functions.
 		% like competing their slopes and 
 		% TODO: sell applications
-		
-		
-		
+
+
+
 
 
 
@@ -327,7 +327,7 @@
 
 
 		% If we use the right endpoints of the rectangles to calculate their height,
-		
+
 %	The area of the first rectangle is $f(x_1)\Delta x = f(a + \Delta x)\Delta x$,
 %	which is the height of the function $f$ at $a+\Delta x$ times the width $\Delta x$.
 %	The second rectangle has height $f(a+2\Delta x)$,
