@@ -3,191 +3,35 @@
 \section{Limits}
 \label{sec:limits}
 
-	% LIMITS
-	Limit expressions are a precise mathematical language
-	for talking about infinitely large numbers,
+	Limits are a precise mathematical language for talking about
+	infinitely large numbers,
 	infinitely small lengths,
-	and mathematical procedures with an infinite number of steps.
-	% Many important math and science quantities are defined as limit expressions.
-	% For example
-	The shorthand ``$\lim$'' is used to denote limit expressions.
-	Here are some examples:
-
-% We use limits to describe, with mathematical precision, infinitely large quantities,
-%infinitely small quantities, and procedures with infinitely many steps.
-
-	% of each different situations where limit expressions:
+	and procedures with an infinite number of steps.
+	We use the shorthand ``$\lim$'' to denote limit expressions.
+	For example,
+	the expression $\lim_{x \to \infty} f(x)$,
+	read ``the limit of $f(x)$ as $x$ goes to infinity,''
+	describes what happens to $f(x)$ when the input to the function $x$ tends to infinity (gets larger and larger).
 
 
+	\subsection{Example: Archimedes' approximation to $\pi$}
+	% ALT. Archimedes' approximation for area of a circle
 
-% REDO FOCUSSING ON lim n -> infty
+		We'll start by looking at a visual example of a math procedure
+		% with infinite number of steps
+		that was invented by Archimedes of Syracuse around 250 BCE.
+		Archimedes wanted to calculate the area of a circle of radius $r=1$.
+		Today we know the formula for the are of the circle is $A_{\circ} = \pi r^2$,
+		so the area of a circle with radius $r=1$ is $\pi$,
+		but try to place yourself in Archimedes's shoes (sandals?)
+		and suppose that you don't know the formula yet.
 
-	\begin{itemize}
-
-% MOVE TO {limits:limits_to_infinity}
-		% ASYMPTOTICS
-		\item	$\displaystyle \lim_{x \to \infty} f(x)$: limit expression that describes what happens to $f(x)$
-			when the input to the function $x$ tends to infinity (gets larger and larger).
-			In words,
-			this limit expression is read as ``limit of $f(x)$ as $x$ goes to infinity.''
-
-% MOVE TO {limits:limits_to_a_number}
-		% INFINITELY SMALL
-		\item	$\displaystyle  \lim_{\delta \to 0} g(a+\delta)$:
-			limit expression that describes the value of the function $g$
-			as the input approaches $a$ from the right.
-			The number $\delta$ (the Greek letter \emph{delta}) usually describes a small distance,
-			and the limit as delta goes to zero,
-			$\lim_{\delta \to 0} g(a+\delta)$
-			describes the behaviour of the function $g$ for infinitely close to the value $a$.
-
-		% INFINITELY MANY STEPS
-		\item	$\displaystyle  \lim_{n \to \infty} \textrm{proc}(n)$:
-			limit expression that describes the outcome of some computational procedure with $n$ steps,
-			as the number of steps $n$ goes to infinity.
-			% The parameter $n$ usually describes the number of steps in a given procedure,
-			% and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
-
-	\end{itemize}
-
-	%	Using limits allows us to obtain answers computed by mathematical procedures with an infinite number of steps!
-
-
-	\noindent
-	Let's look at an example of a math procedure with infinite number of steps.
-
-	% 
-% an example where infinity comes up.
-
-
-	\subsection{Example: Euler's number}
-	\label{introduction:eulers_number}
-
-Suppose you take out a loan with 100\% nominal interest rate.
-This is a very bad loan that nobody would agree to the real world,
-but we'll use it for this example to make the math come out simpler.
-An interest of $100\%$ calculated yearly means at the end of one year,
-you'll owe $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
-
-However,
-most banks don't calculate the interest owed only once per year,
-but more often.
-If the bank calculates the interest twice per year,
-during the first six months you'll have accrued $\frac{100\%}{2} = 50\%$ of interest,
-so you'll owe them $(1+50\%) = (1+\frac{1}{2}) = 1.5$ times the initial amount.
-Then during the second six months,
-the amount owed will grow by an additional $(1+50\%) = (1+\frac{1}{2}) = 1.5$,
-so at the end of the year,
-you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
-
-If the bank computes the interest three times per year,
-the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
-If they compute the interest four times per year (quarterly),
-then you'll owe $(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})  = 2.441$.
-Note the amount owed after one year keeps changing,
-as the compounding is performed more frequently.
-In general,
-when the compounding is performed $n$ times per year,
-the amount owed at the end of the year will be
-\[
-	\underbrace{
-	\left(1 + \tfrac{1}{n} \right)
-	\left(1 + \tfrac{1}{n} \right)
-	\cdots
-	\left(1 + \tfrac{1}{n} \right)
-	}_{n \text{ times}}
-	= 
-	\left(1 + \tfrac{1}{n} \right)^{\!n}.
-\]
-
-\noindent
-With monthly compounding ($n=12$),
-the amount owed will be $(1 + \tfrac{1}{12})^{12} = 2.613$
-at the end of one year.
-With daily compounding,
-the amount would be $(1 + \tfrac{1}{365})^{365} = 2.715$.
-If computing the interest $n=1000$ times per year,
-the amount ill be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
-The amount owed keeps increasing,
-but it seems to ``stabilize'' around the value $2.71$.
-
-What happens if we perform the compounding even more frequently?
-Specifically,
- 	we want to know what happens if the compound interest interest is calculated infinitely often.
-The infinitely-often calculation corresponds
-to computing the \emph{limit} of expression  $(1 + \frac{1}{n})^n$,
-as $n$ goes to infinity,
-which is written as follows using math notation:
-\[
-	\lim_{n\to \infty} \left( 1 + \tfrac{1}{n}\right)^{\!n}
-		\;\; = \;\; e
-		\;\;= \;\; 2.718281828\ldots.
-\]
-This limit expression \emph{converges} to the value $e = 2.71828\ldots$,
-which is known as \emph{Euler's number}.
-% The number $e$ describes the limit of the annual growth rate of a loan
-% with 
-If we borrow $\$1000$,
-we'll owe $\$1000e = \$2718.28$ at the end of one~year.
-
-The definition of the number $e$ as a limit
-is a fascinating new concept that goes beyond the ``regular'' math operations
-that we learn in high school math.
-We're not talking about any particular large number $n$
-when calculating the expression $(1 + \frac{1}{n})^n$,
-but the \emph{process} of plugging in large and larger $n$s.
-This is what the limit notation $\lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
-it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
-as $n$ goes to infinity.
-We'll learn more about limits in Section~\ref{sec:limits}.
-
-% EULER VIA SERIES	
-%	Euler's number $e$ can also be obtained from another limit expression:
-%	\[
-%		e	=	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!}  + \cdots
-%			= 	\lim_{n\to \infty} \sum_{k=0}^n \frac{1}{k!}
-%			= 	2.718281828\ldots.
-%	\]
-%	This alternative expression
-%	tells us we can compute $e$ as the sum ($\sum$)
-%	with an infinite number of terms.
-%	Each term comes from a common ``pattern'' $\frac{1}{k!}$,
-%	where $k! = k\!\cdot\!(k-1) \cdots 3\!\cdot\!2\!\cdot\!1$
-%	is the factorial function.
-%	The notation $\sum_{k=0}^n$
-%	describes the summation starting at $k=0$ and going all the way to $k=n$.
-%	The limit $\lim_{n\to \infty}$ tells us the summation has infinitely many terms.
-%	This kind of infinite sum expression are called a \emph{series},
-%	and provides a powerful way to compute quantities by summing together a bunch of terms.
-%	We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
-
-
-\subsubsection{Example}
-
-% PASTE AND MERGE EXAMPLE FROM INTRO
-Euler's number $e$ is defined as the limit
-$e \eqdef \lim_{n\rightarrow\infty}\left(1+\tfrac{1}{n}\right)^{\!n}$,
-which is the compound interest calculation for an annual interest rate of $100\%$
-with compounding is performed infinitely often.
-
-
-
-
-	\subsection{Example: the area of a circle}
-
-		Let's look at another example of a procedure with infinite number of steps
-		that was invented by Archimedes,
-		one of the calculus OGs.
-
-		Suppose we want to prove that area of a circle of radius $r$
-		is described by the formula $A = \pi r^2$.
-		We can approximate the circle as a regular polygon with $n$ sides
-		inscribed in the circle.
+		Archimedes clever idea was to approximate the circle
+		as a regular polygon with $n$ sides inscribed in the circle.
 		Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}
 		shows the hexagonal (6-sides),
 		octagonal (8-sides),
 		and dodecagonal (12-sides) approximations to the circle.
-		% side by side with triangle + labels on octagon 
 
 		\begin{figure}[htb]
 			\centering
@@ -198,160 +42,152 @@ with compounding is performed infinitely often.
 			\label{fig:inscribed-hexagon-octagon-dodecagon}
 		\end{figure}
 
-		We can compute the area of the $n$-sided regular polygons
-		by splitting them up into triangular slices,
-		and computing the area of these slices using the formula for the area of a triangle $\frac{1}{2}bh$.
-		% and trigonometric functions $\sin$ and $\cos$.
-		Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}~(b)
-		highlights one of the $16$ identical triangular slices in the case when $n=8$.
-		The hypotenuse of this triangle has length $r$,
-		the angle $\theta$ is $\frac{360\circ}{16} = \frac{2\pi}{16} = \frac{\pi}{8}$[rad],
-		and its sides have length $a=r\cos(\frac{\pi}{8})$ and $b=r\sin(\frac{\pi}{8})$.
-		The total area of the polygon with $n$ sides is:
-		\[
-			 2n \cdot \tfrac{1}{2}ab 
-			 = n \, r\cos(\tfrac{\pi}{n})  \, r\sin(\tfrac{\pi}{n})
-			 = n \, r^2  \cos(\tfrac{\pi}{n})\sin(\tfrac{\pi}{n}).
-		\]
+		Archimedes computed the area of the $n$-sided regular polygons
+		by splitting it up into $2n$ triangular slices,
+		like the one shown in Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}~(b).
+		He then compute the area each slice using the formula for the area of a triangle,
+		and added up the areas of these $2n$ triangles
+		to obtain the total area of the $n$-sided polygon.
+		Let's denote $A(n)$ the area approximation
+		computed from a $n$-sided polygon.
+		Looking at Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon},
+		we see the approximations to the area of the circle
+		using six-sided and eight-sided polygons are underestimates for the total area.
+		However,
+		the polygon with $n=12$ is starting to look like a circle,
+		and we can use our imagination to see that the approximation $A(n) \approx A_{\circ}$
+		will get more and more accurate as $n$ becomes larger and larger.
+		Archimedes computed an approximation using a $n=96$ sided polygon,
+		but thanks to computers we can push the approximation to much higher values of $n$.
+		For example,
+		using a 50-sided polygon gives us $A(50) = 3.1\ldots$.
+		The approximation with $n=1000$ is accurate to four decimals $A(1000) = 3.1415\ldots$,
+		and using $n=10K$ we get an approximation to $\pi$
+		that is accurate to six decimals $A(10000) = 3.141592\ldots$.
+		See the computational notebook here for the details of the calculations:
+		\href{https://bit.ly/calctut3}{\tt{bit.ly/calctut3}}.
+
 		In the limit as $n\to \infty$, 
 		the $n$-sided-polygon approximation to the area of the circle 
-		becomes more and more accurate.
+		will becomes \emph{exactly} equal to $\pi = 3.141592653589793\ldots$,
+		which we write as $\lim_{n \to \infty} A(n) = \pi$.
+		Note that $A(n) \neq \pi$ for any finite number $n$ no matter how large.
+		It is only in the limit as $n$ goes to infinity that the approximation becomes exact.
+
+	\medskip
+	\noindent
+	Let's look at another example of a simple math procedure with $n$ steps
+	that produces an important number when $n$ goes to infinity.
+	% ALT.  that allows us to compute an important number 
+
+
+	\subsection{Example: Euler's number}
+	\label{introduction:eulers_number}
+
+		Suppose you take out a loan with 100\% nominal interest rate.
+		This is a very bad loan that nobody would agree to the real world,
+		but we'll use it for this example to make the math come out simpler.
+		An interest of $100\%$ calculated yearly means at the end of one year,
+		you'll owe $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
+
+		However,
+		most banks don't calculate the interest owed only once per year,
+		but more often.
+		If the bank calculates the interest twice per year,
+		during the first six months you'll have accrued $\frac{100\%}{2} = 50\%$ of interest,
+		so you'll owe them $(1+50\%) = (1+\frac{1}{2}) = 1.5$ times the initial amount.
+		Then during the second six months,
+		the amount owed will grow by an additional $(1+50\%) = (1+\frac{1}{2}) = 1.5$,
+		so at the end of the year,
+		you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
 		
-		Here is the code that computes the approximations to the area of a circle % of radius $r=1$
-		with polygons with more and more sides.
-
-		\begin{codeblock}[]
-		>>> import math
-		>>> def calc_area(n, r=1):
-		        theta = 2 * math.pi / (2 * n)
-		        a = r * math.cos(theta)
-		        b = r * math.sin(theta)
-		        area = 2 * n * a * b / 2
-		        return area
-		>>> for n in [6, 8, 10, 50, 100, 1000, 10000]:
-		        area_n = calc_area(n)
-		        error = area_n - math.pi
-		        print(f"{n=}, {area_n=}, {error=}")
-		n=6, area_n=2.5980762113533156, error=-0.5435
-		n=8, area_n=2.8284271247461903, error=-0.3132
-		n=10, area_n=2.938926261462365, error=-0.2027
-		n=50, area_n=3.133330839107606, error=-0.00826
-		n=100, area_n=3.1395259764656687, error=-0.002067
-		n=1000, area_n=3.141571982779476, error=-2.067e-05
-		n=10000, area_n=3.1415924468812855, error=-2.067e-07
-		\end{codeblock}
-
+		If the bank computes the interest three times per year,
+		the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
+		If they compute the interest four times per year (quarterly),
+		then you'll owe $(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})  = 2.441$.
+		Note the amount owed after one year keeps changing,
+		as the compounding is performed more frequently.
+		In general,
+		when the compounding is performed $n$ times per year,
+		the amount owed at the end of the year will be
+		\[
+			\underbrace{
+			\left(1 + \tfrac{1}{n} \right)
+			\left(1 + \tfrac{1}{n} \right)
+			\cdots
+			\left(1 + \tfrac{1}{n} \right)
+			}_{n \text{ times}}
+			= 
+			\left(1 + \tfrac{1}{n} \right)^{\!n}.
+		\]
+		
 		\noindent
-		To calculate the limit as $n$ goes to infinity,
-		we can perform the symbolic math calculation using SymPy:
+		With monthly compounding ($n=12$),
+		the amount owed will be $(1 + \tfrac{1}{12})^{12} = 2.613$
+		at the end of one year.
+		With daily compounding,
+		the amount would be $(1 + \tfrac{1}{365})^{365} = 2.715$.
+		If computing the interest $n=1000$ times per year,
+		the amount ill be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
+		The amount owed keeps increasing,
+		but it seems to ``stabilize'' around the value $2.71$.
 		
-		\begin{codeblock}[]
-		>>> n, r = sp.symbols("n r")
-		>>> A_n = n * r**2 * sp.cos(sp.pi/n) * sp.sin(sp.pi/n)
-		>>> sp.limit(A_n, n, sp.oo)
-		pi * r**2
-		\end{codeblock}
-
-		\noindent
-		The result is $\pi r^2$,
-		which is the formula for the area of a circle.
-
-		%	An interesting example to consider is the number $\pi$, 
-		%	which is defined as the area of a circle of radius $1$.
-		%	We can approximate the area of the unit circle by drawing a many-sided regular polygon around the circle.
-
-
-This example shows practically why considering the limiting behaviour 
-can lead us to computing quantities.
-
-
-
+		What happens if we perform the compounding even more frequently?
+		Specifically,
+		we want to know what happens if the compound interest interest is calculated infinitely often.
+		The infinitely-often calculation corresponds
+		to computing the \emph{limit} of expression  $(1 + \frac{1}{n})^n$,
+		as $n$ goes to infinity,
+		which is written as follows using math notation:
+		\[
+			\lim_{n\to \infty} \left( 1 + \tfrac{1}{n}\right)^{\!n}
+				\;\; = \;\; e
+				\;\;= \;\; 2.718281828\ldots.
+		\]
+		This limit expression \emph{converges} to the value $e = 2.71828\ldots$,
+		which is known as \emph{Euler's number}.
+		% The number $e$ describes the limit of the annual growth rate of a loan
+		If we borrow $\$1000$,
+		we'll owe $\$1000e = \$2718.28$ at the end of one~year.		
+		%	 compound interest calculation for an annual interest rate of $100\%$
+		%	with compounding is performed infinitely often.
 
 
+	We defined the number $\pi$ as the limit $\lim_{n \to \infty} A(n)$
+	and the number $e$ as the limit $\lim_{n\to \infty} \left( 1 + \tfrac{1}{n}\right)^{\!n}$.
+	These definition of the numbers $\pi$ and $e$ using as limits
+	are go beyond the regular math operations we learn in high school math.
+	The limit expression $\lim_{n \to \infty}$ doesn't describer any particular number $n$,
+	but the \emph{process} of plugging in large and larger values of $n$.
+	% This is what the limit notation $\lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
+	% it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
+	% as $n$ goes to infinity.
+
+% TODO: procedure
 
 
-%		A circle of radius $1$ is inscribed inside a
-%		\emph{regular octagon} (a polygon with eight sides of length $b$).
-%		Calculate the octagon's perimeter and its area.
-%		\begin{center}
-%		\includegraphics[width=0.63212\columnwidth]{figures/calculus/octagon_inscribed_in_circle.pdf}
-%		\end{center}		
-% cf. \input{../../../MATHPHYSbook/problems/figures/geometry/octagon_inscribed_in_circle.tex}
-		% Split the octagon into eight isosceles triangles.
-
-%				$A_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=8\tan(22.5^\circ)$.
-%
-%			Split the octagon into eight isosceles triangles. 
-%			The height of each triangle will be $1$,
-%			and its angle measure at the centre will be $\frac{360^\circ}{8}=45^\circ$.
-%			Split each of these triangles into two halves down the middle.
-%			The octagon is now split into $16$ similar right-angle triangles
-%			with angle measure $22.5^\circ$ at the centre.
-%			%
-%			In a right-angle triangle with angle $22.5^\circ$ and adjacent side $1$,
-%			what is the length of the opposite side?
-%			The opposite side of each of the $16$ triangles is $\frac{b}{2}=\tan(22.5^\circ)$,
-%%			so the perimeter of the octagon is $P_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=16\tan(22.5^\circ)$.
-%%			In general,
-%%			if a unit circle is inscribed inside an $n$-sided regular polygon,
-%%			the perimeter of the polygon is $P_n = 2n\tan\!\left(\frac{360^\circ}{2n} \right)$.
-%%			%
-%			To find the area of the octagon,
-%			we use the formula $A_{\scriptscriptstyle \triangle}=\frac{1}{2}bh$,
-%			with $b=2\tan(22.5^\circ)$ and $h=1$ to find the area of each isosceles triangle.
-%			The area of the octagon is 
-%			$A_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=8\cdot\frac{1}{2}(2\tan(22.5^\circ))(1)=8\tan(22.5^\circ)$.
-%			For an $n$-sided regular polygon the area formula is $A_n = n\tan\!\left(\frac{360^\circ}{2n} \right)$.
-%			Bonus points if you can tell me what happens to the formulas 
-%			for $P_n$ and $A_n$ as $n$ goes to infinity
-%			(see \href{http://bit.ly/1jGU1Kz}{\texttt{bit.ly/1jGU1Kz}}).
-
-		
+		% EULER'S NUMBER VIA SERIES	
+		%	Euler's number $e$ can also be obtained from another limit expression:
+		%	\[
+		%		e	=	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!}  + \cdots
+		%			= 	\lim_{n\to \infty} \sum_{k=0}^n \frac{1}{k!}
+		%			= 	2.718281828\ldots.
+		%	\]
+		%	This alternative expression
+		%	tells us we can compute $e$ as the sum ($\sum$)
+		%	with an infinite number of terms.
+		%	Each term comes from a common ``pattern'' $\frac{1}{k!}$,
+		%	where $k! = k\!\cdot\!(k-1) \cdots 3\!\cdot\!2\!\cdot\!1$
+		%	is the factorial function.
+		%	The notation $\sum_{k=0}^n$
+		%	describes the summation starting at $k=0$ and going all the way to $k=n$.
+		%	The limit $\lim_{n\to \infty}$ tells us the summation has infinitely many terms.
+		%	This kind of infinite sum expression are called a \emph{series},
+		%	and provides a powerful way to compute quantities by summing together a bunch of terms.
+		%	We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
 
 
 
-	%	\subsubsection{Example}
-	%
-	%		Let's begin with a simple example.
-	%		Say you have a string of length $\ell$ and you want to divide it into infinitely many, infinitely short segments.
-	%		There are infinitely many segments,
-	%		and they are infinitely short, so together the segments add to the string's total length $\ell$.
-	%
-	%		It's easy enough to describe this process in words.
-	%		Now let's describe the same process using the notion of a limit.
-	%		If we divide the length of the string $\ell$ into $N$ equal pieces then each piece will have a length of
-	%		\[
-	%		   \delta = \frac{\ell}{N}  \,.
-	%		\]
-	%		Let's make sure that $N$ pieces of length $\delta$ added together equal the string's total length: 
-	%		\[
-	%		 N \delta = N \frac{\ell}{N} = \ell.
-	%		\]
-	%		
-	%		\noindent
-	%		Now imagine what happens when the variable $N$ becomes larger and larger.
-	%		The larger $N$ becomes, the shorter the pieces of string will become.
-	%		In fact, if $N$ goes to infinity (written $N \to \infty$),
-	%		then the pieces of string will have zero length:
-	%		\[
-	%		 \lim_{N\to \infty}  \delta = \lim_{N\to \infty} \frac{\ell}{N} = 0.
-	%		\]
-	%		In the limit as $N \to \infty$, the pieces of string are \emph{infinitely small}.
-	%		
-	%		Note we can still add the pieces of string together to obtain the whole length:
-	%		\[
-	%		 \lim_{N\to \infty}  \left( N \delta \right) 
-	%		 = 
-	%		 \lim_{N\to \infty}  \left( N \frac{\ell}{N} \right)
-	%		 = \ell.
-	%		\]
-	%		Even if the pieces of string are \emph{infinitely small},
-	%		because there are \emph{infinitely many} of them,
-	%		they still add to $\ell$.
-	%		
-	%		The take-home message is that as long as you clearly define your limits,
-	%		you can use infinitely small numbers in your calculations.
-	%		The notion of a limit is one of the central ideas in this course.
 
 
 
@@ -360,11 +196,10 @@ can lead us to computing quantities.
 	\subsection{Limits at infinity}
 	\label{limits:limits_to_infinity}
 
-		We're often interested in describing what happens to a certain function
-		when its input variable tends to infinity.
+		We can use limit expressions to describe
+		what happens to a certain function when its input variable tends to infinity.
 		Does $f(x)$ approach a finite number,
 		or does it keep growing to $\infty$?
-
 		The function $f(x)$ is said to \emph{converge} to $L$
 		if the function approaches the value $L$ for large values of $x$:
 		\[
@@ -415,8 +250,6 @@ can lead us to computing quantities.
 					%	$\lim_{x\to 0^-} H(x)$, and $\lim_{x\to 0^+} H(x)$.}
 			\label{fig:limits_examples}
 		\end{figure}
-
-
 
 
 
@@ -483,13 +316,33 @@ can lead us to computing quantities.
 
 
 
+	\subsection{Limits to zero}
+	\label{limits:limits_to_zero}
+	
+		The limit expression $\lim_{x \to 0} f(\delta)$
+		describes the behaviour of the function $f$ for infinitely small values of $x$.
+		The limit $\lim_{x \to 0} f(x)$,
+		read ``the limit of $f(x)$ as $x$ goes to zero,''
+		asks us to evaluate the function $f$ for inputs like
+		$x=0.1$, $x=0.01$, $x=0.001$, $x=0.0001$, etc.
+		to see the behaviour of the function for very small values of $x$.
+
+		For example,
+		the limit $\lim_{x \to 0} \frac{1}{x} = \infty$.
+		In words,
+		the function $f(x) = \frac{1}{x}$ ``blows up'' to infinity as $x$ goes to $0$.
+
+
 	\subsection{Limits to a number}
 	\label{limits:limits_to_a_number}
 
-		The limit of $f(x)$ approaching $x=a$ \emph{from the right} is defined as
-		$\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta)$.
-		To find the limit from the right at $a$, we let $x$ take on values like 
-		$a+0.1$, $a+0.01$, $a+0.001$, $a+0.0001$, etc.
+		The limit of $f(x)$ approaching $x=a$ \emph{from the right}
+		is denoted $\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta)$.
+		We use the symbol $\delta$ (the Greek letter \emph{delta}) to describes a distance
+		that gets smaller and smaller.
+		This limit expression that describes the value of the function $f$
+		as the input $x$ gets closer and closer to $a$
+		with values like $a+0.1$, $a+0.01$, $a+0.001$, $a+0.0001$, etc.
 		%
 		The limit of $f(x)$ when $x$ approaches \emph{from the left} is defined analogously,
 		$\lim_{x\to a^-} f(x)  = \lim_{\delta \to 0} f(a - \delta)$.
@@ -521,19 +374,21 @@ can lead us to computing quantities.
 		If the function $f(x)$ obeys, $f(a) = L$ and $\lim_{x\to a} f(x) = L$,
 		we say the function $f(x)$ is \emph{continuous} at $x=a$.
 		Geometrically,
-		the graph of the function at $x=a$ is ``smooth'' and
-		doesn't make a sudden jump at $x=a$.
+		the graph of the continuous function at $x=a$ is ``smooth'' curve
+		that doesn't have any hole or a jump at $x=a$.
 		Intuitively,
 		when a function is continuous,
-		we can draw its graph using a single stroke without lifting the pen.
+		we can draw its graph using a single pen stroke
+		without lifting the pen.
 		% means the function's graph looks like a smooth curve
 		In contrast,
 		functions that blow up to infinity or make sudden jumps are not continuous.
 		
 		\subsubsection{Example 3}
 
-			Consider the \emph{Heaviside step function},
-			which is defined as follows:
+			The \emph{Heaviside step function} is an example of a function
+			with a jump discontinuity.
+			It is defined as follows:
 			\[
 				H(x) \eqdef \begin{cases}
 							\; 1, 	& \text{if } x \geq 0 \\
@@ -542,14 +397,14 @@ can lead us to computing quantities.
 			\]
 	
 			\noindent
-			The Heaviside function is zero for negative values of $x$,
+			The function is zero for negative values of $x$,
 			then suddenly jumps to one at $x=0$,
 			as shown in Figure~\ref{fig:limits_examples}~(c).
 			The limit as $x$ approaches $x=0$ from the left is $\lim_{x\to 0^-} H(x) = 0$.
-			The limit as $x$ approaches $x=0$ from the right is $\lim_{x\to 0^+} H(x) = 1$.
+			The limit at $x=0$ from the right is $\lim_{x\to 0^+} H(x) = 1$.
 			The two limits are different,
 			$\lim_{x\to 0^-} H(x) = 0 \neq 1 = \lim_{x\to 0^+} H(x)$,
-			so the function is discontinuous at $x=0$.
+			so the function is \emph{discontinuous} at $x=0$.
 
 
 		%	A more mathematically precise way to define continuity is to say the function is equal to its limit for all $x$.
@@ -628,22 +483,34 @@ can lead us to computing quantities.
 
 	\subsection{Computing limits using SymPy}
 
-		The SymPy function \tt{sp.limit(expr,var,value)} allows us to compute the limit
-		of the expression \tt{expr}, as the variable \tt{var} approaches \tt{value}.
-		Let's use SymPy to revisit the limit calculations we saw above.
-		
 
-		% EXAMPLE  e
-		Recall the limit expression for Euler's number
-		$e \eqdef \lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{n}$.
-		To compute this limit using SymPy,
-		we start by importing the \tt{sympy} module under the alias \tt{sp},
-		defining the symbolic variable $\tt{n} = n$,
-		then calling \tt{sp.limit}.
+We start by importing the \tt{sympy} module under the alias \tt{sp},
+defining the symbolic variable $\tt{n} = n$,
+
 
 		\begin{codeblock}[sympy-e-from-limit]
 		>>> import sympy as sp
 		>>> n = sp.symbols("n")
+		\end{codeblock}
+
+
+The SymPy function \tt{sp.limit(expr,var,value)} allows us to compute the limit
+of the expression \tt{expr}, as the variable \tt{var} approaches \tt{value}.
+
+Let's use SymPy to revisit some of the limit calculations we saw above.
+
+Note we use the symbol \texttt{sp.oo} (two lowercase \texttt{o}s) to denote infinity,
+which is a clever name since it resembles the infinity symbol $\infty$.
+
+
+		% EXAMPLE  e
+		Euler's number is defined as the limit
+		$e \eqdef \lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{n}$.
+		% To compute this limit using SymPy,
+		then using \tt{sp.limit} to evaluate the limit
+		as $\tt{n}$ goes to infinity $\infty = \texttt{sp.oo}$:
+
+		\begin{codeblock}[sympy-e-from-limit]
 		>>> limit((1+1/n)**n, n, sp.oo)
 		E
 		\end{codeblock}
@@ -651,30 +518,38 @@ can lead us to computing quantities.
 		\noindent
 		SymPy produced the exact value $\tt{E} = e = 2.718281828\ldots$.
 		% and not an approximation.
-		Note we use the symbol \texttt{sp.oo} (two lowercase \texttt{o}s) to denote infinity,
-		which is a clever name since it resembles the infinity symbol $\infty$.
+
 
 
 		% EXAMPLE 1/x
-		Let's now look at the code for computing the limit $\lim_{x \to \infty} \tfrac{1}{x}$.
-		We define the symbol \tt{x}
-		then call the function \tt{sp.limit} to evaluate the limit of the expression $\tt{1/x} = \frac{1}{x}$
-		as $\tt{x}=x$ goes to infinity $\tt{sp.oo}=\infty$.
+		Let's now compute the limits $\lim_{x \to \infty} \tfrac{1}{x}$
+		and $\lim_{x \to 0^+} \tfrac{1}{x}$.
+		We fist define the symbol \tt{x}
+		then call the function \tt{sp.limit} to evaluate the two limits
+		involving the expression $\tt{1/x} = \frac{1}{x}$:
 
 		\begin{codeblock}[]
 		>>> x = sp.symbols("x")
 		>>> sp.limit(1/x, x, sp.oo)
 		0
+		>>> sp.limit(1/x, x, 0)
+		oo
 		\end{codeblock}
+		
+		\noindent
+		SymPy confirms that $\lim_{x \to \infty} \tfrac{1}{x} = 0$
+		and $\lim_{x \to 0^+} \tfrac{1}{x} = \infty$,
+		as calculated earlier.
+		See Figure~\ref{fig:limits_examples}~(a) for an illustration.
+
 
 		% EXAMPLE (2x+1)/x		
-		\noindent
 		Here is another example,
 		that computes the limit of the fraction $\frac{2x+1}{x}$ as $x$ goes to infinity,
 		which is illustrated in Figure~\ref{fig:limits_examples}~(b).
 	
 		\begin{codeblock}[]
-		>>> sp.limit((2*x+1)/x, x, oo)
+		>>> sp.limit((2*x+1)/x, x, sp.oo)
 		2
 		\end{codeblock}
 	
@@ -735,100 +610,291 @@ can lead us to computing quantities.
 		%	%	where algorithms whose running time grows exponentially with the size of their input are considered bad
 
 	
-		% EXAMPLE 2: splitting up an interval into $n$ segments, then making $n$ go to infinity
-		%	splitting with an infinite number of segments
-		%	\begin{codeblock}[sympy-limit-sement-zero-length]
-		%	>>> from sympy import limit, oo, summation
-		%	>>> delta = (b - a)/n
-		%	>>> limit(delta, n, oo)
-		%	0
-		%	\end{codeblock}
-		%
-		%	\begin{codeblock}[sympy-limit-sements-add-to-interval]
-		%	>>> summation(delta, (i, 0, n-1))
-		%	b - a				
-		%	\end{codeblock}
+
 
 
 	\subsection{Applications of limits}
 
-		Limits are important in calculus
-		because they are used in the formal definitions of derivatives, integrals, and series.
-
-		\subsubsection*{Limits for derivatives}
-		\label{limits:limits_for_derivatives}
-	
-			The formal definition of a function's derivative is expressed in terms
-			of the rise-over-run formula for an infinitely short run:
-			\[
-				f^{\prime\!}(x) 
-					\; = \; \lim_{\textrm{run} \to 0} \frac{\text{rise}}{\text{run}} 
-					\; = \;  \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{x+\delta \; - \;  x}.
-			\]
-			We'll continue the discussion of derivatives in Section~\ref{sec:derivatives}.
-
-
-		\subsubsection*{Limit for integrals}
-		\label{limits:limits_for_integrals}
-
-			One way to approximate the area under the graph of the function $f(x)$ between $x=a$ and $x=b$
-			is to split the area into $n$ rectangular strips of width $\Delta x = \frac{b-a}{n}$ and height $f(x)$,
-			and then calculate the sum of the areas of the rectangles:
-			\[ 
-				A_f(a,b) \approx \underbrace{
-								\Delta x f(a+\Delta x)
-								\!+\! \Delta x f(a+2\Delta x) 
-		  						% \!+\! \Delta x f(a+2\Delta x) + \cdots 
-								\!+\! \Delta x f(b)
-							}_{n \textrm{ terms}}.
-			\]
-			We obtain the exact value of the area in the limit where we split the area into an infinite
-			number of rectangles of infinitely small width:
-			{ \small
-			\[ 
-			  \!\!\int_a^b\!\!\!f(x) \, dx
-			  = \!A_f(a,b)
-			   = \!\!\lim_{n \to \infty}\!\! \Delta x \left[ 
-			   	 f(a+\Delta x) \!+\! f(a+2\Delta x) \!+\! \cdots \!+\!  f(b) 
-				\right].
-			\]}
+		Limits are important because they are used in the formal definitions of derivatives, integrals, and series:
+		
+		\begin{itemize}
+		
+			\item The derivative function $f^{\prime\!}(x)$
+				describe the instantaneous rate change of the function $f(x)$.
+				In Section~\ref{sec:derivatives} we'll learn how to calculate derivatives
+				by evaluating a limit of the form $\lim_{\delta \to 0}$.
 			
-			\noindent 
-			%	Computing the area under a function by splitting the area into infinitely 
-			%	many rectangles is an approach known as a \emph{Riemann sum},
-			%	which we'll discuss
-			We'll have a lot more to say about integrals in Section~\ref{sec:integrals}.
+			\item The integral $\int_a^b f(x) \, dx$
+				describes the area under the graph of the function $f(x)$ between $x=a$ and $x=b$.
+				In Section~\ref{sec:integrals}
+				we'll learn how to compute integrals by splitting up area into $n$ rectangular strips
+				and taking the limit $\lim_{n \to \infty}$.
+
+			\item The series $\sum_{k=1}^n a_k$ describes
+				the sum of all the first $n$ terms in the sequence $a_k$.
+				In Section~\ref{sec:sequences_and_series},
+				we'll learn how to compute infinite series by taking $\lim_{n \to \infty}$.
+		
+		\end{itemize}
+
+
+% Many important math and science quantities are defined as limit expressions.
+
+% LEAD OUT	
+%	In the remainder of this tutorial we'll use limits to evaluate derivatives, integrals, and series expressions.
+%	In each of these domains,
+%	limit expressions will help us make precise statements
+%	that describe calculus procedures with infinite small lengths and infinite number of steps.
+
+
 
 	
-		
-		\subsubsection*{Limits for series}
-		\label{limits:limits_for_series}
-		
-			We use limits to describe the convergence properties of series.
-			For example,
-			the sum of the first $n$ terms of the geometric series $a_k= r^k$
-			corresponds to the following expression:
-			\[
-				\sum_{k=0}^n r^k = 1 + r + r^2 + r^3 + \cdots + r^n.
-			\]
-			The \emph{series} $\sum a_k$
-			is defined as the limit $n\to \infty$ of the above expression.
-			When $|r|<1$,
-			the series \emph{converges} to the a finite value:
-			\[
-				\lim_{n \to \infty} \sum_{k=0}^n r^k
-					= 1 + r + r^2 +  r^3 + \cdots 
-					= \frac{1}{1-r}.
-			\]	
-			We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
-	
 
-			% LEAD OUT	
-			%	In the remainder of this tutorial we'll use limits to evaluate derivatives, integrals, and series expressions.
-			%	In each of these domains,
-			%	limit expressions will help us make precise statements
-			%	that describe calculus procedures with infinite small lengths and infinite number of steps.
+
+
 
 
 % TODO: Limit exercises
+
+
+
+
+
+
+
+
+% NOTEBOOK ONLY
+%	% $\frac{1}{2}bh$.
+%	% and trigonometric functions $\sin$ and $\cos$.
+%	Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}~(b)
+%	highlights one of the $16$ identical triangular slices in the case when $n=8$.
+%	The hypotenuse of this triangle has length $r$,
+%	the angle $\theta$ is $\frac{360\circ}{16} = \frac{2\pi}{16} = \frac{\pi}{8}$[rad],
+%	and its sides have length $a=r\cos(\frac{\pi}{8})$ and $b=r\sin(\frac{\pi}{8})$.
+%	The total area of the polygon with $n$ sides is:
+%	\[
+%		 2n \cdot \tfrac{1}{2}ab 
+%		 = n \, r\cos(\tfrac{\pi}{n})  \, r\sin(\tfrac{\pi}{n})
+%		 = n \, r^2  \cos(\tfrac{\pi}{n})\sin(\tfrac{\pi}{n}).
+%	\]
+%	In the limit as $n\to \infty$, 
+%	the $n$-sided-polygon approximation to the area of the circle 
+%	becomes more and more accurate.
+%	
+%	Here is the code that computes the approximations to the area of a circle % of radius $r=1$
+%	with polygons with more and more sides.
+%	
+%	\begin{codeblock}[]
+%	>>> import math
+%	>>> def calc_area(n, r=1):
+%	        theta = 2 * math.pi / (2 * n)
+%	        a = r * math.cos(theta)
+%	        b = r * math.sin(theta)
+%	        area = 2 * n * a * b / 2
+%	        return area
+%	>>> for n in [6, 8, 10, 50, 100, 1000, 10000]:
+%	        area_n = calc_area(n)
+%	        error = area_n - math.pi
+%	        print(f"{n=}, {area_n=}, {error=}")
+%	n=6, area_n=2.5980762113533156, error=-0.5435
+%	n=8, area_n=2.8284271247461903, error=-0.3132
+%	n=10, area_n=2.938926261462365, error=-0.2027
+%	n=50, area_n=3.133330839107606, error=-0.00826
+%	n=100, area_n=3.1395259764656687, error=-0.002067
+%	n=1000, area_n=3.141571982779476, error=-2.067e-05
+%	n=10000, area_n=3.1415924468812855, error=-2.067e-07
+%	\end{codeblock}
+%	
+%	\noindent
+%	To calculate the limit as $n$ goes to infinity,
+%	we can perform the symbolic math calculation using SymPy:
+%	
+%	\begin{codeblock}[]
+%	>>> n, r = sp.symbols("n r")
+%	>>> A_n = n * r**2 * sp.cos(sp.pi/n) * sp.sin(sp.pi/n)
+%	>>> sp.limit(A_n, n, sp.oo)
+%	pi * r**2
+%	\end{codeblock}
+%	
+%	\noindent
+%	The result is $\pi r^2$,
+%	which is the formula for the area of a circle.
+
+%	An interesting example to consider is the number $\pi$, 
+%	which is defined as the area of a circle of radius $1$.
+%	We can approximate the area of the unit circle by drawing a many-sided regular polygon around the circle.
+
+%		A circle of radius $1$ is inscribed inside a
+%		\emph{regular octagon} (a polygon with eight sides of length $b$).
+%		Calculate the octagon's perimeter and its area.
+%		\begin{center}
+%		\includegraphics[width=0.63212\columnwidth]{figures/calculus/octagon_inscribed_in_circle.pdf}
+%		\end{center}		
+% cf. \input{../../../MATHPHYSbook/problems/figures/geometry/octagon_inscribed_in_circle.tex}
+%	Split the octagon into eight isosceles triangles. 
+%	The height of each triangle will be $1$,
+%	and its angle measure at the centre will be $\frac{360^\circ}{8}=45^\circ$.
+%	Split each of these triangles into two halves down the middle.
+%	The octagon is now split into $16$ similar right-angle triangles
+%	with angle measure $22.5^\circ$ at the centre.
+%	%
+%	In a right-angle triangle with angle $22.5^\circ$ and adjacent side $1$,
+%	what is the length of the opposite side?
+%	The opposite side of each of the $16$ triangles is $\frac{b}{2}=\tan(22.5^\circ)$,
+%%			so the perimeter of the octagon is $P_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=16\tan(22.5^\circ)$.
+%%			In general,
+%%			if a unit circle is inscribed inside an $n$-sided regular polygon,
+%%			the perimeter of the polygon is $P_n = 2n\tan\!\left(\frac{360^\circ}{2n} \right)$.
+%%			%
+%	To find the area of the octagon,
+%	we use the formula $A_{\scriptscriptstyle \triangle}=\frac{1}{2}bh$,
+%	with $b=2\tan(22.5^\circ)$ and $h=1$ to find the area of each isosceles triangle.
+%	The area of the octagon is 
+%	$A_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=8\cdot\frac{1}{2}(2\tan(22.5^\circ))(1)=8\tan(22.5^\circ)$.
+%	For an $n$-sided regular polygon the area formula is $A_n = n\tan\!\left(\frac{360^\circ}{2n} \right)$.
+%	Bonus points if you can tell me what happens to the formulas 
+%	for $P_n$ and $A_n$ as $n$ goes to infinity
+%	(see \href{http://bit.ly/1jGU1Kz}{\texttt{bit.ly/1jGU1Kz}}).
+
+
+
+
+
+
+
+%	$\displaystyle  \lim_{n \to \infty} \textrm{proc}(n)$:
+%	limit expression that describes the outcome of some computational procedure with $n$ steps,
+%	as the number of steps $n$ goes to infinity.
+% The parameter $n$ usually describes the number of steps in a given procedure,
+% and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
+
+
+
+% splitting up an interval into $n$ segments, then making $n$ go to infinity
+%		splitting with an infinite number of segments
+%		\begin{codeblock}[sympy-limit-sement-zero-length]
+%		>>> from sympy import limit, oo, summation
+%		>>> delta = (b - a)/n
+%		>>> limit(delta, n, oo)
+%		0
+%		\end{codeblock}
+%	
+%		\begin{codeblock}[sympy-limit-sements-add-to-interval]
+%		>>> summation(delta, (i, 0, n-1))
+%		b - a				
+%		\end{codeblock}
+%
+% \subsubsection{Example: split up line}
+%		Let's begin with a simple example.
+%		Say you have a string of length $\ell$ and you want to divide it into infinitely many, infinitely short segments.
+%		There are infinitely many segments,
+%		and they are infinitely short, so together the segments add to the string's total length $\ell$.
+%
+%		It's easy enough to describe this process in words.
+%		Now let's describe the same process using the notion of a limit.
+%		If we divide the length of the string $\ell$ into $N$ equal pieces then each piece will have a length of
+%		\[
+%		   \delta = \frac{\ell}{N}  \,.
+%		\]
+%		Let's make sure that $N$ pieces of length $\delta$ added together equal the string's total length: 
+%		\[
+%		 N \delta = N \frac{\ell}{N} = \ell.
+%		\]
+%		
+%		\noindent
+%		Now imagine what happens when the variable $N$ becomes larger and larger.
+%		The larger $N$ becomes, the shorter the pieces of string will become.
+%		In fact, if $N$ goes to infinity (written $N \to \infty$),
+%		then the pieces of string will have zero length:
+%		\[
+%		 \lim_{N\to \infty}  \delta = \lim_{N\to \infty} \frac{\ell}{N} = 0.
+%		\]
+%		In the limit as $N \to \infty$, the pieces of string are \emph{infinitely small}.
+%		
+%		Note we can still add the pieces of string together to obtain the whole length:
+%		\[
+%		 \lim_{N\to \infty}  \left( N \delta \right) 
+%		 = 
+%		 \lim_{N\to \infty}  \left( N \frac{\ell}{N} \right)
+%		 = \ell.
+%		\]
+%		Even if the pieces of string are \emph{infinitely small},
+%		because there are \emph{infinitely many} of them,
+%		they still add to $\ell$.
+%		
+%		The take-home message is that as long as you clearly define your limits,
+%		you can use infinitely small numbers in your calculations.
+%		The notion of a limit is one of the central ideas in this course.
+
+
+
+
+
+%	\subsubsection*{Limits for derivatives}
+%	\label{limits:limits_for_derivatives}
+%	
+%		The formal definition of a function's derivative is expressed in terms
+%		of the rise-over-run formula for an infinitely short run:
+%		\[
+%			f^{\prime\!}(x) 
+%				\; = \; \lim_{\textrm{run} \to 0} \frac{\text{rise}}{\text{run}} 
+%				\; = \;  \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{x+\delta \; - \;  x}.
+%		\]
+%		We'll continue the discussion of derivatives in Section~\ref{sec:derivatives}.
+%	
+%	
+%	\subsubsection*{Limit for integrals}
+%	\label{limits:limits_for_integrals}
+%	
+%		One way to approximate the area under the graph of the function $f(x)$ between $x=a$ and $x=b$
+%		is to split the area into $n$ rectangular strips of width $\Delta x = \frac{b-a}{n}$ and height $f(x)$,
+%		and then calculate the sum of the areas of the rectangles:
+%		\[ 
+%			A_f(a,b) \approx \underbrace{
+%							\Delta x f(a+\Delta x)
+%							\!+\! \Delta x f(a+2\Delta x) 
+%	  						% \!+\! \Delta x f(a+2\Delta x) + \cdots 
+%							\!+\! \Delta x f(b)
+%						}_{n \textrm{ terms}}.
+%		\]
+%		We obtain the exact value of the area in the limit where we split the area into an infinite
+%		number of rectangles of infinitely small width:
+%		{ \small
+%		\[ 
+%		  \!\!\int_a^b\!\!\!f(x) \, dx
+%		  = \!A_f(a,b)
+%		   = \!\!\lim_{n \to \infty}\!\! \Delta x \left[ 
+%		   	 f(a+\Delta x) \!+\! f(a+2\Delta x) \!+\! \cdots \!+\!  f(b) 
+%			\right].
+%		\]}
+%		
+%		\noindent 
+%		%	Computing the area under a function by splitting the area into infinitely 
+%		%	many rectangles is an approach known as a \emph{Riemann sum},
+%		%	which we'll discuss
+%		We'll have a lot more to say about integrals in Section~\ref{sec:integrals}.
+%	
+%	
+%	
+%	\subsubsection*{Limits for series}
+%	\label{limits:limits_for_series}
+%	
+%		We use limits to describe the convergence properties of series.
+%		For example,
+%		the sum of the first $n$ terms of the geometric series $a_k= r^k$
+%		corresponds to the following expression:
+%		\[
+%			\sum_{k=0}^n r^k = 1 + r + r^2 + r^3 + \cdots + r^n.
+%		\]
+%		The \emph{series} $\sum a_k$
+%		is defined as the limit $n\to \infty$ of the above expression.
+%		When $|r|<1$,
+%		the series \emph{converges} to the a finite value:
+%		\[
+%			\lim_{n \to \infty} \sum_{k=0}^n r^k
+%				= 1 + r + r^2 +  r^3 + \cdots 
+%				= \frac{1}{1-r}.
+%		\]	
+%		We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
+
 
