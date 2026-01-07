@@ -26,7 +26,7 @@
 		but try to place yourself in Archimedes's shoes (sandals?)
 		and suppose that you don't know the formula yet.
 
-		Archimedes clever idea was to approximate the circle
+		Archimedes' clever idea was to approximate the circle
 		as a regular polygon with $n$ sides inscribed in the circle.
 		Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}
 		shows the hexagonal (6-sides),
@@ -67,7 +67,7 @@
 		See the computational notebook here for the details of the calculations:
 		\href{https://bit.ly/calctut3}{\tt{bit.ly/calctut3}}.
 
-		In the limit as $n\to \infty$, 
+		In the limit as $n \to \infty$, 
 		the $n$-sided-polygon approximation to the area of the circle 
 		will becomes \emph{exactly} equal to $\pi = 3.141592653589793\ldots$,
 		which we write as $\lim_{n \to \infty} A(n) = \pi$.
@@ -163,7 +163,13 @@
 	% it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
 	% as $n$ goes to infinity.
 
-% TODO: procedure
+
+% TODO: summarize + drive point home => procedures 
+%	$\displaystyle  \lim_{n \to \infty} \textrm{proc}(n)$:
+%	limit expression that describes the outcome of some computational procedure with $n$ steps,
+%	as the number of steps $n$ goes to infinity.
+% The parameter $n$ usually describes the number of steps in a given procedure,
+% and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
 
 
 		% EULER'S NUMBER VIA SERIES	
@@ -185,7 +191,6 @@
 		%	This kind of infinite sum expression are called a \emph{series},
 		%	and provides a powerful way to compute quantities by summing together a bunch of terms.
 		%	We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
-
 
 
 
@@ -319,7 +324,7 @@
 	\subsection{Limits to zero}
 	\label{limits:limits_to_zero}
 
-		The limit expression $\lim_{x \to 0} f(\delta)$
+		The limit expression $\lim_{x \to 0} f(x)$
 		describes the behaviour of the function $f$ for infinitely small values of $x$.
 		The limit $\lim_{x \to 0} f(x)$,
 		read ``the limit of $f(x)$ as $x$ goes to zero,''
@@ -331,12 +336,14 @@
 		the limit $\lim_{x \to 0} \frac{1}{x} = \infty$.
 		In words,
 		the function $f(x) = \frac{1}{x}$ ``blows up'' to infinity as $x$ goes to $0$.
+		See Figure~\ref{fig:limits_examples}~(a).
 
 
 	\subsection{Limits to a number}
 	\label{limits:limits_to_a_number}
 
-		The limit of $f(x)$ approaching $x=a$ \emph{from the right}
+		More generally,
+		the limit of $f(x)$ approaching $x=a$ \emph{from the right}
 		is denoted $\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta)$.
 		We use the symbol $\delta$ (the Greek letter \emph{delta}) to describes a distance
 		that gets smaller and smaller.
@@ -350,9 +357,9 @@
 		%		(from the left) with values like $x=a-$, 
 		%		with $\delta>0, \delta \to 0$.
 
-		If both limits from the left and from the right of some number exist and 
-		are equal to each other, we can talk about the limit as $x\to a$ 
-		without specifying the direction of approach: 
+		If both limits from the left and from the right at $x=a$
+		exist and are equal to each other,
+		we say the limit as $x\to a$ exists:
 		\[
 			\lim_{x\to a} f(x) =  \lim_{x\to a^+} f(x) =  \lim_{x\to a^-} f(x).
 		\]
@@ -417,17 +424,17 @@
 		%	Thus, the definition of continuity implies the equality $\lim_{x \to a^-}  f(x) =  f(a)$
 		%	and $f(a) = \lim_{x \to a^+}  f(x)$,
 		%	which correspond to the idea of ``not lifting the pen'' when drawing the graph at $x=a$.
-%		In words,
-%		this means that a function $f(x)$ is continuous at $x=a$
-%		if the limit from the left $\lim_{x \to a^-}  f(x)$
-%		and the limit from the right $\lim_{x \to a^+}  f(x)$
-%		are both equal to the value of the function at $x=a$.
-		% Take a moment to think about the mathematical definition of continuity at a point.
-		% Can you connect the math definition to the intuitive idea that functions are continuous if they can be drawn without lifting the pen?
-%		Most functions we'll study in calculus are continuous,
-%		but not all functions are.
-% /SHORTEN
 
+		%	In words,
+		%	this means that a function $f(x)$ is continuous at $x=a$
+		%	if the limit from the left $\lim_{x \to a^-}  f(x)$
+		%	and the limit from the right $\lim_{x \to a^+}  f(x)$
+		%	are both equal to the value of the function at $x=a$.
+		%	% Take a moment to think about the mathematical definition of continuity at a point.
+		%	% Can you connect the math definition to the intuitive idea
+		%	% that functions are continuous if they can be drawn without lifting the pen?
+		%	Most functions we'll study in calculus are continuous,
+		%	but not all functions are.
 
 		%	Functions that are not defined for some value, as well as functions that make sudden jumps, are not continuous.
 		%	%		Another examples is the function $f(x)=\frac{2x+1}{x}$ which is discontinuous at $x=0$
@@ -482,43 +489,47 @@
 
 
 	\subsection{Computing limits using SymPy}
-
-
-We start by importing the \tt{sympy} module under the alias \tt{sp},
-defining the symbolic variable $\tt{n} = n$,
-
+	
+		We can use SymPy to compute limit expression,
+		which allows us to check the answers we obtain using pen-and-paper calculations.
+		We'll start by importing the \tt{sympy} module under the alias \tt{sp},
+		defining the symbolic variable $\tt{n} = n$,
+		which we can then use to write various expressions.
 
 		\begin{codeblock}[sympy-e-from-limit]
 		>>> import sympy as sp
 		>>> n = sp.symbols("n")
 		\end{codeblock}
 
+		To compute limits,
+		we use the SymPy function \tt{sp.limit(expr,var,value)},
+		which computes the limit of the expression \tt{expr},
+		as the variable \tt{var} approaches \tt{value}.
+		For limits toward infinity,
+		we use the special symbol \texttt{sp.oo} (two lowercase \texttt{o}s),
+		which is a clever name chosen because it resembles the infinity symbol $\infty$.
 
-The SymPy function \tt{sp.limit(expr,var,value)} allows us to compute the limit
-of the expression \tt{expr}, as the variable \tt{var} approaches \tt{value}.
-
-Let's use SymPy to revisit some of the limit calculations we saw above.
-
-Note we use the symbol \texttt{sp.oo} (two lowercase \texttt{o}s) to denote infinity,
-which is a clever name since it resembles the infinity symbol $\infty$.
-
-
+		% We can use SymPy to check the limit calculation we saw above.		
 		% EXAMPLE  e
 		Euler's number is defined as the limit
 		$e \eqdef \lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{n}$.
-		% To compute this limit using SymPy,
-		then using \tt{sp.limit} to evaluate the limit
+		To compute this limit using SymPy,
+		we call \tt{sp.limit} on the expression \tt{(1+1/n)**n}
 		as $\tt{n}$ goes to infinity $\infty = \texttt{sp.oo}$:
 
 		\begin{codeblock}[sympy-e-from-limit]
-		>>> limit((1+1/n)**n, n, sp.oo)
+		>>> sp.limit((1+1/n)**n, n, sp.oo)
 		E
+		>>> sp.limit((1+1/n)**n, n, sp.oo).evalf(40)
+		2.718281828459045235360287471352662497757
 		\end{codeblock}
 
 		\noindent
-		SymPy produced the exact value $\tt{E} = e = 2.718281828\ldots$.
-		% and not an approximation.
-
+		The result of \tt{sp.limit} is the exact value $e$
+		which is represented symbolically as \tt{E}.
+		On the second line,
+		we used the method \tt{.evalf(40)} 
+		to compute an approximation to $e$ to 40 decimals.
 
 
 		% EXAMPLE 1/x
@@ -587,7 +598,6 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 		%	>>> 1/oo
 		%	0
 		%	\end{codeblock}
-
 
 		% BONUS SYMPY EXAMPLES
 		%	The SymPy function \tt{limit} allows us to compute limit expressions.
@@ -663,127 +673,6 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 
 
 
-% NOTEBOOK ONLY
-%	% $\frac{1}{2}bh$.
-%	% and trigonometric functions $\sin$ and $\cos$.
-%	Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}~(b)
-%	highlights one of the $16$ identical triangular slices in the case when $n=8$.
-%	The hypotenuse of this triangle has length $r$,
-%	the angle $\theta$ is $\frac{360\circ}{16} = \frac{2\pi}{16} = \frac{\pi}{8}$[rad],
-%	and its sides have length $a=r\cos(\frac{\pi}{8})$ and $b=r\sin(\frac{\pi}{8})$.
-%	The total area of the polygon with $n$ sides is:
-%	\[
-%		 2n \cdot \tfrac{1}{2}ab 
-%		 = n \, r\cos(\tfrac{\pi}{n})  \, r\sin(\tfrac{\pi}{n})
-%		 = n \, r^2  \cos(\tfrac{\pi}{n})\sin(\tfrac{\pi}{n}).
-%	\]
-%	In the limit as $n\to \infty$, 
-%	the $n$-sided-polygon approximation to the area of the circle 
-%	becomes more and more accurate.
-%	
-%	Here is the code that computes the approximations to the area of a circle % of radius $r=1$
-%	with polygons with more and more sides.
-%	
-%	\begin{codeblock}[]
-%	>>> import math
-%	>>> def calc_area(n, r=1):
-%	        theta = 2 * math.pi / (2 * n)
-%	        a = r * math.cos(theta)
-%	        b = r * math.sin(theta)
-%	        area = 2 * n * a * b / 2
-%	        return area
-%	>>> for n in [6, 8, 10, 50, 100, 1000, 10000]:
-%	        area_n = calc_area(n)
-%	        error = area_n - math.pi
-%	        print(f"{n=}, {area_n=}, {error=}")
-%	n=6, area_n=2.5980762113533156, error=-0.5435
-%	n=8, area_n=2.8284271247461903, error=-0.3132
-%	n=10, area_n=2.938926261462365, error=-0.2027
-%	n=50, area_n=3.133330839107606, error=-0.00826
-%	n=100, area_n=3.1395259764656687, error=-0.002067
-%	n=1000, area_n=3.141571982779476, error=-2.067e-05
-%	n=10000, area_n=3.1415924468812855, error=-2.067e-07
-%	\end{codeblock}
-%	
-%	\noindent
-%	To calculate the limit as $n$ goes to infinity,
-%	we can perform the symbolic math calculation using SymPy:
-%	
-%	\begin{codeblock}[]
-%	>>> n, r = sp.symbols("n r")
-%	>>> A_n = n * r**2 * sp.cos(sp.pi/n) * sp.sin(sp.pi/n)
-%	>>> sp.limit(A_n, n, sp.oo)
-%	pi * r**2
-%	\end{codeblock}
-%	
-%	\noindent
-%	The result is $\pi r^2$,
-%	which is the formula for the area of a circle.
-
-%	An interesting example to consider is the number $\pi$, 
-%	which is defined as the area of a circle of radius $1$.
-%	We can approximate the area of the unit circle by drawing a many-sided regular polygon around the circle.
-
-%		A circle of radius $1$ is inscribed inside a
-%		\emph{regular octagon} (a polygon with eight sides of length $b$).
-%		Calculate the octagon's perimeter and its area.
-%		\begin{center}
-%		\includegraphics[width=0.63212\columnwidth]{figures/calculus/octagon_inscribed_in_circle.pdf}
-%		\end{center}		
-% cf. \input{../../../MATHPHYSbook/problems/figures/geometry/octagon_inscribed_in_circle.tex}
-%	Split the octagon into eight isosceles triangles. 
-%	The height of each triangle will be $1$,
-%	and its angle measure at the centre will be $\frac{360^\circ}{8}=45^\circ$.
-%	Split each of these triangles into two halves down the middle.
-%	The octagon is now split into $16$ similar right-angle triangles
-%	with angle measure $22.5^\circ$ at the centre.
-%	%
-%	In a right-angle triangle with angle $22.5^\circ$ and adjacent side $1$,
-%	what is the length of the opposite side?
-%	The opposite side of each of the $16$ triangles is $\frac{b}{2}=\tan(22.5^\circ)$,
-%%			so the perimeter of the octagon is $P_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=16\tan(22.5^\circ)$.
-%%			In general,
-%%			if a unit circle is inscribed inside an $n$-sided regular polygon,
-%%			the perimeter of the polygon is $P_n = 2n\tan\!\left(\frac{360^\circ}{2n} \right)$.
-%%			%
-%	To find the area of the octagon,
-%	we use the formula $A_{\scriptscriptstyle \triangle}=\frac{1}{2}bh$,
-%	with $b=2\tan(22.5^\circ)$ and $h=1$ to find the area of each isosceles triangle.
-%	The area of the octagon is 
-%	$A_{\scriptscriptstyle\scalebox{0.5}{\octagon}}=8\cdot\frac{1}{2}(2\tan(22.5^\circ))(1)=8\tan(22.5^\circ)$.
-%	For an $n$-sided regular polygon the area formula is $A_n = n\tan\!\left(\frac{360^\circ}{2n} \right)$.
-%	Bonus points if you can tell me what happens to the formulas 
-%	for $P_n$ and $A_n$ as $n$ goes to infinity
-%	(see \href{http://bit.ly/1jGU1Kz}{\texttt{bit.ly/1jGU1Kz}}).
-
-
-
-
-
-
-
-%	$\displaystyle  \lim_{n \to \infty} \textrm{proc}(n)$:
-%	limit expression that describes the outcome of some computational procedure with $n$ steps,
-%	as the number of steps $n$ goes to infinity.
-% The parameter $n$ usually describes the number of steps in a given procedure,
-% and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
-
-
-
-% splitting up an interval into $n$ segments, then making $n$ go to infinity
-%		splitting with an infinite number of segments
-%		\begin{codeblock}[sympy-limit-sement-zero-length]
-%		>>> from sympy import limit, oo, summation
-%		>>> delta = (b - a)/n
-%		>>> limit(delta, n, oo)
-%		0
-%		\end{codeblock}
-%	
-%		\begin{codeblock}[sympy-limit-sements-add-to-interval]
-%		>>> summation(delta, (i, 0, n-1))
-%		b - a				
-%		\end{codeblock}
-%
 % \subsubsection{Example: split up line}
 %		Let's begin with a simple example.
 %		Say you have a string of length $\ell$ and you want to divide it into infinitely many, infinitely short segments.
@@ -821,80 +710,22 @@ which is a clever name since it resembles the infinity symbol $\infty$.
 %		Even if the pieces of string are \emph{infinitely small},
 %		because there are \emph{infinitely many} of them,
 %		they still add to $\ell$.
+%
+%			splitting up an interval into $n$ segments, then making $n$ go to infinity
+%			splitting with an infinite number of segments
+%			\begin{codeblock}[sympy-limit-sement-zero-length]
+%			>>> from sympy import limit, oo, summation
+%			>>> delta = (b - a)/n
+%			>>> limit(delta, n, oo)
+%			0
+%			\end{codeblock}
 %		
+%			\begin{codeblock}[sympy-limit-sements-add-to-interval]
+%			>>> summation(delta, (i, 0, n-1))
+%			b - a				
+%			\end{codeblock}
+%
 %		The take-home message is that as long as you clearly define your limits,
 %		you can use infinitely small numbers in your calculations.
 %		The notion of a limit is one of the central ideas in this course.
-
-
-
-
-
-%	\subsubsection*{Limits for derivatives}
-%	\label{limits:limits_for_derivatives}
-%	
-%		The formal definition of a function's derivative is expressed in terms
-%		of the rise-over-run formula for an infinitely short run:
-%		\[
-%			f^{\prime\!}(x) 
-%				\; = \; \lim_{\textrm{run} \to 0} \frac{\text{rise}}{\text{run}} 
-%				\; = \;  \lim_{\delta \to 0} \frac{f(x+\delta)\; - \; f(x)}{x+\delta \; - \;  x}.
-%		\]
-%		We'll continue the discussion of derivatives in Section~\ref{sec:derivatives}.
-%	
-%	
-%	\subsubsection*{Limit for integrals}
-%	\label{limits:limits_for_integrals}
-%	
-%		One way to approximate the area under the graph of the function $f(x)$ between $x=a$ and $x=b$
-%		is to split the area into $n$ rectangular strips of width $\Delta x = \frac{b-a}{n}$ and height $f(x)$,
-%		and then calculate the sum of the areas of the rectangles:
-%		\[ 
-%			A_f(a,b) \approx \underbrace{
-%							\Delta x f(a+\Delta x)
-%							\!+\! \Delta x f(a+2\Delta x) 
-%	  						% \!+\! \Delta x f(a+2\Delta x) + \cdots 
-%							\!+\! \Delta x f(b)
-%						}_{n \textrm{ terms}}.
-%		\]
-%		We obtain the exact value of the area in the limit where we split the area into an infinite
-%		number of rectangles of infinitely small width:
-%		{ \small
-%		\[ 
-%		  \!\!\int_a^b\!\!\!f(x) \, dx
-%		  = \!A_f(a,b)
-%		   = \!\!\lim_{n \to \infty}\!\! \Delta x \left[ 
-%		   	 f(a+\Delta x) \!+\! f(a+2\Delta x) \!+\! \cdots \!+\!  f(b) 
-%			\right].
-%		\]}
-%		
-%		\noindent 
-%		%	Computing the area under a function by splitting the area into infinitely 
-%		%	many rectangles is an approach known as a \emph{Riemann sum},
-%		%	which we'll discuss
-%		We'll have a lot more to say about integrals in Section~\ref{sec:integrals}.
-%	
-%	
-%	
-%	\subsubsection*{Limits for series}
-%	\label{limits:limits_for_series}
-%	
-%		We use limits to describe the convergence properties of series.
-%		For example,
-%		the sum of the first $n$ terms of the geometric series $a_k= r^k$
-%		corresponds to the following expression:
-%		\[
-%			\sum_{k=0}^n r^k = 1 + r + r^2 + r^3 + \cdots + r^n.
-%		\]
-%		The \emph{series} $\sum a_k$
-%		is defined as the limit $n\to \infty$ of the above expression.
-%		When $|r|<1$,
-%		the series \emph{converges} to the a finite value:
-%		\[
-%			\lim_{n \to \infty} \sum_{k=0}^n r^k
-%				= 1 + r + r^2 +  r^3 + \cdots 
-%				= \frac{1}{1-r}.
-%		\]	
-%		We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
-
 
