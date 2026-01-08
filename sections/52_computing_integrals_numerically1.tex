@@ -17,7 +17,6 @@
 		at the math required to calculate the approximation to $\int_{0}^2 h(x)dx$ using $n=10$ rectangles,
 		which is illustrated in Figure~\ref{fig:riemann_sum_n10_n20}~(a).
 		The width of each rectangle is $\Delta x = \frac{b-a}{n} = \frac{2-0}{10} = 0.2$.
-		% The $x$-coordinates of the left endpoints of the $10$ rectangles are $[0, 0.2, 0.4, 0.6, \ldots, 1.8]$.
 		The $x$-coordinates of the right endpoints of the $10$ rectangles are $[0.2, 0.4, 0.6, \ldots, 1.8, 2.0]$.
 		To find the area of the rectangles,
 		we need to know the height of the function $h$ at these $x$-coordinates:
@@ -36,8 +35,8 @@
 
 		\noindent
 		Looking at figure Figure~\ref{fig:riemann_sum_n10_n20}~(a),
-		we can clearly see that the area computed in this way is an underestimate
-		to the true area under the graph.
+		we can clearly see that the area of the rectangles
+		underestimates the true area under the graph.
 		Let's trust the process,
 		and continue with the calculations,
 		knowing that the ``quality'' of the approximations
@@ -47,7 +46,6 @@
 		In the general case,
 		the rectangles have width $\Delta x = \frac{b-a}{n} = \frac{2}{n}$,
 		which gets smaller and smaller as $n$ grows.
-		% The $x$-coordinates of the left endpoints of the $10$ rectangles are $[0, 0.2, 0.4, 0.6, \ldots, 1.8]$.
 		The $x$-coordinates of the right endpoints of the $n$ rectangles
 		are located at $[\Delta x, 2\Delta x, 3\Delta x, \ldots, (n-1)\Delta x, n\Delta x]$.
 		The heights of the rectangles are
@@ -146,9 +144,6 @@
 			5.13
 			\end{codeblock}
 
-			%	\noindent
-			%	This approximation with $n=20$ rectangles is accurate to the first decimal.
-
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.98\columnwidth]{figures/calculus/riemann_sum_n10_n20.pdf}
@@ -158,7 +153,7 @@
 				\label{fig:riemann_sum_n10_n20}
 			\end{figure}
 
-
+			\noindent
 			Let's keep going to see what happens with $n=50$ and $n=100$:
 
 			\begin{codeblock}[]
@@ -196,64 +191,23 @@
 
 			\noindent
 			The approximation % to the area $A_h(0,2)$
-			computed with $n=1M$ rectangles is accurate to $4$ decimals.
+			computed using $n=1M$ rectangles is accurate to $4$ decimals.
 			The exact value of the area $A_h(0,2)$ is
-			$\frac{16}{3} = 5\frac{1}{3} = 5.\overline{3} = 5.3333333333\ldots$.
+			$\frac{16}{3} = 5\frac{1}{3} = 5.\overline{3} = 5.33333333333333\ldots$.
 			To obtain the exact value,
 			we have to \textbf{split up the region into infinitely many rectangular strips},
 			as we'll learn next.
 
-%	% get closer and closer to the exact value $10\frac{2}{3}$
-%	We can compute the approximation value of the integral to any desired precision
-%	by splitting the region into enough rectangles.
-%
-%	We'll learn how to compute the exact values of integrals in the next section,
-%	where we'll learn about symbolic integration techniques.
-%	You can think of symbolic integration as a bunch of math ``shortcuts''
-%	that allows us compute exact integral for certain functions
-%	% MAYBE: == CALC II
-%	For now,
-%	we content ourselves with numerical approximations,
-%	which are pretty good already!
+			%	We can compute the approximation value of the integral to any desired precision
+			%	by splitting the region into enough rectangles.
 
-
-
-			% CUTTABLE or notebook only
-			%	\subsubsection{Examples 1 and 2 revisited}
-			%	
-			%		We can also use \tt{integrate} to compute the integral of a constant function $f(x)=3$
-			%		and the linear function $g(x)=x$ that computed geometrically earlier.
-			%
-			%		\begin{codeblock}[]
-			%		>>> def f(x):
-			%		        return 3
-			%		>>> integrate(f, a=0, b=5, n=100_000)
-			%		15.000000000000002
-			%		>>> def g(x):
-			%		        return x
-			%		>>> integrate(g, a=0, b=5, n=100_000)
-			%		12.500125
-			%		\end{codeblock}
-			%
-			%		\noindent
-			%		The numerical approximations we obtain are very close
-			%		to the exact answers $\int_0^5 f(x)\,dx = 3\cdot 5 = 15$
-			%		and $\int_0^5 g(x) \, dx = \tfrac{1}{2} 5 \cdot 5 = 12.5$.
-			% /CUTTABLE
-
-
-%We can approximate the total area under the function $f(x)$ between $x=a$ and $x=b$ by splitting the region into $n$ tiny vertical strips of width $\Delta x$,
-%then adding up the areas of the rectangular strips.
-%This is known as a \emph{Riemann sum} approximation for an area.
-%Figure~\ref{fig:riemannsum-25-50} shows the Riemann sum approximations for the area under the function
-%$f(x)=x^3-5x^2+x+10$ between $x=-2$ and $x=2$,
-%obtained by using $n=25$ and $n=50$ vertical rectangular strips.
-%		it would take you forever.
-%		Computing an approximation with $n=1000$ rectangles requires computing $1000$ rectangle areas
-%		and the sum of $1000$ terms!
-
-
-
+			%	We'll learn how to compute the exact values of integrals in the next section,
+			%	where we'll learn about symbolic integration techniques.
+			%	You can think of symbolic integration as a bunch of math ``shortcuts''
+			%	that allows us compute exact integral for certain functions...
+			%	For now,
+			%	we content ourselves with numerical approximations,
+			%	which are pretty good already!
 
 
 
@@ -304,49 +258,6 @@
 		These two procedures are the foundations of calculus.
 		The limits $\lim_{n\to\infty}$ and $\lim_{\delta \to 0}$
 		are essential tools that allow us to perform these calculus operations on functions.
-		% like competing their slopes and 
 		% TODO: sell applications
 
 
-
-
-
-
-
-
-% where $\Delta x = \frac{b-a}{n}$ is the width of the rectangular strips.
-%	The right endpoint of the $k$\textsuperscript{th}
-%	is located at $x_k = a + k\Delta x$,
-%	so the height of the rectangular strips $f(x_k)$
-%	varies as $k$ goes from between $k=1$ (first strip)
-%	and $k=n$ (last strip).
-
-
-%		The total  of each rectangle is given by the  formula,
-%		and we sum together all of them to compute the total area:
-
-
-		% If we use the right endpoints of the rectangles to calculate their height,
-
-%	The area of the first rectangle is $f(x_1)\Delta x = f(a + \Delta x)\Delta x$,
-%	which is the height of the function $f$ at $a+\Delta x$ times the width $\Delta x$.
-%	The second rectangle has height $f(a+2\Delta x)$,
-%	the third rectangle has height $f(a+3\Delta x)$,
-%	and so on until the last one which has height $f(a+n\Delta x) = f(a+n\,\frac{b-a}{n} ) =  f(b)$.
-%	% we take a step of width $\Delta x$ to the right: $x_2 = x_1 + \Delta x = a + 2 \Delta x$.
-
-
-%	We can calculate the area of the $k$\textsuperscript{th}
-%	strip using the ``base times height'' formula for the area of a rectangle $\Delta x h(x_k)$,
-%	where $x_k$ is the left endpoint of the $k$\textsuperscript{th} strip.
-
-
-%	Let's check that the formula $f(a + k\Delta x)\Delta x$
-%	correctly describes the area of the $k$\textsuperscript{th} rectangular strip.
-%	We will calculate the height of the rectangles according to their right endpoints.
-%	The area of the first rectangle is $f(x_1)\Delta x = f(a + \Delta x)\Delta x$,
-%	which is the height of the function $f$ at $a+\Delta x$ times the width $\Delta x$.
-%	The second rectangle has height $f(a+2\Delta x)$,
-%	the third rectangle has height $f(a+3\Delta x)$,
-%	and so on until the last one which has height $f(a+n\Delta x) = f(a+n\,\frac{b-a}{n} ) =  f(b)$.
-%	% we take a step of width $\Delta x$ to the right: $x_2 = x_1 + \Delta x = a + 2 \Delta x$.

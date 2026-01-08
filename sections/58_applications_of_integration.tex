@@ -133,8 +133,8 @@
 		\subsubsection{Probability calculations}
 		% ALT. Probability and expectation calculations
 
-			Integration is an essential tool for computing probabilities of continuous random variables.
-			A continuous random variable $X$ is described by its \emph{probability density function} $f_X$
+			Integration is a key tool for computing probabilities of continuous random variables.
+			A continuous random variable $X$ is described by its \emph{probability density function} $f_X$,
 			and the probability of the event $\{ a \leq X \leq b\}$ is defined as the following integral:
 			$\Pr( \{ a \leq X \leq b\} ) \eqdef \int_a^b f_X(x) \, dx$.
 			%	The probability density $f_X$ varies for different values of $x$,
@@ -146,8 +146,9 @@
 			is described by the probability density function
 			$f_Z(z) = \tfrac{1}{\sqrt{2\pi}} e^{ -\frac{1}{2}z^2 }$.
 			To calculate the probability of the event $\{ -1 \leq Z \leq 1\}$,
-			we evaluate the integral $\int_{-1}^1 f_Z(z) \, dz$,
-			which is easy to do using SciPy helper function $\tt{quad(fZ,a=-1,b=1)}=0.68269$.
+			we must evaluate the integral $\int_{-1}^1 f_Z(z) \, dz$,
+			which is easy to do using SciPy helper function $\tt{quad(}f_Z\tt{,a=-1,b=1)[0]} = 0.68269$.
+			% MAYBE: this means 68\% of outcomes of the random variable Z will be between -1 and 1
 
 			\ifthenelse{\boolean{FORSTATSBOOK}}{
 				We also use integration to compute \emph{expectations}

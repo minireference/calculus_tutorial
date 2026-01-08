@@ -16,8 +16,7 @@
 		since both limits of integration are defined.
 		% so its value is fully determined.
 
-
-		\begin{figure}[htb]	% LAYOUT
+		\begin{figure}[htb]
 			\centering
 			\includegraphics[width=0.36\columnwidth]{figures/calculus/integral_as_region_under_curve_Aab.pdf}
 			\vspace{-3mm}
@@ -46,21 +45,10 @@
 		as a ``template'' that you fill in by replacing $\tt{<f>}$
 		with the function $f(x)$ you're interested in,
 		whenever you need to compute the area $A_f(a,b)$.
-		% to denote the area-under-the-graph-of-$f(x)$ calculation,
 
-		%	Remember that is a calculus tutorial,
-		%	so it's normal there will be calculations,
-		%	and it is a math tutorial,
-		%	so you should also expect there will be some 
-
-		%	it's understandable if you feel intimidated by the complicated math notation,
-		%	but you have to trust me on this one:
-		%	except for the notation,
-		%	there is 
 		%	In the next few pages,
 		%	I'll do my best to introduce you to the topic of integrals,
 		%	and you'll learn three different ways to do compute integrals.
-
 
 
 
@@ -110,8 +98,7 @@
 
 		\end{itemize}
 
-	% exercise https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/a/definite-integrals-properties-review
-
+		% exercise https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/a/definite-integrals-properties-review
 
 
 		Let's look at some examples.
@@ -176,6 +163,7 @@
 		It's just a fancy way to describe the ``area under the graph of the function'' calculation.
 
 
+
 		\subsubsection{Example 3. Integral of a polynomial}
 
 			Consider now the function $h(x) = 4 - x^2$.
@@ -213,8 +201,8 @@
 			we obtain the more accurate approximation $A_h(0,2) \approx 5.13$.
 			The approximation with $n=1000$ rectangular strips gives us $A_h(0,2) \approx 5.329$,
 			and $n=1\,000\,000$ rectangles produces $A_h(0,2) \approx 5.333329$.
-			The more finely we chop up the region into rectangles,
-			the closer we get to the \emph{exact} value,
+			The more finely we chop up the region into rectangular strips,
+			the closer we get to the \emph{exact} value of the integral,
 			which is $\int_{0}^2 h(x)\,dx=5\frac{1}{3} = 5.\overline{3} = 5.333333333333333\ldots$.
 			%  computed as the limit where the number of vertical strips $n$ goes to infinity.
 
@@ -229,14 +217,4 @@
 		Modern computer are really good at this stuff.
 		Indeed early computers were often called ``numerical integrator''
 		since they were built primarily to evaluate integrals.
-		% required for military and science applications.
-		%	and this is not a coincidence---computers % like there ENIAC
-		%	were originally invented precisely for computer integrals.
 
-
-
-%Early electronic computers were built primarily to perform numerical integration and other scientific calculations, so “computer” and “numerical integrator” were functionally synonymous for several decades.
-%
-%A clear example is the ENIAC (1945), whose original purpose was solving artillery-trajectory differential equations using large arrays of accumulators functioning as electronic integrators; see the ENIAC article on Wikipedia. The earlier Vannevar Bush differential analyzer (1931) was explicitly an analog integrator built from mechanical integrator wheels and gears; see Differential analyzer on Wikipedia. Even the term “computer” originally meant a human performing numerical calculations, often by hand or with desk calculators; see Computer (occupation) on Wikipedia.
-%
-%In short: early computing machines were built as automatic numerical integrators for differential equations, and only later became general-purpose symbolic, data-processing, or logic-oriented devices.

@@ -25,16 +25,13 @@
 			in terms of the function $f(u)$ using $u$ as the variable of integration:
 			\[
 				\int_{x = a}^{x = b} f(u(x)) \, u^{\prime\!}(x) \, dx
-					\;\; = \;\; 	\int_{u = u_a}^{u = u_b} f(u) \, du.
-					% \;\; \text{where} \;\; u = u(x).
-				%	\int_{x=a}^{x=b} f(u(x)) \; u^{\prime\!}(x) \; dx
-				%		&=  \int_{u(a)}^{u(b)} f(u) \; du.					
+					\;\; = \;\; 	\int_{u = u_a}^{u = u_b} f(u) \, du.			
 			\]
 
 			\noindent
-			The substitution trick is also called a \emph{change of variable} operation:
-			we're replacing the variable $x$ with the variable $u$,
-			similar to a search-and-replace operation when editing a text file.
+			The substitution trick is sometimes called \emph{change of variable},
+			since we're replacing the variable $x$ with the variable $u$,
+			just like the the search-and-replace operation in a text editor.
 			Because we're doing the substitution ``inside'' an integral operation,
 			we must change the limits integration (form $a$ and~$b$ to $u_a$ and $u_b$),
 			and also change the ``step'' parameter (from $dx$ to $du$).
@@ -52,6 +49,7 @@
 			\vspace{-1mm}
 			\end{shadebox}	
 
+
 			\paragraph{Example}
 
 				Let's compute the integral $\int_a^b \frac{1}{x - \sqrt{x}} \, dx$.
@@ -65,8 +63,9 @@
 
 				Performing the three steps of the substitution trick gives us:
 				\[
-					\int_{x=a}^{x=b} \frac{1}{x - \sqrt{x}} \, dx 
-						\;\; = \; \int_{u(a)}^{u(b)} \frac{1}{u^2 - u} \; 2u\,du.
+					\int_{x=a}^{x=b} \!\! \frac{1}{x - \sqrt{x}} \, dx 
+						=  \int_{u=u(a)}^{u=u(b)} \!\!\frac{1}{u^2 - u}  2u\,du
+						=  \int_{u=\sqrt{a}}^{u=\sqrt{b}} \!\frac{1}{u^2 - u}  2u\,du.
 				\]
 
 				\noindent
@@ -74,52 +73,48 @@
 				but to do this right we need to also replace $dx$ with $du$,
 				and use the new limits of integration.
 
+				We can now simplify the expression inside the integral:
+				\[
+					\int_{\sqrt{a}}^{\sqrt{b}} \frac{1}{u^2 - u} \; 2u\,du
+					= \int_{\sqrt{a}}^{\sqrt{b}}  \frac{2}{u - 1} \, du
+					= 2 \int_{\sqrt{a}}^{\sqrt{b}}  \frac{1}{u - 1} \, du.
+				\]
+				The function inside the integral,
+				$f(u) = \frac{1}{u-1}$,
+				is similar to the inverse function $f(u) = \frac{1}{u}$
+				whose integral function is $\ln(u)$.
+				Accounting for the $-1$ horizontal shift inside the function,
+				leads us to the integral formula $\int \frac{1}{u - 1} \, du = 2\ln(u-1)$,
+				which leads us to the following final answer:
+				\[
+					2 \int_{\sqrt{a}}^{\sqrt{b}}  \frac{1}{u - 1} \, du
+					\; = \; 2\ln(\sqrt{b}-1) - 2\ln(\sqrt{a}-1).
+				\]
 
-				We can now simplify and solve the this integral
-In the fourth line,
-we recognized the general form of the function inside the integral, $f(u)=\frac{2}{u-1}$,
-to be similar to the function $f(u)=\frac{1}{u}$ whose integral function is $\ln(u)$.
-Accounting for the $-1$ horizontal shift and the factor of $2$ in the numerator,
-we obtain the answer $2\ln(u-1)$.
-In the last step,
-we changed back from $u$-variables to $x$-variables to compute the final answer.
-
-
-\begin{align*}				     
-	&=  \int_{x=a}^{x=b}  \frac{1}{x - \sqrt{x}} \, \frac{1}{2\sqrt{x}} \, du			\\
-	&=  							\\
-	&=  \int_{u(a)}^{u(b)} \frac{1}{u^2 - u} \; 2u\,du
-		= \int_{u(a)}^{u(b)} \frac{2u}{u^2 - u} \, du							\\
-	&=  \int_{u(a)}^{u(b)} \frac{2}{u - 1} \, du
-		=  2\ln(u-1) \bigg|_{u(a)}^{u(b)}									\\
-	% &=  2\ln(\sqrt{x}-1) \bigg|_{x=a}^{x=b}								\\
-	&=  2\ln(\sqrt{b}-1) - 2\ln(\sqrt{a}-1).
-\end{align*}
-
-			%	Read this sequence of equations slowly
-			%	and try to identify the what changes in each step.
-			%	I know it looks like alien scribbles,
-			%	but if you read it carefully you'll see the scribbles make sense logically.
-
+				\noindent
+				I know this sequence of steps went quickly,
+				but and there are a lot of integral symbols,
+				but if you read each step carefully,
+				you'll see we're just doing search-and-replace.
 
 
 
 			The substitution trick for integrals comes from the chain rule for derivatives
 			$\left[ f(u(x)) \right]^\prime = f^\prime(u(x))u^\prime(x)$.
-			The substitution rule only works for computing integrals of function
-			that have the special structure $f^{\prime\!}(u(x))u^{\prime\!}(x)$.
+			We can use substitution only when computing the integral
+			of a function that has the special structure $f^{\prime\!}(u(x))u^{\prime\!}(x)$.
 
-% TODO: mention it has great power -- basis of multivariable calculus when using parameterization FWD REF
-
-
+			% TODO: mention it has great power -- basis of multivariable calculus when using parameterization FWD REF
 
 
 		\subsubsection{Integration by parts}
 
 			The integration by parts trick can be used
-			when the function we're integrating looks like $f(x)g^{\prime\!}(x)$.
-
-TODO: Explain
+			when the function we're integrating is the product of two factors,
+			$\int f(x)g^{\prime\!}(x)\, dx$,
+			where $f(x)$ is some arbitrary function,
+			and $g^{\prime\!}(x)$ is the derivative of some other function.
+			
 
 			\begin{shadebox}
 			\vspace{-1mm}
@@ -177,22 +172,39 @@ TODO: Explain
 			%	since for centuries people were forced to use pen and paper calculations.			
 			There are tricks for trigonometric functions, square roots,
 			fractions that that involve $x^2 + a^2$, etc.
-			There is an entire integral calculus course dedicated to learning integration tricks,
-			which are important to know primarily for physicists and engineers.
+			There is an entire course,
+			called integral calculus,
+			that is dedicated to learning integration tricks.
+			If you want to pursue advanced studies in physicis or engineering,
+			you should definitely take this course to learn more integration tricks.
+			Section~5.15 in \textbf{No Bullshit Guide to Math and Physics} is a good introduction to the material.
 
-% CLEANUP
-%	but for the purpose of learning probability and statistics,
-%	you're not required to learn all these integration techniques.
-%	Instead,
-%	you can rely on computers to do integration for you.
-%	Specifically,
-%	you can use the Python modules SciPy and SymPy to compute all the integrals you need,
-%	as we'll show in the next two sections.
+			Despite all the formulas and integration techniques,
+			not all function are \emph{integrable}.
+			There are many functions that don't have an antiderivative function,
+			and hence no ``closed form'' integral function.
+			For example,
+			the function $f(x) = e^{-x^2}$ doesn't have an antiderivative:
+			there is no function $F(x)$ such that $F^{\prime\!}(x) = e^{-x^2}$.
+			For such functions,
+			we can't use the ``reverse engineering'' analytical shortcut
+			to find the integral,
+			and we must use numerical integration (the split-the-area-into-thin-rectangular-strips procedure).
+			Speaking of which...
+			%	but there is no 
+			%	that allows us to compute areas using the integral function.
+			
+%			it is possible that integral not to have 
+%	MAYBE: 	warn there is no general F for any f
+%			only for certain special cases have exact symbolic formula
+%			for all other cases we're forced to do the 
+%			i.e. 
 
-% Robyn said: 	Confusing that before you said that integrals is a topic that can't be skipped,
-%			and here you say that you can rely on computers.
-% 			If they don't need to know the math, then perhaps this section could be made even shorter.
 
 
-% MAYBE link to Sec 5.15 in the book 
+
+
+
+
+
 

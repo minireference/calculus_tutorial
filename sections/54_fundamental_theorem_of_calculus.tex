@@ -39,9 +39,13 @@
 			\]
 		\end{shadetheorem}
 
+		\noindent
+		Note we use the new variable $u$ inside the integral
+		since $x$ is already used to denote the upper limit of integration.
+
 		% MAYBE: 	In words, the FTC tells us that ...
 
-		\noindent	
+		
 		To understand the inverse relationship between integration and differentiation,
 		we can draw an analogy with the relationship between a function $f$
 		and its inverse function $f^{-1}$,
@@ -122,105 +126,143 @@
 		bring us back to the original $G(x)$ we started from.
 
 
-		\subsubsection{Anti-derivative functions}
+		\subsubsection{Using antiderivatives to compute integrals}
 
-			The \emph{anti-derivative} function $F(x)$,
-which is a function whose derivative equals $f(x)$:
-$F^{\prime\!}(x) = f(x)$.
-
-Note the anti-derivative function is not unique;
-it is only defined up to an additive constant $F(x) + C$.
-
-For example...
-To find an integral function of $f(x)$,
-we can look for a function $F(x)$
-whose derivative is the the function $f(x)$.
-
-
-
-
-		\subsubsection{Computing integrals using anti-derivatives}
-		% Using integrals by reverse engineering derivatives}
-  
-	  		% ALT. by anti-differentiation
 			The fundamental theorem of calculus
-			gives us a way for computing integrals functions
-			using ``reverse engineering'' thinking
-			and the table of derivative formulas
-			(see Table~\ref{table:derivatives} on page~\pageref{table:derivatives}).
-			If we can find a function $F(x)$ such that $F^{\prime\!}(x) = f(x)$,
-			then we know $F(x)$ is an integral function of $f(x)$
-			and we can compute the integral using:
-			\[
-				\int_a^b  f(x)\,dx = F(b) - F(a).
-			\]
+			gives us a way to compute integrals and integral functions
+			by ``reverse engineering'' derivatives.
+			In order to explain this idea,
+			we'll introducing a new concept.
+			
+			\begin{shadebox}
+				\vspace{1mm}
+				Given some function $f(x)$,
+				any function $F(x)$ that satisfies the equation $F^{\prime\!}(x) = f(x)$
+				is called an \emph{antiderivative} of $f(x)$.
+				\vspace{1mm}
+			\end{shadebox}
+			
+			\noindent
+			In words,
+			an antiderivative of $f(x)$ is a function whose derivative is $f(x)$.
+			There is no single antiderivative function,
+			since adding an constant to an antiderivative function
+			still satisfies the definition $\frac{d}{dx}\big[ F(x) + C \big] = f(x)$,
+			because the derivative of the constant $C$ is zero.
+			%	Instead of saying \emph{the} antiderivative of $f(x)$,
+			%	it is more appropriate to talk about the \emph{family of antiderivative} functions,
+			%	which we denote as $F(x) + C$.
 
-		\subsubsection{Computing integral functions using anti-derivatives}
+			The fundamental theorem of calculus
+			tells us that antiderivative functions $F(x)+C$
+			are closely related to integral functions $F_c(x) = \int_c^x f(u)\,du$.
+			The integral function $F_0(x)$ is equal to an antiderivative function $F(x) + C$,
+			for some additive constant $+C$.
+			%	Equivalently,
+			%	every antiderivative function $F(x) + C$
+			%	is equal to an integral function $F_c(x)$ for some starting point $c$.
 
-			Recall that all integral functions differ by a constant $+C$,
-			which is related to the starting point of the integral function:
-			\[
-				F_a(b) = \int_a^b f(x)\,dx = F_0 + C.
-			\]
-			This means $F(x) + C = F_0(b)$
-			for some $+C$.
-% MERGE
-%The fundamental theorem of calculus gives us a symbolic trick for computing
-%the integrals functions $\int f(x)\,dx$ for many simple functions.
-%If you can find a function $F(x)$ such that $F^{\prime\!}(x) = f(x)$, then 
+			This equivalence gives us a analytical shortcut
+			to find the integrals functions $F_0(b) = \int_0^b f(x)\,dx$
+			by finding the antiderivative function of $f(x)$.
+			% for many simple functions $f(x)$.
+			% If we can find an  such that $F^{\prime\!}(x) = f(x)$,
+			% then we know $F_0(b) = F(b) + C$.
+			To find an antiderivative of $f(x)$,
+			we can look for a function $F(x)$ whose derivative is $f(x)$.
+			We can use the table of derivative formulas
+			(Table~\ref{table:derivatives} on page~\pageref{table:derivatives})
+			in the reverse direction to find antiderivatives.
+			For example,
+			to find the antiderivative of the function $f(x) = m$,
+			we look for a row where this function appears on the right side of the table,
+			and then look at the corresponding function on the left side of the table,
+			which is the function $F(x) = mx + b$ in this case.
+			We can verify that $F^{\prime\!}(x) = f(x)$,
+			so indeed $F(x) = mx + b$ is an antiderivative of $f(x) = m$.
+			Furthermore,
+			the equivalence between antiderivatives and integral functions
+			tells us that the integral function of $f(x)$ is $F_a(x) = \int_a^x m\,du = mx + b$,
+			for some constant $b$.
 
+			%	\subsubsection{Computing integral functions using antiderivatives}
+			%	Recall that all integral functions differ by a constant $+C$,
+			%	which is related to the starting point of the integral function:
+			%	\[
+			%		F_a(b) = \int_a^b f(x)\,dx = F_0 + C.
+			%	\]
+			%	This means $F(x) + C = F_0(b)$
+			%	for some $+C$.
+
+			%	\subsubsection{Computing integrals using antiderivatives}
+			%	% Using integrals by reverse engineering derivatives
+			%	% ALT. by antidifferentiation
+			%	
+			%	If we can find a function $F(x)$ such that $F^{\prime\!}(x) = f(x)$,
+			%	then we know $F(x)$ is an integral function of $f(x)$
+			%	and we can compute the integral using:
+			%	\[
+			%		\int_a^b  f(x)\,dx = F(b) - F(a).
+			%	\]
+
+			%	Thus, to find an integral function of the function $f(x)$,
+			%	we must find a function $F(x)$ such that $F^{\prime\!}(x)=f(x)$. 
+
+			%I could go on but I think you get the point:
+			%all the derivative formulas you learned (see page \pageref{sec:derivative_formulas})
+			%can be used in the opposite direction as integral formulas.
+			
+			%Remember to always add a constant term $+C$ to your answer.
+			%The answer to the indefinite integral question $\int\!f(x)\:dx$ is not a single function $F(x)$,
+			%but a whole family of functions $F(x)+C$ that differ by an additive constant $C$.
+			
+
+			Let's use the derivatives ``reverse engineering'' procedure to
+			find the integral function $H_0(b)$ in Example~3.
+			
 
 			\paragraph{Example 3 continued}
 
-				Suppose you're given a function $h(x) = 4 - x^2$
-				and asked to find its integral function $H_0(b) = \int_0^b  h(x)\, dx$.
+				We're given the function $h(x) = 4 - x^2$
+				and we want to find its integral function $H_0(b) = \int_0^b  h(x)\, dx$.
 				This fundamental theorem of calculus tells us this problem
 				is equivalent to finding a function $H(x)$ whose derivative is $h(x)$.
-				% $H^{\prime\!}(x) = h(x)$.
-				%	For example,
-				%	suppose you want to find the indefinite integral $\int x^2\,dx$.
-				%	We can rephrase this problem as the search for some function $H(x)$ such that $H^{\prime\!}(x) = x^2$.
 				The function $h(x) = 4 - x^2$ has two terms.
 				The first term is a constant $4$.
-				We can guess that the corresponding term in the anti-derivative function $H(x)$
+				We can guess that the corresponding term in the antiderivative function $H(x)$
 				will be $4x$,
 				since $\frac{d}{dx}[ 4x ] = 4$.
 				Now for the quadratic term $-x^2$.
 				Remembering the derivative formulas for polynomials,
-				we can guess that anti-derivative $H(x)$ must contain a $x^3$ term,
+				we can guess that antiderivative $H(x)$ must contain a $x^3$ term,
 				because taking the derivative of a cubic term results in a quadratic term.
 				Therefore,
-				the anti-derivative function we're looking for has the form $H(x)=3x - cx^3$,
-				for some constant $c$.
-				Pick the constant $c$ that makes this equation true: $H^{\prime\!}(x) = 4 - 3cx^2 = 4 - x^2$.
-				Solving $3c=1$,
-				we find $c=\frac{1}{3}$ and so the anti-derivative function
+				the antiderivative function we're looking for has the form $H(x)=3x - kx^3$,
+				for some multiplicative constant $k$.
+				Pick the constant $k$ that makes this equation true:
+				$H^{\prime\!}(x) = 4 - 3kx^2 = 4 - x^2$.
+				Solving $3k=1$,
+				we find $k=\frac{1}{3}$
+				and so the antiderivative function
 				we're looking for is $H(x) = 4x - \frac{1}{3}x^3 + C$.
-				% We can now compute the integral $\int x^2 \,dx = 
-%	In other words,
-%	the area under the graph of $f(x)=x^2$ is described by the family of functions $F(x) = \frac{1}{3}x^3 + C$.
-	% The constant $C$ varies depending on the choice of lower limit of integration $a$ for the area calculation $A_f(a, x)$.
-	% You can verify that $\frac{d}{dx}\left[\frac{1}{3}x^3 + C\right] = x^2$.
+				The equivalence between antiderivatives and integral functions
+				tells us that the integral function we're looking for
+				has the form $H_0(b) =  4b - \frac{1}{3}b^3 + C$
+				for some constant $C$.
+				We know from the geometric definition of the integral that
+				when $b=0$ the integral function must have value zero,
+				so $C=0$ in this case.
+				The integral function we're looking for is therefore $H_0(b) = 4b - \frac{1}{3}b^3$.
 
-
-
-		%	The integral is the ``inverse operation'' of the derivative.
-		%	If you perform the integral operation followed by the derivative operation on some function, 
-		%	you'll obtain the same function:
-		%	Note we need a new variable $u$ inside the integral since $x$ is already 
-		%	used to denote the upper limit of integration.
-
-		% That's kind of cool, no?
-		% TODO: mention application integration by finding anti-derivative functions
-		% TODO: explain what it means for integral not to have closed form
 
 
 		\subsubsection{Using derivative formulas in reverse}
 
-			This procedure based on using the derivative formulas
-			in reverse to guess the value of $F(x)$ is very powerful.
-			We can use it for all the function listed in the table of derivative formulas
+			Computing integral functions by finding antiderivatives is very powerful.
+			We can use it to find the internal functions
+			for all the function listed in the table of derivative formulas
 			(see page~\pageref{table:derivatives}).
+			% based on using the derivative formulas in reverse to guess the value of $F(x)$ 
 			For example,
 			the table tells us that the derivative of the linear function $f(x) = mx+b$
 			is the constant function $f^{\prime\!}(x) = m$.
@@ -247,7 +289,6 @@ whose derivative is the the function $f(x)$.
 			\noindent
 			SymPy tells us the integral function
 			$F_0$ is $F_0(x) = mx + e^x + \log(x) + \sin(x) + \cos(x)$,
-			% $F_0(b) = mb + e^b + log(b) + sin(b) + cos(b)$,
 			which are all the corresponding terms on the left side of the table of derivative formulas.
 
 			\ifthenelse{\boolean{FORSTATSBOOK}}{
@@ -277,6 +318,15 @@ whose derivative is the the function $f(x)$.
 			doesn't appear in Table~\ref{table:derivatives}?
 
 
+% TODO: explain what it means for integral not to have closed form
+%	MAYBE: 	warn there is no general F for any f
+%			only for certain special cases have exact symbolic formula
+%			for all other cases we're forced to do the split-into-vertical-strips,
+%			i.e. there is no analytical shortcut.
+
+
+
+
 
 % FTC CUT MATERIAL
 
@@ -291,26 +341,26 @@ whose derivative is the the function $f(x)$.
 %	I use the word ``operator'' here to refer to an operation that acts on functions.
 
 
-		% The fundamental theorem of calculus describes the relationship between
-		% derivatives and integrals.
-		%	The fundamental theorem of calculus establishes an equivalence between the set 
-		%	of integral functions and the set of antiderivative functions:
-		%	\[
-		%		A_a(x)=F(x)+C.
-		%	\]
-		%	All integral functions $F_a(x)$ are antiderivatives of $f(x)$.
+% The fundamental theorem of calculus describes the relationship between
+% derivatives and integrals.
+%	The fundamental theorem of calculus establishes an equivalence between the set 
+%	of integral functions and the set of antiderivative functions:
+%	\[
+%		A_a(x)=F(x)+C.
+%	\]
+%	All integral functions $F_a(x)$ are antiderivatives of $f(x)$.
 
 
-		%	There is no reason \emph{a priori} to think that integration and differentiation might be related:
-		%	the former is a calculation about areas,
-		%	while the latter is a calculation about slopes.
-		%	The fundamental theorem of calculus reveals that they are in fact inverse operations:
-		%	we can obtain the original function $f(x)$ from the integral function $F_a(x)$ by computing it's derivative:
-		%	\[
-		%		\frac{d}{dx}\big[F_a(x)\big] 	= 	\frac{d}{dx}\left[\int_a^x f(u) \, du \right]  	= 	f(x).
-		%	\]
-		%	Note we used a temporary variable $u$ as the integration variable,
-		%	since $x$ is already used to denote the upper limit of integration.
+%	There is no reason \emph{a priori} to think that integration and differentiation might be related:
+%	the former is a calculation about areas,
+%	while the latter is a calculation about slopes.
+%	The fundamental theorem of calculus reveals that they are in fact inverse operations:
+%	we can obtain the original function $f(x)$ from the integral function $F_a(x)$ by computing it's derivative:
+%	\[
+%		\frac{d}{dx}\big[F_a(x)\big] 	= 	\frac{d}{dx}\left[\int_a^x f(u) \, du \right]  	= 	f(x).
+%	\]
+%	Note we used a temporary variable $u$ as the integration variable,
+%	since $x$ is already used to denote the upper limit of integration.
 
 
 %		if you compute the derivative of a function followed by the integral,
@@ -318,3 +368,6 @@ whose derivative is the the function $f(x)$.
 %		\[
 %		  \left( \int dx \circ \frac{d}{dx}\right) f(x) = \int_c^x f^{\prime\!}(u)\,du = f(x) + C.
 %		\]
+
+
+% That's kind of cool, no?
