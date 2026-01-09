@@ -2,80 +2,93 @@
 
 \section{Vector calculus}
 
-	Vector calculus is the study of vector fields $\mathbf{F}$,
-	which are functions of the form $\mathbf{F}:\mathbb{R}^3 \to \mathbb{R}^3$,
-	which defines $3$-dimensional output vector
-	at each point $(x,y,z)$ in space.
-	For example,
-	the electric field $\mathbf{E}(x,y,z)$ describes the strength and the direction of the
-	electric force that a changed particle would experience if placed at $(x,y,z)$.
-
-	Vector calculus is \emph{waaaaay} out of scope for an introductory calculus tutorial,
-	so I will just show you some simple definitions of the building blocks.	
-
-
+	A discussion on vector calculus is out of scope for an introductory tutorial.
+	Like, \emph{waaaaay} out of scope.
+	However,
+	I want to show you one picture and explain
+	where you might encounter vector calculus concepts in your future studies.
+	%	Vector calculus is \emph{waaaaay} out of scope for an introductory calculus tutorial,
+	%	so I will just show you some simple definitions of the building blocks.	
+	%
+	Vector calculus is the study of \emph{vector fields} and their properties.
+	In a three dimensional space,
+	vector fields are functions of the form $\mathbf{F}: \mathbb{R}^3 \to \mathbb{R}^3$.
+	The vector field $\mathbf{F}$ assigns $3$-dimensional output vector $\mathbf{F} = (F_x, F_y, F_z)$
+	for each point $\mathbf{r} = (x,y,z)$ in the three dimensional space.
+	Note we use boldface symbols to denote vector quantities.
+	
+	\subsection{Example: electric field around a positive charge}
+	
+		Figure~\ref{fig:vector_calc_E_field_positive_charge}
+		shows the \emph{electric field} $\mathbf{E}$
+		around a positive charge~$q$ Coulombs
+		located at the origin of the three-dimensional coordinate system. % $(0,0,0)$.
+		The electric field is strongest (long lines) close to the charge,
+		and reduces in strength the further away from the charge we go.
+	
+	
 		\begin{figure}[htb]
 			\centering
 			\includegraphics[width=0.7\columnwidth]{figures/calculus/vector_calc_E_field_positive_charge.pdf}
-			\vspace{-3mm}
-			\caption{	Visualization of the vector field $\vec{E}(x,y,z)$ around a positive charge.}
-			\label{fig:multivar_combined_slices_through_paraboloid}
+			\vspace{-2mm}
+			\caption{	The electric field $\mathbf{E}(x,y,z) = \frac{kq}{r^2} \hat{ \mathbf{r} }$ around a positive charge $q$.}
+			\label{fig:vector_calc_E_field_positive_charge}
 		\end{figure}
-
-For a point charge (q) located at the origin, the electric field at position
-$\vec{r} = (x,y,z)$ is
-
-\[
-	\vec{E}(x,y,z) = \frac{kq}{(x^2 + y^2 + z^2)^{3/2}} (x,y,z)
-\]
-
-Then the field can be expressed compactly as:
-
-\[
-	\vec{E}(x,y,z)  = \frac{kq}{r^2} \hat{r} =  \frac{k q}{r^3}(x,y,z).
-\]
-where $\vec{r} = (x,y,z)$,
-$r = |\vec{r}| = \sqrt{x^2+y^2+z^2}$,
-and $\hat{r} = \frac{\vec{r}}{r}$.
-
-
-\[
-	\vec{E}(x,y,z) = 
-\]
-
-
-Let me know if you want the same expression in spherical coordinates or the field of a dipole or multipole.
+	
+		The strength of the electric field $\mathbf{E}$ 
+		at the point $\mathbf{r} = (x,y,z)$ is
+		\[
+			\mathbf{E}(x,y,z)
+				= \frac{kq}{(x^2 + y^2 + z^2)^{3/2}}(x,y,z)
+				= \frac{kq}{r^3}  \mathbf{r}
+				= \frac{kq}{r^2} \hat{ \mathbf{r} },
+		\]
+		where $k$ is Boltzmann's constant,
+		$r \eqdef |\mathbf{r}| = \sqrt{x^2+y^2+z^2}$ is the distance from the origin,
+		and $\hat{\mathbf{r}} \eqdef \frac{\mathbf{r}}{r}$
+		is a \emph{unit vector} in the same direction as $\mathbf{r}$.
+		%
+		Electric field are used in the study of electromagnetism.
+		Specifically,
+		the electric field $\mathbf{E}(x,y,z)$ describes the strength and the direction
+		of the \emph{electric force} that a changed particle would experience if placed at $(x,y,z)$.
 
 
 
-% TODO: mention parametirzation ~= substitution trick it has great power -- basis of multivariable calculus when using parameterization BACKREF
-		
-			
-	\subsection{Definitions}
 
-		\begin{itemize}
+	% DERIVATIVES
+	\subsection{Vector calculus derivatives}
 
-			\item $\mathbf{r} = (x,y,z)$: position in space with coordinates $(x,y,z)$.
-			\item $\nabla \eqdef \big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \big)$:
-				the vector derivative operator (\emph{nabla}).
+		There are two derivative operations for vector fields,
+		and these are defined in terms of the vector derivative operator (\emph{nabla})
+		is defined as $\nabla \eqdef \big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \big)$.
+		The \emph{divergence} of the vector field $\mathbf{F}$
+		is computed by taking the ``dot product'' of $\nabla$ and the vector field $\mathbf{F} = (F_x, F_y, F_z)$:
+		\[
+			\nabla \cdot \mathbf{F}(x,y,z)
+				= \frac{\partial F_x}{\partial x} 	+ \frac{\partial F_y}{\partial y}	+ \frac{\partial F_z}{\partial z}.
+		\]
+		The divergence tells us if field $\mathbf{F}$
+		is acting as a ``source'' or a ``sink'' at the point $(x,y,z)$.
+		% For example, positive charges are sources of electric field lines
+		% while negative charges are sinks (arrows go into them).
+		% Example: electric charge
+		% Positive charges have positive divergence---we say they are the ``sources'' of the electric field.
+		% In contrast, negative charges have negative divergence and we say they are the ``sinks'' of the electric field.
 
-			\item	$\nabla \cdot \vec{F}(x,y,z)$: the \emph{divergence} of the field $\vec{F}$
-				tells us if field $\vec{F}$ is acting as a ``source'' or a ``sink'' at the point $(x,y,z)$.
-				% For example, positive charges are sources of electric field lines
-				% while negative charges are sinks (arrows go into them).
-				% Example: electric charge
-				% Positive charges have positive divergence---we say they are the ``sources'' of the electric field.
-				% In contrast, negative charges have negative divergence and we say they are the ``sinks'' of the electric field.
+		% ALT. measures the local volumetric outflow rate per unit volume of the vector field.
 
-			\item	$\nabla \times  \vec{F}(x,y,z)$: the \emph{curl} of the field $\vec{F}$
-				tells us the ``rotational tendency'' of the vector field $\vec{F}$ at $(x,y,z)$.
-				% Example: current carrying wire
-				%	A current carrying wire causes a magnetic field everywhere around it.
-				%	The magnetic field lines will circle around the wire.
-				%	We say $\mathbf{B}$ has a circulation, or curl.
-
-		\end{itemize}
-
+		The \emph{curl} of the vector field $\mathbf{F}$ is defined as the ``cross product''
+		of $\nabla$ and the vector field $\mathbf{F} = (F_x, F_y, F_z)$:
+		\[
+			\nabla \times \mathbf{F}(x,y,z)
+				= 	\left(
+						\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}, \;\;
+						\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}, \;\;
+						\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}
+					\right)\!.
+		\]
+		The curl tells us the rotational tendency of the vector field $\mathbf{F}$.
 
 		% INTUITION DIV and CURL
 		%	In electromagnetic phenomena, 
@@ -89,171 +102,71 @@ Let me know if you want the same expression in spherical coordinates or the fiel
 
 
 
-	\subsection{Path integrals}
-
-		Consider the curve $C$ traced by $r(t)$ as $t$ varies from $t_i$ and $t_f$.
-
-		 path integrals of vectors fields,
-
-		Scalar path integral.
-			\[
-				\int_C f(\mathbf{r})\, dr 
-				\eqdef
-				\int_{t_i}^{t_f} f(\mathbf{r}) \, \|\mathbf{r}'(t)\| \, dt.
-			\]
-			Here the curve $C \in \mathbb{R}^3$ is described by the parametrization $\mathbf{r}: \mathbb{R} \to \mathbb{R}^3$,
-			which assigns a coordinate $\mathbf{r}=(x,y,z)$ for each value of the parameter (denoted $t$ in the above).
-			Note $dr \eqdef \|\mathbf{r}'(t)\| \, dt$,
-			which involves computing the derivative of $\mathbf{r}(t)$ then computing the length.
-
-		Vector path integral. 
-			\[
-				\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} 
-				\eqdef 
-				\int_{t_i}^{t_f} \mathbf{F}(\mathbf{r})  \cdot \mathbf{r}'(t) \, dt.
-			\]
-			This integral computes the total of the vector field $\mathbf{F}$ in the direction of the tangent line to the curve $C$ describe by $\mathbf{r}(t)$.
-			To obtain the component of $\mathbf{F}$ in the direction of the tangent line,
-			we take the dot product with $d\mathbf{r}  \eqdef \mathbf{r}'(t) dt$ during each step.
 
 
 
-	\subsection{Surface integrals}
 
-		flux integrals of vectors fields through surfaces,
+	% INTEGRALS
+	\subsection{Vector calculus integrals}
 
+		There are several different kinds of integral operations you can use with vector fields,
+		depending on the type of ``total'' you want to compute,
+		and the region of integration.
 
-		Scalar surface integral.
-			\[
-				\iint_S f(\mathbf{r})\, dS
-				\eqdef
-				\int_{v_i}^{v_f} \int_{u_i}^{u_f} f(\mathbf{r}) \, \| \mathbf{r}_u^\prime \times \mathbf{r}_v^\prime \| \, dudv.
-			\]
-			Here the surface $S \in \mathbb{R}^3$ is described by the parametrization $\mathbf{r}: \mathbb{R}^2  \to \mathbb{R}^3$,
-			which assigns a coordinate $\mathbf{r}=(x,y,z)$ for each pair of the parameter $u$ and $v$.
-			Note $dS 	= \| \mathbf{r}^\prime_u \times \mathbf{r}^\prime_v \| \, dudv$,
-			which involves computing the partial derivatives of $\mathbf{r}(u,v)$ with respect to the two parameters,
-			taking the cross product, then computing the length.
+		% PATH INTEGRALS
+		The concept of a vector path integral is denoted
+		$\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r}$,
+		where $C$ is some curve in three dimensional space,
+		and $d\mathbf{r}$ describes a short step along this curve.
+		This integral computes the total action of the vector field $\mathbf{F}$
+		in the direction along the curve $C$.
 
-		Vector surface integral. 
-			\[
-				\iint\limits_S \mathbf{F}(\mathbf{r}) \cdot d\mathbf{S}
-				\eqdef 
-				\int_{v_i}^{v_f} \int_{u_i}^{u_f} \mathbf{F}(\mathbf{r})  \cdot (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) \, dudv.
-			\]
-			This integral computes the total \emph{flux} of the vector field $\mathbf{F}$ flowing
-			perpendicularly through the surface $S$.
-			To obtain the component of $\mathbf{F}$ in the direction of the surface normal,
-			we take the dot product with $d\mathbf{S}  \eqdef \hat{\mathbf{n}}dS \eqdef (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) dudv$,
-			for each piece of the surface.
+		% SURFACE INTEGRALS
+		The vector surface integral is denoted
+		$\iint_S \mathbf{F}(\mathbf{r}) \cdot d\mathbf{S}$,
+		where $S$ is some surface in three dimensional space,
+		and $d\mathbf{S}$ %  = \hat{\mathbf{n}}dS$
+		is a a small ``piece of the surface.''
+		This integral computes the total \emph{flux} of the vector field $\mathbf{F}$
+		flowing through the surface $S$.
+		% To obtain the component of $\mathbf{F}$ in the direction of the surface normal,
+		% we take the dot product with  $\eqdef  \eqdef (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) dudv$,
 
 
+	% VECTOR CALCULUS THEOREMS
+	The main results in vector calculus are two theorems:
+	\emph{Gauss' divergence theorem} and \emph{Stokes theorem}.
+	Both theorems can be understood as extensions of the fundamental theorem of calculus (FTC),
+	since they show equivalences between
+	certain vector derivative and integral operations.
 
 
 	% PARAMETRIZATION
-	The main thing we'll have to learn is how to parametrize regions of space.
-	In fact, we could even say that the main purpose of this course is to get you comfortable with parameterizations of curves, surfaces, and volumes.
-	Once you have a parametrization for a region you can perform any integral calculation over this region.
+	The main practical skill you'll learn if you take a vector calculus 
+	is how to \emph{parametrize} regions of space.
+	This skill is closely related to the substitution trick (change of variables)
+	that we learning in Section~\ref{integrals:techniques_of_integration},
+	but working with vectors.
+
+	%		thing we'll have to learn is how to parametrize .
+	%		In fact, we could even say that the main purpose of this course is to get you comfortable
+	%		with parameterizations of curves, surfaces, and volumes.
+	%		Once you have a parametrization for a region you can perform any integral calculation over this region.
 	%	A big part of the day today activities in vector calculus involves manual labour like defining regions of integration, 
 	%	changing variables, setting up boundaries. 
 
+	% TODO: mention parametirzation ~= substitution trick it has great power -- basis of multivariable calculus when using parameterization BACKREF
 
-	\subsection{Vector calculus theorems}
-
-		The main results in vector calculus are two theorems:
-		\emph{Gauss' divergence theorem} and \emph{Stokes theorem}.
-		Both theorems can be understood as extensions of the fundamental theorem of calculus (FTC),
-		which relates the integral of the differential of some quantity over a region $R$ to the value of this quantity on the boundary of a region,
-		denoted $\partial R$.
-		In the case of the fundamental theorem of calculus,
-		the region is the interval $I = [a,b] \subseteq \mathbb{R}$ whose boundary $\partial I$ consists of the two points $a$ and $b$.
-		The fundamental theorem of calculus is
-		\[
-		  \int_a^b f^\prime(x) \; dx = \int_I f^\prime(x) \; dx  = f_{\partial I}  = f(b) - f(a),
-		\]
-
-		\noindent
-		\textbf{Gauss' Divergence Theorem} relates the volume integral of the quantity $\nabla \cdot \vec{F}$, 
-		which is called the divergence of $\vec{F}$,
-		to the total flux of the vector field through the surface  $\partial\mathrm{V}$,
-		which is the boundary of the volume $V$.
-		%which states the integral of the divergence $\textrm{div}(\vec{F}) \eqdef \nabla \cdot \vec{F}$ 
-		%of the field $\vec{F}$ over the volume $\mathrm{V}$ 
-		%is equal to the flux of $\vec{F}$ through the volume's boundary $\partial\mathrm{V}$.
-		Gauss' divergence theorem is:
-		\[
-		    \iiint_{\mathrm{V}} \nabla \cdot \vec{F} \ d\mathrm{V} 
-		    = \int\!\!\!\int_{\partial    \mathrm{V}} \vec{F} \cdot d \vec{S}
-		\] 
-		Intuitively, the \emph{divergence} of a vector field describes how much of the vector field emanates from a given point in space.
-		The \emph{flux} of a vector field over a surface $S$ accounts for the strength of the vector field flowing through the surface.
-		%
-		In the above example, we saw Gauss' divergence theorem applied to the electric field,
-		but the vector field $\vec{F}$ could also represent thermal flows, or fluid flows.
-
-		\noindent
-		\textbf{Stokes' Theorem} uses the ``other'' vector derivative $\nabla \times \vec{F}$, which is called the \emph{curl} of $\vec{F}$.
-		The curl of a vector field, denoted $(\nabla \times \vec{F})(x,y,z)$
-		describes the local rotational tendency of the vector field $\vec{F}$ at the point $(x,y,z)$.	
-		%
-		Given any surface $S$ in space,
-		we can cut up the surface into tiny little rectangles and calculate the total surface area as a double integral $S = \int dS$.
-		Stokes' theorem is the application of this ``splitting up into little squares'' idea and the fundamental theorem of calculus, 
-		which leads us to the following equation.
-		\[
-		    \iint_{\Sigma} \nabla \times \vec{F} \cdot d\vec{S} 
-		    = \int_{\partial\Sigma} \vec{F} \cdot d \vec{r},
-		\] 
-		The surface integral of the curl $\nabla \times \vec{F}$ over any surface $\Sigma$ 
-		is equal to the circulation of $\vec{F}$ along the boundary of the surface  $\partial\Sigma$.
-		%
-		Both the left and right sides of this equation correspond to scalar numbers.
-		The left side is the vector surface integral of a vector quantity (the curl of $\vec{F}$),
-		the right side corresponds to a vector path integral of a vector quantity over an oriented curve $\partial \Sigma$.
-
-
-		%\begin{itemize}
-		%    \item   	Stokes' Theorem: 
-		%    		\[
-		%		    \int\!\!\!\int_{\Sigma} \nabla \times \vec{F} \cdot d\vec{S} 
-		%		    = \int_{\partial\Sigma} \vec{F} \cdot d \vec{r},
-		%		\] 
-		%		which states that the integral of the curl, $\textrm{curl}(\vec{F}) \eqdef \nabla \times \vec{F}$, 
-		%		of the field $\vec{F}$ over the surface $\Sigma$ 
-		%		is equal to the circulation of $\vec{F}$ along the boundary of the surface  $\partial\Sigma$.
-		%
-		%    \item   	Gauss' Divergence Theorem: 
-		%    		\[
-		%		    \int\!\!\!\int\!\!\!\int_{\mathrm{V}}
-		%		    		\nabla \cdot \vec{F} \; dV
-		%		    = 	\int\!\!\!\int_{\partial    \mathrm{V}}
-		%		    		\vec{F} \cdot d \vec{S},
-		%		\]
-		%    		which states the integral of the divergence, $\textrm{div}(\vec{F}) \eqdef \nabla \cdot \vec{F}$, 
-		%		of the field $\vec{F}$ over the volume $\mathrm{V}$ 
-		%		is equal to the flux of $\vec{F}$ through the volume's boundary $\partial\mathrm{V}$.
-		%\end{itemize}
-		%	Both theorems relate the total of the derivative of a quantity over some region $R$ 
-		%	to the value of that quantity on the boundary of the region,
-		%	which we denote $\partial R$. 
-		%	The fundamental theorem of calculus can also be interpreted in this manner:
-		%	\[
-		%	  \int_a^b F^\prime(x) \, dx
-		%	  	= \int_I F^\prime(x) \, dx
-		%		= F_{\partial I}
-		%		= F(b) - F(a),
-		%	\]
-		%	where $I=[a,b]$ is the \emph{interval} from $a$ to $b$ on the real line and the
-		%	two points $a$ and $b$ form its boundary $\partial I$.
 
 
 
 	\subsection{Applications of vector calculus}
 
-		% Vector calculus is of interest mainly for physicists and engineers.
-
-		Vector calculus is the math machinery used for electricity and magnetism,
-		which is the study electric field $\mathbf{E}(x,y,z)$,
-		the magnetic field $\mathbf{B}(x,y,z)$,
-		and the interactions between them.
-
+		Vector calculus is the math machinery used in physics
+		(electricity and magnetism, mechanics, thermodynamics)
+		and electrical engineering.
+		If you're not planning to work in these fields, % become a physicist or an engineer,
+		you can probably skip vector calculus:
+		it's just derivatives and integrals applied to vector quantities.
+		
+		
