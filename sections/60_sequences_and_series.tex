@@ -405,6 +405,7 @@
 
 		We say the geometric series $G_\infty = \sum g_k = \sum_{k=0}^\infty r^k$ \emph{converges}
 		to the value $\frac{1}{1-r}$.
+		% As we sum together more and more terms of the sequence...
 		We can also say that the infinite geometric series $\sum g_k$ \emph{is convergent},
 		meaning it has a finite value and doesn't blow up.
 		Another example of a converging infinite series is $F_\infty = \sum f_k$,
@@ -420,18 +421,6 @@
 
 
 
-%	and the inverse factorial series $F_k = \sum f_k	$ converges (or ).
-%	As we sum together more and more terms of the sequences $g_k$ and $f_k$,
-%	the total becomes closer and finite numbers.
-%	In this case,
-%	of $G_\infty$ we conserve to the faction $\frac{1}{1-r}$,
-%	while the infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
-%	converges to the number $e=2.71828\ldots$.
-%	The alternating harmonic series $\sum a_k$ converges to the value $\ln(2)$.
-
-			%	In words,
-			%	we say infinite sum $\sum_{k=0}^\infty \frac{1}{k!}$
-			%	converges to the number $e=2.71828\ldots$
 
 	\subsubsection{Using convergent series for practical calculations}
 
@@ -565,7 +554,7 @@
 		whose terms contain different powers of the variable $x$.
 		The $k$\textsuperscript{th} term in a power series
 		consists of some coefficient $c_k$
-		and the $k$\textsuperscript{th} power of the variable $x$:
+		and the $k$\textsuperscript{th} power of $x$:
 		\[
 			P_n(x)
 				= \sum_{k=0}^n c_k x^k
@@ -592,19 +581,14 @@
 		which we denote $f^{(k)}(0)$.
 		Specifically,
 		the $k$\textsuperscript{th} coefficient in the Taylor series approximation
-		for the function $f(x)$ is $c_k \eqdef \frac{f^{(k)}(0)}{k!}$.
-%The coefficients in the power series of a function (also known as the \emph{Taylor series})
-%depend on the value of the higher derivatives of the function. 
-%The formula for the $k$\textsuperscript{th} term in the Taylor series of $f(x)$ expanded at $x=c$
-%is $a_k(x) = \frac{f^{(n)}(c)}{k!}(x-c)^k$,
-%where $f^{(k)}(c)$ is the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=c$.
-		%
+		for the function $f(x)$ is $c_k \eqdef \frac{f^{(k)}(0)}{k!}$,
+		where $k!$ is the factorial function.		
 		The finite series with $n$ % such 
 		terms produces the following approximation:
 		\[
 			f(x)
 		 		\approx f(0)
-					+f'(0)x
+					+f^{\prime\!}0)x
 					+\tfrac{f^{\prime\prime}(0)}{2!}x^2
 					% +\tfrac{f^{(3)}(0)}{3!}x^3
 					+ \cdots
@@ -614,63 +598,42 @@
 		 		= \sum_{k=0}^n \tfrac{f^{(k)}(0)}{k!}x^k.
 		\]
 		In the limit as $n$ goes to infinity,
-		the approximation becomes exact:
+		the Taylor series approximation becomes exactly equal to the function $f(x)$:
 		\[
-			f(x) = f(0)
-					+f'(0)x
+			f(x) = f(0)	+f^{\prime\!}0)x
 					+\tfrac{f^{\prime\prime}(0)}{2!}x^2
 					+\tfrac{f^{(3)}(0)}{3!}x^3 + \cdots \\
 		 		= \sum_{k=0}^\infty \tfrac{f^{(k)}(0)}{k!}x^k.
 		\]
-		%	Each term in the series is of the form $a_k=c_k x^k$, 
-		%	where the coefficient $c_k$ depends on the properties of the function $f(x)$.
+
 		%	Specifically,
 		%	$c_k = \frac{f^{(k)}(0)}{k!}$,
-		%	where $f^{(k)}(0)$ is the $k$\textsuperscript{th} derivative of $f(x)$ and $k!$ is the factorial function:
+		%	where $f^{(k)}(0)$ is the $k$\textsuperscript{th} derivative of $f(x)$ and 
 
 		Using this formula and your knowledge of derivative formulas,
 		you can compute the Taylor series of any function $f(x)$.
 		For example,
-		let's find the Taylor series of the function $f(x)=e^x$ at $x=0$.
-		The first derivative of $f(x)=e^x$ is $f'(x)=e^x$.
-		The second derivative of $f(x)=e^x$ is $f''(x)=e^x$.
+		let's find the Taylor series of the function $f(x) = e^x$ at $x=0$.
+		The first derivative of $f(x) = e^x$ is $f^{\prime\!}x) = e^x$.
+		The second derivative of $f(x) = e^x$ is $f^{\prime\prime\!}x) = e^x$.
 		In fact,
 		all the derivatives of $f(x)$ will be $e^x$ because the derivative of $e^x$ is equal to $e^x$.
 		The $k$\textsuperscript{th} coefficient in the power series of $f(x)=e^x$ at the point $x=0$ 
 		is equal to the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=0$
 		divided by $k!$.
-		In the case of $f(x)=e^x$,
-		we have $f^{(k)}(0)=e^0=1$,
+		In the case of $f(x) = e^x$,
+		we have $f^{(k)}(0) = e^0 = 1$,
 		so the coefficient of the $k$\textsuperscript{th} term is $c_k = \tfrac{f^{(k)}(0)}{k!}  = \tfrac{1}{k!}$.
-		The Taylor series of $f(x)=e^x$ is
+		The Taylor series of $f(x) = e^x$ is
 		\[
 			e^x	= \sum_{k=0}^\infty \tfrac{1}{k!}x^k
 		 	 	= 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{3!} + \tfrac{x^4}{4!} + \tfrac{x^5}{5!} + \tfrac{x^6}{6!} + \tfrac{x^7}{7!}  + \cdots 
 		 \]
 		Taylor series are a powerful computational tool for approximating functions.
-%This is, IMHO, one of the most important ideas in calculus:
-%you can compute the value of $e^x$ by taking the infinite sum of the terms in the power series
 		As we compute more terms from the above series,
 		our the polynomial approximation to the function $f(x)=e^x$ becomes more accurate.
-.
-
-%	The exact value of the function at $x=1$ is $f(1) = e^1 = e$.
-%	The partial sum of the first six terms (as shown above) gives us an approximation of $e^1$ that is accurate to three decimals. 
-%	The partial sum of the first 12 terms gives us $e$ to an accuracy of nine decimals.
-%	# Your calculator computes the number e as the infinite sum
-%	#     e  =  1 + 1 + 1/2 + 1/3! + 1/4! + ... 
-%	# where n! is the factorial function, 5!=5*4*3*2*1.
-%	#--
-%	# The equation for the i'th term is
-%	an_e = 1.0/factorial(n)
-%	#--
-%	# The sum of the first 40 terms in the series is
-%	summation( an_e, (n,0,40) )
-%	#--
-%	# The exact value of e according to the computer is:
-%	#--
-%	E.evalf()
-%	#--
+		% This is, IMHO, one of the most important ideas in calculus:
+		% you can compute the value of $e^x$ by taking the infinite sum of the terms in the power series
 
 		Table~\ref{table:taylor_series} shows
 		the Taylor series obtained using the formula
@@ -722,7 +685,6 @@
 		will show you the series expansion of any function \texttt{fun} 
 		near \texttt{var}=\texttt{x0} up to powers of \texttt{n}.
 		We can quickly fact-check the Taylor series given in Table~\ref{table:taylor_series} using SymPy.
-%The SymPy function series is a convenient way to obtain the series of any function fun. Calling sp.series(fun,var,x0,n) will show you the series expansion of expr near var=x0 including all powers of var less than n.
 
 		\begin{codeblock}[]
 		>>> import sympy as sp
@@ -733,8 +695,8 @@
 		1 - x + x**2 - x**3 + x**4 - x**5 + x**6 + O(x**7)
 		>>> sp.series(sp.E**x, x, x0=0, n=6)
 		1 + x + x**2/2 + x**3/6 + x**4/24 + x**5/120 + O(x**6)
-		>>> sp.series(sp.sin(x), x, x0=0, n=8)
-		x - x**3/6 + x**5/120 - x**7/5040 + O(x**8)
+		>>> sp.series(sp.sin(x), x, x0=0, n=9)
+		x - x**3/6 + x**5/120 - x**7/5040 + O(x**9)
 		>>> sp.series(sp.cos(x), x, x0=0, n=8)
 		1 - x**2/2 + x**4/24 - x**6/720 + O(x**8)
 		>>> sp.series(sp.ln(x+1), x, x0=0, n=6)
@@ -742,10 +704,11 @@
 		\end{codeblock}
 
 		\noindent
-		The big-O notation \tt{O(x**n)} appears in all the above outputs
-		as a reminder that the exact Taylor series contains additional terms,
-		and the Taylor series approximations shows are
-		only accurate up to an error on the \emph{order of} $x^n$.		% TODO: REVISIT THIS
+		The ``big-O'' notation \tt{O(x**n)} appear in all the above outputs
+		as a reminder that the exact Taylor series
+		contain additional terms that are on the \emph{order of} $x^n$.
+		% The next term 
+		% Taylor approximations shows are only accurate up to an error on the 
 
 
 
@@ -753,32 +716,30 @@
 	\subsection{Applications of series}
 	\label{series:applications}
 
+		Series allow us to compute numbers like $e$, $\pi$, $\ln(2)$, etc.
+		Taylor series allow us to approximate functions.
 		%	We've already seen we can approximate the value of $e$
 		%	using the series $\sum_{k=0}^{20} f_k = \tt{sum([f_k(k) for k in range(0,15)])}$.
 		%	Now that we know the Taylor series of $e^x$,
 		%	we can also compute $e^5$ 
-
 		The Taylor series representation for the function $f(x)$
-		provides a relatively easy way
+		also provides an easy way
 		to compute its integral function $F_0(x) \eqdef \int_0^x f(u)\,du$.
 		% for any function $f(x)$.
 		The Taylor series of $f(x)$ consists only of polynomial terms of the form $c_n x^n$.
-		%	We can compute the derivative function $f'(x)$
+		%	We can compute the derivative function $f^{\prime\!}x)$
 		%	by simply computing the derivative of each term: $nc_n x^{n-1}$.
 		To compute the integral function $F_0(x) \eqdef \int_0^x f(u)\,du$,
 		we can compute the integrals of the individual terms,
 		which gives us $\frac{c_n}{n+1}x^{n+1}$.
-		For example,
-		if we want to compute the integral of $\cos(x)$,
-		$\int \cos(x) \, dx =  ??$.
-		\[
-			a
-		\]
-		we can recognize this is the series for $\sin(x)$,
-		so we conclude that $\int \cos(x) \, dx = \sin(x)$.
-
-
-		%	This example is of historical importance,
+		%	For example,
+		%	if we want to compute the integral of $\cos(x) = 1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots$,
+		%	we can compute the integral of each term in the Taylor series,
+		%	which gives us $x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots$,
+		%	which we can recognize is the series for $\sin(x)$.
+		%	We conclude that $\int \cos(x) \, dx = \sin(x)$.
+		%	This approach of computing integrals using series representations
+		%	is of historical importance,
 		%	since it was issued as challenge by Isaac Newton to Wilhelm Leibnitz.
 		%	No formulas for the integral of ln x was not know at the time,
 		%	and was considered a difficult computation problem.
@@ -796,72 +757,12 @@
 		% MAYBE: ODEs ?
 
 
-	\ifthenelse{\boolean{FORSTATSBOOK}}{
-		While we're on the topic of series,
-		I want to show you some extra series formulas and tricks
-		that you need to know to solve the exercises ???? and problems ??? in Chapter~2.
-	}{}
-
-
-
-
-
-
-
-% CUT MATERIAL
-
-% NOTEBOOK ONLY
-%	We define a sequence by specifying an expression for its $n$\textsuperscript{th} term:
-%	
-%	
-%	\begin{codeblock}[]
-%	>>> k = sp.symbols("k")
-%	>>> a_k = 1 / k
-%	>>> b_k = 1 / sp.factorial(k)
-%	\end{codeblock}
-%	
-%	\noindent
-%	Substitute the desired value of $n$ to see the value of the $n$\textsuperscript{th} term:
-%	
-%	\begin{codeblock}[]
-%	>>> a_k.subs({k:5})
-%	1/5
-%	\end{codeblock}
-%	
-%	\noindent
-%	%We can use 
-%	The Python list comprehension syntax \texttt{[item for item in list]}
-%	can be used to print the sequence values for some range of indices:
-%	
-%	
-%	
-%	\begin{codeblock}[]
-%	>>> [ a_k.subs({k:i}) for i in range(1,8) ]
-%	[1, 1/2, 1/3, 1/4,  1/5,   1/6,   1/7]  
-%	>>> [ b_k.subs({k:i}) for i in range(0,8) ]
-%	[1,  1, 1/2, 1/6, 1/24, 1/120, 1/720, 1/5040]
-%	\end{codeblock}
-%	
-%	\noindent
-%	Observe that $a_k$ is not defined for $k=0$
-%	since $\frac{1}{0}$ is a division-by-zero error.
-%	In other words,
-%	the domain of $a_k$ is the nonnegative natural numbers $a_k:\mathbb{N}_+ \to \mathbb{R}$.
-%	Observe how quickly the `factorial` function $k!=1\cdot2\cdot3\cdots(k-1)\cdot k$ grows:
-%	$7!= 5040$, $10!=3628800$, $20! > 10^{18}$.
-%	
-%	We're often interested in calculating the limits of sequences as $k\to \infty$.
-%	What happens to the terms in the sequence when $k$ becomes large?
-%	
-%	\begin{codeblock}[]
-%	>>> sp.limit(a_k, k, sp.oo)
-%	0
-%	>>> sp.limit(b_k, k, sp.oo)
-%	0
-%	\end{codeblock}
-%	
-%	\noindent
-%	Both $a_k=\frac{1}{k}$ and $b_k = \frac{1}{k!}$ \emph{converge} to $0$ as $k \to \infty$.
+		\ifthenelse{\boolean{FORSTATSBOOK}}{
+			While we're on the topic of series,
+			I want to show you some extra series formulas and tricks
+			that you need to know to solve the exercises ???? and problems ??? in Chapter~2.
+			FINISH THIS
+		}{}
 
 
 

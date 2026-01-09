@@ -2,28 +2,29 @@
 
 \section{Multivariable calculus}
 
-	Multivariable calculus is the extension of the ideas of differential and integral calculus
-	to functions that take multiple variables as inputs.
-	If you were able to follow the single-variable calculus concepts,
-	then you can easily learn multivariable calculus:
-	it's essentially the same concepts but with more variables.
+	In multivariable calculus,
+	we extend the ideas of differential and integral calculus
+	to functions with multiple inputs variables.
+	If you understood the concepts of single-variable calculus,
+	then you'll also be able to understand multivariable calculus:
+	it's essentially the same stuff but in more dimensions!
 
 	\subsection{Multivariable functions}
 
-		A single variable function $f: \mathbb{R} \to \mathbb{R}$
+		A \emph{single-variable function} $f: \mathbb{R} \to \mathbb{R}$
 		takes a real number $x \in \mathbb{R}$ as input
-		and produces the real number $f(x) \in \mathbb{R}$ as output.
+		and produces a real number $f(x) \in \mathbb{R}$ as output.
 		A \emph{multivariable function} takes multiple real numbers as inputs
 		and produces real number as output.
 		For example,
 		a bivariate function $f: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$
 		takes two real numbers as inputs $(x,y) \in \mathbb{R} \times \mathbb{R}$
-		and produces the real number $f(x,y) \in \mathbb{R}$ as output.
-		We'll use the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
-		for all plots and calculations in the remainder of this section.
+		and produces a real number $f(x,y) \in \mathbb{R}$ as output.
 
-		We can plot the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
-		as a \emph{surface} in a three dimensional space,
+		% EXAMPLE FUNCTION
+		Consider the function bivariate function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$.
+		% for all plots and calculations in the remainder of this section.
+		We can plot this function as a \emph{surface} in a three dimensional space,
 		as shown in Figure~\ref{fig:mulivar_surface_plot_paraboloid}.
 		The height of the surface above the point $(x,y)$ is function output $f(x,y)$.
 		%	Suppose the height of a mountain is described by the function $f(x,y)$.
@@ -34,15 +35,14 @@
 
 		\begin{figure}[htb]
 			\centering
-			% TODO: redo using plt
 			\includegraphics[width=0.8\columnwidth]{figures/calculus/mulivar_surface_plot_paraboloid.pdf}
 			\vspace{-2mm}
-			\caption{The 3D surface plot of the the function $f(x,y)$.}
+			\caption{The 3D surface plot of the the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$.}
 			\label{fig:mulivar_surface_plot_paraboloid}
 		\end{figure}
 
 		\noindent			
-		Three dimensional surface plots are very good for visualizing multivariable functions,
+		Surface plots are very good for visualizing multivariable functions,
 		but they can be difficult to draw by hand.
 		Another approach for representing the function $f(x,y)$
 		is to use a two-dimensional plot that shows the ``view from above'' of the surface $f(x,y)$.
@@ -78,41 +78,45 @@
 		The partial derivative of $f(x,y)$ with respect to $x$ is
 		\[
 			\frac{\partial}{\partial x}f(x,y)
-			=
+			\;\;=\;\;
 			\frac{\partial f}{\partial x}
-			\eqdef
+			\;\;\eqdef\;\;
 			\lim_{ \delta \rightarrow 0}	\frac{f(x+\delta, y)-f(x,y)}{\delta}.
 		\]
 		Similarly the partial derivative of with respect to $y$ is
 		\[
 			\frac{\partial}{\partial y}f(x,y)
-			=
+			\;\;=
 			\frac{\partial f}{\partial y}
-			\eqdef
+			\;\;\eqdef\;\;
 			\lim_{ \delta \rightarrow 0}	\frac{f(x, y+\delta)-f(x,y)}{\delta}.
 		\]
 		Note that both $\frac{\partial f}{\partial x}$  and $\frac{\partial f}{\partial y}$ are function of $x$ and $y$.
-		Indeed, we can ask the questions ``what is the slope in the $x$-direction''
-		and ``what is the slope in the $y$-direction'' at any point $(x,y)$ on the surface of the function.
-		That's precisely the information returned by the functions $\frac{\partial f}{\partial x}(x,y)$ and $\frac{\partial f}{\partial y}(x,y)$.
+
+		Intuitively,
+		the partial derivative $\frac{\partial f}{\partial x}$
+		tells us the slope of the function $f(x,y)$ in the $x$-direction,
+		and $\frac{\partial f}{\partial y}(x,y)$ tells us the slope of $f(x,y)$
+		in the $y$-direction.
+
+		%	Indeed,
+		%	we can ask the questions ``what is the slope in the $x$-direction''
+		%	and ``what is the slope in the '' at any point $(x,y)$ on the surface of the function.
+		%	That's precisely the information returned by the functions $\frac{\partial f}{\partial x}(x,y)$ and .
 
 		\subsubsection{Example}
 
-			The partial derivatives of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
-			are as follows:
+			The partial derivatives of $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$ are
 			\[
 				\frac{\partial f}{\partial x} = -2x
-				\qquad
+				\qquad\text{and}\qquad
 				\frac{\partial f}{\partial y} = -\tfrac{1}{2}y.
 			\]
-Intuitively,
-we ignore the other variable.
-
-
 
 	\subsection{The gradient operator}
 
-		The operator $\nabla$ is a combination of both the $x$ and $y$ derivatives:
+		The \emph{gradient} of the function
+		is a vector that combines the $x$ and $y$ partial derivatives:
 		\[
 			\nabla f(x,y)
 			\eqdef
@@ -121,34 +125,38 @@ we ignore the other variable.
 				\frac{\partial f}{\partial y}
 			\right).
 		\]
-		Note that $\nabla$ acts on a function $f(x,y)$ to produce a vector output.
-		This vector is called the \emph{gradient} vector and it tells you the combined $x$- and $y$-slopes of the surface.
-		More specifically,
-		the gradient vector tells you the direction of the function's maximum increase---the
+		% Note that $\nabla$ acts on a function $f(x,y)$ to produce a vector output.
+		The direction of the gradient vector tells us the direction of the function's maximum increase---the
 		``uphill'' direction at the surface of graph of $f(x,y)$ at the point $(x,y)$.
 		The gradient vector is always perpendicular to the \emph{level curve} at that point.
 
 		\subsubsection{Example}
 
-			The gradient of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
-			is
+			The gradient of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$ is
 			\[
 				\nabla f(x,y)
 					= \left(	\frac{\partial f}{\partial x},
 							\frac{\partial f}{\partial y}	\right)
 					= \left(	-2x,	 -\tfrac{1}{2}y	\right).
 			\]
+			The gradient vector at coordinates  $(x,y) = (0,-4)$ is $\nabla f(0,-4) = (0,2)$,
+			which is a vector pointing in the positive $y$-direction.
+			Try to identify the point with coordiantes $(0,-4)$
+			in figures \ref{fig:mulivar_surface_plot_paraboloid} 
+			and \ref{fig:mulivar_countour_plot_paraboloid}
+			and confirm that the ``uphill'' direction at hat point is indeed in the positive $y$-direction.
 
 
 
 	\medskip
 	\noindent
 	The other half of multivariable calculus involves
-	applying the integration operation to multivariable functions.
+	computing integrals of multivariable functions.
+
 
 	\subsection{Partial integration}
 
-		We can integrate with respect to one of the input variables
+		We can integrate over one of the input variables
 		to produce a function that depends only on the other input variable:
 		\[
 			f(y) = \int_{x=-\infty}^{x=\infty} \! f(x,y) \, dx
@@ -159,7 +167,7 @@ we ignore the other variable.
 		or \emph{marginals} of the function $f(x,y)$.
 		For example,
 		the partial integrals of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
-		are obtained by computing the areas of ``slices'' throughout he function $f(x,y)$,
+		are obtained by computing the areas of ``slices'' throughout the function $f(x,y)$,
 		as illustrate in Figure~\ref{fig:multivar_combined_slices_through_paraboloid}.
 
 		\begin{figure}[htb]
@@ -175,26 +183,25 @@ we ignore the other variable.
 	\subsection{Double integrals}
 
 		The multivariable generalization of the integral $\int_a^b f(x) \, dx$
-		that computes the ``total'' amount of $f(x)$ on between $a$ and $b$
+		that computes the ``total'' amount of $f(x)$ between $a$ and $b$
 		is the multivariable integral of the form:
 		\[
 			\int \! \int_{(x,y) \in R} f(x,y) \, dxdy,
 		\]
 		where $R$ is called the \emph{region of integration}
-		and corresponds to some subset of the cartesian plane $\mathbb{R} \times \mathbb{R}$.
+		and corresponds to some subset of the Cartesian plane $\mathbb{R} \times \mathbb{R}$.
 		The idea behind multivariable integrals is the same as for single variable integrals---to
-		compute the total amount of some function for some range of input values.
+		compute the total amount of some function accumulated over a range of input values.
 		For single-variable functions,
 		we integrate by splitting the region into thing rectangular strips of width $dx$.
 		For double integrals,
 		we split the two-dimensional region of integration into small squares of area $dxdy$,
-		and compute the total volume of a many vertical columns whose base area is $dxdy$
-		and whose height is given by the function $f(x,y)$.
+		and compute the total volume of a many rectangular columns
+		with base $dxdy$ and height $f(x,y)$.
 
-		TODO: insert graphic of 3D integral split into vertical columns
+		% TODO: insert graphic of 3D integral split into vertical columns
 
-		TODO: explain "sweep along x then sweep along y" idea + hint at change-of-variables techniques
-
+		% TODO: explain "sweep along x then sweep along y" idea + hint at change-of-variables techniques
 
 		%	% EXAMPLE		
 		%	In the second part of multivariable calculus you'll learn how to do double integrals,
@@ -218,49 +225,60 @@ we ignore the other variable.
 
 	\subsection{Applications of multivariable calculus}
 
-		\paragraph{Optimization}
+		Multivariable functions appear all the time in machine learning, engineering, physics, and other sciences.
+		% OPTIMIZATION
+		The optimization techniques we discussed in
+		Section~\ref{derivatives:optimization} (see page \pageref{derivatives:optimization})
+		readily generally to functions with multiple variables.
+		Indeed,
+		the \emph{gradient descent algorithm} is often used to optimize functions
+		with hundreds or thousands of variables.
+		% Gradients are the key for the optimization algorithms used in modern machine learning techniques.
+		Many of the cutting edge machine learning models
+		``learn'' the model parameters by minimizing the value of some multivariable function
+		but repeatedly taking steps in the ``downhill'' direction,
+		as indicated by the gradient vector.
+		% MULTIVAR INTEGRALS 
+		Multivariable integrals are used a lot in probability theory and statistics,
+		where they are used to compute probabilities and expectations.	
+		
+		There is a lot more to learn about derivatives and integral of multivariable functions,
+		which haven't even have time to mention here.
+		Your basic knowledge of derivatives and integrals concepts we discussed
+		earlier in this tutorial will be very useful for understanding these more advanced topics.
+
+
+
 
 %	You'll encounter the gradient descent algorithm and its numerous variations
 %	if you choose to purse the topic of machine learning,
 %	since they are used in many machine learning applications.	% where multivariable functions are the norm
 
-Gradients are the key for the optimization algorithms used in modern machine learning techniques.
-Indeed,
-we ``learn'' model parameters of a machine learning model by minimizing some objective function,
-which involves repeated ``downhill'' steps in the direction of the gradient $-\nabla f(x,y)$.
+% The notion of an uphill or downhill direction for the surface $f(x,y)$ turns out to be very useful for optimization.
+	%	If you want to find the local maximum of a function,
+	%	you can start at some point and keep moving uphill (in the direction of $\nabla f(x,y)$ and you'll arrive at a local peak of the mountain.
+	%	Similarly,
+%	To find the lowest point on the surface (minimum value of $f(x,y)$),
+%	you can start at some point and keep moving downhill,
+%	that is in the opposite direction to the gradient $-\nabla f(x,y)$.
+% Figure~\ref{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom} illustrates this process.
+% Consider the path of a water stream whose source in some arbitrary point on the surface of the mountain.
+%	Intuitively,
+%	this is the path that a water stream would take as it descends down the slope of the mountain until it reaches the minimum at the bottom of a valley.
+%	This intuitive notion of ``keep moving downhill until you get to a local minimum'' is
+%	the general idea behind the \emph{gradient descent} optimization algorithm which is very important for machine learning applications.
 
-			The notion of an uphill or downhill direction for the surface $f(x,y)$ turns out to be very useful for optimization.
-			%	If you want to find the local maximum of a function,
-			%	you can start at some point and keep moving uphill (in the direction of $\nabla f(x,y)$ and you'll arrive at a local peak of the mountain.
-			%	Similarly,
-			To find the lowest point on the surface (minimum value of $f(x,y)$),
-			you can start at some point and keep moving downhill,
-			that is in the opposite direction to the gradient $-\nabla f(x,y)$.
-			% Figure~\ref{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom} illustrates this process.
-			% Consider the path of a water stream whose source in some arbitrary point on the surface of the mountain.
-			Intuitively,
-			this is the path that a water stream would take as it descends down the slope of the mountain until it reaches the minimum at the bottom of a valley.
-			This intuitive notion of ``keep moving downhill until you get to a local minimum'' is
-			the general idea behind the \emph{gradient descent} optimization algorithm which is very important for machine learning applications.
+%	\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=0.63212\columnwidth]{figures/calculus/multivariable_caclulus_topographic_map_waterflow_to_bottom.png}
+%	\vspace{-4mm}
+%	\caption{This graph shows the path taken by a hypothetical water as it flows to the bottom of the valley $f(x,y)$.}
+%	\label{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom}
+%	\end{figure}
 
-		%	\begin{figure}[htb]
-		%	\centering
-		%	\includegraphics[width=0.63212\columnwidth]{figures/calculus/multivariable_caclulus_topographic_map_waterflow_to_bottom.png}
-		%	\vspace{-4mm}
-		%	\caption{This graph shows the path taken by a hypothetical water as it flows to the bottom of the valley $f(x,y)$.}
-		%	\label{fig:multivariable_caclulus_topographic_map_waterflow_to_bottom}
-		%	\end{figure}
+%	We know we've reached the bottom of the valley,
+%	since the the gradient vector will be zero at the minimum of the function $f(x,y)$,
+%	since surface is locally flat there.
 
-		%	We know we've reached the bottom of the valley,
-		%	since the the gradient vector will be zero at the minimum of the function $f(x,y)$,
-		%	since surface is locally flat there.
 
-		\ifthenelse{\boolean{FORSTATSBOOK}}{
-			\paragraph{Probability calculations}
-
-				We use partial and multiple integrals a lot in probability theory.
-				The partial integral corresponds to the marginal probability distributions,
-				and double integrals are used to compute probabilities and expectations.				
-
-		}{}
 
