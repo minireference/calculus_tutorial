@@ -11,10 +11,11 @@
 	For example,
 	the expression $\lim_{x \to \infty} f(x)$,
 	read ``the limit of $f(x)$ as $x$ goes to infinity,''
-	describes what happens to $f(x)$ when the input to the function $x$ tends to infinity (gets larger and larger).
+	describes what happens to $f(x)$ when $x$ gets larger and larger.
+	% to the function $x$ tends to infinity (gets larger and larger).
 
 
-	\subsection{Example: Archimedes' approximation to $\pi$}
+	\subsection{Example 1: Archimedes' approximation to $\pi$}
 	% ALT. Archimedes' approximation for area of a circle
 
 		We'll start by looking at a visual example of a math procedure
@@ -22,12 +23,12 @@
 		that was invented by Archimedes of Syracuse around 250 BCE.
 		Archimedes wanted to calculate the area of a circle of radius $r=1$.
 		Today we know the formula for the are of the circle is $A_{\circ} = \pi r^2$,
-		so the area of a circle with radius $r=1$ is $\pi$,
-		but try to place yourself in Archimedes's shoes (sandals?)
-		and suppose that you don't know the formula yet.
+		so the area of a circle with radius $r=1$ is $\pi$.
+		Try to place yourself in Archimedes's shoes (sandals?)
+		and suppose that you don't know the formula.
 
-		Archimedes' clever idea was to approximate the circle
-		as a regular polygon with $n$ sides inscribed in the circle.
+		Archimedes had the clever idea to approximate the circle
+		as a regular polygon with $n$ sides inscribed inside the circle.
 		Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}
 		shows the hexagonal (6-sides),
 		octagonal (8-sides),
@@ -42,11 +43,10 @@
 			\label{fig:inscribed-hexagon-octagon-dodecagon}
 		\end{figure}
 
-		Archimedes computed the area of the $n$-sided regular polygons
-		by splitting it up into $2n$ triangular slices,
+		Archimedes split the area of the $n$-sided regular polygons into $2n$ triangular slices,
 		like the one shown in Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}~(b).
-		He then compute the area each slice using the formula for the area of a triangle,
-		and added up the areas of these $2n$ triangles
+		He then computed the area of each slice using the formula for the area of a triangle,
+		and added up the areas of the $2n$ triangles
 		to obtain the total area of the $n$-sided polygon.
 		Let's denote $A(n)$ the area approximation
 		computed from a $n$-sided polygon.
@@ -54,52 +54,53 @@
 		we see the approximations to the area of the circle
 		using six-sided and eight-sided polygons are underestimates for the total area.
 		However,
-		the polygon with $n=12$ is starting to look like a circle,
-		and we can use our imagination to see that the approximation $A(n) \approx A_{\circ}$
-		will get more and more accurate as $n$ becomes larger and larger.
-		Archimedes computed an approximation using a $n=96$ sided polygon,
+		the polygon with $n=12$ is starting to look almost like a circle.
+		We can use our imagination to see that the approximation $A(n) \approx A_{\circ}$
+		will become more and more accurate as $n$ becomes larger and larger.
+		Archimedes only managed to compute an approximation with a $n=96$ sided polygon,
 		but thanks to computers we can push the approximation to much higher values of $n$.
 		For example,
-		using a 50-sided polygon gives us $A(50) = 3.1\ldots$.
-		The approximation with $n=1000$ is accurate to four decimals $A(1000) = 3.1415\ldots$,
-		and using $n=10K$ we get an approximation to $\pi$
+		using a $1000$-sided polygon gives us
+		an approximation that is accurate to four decimals $A(1000) = 3.1415\ldots$.
+		Using $n=10K$ we get an approximation to $\pi$
 		that is accurate to six decimals $A(10000) = 3.141592\ldots$.
-		See the computational notebook here for the details of the calculations:
-		\href{https://bit.ly/calctut3}{\tt{bit.ly/calctut3}}.
+		See the computational notebook \href{https://bit.ly/calctut3}{\tt{bit.ly/calctut3}}
+		for the details of these calculations.
 
 		In the limit as $n \to \infty$, 
-		the $n$-sided-polygon approximation to the area of the circle 
-		will becomes \emph{exactly} equal to $\pi = 3.141592653589793\ldots$,
-		which we write as $\lim_{n \to \infty} A(n) = \pi$.
-		Note that $A(n) \neq \pi$ for any finite number $n$ no matter how large.
-		It is only in the limit as $n$ goes to infinity that the approximation becomes exact.
+		the approximation $A(n)$ % to the area of the circle 
+		becomes \emph{exactly} equal to $\pi = 3.141592653589793\ldots$,
+		which we can express as the limit expression $\lim_{n \to \infty} A(n) = \pi$.
+		Note that $A(n) \neq \pi$ for any finite number $n$,
+		no matter how large $n$ is.
+		It is only in the limit as $n$ goes to infinity that the $n$-sided polygon approximation
+		becomes exactly equal to a circle.
 
 	\medskip
 	\noindent
 	Let's look at another example of a simple math procedure with $n$ steps
-	that produces an important number when $n$ goes to infinity.
-	% ALT.  that allows us to compute an important number 
+	that produces a useful approximation.
 
 
-	\subsection{Example: Euler's number}
+	\subsection{Example 2: Euler's number}
 	\label{introduction:eulers_number}
 
 		Suppose you take out a loan with 100\% nominal interest rate.
-		This is a very bad loan that nobody would agree to the real world,
+		This is a very bad loan that nobody would agree to in the real world,
 		but we'll use it for this example to make the math come out simpler.
 		An interest of $100\%$ calculated yearly means at the end of one year,
-		you'll owe $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
+		you'll owe the bank $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
 
 		However,
-		most banks don't calculate the interest owed only once per year,
-		but more often.
+		most banks don't calculate the interest only once per year.
+		% but more often.
 		If the bank calculates the interest twice per year,
 		during the first six months you'll have accrued $\frac{100\%}{2} = 50\%$ of interest,
 		so you'll owe them $(1+50\%) = (1+\frac{1}{2}) = 1.5$ times the initial amount.
 		Then during the second six months,
 		the amount owed will grow by an additional $(1+50\%) = (1+\frac{1}{2}) = 1.5$,
 		so at the end of the year,
-		you'll owe $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
+		you'll owe them $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
 
 		If the bank computes the interest three times per year,
 		the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
@@ -109,7 +110,7 @@
 		as the compounding is performed more frequently.
 		In general,
 		when the compounding is performed $n$ times per year,
-		the amount owed at the end of the year will be
+		the amount owed at the end of one year will be
 		\[
 			\underbrace{
 			\left(1 + \tfrac{1}{n} \right)
@@ -128,13 +129,13 @@
 		With daily compounding,
 		the amount would be $(1 + \tfrac{1}{365})^{365} = 2.715$.
 		If computing the interest $n=1000$ times per year,
-		the amount ill be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
+		the amount will be $(1 + \tfrac{1}{1000})^{1000} = 2.717$.
 		The amount owed keeps increasing,
 		but it seems to ``stabilize'' around the value $2.71$.
 
 		What happens if we perform the compounding even more frequently?
 		Specifically,
-		we want to know what happens if the compound interest interest is calculated infinitely often.
+		we want to know what happens if the interest is compounded infinitely often.
 		The infinitely-often calculation corresponds
 		to computing the \emph{limit} of expression  $(1 + \frac{1}{n})^n$,
 		as $n$ goes to infinity,
@@ -157,7 +158,7 @@
 	and the number $e$ as the limit $\lim_{n\to \infty} \left( 1 + \tfrac{1}{n}\right)^{\!n}$.
 	These definition of the numbers $\pi$ and $e$ using as limits
 	are go beyond the regular math operations we learn in high school math.
-	The limit expression $\lim_{n \to \infty}$ doesn't describer any particular number $n$,
+	The limit expression $\lim_{n \to \infty}$ doesn't describe any particular number $n$,
 	but the \emph{process} of plugging in large and larger values of $n$.
 	% This is what the limit notation $\lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
 	% it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
@@ -202,7 +203,7 @@
 	\label{limits:limits_to_infinity}
 
 		We can use limit expressions to describe
-		what happens to a certain function when its input variable tends to infinity.
+		what happens to a function when its input variable tends to infinity.
 		Does $f(x)$ approach a finite number,
 		or does it keep growing to $\infty$?
 		The function $f(x)$ is said to \emph{converge} to $L$
@@ -220,16 +221,16 @@
 			\centering
 			\includegraphics[width=0.63212\columnwidth]{figures/calculus/limit-at-infinity-graph.png}
 			\vspace{-3mm}
-			\caption{	A function $f(x)$ that oscillates up and down initially,
-					but  it ``settles down'' close to the value $L$ for large values of $x$.}
+			\caption{	The function $f(x)$ oscillates up and down initially,
+					but then it ``settles down'' close to the value $L$ for large values of $x$.}
 			\label{fig:limit-at-infinity-graph}
 		\end{figure}
 
 
-		\subsubsection{Example 1}
+		\subsubsection{Example 3}
 
 			Consider the limit of the function $f(x) = \frac{1}{x}$ as $x$ goes to infinity,
-			as illustrated in Figure~\ref{fig:limits_examples}~(a):
+			which is illustrated in Figure~\ref{fig:limits_examples}~(a):
 			\[
 				\lim_{x \to \infty} f(x)
 					= 	\lim_{x \to \infty} \tfrac{1}{x}
@@ -239,7 +240,8 @@
 			so it would be wrong to write $f(x)=0$ for any $x \in \mathbb{R}$.
 			However,
 			the expression $\frac{1}{x}$ gets closer and closer to $0$ as $x$ goes to infinity.
-			Limits are useful because they allow us describe this tendency as $\displaystyle \lim_{x\to \infty} f(x)=0$.
+			Limits are useful because they allow us describe this tendency.
+			% as $\displaystyle \lim_{x\to \infty} f(x)=0$.
 			% even though $f(x)\neq 0$ for any number $x$.
 
 
@@ -283,7 +285,7 @@
 	\subsection{Limit formulas}
 
 		The limit of the sum, difference, product, and quotient of two functions
-		are can be computed as follows:
+		are computed as follows:
 		% is equal to the corresponding operation of the limits of the two functions:
 		\begin{align*}	
 			\lim_{x \to \infty} (f(x) + g(x)) 	& =  \lim_{x \to \infty} f(x) + \lim_{x \to \infty} g(x), 	\\
@@ -299,7 +301,7 @@
 		can bring the limit calculations ``inside'' basic arithmetic operations.
 
 
-		\subsubsection{Example 2}
+		\subsubsection{Example 4}
 
 			Calculate $\lim\limits_{x\to \infty} \frac{2x+1}{x}\,$.
 			We're given the function $f(x)=\frac{2x+1}{x}$
@@ -314,7 +316,7 @@
 			\]
 			As the denominator $x$ becomes larger and larger,
 			the fraction $\frac{1}{x}$ becomes smaller and smaller,
-			so $\displaystyle \lim_{x \to \infty} \tfrac{1}{x} = 0$,
+			% so $\displaystyle \lim_{x \to \infty} \tfrac{1}{x} = 0$,
 			so the second term goes zero,
 			leaving only the $2$.
 			See Figure~\ref{fig:limits_examples}~(b) for an illustration.
@@ -347,7 +349,7 @@
 		is denoted $\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta)$.
 		We use the symbol $\delta$ (the Greek letter \emph{delta}) to describes a distance
 		that gets smaller and smaller.
-		This limit expression that describes the value of the function $f$
+		This limit expression describes the value of the function $f$
 		as the input $x$ gets closer and closer to $a$
 		with values like $a+0.1$, $a+0.01$, $a+0.001$, $a+0.0001$, etc.
 		%
@@ -378,20 +380,19 @@
 	\subsection{Continuity}
 	\label{limits:continuity}
 
-		If the function $f(x)$ obeys, $f(a) = L$ and $\lim_{x\to a} f(x) = L$,
+		If the function $f(x)$ obeys, $f(a) = \lim_{x\to a} f(x)$,
 		we say the function $f(x)$ is \emph{continuous} at $x=a$.
 		Geometrically,
 		the graph of the continuous function at $x=a$ is ``smooth'' curve
 		that doesn't have any hole or a jump at $x=a$.
-		Intuitively,
-		when a function is continuous,
+		When a function is continuous,
 		we can draw its graph using a single pen stroke
 		without lifting the pen.
 		% means the function's graph looks like a smooth curve
 		In contrast,
 		functions that blow up to infinity or make sudden jumps are not continuous.
 
-		\subsubsection{Example 3}
+		\subsubsection{Example 5}
 
 			The \emph{Heaviside step function} is an example of a function
 			with a jump discontinuity.
@@ -472,7 +473,7 @@
 		% Khan Academy
 		% https://www.youtube.com/watch?v=Y7sqB1e4RBI
 
-		%	\paragraph{Example 3}	
+		%	\paragraph{Example ?}	
 		%		We can calculate the limit $\displaystyle\lim_{x\to 5} \frac{2x+1}{x}$ as follows:
 		%		\[
 		%		 \lim_{x\to 5} \frac{2x+1}{x}
@@ -503,11 +504,11 @@
 
 		To compute limits,
 		we use the SymPy function \tt{sp.limit(expr,var,value)},
-		which computes the limit of the expression \tt{expr},
+		which evaluates the expression \tt{expr},
 		as the variable \tt{var} approaches \tt{value}.
-		For limits toward infinity,
-		we use the special symbol \texttt{sp.oo} (two lowercase \texttt{o}s),
-		which is a clever name chosen because it resembles the infinity symbol $\infty$.
+		For limits to infinity,
+		we use the symbol \texttt{sp.oo} (two lowercase \texttt{o}s),
+		which kind of looks like the infinity symbol $\infty$.
 
 		% We can use SymPy to check the limit calculation we saw above.		
 		% EXAMPLE  e
@@ -520,16 +521,16 @@
 		\begin{codeblock}[sympy-e-from-limit]
 		>>> sp.limit((1+1/n)**n, n, sp.oo)
 		E
-		>>> sp.limit((1+1/n)**n, n, sp.oo).evalf(40)
-		2.718281828459045235360287471352662497757
 		\end{codeblock}
+		%	>>> sp.limit((1+1/n)**n, n, sp.oo).evalf(40)
+		%	2.718281828459045235360287471352662497757
 
 		\noindent
 		The result of \tt{sp.limit} is the exact value $e$
 		which is represented symbolically as \tt{E}.
-		On the second line,
-		we used the method \tt{.evalf(40)} 
-		to compute an approximation to $e$ to 40 decimals.
+		%	On the second line,
+		%	we used the method \tt{.evalf(40)} 
+		%	to compute an approximation to $e$ to 40 decimals.
 
 
 		% EXAMPLE 1/x
@@ -566,10 +567,10 @@
 
 		% EXAMPLE  Heaviside
 		\noindent
-		To calculate the limit form the left and the right of a number,
-		we must provide a fourth argument \tt{"-"} or \tt{"+"}.
-		The following SymPy calculations confirm the limits of the Heaviside step function
-		when approaching $x=0$ from the left and from the right.
+		To calculate the limit form the left or the right of a number,
+		we provide a fourth argument \tt{"-"} or \tt{"+"} to \tt{sp.limit}.
+		%		The following SymPy calculations confirm the limits of the Heaviside function
+		%		when approaching $x=0$ from the left and from the right.
 
 		\begin{codeblock}[]
 		>>> from sympy import Heaviside
@@ -579,8 +580,8 @@
 		1
 		\end{codeblock}
 
-		\noindent
-		See Figure~\ref{fig:limits_examples}~(c) for an illustration.
+		%	\noindent
+		%	See Figure~\ref{fig:limits_examples}~(c) for an illustration.
 
 
 		% TODO: ADD MORE LIMIT EXAMPLES
@@ -630,20 +631,21 @@
 		\begin{itemize}
 
 			\item The derivative function $f^{\prime\!}(x)$
-				describe the instantaneous rate change of the function $f(x)$.
-				In Section~\ref{sec:derivatives} we'll learn how to calculate derivatives
-				by evaluating a limit of the form $\lim_{\delta \to 0}$.
+				describe the % instantaneous
+				rate change of the function $f(x)$ at $x$.
+				In Section~\ref{sec:derivatives},
+				we'll calculate derivatives by evaluating limits of the form $\lim_{\delta \to 0}$.
 
 			\item The integral $\int_a^b f(x) \, dx$
 				describes the area under the graph of the function $f(x)$ between $x=a$ and $x=b$.
 				In Section~\ref{sec:integrals}
-				we'll learn how to compute integrals by splitting up area into $n$ rectangular strips
-				and taking the limit $\lim_{n \to \infty}$.
+				we'll learn how to compute integrals by splitting up areas into $n$ rectangules,
+				then taking the limit $\lim_{n \to \infty}$.
 
 			\item The series $\sum_{k=1}^n a_k$ describes
 				the sum of all the first $n$ terms in the sequence $a_k$.
 				In Section~\ref{sec:sequences_and_series},
-				we'll learn how to compute infinite series by taking $\lim_{n \to \infty}$.
+				we'll learn how to compute infinite series by evaluating limits like $\lim_{n \to \infty}$.
 
 		\end{itemize}
 
@@ -673,7 +675,7 @@
 
 
 
-% \subsubsection{Example: split up line}
+% \subsubsection{Example ?: split up line}
 %		Let's begin with a simple example.
 %		Say you have a string of length $\ell$ and you want to divide it into infinitely many, infinitely short segments.
 %		There are infinitely many segments,

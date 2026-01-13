@@ -19,16 +19,16 @@
 	% cf. MATHPHYSbook/02_intro2phys/03.introduction_to_calculus.tex
 
 
-	\subsection{Example 1: file download}
+	\subsection{Example: file download}
 	\label{introduction:download_example}
 
 		Suppose you're downloading a $720$[MB] file from the internet to your computer.
-		At $t=0$ you click ``save as'' to start the download.
+		At $t=0$ you click ``Save as'' to start the download.
 		Consider the function $f(t)$
-		that describes the amount of disk space taken by the partially-downloaded file.
-		At time $t$,
-		your browser reports the download progress as a percentage
-		that corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
+		that describes the amount of disk space occupied by the partially-downloaded file.
+		%	At time $t$,
+		%	your browser reports the download progress as a percentage
+		%	that corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
 
 		\subsubsection{Download rate}
 		\label{introduction:download_rate}
@@ -42,12 +42,10 @@
 			If you maintain this download speed,
 			the file size will grow at a constant rate:
 			$f(0)=0$[MB], $f(1)=2$[MB], $f(2)=4$[MB], $\ldots$, $f(100)=200$[MB],
-			and so on until $t=360$[s] when we expect the download will be done.
+			and so on until $t=360$[s] when the download will be done.
 
-			Let's look at how to calculate the ``estimated time remaining''
-			for the download at time $t$.
-			To calculate the time until the download completes,
-			we divide the amount of data that remains to be downloaded
+			To estimate the time that remains before the download completes,
+			we can divide the amount of data that remains to be downloaded
 			by the current download speed:
 			\[
 				\text{time remaining at } t = \tfrac{ 720 - f(t) }{ f^{\prime\!}(t) } \quad [\textrm{s}].
@@ -66,9 +64,9 @@
 			Any data you download comes through the modem,
 			so the modem knows the download rate $f^{\prime\!}(t)$[MB/s]
 			at all times during the download.
-
+			%
 			The modem is separate from your computer,
-			so it doesn't know the file size $f(t)$ as the download progresses.
+			so it doesn't know the file size $f(t)$.
 			Nevertheless,
 			the modem can infer the file size at time $t$
 			from the transmission rate $f^{\prime\!}(t)$.
@@ -112,10 +110,7 @@
 	but something you encounter everyday.
 	The derivative $q^{\prime\!}(t)$ describe the rate of change of the quantity $q(t)$.
 	The integral $\int_a^b q(t)dt$ measures the total accumulation of the quantity $q(t)$
-	 during the time period from $t=a$ to $t=b$.
-
-	%	Derivatives and integrals are particularly important
-	%	for quantities that change over time.
+	during the time period from $t=a$ to $t=b$.
 
 	%	Indeed,
 	%	we carry out calculus-like operations in our head every day---we just
@@ -138,43 +133,45 @@
 
 	\subsection{Doing calculus: then and now}
 
-		The key ideas of calculus were developed by Newton and Leibniz in the 17\textsuperscript{th} century
-		using pen and paper calculations.
-		We're not in the 17\textsuperscript{th} century anymore,
-		%and we're no longer limited to using pen-and-paper calculations.
-		% In modern times,
-		and today we have computers at our disposal
-		that are extremely good at certain calculus operations.
-		Let's briefly outline the different ways of doing calculus to learn their use cases and benefits.
+		The key ideas of calculus were developed by Isaac Newton and Gottfried W. Leibniz
+		in the 17\textsuperscript{th} century
+		using symbolic calculations performed with pen and paper.
+		% We're not in the 17\textsuperscript{th} century anymore,
+		% and we're no longer limited to using pen-and-paper calculations.
+		Today we have computers at our disposal
+		that are extremely good at doing numerical calculations.
+		This tutorial combines both symbolic and numerical methods
+		of doing calculus to give a complete picture of all the tools available to you
+		and their use cases.
 
 
 		\subsubsection{Symbolic calculations}
 
 			The pen-and-paper approach
-			continues to be the best way to learn calculus to this day.
+			is still a good way to learn calculus,
+			because manipulating math symbols ``by hand'' 
+			develops your intuitive understanding of calculus procedures.
 			% EXACT ANSWERS
-			Writing math symbols on paper
-			allows us to focus calculations at a high level of abstraction
+			Writing math on paper
+			allows you to use high-level abstractions
 			and arrive at exact symbolic answers.
 			% INTUITION + PROCEDURE
-			Manipulating math symbols gives you hands-on experience with calculus procedures
-			and builds your intuitive understanding.
 			%	I encourage you to keep a notebook
 			%	and reproduce the calculations presented in this tutorial on your own.
 			%	The goal is for you to get used to manipulating the new calculus concepts and notation.
 
-
 		\subsubsection{Symbolic calculations using SymPy}
 
-			The Python library SymPy allows us to do symbolic math calculations on a computer.
+			The Python library SymPy allows you to do symbolic math calculations on a computer.
 			% similar to the calculation you could do using pen and paper, but much faster.
 			% EXTEND REACH TO MORE ADVANCED
 			Using a computer algebra system like SymPy extends
-			the reach of symbolic calculus operations to broader set of problems
-			by doing some of the tedious steps for you and jumping straight to the answers.
+			the reach of symbolic calculus operations you can do
+			by automating some of the tedious steps
+			and jumping straight to answers.
 			% CHECK ANSWERS
-			In this tutorial,
-			we'll show how to use SymPy to check the answers we obtained using pen and paper calculations.
+			You can also use SymPy to check the answers you obtain
+			from pen-and-paper calculations.
 			% DON'T CHEAT
 			% like using ChatGPT
 			% win the round by doing less effort today,
@@ -233,24 +230,27 @@
 
 		\subsubsection{Numerical computing using NumPy and SciPy}
 
-			Most practical applications of calculus don't use exact symbolic calculations,
-			but instead work with numerical approximations.
-			Engineers don't care about the exact value of square root of two $\sqrt{2}$,
+			Most practical applications of calculus don't require exact symbolic answers.
+			Engineers don't care about the exact value of the square root of two $\sqrt{2}$,
 			% (the length of the diagonal of a square with side length 1)
 			and instead represent $\sqrt{2}$ approximately the floating point number
 			$1.4142135623730951$ on a computer.
-			This approximation is good enough for most engineering and scientific use cases.
+			This numerical approximation is good enough for most engineering and scientific use cases.
 			What we give up in mathematical exactitude,
-			we gain manyfold in the form of computational power:
+			we gain manyfold in computational power:
 			modern computers can perform trillions ($10^{12}$) of floating point operations per second!
+			The Python libraries NumPy and SciPy make it easy to do numerical calculus operations on a computer,
+			as we'll demonstrate in code examples throughout this tutorial.
+			% examples of practical calculations
 
-			The Python libraries NumPy and SciPy make it easy to access all this computational power
-			for doing calculus operations.
-			The calculus answer we obtain using numerical computing
-			are not exact like the answer we obtain using pen-and-paper or SymPy,
-			but engineers are willing to accept that trade-off
-			for the ability to perform any derivative, integral, or summations almost instantly.
+			%  access all this computational power for doing calculus operations.
+			%REPEATS
+			% The calculus answer we obtain using numerical computing
+			% are not exact like the answer we obtain using pen-and-paper or SymPy,
+			% but engineers are willing to accept that trade-off
+			% for the ability to perform any derivative, integral, or summations almost instantly.
 			%	like the ones the ancients only dreamed of in less than a second.
+			%/REPEATS
 
 			% Defining the specific data format for representing numbers (float32, float64, etc.)
 			% allows computer engineers to build high-performance hardware for doing math calculations.
@@ -310,7 +310,7 @@
 		We use calculus concepts
 		to describe various quantities in physics, chemistry, biology, engineering,
 		% machine learning,
-		business, economics and other domain where quantitative analysis is used.
+		business, economics and other domains where quantitative analysis is used.
 		Many laws of nature are expressed in terms of derivatives and integrals,
 		so it's essential that you learn the language of calculus if you want to study science.
 		%
@@ -318,14 +318,12 @@
 		the quantities of interest are described by functions
 		and we use derivatives and integrals to do various useful calculations based on these functions.
 		For example,
-		derivatives are used to for optimization and to find function approximations.
-		Integrals are used to solve differential equations
-		and to compute probabilities in statistics and machine learning.
+		derivatives are used for optimization,
+		and integrals are used to compute probabilities in statistics and machine learning.
 		%
-		The goal of this tutorial is to introduce you to the language and key ideas of calculus.
-		This is the power of math:
-		you learn some techniques for analyzing functions in general,
-		then you're able to solve real-world problems in any domain.
+		This is the power of math abstraction:
+		the calculus techniques you learn for analyzing the rates of change of functions
+		apply to solving real-world problems in many different domains.
 		% ALT. apply these techniques in any domain.
 		% ALT. think more clearly about these types of problems
 		% ALT. the techniques of calculus allow us to do all kinds of useful calculations based on the function $f(t)$.

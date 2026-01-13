@@ -279,52 +279,48 @@
 	calculating limits, derivatives, and integrals of functions,
 	which is best achieved by solving lots of problems.
 
-	TODO: add exercises 
-
-	TODO: link to notebook for solutions
-
-%		\input{statsprobs/chapter21_integrals_fEQc_and_gEQmx.tex}
-
 	
-	\subsection{Problem 3: integration using substitution}
-		
+	\noindent
+	\textbf{P1}		% integration using substitution
 		Compute $\int_{0}^{1} \frac{4x}{(1+x^2)^3}\,dx$
 		using the substitution $u = 1 + x^2$.
+		%	\paragraph{Solution}
+		%		When using the change of variable $u = 1 + x^2$,
+		%		we must also change the differential $du = 2x\,dx$,
+		%		which conveniently contains $x$ that appears in the faction numerator,
+		%		which allows us to write:
+		%		\[
+		%			\int_{x=0}^{x=1} \frac{4x}{(1+x^2)^3}\,dx
+		%			=  \int_{x=0}^{x=1}  \frac{2}{u^3}\,du
+		%			= \int_{x=0}^{x=1} 2  u^{-3}\,du.
+		%		\]
+		%		Next we must change the $x$-limits of integration
+		%		to $u$-limits of integration:
+		%		The lower limit $x = 0$ became $u = 1 + 0^2 = 1$,
+		%		and the upper limit $x = 1$ becomes $u = 1 + 1^2 = 2$,
+		%		which the complete substation:
+		%		\[
+		%			\int_{x=0}^{x=1} \frac{4x}{(1+x^2)^3}\,dx
+		%			=
+		%			2 \int_{u=1}^{u=2} u^{-3}\,du.
+		%		\]
+		%		We can now proceed using the integral rule
+		%		$\int x^n \,dx = \frac{1}{n+1}x^{n+1} + C$
+		%		to obtain 
+		%		\begin{align*}
+		%			2 \int_{u=1}^{u=2} u^{-3}\,du
+		%				&=	2 \left[ \frac{u^{-2}}{-2} \right]_{1}^{2}	
+		%					= - \left[ u^{-2} \right]_{1}^{2}
+		%					= - \left[ \frac{1}{u^2} \right]_{1}^{2}		\\
+		%				&=	-\left( \frac{1}{2^2} - \frac{1}{1^2} \right)
+		%					= -\left( \frac{1}{4} - 1 \right)				
+		%					= \frac{3}{4}
+		%		\end{align*}
 
-		\paragraph{Solution}
-			When using the change of variable $u = 1 + x^2$,
-			we must also change the differential $du = 2x\,dx$,
-			which conveniently contains $x$ that appears in the faction numerator,
-			which allows us to write:
-			\[
-				\int_{x=0}^{x=1} \frac{4x}{(1+x^2)^3}\,dx
-				=  \int_{x=0}^{x=1}  \frac{2}{u^3}\,du
-				= \int_{x=0}^{x=1} 2  u^{-3}\,du.
-			\]
-			Next we must change the $x$-limits of integration
-			to $u$-limits of integration:
-			The lower limit $x = 0$ became $u = 1 + 0^2 = 1$,
-			and the upper limit $x = 1$ becomes $u = 1 + 1^2 = 2$,
-			which the complete substation:
-			\[
-				\int_{x=0}^{x=1} \frac{4x}{(1+x^2)^3}\,dx
-				=
-				2 \int_{u=1}^{u=2} u^{-3}\,du.
-			\]
-			We can now proceed using the integral rule
-			$\int x^n \,dx = \frac{1}{n+1}x^{n+1} + C$
-			to obtain 
-			\begin{align*}
-				2 \int_{u=1}^{u=2} u^{-3}\,du
-					&=	2 \left[ \frac{u^{-2}}{-2} \right]_{1}^{2}	
-						= - \left[ u^{-2} \right]_{1}^{2}
-						= - \left[ \frac{1}{u^2} \right]_{1}^{2}		\\
-					&=	-\left( \frac{1}{2^2} - \frac{1}{1^2} \right)
-						= -\left( \frac{1}{4} - 1 \right)				
-						= \frac{3}{4}
-			\end{align*}
+%	cf	\input{statsprobs/chapter21_integrals_fEQc_and_gEQmx.tex}
 
 
+% TODO: link to notebook for solutions
 
 
 
@@ -381,9 +377,9 @@
 	% BOOK PLUG
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\noindent
-	If you want to learn more about calculus,
+	To learn more about calculus,
 	I invite you to check out my book,
-	the \textbf{No bullshit guide to math and physics}.
+	the \textbf{No bullshit guide to math and physics}.	
 
 	\begin{wrapfigure}[8]{r}{0pt}
 	\includegraphics[width=120pt]{figures/cover_v40_noline_lighter.jpg}
@@ -419,9 +415,9 @@
 	\vspace{3mm}
 	
 	\noindent
-	For more information, see the book's website \  %and find more information on the following website 
-	\href{http://minireference.com/}{\texttt{minireference.com}}
-	or you can get in touch with me by email here \texttt{ivan@minireference.com}.
+	For more info, see the book's website: \  %and find more information on the following website 
+	\href{http://minireference.com/}{\texttt{minireference.com}}.
+	% or you can get in touch with me by email here \texttt{ivan@minireference.com}.
 	%	You can also follow \href{https://twitter.com/minireference}{\texttt{@minireference}} on twitter 
 	%	and check out the facebook page \href{http://fb.me/noBSguide}{\texttt{fb.me/noBSguide}}.
 

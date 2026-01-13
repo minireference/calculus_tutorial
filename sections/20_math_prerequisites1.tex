@@ -2,9 +2,9 @@
 
 \section{Math prerequisites}
 
-	Before we get started with the new calculus topics,
-	let's do a quick review of key concepts from high school math.
-	These are the basic building blocks I assume you've seen before.
+	%Before we get started with calculus,
+	Let's start with a review of key ideas from high school math,
+	which we'll need to use as building blocks for calculus.
 
 	\subsection{Set notation}
 
@@ -17,13 +17,13 @@
 
 			\item $\{ \textrm{  definition  } \}$:
 				we use curly brackets to define sets.
-				The definition in the curly brackets is either a math description of the set's contents,
-				or a list of elements in the set.
+				The definition in the curly brackets is either a description of the set's contents,
+				or a list of the elements in the set.
 				% The math symbol ``$|$'' is shorthand for the phrase ``such that'' and it is often used in definitions.
 
-			\item $\mathbb{N}$: the set of natural numbers $\mathbb{N}\eqdef \{0,1,2,3,4,5,\ldots\}$
+			\item $\mathbb{N}$: the set of natural numbers $\mathbb{N} = \{0,1,2,3,4,5,\ldots\}$.
 
-			\item $\mathbb{N}_+$: the positive natural numbers $\mathbb{N}_+ \eqdef \{1,2,3,4,5,\ldots\}$.
+			\item $\mathbb{N}_+$: the positive natural numbers $\mathbb{N}_+ = \{1,2,3,4,5,\ldots\}$.
 
 			\item	$\mathbb{R}$: the set of real numbers.
 
@@ -40,10 +40,10 @@
 
 
 
-			%	\item $\mathbb{Z}$: the set of integers $\mathbb{Z}\eqdef\{\ldots,-2,-1,0,1,2,3,\ldots\}$
+			%	\item $\mathbb{Z}$: the set of integers $\mathbb{Z} = \{\ldots,-2,-1,0,1,2,3,\ldots\}$
 			%
 			%	\item $\mathbb{Q}$: the set of rational numbers,
-			%		$\mathbb{Q} \eqdef \left\{  \frac{m}{n} \; \Big| \; m \in \mathbb{Z}, \; n \in \mathbb{N}, \; n \neq 0  \right\}$.
+			%		$\mathbb{Q} = \left\{  \frac{m}{n} \; \Big| \; m \in \mathbb{Z}, \; n \in \mathbb{N}, \; n \neq 0  \right\}$.
 			%		The set $\mathbb{Q}$ consists of all numbers that can be expressed as \emph{fractions} of the form $\frac{m}{n}$,
 			%		where $m$ is an integer, $n$ is a natural number, and $n \neq 0$.
 
@@ -51,17 +51,16 @@
 		\end{itemize}
 
 		\noindent
-		We use the math symbol $\eqdef$ to define new concepts.
-		We often use the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$ to define sets.
+		We can use the \emph{set-builder} notation $\{\, \cdot \; | \;  \cdot \, \}$ to define new sets.
 		Inside the curly brackets,
 		we first describe the general kind of mathematical objects we are talking about,
 		followed by the symbol ``$|$'' (which stands for ``such that''),
 		followed by the conditions that identifies the elements of the set.
 		For example,
-		the nonnegative real numbers $\mathbb{R}_+$
-		are defined as ``all real numbers $x$ such that $x \geq 0$,''
-		which is expressed more compactly as 
-		$\mathbb{R}_+ \eqdef \{ x \in \mathbb{R} \; | \; x \geq 0 \}$
+		the set of nonnegative real numbers $\mathbb{R}_+$
+		is defined as ``all real numbers $x$ such that $x \geq 0$,''
+		which is expressed compactly as 
+		$\mathbb{R}_+ = \{ x \in \mathbb{R} \; | \; x \geq 0 \}$
 		using the set-builder notation.
 
 
@@ -69,8 +68,6 @@
 
 			The \emph{number line} is a visual representation of the set of real numbers $\mathbb{R}$,
 			as shown in Figure~\ref{fig:number_line_rationals_and_reals}.
-			The real numbers correspond to all the points on the number line,
-			from $-\infty$ to $\infty$.
 
 			\begin{figure}[htb]
 				\centering
@@ -110,11 +107,9 @@
 			We go past larger and larger positive numbers and never stop.
 
 			Infinity is a key concepts in calculus,
-			so it's important that you develop the right way to think about
-			infinitely large numbers,
-			infinitely small distances,
-			and procedures with infinite number of steps.
-			We'll continue the discussion of infinity-related topics in Section~\ref{sec:limits}.
+			so it's important that we develop a precise language to talk about
+			infinitely large numbers and procedures with infinite number of steps,
+			which we'll do in Section~\ref{sec:limits}.
 			%  we'll learn about \emph{limits}, which allow us to describe 
 
 			%	Infinity is the main new concept in calculus.
@@ -124,7 +119,7 @@
 			%	that gives you a language for describing and solving a new class of problems.
 
 			% COUNTABLE INFINITY
-			%	Consider the set of natural numbers $\mathbb{N} \eqdef \{0, 1, 2, 3, 4, 5, 6, \ldots \}$.
+			%	Consider the set of natural numbers $\mathbb{N} = \{0, 1, 2, 3, 4, 5, 6, \ldots \}$.
 			%	The natural numbers describe the process of counting starting at $0$.
 			%	The natural number $n$
 			%	is obtained by starting at $0$ and performing the $+1$ operation $n$ times.
@@ -148,14 +143,14 @@
 	%		The number line can be used to represent subsets of the real numbers,
 	%		which we call \emph{intervals}.
 	%		Figure~\ref{fig:interval_2closed_to_4closed}
-	%		shows an illustration of the interval $[2,4] \eqdef \{ x \in \mathbb{R} \;|\; 2 \leq x \leq 4 \}$,
+	%		shows an illustration of the interval $[2,4] = \{ x \in \mathbb{R} \;|\; 2 \leq x \leq 4 \}$,
 	%		which is the subset of the real numbers between $2$ and $4$.
 	%	
 	%		\begin{figure}[htb]
 	%			\centering	
 	%			\includegraphics[width=0.9\columnwidth]{figures/calculus/interval_2closed_to_4closed.pdf}
 	%			\vspace{-3mm}
-	%			\caption{	The interval $[2,4] \protect\eqdef \{ x \in \mathbb{R} \; | \; 2 \leq x \leq 4 \}$
+	%			\caption{	The interval $[2,4] \protect = \{ x \in \mathbb{R} \; | \; 2 \leq x \leq 4 \}$
 	%					is a subset of $\mathbb{R}$.} % the real numbers.
 	%			\label{fig:interval_2closed_to_4closed}
 	%		\end{figure}
@@ -167,14 +162,20 @@
 
 	\subsection{Functions}
 
-		A \emph{function} is a mathematical object that takes numbers as inputs and produces numbers as outputs.
+		A \emph{function} is a mathematical object
+		that takes numbers as inputs and produces numbers as outputs.
 		The output of the function $f$ for the input $x$ is denoted $f(x)$.
+		We can define a function by writing an expression
+		for the output of the function when the input is $x$.
 		For example,
-		the function $f(x) \eqdef x^2$
-		takes any number $x$ as input,
-		squares it and divides the result by two to produce the output.
+		the quadratic function is defined as $f(x) \eqdef x^2$.
+		We use the ``is defined as'' symbol $\eqdef$
+		in the definition instead of the regular equals symbols $=$.
+		The function $f(x)$ takes any number $x$ as input,
+		and produces the square of this number as output.
 		For example,
-		$f(3) = 3^2 = 9$.
+		when the input is $x=3$,
+		the output of the function is $f(3) = 3^2 = 9$.
 
 		In this tutorial,
 		we'll often show code examples that mirror the math calculations.
@@ -190,7 +191,7 @@
 		\end{codeblock}
 
 		\noindent
-		Note the Python syntax for evaluating the function \tt{f} on the input \tt{3}
+		Note the Python syntax for evaluating the function \tt{f} for the input \tt{3}
 		is the same as the math syntax $f(3)$.
 
 		\subsubsection{Function graphs}
@@ -205,14 +206,14 @@
 			as illustrated in Figure~\ref{fig:graph_of_function_f_eq_x2}.
 			%
 			The graph of the function $f$ allows us to see at a glance the behaviour of the function for many inputs.
-			Function graphs are an essential visualization tool for calculus calculations.
+			Function graphs are an essential tool for calculus.
 
 			Let's see how we can use the Python modules \tt{numpy} and \tt{seaborn}
-			to plot the graph of the function $f(x) \eqdef x^2$ that we defined in the previous code block.
+			to plot the graph of the function $f(x) \eqdef x^2$ that we defined easlier.
 			We start by importing the module \tt{numpy} under the alias \tt{np}.
 			Next,
 			we use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs}
-			that contains 1000 input $x$-values that range between $x=-3$ and $x=3$.
+			that contains 1000 $x$-values that range between $x=-3$ and $x=3$.
 			We then evaluate the function for all inputs \tt{xs}
 			and store the outputs of the function in an array called \tt{fxs}.
 
@@ -224,9 +225,10 @@
 
 			\noindent
 			At this point,
-			the arrays \tt{xs} and \tt{fxs} contain $1000$ input-output coordinate pairs of the form $(x, f(x))$.
+			the array \tt{xs} contain $1000$ $x$-inputs,
+			while the array \tt{fxs} contains the corresponding $1000$ outputs of $f(x)$.
 			To generate the graph of $f(x)$,
-			we just need to trace a line passing through these coordinate pairs.
+			we just need to trace a line passing through the $1000$ coordinate pairs $(x, f(x))$.
 			We can do this by importing the \tt{seaborn} module (alias \tt{sns})
 			and calling the function \tt{sns.lineplot}.
 
@@ -247,8 +249,8 @@
 			\end{figure}
 
 			\noindent
-			We can use this combination of \tt{np.linspace}, function evaluation, and \tt{sns.lineplot}
-			whenever we need to plot the graph of any function.
+			We'll use this combination of \tt{np.linspace}, function evaluation, and \tt{sns.lineplot}
+			whenever we need to plot the graph of a function.
 			% The function \tt{plot\_func(f, xlim=[-3,3])} produces the same output.
 
 
@@ -304,7 +306,7 @@
 			the domain of the function $f(x) = x^2$
 			is $\mathbb{R}$ (any real number)
 			and it's image is $\mathbb{R}_+$ (nonnegative real numbers),
-			so we write it as $f \colon \mathbb{R} \to \mathbb{R}_+$.
+			so we say $f$ is a function of the form $f \colon \mathbb{R} \to \mathbb{R}_+$.
 
 			%	Another important property is called \emph{continuity},
 			%	which roughly corresponds to ability to draw a function without lifting the pen.
@@ -315,7 +317,7 @@
 
 		Your function ``vocabulary'' determines which math expressions you'll be able to read and understand
 		in the same way your English vocabulary
-		determines determines which English sentences you'll be able to read and understand.
+		determines which English sentences you'll be able to read and understand.
 		Figure~\ref{fig:panel_function_graphs1}
 		shows the graphs of six important functions
 		that are used in many areas of mathematical modelling.
@@ -330,26 +332,24 @@
 
 
 
-		\subsubsection{Constant function}
-
-			The constant function $f(x) \eqdef c$ produces the same output $c$ for all inputs $x$.
-
+		%\subsubsection{Constant function}
+		%	The constant function $f(x) \eqdef c$ produces the same output $c$ for all inputs $x$.
 
 		\subsubsection{Linear function}
 
 			The linear function $f(x) \eqdef mx$ describes an input-output relationship
-			where the output value $f(x)$ are \emph{proportional} to the input value $x$,
+			where the output value $f(x)$ is \emph{proportional} to the input value $x$,
 			and the constant of proportionality is $m$.
 			Geometrically,
 			$m$ is the slope in the graph of $f(x)$.
 			Figure~\ref{fig:panel_function_graphs1}
 			show the graph of $f(x) \eqdef x$ which is the linear function with $m=1$
-			for which the outputs $f(x)$ is equal to the input $x$.
+			for which the output $f(x)$ is equal to the input $x$.
 			%
 			More generally,
 			we can define the line $f(x) \eqdef mx+b$,
 			where $m$ describes the slope of the line,
-			and $b$ describes the value of the function when $x=0$.
+			and $b$ is the value of the function when $x=0$.
 			% The inverse to the line $f(x)=mx+b$ is $f^{-1}(x)=\frac{1}{m}(x-b)$, which is also a line.
 
 
@@ -370,10 +370,9 @@
 
 		\subsubsection{Polynomial functions}
 
-			We can combine the constant, linear, and quadratic functions
-			to obtain the polynomial function $f(x) \eqdef a_2x^2 + a_1x +a_0$,
-			where $a_2$, $a_1$, $a_0$ are arbitrary constants,
-			which are called the \emph{coefficients} of the polynomial.
+			We can combine different powers of $x$
+			to obtain the polynomial $f(x) \eqdef a_2x^2 + a_1x +a_0$,
+			where $a_2$, $a_1$, $a_0$ are arbitrary constants.
 			This is called a second degree polynomial,
 			since the highest power of $x$ it contains is $x^2$.
 			%
@@ -381,8 +380,13 @@
 			\[
 				P_n(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n.
 			\]
-			% A polynomial of degree $n$ has  $n+1$ coefficients: $a_0,a_1,a_2,\ldots, a_n$.
-			Polynomials are a very useful family of functions.
+			The constants $a_0,a_1,a_2,\ldots, a_n$ are called the \emph{coefficients} of the polynomial.
+			% A polynomial of degree $n$ has  $n+1$ coefficients: .
+			Polynomials are a very useful family of functions,
+			because they can take on different shapes depending on the choice of the coefficients.
+			In Section~\ref{series:taylor_series},
+			we'll learn how to obtain polynomial approximations to any function $f(x)$.
+			% MAYBE: $P_n(x) \approx f(x)$.
 			%	We call $a_0$ the constant term.
 			%	$a_1$: the \emph{linear} coefficient, or \emph{first-order} coefficient
 			%	$a_2$: the \emph{quadratic} coefficient
@@ -401,8 +405,9 @@
 
 		\subsubsection{Exponential function}
 
-			The exponential function base $e=2.7182818\ldots$ is defined
-			as $f(x) \eqdef e^{x} = \exp(x)$.
+			The exponential function base $e$
+			is defined as $f(x) \eqdef e^{x} = \exp(x)$,
+			where $e=2.7182818\ldots$ is Euler's number.
 			Figure~\ref{fig:panel_function_graphs1}~(c)
 			shows the graph of the exponential function $f(x)=e^x$,
 			which passes through the following points:
@@ -434,7 +439,7 @@
 			without paying attention to whether the number is positive or negative.
 			We compute the absolute value of the number $x$ by \emph{forgetting} the sign of $x$.
 			Geometrically,
-			$|x|$ corresponds to its distance between $x$ and the origin of the number line.
+			$|x|$ corresponds to the distance between $x$ and the origin of the number line.
 			%
 			We see the absolute values whenever we apply
 			the combination of squaring followed by square-root on some number,
@@ -460,9 +465,10 @@
 			$\left(x^{\frac{1}{2}}\right)^2 = x^{\frac{2}{2}} = x^{1} = x$.
 			%
 			In addition to \emph{square} root,
-			there is also \emph{cube} root $f(x) = \sqrt[3]{x}  = x^{\frac{1}{3}}$,
+			there is also the \emph{cube root} function $f(x) = \sqrt[3]{x}  = x^{\frac{1}{3}}$,
 			which is the inverse function for the cubic function $f(x)=x^3$.
-			We have $\sqrt[3]{8}=2$ since $2\times2\times2=8$.
+			For example,
+			$\sqrt[3]{8}=2$ since $2\times2\times2=8$.
 
 
 
@@ -472,7 +478,7 @@
 			$f(x) \eqdef \ln(x) = \log_e(x)$.
 			The function $\ln(x)$ is the inverse function of the exponential $e^x$.
 			The graph of the function $\ln(x)$
-			passes through the following coordinates:
+			passes through the following coordinate pairs:
 			$(\frac{1}{e^2},-2)$, 
 			$(\frac{1}{e},-1)$, 
 			$(1,0)$, 
@@ -498,6 +504,8 @@
 		We often express sequences by writing explicitly the first few values
 		the sequence $[a_0, a_1, a_2, a_3, \ldots]$,
 		which correspond to evaluating $a_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
+		We'll learn more about sequences and their properties in Section~\ref{sec:sequences_and_series}.
+		
 
 
 
@@ -557,7 +565,7 @@
 		One full circle is $360^\circ$ or $2\pi$ radians.
 		Some common angle measures are $30^\circ = \frac{\pi}{6}$,
 		$45^\circ\!=\!\frac{\pi}{4}$, $60^\circ = \frac{\pi}{3}$, and $90^\circ = \frac{\pi}{2}$.
-		The trigonometric functions $\sin$, $\cos$, and $\tan$ expect inputs in radians,
+		The trigonometric functions $\sin$ and $\cos$ take inputs in radians,
 		so we often convert angles from degrees to radians. % and back.
 
 
@@ -568,7 +576,7 @@
 			as shown in Figure~\ref{fig:panel_function_graphs2}~(a).
 			This graph corresponds to the vertical position of the point turning around on the unit circle,
 			as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}~(a).
-			We also use the sine function to find the $y$-component of unit length,
+			We also use the sine function to find the $y$-component of a unit length,
 			as shown in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}~(b).
 
 			%	The graph of the function $\sin(\theta)$  passes through the following $(x,y)$ coordinates:
@@ -606,13 +614,12 @@
 
 		\subsubsection{Cosine function}
 
-			The cosine function is the same as the sine function \emph{shifted} by $\frac{\pi}{2}$ to the left:
+			The cosine function is the same as the sine function shifted by $\frac{\pi}{2}$ to the left:
 			$f(\theta) = \cos(\theta) = \sin(\theta+\frac{\pi}{2})$,
 			as shown in Figure~\ref{fig:panel_function_graphs2}~(b).
-			The cosine function represents the horizontal position of the unit circle,
-			and the $x$-component of unit length,
+			The cosine function represents the horizontal position of a point on the unit circle,
+			and the $x$-component of a unit length,
 			as illustrated in Figure~\ref{fig:trigonometric_functions_as_point_or_as_triangle}.
-
 
 			%	The graph of the function $y=\cos(x)$  passes through the following $(x,y)$ coordinates:
 			%	$(0,1)$, $(\frac{\pi}{6},\frac{\sqrt{3}}{2})$, $(\frac{\pi}{4},\frac{\sqrt{2}}{2})$, $(\frac{\pi}{3},\frac{1}{2})$, 
@@ -637,12 +644,12 @@
 
 
 
-		\subsubsection{Tangent function}
-
-			The tangent function is defined as the ratio of the sine and cosine functions:
-			$f(\theta) = \tan(\theta) \eqdef \frac{ \sin(\theta) } { \cos(\theta) }$.
-			The graph of the tangent functionis shown in Figure~\ref{fig:panel_function_graphs2}~(c).
-
+			%	\subsubsection{Tangent function}
+			%
+			%		The tangent function is defined as the ratio of the sine and cosine functions:
+			%		$f(\theta) = \tan(\theta) \eqdef \frac{ \sin(\theta) } { \cos(\theta) }$.
+			%		The graph of the tangent function is shown in Figure~\ref{fig:panel_function_graphs2}~(c).
+			%
 			%    \item	Domain: $\{ x\in \mathbb{R} \;|\; x\neq \frac{(2n+1)\pi}{2} \textrm{ for any } n \in \mathbb{Z} \} $
 			%    \item	Image: $\mathbb{R}$
 			%    \item	The function $\tan$ is periodic with period $\pi$.
@@ -668,14 +675,21 @@
 			\centering
 			\includegraphics[width=0.99\columnwidth]{figures/calculus/panel_function_graphs2.pdf}%
 			\vspace{-2mm}
-			\caption{	Graphs of the trigonometric functions $\sin(\theta)$, $\cos(\theta)$, and $\tan(\theta)$.}
+			\caption{	Graphs of the trigonometric functions $\sin(\theta)$ and $\cos(\theta)$ showing two full cycles.
+					The graphs represent the vertical and horizontal position of a point that makes completes two full
+					circles around the unit circle.}
 			\label{fig:panel_function_graphs2}
 		\end{figure}
 
 
 		% APPLICATIONS
-		We can use the trigonometric functions $\sin(\theta)$, $\cos(\theta)$, and $\tan(\theta)$
-		to calculate the \emph{components} of vectors.
-		Sines and cosines are also describe waves and periodic motion in physics.
+		We use the trigonometric functions $\sin(\theta)$ and $\cos(\theta)$
+		to compute components of vectors in different directions.
+		The sine and cosine functions are also used describe waves and periodic motion in physics.
+		In this tutorial,
+		we won't discuss these applications too much,
+		and instead focus on the trigonometric functions' graphs and rates of change.
 
 
+
+\bigskip	% LAYOUT
