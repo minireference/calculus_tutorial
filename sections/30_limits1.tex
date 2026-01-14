@@ -22,7 +22,7 @@
 		% with infinite number of steps
 		that was invented by Archimedes of Syracuse around 250 BCE.
 		Archimedes wanted to calculate the area of a circle of radius $r=1$.
-		Today we know the formula for the are of the circle is $A_{\circ} = \pi r^2$,
+		Today we know the formula for the area of the circle is $A_{\circ} = \pi r^2$,
 		so the area of a circle with radius $r=1$ is $\pi$.
 		Try to place yourself in Archimedes's shoes (sandals?)
 		and suppose that you don't know the formula.
@@ -38,7 +38,7 @@
 			\centering
 			\includegraphics[width=0.99\columnwidth]{figures/calculus/inscribed-polygons.pdf}%
 			\vspace{-3mm}
-			\caption{	Approximations to the area of circle using a hexagon,
+			\caption{	Approximations to the area of a circle using a hexagon,
 					an octagon, and a dodecagon inscribed inside a circle of radius $r$.}
 			\label{fig:inscribed-hexagon-octagon-dodecagon}
 		\end{figure}
@@ -56,13 +56,13 @@
 		However,
 		the polygon with $n=12$ is starting to look almost like a circle.
 		We can use our imagination to see that the approximation $A(n) \approx A_{\circ}$
-		will become more and more accurate as $n$ becomes larger and larger.
-		Archimedes only managed to compute an approximation with a $n=96$ sided polygon,
+		will become increasingly accurate as $n$ becomes larger and larger.
+		Archimedes only managed to compute an approximation with a $96$-sided polygon,
 		but thanks to computers we can push the approximation to much higher values of $n$.
 		For example,
 		using a $1000$-sided polygon gives us
 		an approximation that is accurate to four decimals $A(1000) = 3.1415\ldots$.
-		Using $n=10K$ we get an approximation to $\pi$
+		Using $n=10\,000$ we get an approximation to $\pi$
 		that is accurate to six decimals $A(10000) = 3.141592\ldots$.
 		See the computational notebook \href{https://bit.ly/calctut3}{\tt{bit.ly/calctut3}}
 		for the details of these calculations.
@@ -103,7 +103,7 @@
 		you'll owe them $(1+\frac{1}{2})(1+\frac{1}{2}) = 2.25$.
 
 		If the bank computes the interest three times per year,
-		the amounted owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
+		the amount owed after one year is $(1+\frac{1}{3})(1+\frac{1}{3})(1+\frac{1}{3}) = 2.370$.
 		If they compute the interest four times per year (quarterly),
 		then you'll owe $(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})(1+\frac{1}{4})  = 2.441$.
 		Note the amount owed after one year keeps changing,
@@ -156,10 +156,10 @@
 
 	We defined the number $\pi$ as the limit $\lim_{n \to \infty} A(n)$
 	and the number $e$ as the limit $\lim_{n\to \infty} \left( 1 + \tfrac{1}{n}\right)^{\!n}$.
-	These definition of the numbers $\pi$ and $e$ using as limits
-	are go beyond the regular math operations we learn in high school math.
+	The definitions of the numbers $\pi$ and $e$ as limits
+	go beyond the regular math operations we learn in high school math.
 	The limit expression $\lim_{n \to \infty}$ doesn't describe any particular number $n$,
-	but the \emph{process} of plugging in large and larger values of $n$.
+	but the \emph{process} of plugging in larger and larger values of $n$.
 	% This is what the limit notation $\lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
 	% it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
 	% as $n$ goes to infinity.
@@ -206,7 +206,7 @@
 		what happens to a function when its input variable tends to infinity.
 		Does $f(x)$ approach a finite number,
 		or does it keep growing to $\infty$?
-		The function $f(x)$ is said to \emph{converge} to $L$
+		The function $f(x)$ \emph{converges} to $L$
 		if the function approaches the value $L$ for large values of $x$:
 		\[
 			\lim_{x \to \infty} f(x)  =  L.
@@ -303,7 +303,7 @@
 
 		\subsubsection{Example 4}
 
-			Calculate $\lim\limits_{x\to \infty} \frac{2x+1}{x}\,$.
+			Calculate $\lim_{x\to \infty} \frac{2x+1}{x}\,$.
 			We're given the function $f(x)=\frac{2x+1}{x}$
 			and must determine what the function looks like for very large values of $x$.
 			We can rewrite the function as $\frac{2x+1}{x}=2+\frac{1}{x}$
@@ -314,10 +314,9 @@
 					= \lim_{x\to \infty} 2 + \!\lim_{x\to \infty} \tfrac{1}{x} 
 					= 2 + 0 = 2.
 			\]
-			As the denominator $x$ becomes larger and larger,
-			the fraction $\frac{1}{x}$ becomes smaller and smaller,
-			% so $\displaystyle \lim_{x \to \infty} \tfrac{1}{x} = 0$,
-			so the second term goes zero,
+			As $x$ goes to infinity,
+			$\frac{1}{x}$ goes to $0$,
+			so the second term vanishes,
 			leaving only the $2$.
 			See Figure~\ref{fig:limits_examples}~(b) for an illustration.
 
@@ -327,7 +326,7 @@
 	\label{limits:limits_to_zero}
 
 		The limit expression $\lim_{x \to 0} f(x)$
-		describes the behaviour of the function $f$ for infinitely small values of $x$.
+		describes the behaviour of the function $f$ for values of $x$ very close to $0$.
 		The limit $\lim_{x \to 0} f(x)$,
 		read ``the limit of $f(x)$ as $x$ goes to zero,''
 		asks us to evaluate the function $f$ for inputs like
@@ -335,10 +334,11 @@
 		to see the behaviour of the function for very small values of $x$.
 
 		For example,
+		when $x > 0$,
 		the limit $\lim_{x \to 0} \frac{1}{x} = \infty$.
 		In words,
-		the function $f(x) = \frac{1}{x}$ ``blows up'' to infinity as $x$ goes to $0$.
-		See Figure~\ref{fig:limits_examples}~(a).
+		the function $f(x) = \frac{1}{x}$ ``blows up'' to infinity as $x$ goes to $0$,
+		as shown in Figure~\ref{fig:limits_examples}~(a).
 
 
 	\subsection{Limits to a number}
@@ -347,8 +347,8 @@
 		More generally,
 		the limit of $f(x)$ approaching $x=a$ \emph{from the right}
 		is denoted $\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta)$.
-		We use the symbol $\delta$ (the Greek letter \emph{delta}) to describes a distance
-		that gets smaller and smaller.
+		We use the symbol $\delta$ (the Greek letter \emph{delta})
+		to describe a distance that gets smaller and smaller.
 		This limit expression describes the value of the function $f$
 		as the input $x$ gets closer and closer to $a$
 		with values like $a+0.1$, $a+0.01$, $a+0.001$, $a+0.0001$, etc.
@@ -383,7 +383,7 @@
 		If the function $f(x)$ obeys, $f(a) = \lim_{x\to a} f(x)$,
 		we say the function $f(x)$ is \emph{continuous} at $x=a$.
 		Geometrically,
-		the graph of the continuous function at $x=a$ is ``smooth'' curve
+		the graph of the continuous function at $x=a$ is a ``smooth'' curve
 		that doesn't have any hole or a jump at $x=a$.
 		When a function is continuous,
 		we can draw its graph using a single pen stroke
@@ -491,7 +491,7 @@
 
 	\subsection{Computing limits using SymPy}
 	
-		We can use SymPy to compute limit expression,
+		We can use SymPy to compute limit expressions,
 		which allows us to check the answers we obtain using pen-and-paper calculations.
 		We'll start by importing the \tt{sympy} module under the alias \tt{sp},
 		defining the symbolic variable $\tt{n} = n$,
@@ -502,10 +502,13 @@
 		>>> n = sp.symbols("n")
 		\end{codeblock}
 
-		To compute limits,
+		To compute limit expressions,
 		we use the SymPy function \tt{sp.limit(expr,var,value)},
-		which evaluates the expression \tt{expr},
-		as the variable \tt{var} approaches \tt{value}.
+		which returns $\lim_{\tt{var} \to \tt{value}} \tt{expr}$.
+		%	as the variable \tt{var} approaches \tt{value}.
+		% ALT
+		%	which evaluates the expression \tt{expr},
+		%	as the variable \tt{var} approaches \tt{value}.
 		For limits to infinity,
 		we use the symbol \texttt{sp.oo} (two lowercase \texttt{o}s),
 		which kind of looks like the infinity symbol $\infty$.
@@ -536,7 +539,7 @@
 		% EXAMPLE 1/x
 		Let's now compute the limits $\lim_{x \to \infty} \tfrac{1}{x}$
 		and $\lim_{x \to 0^+} \tfrac{1}{x}$.
-		We fist define the symbol \tt{x}
+		We first define the symbol \tt{x}
 		then call the function \tt{sp.limit} to evaluate the two limits
 		involving the expression $\tt{1/x} = \frac{1}{x}$:
 
@@ -567,7 +570,7 @@
 
 		% EXAMPLE  Heaviside
 		\noindent
-		To calculate the limit form the left or the right of a number,
+		To calculate the limit from the left or the right of a number,
 		we provide a fourth argument \tt{"-"} or \tt{"+"} to \tt{sp.limit}.
 		%		The following SymPy calculations confirm the limits of the Heaviside function
 		%		when approaching $x=0$ from the left and from the right.
@@ -631,15 +634,14 @@
 		\begin{itemize}
 
 			\item The derivative function $f^{\prime\!}(x)$
-				describe the % instantaneous
-				rate change of the function $f(x)$ at $x$.
+				describes the rate of change of the function $f(x)$ at $x$.
 				In Section~\ref{sec:derivatives},
 				we'll calculate derivatives by evaluating limits of the form $\lim_{\delta \to 0}$.
 
 			\item The integral $\int_a^b f(x) \, dx$
 				describes the area under the graph of the function $f(x)$ between $x=a$ and $x=b$.
 				In Section~\ref{sec:integrals}
-				we'll learn how to compute integrals by splitting up areas into $n$ rectangules,
+				we'll learn how to compute integrals by splitting up areas into $n$ rectangles,
 				then taking the limit $\lim_{n \to \infty}$.
 
 			\item The series $\sum_{k=1}^n a_k$ describes

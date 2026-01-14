@@ -55,7 +55,7 @@
 		Inside the curly brackets,
 		we first describe the general kind of mathematical objects we are talking about,
 		followed by the symbol ``$|$'' (which stands for ``such that''),
-		followed by the conditions that identifies the elements of the set.
+		followed by the conditions that identify the elements of the set.
 		For example,
 		the set of nonnegative real numbers $\mathbb{R}_+$
 		is defined as ``all real numbers $x$ such that $x \geq 0$,''
@@ -72,7 +72,7 @@
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.98\columnwidth]{figures/calculus/number_line_rationals_and_reals.pdf}
-				\vspace{-2mm}
+				\vspace{-3mm}
 				\caption{The real numbers $\mathbb{R}$ cover the entire number line.}
 				\label{fig:number_line_rationals_and_reals}
 			\end{figure}
@@ -83,7 +83,7 @@
 			the integers $\{\ldots, -3,-2,-1,0,1,2,3,\ldots\}$,
 			rational numbers like $-\frac{3}{2}$, $0.5$, and $\frac{9}{2}$,
 			as well as irrational numbers like $\sqrt{2}$, $e$, and $\pi$.
-			All the number you will run into when doing math
+			All the numbers you will run into when doing math
 			can be visualized as a point on the number line.
 
 
@@ -106,9 +106,9 @@
 			we're describing the process of moving to the right on the number line \emph{forever}.
 			We go past larger and larger positive numbers and never stop.
 
-			Infinity is a key concepts in calculus,
+			Infinity is a key concept in calculus,
 			so it's important that we develop a precise language to talk about
-			infinitely large numbers and procedures with infinite number of steps,
+			infinitely large numbers and procedures with an infinite number of steps,
 			which we'll do in Section~\ref{sec:limits}.
 			%  we'll learn about \emph{limits}, which allow us to describe 
 
@@ -170,7 +170,7 @@
 		For example,
 		the quadratic function is defined as $f(x) \eqdef x^2$.
 		We use the ``is defined as'' symbol $\eqdef$
-		in the definition instead of the regular equals symbols $=$.
+		in the definition instead of the regular equals sign $=$.
 		The function $f(x)$ takes any number $x$ as input,
 		and produces the square of this number as output.
 		For example,
@@ -208,8 +208,7 @@
 			The graph of the function $f$ allows us to see at a glance the behaviour of the function for many inputs.
 			Function graphs are an essential tool for calculus.
 
-			Let's see how we can use the Python modules \tt{numpy} and \tt{seaborn}
-			to plot the graph of the function $f(x) \eqdef x^2$ that we defined easlier.
+			We can use the Python to plot the graph of the function $f(x) \eqdef x^2$ that we defined earlier.
 			We start by importing the module \tt{numpy} under the alias \tt{np}.
 			Next,
 			we use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs}
@@ -225,7 +224,7 @@
 
 			\noindent
 			At this point,
-			the array \tt{xs} contain $1000$ $x$-inputs,
+			the array \tt{xs} contains $1000$ $x$-inputs,
 			while the array \tt{fxs} contains the corresponding $1000$ outputs of $f(x)$.
 			To generate the graph of $f(x)$,
 			we just need to trace a line passing through the $1000$ coordinate pairs $(x, f(x))$.
@@ -242,15 +241,16 @@
 				\centering
 				\includegraphics[width=0.9\columnwidth]{figures/calculus/graph_of_function_f_eq_x2.pdf}%
 				\vspace{-3mm}
-				\caption{	Graph of the function $f(x) = x^2$ from $x=-3$ until $x=+3$.
-						The graph of the function $f$ passes through the coordinates pairs $(x,f(x))$
+				\caption{	Graph of the function $f(x) = x^2$ from $x=-3$ to $x=+3$.
+						The graph of the function $f$ passes through the coordinate pairs $(x,f(x))$
 						for all $x$-values between $x=-3$ and $x=3$.}
 				\label{fig:graph_of_function_f_eq_x2}
 			\end{figure}
 
 			\noindent
-			We'll use this combination of \tt{np.linspace}, function evaluation, and \tt{sns.lineplot}
-			whenever we need to plot the graph of a function.
+			We'll use this combination of \tt{np.linspace},
+			function evaluation,
+			and \tt{sns.lineplot} to plot function graphs.
 			% The function \tt{plot\_func(f, xlim=[-3,3])} produces the same output.
 
 
@@ -305,7 +305,7 @@
 			For example,
 			the domain of the function $f(x) = x^2$
 			is $\mathbb{R}$ (any real number)
-			and it's image is $\mathbb{R}_+$ (nonnegative real numbers),
+			and its image is $\mathbb{R}_+$ (nonnegative real numbers),
 			so we say $f$ is a function of the form $f \colon \mathbb{R} \to \mathbb{R}_+$.
 
 			%	Another important property is called \emph{continuity},
@@ -343,7 +343,7 @@
 			Geometrically,
 			$m$ is the slope in the graph of $f(x)$.
 			Figure~\ref{fig:panel_function_graphs1}
-			show the graph of $f(x) \eqdef x$ which is the linear function with $m=1$
+			shows the graph of $f(x) \eqdef x$ which is the linear function with $m=1$
 			for which the output $f(x)$ is equal to the input $x$.
 			%
 			More generally,
@@ -361,7 +361,7 @@
 			Geometrically,
 			$x^2$ is the area of a square with side length $x$.
 			See Figure~\ref{fig:panel_function_graphs1}~(b) for the graph.
-			The outputs the quadratic function are always nonnegative numbers
+			The outputs of the quadratic function are always nonnegative numbers
 			since $x^2 \geq 0$, for all real numbers $x$.
 			%	$f(x)=x^2$ is \emph{two-to-one}: 
 			%	it sends both $x$ and $-x$ to the same output value $x^2=(-x)^2$.
@@ -371,7 +371,7 @@
 		\subsubsection{Polynomial functions}
 
 			We can combine different powers of $x$
-			to obtain the polynomial $f(x) \eqdef a_2x^2 + a_1x +a_0$,
+			to obtain the polynomial $f(x) \eqdef a_2x^2 + a_1x + a_0$,
 			where $a_2$, $a_1$, $a_0$ are arbitrary constants.
 			This is called a second degree polynomial,
 			since the highest power of $x$ it contains is $x^2$.
@@ -442,7 +442,7 @@
 			$|x|$ corresponds to the distance between $x$ and the origin of the number line.
 			%
 			We see the absolute values whenever we apply
-			the combination of squaring followed by square-root on some number,
+			the combination of squaring followed by square root on some number,
 			$\sqrt{ x^2 }  = |x|$,
 			since squaring destroys the sign.
 
@@ -462,7 +462,7 @@
 			where the fractional exponent $\frac{1}{2}$ makes sense
 			since if we square $x^{\frac{1}{2}}$,
 			we get back to $x$:
-			$\left(x^{\frac{1}{2}}\right)^2 = x^{\frac{2}{2}} = x^{1} = x$.
+			$\big(x^{\frac{1}{2}}\big)^2 = x^{\frac{2}{2}} = x^{1} = x$.
 			%
 			In addition to \emph{square} root,
 			there is also the \emph{cube root} function $f(x) = \sqrt[3]{x}  = x^{\frac{1}{3}}$,
@@ -477,6 +477,7 @@
 			The natural logarithm function is denoted
 			$f(x) \eqdef \ln(x) = \log_e(x)$.
 			The function $\ln(x)$ is the inverse function of the exponential $e^x$.
+			% MAYBE: say domain R+
 			The graph of the function $\ln(x)$
 			passes through the following coordinate pairs:
 			$(\frac{1}{e^2},-2)$, 
@@ -492,6 +493,11 @@
 		%gaussian-like erf $e^{-x^2}$
 		%sigmoid $\frac{1}{1-e^{-x}}$
 
+
+		\noindent
+		There are many other functions worth knowing about,
+		but if you're familiar with the six function shown in Figure~\ref{fig:panel_function_graphs1},
+		you're doing well.
 
 
 
@@ -676,7 +682,7 @@
 			\includegraphics[width=0.99\columnwidth]{figures/calculus/panel_function_graphs2.pdf}%
 			\vspace{-2mm}
 			\caption{	Graphs of the trigonometric functions $\sin(\theta)$ and $\cos(\theta)$ showing two full cycles.
-					The graphs represent the vertical and horizontal position of a point that makes completes two full
+					The graphs represent the vertical and horizontal position of a point that completes two full
 					circles around the unit circle.}
 			\label{fig:panel_function_graphs2}
 		\end{figure}
@@ -685,11 +691,10 @@
 		% APPLICATIONS
 		We use the trigonometric functions $\sin(\theta)$ and $\cos(\theta)$
 		to compute components of vectors in different directions.
-		The sine and cosine functions are also used describe waves and periodic motion in physics.
+		The sine and cosine functions are also used to describe waves and periodic motion in physics.
 		In this tutorial,
 		we won't discuss these applications too much,
 		and instead focus on the trigonometric functions' graphs and rates of change.
 
 
 
-\bigskip	% LAYOUT

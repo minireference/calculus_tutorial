@@ -11,7 +11,7 @@
 		\[
 			A_f(a,b) = \int_{x=a}^{x=b} f(x) \, dx.
 		\]
-		The numbers $a$ and $b$ and called the \emph{limits of integration}.
+		The numbers $a$ and $b$ are called the \emph{limits of integration}.
 		We refer to this type of integral as a \emph{definite integral}
 		since both limits of integration are defined.
 		% so its value is fully determined.
@@ -24,6 +24,7 @@
 					corresponds to the area of the shaded region $A_f(a,b)=\int_a^b f(x)\,dx$.}
 			\label{fig:integral_as_region_under_curve_Aab}
 		\end{figure}
+		% MAYBE: This equals geometric area when $f(x)\ge 0$ on $[a,b]$; otherwise the integral gives signed area.
 
 		\ifthenelse{\boolean{FORSTATSBOOK}}{
 			The notion of an integral is foundational for understanding continuous random variables.
@@ -89,12 +90,18 @@
 			%		where $\alpha$ and $\beta$ are two arbitrary constants.
 
 			% \textbf{Integral at a single point.}
-			\item Integrals over region with zero width have zero value:
+			\item An integral over a region with zero width has zero value:
 				$\int_a^a f(x)\, dx = 0$.
 				Geometrically,
 				this integral defines a region with height $f(x)$ and width~$0$,
 				so it has zero area.
 				% see https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-6/v/same-integration-bounds
+
+			% MAYBE: mention signed property 
+
+			% MAYBE: add
+			% Reversing the limits changes the sign: $\int_b^a f(x),dx = -\int_a^b f(x),dx$.
+			
 
 		\end{itemize}
 
@@ -190,7 +197,7 @@
 
 			One way to approximate the area under the graph of $h(x)$
 			is to compute the \emph{Riemann sum} approximation,
-			which splits the region into bunch of vertical rectangular strips of fixed width.
+			which splits the region into a bunch of vertical rectangular strips of fixed width.
 			The height of each rectangular strip varies depending on $h(x)$.
 			Look ahead to figures \ref{fig:riemann_sum_n10_n20} and \ref{fig:riemann_sum_n50_n100}
 			to see where we're going with this.
@@ -200,7 +207,8 @@
 			If we split the area $A_h(0,2)$ into $n=20$ strips,
 			we obtain the more accurate approximation $A_h(0,2) \approx 5.13$.
 			The approximation with $n=1000$ rectangular strips gives us $A_h(0,2) \approx 5.329$,
-			and $n=1\,000\,000$ rectangles produces $A_h(0,2) \approx 5.333329$.
+			and using $n=1\,000\,000$ rectangles,
+			we get $A_h(0,2) \approx 5.333329$.
 			The more finely we chop up the region into rectangular strips,
 			the closer we get to the \emph{exact} value of the integral,
 			which is $\int_{0}^2 h(x)\,dx=5\frac{1}{3} = 5.\overline{3} = 5.333333333333333\ldots$.
@@ -214,7 +222,7 @@
 		let alone the sum with $n=1\,000\,000$ terms!
 		Instead,
 		we'll write a computer program that performs the integration procedure for us.
-		Modern computer are really good at this stuff.
-		Indeed early computers were often called ``numerical integrator''
+		Modern computers are really good at this stuff.
+		Indeed early computers were often called ``numerical integrators''
 		since they were built primarily to evaluate integrals.
 

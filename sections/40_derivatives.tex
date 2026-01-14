@@ -17,7 +17,7 @@
 	for describing ``the slope of the function $f$ at $x$.''
 
 	% Before we look at the definition of the derivative,
-	Let's start by calculate the \emph{average} slope of the function between two points.
+	Let's start by calculating the \emph{average} slope of the function between two points.
 	Consider the points $(x,f(x))$ and $(x+\Delta x, f(x+\Delta x))$ on the graph of the function.
 	We'll denote the horizontal distance that separates the two points $\Delta x$ (read \emph{delta} x),
 	and similarly denote the vertical distance between the points as $\Delta y = f(x+\Delta x) - f(x)$.
@@ -27,7 +27,7 @@
 	at $x=1$ for different horizontal distance $\Delta x$.
 	When $\Delta x = 2$ the average slope is $m = \frac{\Delta y}{\Delta x} = \frac{8}{2} = 4$.
 	When $\Delta x = 1$ we get $m = \frac{\Delta y}{\Delta x} = \frac{3}{1} = 3$.
-	and where $\Delta x = 0.3$ the slope is $m = \frac{\Delta y}{\Delta x} = \frac{0.69}{0.3} = 2.3$.
+	When $\Delta x = 0.3$ the slope is $m = \frac{\Delta y}{\Delta x} = \frac{0.69}{0.3} = 2.3$.
 	If we continue this process with even smaller $\Delta x$,
 	we'll obtain the \emph{instantaneous} slope at the point $x$.
 
@@ -46,12 +46,14 @@
 		f^{\prime\!}(x)
 			\eqdef \lim_{\delta \to 0} \frac{f(x+\delta)\ - \ f(x)}{\delta}\,.
 	\]
+	Here $\delta$ plays the same role as $\Delta x$,
+	but goes to zero.
 	In words,
-	this formula describes the rise-over-run calculation
+	this derivative formula describes the rise-over-run calculation
 	for an infinitely short horizontal distance $\delta$.
 	
 	The derivative is a function of the form $f^{\prime\!}: \mathbb{R} \to \mathbb{R}$.
-	It takes the value $x$ as input and tells you the slope the function $f$ at that value.
+	It takes the value $x$ as input and tells you the slope of the function $f$ at that value.
 	Figure~\ref{fig:derivative_as_slope_xsq} shows the slope of the function $f(x) = x^2$
 	at two different locations: at $x=-0.5$ and at $x=1$.
 	% the slope of the function is the same as the line passing through this point
@@ -93,7 +95,7 @@
 	\subsection{Numerical derivative calculations}
 
 		Here is the Python code for computing
-		a numerical approximations to the derivative the function \tt{f} at the point~\tt{x}:
+		a numerical approximation to the derivative of the function \tt{f} at the point~\tt{x}:
 
 		\begin{codeblock}[]
 		>>> def differentiate(f, x, delta=1e-9):
@@ -105,8 +107,8 @@
 		\noindent
 		The function \tt{differentiate} calculates the derivative using a finite step $\tt{delta} = 10^{-9}$
 		instead of the infinitely small step $\delta$ in the math definition of the derivative.
-		This means,
-		the value returned by \tt{differentiate} will be an approximation to the true derivative.
+		This means the value returned by \tt{differentiate}
+		will be an approximation to the true derivative.
 
 		Let's now define a Python function \tt{f} that corresponds to the math function $f(x)=x^2$
 		and use \tt{differentiate} to find the slope of $f$ when $x=1$:
@@ -150,7 +152,7 @@
 		then you can reuse that formula
 		whenever you need to compute $f^{\prime\!}(x)$ in later calculations.
 
-		Table~\ref{table:derivatives} shows the derivatives several functions.
+		Table~\ref{table:derivatives} shows the derivatives of several functions.
 		I invite you to mentally bookmark this page so you can come back to it
 		when you need to know the derivatives of some function.
 
@@ -199,7 +201,7 @@
 	\subsection{Derivative rules}
 
 		In addition to the table of derivative formulas,
-		there are some important derivatives rules
+		there are some important derivative rules
 		that allow you to find derivatives of \emph{composite} functions.
 
 		\paragraph{Constant multiple rule}
@@ -282,8 +284,9 @@
 
 	\subsection{Examples}
 
-		Armed with the derivative formulas from Table~\ref{table:derivatives} and the derivative rules from the previous section,
-		you can the derivative of any function,
+		Armed with the derivative formulas from Table~\ref{table:derivatives}
+		and the derivative rules from the previous section,
+		you can find the derivative of any function,
 		no matter how complicated.
 		Let's look at some examples.
 
@@ -306,7 +309,7 @@
 
 		The \texttt{SymPy} function \texttt{sp.diff} computes the derivative of any expression.
 		For example,
-		here is how to compute the derivative of the function $f(x) = mx +b$:
+		here is how to compute the derivative of the function $f(x) = mx + b$:
 
 		\begin{codeblock}[sympy-diff-line]
 		>>> m, x, b = sp.symbols("m x b")
@@ -361,7 +364,7 @@
 
 
 
-    
+
 	\subsection{Applications of derivatives}
 
 		Derivatives are used in physics, chemistry, computing, biology, business,
@@ -385,7 +388,7 @@
 			Look at the right side of Figure~\ref{fig:derivative_as_slope_xsq}
 			for an illustration of this tangent line.
 
-			The tangent line $T_1$ is also called a \emph{first order approximation} to the function $f$,
+			The tangent line $T_1$ is also called a \emph{first-order approximation} to the function $f$,
 			since it has the same value and the same derivative as the function $f$,
 			$T_1(1) = f(1)$ and $T'_1(1) = f^{\prime\!}(1)$.
 			% The tangent line $T_1(x)$ has the same value and slope as the function $f(x)$ at $x=1$.
@@ -399,7 +402,7 @@
 	\subsection{Solving optimization problems using derivatives}
 	\label{derivatives:optimization}
 		
-		We're often interesting in finding the values $x$ where some function $f(x)$
+		We're often interested in finding the values $x$ where some function $f(x)$
 		reaches its \emph{minimum} value.
 		Knowing the derivatives of the function $f(x)$
 		is very useful for solving optimization problems.
@@ -419,7 +422,7 @@
 
 			\item[(B)]	The slope of $f(x)$ is zero at the minimum: $f^{\prime\!}(0) = 0$.
 
-			\item[(C)]	The graph of the function looks locally like bottom of a valley at $x=0$,
+			\item[(C)]	The graph of the function looks locally like the bottom of a valley at $x=0$.
 					This means the second derivative of $f(x)$
 					is positive at that point $f^{\prime\prime\!}(0) > 0$.
 			
@@ -437,13 +440,13 @@
 			The values of $x$ where the derivative is zero
 			are called the \emph{critical points} of the function and denoted $x_1^*$, $x_2^*$, etc.
 			Observation~(B) tells us that optimum values (maximum or minimum)
-			occurs at a critical point of the function.
+			occur at the critical points of the function.
 			Observation~(C) tells us that we can identify a critical point $x_j^*$,
-			that corresponds to minimum
+			that corresponds to a minimum
 			if the second derivative is positive at that point $f^{\prime\prime\!}(x_j^*)>0$ (positive curvature).
 			In contrast,
-			a critical point $x_k^*$ here $f^{\prime\prime\!}(x_k^*)< 0$ (negative curvature) is a maximum.			
-			Using these observations lead us to the following analytical procedure
+			a critical point $x_k^*$ where $f^{\prime\prime\!}(x_k^*)< 0$ (negative curvature) is a maximum.			
+			These observations lead us to the following analytical procedure
 			for finding minima and maxima of the function $f(x)$:
 
 			\begin{enumerate}
@@ -471,8 +474,8 @@
 			If $f^{\prime\!}(x^*-0.01)$ is positive and $f^{\prime\!}(x^*+0.01)$ is negative,
 			then the point $x^*$ is a maximum.
 			If $f^{\prime\!}(x^*-0.01)$ and $f^{\prime\!}(x^*+0.01)$ have the same sign,
-			the value $x^*$ is a  \emph{saddle point},
-			which is neither a minimum or a maximum.
+			the value $x^*$ is a \emph{stationary inflection point}
+			that is neither a minimum nor a maximum.
 
 			\paragraph{Example 9}
 
@@ -512,7 +515,7 @@
 			if we repeatedly take steps in the ``downhill'' direction,
 			we'll end up at the bottom of a valley.
 			This is the idea behind the \emph{gradient descent algorithm},
-			which allows us to find find the minimum of any function.
+			which allows us to find the minimum of any function.
 			We start at some point $x=x_0$
 			and repeatedly take steps in the direction where the function is decreasing.
 			% The name \emph{gradient} refers to the derivative operation for multivariable functions.
@@ -533,7 +536,7 @@
 
 			The  \tt{gradient\_descent} procedure takes two arguments as inputs:
 			the function we want to minimize \tt{f},
-			and a initial value $x_0$ where to start the minimization process.
+			and an initial value $x_0$ where to start the minimization process.
 			The procedure then visits the points $x_1$, $x_2$, $x_3$, etc.,
 			by repeatedly taking steps
 			in the direction opposing the derivative at the current $x$.

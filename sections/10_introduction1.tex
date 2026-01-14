@@ -7,7 +7,7 @@
 	Calculus is the study of functions and their properties.
 	The two calculus techniques we'll learn in this tutorial
 	are \emph{derivatives},
-	which tell how functions \emph{change} over time,
+	which tell us how functions \emph{change} over time,
 	and \emph{integrals},
 	which compute the total \emph{accumulation} of functions over time.
 	Derivatives and integrals might sound like fancy math jargon,
@@ -45,6 +45,7 @@
 			and so on until $t=360$[s] when the download will be done.
 
 			To estimate the time that remains before the download completes,
+			assuming the current speed stays roughly constant,
 			we can divide the amount of data that remains to be downloaded
 			by the current download speed:
 			\[
@@ -75,7 +76,7 @@
 			is growing at the rate of $2$[MB] each second.
 			In calculus,
 			we describe the total file size accumulated until time $t=\tau$ (the Greek letter \emph{tau})
-			as the \emph{integral} of the download rate $f^{\prime\!}(x)$ between $t=0$ and $t=\tau$:
+			as the \emph{integral} of the download rate $f^{\prime\!}(t)$ between $t=0$ and $t=\tau$:
 			\[
 				f(\tau) \; = \; \int_{t=0}^{t=\tau}  f^{\prime\!}(t)\, dt.
 			\]
@@ -89,7 +90,7 @@
 			into many short time intervals $dt$ of length $1$[s].
 			During each second,
 			the file size grows by $f^{\prime\!}(t)\,dt$,
-			where $f^{\prime\!}(t)$ is the the download rate measured in [MB/s],
+			where $f^{\prime\!}(t)$ is the download rate measured in [MB/s],
 			and $dt$ is a time interval of duration $1$[s].
 			%	Note the units work out:
 			%	the data downloaded during one second is $f^{\prime\!}(t)dt$[MB].
@@ -107,8 +108,8 @@
 	\noindent
 	The situation described in the above example
 	shows that calculus concepts are not some theoretical constructs reserved for math specialists,
-	but something you encounter everyday.
-	The derivative $q^{\prime\!}(t)$ describe the rate of change of the quantity $q(t)$.
+	but something you encounter every day.
+	The derivative $q^{\prime\!}(t)$ describes the rate of change of the quantity $q(t)$.
 	The integral $\int_a^b q(t)dt$ measures the total accumulation of the quantity $q(t)$
 	during the time period from $t=a$ to $t=b$.
 
@@ -233,7 +234,7 @@
 			Most practical applications of calculus don't require exact symbolic answers.
 			Engineers don't care about the exact value of the square root of two $\sqrt{2}$,
 			% (the length of the diagonal of a square with side length 1)
-			and instead represent $\sqrt{2}$ approximately the floating point number
+			and instead represent $\sqrt{2}$ approximately the floating-point number
 			$1.4142135623730951$ on a computer.
 			This numerical approximation is good enough for most engineering and scientific use cases.
 			What we give up in mathematical exactitude,
@@ -314,14 +315,14 @@
 		Many laws of nature are expressed in terms of derivatives and integrals,
 		so it's essential that you learn the language of calculus if you want to study science.
 		%
-		In all this areas,
+		In all these areas,
 		the quantities of interest are described by functions
 		and we use derivatives and integrals to do various useful calculations based on these functions.
 		For example,
 		derivatives are used for optimization,
 		and integrals are used to compute probabilities in statistics and machine learning.
 		%
-		This is the power of math abstraction:
+		This is the power of mathematical abstraction:
 		the calculus techniques you learn for analyzing the rates of change of functions
 		apply to solving real-world problems in many different domains.
 		% ALT. apply these techniques in any domain.
