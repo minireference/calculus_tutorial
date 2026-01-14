@@ -3,11 +3,13 @@
 	\subsection{Act 3: Fundamental theorem of calculus}
 
 		Note the pattern in the formulas for the integral functions $F_0(b)$ and $G_0(b)$.
-		The integral function of the constant function $f(x)=3$ was a linear function $F_0(b) = 3b$.
-		The integral of the linear function $g(x) = x$ is a quadratic function $G_0(x) = \frac{1}{2}b^2$.
+		The integral function of the constant function $f(x)=3$
+		is a linear function $F_0(b) = 3b$.
+		The integral of the linear function $g(x) = x$
+		is a quadratic function $G_0(b) = \frac{1}{2}b^2$.
 		%	The integral of the quadratic polynomial $h(x) = 4 - x^2$
 		%	is a third degree polynomial $H_0(b) = 4b - \frac{1}{3}b^3$.
-		In each case,
+		In both cases,
 		the integral function seems to increase the degree of the function.
 		What is up with that?
 		Is this a coincidence,
@@ -62,12 +64,10 @@
 		\textbf{the derivative operation is the inverse of the integral operation}.
 		If you perform the integral operation $\int \tt{<f>}\,dx$
 		followed by the derivative operation $\frac{d}{dx}[\tt{<f>}]$ on any function $\tt{<f>}$,
-		you'll get back to original function:
+		you'll get back to the original function:
 		\[
 			\frac{d}{dx} \int_c^x f(u)\,du = f(x).
 		\]
-
-		\noindent
 		Let's use SymPy to verify that the fundamental theorem of calculus is true.
 		We'll start with the function $\tt{f} = f(x) = x^2$,
 		compute its integral function $\tt{F}$ using \tt{sp.integrate},
@@ -83,8 +83,9 @@
 		\end{codeblock}
 
 		\noindent
-		We see that sequence $\tt{diff(integrate(}f(x)\tt{))} = \frac{d}{dx} \int_0^x f(u)\,du$
-		bring us back to the original $f(x)$ we started from.
+		We confirm that that the sequence of operations
+		$\frac{d}{dx} \int_0^x f(u)\,du  = \tt{sp.diff(sp.integrate(}f(x)\tt{))}$
+		brings us back to the original $f(x)$ we started from.
 
 
 		% DIRECTION 2
@@ -93,7 +94,7 @@
 		then $f$ is also the undo action for $f^{-1}$:
 		$f\!\left( f^{-1}(y) \right) = y$.
 		Similarly,
-		the inverse relationship between integrals and derivative holds in the other direction too.
+		the inverse relationship between integrals and derivatives holds in the other direction too.
 		\textbf{The integral operation is the inverse operator of the derivative operation}.
 		If we start with some function $G(x)$,
 		calculate its derivative function $G^{\prime\!}(x)$,
@@ -105,16 +106,14 @@
 		\]
 		% The constant $C$ 
 		%  choice of the starting point for integration
-
-		\noindent
 		Let's use SymPy to verify this formula.
 		We'll start with the function $\tt{G} = G(x) = x^3$,
-		commute its derivative $\tt{dGdx} = G^{\prime\!}(x)$ using \tt{sp.diff},
+		compute its derivative $\tt{dGdx} = G^{\prime\!}(x)$ using \tt{sp.diff},
 		then use \tt{sp.integrate} to compute the integral function of $G^{\prime\!}(x)$.
 
 		\begin{codeblock}[]
 		>>> G = x**3
-		>>> dGdx = sp.diff(F, x)
+		>>> dGdx = sp.diff(G, x)
 		>>> dGdx
 		3*x**2
 		>>> sp.integrate(dGdx, x)
@@ -132,7 +131,7 @@
 			gives us a way to compute integrals and integral functions
 			by ``reverse engineering'' derivatives.
 			In order to explain this idea,
-			we'll introducing a new concept.
+			we'll introduce a new concept.
 			
 			\begin{shadebox}
 				\vspace{1mm}
@@ -146,7 +145,7 @@
 			In words,
 			an antiderivative of $f(x)$ is a function whose derivative is $f(x)$.
 			There is no single antiderivative function,
-			since adding an constant to an antiderivative function
+			since adding any constant $C$ to an antiderivative function
 			still satisfies the definition $\frac{d}{dx}\big[ F(x) + C \big] = f(x)$,
 			because the derivative of the constant $C$ is zero.
 			%	Instead of saying \emph{the} antiderivative of $f(x)$,
@@ -162,14 +161,14 @@
 			%	every antiderivative function $F(x) + C$
 			%	is equal to an integral function $F_c(x)$ for some starting point $c$.
 
-			This equivalence gives us a analytical shortcut
-			to find the integrals functions $F_0(b) = \int_0^b f(x)\,dx$
+			This equivalence gives us an analytical shortcut
+			for obtaining the integral function $F_0(b) = \int_0^b f(x)\,dx$
 			by finding the antiderivative function of $f(x)$.
 			% for many simple functions $f(x)$.
 			% If we can find an  such that $F^{\prime\!}(x) = f(x)$,
 			% then we know $F_0(b) = F(b) + C$.
 			To find an antiderivative of $f(x)$,
-			we can look for a function $F(x)$ whose derivative is $f(x)$.
+			we look for a function $F(x)$ whose derivative is $f(x)$.
 			We can use the table of derivative formulas
 			(Table~\ref{table:derivatives} on page~\pageref{table:derivatives})
 			in the reverse direction to find antiderivatives.
@@ -213,12 +212,12 @@
 			%can be used in the opposite direction as integral formulas.
 			
 			%Remember to always add a constant term $+C$ to your answer.
-			%The answer to the indefinite integral question $\int\!f(x)\:dx$ is not a single function $F(x)$,
+			%The answer to the indefinite integral question $\int f(x)\,dx$ is not a single function $F(x)$,
 			%but a whole family of functions $F(x)+C$ that differ by an additive constant $C$.
 			
 
-			Let's use the derivatives ``reverse engineering'' procedure to
-			find the integral function $H_0(b)$ in Example~13.
+			Let's use the antiderivative reverse engineering procedure
+			to find the integral function $H_0(b)$ in Example~13.
 			
 
 			\paragraph{Example 13 continued}
@@ -237,7 +236,7 @@
 				we can guess that antiderivative $H(x)$ must contain a $x^3$ term,
 				because taking the derivative of a cubic term results in a quadratic term.
 				Therefore,
-				the antiderivative function we're looking for has the form $H(x)=3x - kx^3$,
+				the antiderivative function has the form $H(x) = 4x - kx^3$,
 				for some multiplicative constant $k$.
 				Pick the constant $k$ that makes this equation true:
 				$H^{\prime\!}(x) = 4 - 3kx^2 = 4 - x^2$.
@@ -246,8 +245,7 @@
 				and so the antiderivative function
 				we're looking for is $H(x) = 4x - \frac{1}{3}x^3 + C$.
 				The equivalence between antiderivatives and integral functions
-				tells us that the integral function we're looking for
-				has the form $H_0(b) =  4b - \frac{1}{3}b^3 + C$
+				tells us that the integral function is $H_0(b) =  4b - \frac{1}{3}b^3 + C$
 				for some constant $C$.
 				We know from the geometric definition of the integral that
 				when $b=0$ the integral function must have value zero,
@@ -259,8 +257,8 @@
 		\subsubsection{Using derivative formulas in reverse}
 
 			Computing integral functions by finding antiderivatives is very powerful.
-			We can use it to find the internal functions
-			for all the function listed in the table of derivative formulas
+			We can use it to find the integral functions
+			for all the functions listed in the table of derivative formulas
 			(see page~\pageref{table:derivatives}).
 			% based on using the derivative formulas in reverse to guess the value of $F(x)$ 
 			For example,
@@ -278,7 +276,7 @@
 			For economy of space,
 			we'll verify all these integral formulas by computing
 			the integral of the function $f(x) = m + e^x + \frac{1}{x} + \cos(x) - \sin(x)$
-			that contain the mix of several functions on the right side of Table~\ref{table:derivatives}.
+			that contains the mix of several functions on the right side of Table~\ref{table:derivatives}.
 
 			\begin{codeblock}[]
 			>>> fx = m + sp.exp(x) + 1/x + sp.cos(x) - sp.sin(x)

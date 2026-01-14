@@ -21,11 +21,12 @@
 		The function \tt{quad} from the \tt{scipy.integrate} module
 		is a much more powerful tool for computing numerical integrals.
 		The name \tt{quad} is short for ``quadrature,''
-		which a historical name for the find-the-area-under-the-graph-of-a-function calculations.
+		which is a historical name for integrals.
+		% finding the area under the graph of a function.
 		% performed by splitting it into small sections % (squares)
 		% and adding up the total area of the sections.
 
-		Let's revisit the examples 1N, 2N, and 3N using the function \tt{quad}.
+		Let's revisit the examples 11, 12, and 13 using the function \tt{quad}.
 		To compute the integral $\int_0^5 f(x) dx$,
 		we call the function \tt{quad} with inputs \tt{f} as the first argument,
 		and the limits of integration $a=0$ and $b=5$ as the second and third arguments.
@@ -37,16 +38,16 @@
 		\end{codeblock}
 
 		\noindent
-		The function \tt{quad} returns two numbers as outputs: $(\tt{area},\epsilon)$.
+		The function \tt{quad} returns two numbers as output: $\big(A_f(0,5),\epsilon\big)$.
 		The first number is the value of the area we're interested in.
 		The second number $\epsilon$ tells us the accuracy of the procedure used to calculate the area.
 		In the above calculation,
 		the output tells us the definite integral $\int_0^5 f(x) dx$ is equal to $\tt{15.0}$
 		up to a precision on the order of $10^{-13}$.
 		%
-		Since we're usually only interested in the $\tt{area}$ value
+		Since we're usually only interested in the area $A_f(0,5)$
 		and not the precision $\epsilon$,
-		we often select the first half of \tt{quad}'s output.
+		we often select the first element of \tt{quad}'s output.
 		% which we can do using the expression \tt{quad(...)[0]}.
 		% This is why you'll often see the expression \tt{quad(...)[0]} in code examples.
 
@@ -73,7 +74,7 @@
 		The main takeaway message
 		is that the \tt{quad} function is your friend whenever you need to compute integrals.
 		All the scary-looking math equations that contain the $\int$ symbol
-		can be computed using one or two lines of Python code.
+		can be approximated numerically using one or two lines of Python code.
 		Specifically,
 		whenever you see $\int_a^b \tt{<f>}\,dx$ in a math formula,
 		you can replace that with \tt{quad(f,a,b)[0]}.

@@ -13,9 +13,9 @@
 	Vector calculus is the study of \emph{vector fields} and their properties.
 	In a three dimensional space,
 	vector fields are functions of the form $\mathbf{F}: \mathbb{R}^3 \to \mathbb{R}^3$.
-	The vector field $\mathbf{F}$ assigns $3$-dimensional output vector $\mathbf{F} = (F_x, F_y, F_z)$
-	for each point $\mathbf{r} = (x,y,z)$ in the three dimensional space.
-	Note we use boldface symbols to denote vector quantities.
+	The vector field $\mathbf{F}$ assigns a three-dimensional output vector $\mathbf{F} = (F_x, F_y, F_z)$
+	for each point $\mathbf{r} = (x,y,z)$ in $\mathbb{R}^3$.
+	Note we use boldface to denote vectors.
 	
 	\subsection{Example: electric field around a positive charge}
 	
@@ -23,13 +23,13 @@
 		shows the \emph{electric field} $\mathbf{E}$
 		around a positive charge~$q$ Coulombs
 		located at the origin of the three-dimensional coordinate system. % $(0,0,0)$.
-		The electric field is strongest (long lines) close to the charge,
-		and reduces in strength the further away from the charge we go.
+		The electric field is strongest close to the charge,
+		and gets weaker as you move away from the charge.
 	
 	
 		\begin{figure}[htb]
 			\centering
-			\includegraphics[width=0.7\columnwidth]{figures/calculus/vector_calc_E_field_positive_charge.pdf}
+			\includegraphics[width=0.6\columnwidth]{figures/calculus/vector_calc_E_field_positive_charge.pdf}
 			\vspace{-2mm}
 			\caption{	The electric field $\mathbf{E}(x,y,z) = \frac{kq}{r^2} \hat{ \mathbf{r} }$ around a positive charge $q$.}
 			\label{fig:vector_calc_E_field_positive_charge}
@@ -43,15 +43,15 @@
 				= \frac{kq}{r^3}  \mathbf{r}
 				= \frac{kq}{r^2} \hat{ \mathbf{r} },
 		\]
-		where $k$ is Boltzmann's constant,
+		where $k$ is Coulomb's constant,
 		$r \eqdef |\mathbf{r}| = \sqrt{x^2+y^2+z^2}$ is the distance from the origin,
 		and $\hat{\mathbf{r}} \eqdef \frac{\mathbf{r}}{r}$
 		is a \emph{unit vector} in the same direction as $\mathbf{r}$.
 		%
-		Electric field are used in the study of electromagnetism.
+		Electric fields are used in the study of electromagnetism.
 		Specifically,
 		the electric field $\mathbf{E}(x,y,z)$ describes the strength and the direction
-		of the \emph{electric force} that a changed particle would experience if placed at $(x,y,z)$.
+		of the \emph{electric force} that a charged particle would experience if placed at $(x,y,z)$.
 
 
 
@@ -60,15 +60,15 @@
 	\subsection{Vector calculus derivatives}
 
 		There are two derivative operations for vector fields,
-		and these are defined in terms of the vector derivative operator (\emph{nabla})
-		is defined as $\nabla \eqdef \big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \big)$.
+		and these are written in terms of the vector derivative operator $\nabla$ (\emph{nabla}),
+		which is defined as $\nabla \eqdef \big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \big)$.
 		The \emph{divergence} of the vector field $\mathbf{F}$
 		is computed by taking the ``dot product'' of $\nabla$ and the vector field $\mathbf{F} = (F_x, F_y, F_z)$:
 		\[
 			\nabla \cdot \mathbf{F}(x,y,z)
 				= \frac{\partial F_x}{\partial x} 	+ \frac{\partial F_y}{\partial y}	+ \frac{\partial F_z}{\partial z}.
 		\]
-		The divergence tells us if field $\mathbf{F}$
+		The divergence tells us if the field $\mathbf{F}$
 		is acting as a ``source'' or a ``sink'' at the point $(x,y,z)$.
 		% For example, positive charges are sources of electric field lines
 		% while negative charges are sinks (arrows go into them).
@@ -112,7 +112,7 @@
 		There are several different kinds of integral operations you can use with vector fields,
 		depending on the type of ``total'' you want to compute,
 		and the region of integration.
-
+		%
 		% PATH INTEGRALS
 		The concept of a vector path integral is denoted
 		$\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r}$,
@@ -120,34 +120,33 @@
 		and $d\mathbf{r}$ describes a short step along this curve.
 		This integral computes the total action of the vector field $\mathbf{F}$
 		in the direction along the curve $C$.
-
+		%
 		% SURFACE INTEGRALS
 		The vector surface integral is denoted
 		$\iint_S \mathbf{F}(\mathbf{r}) \cdot d\mathbf{S}$,
 		where $S$ is some surface in three dimensional space,
 		and $d\mathbf{S}$ %  = \hat{\mathbf{n}}dS$
-		is a a small ``piece of the surface.''
+		is a small ``piece of the surface.''
 		This integral computes the total \emph{flux} of the vector field $\mathbf{F}$
 		flowing through the surface $S$.
 		% To obtain the component of $\mathbf{F}$ in the direction of the surface normal,
 		% we take the dot product with  $\eqdef  \eqdef (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) dudv$,
 
 
-	% VECTOR CALCULUS THEOREMS
-	The main results in vector calculus are two theorems:
-	\emph{Gauss' divergence theorem} and \emph{Stokes theorem}.
-	Both theorems can be understood as extensions of the fundamental theorem of calculus (FTC),
-	since they show equivalences between
-	certain vector derivative and integral operations.
+		% VECTOR CALCULUS THEOREMS
+		The two main results in vector calculus
+		are \href{https://en.wikipedia.org/wiki/Divergence_theorem}{\emph{Gauss' divergence theorem}}
+		and \href{https://en.wikipedia.org/wiki/Stokes's_theorem}{\emph{Stokes' theorem}}.
+		Both theorems can be understood as extensions of the fundamental theorem of calculus (FTC),
+		since they show equivalences between
+		certain vector derivative and integral operations.
 
-
-	% PARAMETRIZATION
-	The main practical skill you'll learn if you take a vector calculus 
-	is how to \emph{parametrize} regions of space.
-	This skill is closely related to the substitution trick (change of variables)
-	that we learning in Section~\ref{integrals:techniques_of_integration},
-	but working with vectors.
-
+	%	% PARAMETRIZATION
+	%	The main practical skill you'll learn if you take a vector calculus course
+	%	is how to \emph{parametrize} regions of space.
+	%	This skill is closely related to the substitution trick (change of variables)
+	%	that we saw in Section~\ref{integrals:techniques_of_integration},
+	%	but working with vectors.
 	%		thing we'll have to learn is how to parametrize .
 	%		In fact, we could even say that the main purpose of this course is to get you comfortable
 	%		with parameterizations of curves, surfaces, and volumes.

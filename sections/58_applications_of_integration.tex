@@ -22,14 +22,14 @@
 			\]
 			The starting point of kinematics is Newton's second law,
 			which tells us that the acceleration of an object of mass $m$
-			that has a net force $\vec{F}_{\textrm{net}}$ acting on it is:
-			$\tfrac{1}{m}\vec{F}_{\textrm{net}}(t) = a(t)$.
-			Given the knowledge of acceleration $a(t)$,
+			that has a net force $F_{\textrm{net}}$ acting on it is
+			$a = \tfrac{1}{m}F_{\textrm{net}}$.
+			Given the knowledge of acceleration over time $a(t)$,
 			we can predict the position of the object $x(t)$ at any time $t$
 			by ``undoing'' the derivative operations using integration:
 			\[
 				% \underbrace{ 
-				  \tfrac{1}{m} \vec{F}_{\textrm{net}}(t)
+				  \tfrac{1}{m} F_{\textrm{net}}(t)
 				% }_{\text{dynamics}}
 				\; = \; 
 				\underbrace{ 
@@ -38,16 +38,14 @@
 				  x(t) 
 				}_{\text{kinematics}}.
 			\]
-
-			\noindent
-			We integrate $a(t)$ to obtain $v(t)$,
-			using the initial velocity $v_i$ as the integration constant to ensure $v(0) = v_i$.
+			We integrate $a(t)$ to obtain $v(t)$
+			and choose the initial velocity $v_i$ as the integration constant so that $v(0) = v_i$.
 			We then use integration a second time to obtain $x(t)$ from $v(t)$,
-			taking into account the initial position $x_i$ as the integration constant.			
+			using the initial position $x_i = x(0)$ as the integration constant.			
 
 			The case of \emph{uniform accelerated motion} (UAM) is of particular interest.
 			% since it describes the trajectory of objects falling under the effect of gravity.
-			%	Consider an object of mass $m$ that has a constant net $\vec{F}_{\textrm{net}}$
+			%	Consider an object of mass $m$ that has a constant net $F_{\textrm{net}}$
 			%	acting on it will experience 
 			Consider an object that experiences a constant acceleration $a(t) = a$.
 			We can use integration to find the velocity of this object at a later time $t=\tau$:
@@ -64,12 +62,13 @@
 						= x_i +  \int_0^\tau (v_i+at) \, dt
 						= x_i + v_i\tau + \tfrac{1}{2}a\tau^2.
 			\]
-			Two simple calculus steps allows us to obtain
-			the famous kinematics equation $x(t) = x_i + v_it + \tfrac{1}{2}at^2$,
-			which describes the motion of objects undergoing constant acceleration $a$. % $a(t) = a$.
+			These two simple calculus steps
+			allow us to obtain the famous kinematics equation
+			$x(t) = x_i + v_it + \tfrac{1}{2}at^2$
+			for descibing the motion of objects undergoing constant acceleration $a$. % $a(t) = a$.
 			Students taking a physics class are normally presented with this equation
 			and it seems to come out of nowhere,
-			but if you know calculus you know where it comes from:
+			but if you understand calculus you'll know where it comes from:
 			the integration operation applied to the acceleration function $a(t) = a$
 			and the initial conditions $x_i \eqdef x(0)$ and $v_i \eqdef v(0)$.
 
@@ -84,19 +83,21 @@
 
 		\subsubsection{Solving differential equations}
 
-			Many important laws in science and engineering are described by \emph{differential equations}
-			that specify unknown function $f(t)$ in terms of their derivatives $f^{\prime\!}(t)$, $f^{\prime\prime\!}(t)$, etc.
+			Many important laws in science % and engineering
+			are described by \emph{differential equations}
+			that specify an unknown function $f(t)$ in terms of their derivatives
+			$f^{\prime\!}(t)$, $f^{\prime\prime\!}(t)$, etc.
 
-			Here are some examples of differential equations and their solutions;
+			Here are some examples of differential equations and their solutions:
 
 			\begin{itemize}
 
 				\item	The kinematics equations when the acceleration is constant
-					come front he differential equation $x^{\prime\prime\!}(t) = a$.
-					We use integration (twice) to find the unknown function
+					come from the differential equation $x^{\prime\prime\!}(t) = a$.
+					We use integration twice to find the unknown function
 					$x(t) = x_i + v_it + \tfrac{1}{2}at^2$.
 					We can verify that $x(t)$ is a solution to the differential equation $x^{\prime\prime\!}(t) = a$
-					by computing the the second derivative of $x(t)$.
+					by computing the second derivative of $x(t)$.
 					% which is $x^{\prime\prime\!}(t) = a$.
 
 				\item In biology,
@@ -105,7 +106,7 @@
 					Intuitively,
 					the bacterial growth rate $b^{\prime\!}(t)$
 					is proportional to the number of existing bacteria.
-					The solution to this equation is $b(t) = b_0e^{\lambda t}$,
+					The solution to this equation is $b(t) = b_0e^{k t}$,
 					where $b_0$ describes the number of bacteria at time $t = 0$.
 
 				\item Radioactive decay is described by the differential equation
@@ -135,7 +136,7 @@
 
 			Integration is a key tool for computing probabilities of continuous random variables.
 			A continuous random variable $X$ is described by its \emph{probability density function} $f_X$,
-			and the probability of the event $\{ a \leq X \leq b\}$ is defined as the following integral:
+			and the probability of the event $\{ a \leq X \leq b\}$ is given by the integral
 			$\Pr( \{ a \leq X \leq b\} ) \eqdef \int_a^b f_X(x) \, dx$.
 			%	The probability density $f_X$ varies for different values of $x$,
 			%	so if we want to compute the total probability of $X$ falling between $x=a$ and $x=b$,

@@ -8,7 +8,7 @@
 		means using a computer to compute the Riemann sum approximation to $A_f(a,b)$
 		by splitting the region into many (think millions) of strips,
 		computing the areas of each strip,
-		then adding up the areas to obtain the total area under the graph of $f(x)$.
+		then adding up the areas to get the total area under the graph of $f(x)$.
 		The key step is to come up with a general mathematical expression
 		that describes the approximate area calculation with $n$ rectangular strips,
 		then evaluate this expression for very large values of $n$.
@@ -24,7 +24,7 @@
 		The area of each rectangle is given by the height-times-width formula,
 		and we sum together all of them to compute the approximation to the total area:
 		\[ 
-			A_h(0.2)
+			A_h(0,2)
 			\approx
 			h(0.2) \cdot 0.2
 			+ h(0.4) \cdot 0.2
@@ -32,15 +32,13 @@
 			+ h(2.0) \cdot 0.2
 			= 4.92.
 		\]
-
-		\noindent
-		Looking at figure Figure~\ref{fig:riemann_sum_n10_n20}~(a),
+		Looking at Figure~\ref{fig:riemann_sum_n10_n20}~(a),
 		we can clearly see that the area of the rectangles
-		underestimates the true area under the graph.
-		Let's trust the process,
-		and continue with the calculations,
-		knowing that the ``quality'' of the approximations
-		will improve when we split the region into thinner and thinner strips.
+		underestimates the true area under the graph,
+		but let's keep going.
+		We have to trust the process:
+		the quality of the approximation will improve
+		when we split the region into thinner and thinner strips.
 
 		The procedure we used for $n=10$ works more generally for any $n$.
 		In the general case,
@@ -61,8 +59,6 @@
 						+ \cdots
 						+ h(n\Delta x) \Delta x.
 		\]
-
-		\noindent
 		Observe that all the terms in this summation follow the same pattern:
 		the $k$\textsuperscript{th} term in this summation is $h(k\Delta x)\Delta x$,
 		and $k$ goes from $1$ to $n$.
@@ -71,7 +67,7 @@
 		to describe long summations.
 		The approximation to the area under $h(x)$ between $x=a$ and $x=b$
 		using $n$ rectangular strips corresponds to the following sum:
-		$A_h(0,2) \approx \sum_{k=1}^{k=n} h(k\Delta x)\,\Delta x$.
+		$A_h(0,2) \approx \sum_{k=1}^{n} h(k\Delta x)\,\Delta x$.
 		The labels above and below the summation symbol $\sum$
 		play the same role as the superscript and subscript in integral notation:
 		the label $k=1$ tells us where to start the summation,
@@ -82,12 +78,12 @@
 		to write a general formula for approximating the area under the graph of
 		any function $f(x)$ between $x=a$ and $x=b$ using $n$ rectangular strips:
 		\[
-			A_f(a,b) \approx \sum_{k=1}^{k=n} f(a + k\Delta x)\,\Delta x,
+			A_f(a,b) \approx \sum_{k=1}^{n} f(a + k\Delta x)\,\Delta x,
 			\quad\text{where}\quad
 			\Delta x = \tfrac{b-a}{n}.
 		\]
 		This is known as the \emph{Riemann sum} formula for computing areas.
-		We'll now this math formula into a Python procedure
+		We'll now turn this math formula into a Python procedure
 		that performs the $n$-rectangle area approximation calculation. %  for us:
 
 		\begin{codeblock}[]
@@ -101,16 +97,16 @@
 
 
 		\noindent
-		The code implements the same operations
-		as described by the summation $A_f(a,b) \approx \sum_{k=1}^{k=n} f(a + k\Delta x)\,\Delta x$.
-		We first compute the width of the rectangles $\code{dx} = \Delta x = \frac{b-a}{n}$.
-		We then create the list \tt{xs}
+		The code implements the operations
+		described by the summation $A_f(a,b) \approx \sum_{k=1}^{n} f(a + k\Delta x)\,\Delta x$.
+		We first compute the width of the rectangles $\code{dx} = \Delta x = \frac{b-a}{n}$,
+		and create the list \tt{xs}
 		that contains the $x$-coordinates of the right endpoints of the rectangles,
-		$\tt{xs} = [a + \Delta x, a + 2\Delta x, a + 3\Delta x, \ldots, n\Delta x]$,
-		and evaluate the function \tt{f} at these $x$-values
-		to obtain $\tt{fxs} = [f(a + \Delta x), f(a + 2\Delta x), f(a + 3\Delta x), \ldots, f(n\Delta x)]$.
+		$\tt{xs} = [a + \Delta x, a + 2\Delta x, a + 3\Delta x, \ldots, a + n\Delta x]$.
+		We then evaluate the function \tt{f} at these $x$-values
+		to obtain $\tt{fxs} = [f(a + \Delta x), f(a + 2\Delta x), f(a + 3\Delta x), \ldots, f(a + n\Delta x)]$.
 		We calculate the areas of the rectangles by multiplying the heights \tt{fxs} by the width \tt{dx},
-		and summing everything together
+		and sum everything together
 		to obtain the total \tt{area},
 		which we \tt{return} as the output of the procedure.
 		%	The definition of the \tt{integrate} procedure specifies a default value $n = 10\,000$,
@@ -223,16 +219,16 @@
 		The integral between $x=a$ and $x=b$ is \emph{defined}
 		as the limit as $n$ goes to infinity of the Riemann sum:
 		\[
-			\int_{a}^{b}\!f(x)\:dx 
+			\int_{a}^{b}\!f(x)\,dx 
 				\eqdef \lim_{n\to\infty} \sum_{k=1}^{n} f(a + k\Delta x)\Delta x.
 		\]
 		\end{shadebox}
 
 		\noindent
 		In words,
-		the integral a Riemann sum
+		the integral is a Riemann sum
 		that consists of infinitely thin rectangular strips.
-		We previously defined the integral $\int_{a}^{b}\!f(x)\:dx$ geometrically
+		We previously defined the integral $\int_{a}^{b}f(x)\,dx$ geometrically
 		as the area under the graph of $f(x)$, % $A_f(a,b)$,
 		but now you know the formal math definition for the integral that mathematicians use.
 
@@ -247,7 +243,7 @@
 		the summation sign $\sum$ becomes an integral sign $\int$,
 		and the step size $\Delta x$ becomes an infinitely small step $dx$.
 
-		The integral $\int_{a}^{b}\!f(x)\:dx$ is defined as a \emph{procedure}
+		The integral $\int_{a}^{b}\!f(x)\,dx$ is defined as a \emph{procedure}
 		with infinitely many steps ($\lim_{n\to\infty}$)
 		that we perform on the function $f$.
 		% expression $\lim_{n\to\infty} \sum_{k=1}^{n} f(a + k\Delta x)\Delta x$

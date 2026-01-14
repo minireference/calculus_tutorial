@@ -5,10 +5,10 @@
 	\label{integrals:techniques_of_integration}
 
 		Okay we're getting into the fourth act of the calculus show,
-		and I want you to remind you that you can ``tap out'' at any time.
+		and I want to remind you that you can ``tap out'' at any time.
 		The material in this act is some of the most boring stuff.
 		% that  only for students who are currently taking CALC~II class.
-		If you're taking a integral calculus class, %  (a.k.a. CALC 102, Integral calculus),
+		If you're taking an integral calculus class, %  (a.k.a. CALC 102, Integral calculus),
 		then you need to know this stuff because it is going to be your final exam.
 		Everyone else,
 		feel free to skip ahead to the next section.		% MAYBE: explicit FWD reference
@@ -21,20 +21,20 @@
 		\subsubsection{Substitution trick}
 
 			Suppose the function we want to integrate has the structure $f(u(x))u^{\prime\!}(x)$,
-			which consists of inner function wrapped in an outer function multiplied by the derivative of the inner function.
+			which consists of an inner function
+			wrapped in an outer function
+			multiplied by the derivative of the inner function.
 			We can use the \emph{substitution trick} to rewrite this integral
 			in terms of the function $f(u)$ using $u$ as the variable of integration:
 			\[
 				\int_{x = a}^{x = b} f(u(x)) \, u^{\prime\!}(x) \, dx
 					\;\; = \;\; 	\int_{u = u_a}^{u = u_b} f(u) \, du.			
 			\]
-
-			\noindent
 			The substitution trick is sometimes called \emph{change of variable},
 			since we're replacing the variable $x$ with the variable $u$,
-			just like the the search-and-replace operation in a text editor.
+			just like the search-and-replace operation in a text editor.
 			Because we're doing the substitution ``inside'' an integral operation,
-			we must change the limits integration (form $a$ and~$b$ to $u_a$ and $u_b$),
+			we must change the limits integration (from $a$ and~$b$ to $u_a$ and $u_b$),
 			and also change the ``step'' parameter (from $dx$ to $du$).
 
 			\begin{shadebox}
@@ -43,7 +43,7 @@
 			Follow these three steps to apply the substitution trick:
 			\begin{enumerate}
 				\item	Replace all occurrences of $u(x)$ with $u$.
-				\item	Replace $dx$ with $\frac{1}{u^{\prime\!}(x)}du$.
+				\item	Compute $u^{\prime\!}(x)$ and replace $dx$ with $\frac{1}{u^{\prime\!}(x)}du$.
 				\item	Replace the $x$-limits of integration $x=a$ and $x=b$
 					with $u$-limits of integration: $u_a = u(a)$ and $u_b = u(b)$.
 			\end{enumerate}
@@ -68,10 +68,10 @@
 						=  \int_{u=u(a)}^{u=u(b)} \!\!\frac{1}{u^2 - u}  2u\,du
 						=  \int_{u=\sqrt{a}}^{u=\sqrt{b}} \!\frac{1}{u^2 - u}  2u\,du.
 				\]
-
-				\noindent
 				We're simply doing the search-and-replace on $u = \sqrt{x}$,
-				but to do this right we need to also replace $dx$ with $du$,
+				but to do this right,
+				we need to also replace $dx$
+				with the equivalent expression involving $du$,
 				and use the new limits of integration.
 
 				We can now simplify the expression inside the integral:
@@ -83,27 +83,25 @@
 				The function inside the integral,
 				$f(u) = \frac{1}{u-1}$,
 				is similar to the inverse function $f(u) = \frac{1}{u}$
-				whose integral function is $\ln(u)$.
-				Accounting for the $-1$ horizontal shift inside the function,
-				leads us to the integral formula $\int \frac{1}{u - 1} \, du = 2\ln(u-1)$,
-				which leads us to the following final answer:
+				whose antiderivative is $\ln(u)$.
+				Replacing $u$ by $u-1$
+				gives us the following antiderivative formula $\int \frac{1}{u - 1} \, du = \ln(u-1)$,
+				which leads us to the answer:
 				\[
 					2 \int_{\sqrt{a}}^{\sqrt{b}}  \frac{1}{u - 1} \, du
 					\; = \; 2\ln(\sqrt{b}-1) - 2\ln(\sqrt{a}-1).
 				\]
-
-				\noindent
 				I know this sequence of steps went quickly,
-				but and there are a lot of integral symbols,
+				and there are a lot of integral symbols,
 				but if you read each step carefully,
 				you'll see we're just doing search-and-replace.
 
 
 
 			The substitution trick for integrals comes from the chain rule for derivatives
-			$\left[ f(u(x)) \right]^\prime = f^\prime(u(x))u^\prime(x)$.
-			We can use substitution only when computing the integral
-			of a function that has the special structure $f^{\prime\!}(u(x))u^{\prime\!}(x)$.
+			$\left[ F(u(x)) \right]^\prime = F^{\prime\!}(u(x))u^\prime(x)$.
+			We can use substitution only when computing the integral of a function
+			that has the special structure $f(u(x))u^{\prime\!}(x)$.
 
 			% TODO: mention it has great power -- basis of multivariable calculus when using parameterization FWD REF
 
@@ -168,20 +166,20 @@
 
 			Substitution and integration by parts
 			are only two of the multitude of integration techniques.			
-			%	Mathematicians and physicist have come up with hundreds of formulas and tricks
+			%	Mathematicians and physicists have come up with hundreds of formulas and tricks
 			%	for calculating integrals,
 			%	since for centuries people were forced to use pen and paper calculations.			
 			There are tricks for trigonometric functions, square roots,
-			fractions that that involve $x^2 + a^2$, etc.
+			fractions that involve $x^2 + a^2$, etc.
 			There is an entire course,
 			called integral calculus,
 			that is dedicated to learning integration tricks.
-			If you want to pursue advanced studies in physicis or engineering,
+			If you want to pursue advanced studies in physics or engineering,
 			you should definitely take this course to learn more integration tricks.
 			Section~5.15 in \textbf{No Bullshit Guide to Math and Physics} is a good introduction to the material.
 
 			Despite all the formulas and integration techniques,
-			not all function are \emph{integrable}.
+			not all functions are \emph{integrable}.
 			There are many functions that don't have an antiderivative function,
 			and hence no ``closed form'' integral function.
 			For example,

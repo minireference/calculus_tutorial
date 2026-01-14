@@ -1,14 +1,12 @@
 %!TEX root = ../calculus_tutorial.tex
 
 
-	\subsection{Computing integrals functions using SymPy}
+	\subsection{Computing integral functions using SymPy}
 
 		We can use Python to do \emph{symbolic} integration using variables (symbols) instead of numbers.
 		The SymPy function \tt{sp.integrate} allows us to obtain the formulas for integrals and integral functions.
-		We'll now revisit the integral calculations from the three examples
-		using symbolic math calculations.
-		Before we can begin,
-		we must define symbolic symbols variables \tt{x}, \tt{a}, and \tt{b}:
+		We'll now revisit the integral calculations from the three examples using symbolic math.
+		We start by defining three symbols \tt{x}, \tt{a}, and \tt{b}.
 
 		\begin{codeblock}[define-symbols-xabcm]
 		>>> import sympy as sp
@@ -33,9 +31,9 @@
 			To compute the integral $\int_a^b f(x) dx$,
 			we call the SymPy function \tt{sp.integrate},
 			passing in the function as the first argument,
-			and the triple $\tt{(x,a,b)}$ as the second argument
-			to specify the variable of integration
-			and the limits of integration $a$ and $b$.
+			and the triple $\tt{(x,a,b)}$ as the second argument,
+			which specifies the variable of integration
+			and the limits of integration $a$ and~$b$.
 
 			\begin{codeblock}[sympy-integrate-fx-a-b]
 			>>> sp.integrate(fx, (x,a,b))  # = A_f(a,b)
@@ -53,7 +51,7 @@
 			which we have seen several times already.
 
 			To compute the definite integral $\int_0^5 f(x)\,dx$,
-			we specify the numerical limits of integration instead of the symbols \tt{a} and \tt{b}.
+			we specify the numerical limits of integration instead of the symbols \tt{a} and~\tt{b}.
 
 			\begin{codeblock}[integrate-fx-subs-vals]
 			>>> sp.integrate(fx, (x,0,5))
@@ -181,8 +179,8 @@
 			\end{codeblock}
 
 			\noindent
-			We can now make SymPy compute the integral function $H_0(b) = \int_0^b h(x)\,dx$
-			by calling \tt{sp.integrate}:
+			We can now call \tt{sp.integrate}
+			to make SymPy compute the integral function $H_0(b) = \int_0^b h(x)\,dx$:
 
 			\begin{codeblock}[]
 			>>> H0b = sp.integrate(hx, (x,0,b))

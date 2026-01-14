@@ -5,7 +5,7 @@
 
 	In multivariable calculus,
 	we extend the ideas of differential and integral calculus
-	to functions with multiple inputs variables.
+	to functions with multiple input variables.
 	If you understood the concepts of single-variable calculus,
 	then you'll also be able to understand multivariable calculus:
 	it's essentially the same stuff but in more dimensions!
@@ -15,17 +15,17 @@
 		A \emph{single-variable function} $f: \mathbb{R} \to \mathbb{R}$
 		takes a real number $x \in \mathbb{R}$ as input
 		and produces a real number $f(x) \in \mathbb{R}$ as output.
-		A \emph{multivariable function} takes multiple real numbers as inputs
-		and produces real number as output.
+		A \emph{multivariable function} takes multiple real numbers as inputs.
+		% and produces a real number as output.
 		For example,
 		a bivariate function $f: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$
 		takes two real numbers as inputs $(x,y) \in \mathbb{R} \times \mathbb{R}$
 		and produces a real number $f(x,y) \in \mathbb{R}$ as output.
 
 		% EXAMPLE FUNCTION
-		Consider the function bivariate function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$.
+		Consider the bivariate function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$.
 		% for all plots and calculations in the remainder of this section.
-		We can plot this function as a \emph{surface} in a three dimensional space,
+		We can plot this function as a \emph{surface} in a three-dimensional space,
 		as shown in Figure~\ref{fig:mulivar_surface_plot_paraboloid}.
 		The height of the surface above the point $(x,y)$ is function output $f(x,y)$.
 		%	Suppose the height of a mountain is described by the function $f(x,y)$.
@@ -38,7 +38,7 @@
 			\centering
 			\includegraphics[width=0.8\columnwidth]{figures/calculus/mulivar_surface_plot_paraboloid.pdf}
 			\vspace{-2mm}
-			\caption{The 3D surface plot of the the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$.}
+			\caption{The 3D surface plot of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$.}
 			\label{fig:mulivar_surface_plot_paraboloid}
 		\end{figure}
 
@@ -49,7 +49,13 @@
 		is to use a two-dimensional plot that shows the ``view from above'' of the surface $f(x,y)$.
 		We can trace \emph{level curves} in the surface,
 		to produce a ``topographic map'' of the surface
-		where each level curve show the points that are at a certain height.
+		where each level curve shows the points that are at a certain height.
+		% MAYBE: (i.e., the set of points $(x,y)$ satisfying $f(x,y)=c$ for some constant $c$
+		%
+		The curve labeled $0.0$ you see in Figure~\ref{fig:mulivar_countour_plot_paraboloid}
+		represents the solution to the equation $f(x,y) = 0$,
+		which is where the function $f(x,y)$ intersects the $xy$-plane.
+		% where $f(x,y)$ is the height of this hill for all coordinates $(x,y)$ on the map.
 
 		\begin{figure}[htb]
 			\centering
@@ -58,12 +64,6 @@
 			\caption{	Topographic map that shows the function $f(x,y)$ as level curves.}
 			\label{fig:mulivar_countour_plot_paraboloid}
 		\end{figure}
-
-		\noindent
-		The curve labeled $0.0$ you see in Figure~\ref{fig:mulivar_countour_plot_paraboloid}
-		represents the solution to the equation $f(x,y) = 0$,
-		which is where the function $f(x,y)$ intersects the $xy$-plane.
-		% where $f(x,y)$ is the height of this hill for all coordinates $(x,y)$ on the map.
 
 
 	\subsection{Partial derivatives}
@@ -92,7 +92,8 @@
 			\;\;\eqdef\;\;
 			\lim_{ \delta \rightarrow 0}	\frac{f(x, y+\delta)-f(x,y)}{\delta}.
 		\]
-		Note that both $\frac{\partial f}{\partial x}$  and $\frac{\partial f}{\partial y}$ are function of $x$ and $y$.
+		Note that both $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$
+		are functions of $x$ and $y$.
 
 		Intuitively,
 		the partial derivative $\frac{\partial f}{\partial x}$
@@ -123,7 +124,12 @@
 			\nabla f(x,y)
 			\eqdef
 			\left(
-				\frac{\partial f}{\partial x},
+				\frac{\partial}{\partial x}f(x,y), \;
+				\frac{\partial}{\partial y}f(x,y)
+			\right)
+			=
+			\left(
+				\frac{\partial f}{\partial x}, \;
 				\frac{\partial f}{\partial y}
 			\right).
 		\]
@@ -149,10 +155,10 @@
 			%	\]
 			The gradient vector at coordinates  $(x,y) = (0,-4)$ is $\nabla f(0,-4) = (0,2)$,
 			which is a vector pointing in the positive $y$-direction.
-			Try to identify the point with coordiantes $(0,-4)$
+			Try to identify the point with coordinates $(0,-4)$
 			in figures \ref{fig:mulivar_surface_plot_paraboloid} 
 			and \ref{fig:mulivar_countour_plot_paraboloid}
-			and confirm that the ``uphill'' direction at hat point is indeed in the positive $y$-direction.
+			and confirm that the ``uphill'' direction at that point is indeed in the positive $y$-direction.
 
 
 	\noindent
@@ -165,16 +171,16 @@
 		We can integrate over one of the input variables
 		to produce a function that depends only on the other input variable:
 		\[
-			f(y) = \int_{x=-\infty}^{x=\infty} \! f(x,y) \, dx
+			f(y) = \int f(x,y) \, dx
 			\quad\text{and}\quad
-			f(x) = \int_{y=-\infty}^{y=\infty} \! f(x,y) \, dy.
+			f(x) = \int f(x,y) \, dy.
 		\]
 		The functions $f(y)$ and $f(x)$ are called the \emph{partial integrals}
 		or \emph{marginals} of the function $f(x,y)$.
 		For example,
 		the partial integrals of the function $f(x,y) = 4 - x^2 - \frac{1}{4}y^2$
 		are obtained by computing the areas of ``slices'' throughout the function $f(x,y)$,
-		as illustrate in Figure~\ref{fig:multivar_combined_slices_through_paraboloid}.
+		as illustrated in Figure~\ref{fig:multivar_combined_slices_through_paraboloid}.
 
 		\begin{figure}[htb]
 			\centering
@@ -199,10 +205,10 @@
 		The idea behind multivariable integrals is the same as for single variable integrals---to
 		compute the total amount of some function accumulated over a range of input values.
 		For single-variable functions,
-		we integrate by splitting the region into thing rectangular strips of width $dx$.
+		we integrate by splitting the region into thin rectangular strips of width $dx$.
 		For double integrals,
 		we split the two-dimensional region of integration into small squares of area $dxdy$,
-		and compute the total volume of a many rectangular columns
+		and compute the total volume of many rectangular columns
 		with base $dxdy$ and height $f(x,y)$.
 
 		% TODO: insert graphic of 3D integral split into vertical columns
@@ -240,18 +246,17 @@
 		the \emph{gradient descent algorithm} is often used to optimize functions
 		with hundreds or thousands of variables.
 		% Gradients are the key for the optimization algorithms used in modern machine learning techniques.
-		Many of the cutting edge machine learning models
+		Many of the cutting-edge machine learning models
 		``learn'' the model parameters by minimizing the value of some multivariable function
-		but repeatedly taking steps in the ``downhill'' direction,
+		and repeatedly taking steps in the ``downhill'' direction,
 		as indicated by the gradient vector.
 		% MULTIVAR INTEGRALS 
 		Multivariable integrals are used a lot in probability theory and statistics,
-		where they are used to compute probabilities and expectations.	
-		
-		There is a lot more to learn about derivatives and integral of multivariable functions,
-		which haven't even have time to mention here.
+		where they are used to compute probabilities and expectations.			
+		%	There is a lot more to learn about calculus operations on multivariable functions,
+		%	but we don't have the space for further discussion.
 		Your basic knowledge of derivatives and integrals concepts we discussed
-		earlier in this tutorial will be very useful for understanding these more advanced topics.
+		earlier in this tutorial will be very useful for understanding multivariable calculus topics.
 
 
 
@@ -283,8 +288,5 @@
 %	\end{figure}
 
 %	We know we've reached the bottom of the valley,
-%	since the the gradient vector will be zero at the minimum of the function $f(x,y)$,
+%	since the gradient vector will be zero at the minimum of the function $f(x,y)$,
 %	since surface is locally flat there.
-
-
-

@@ -3,13 +3,16 @@
 \section{Sequences and series}
 \label{sec:sequences_and_series}
 
-	A \emph{sequence} $a_k$ is a function that take natural numbers as inputs
-	and produce real numbers as outputs: $a_k : \mathbb{N} \to \mathbb{R}$.
+	A \emph{sequence} $a_k$ is a function that takes natural numbers as inputs
+	and produces real numbers as outputs: $a_k : \mathbb{N} \to \mathbb{R}$.
+	% MAYBE:
+	%	In other words,
+	%	$k \in \mathbb{N}$ is the input and $a_k \in \mathbb{R}$ is the output.
 	The \emph{series} $\sum a_k$ describes the sum of all the terms in the sequence $a_k$.
 	%
-	Sequences and series are the third pillar of the basic calculus knowledge that I want you to have
-	because they are powerful computational tools  
-	that allow us to describe procedures with infinite number of steps.
+	Sequences and series are the third pillar of the calculus knowledge that I want you to have
+	because they are powerful computational tools 
+	that allow us to describe procedures with an infinite number of steps.
 
 	\subsection{Sequences are functions with discrete inputs}
 	\label{sequences_and_series:sequences}
@@ -25,19 +28,19 @@
 		Usually $k$ is a natural number $k \in \mathbb{N} \eqdef \{0,1,2,3,4,\ldots\}$
 		but some sequences are only defined for positive natural numbers
 		$k \in \mathbb{N}_+ \eqdef \{1,2,3,4,\ldots\}$.
-		Note the chance in notation:
+		Note the change in notation:
 		we use subscript to denote the input variable of a sequence $a_k$
 		instead of the usual notation for functions $a(k)$.
 
 		We can define a sequence by specifying the formula for the $k$\textsuperscript{th} term in the sequence.
 		For example,
-		the \emph{harmonic sequence} is defined by the formula $h_k \eqdef \frac{1}{n}$.
+		the \emph{harmonic sequence} is defined by the formula $h_k \eqdef \frac{1}{k}$.
 		Another way to define a sequence is by listing the first few values in the sequence:
 		$[h_0, h_1, h_2, h_3, \ldots]$,
-		which correspond to evaluating formula $h_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
+		which correspond to evaluating the formula $h_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
 		We'll now look at some examples of sequences,
 		specifying both their formulas
-		and showing the the first few values of each sequence.
+		and showing the first few values of each sequence.
 
 
 		\paragraph{The natural numbers}
@@ -95,7 +98,7 @@
 
 		\paragraph{The alternating harmonic sequence}
 
-			Consider now a harmonic sequence with alternating positive an negative terms:
+			Consider now a harmonic sequence with alternating positive and negative terms:
 			\[
 				a_k \eqdef \tfrac{(-1)^{k+1}}{k}, \text{ for } k \in \mathbb{N}_+
 				  \ \ \Leftrightarrow \ \ 
@@ -112,15 +115,15 @@
 
 			The factorial function is denoted~$k!$
 			and describes the product of the first $k$ positive natural numbers:
-			$k! \;\; \eqdef \;\; k \cdot (k-1) \cdots 3 \cdot 2 \cdot 1$.
+			$k! \;\; \eqdef \;\; k \cdot (k-1) \cdots 3 \cdot 2 \cdot 1$,
+			and we define $0! = 1$.
 			We'll see factorials in several formulas in this section.
 			In particular,
 			the following sequence will be of interest:
 			\[
-				f_k\eqdef \tfrac{1}{k!}, \text{ for } k \in \mathbb{N}_+
+				f_k\eqdef \tfrac{1}{k!}, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
-				  \big[ 1, \tfrac{1}{2!}, \tfrac{1}{3!}, \tfrac{1}{4!}, \tfrac{1}{5!}, \tfrac{1}{6!}, \tfrac{1}{7!}, \ldots \, \big].
-				% WHY NOT START AT 0 ?		TODO
+				  \big[1, 1, \tfrac{1}{2!}, \tfrac{1}{3!}, \tfrac{1}{4!}, \tfrac{1}{5!}, \tfrac{1}{6!}, \tfrac{1}{7!}, \ldots \, \big].
 			\]
 			The values in the inverse factorial sequence quickly become very small
 			because the factorial function grows very quickly:
@@ -139,7 +142,7 @@
 
 		\paragraph{Geometric sequence}
 
-			The sequences-equivalent of the exponential function $f(x) = e^x$
+			The sequence-equivalent of the exponential function $f(x) = e^x$
 			is the \emph{geometric sequence}
 			where the $k$\textsuperscript{th} value in the sequence
 			is the $k$\textsuperscript{th} powers of some number $r$:
@@ -152,7 +155,7 @@
 			which describes a \emph{geometric} process that repeatedly grows/shrinks by the amount $r$.
 			When $r < 1$,
 			the values in the sequence $g_k$ quickly go to zero,
-			similar to how exponential function $e^{-x}$ goes to zero for large value of $x$.
+			similar to how exponential function $e^{-x}$ goes to zero for large values of $x$.
 			When $r > 1$ the sequence $g_k$ increases quickly,
 			similar to how exponential function $e^{x}$ increases for large value of $x$.
 
@@ -160,14 +163,14 @@
 		\paragraph{Powers of two}
 
 			We'll also use the label $b_k$
-			for the special case of the geometric series with $r=2$:
+			for the special case of the geometric sequence with $r=2$:
 			\[
 				b_k \eqdef 2^k, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
 				  [ 1, 2, 4, 8, 16, 32, 64, 128, \ldots \, ].
 			\]
 			This sequence comes up all over the place in computer science
-			because it is describes the number of different numbers we can store in $k$ bits of memory.
+			because it describes the number of different numbers we can store in $k$ bits of memory.
 
 
 
@@ -270,8 +273,6 @@
 		\[
 		   \sum_{k=0}^n 2^k = 1 + 2 + 4 + 8 + \cdots + 2^n = \frac{1-2^{n+1}}{1-2} = 2^{n+1} -1.
 		\]
-
-
 		The sum of the first $n$ positive integers and the sum of their squares
 		are described by the following formulas:
 		\[
@@ -397,7 +398,7 @@
 
 		\noindent
 		That's kind of cool, no?
-		We're able to compute the value of a summation with infinitely meany terms,
+		We're able to compute the value of a summation with infinitely many terms,
 		because we have the general pattern $G_n$ for the sum with $n$ terms
 		then evaluate the limit as $n$ goes to infinity.
 
@@ -411,7 +412,7 @@
 		meaning it has a finite value and doesn't blow up.
 		Another example of a converging infinite series is $F_\infty = \sum f_k$,
 		which converges to the number $e$,
-		as we'll see in Example~2 below.
+		as we'll see in Example~17 below.
 
 		In contrast,
 		the harmonic series $\sum h_k$ \emph{diverges}.
@@ -447,7 +448,7 @@
 		using only basic arithmetic operations like repeated multiplication (factorial), division, and addition.
 
 		Let's look at some practical calculations where we compute
-		the first $n=10$ and $n=15$ terms in the series $\sum_{k=0}^m f_k$: 
+		the first $n=10$ and $n=15$ terms in the series $\sum_{k=0}^n f_k$: 
 
 		\begin{codeblock}[]
 		>>> import math
@@ -491,7 +492,7 @@
 		which produced the exact symbolic answer $\tt{E} = e$.
 		%The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
 
-		There other series we can use to compute values of interest.
+		There are other series we can use to compute values of interest.
 
 		\paragraph{Example 18}
 
@@ -501,7 +502,7 @@
 			\[
 				A_\infty
 					= \lim_{n \to \infty} \sum_{k=1}^n \tfrac{(-1)^{k+1}}{k}
-					 = 1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4} + \tfrac{1}{5} - \tfrac{1}{6}  + \tfrac{1}{7} + \cdots
+					 = 1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4} + \tfrac{1}{5} - \tfrac{1}{6}  + \cdots
 					= \ln(2).
 			\]
 			To obtain the exact value $\ln(2)$,
@@ -522,10 +523,9 @@
 
 			\noindent
 			The series approximation to $\ln(2)$ converges more slowly
-			that the series approximation to $e$ we saw in the previous example.
+			than the series approximation to $e$ we saw in the previous example.
 			We need to sum $1$M terms in the series to obtain
-			and approximation %to $\ln(2)$
-			that is accurate to five decimals.
+			an approximation that is accurate to five decimals.
 			Nevertheless,
 			if we keep calculating sums with more and more terms,
 			we can obtain an approximation that is arbitrarily close
@@ -589,7 +589,7 @@
 		\[
 			f(x)
 		 		\approx f(0)
-					+f^{\prime\!}0)x
+					+f^{\prime\!}(0)x
 					+\tfrac{f^{\prime\prime}(0)}{2!}x^2
 					% +\tfrac{f^{(3)}(0)}{3!}x^3
 					+ \cdots
@@ -601,22 +601,20 @@
 		In the limit as $n$ goes to infinity,
 		the Taylor series approximation becomes exactly equal to the function $f(x)$:
 		\[
-			f(x) = f(0)	+f^{\prime\!}0)x
-					+\tfrac{f^{\prime\prime}(0)}{2!}x^2
-					+\tfrac{f^{(3)}(0)}{3!}x^3 + \cdots \\
+			f(x) = f(0)	+ f^{\prime\!}(0)x
+					+ \tfrac{f^{\prime\prime}(0)}{2!}x^2
+					+ \tfrac{f^{(3)}(0)}{3!}x^3 + \cdots \\
 		 		= \sum_{k=0}^\infty \tfrac{f^{(k)}(0)}{k!}x^k.
 		\]
-
 		%	Specifically,
 		%	$c_k = \frac{f^{(k)}(0)}{k!}$,
 		%	where $f^{(k)}(0)$ is the $k$\textsuperscript{th} derivative of $f(x)$ and 
-
 		Using this formula and your knowledge of derivative formulas,
 		you can compute the Taylor series of any function $f(x)$.
 		For example,
 		let's find the Taylor series of the function $f(x) = e^x$ at $x=0$.
-		The first derivative of $f(x) = e^x$ is $f^{\prime\!}x) = e^x$.
-		The second derivative of $f(x) = e^x$ is $f^{\prime\prime\!}x) = e^x$.
+		The first derivative of $f(x) = e^x$ is $f^{\prime\!}(x) = e^x$.
+		The second derivative of $f(x) = e^x$ is $f^{\prime\prime\!}(x) = e^x$.
 		In fact,
 		all the derivatives of $f(x)$ will be $e^x$ because the derivative of $e^x$ is equal to $e^x$.
 		The $k$\textsuperscript{th} coefficient in the power series of $f(x)=e^x$ at the point $x=0$ 
@@ -632,7 +630,7 @@
 		 \]
 		Taylor series are a powerful computational tool for approximating functions.
 		As we compute more terms from the above series,
-		our the polynomial approximation to the function $f(x)=e^x$ becomes more accurate.
+		the polynomial approximation to the function $f(x)=e^x$ becomes more accurate.
 		% This is, IMHO, one of the most important ideas in calculus:
 		% you can compute the value of $e^x$ by taking the infinite sum of the terms in the power series
 
@@ -705,7 +703,7 @@
 		\end{codeblock}
 
 		\noindent
-		The ``big-O'' notation \tt{O(x**n)} appear in all the above outputs
+		The ``big-O'' notation \tt{O(x**n)} appears in all the above outputs
 		as a reminder that the exact Taylor series
 		contain additional terms that are on the \emph{order of} $x^n$.
 		% The next term 
