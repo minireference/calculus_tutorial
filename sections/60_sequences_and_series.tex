@@ -403,148 +403,148 @@
 		then evaluate the limit as $n$ goes to infinity.
 
 
-	\subsubsection{Convergent and divergent series}
-
-		We say the geometric series $G_\infty = \sum g_k = \sum_{k=0}^\infty r^k$ \emph{converges}
-		to the value $\frac{1}{1-r}$.
-		% As we sum together more and more terms of the sequence...
-		We can also say that the infinite geometric series $\sum g_k$ \emph{is convergent},
-		meaning it has a finite value and doesn't blow up.
-		Another example of a converging infinite series is $F_\infty = \sum f_k$,
-		which converges to the number $e$,
-		as we'll see in Example~17 below.
-
-		In contrast,
-		the harmonic series $\sum h_k$ \emph{diverges}.
-		When we sum together more and more terms of the sequences $h_k$,
-		the total computed keeps growing and the infinite series blows up to infinity
-		$\sum h_k = \infty$.
-		We say that the harmonic series \emph{is divergent}.
-
-
+		\subsubsection{Convergent and divergent series}
+	
+			We say the geometric series $G_\infty = \sum g_k = \sum_{k=0}^\infty r^k$ \emph{converges}
+			to the value $\frac{1}{1-r}$.
+			% As we sum together more and more terms of the sequence...
+			We can also say that the infinite geometric series $\sum g_k$ \emph{is convergent},
+			meaning it has a finite value and doesn't blow up.
+			Another example of a converging infinite series is $F_\infty = \sum f_k$,
+			which converges to the number $e$,
+			as we'll see in Example~17 below.
+	
+			In contrast,
+			the harmonic series $\sum h_k$ \emph{diverges}.
+			When we sum together more and more terms of the sequences $h_k$,
+			the total computed keeps growing and the infinite series blows up to infinity
+			$\sum h_k = \infty$.
+			We say that the harmonic series \emph{is divergent}.
 
 
-	\subsubsection{Using convergent series for practical calculations}
 
-		We can use infinite series to compute irrational numbers.
 
-		\paragraph{Example 17: Euler's number}
-
-			The infinite sum of the sequence $f_k \eqdef \tfrac{1}{k!}$
-			converges to Euler's number $e = 2.71828182845905\ldots$:
-			\[
-				F_\infty 
-					= \lim_{n \to \infty} F_n 
-					= \sum_{k=0}^\infty \tfrac{1}{k!}
-					= 1 + 1 + \tfrac{1}{2} + \tfrac{1}{6} + \tfrac{1}{24} + \tfrac{1}{720} + \cdots
-					= e.
-					% = 2.71828\ldots. 
-			\]
-
-		\noindent
-		The calculation above is not just cool math fact,
-		but a useful computational procedure
-		that we can use to approximate the value of $e = 2.71828\ldots$
-		using only basic arithmetic operations like repeated multiplication (factorial), division, and addition.
-
-		Let's look at some practical calculations where we compute
-		the first $n=10$ and $n=15$ terms in the series $\sum_{k=0}^n f_k$: 
-
-		\begin{codeblock}[]
-		>>> import math
-		>>> def f_k(n): 
-		        return 1 / math.factorial(n)
-		>>> sum([f_k(k) for k in range(0,10)])
-		2.718281...
-		>>> sum([f_k(k) for k in range(0,15)])
-		2.71828182845...
-		\end{codeblock}
-
-		\noindent
-		Summing together the first $10$ terms in the series
-		gives us an approximation to $e$ that is accurate to six decimals.
-		With $15$ terms,
-		we get an approximation that is accurate to $11$ decimals.
-		The more terms we include in the summation,
-		the closer we get to the true value of $e$,
-		which is $2.71828182845905\ldots$.
-
-		If we want to compute the \emph{exact} value of $e$,
-		we would need to compute the infinite series $\sum_{k=0}^\infty \tfrac{1}{k!}$.
-		We can do this using SymPy
-		by calling the function \texttt{sp.summation}
-		whose syntax is similar to the function \texttt{sp.integrate} we used to compute integrals.
-		The first argument is an the expression for the $k$\textsuperscript{th}
-		term in the sequence,
-		then we specify the index variable,
-		the starting point,
-		and the end point of the summation:
-
-		\begin{codeblock}[]
-		>>> import sympy as sp
-		>>> k = sp.symbols("k")
-		>>> sp.summation(1/sp.factorial(k), (k, 0, sp.oo))
-		E
-		\end{codeblock}
-
-		\noindent
-		We used \tt{sp.oo} to make SymPy compute the infinite sum,
-		which produced the exact symbolic answer $\tt{E} = e$.
-		%The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
-
-		There are other series we can use to compute values of interest.
-
-		\paragraph{Example 18}
-
-			We can calculate the value $\ln(2)$ 
-			by computing the infinite sum of the alternating harmonic sequence
-			$a_k \eqdef \tfrac{(-1)^{k+1}}{k}$:
-			\[
-				A_\infty
-					= \lim_{n \to \infty} \sum_{k=1}^n \tfrac{(-1)^{k+1}}{k}
-					 = 1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4} + \tfrac{1}{5} - \tfrac{1}{6}  + \cdots
-					= \ln(2).
-			\]
-			To obtain the exact value $\ln(2)$,
-			we need to sum together an infinite number of terms in the series $\sum a_k$,
-			but we can obtain successively better approximations
-			to $\ln(2)$ using finite sums.
-
-			\begin{codeblock}[]
-			>>> def a_k(k):
-			        return (-1)**(k+1) / k
-			>>> sum([a_k(k) for k in range(1,100+1)])
-			0.6...
-			>>> sum([a_k(k) for k in range(1,1000+1)])
-			0.69...
-			>>> sum([a_k(k) for k in range(1,1_000_000+1)])
-			0.69314...
-			\end{codeblock}
-
+		\subsubsection{Using convergent series for practical calculations}
+	
+			We can use infinite series to compute irrational numbers.
+	
+			\paragraph{Example 17: Euler's number}
+	
+				The infinite sum of the sequence $f_k \eqdef \tfrac{1}{k!}$
+				converges to Euler's number $e = 2.71828182845905\ldots$:
+				\[
+					F_\infty 
+						= \lim_{n \to \infty} F_n 
+						= \sum_{k=0}^\infty \tfrac{1}{k!}
+						= 1 + 1 + \tfrac{1}{2} + \tfrac{1}{6} + \tfrac{1}{24} + \tfrac{1}{720} + \cdots
+						= e.
+						% = 2.71828\ldots. 
+				\]
+	
 			\noindent
-			The series approximation to $\ln(2)$ converges more slowly
-			than the series approximation to $e$ we saw in the previous example.
-			We need to sum $1$M terms in the series to obtain
-			an approximation that is accurate to five decimals.
-			Nevertheless,
-			if we keep calculating sums with more and more terms,
-			we can obtain an approximation that is arbitrarily close
-			to the true value $\ln(2) = 0.6931471805599453\ldots$.
-
-			To get the exact value $\ln(2)$,
-			we can make SymPy compute the infinite series:
-
+			The calculation above is not just cool math fact,
+			but a useful computational procedure
+			that we can use to approximate the value of $e = 2.71828\ldots$
+			using only basic arithmetic operations like repeated multiplication (factorial), division, and addition.
+	
+			Let's look at some practical calculations where we compute
+			the first $n=10$ and $n=15$ terms in the series $\sum_{k=0}^n f_k$: 
+	
 			\begin{codeblock}[]
-			>>> sp.summation((-1)**(k+1)/k, (k, 1, sp.oo))
-			log(2)
+			>>> import math
+			>>> def f_k(n): 
+			        return 1 / math.factorial(n)
+			>>> sum([f_k(k) for k in range(0,10)])
+			2.718281...
+			>>> sum([f_k(k) for k in range(0,15)])
+			2.71828182845...
 			\end{codeblock}
-
-		\noindent
-		We can come up with all kinds of other infinite series expression
-		for calculating other numbers.
-		Instead of showing you other series for approximating numbers,
-		I'll show you an even more powerful calculus technique:
-		a way to approximate \emph{functions} as infinite series.
+	
+			\noindent
+			Summing together the first $10$ terms in the series
+			gives us an approximation to $e$ that is accurate to six decimals.
+			With $15$ terms,
+			we get an approximation that is accurate to $11$ decimals.
+			The more terms we include in the summation,
+			the closer we get to the true value of $e$,
+			which is $2.71828182845905\ldots$.
+	
+			If we want to compute the \emph{exact} value of $e$,
+			we would need to compute the infinite series $\sum_{k=0}^\infty \tfrac{1}{k!}$.
+			We can do this using SymPy
+			by calling the function \texttt{sp.summation}
+			whose syntax is similar to the function \texttt{sp.integrate} we used to compute integrals.
+			The first argument is an the expression for the $k$\textsuperscript{th}
+			term in the sequence,
+			then we specify the index variable,
+			the starting point,
+			and the end point of the summation:
+	
+			\begin{codeblock}[]
+			>>> import sympy as sp
+			>>> k = sp.symbols("k")
+			>>> sp.summation(1/sp.factorial(k), (k, 0, sp.oo))
+			E
+			\end{codeblock}
+	
+			\noindent
+			We used \tt{sp.oo} to make SymPy compute the infinite sum,
+			which produced the exact symbolic answer $\tt{E} = e$.
+			%The \texttt{summation} command is useful because it allows us to compute \emph{infinite} sums,
+	
+			There are other series we can use to compute values of interest.
+	
+			\paragraph{Example 18}
+	
+				We can calculate the value $\ln(2)$ 
+				by computing the infinite sum of the alternating harmonic sequence
+				$a_k \eqdef \tfrac{(-1)^{k+1}}{k}$:
+				\[
+					A_\infty
+						= \lim_{n \to \infty} \sum_{k=1}^n \tfrac{(-1)^{k+1}}{k}
+						 = 1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4} + \tfrac{1}{5} - \tfrac{1}{6}  + \cdots
+						= \ln(2).
+				\]
+				To obtain the exact value $\ln(2)$,
+				we need to sum together an infinite number of terms in the series $\sum a_k$,
+				but we can obtain successively better approximations
+				to $\ln(2)$ using finite sums.
+	
+				\begin{codeblock}[]
+				>>> def a_k(k):
+				        return (-1)**(k+1) / k
+				>>> sum([a_k(k) for k in range(1,100+1)])
+				0.6...
+				>>> sum([a_k(k) for k in range(1,1000+1)])
+				0.69...
+				>>> sum([a_k(k) for k in range(1,1_000_000+1)])
+				0.69314...
+				\end{codeblock}
+	
+				\noindent
+				The series approximation to $\ln(2)$ converges more slowly
+				than the series approximation to $e$ we saw in the previous example.
+				We need to sum $1$M terms in the series to obtain
+				an approximation that is accurate to five decimals.
+				Nevertheless,
+				if we keep calculating sums with more and more terms,
+				we can obtain an approximation that is arbitrarily close
+				to the true value $\ln(2) = 0.6931471805599453\ldots$.
+	
+				To get the exact value $\ln(2)$,
+				we can make SymPy compute the infinite series:
+	
+				\begin{codeblock}[]
+				>>> sp.summation((-1)**(k+1)/k, (k, 1, sp.oo))
+				log(2)
+				\end{codeblock}
+	
+			\noindent
+			We can come up with all kinds of other infinite series expression
+			for calculating other numbers.
+			Instead of showing you other series for approximating numbers,
+			I'll show you an even more powerful calculus technique:
+			a way to approximate \emph{functions} as infinite series.
 
 
 
