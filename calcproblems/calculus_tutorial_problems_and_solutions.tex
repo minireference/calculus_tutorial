@@ -1,0 +1,447 @@
+\documentclass[10pt,oneside]{article}
+%\documentclass[oneside,10pt]{book}
+
+\title{ Problems for the Calculus Tutorial}
+\author{Ivan Savov, Minireference Co.}
+
+
+%%%   LATEX PACKAGES    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftex,
+  pdfversion=1.5,
+  hyperfootnotes=false,
+  pdfstartview=Fit,   % default value
+  pdfstartpage=1,     % default value
+  pdfpagemode=UseNone,  % default value
+  bookmarks=true,   % default value
+  linktocpage=false,    % default value
+  pdfpagelayout=SinglePage,
+  pdfdisplaydoctitle,
+  pdfpagelabels=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=0,
+  colorlinks=false,
+  pdfborder={0 0 0},
+  linkcolor=black]{hyperref}        % hyperref needs to be loaded after imakeidx for hyperlinks to work
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[nosolutionfiles]{answers}           % inline answers for use when proofreading
+%\usepackage{answers}
+\usepackage{color}
+
+%%%    HEADERS AND MACROS     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% SHARED   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\newenvironment{hint}{\vspace{1.5mm}\par\noindent Hint:}{}		% more airy version used in LA book
+%
+% for preventing newlines in answers (appear on a single line)
+\makeatletter
+\newcommand\gobblepars{%
+    \@ifnextchar\par%
+        {\expandafter\gobblepars\@gobble}%
+        {}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%   STANDARDIZE ON REFS TO PROBLEMS      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\probref}[1]{P\ref{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%% END-OF-CHAPTER  PROBLEMS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\Newassociation{answer}{Answer}{answers}			% optional replacement for solution (if no space)
+\Newassociation{solution}{Solution}{solutions}			% defining the three saved "streams", solutions --> back of 
+
+% A special theorem style for end-of-chapter problems  --- P4.1, P4.2, P4.3, ...
+\newtheoremstyle{problemstyle}
+  {0.3\topsep}   % Space above
+  {0.7\topsep}   % Space below
+  {\normalfont}  % Body font
+  {0pt}       % Indent amount (empty value is the same as 0pt)
+  {\bfseries} % Theorem head font
+  {}          % Punctuation after theorem head
+  {6pt plus 1pt minus 1pt} % Space after theorem head
+  {P\thmnumber{#2} \thmnote{ (#3)}} % Theorem head spec
+%
+%
+\theoremstyle{problemstyle}
+\newtheorem{problem}{}[]
+
+% a container for end-of-chapter exercises and end-of-chapter problems 
+\newenvironment{problems}[1]{
+	\setcounter{problem}{0}
+	\Opensolutionfile{answers}[99anssol/answers_#1]
+	\Opensolutionfile{solutions}[99anssol/solutions_#1] 
+}{
+	\Closesolutionfile{answers}
+	\Closesolutionfile{solutions}
+}
+% Problem answers and solution display
+%
+\newcommand{\showProblemAnswers}[1]{	
+	%	\renewcommand{\Answerlabel}[1]{E##1.}
+	\renewenvironment{Answer}[1]{\textbf{P##1}}{\gobblepars}
+	\input{99anssol/answers_#1}
+}
+%
+\newcommand{\showProblemSolutions}[1]{	
+	\renewcommand{\Solutionlabel}[1]{\textbf{P##1}}
+	\input{99anssol/solutions_#1}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%   FONTS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{mathpazo}   % PALATINO (chosen Sep 10 2017)
+\usepackage{mathabx}
+
+
+\hypersetup{
+	pdftitle={Problems for the Calculus Tutorial},
+	pdfauthor={Ivan Savov},
+	pdfkeywords={calculus, limits, derivatives, integrals},
+}
+
+    
+\begin{document}
+
+
+\maketitle 
+
+
+
+%\setcounter{tocdepth}{1}
+%\setcounter{secnumdepth}{1}
+%\tableofcontents
+
+
+
+
+
+%\mainmatter
+
+\begin{problems}{tut}
+
+
+
+
+
+	%%%%  LIMITS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Limits}
+
+
+	\begin{problem}
+		Calculate the following limit expressions:
+		\[
+			\text{(a)}~\lim_{x\to \infty} \tfrac{7}{x+4}
+			\qquad
+			\text{(b)}~\lim_{x\to\infty}\tfrac{4x^2-7x+1}{x^2}
+			\qquad
+			\text{(c)}~\lim_{x\to 0^-} \tfrac{1}{x}
+		\]
+		\begin{answer}(a)~$0$. (b)~$4$. (c)~$-\infty$.\end{answer}
+		\begin{solution}
+			a) As $x$ goes to infinity, the denominator goes to infinity,
+			so the fraction goes to zero.
+
+			b) If we divide each term by $x^2$,
+			we get the expression $\frac{4x^2-7x+1}{x^2}=4-\frac{7}{x}+\frac{1}{x^2}$.
+			The limit of the first term is $4$.
+			The limits of the second and third terms are zero as $x$ goes to infinity.
+
+			c) As $x$ approaches $0$ from the left ($x\to 0^-$),
+			the fraction $\frac{1}{x}$ takes on larger and larger negative numbers.
+			Therefore $\lim_{x\to 0^-} \frac{1}{x}=-\infty$.			
+		\end{solution}
+	\end{problem}
+
+
+	\begin{problem}
+		Assuming $\lim_{x\to\infty} f(x)= 2$ and $\lim_{x\to\infty} g(x)=3$,
+		compute
+		\[
+			\text{(a)}~\lim_{x\to\infty}\bigl(2f(x)-g(x)\bigr)
+			\qquad
+			\text{(b)}~\lim_{x\to\infty} f(x)\,g(x)
+			\qquad
+			\text{(c)}~\lim_{x\to\infty}\frac{4f(x)}{g(x)+1}.
+		\]
+		\begin{answer}(a)~$1$. (b)~$6$. (c)~$2$.\end{answer}
+		\begin{solution}
+			We're given $\lim_{x\to\infty} f(x)= 2$ and $\lim_{x\to\infty} g(x)=3$.
+			For a) we use the sum rule:
+			\[
+				\lim_{x\to\infty}\bigl(2f(x)-g(x)\bigr)
+				=2\lim_{x\to\infty}f(x)-\lim_{x\to\infty}g(x)
+				=2\cdot 2-3
+				=1.
+			\]
+			
+			\noindent
+			To solve b), we use the product rule for limits:
+			\[
+				\lim_{x\to\infty} f(x)\,g(x)
+				=\left(\lim_{x\to\infty}f(x)\right)\left(\lim_{x\to\infty}g(x)\right)
+				=2\cdot 3
+				=6.
+			\]
+			
+			\noindent
+			To solve c) we use the quotient rule for limits:
+			\[
+				\lim_{x\to\infty}\frac{4f(x)}{g(x)+1}
+				=\frac{4\lim_{x\to\infty}f(x)}{\lim_{x\to\infty}(g(x)+1)}
+				=\frac{8}{\lim_{x\to\infty}g(x)+1}
+				=\frac{8}{3+1}
+				=2.
+			\]
+		\end{solution}
+	\end{problem}
+
+
+
+
+
+\vspace{1cm}
+
+	%%%%  DERIVATIVES     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Derivatives}
+
+
+	\begin{problem} %P3
+		Find the derivative with respect to $x$ of the functions:
+		\[
+			\text{(a)}~f(x) = x^{13}
+			\qquad
+			\text{(b)}~g(x) = \sqrt[3]{x}
+			\qquad
+			\text{(c)}~h(x) =  ax^2 + bx + c.
+		\]
+		\begin{answer}$f^{\prime\!}(x) = 13x^{12}$.
+			$g^{\prime\!}(x) = \frac{1}{3} x^{-\frac{2}{3}}$.
+			$h^{\prime\!}(x) = 2ax + b$.\end{answer}
+		\begin{solution} 
+			\noindent
+			a) Use the power rule $\frac{d}{dx}x^n = nx^{n-1}$: $f'(x)=\frac{d}{dx}x^{13}=13x^{12}$.
+		
+			\noindent
+			b) Rewrite $\sqrt[3]{x}=x^{1/3}$ and use the power rule: $g'(x)=\frac{d}{dx}x^{1/3}=\frac{1}{3}x^{-2/3}$.
+		
+			\noindent
+			c) Differentiate term-by-term: $h'(x)=\frac{d}{dx}(ax^2+bx+c)=2ax+b$.
+		\end{solution}
+	\end{problem}
+
+
+	\begin{problem} %P4
+		Calculate the derivatives of the following functions:
+		\[
+			\text{(a)}~p(x) = \dfrac{2x + 3}{3x + 2}
+			\qquad
+			\text{(b)}~q(x) = \sqrt{x^2 + 1}
+			\qquad
+			\text{(c)}~r(\theta) =  \sin^3 \theta.
+		\]
+		\begin{answer}$p^{\prime\!}(x) = \frac{-5}{(3x + 2)^2}$.
+			$q^{\prime\!}(x) = \frac{x}{\sqrt{ x^2 + 1}}$.
+			$r^{\prime\!}(\theta) = 3\sin^2 \theta \cos\theta$.\end{answer}
+		\begin{solution}
+			\noindent
+			a) Use the quotient rule $\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}$
+			with $u=2x+3$ and $v=3x+2$:
+			\[
+				p'(x)=\frac{2(3x+2)-(2x+3)\cdot 3}{(3x+2)^2}
+				     =\frac{6x+4-6x-9}{(3x+2)^2}
+				     =\frac{-5}{(3x+2)^2}.
+			\]
+		
+			\noindent
+			b) Write $q(x)=(x^2+1)^{\frac{1}{2}}$ and use the chain rule:
+			\[
+				q'(x)=\frac{1}{2}(x^2+1)^{-\frac{1}{2}}\cdot 2x=\frac{x}{\sqrt{x^2+1}}.
+			\]
+		
+			\noindent
+			c) Using the chain rule fives us $r'(\theta)=3\sin^2\theta\cdot \cos\theta$.
+		\end{solution}
+	\end{problem}
+
+
+
+
+
+	\begin{problem} %P5
+		Find the maximum and the minimum of $f(x) = x^5-5x$.
+		\begin{answer}Max at $x = -1$; min at $x = 1$.\end{answer}
+		\begin{solution} 
+			First we compute the derivative $f'(x)=5x^4-5=5(x^4-1)$.
+			The critical points are $x=-1$ and $x=1$.
+			The second derivative is $f''(x)=20x^3$.
+			We apply the second derivative test to each critical point:
+			\[
+				f''(-1)=-20<0 \ \Rightarrow\ \text{local maximum at }x=-1,
+			\]
+			\[
+				f''(1)=20>0 \ \Rightarrow\ \text{local minimum at }x=1.
+			\]
+		\end{solution}
+		
+	\end{problem}
+
+
+
+
+\vspace{1cm}
+
+	%%%%  INTEGRALS     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Integrals}
+
+
+	\begin{problem} %P6 
+		Calculate the integral function $F_0(b) = \int_0^b f(x)\,dx$
+		for the polynomial $f(x) = 4x^3 + 3x^2 + 2x + 1$.
+		\begin{answer}$F_0(b) = b^4 + b^3 + b^2 + b$.\end{answer}
+		\begin{solution}
+			Integrate term-by-term using the formula $\int_0^b x^n \,dx = \frac{1}{n+1}b^{n+1}$.
+		\end{solution}
+	\end{problem}
+
+	\begin{problem} %P7
+		Find the area under $f(x)=8-x^3$ between $x=0$ and $x=2$.
+		\begin{answer}$A_f(0,2) = 12$.\end{answer}
+		\begin{solution} 
+			We compute the area using the definite integral:
+			\[
+				A_f(0,2)=\int_0^2 (8-x^3)\,dx
+				=\left[8x-\frac{x^4}{4}\right]_0^2
+				= \left(16-\frac{16}{4}\right)-0
+				=12.
+			\]
+		\end{solution}
+
+	\end{problem}
+
+	\begin{problem} %P8
+		Find the area under the graph of $g(x)=\sin(x)$ from $x=0$ to $x=\pi$.
+		%\begin{hint}
+		%\end{hint}
+		\begin{answer}$A_g(0,\pi)=2$.\end{answer}
+		\begin{solution} 
+			The area is given by the following integral:
+			\[
+				A_g(0,\pi)=\int_0^\pi \sin(x)\,dx
+				% =\left[-\cos(x)\right]_0^\pi
+				= \bigl(-\cos\pi\bigr)-\bigl(-\cos 0\bigr)
+				=1-(-1)=2.
+			\]
+		\end{solution}
+	\end{problem}
+
+	\begin{problem}	 %P9	% integration using substitution
+		Compute $\int_{0}^{1} \frac{4x}{(1+x^2)^3}\,dx$
+		using the substitution $u = 1 + x^2$.
+		Check your answer numerically using the SciPy function \texttt{quad}.
+		%\begin{hint}
+		%\end{hint}
+		\begin{answer}$\frac{3}{4}$.\end{answer}
+		\begin{solution} 
+			When using the change of variable $u = 1 + x^2$,
+			we must also change the differential $du = 2x\,dx$,
+			which conveniently contains $x$ that appears in the numerator,
+			which allows us to write:
+			\[
+				\int_{x=0}^{x=1} \frac{4x}{(1+x^2)^3}\,dx
+				=  \int_{x=0}^{x=1}  \frac{2}{u^3}\,du
+				= \int_{x=0}^{x=1} 2  u^{-3}\,du.
+			\]
+			Next we must change the $x$-limits of integration
+			to $u$-limits of integration:
+			The lower limit $x = 0$ becomes $u = 1 + 0^2 = 1$,
+			and the upper limit $x = 1$ becomes $u = 1 + 1^2 = 2$,
+			which the complete substitution:
+			\[
+				\int_{x=0}^{x=1} \frac{4x}{(1+x^2)^3}\,dx
+				=
+				2 \int_{u=1}^{u=2} u^{-3}\,du.
+			\]
+			We can now proceed using the integral rule
+			$\int x^n \,dx = \frac{1}{n+1}x^{n+1} + C$
+			to obtain 
+			\begin{align*}
+				2 \int_{u=1}^{u=2} u^{-3}\,du
+					&=	2 \left[ \frac{u^{-2}}{-2} \right]_{1}^{2}	
+						= - \left[ u^{-2} \right]_{1}^{2}
+						= - \left[ \frac{1}{u^2} \right]_{1}^{2}		\\
+					&=	-\left( \frac{1}{2^2} - \frac{1}{1^2} \right)
+						= -\left( \frac{1}{4} - 1 \right)				
+						= \frac{3}{4}
+			\end{align*}
+		\end{solution}
+	\end{problem}
+
+
+
+
+
+\vspace{1cm}
+
+	%%%%  SEQUENCES AND SERIES     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Sequences and series}
+
+	\begin{problem} %P10
+		Calculate the value of the infinite series $\sum_{k=0}^\infty  \left(\frac{2}{3}\right)^{\!k}$.
+		\begin{answer}$3$.\end{answer}
+		\begin{solution}
+			We can use the formula for the geometric series
+			$\sum_{k=0}^{\infty} r^k=\frac{1}{1-r}$
+			with $r=\frac{2}{3}$,
+			which gives us $\sum_{k=0}^\infty  \left(\frac{2}{3}\right)^{\!k} = \frac{1}{1- \frac{2}{3}} =  3$.
+		\end{solution}
+	\end{problem}
+
+
+	\begin{problem}
+		Find the Taylor series for the function $f(x) = e^{-x}$.
+		\begin{hint}
+			Use algebraic manipulations starting from a Taylor series that you know.
+		\end{hint}
+		\begin{answer}$f(x) = \sum_{k=0}^\infty \frac{(-1)^k x^k }{ k! }$.\end{answer}
+		\begin{solution}
+			Start from the known Taylor series $e^x=\sum_{k=0}^{\infty}\frac{x^k}{k!}$.
+			Substitute $-x$ for $x$ to get 
+			\[
+				f(x) =\sum_{k=0}^{\infty}\frac{(-x)^k}{k!}
+				     =\sum_{k=0}^{\infty}\frac{(-1)^k x^k}{k!}.
+			\]
+		\end{solution}
+	\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{problems}
+
+
+
+
+\clearpage
+
+\section*{Answers}
+
+
+\showProblemAnswers{tut}
+
+\end{document}
+
+

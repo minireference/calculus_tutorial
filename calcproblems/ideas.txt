@@ -1,6 +1,1 @@
 
-## Series
-
-		Compute the infinite sum ... r=1/3
-
-
