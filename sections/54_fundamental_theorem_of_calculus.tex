@@ -69,16 +69,16 @@
 			\frac{d}{dx} \int_c^x f(u)\,du = f(x).
 		\]
 		Let's use SymPy to verify that the fundamental theorem of calculus is true.
-		We'll start with the function $\tt{f} = f(x) = x^2$,
-		compute its integral function $\tt{F}$ using \tt{sp.integrate},
-		then take the derivative of $\tt{F}$ using \tt{sp.diff}.
+		We'll start with the function $\tt{fx} = f(x) = x^2$,
+		compute its integral function $\tt{Fx}$ using \tt{sp.integrate},
+		then take the derivative of $\tt{Fx}$ using \tt{sp.diff}.
 
 		\begin{codeblock}[]
-		>>> f = x**2
-		>>> F = sp.integrate(f, x)
-		>>> F
+		>>> fx = x**2
+		>>> Fx = sp.integrate(fx, x)
+		>>> Fx
 		x**3/3           # + C
-		>>> sp.diff(F, x)
+		>>> sp.diff(Fx, x)
 		x**2
 		\end{codeblock}
 
@@ -107,13 +107,13 @@
 		% The constant $C$ 
 		%  choice of the starting point for integration
 		Let's use SymPy to verify this formula.
-		We'll start with the function $\tt{G} = G(x) = x^3$,
+		We'll start with the function $\tt{Gx} = G(x) = x^3$,
 		compute its derivative $\tt{dGdx} = G^{\prime\!}(x)$ using \tt{sp.diff},
 		then use \tt{sp.integrate} to compute the integral function of $G^{\prime\!}(x)$.
 
 		\begin{codeblock}[]
-		>>> G = x**3
-		>>> dGdx = sp.diff(G, x)
+		>>> Gx = x**3
+		>>> dGdx = sp.diff(Gx, x)
 		>>> dGdx
 		3*x**2
 		>>> sp.integrate(dGdx, x)
