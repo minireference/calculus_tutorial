@@ -216,7 +216,7 @@
 			We then evaluate the function for all inputs \tt{xs}
 			and store the outputs of the function in an array called \tt{fxs}.
 
-			\begin{codeblock}[plot-fx-minus3-to-plus3]
+			\begin{codeblock}[np-linspace-xs-and-fxs]
 			>>> import numpy as np
 			>>> xs = np.linspace(-3, 3, 1000)
 			>>> fxs = f(xs)
@@ -231,7 +231,7 @@
 			We can do this by importing the \tt{seaborn} module (alias \tt{sns})
 			and calling the function \tt{sns.lineplot}.
 
-			\begin{codeblock}[plot-fx-minus3-to-plus3]
+			\begin{codeblock}[sns-lineplot-xs-fxs]
 			>>> import seaborn as sns
 			>>> sns.lineplot(x=xs, y=fxs)
 			See Figure ¡\ref{fig:graph_of_function_f_eq_x2}¡ for the output.
