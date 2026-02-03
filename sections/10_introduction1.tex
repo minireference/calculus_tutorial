@@ -19,106 +19,90 @@
 	% cf. MATHPHYSbook/02_intro2phys/03.introduction_to_calculus.tex
 
 
-	\subsection{Example: file download}
-	\label{introduction:download_example}
 
-		Suppose you're downloading a $720$[MB] file from the internet to your computer.
-		At $t=0$ you click ``Save as'' to start the download.
-		Consider the function $f(t)$
-		that describes the amount of disk space occupied by the partially-downloaded file.
-		%	At time $t$,
-		%	your browser reports the download progress as a percentage
-		%	that corresponds to the fraction $\frac{f(t)}{720 \text{[MB]}}$.
 
-		\subsubsection{Download rate}
-		\label{introduction:download_rate}
-
-			The \emph{derivative function} $f^{\prime\!}(t)$,
-			pronounced ``\:\!\!$f$ prime,''
-			describes how the function $f(t)$ changes over time.
-			In our example $f^{\prime\!}(t)$ is the download speed.
-			If your download speed is $f^{\prime\!}(t)=2$[MB/s],
-			then the file size $f(t)$ will increase by 2[MB] each second.
-			If you maintain this download speed,
-			the file size will grow at a constant rate:
-			$f(0)=0$[MB], $f(1)=2$[MB], $f(2)=4$[MB], $\ldots$, $f(100)=200$[MB],
-			and so on until $t=360$[s] when the download will be done.
-
-			To estimate the time that remains before the download completes,
-			assuming the current speed stays roughly constant,
-			we can divide the amount of data that remains to be downloaded
-			by the current download speed:
+	\subsection{Example: car trip}
+	\label{introduction:car_example}
+	
+		Suppose you're driving to see a friend in a neighbouring town.
+		The total length of the journey is 27000~m (27~km) along a straight road.
+		We can describe your position over time as a function $x(t)$,
+		and use the car's trip odometer to measure the distance travelled.
+		Right before you leave,
+		which we'll call $t=0$,
+		you reset the trip odometer so it reads $x(0)=0$~m.
+	
+		\subsubsection{Velocity}
+		\label{introduction:car_velocity}
+	
+			The \emph{derivative function} $x^{\prime\!}(t)$,
+			pronounced ``\:\!\!$x$ prime,''
+			describes how the function $x(t)$ changes over time.
+			In this example $x^{\prime\!}(t)$ is the car's \emph{velocity}.
+			If your current velocity is $x^{\prime\!}(t)=15$~m/s,		%	15 m/s=54 km/h
+			then the car's position $x(t)$ is increasing by $15$~m each second.
+			If you maintain this velocity,
+			the position will increase at a constant rate:
+			$x(0)=0$~m, $x(1)=15$~m, $x(2)=30$~m, % $\ldots$, $x(100)=1500$~m,
+			and so on until $t=1800$~s % ($30$~min)
+			when you'll have travelled $1800\times 15 = 27000$~m
+			and reached your destination.
+	
+			To estimate the time remaining in the trip,
+			assuming the velocity $x^{\prime\!}(t)$ stays constant,
+			you can divide the remaining distance
+			by the current velocity:
 			\[
-				\text{time remaining at } t = \tfrac{ 720 - f(t) }{ f^{\prime\!}(t) } \quad [\textrm{s}].
+				\text{time remaining at } t
+					\; \; =\; \frac{ 27000 - x(t) }{ x^{\prime\!}(t) } \;\;\; \textrm{s}.
 			\]
-			The bigger the derivative $f^{\prime\!}(t)$,
-			the faster the download will finish.
-			If your internet connection were 10 times faster,
-			the download would finish 10 times more quickly.
-
-
+			The bigger the derivative $x^{\prime\!}(t)$,
+			the faster you'll arrive.
+			If you drive two times faster,
+			the time remaining will be halved.
+	
+	
 		\subsubsection{Inverse problem}
-		\label{introduction:inverse_problem}
+		\label{introduction:car_inverse_problem}
+	
+			Imagine that the car's odometer is busted
+			and you don't have any way
+			to measure the distance $x(t)$ you have travelled over time.
+			The car's speedometer is still working though,
+			so you know the velocity $x^{\prime\!}(t)$ at all times.
+			Is there a way to calculate the distance travelled
+			using only the information from the speedometer?
 
-			Let's now consider the download scenario
-			from the point of view of the modem that connects your computer to the internet.
-			Any data you download comes through the modem,
-			so the modem knows the download rate $f^{\prime\!}(t)$[MB/s]
-			at all times during the download.
-			%
-			The modem is separate from your computer,
-			so it doesn't know the file size $f(t)$.
-			Nevertheless,
-			the modem can infer the file size at time $t$
-			from the transmission rate $f^{\prime\!}(t)$.
-			Think about it---if the modem sees data flowing through at the rate of $f^{\prime\!}(t)=2$[MB/s],
-			then it knows that the data accumulated on your computer
-			is growing at the rate of $2$[MB] each second.
-			In calculus,
-			we describe the total file size accumulated until time $t=\tau$ (the Greek letter \emph{tau})
-			as the \emph{integral} of the download rate $f^{\prime\!}(t)$ between $t=0$ and $t=\tau$:
+			There is!
+			You can infer the position at time $t$ from the velocity $x^{\prime\!}(t)$.
+			Think about it---if the speedometer reports $x^{\prime\!}(t)=15$~m/s,
+			then you know that the car's position is increasing at the rate of $15$~m each second.
+			We can describe the total distance travelled until time $t=\tau$ (the Greek letter \emph{tau})
+			as the \emph{integral} of the velocity function $x^{\prime\!}(t)$
+			between $t=0$ and $t=\tau$:
 			\[
-				f(\tau) \; = \; \int_{t=0}^{t=\tau}  f^{\prime\!}(t)\, dt.
+				x(\tau) \; = \; \int_{t=0}^{t=\tau}  x^{\prime\!}(t)\, dt.
 			\]
-			The symbol $\int$ is an elongated $S$ that stands for \emph{sum}.
-			Indeed,
-			the ``integral of $f^{\prime\!}(t)$ between $0$ and $\tau$''
-			is in some sense the sum of $f^{\prime\!}(t)$
-			during each time instant $dt$ between $t=0$ and $t=\tau$.
-			To calculate the total accumulated file size,
-			we split the time interval between $t=0$ and $t=\tau$
-			into many short time intervals $dt$ of length $1$[s].
-			During each second,
-			the file size grows by $f^{\prime\!}(t)\,dt$,
-			where $f^{\prime\!}(t)$ is the download rate measured in [MB/s],
-			and $dt$ is a time interval of duration $1$[s].
-			%	Note the units work out:
-			%	the data downloaded during one second is $f^{\prime\!}(t)dt$[MB].
-			%	The file size on your computer at $t=\tau$
-			%	is the sum of these 1-second contributions $f^{\prime\!}(t)\,dt$
-			%	as $t$ varies from $t=0$ to $t=\tau$.
-			% during each second from $t=0$ until $t=\tau$.
-			% The file size at time $t=\tau$ is equal to the sum of the data downloaded 
-
-			%	corresponds to the total amount of downloaded data stored on your computer.
-			%	During this download period,
-			%	the change in file size is described by the integral
+			The integral symbol $\int$ is an elongated $S$ that stands for \emph{sum}.
+			To calculate the total distance travelled,
+			we imagine splitting the time between $t=0$ and $t=\tau$
+			into many short time intervals~$dt$.
+			During each instant,
+			the position increases by $x^{\prime\!}(t)dt$~m,
+			where $x^{\prime\!}(t)$ is the velocity (measured in m/s),
+			and $dt$ is the time interval (measured in seconds).
+			The integral $\int_{0}^{\tau}  x^{\prime\!}(t)\, dt$
+			calculates the ``sum'' of these $x^{\prime\!}(t)\,dt$ contributions
+			accumulated between $t=0$ and $t=\tau$.
 
 
 	\noindent
-	The situation described in the above example
-	shows that calculus concepts are not some theoretical constructs reserved for math specialists,
-	but something you encounter every day.
+	The situation described in the car example
+	shows that calculus concepts are not theoretical constructs reserved only for math specialists,
+	but common ideas you encounter every day.
 	The derivative $q^{\prime\!}(t)$ describes the rate of change of the quantity $q(t)$.
 	The integral $\int_a^b q(t)dt$ measures the total accumulation of the quantity $q(t)$
 	during the time period from $t=a$ to $t=b$.
-
-
-
-
-
-
-
 
 
 	\subsection{Doing calculus: then and now}
