@@ -3,8 +3,8 @@
 \section{Math prerequisites}
 
 	%Before we get started with calculus,
-	Let's start with a review of key ideas from high school math,
-	which we'll need to use as building blocks for calculus.
+	Let's start with a review of some key ideas from high school math,
+	which we'll need as building blocks for calculus.
 
 	\subsection{Set notation}
 
@@ -91,10 +91,10 @@
 		\subsubsection{Infinity}
 
 			The math symbol $\infty$ describes the concept of \emph{infinity}.
-			We use the symbol $\infty$ to represent an infinitely large quantity,
+			We use $\infty$ to represent an infinitely large quantity,
 			that is greater than any number you can think of.
 			Geometrically speaking,
-			we can imagine the number line extends to the right forever towards infinity,
+			you can imagine the number line extends to the right forever towards infinity,
 			as illustrated in Figure~\ref{fig:number_line_rationals_and_reals}.
 			The number line also extends forever to the left,
 			which we denote as negative infinity $-\infty$.
@@ -170,7 +170,7 @@
 		For example,
 		the quadratic function is defined as $f(x) \eqdef x^2$.
 		We use the ``is defined as'' symbol $\eqdef$
-		in the definition instead of the regular equals sign $=$.
+		instead of the regular equals sign $=$ to indicate this is a definition.
 		The function $f(x)$ takes any number $x$ as input,
 		and produces the square of this number as output.
 		For example,
@@ -206,15 +206,15 @@
 			as illustrated in Figure~\ref{fig:graph_of_function_f_eq_x2}.
 			%
 			The graph of the function $f$ allows us to see at a glance the behaviour of the function for many inputs.
-			Function graphs are an essential tool for calculus.
+			Function graphs are an essential tool in calculus.
 
-			We can use the Python to plot the graph of the function $f(x) \eqdef x^2$ that we defined earlier.
+			We can use Python to obtain the graph of the function \tt{f} that we defined earlier.
 			We start by importing the module \tt{numpy} under the alias \tt{np}.
 			Next,
 			we use the function \tt{np.linspace} to create an array (a list of numbers) \tt{xs}
 			that contains 1000 $x$-values that range between $x=-3$ and $x=3$.
-			We then evaluate the function for all inputs \tt{xs}
-			and store the outputs of the function in an array called \tt{fxs}.
+			We then evaluate the function \tt{f} for all inputs \tt{xs}
+			and store the outputs in an array called \tt{fxs}.
 
 			\begin{codeblock}[np-linspace-xs-and-fxs]
 			>>> import numpy as np
@@ -229,7 +229,7 @@
 			To generate the graph of $f(x)$,
 			we just need to trace a line passing through the $1000$ coordinate pairs $(x, f(x))$.
 			We can do this by importing the \tt{seaborn} module (alias \tt{sns})
-			and calling the function \tt{sns.lineplot}.
+			and calling the function \tt{sns.lineplot} as shown below.
 
 			\begin{codeblock}[sns-lineplot-xs-fxs]
 			>>> import seaborn as sns
@@ -238,6 +238,7 @@
 			\end{codeblock}
 
 			\begin{figure}[htb]
+				\vspace{-2mm}
 				\centering
 				\includegraphics[width=0.9\columnwidth]{figures/calculus/graph_of_function_f_eq_x2.pdf}%
 				\vspace{-3mm}
@@ -248,9 +249,9 @@
 			\end{figure}
 
 			\noindent
-			We'll use this combination of \tt{np.linspace},
+			We'll use the combination of \tt{np.linspace},
 			function evaluation,
-			and \tt{sns.lineplot} to plot function graphs.
+			and \tt{sns.lineplot} when we want to plot a function's graph.
 			% The function \tt{plot\_func(f, xlim=[-3,3])} produces the same output.
 
 
@@ -273,7 +274,7 @@
 			\begin{figure}[htb]
 				\centering
 				\includegraphics[width=0.4\columnwidth]{figures/calculus/functions-inverse.pdf}
-				\caption{The inverse $f^{-1}$ undoes the operation of the function $f$.}
+				\caption{The inverse $f^{-1}$ undoes the action of the function $f$.}
 				\label{fig:functions-inverse}
 			\end{figure}
 
@@ -313,14 +314,14 @@
 			%	We'll give a formal definition of continuity later in Section~\ref{limits:continuity}.
 
 
-	\subsection{Function inventory}
+	\subsection{Inventory of functions}
 
 		Your function ``vocabulary'' determines which math expressions you'll be able to read and understand
 		in the same way your English vocabulary
 		determines which English sentences you'll be able to read and understand.
 		Figure~\ref{fig:panel_function_graphs1}
 		shows the graphs of six important functions
-		that are used in many areas of mathematical modelling.
+		that are often used for mathematical modelling.
 
 		\begin{figure}[htb]
 			\centering
@@ -349,7 +350,7 @@
 			More generally,
 			we can define the line $f(x) \eqdef mx+b$,
 			where $m$ describes the slope of the line,
-			and $b$ is the value of the function when $x=0$.
+			and $b$ is the initial value of the function when $x=0$.
 			% The inverse to the line $f(x)=mx+b$ is $f^{-1}(x)=\frac{1}{m}(x-b)$, which is also a line.
 
 
@@ -374,7 +375,7 @@
 			to obtain the polynomial $f(x) \eqdef a_2x^2 + a_1x + a_0$,
 			where $a_2$, $a_1$, $a_0$ are arbitrary constants.
 			This is called a second degree polynomial,
-			since the highest power of $x$ it contains is $x^2$.
+			since the highest power of $x$ is $x^2$.
 			%
 			The general equation for a polynomial function of degree $n$ is
 			\[
@@ -456,15 +457,15 @@
 			when $x \geq 0$.
 			% when the two functions are defined as $f : \mathbb{R}_+ \to \mathbb{R}_+$.
 			The symbol $\sqrt{c}$ refers to the \emph{positive} solution to the equation $x^2=c$.
-			Note that $-\sqrt{c}$ is also a solution of $x^2=c$.
+			Note that $-\sqrt{c}$ is also a solution to $x^2=c$.
 			%
 			Another notation for the square root function is $f(x) \eqdef x^{\frac{1}{2}}$,
-			where the fractional exponent $\frac{1}{2}$ makes sense
+			where the fractional exponent~$\frac{1}{2}$ makes sense
 			since if we square $x^{\frac{1}{2}}$,
 			we get back to $x$:
 			$\big(x^{\frac{1}{2}}\big)^2 = x^{\frac{2}{2}} = x^{1} = x$.
 			%
-			In addition to \emph{square} root,
+			In addition to the \emph{square} root,
 			there is also the \emph{cube root} function $f(x) = \sqrt[3]{x}  = x^{\frac{1}{3}}$,
 			which is the inverse function for the cubic function $f(x)=x^3$.
 			For example,
@@ -497,7 +498,7 @@
 		\noindent
 		There are many other functions worth knowing about,
 		but if you're familiar with the six function shown in Figure~\ref{fig:panel_function_graphs1},
-		you're doing well.
+		you're off to a good start.
 
 
 
@@ -553,8 +554,8 @@
 		% 
 		The unit circle consists of all points $(x,y)$ that satisfy the equation $x^2 + y^2 = 1$.
 		A point on the unit circle has coordinates $(\cos\theta,\sin\theta)$,
-		where $\theta$ is the angle the point makes with the $x$-axis.
-
+		where $\theta$ is the angle the point makes with the $x$-axis
+		and $\cos\theta$ and $\sin\theta$ are the trigonometric functions.
 
 		%FIGURE  right-angle triangle with hypotenuse r, adj = rcosθ, opp = rsinθ
 		\begin{figure}[htb]
@@ -572,7 +573,7 @@
 		Some common angle measures are $30^\circ = \frac{\pi}{6}$,
 		$45^\circ\!=\!\frac{\pi}{4}$, $60^\circ = \frac{\pi}{3}$, and $90^\circ = \frac{\pi}{2}$.
 		The trigonometric functions $\sin$ and $\cos$ take inputs in radians,
-		so we often convert angles from degrees to radians. % and back.
+		so we often need to convert angles from degrees to radians. % and back.
 
 
 		\subsubsection{Sine function}
@@ -694,7 +695,7 @@
 		The sine and cosine functions are also used to describe waves and periodic motion in physics.
 		In this tutorial,
 		we won't discuss these applications too much,
-		and instead focus on the trigonometric functions' graphs and rates of change.
+		but you need to know about the trigonometric functions' graphs and rates of change.
 
 
 
