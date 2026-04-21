@@ -47,8 +47,8 @@
 		but they can be difficult to draw by hand.
 		Another approach for representing the function $f(x,y)$
 		is to use a two-dimensional plot that shows the ``view from above'' of the surface $f(x,y)$.
-		We can trace \emph{level curves} in the surface,
-		to produce a ``topographic map'' of the surface
+		We trace \emph{level curves} on this surface
+		to produce a ``topographic map''
 		where each level curve shows the points that are at a certain height.
 		% MAYBE: (i.e., the set of points $(x,y)$ satisfying $f(x,y)=c$ for some constant $c$
 		%
@@ -68,15 +68,15 @@
 
 	\subsection{Partial derivatives}
 
+		Taking the derivative of a multivariable function with respect to one of its input variables
+		is called a \emph{partial derivative}
+		and denoted with the symbol $\partial$.
 		For a function of two variables $f(x,y)$,
 		there is an ``$x$-derivative'' operator $\frac{\partial}{\partial x}$
 		and a ``$y$-derivative'' operator $\frac{\partial}{\partial y}$.
-		The operation $\frac{\partial}{\partial x}f(x,y)$ describes taking the derivative of $f(x,y)$ with respect to the input variable $x$,
-		while keeping the input  variable $y$ constant.
-		Taking the derivative of a multivariable function with respect to one of its input variables is called a \emph{partial derivative}
-		and denoted with the symbol $\partial$.
-
-		The partial derivative of $f(x,y)$ with respect to $x$ is
+		The operation $\frac{\partial}{\partial x}f(x,y)$
+		describes taking the derivative of $f(x,y)$ with respect to the input variable $x$,
+		while keeping the input  variable $y$ constant:
 		\[
 			\frac{\partial}{\partial x}f(x,y)
 			\;\;=\;\;
@@ -84,7 +84,7 @@
 			\;\;\eqdef\;\;
 			\lim_{ \delta \rightarrow 0}	\frac{f(x+\delta, y)-f(x,y)}{\delta}.
 		\]
-		Similarly the partial derivative of with respect to $y$ is
+		The partial derivative of $f(x,y)$ with respect to $y$ is
 		\[
 			\frac{\partial}{\partial y}f(x,y)
 			\;\;=
@@ -115,11 +115,14 @@
 			%		\qquad\text{and}\qquad
 			%		\frac{\partial f}{\partial y} = -\tfrac{1}{2}y.
 			%	\]
+			We can use the derivative formulas from Table~\ref{table:derivatives}---you
+			just have to remember which variable you're differentiating
+			and which variable stays constant.
 
 	\subsection{The gradient operator}
 
 		The \emph{gradient} of the function
-		is a vector that combines the $x$ and $y$ partial derivatives:
+		is a vector that combines the $x$- and $y$-partial derivatives:
 		\[
 			\nabla f(x,y)
 			\eqdef
@@ -137,7 +140,7 @@
 		which is the symbol for change.
 		% Note that $\nabla$ acts on a function $f(x,y)$ to produce a vector output.
 		The direction of the gradient vector tells us the direction of the function's maximum increase---the
-		``uphill'' direction at the surface of graph of $f(x,y)$ at the point $(x,y)$.
+		``uphill'' direction at the surface of $f(x,y)$ at the point $(x,y)$.
 		The gradient vector is always perpendicular to the \emph{level curve} at that point.
 
 		\subsubsection{Example}
@@ -243,20 +246,21 @@
 		Section~\ref{derivatives:optimization} (see page \pageref{derivatives:optimization})
 		readily generalize to functions with multiple variables.
 		Indeed,
-		the \emph{gradient descent algorithm} is often used to optimize functions
+		the \emph{gradient descent algorithm} can be used to optimize functions
 		with hundreds or thousands of variables.
 		% Gradients are the key for the optimization algorithms used in modern machine learning techniques.
-		Many of the cutting-edge machine learning models
+		Most modern machine learning models
 		``learn'' the model parameters by minimizing the value of some multivariable function
-		and repeatedly taking steps in the ``downhill'' direction,
+		by repeatedly taking steps in the ``downhill'' direction,
 		as indicated by the gradient vector.
 		% MULTIVAR INTEGRALS 
 		Multivariable integrals are used a lot in probability theory and statistics,
 		where they are used to compute probabilities and expectations.			
 		%	There is a lot more to learn about calculus operations on multivariable functions,
 		%	but we don't have the space for further discussion.
-		Your basic knowledge of derivatives and integrals concepts we discussed
-		earlier in this tutorial will be very useful for understanding multivariable calculus topics.
+		%
+		%	Your basic knowledge of derivatives and integrals concepts we discussed
+		%	earlier in this tutorial will be very useful for understanding multivariable calculus topics.
 
 
 

@@ -8,10 +8,8 @@
 	% MAYBE:
 	%	In other words,
 	%	$k \in \mathbb{N}$ is the input and $a_k \in \mathbb{R}$ is the output.
-	The \emph{series} $\sum a_k$ describes the sum of all the terms in the sequence $a_k$.
-	%
-	Sequences and series are the third pillar of the calculus knowledge that I want you to have
-	because they are powerful computational tools 
+	The \emph{series} $\sum a_k$ is the sum of all the terms in the sequence $a_k$.
+	Sequences and series are powerful computational tools 
 	that allow us to describe procedures with an infinite number of steps.
 
 	\subsection{Sequences are functions with discrete inputs}
@@ -32,12 +30,13 @@
 		we use subscript to denote the input variable of a sequence $a_k$
 		instead of the usual notation for functions $a(k)$.
 
-		We can define a sequence by specifying the formula for the $k$\textsuperscript{th} term in the sequence.
+		We can define a sequence by specifying a formula for the $k$\textsuperscript{th} term in the sequence.
 		For example,
 		the \emph{harmonic sequence} is defined by the formula $h_k \eqdef \frac{1}{k}$.
 		Another way to define a sequence is by listing the first few values in the sequence:
-		$[h_0, h_1, h_2, h_3, \ldots]$,
-		which correspond to evaluating the formula $h_k$ for $k=0$, $k=1$, $k=2$, $k=3$, etc.
+		$[1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \tfrac{1}{5}, \tfrac{1}{6},  \ldots]$,
+		which correspond to evaluating the formula $h_k \eqdef \frac{1}{k}$
+		for $k=1$, $k=2$, $k=3$, $k=4$, etc.
 		We'll now look at some examples of sequences,
 		specifying both their formulas
 		and showing the first few values of each sequence.
@@ -60,7 +59,7 @@
 		\paragraph{Squares of natural numbers}
 
 			The sequence-equivalent of the quadratic function $f(x)=x^2$
-			is the sequence of squares of the natural numbers:
+			is the sequence of squares:
 			\[
 				q_k\eqdef k^2, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
@@ -80,20 +79,20 @@
 			This is called the \emph{harmonic sequence}
 			because it describes the wavelengths of harmonic frequencies produced by musical instruments.
 			% For most music instruments,
-			When we play the note that corresponds to the frequency $f$,
-			we also hear notes with frequencies that are integer multiple of the ``dominant'' frequency:
-			$2f$, $3f$, $4f$, etc.,
-			which are called the harmonics.
-			The harmonic sequence describes the wavelengths of the harmonics frequencies.
-			On a string instrument,
-			the harmonic sequence tells you where to place your fingers if you want to play higher harmonics.
-			%	The harmonic series is a really old concept,
-			%	since it is a common 			
-			%	that was well known by ancient civi Greeks knew about it
-			%	played by the instrument consists of a ``main vibration'' with 
-			%	Most music instrument that produce a given note and higher harmonics,
-			%	which are frequencies 
-			%	each note played by a musical instrument has a ``dominant'' frequency
+			%	When we play the note that corresponds to the frequency $f$,
+			%	we also hear notes with frequencies that are integer multiple of the ``dominant'' frequency:
+			%	$2f$, $3f$, $4f$, etc.,
+			%	which are called the harmonics.
+			%	The harmonic sequence describes the wavelengths of the harmonics frequencies.
+			%	On a string instrument,
+			%	the harmonic sequence tells you where to place your fingers if you want to play higher harmonics.
+			%		The harmonic series is a really old concept,
+			%		since it is a common 			
+			%		that was well known by ancient civi Greeks knew about it
+			%		played by the instrument consists of a ``main vibration'' with 
+			%		Most music instrument that produce a given note and higher harmonics,
+			%		which are frequencies 
+			%		each note played by a musical instrument has a ``dominant'' frequency
 
 
 		\paragraph{The alternating harmonic sequence}
@@ -104,11 +103,10 @@
 				  \ \ \Leftrightarrow \ \ 
 				  \big[ 1, -\tfrac{1}{2}, \tfrac{1}{3}, -\tfrac{1}{4}, \tfrac{1}{5}, -\tfrac{1}{6}, \tfrac{1}{7}, \ldots \, \big].
 			\]
-			The factor $(-1)^{k+1}$ is positive for all odd inputs $k \in \{1,3,5,7,\ldots \}$
-			since $(-1)^m=+1$ for any even number $m$.
-			The factor $(-1)^{k+1}$ is negative
-			for all even indices $k \in \{2,4,6,8,\ldots \}$,
-			hence the values in the sequence oscillate between positive and negative.
+			The alternating factor $(-1)^{k+1}$ is equal to $+1$
+			for all odd inputs $k \in \{1,3,5,7,\ldots \}$,
+			and $-1$ for all even inputs $k \in \{2,4,6,8,\ldots \}$,
+			hence the values in the sequence alternate between positive and negative.
 
 
 		\paragraph{Inverse factorial sequence}
@@ -119,13 +117,13 @@
 			and we define $0! = 1$.
 			We'll see factorials in several formulas in this section.
 			In particular,
-			the following sequence will be of interest:
+			the inverse factorial sequence is of interest:
 			\[
 				f_k\eqdef \tfrac{1}{k!}, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
 				  \big[1, 1, \tfrac{1}{2!}, \tfrac{1}{3!}, \tfrac{1}{4!}, \tfrac{1}{5!}, \tfrac{1}{6!}, \tfrac{1}{7!}, \ldots \, \big].
 			\]
-			The values in the inverse factorial sequence quickly become very small
+			The values in this sequence quickly become very small
 			because the factorial function grows very quickly:
 			$2!=2$,
 			$3!=6$,
@@ -154,34 +152,38 @@
 			Each term in the sequence equals $r$ times the previous term,
 			which describes a \emph{geometric} process that repeatedly grows/shrinks by the amount $r$.
 			When $r < 1$,
-			the values in the sequence $g_k$ quickly go to zero,
-			similar to how exponential function $e^{-x}$ goes to zero for large values of $x$.
+			the sequence $g_k$ quickly goes to zero,
+			similar to how exponential function $e^{-x}$ goes to zero for large $x$.
 			When $r > 1$ the sequence $g_k$ increases quickly,
-			similar to how exponential function $e^{x}$ increases for large value of $x$.
+			similar to how function $e^{x}$ increases for large $x$.
 
 
 		\paragraph{Powers of two}
 
-			We'll also use the label $b_k$
-			for the special case of the geometric sequence with $r=2$:
+			We'll use the label $b_k$
+			for the binary sequence,
+			which is a special case of the geometric sequence with $r=2$:
 			\[
 				b_k \eqdef 2^k, \text{ for } k \in \mathbb{N}
 				  \ \ \Leftrightarrow \ \ 
 				  [ 1, 2, 4, 8, 16, 32, 64, 128, \ldots \, ].
 			\]
-			This sequence comes up all over the place in computer science
-			because it describes the number of different numbers we can store in $k$ bits of memory.
+			This sequence comes up all often in computer science:
+			$b_k$ is the number of different values we can store in $k$ bits of memory.
 
 
+\vspace{-4mm}	% LAYOUT
 
 	\subsection{Convergence of sequences}
 	\label{sequences_and_series:convergence_of_sequences}
 
+\vspace{-3mm}	% LAYOUT
+
 		What happens to a sequence as $k$ goes to infinity?
-		We can use the limit notation $\lim_{k \to \infty}$ to describe this process.
+		We use the limit notation $\lim_{k \to \infty}$ to describe this process.
 		There are two behaviours we're interested in:
 		sequences that blow up to infinity,
-		and sequences that approach some fixed number as $k$ goes to $\infty$.
+		and sequences that converge to some finite value. % as $k$ goes to infinity.
 
 		For example,
 		the sequences $n_k \eqdef k$, $q_k \eqdef k^2$, and $b_k \eqdef 2^k$
@@ -201,8 +203,8 @@
 		In contrast,
 		the values in the sequences $h_k \eqdef \tfrac{1}{k}$,
 		$a_k \eqdef \tfrac{(-1)^{k+1}}{k}$,
-		and $f_k \eqdef \tfrac{1}{k!}$ \emph{converge}
-		to the value $0$ in the limit as $k$ goes to infinity:
+		and $f_k \eqdef \tfrac{1}{k!}$
+		converge to the value $0$ in the limit as $k$ goes to infinity:
 		\[
 			% \lim_{k \to \infty} h_k =
 			\lim_{k \to \infty} \tfrac{1}{k} = 0,
@@ -220,8 +222,12 @@
 		is directly analogous to the limit of function $f(x)$ as $x$ goes to infinity.
 
 
+\vspace{-4mm}	% LAYOUT
+
 	\subsection{Summation notation}
 	\label{sequences_and_series:summation_notation}
+
+\vspace{-3mm}	% LAYOUT
 
 		We're often interested in computing sums of values in a sequence.
 		To describe the sum of 3\textsuperscript{rd}, 4\textsuperscript{th}, and 5\textsuperscript{th}
@@ -252,16 +258,16 @@
 		%
 		%
 		But before we get to infinite sums,
-		we'll start by looking at some finite sums
+		let's start by looking at a few finite sums
 		to gain some experience with the summation notation.
 
 
-	\subsection{Exact formulas for finite summations}
+	\subsection{Exact formulas for finite sums}
 	% WAS Exact sums
 
-		We'll now show some useful formulas for calculating sum of the terms in certain sequences.
+		We'll now show some formulas for calculating sum of the terms in certain sequences.
 		For example,
-		here is a formula for the sum of the first $n$ terms in the geometric sequence:
+		here is the formula for the sum of the first $n+1$ terms in the geometric sequence:
 		\[
 			% \sum_{k=0}^n g_k=
 			G_n = 
@@ -352,7 +358,7 @@
 		\]
 		%	and we want to compute the sum of all the values in this sequence $\sum_{k=-}^\infty c_k$.
 		The infinite series $\sum c_k$
-		of the sequence $c_k : \mathbb{N} \to \mathbb{R}$
+		computed from the sequence $c_k : \mathbb{N} \to \mathbb{R}$
 		is analogous to the integral $\int_0^\infty f(x) \,dx$
 		of a function $f : \mathbb{R} \to \mathbb{R}$.
 
@@ -370,7 +376,7 @@
 		This expression describes an infinite sum,
 		which is not possible to compute in practice,
 		but we can see the truth of this equation using our mind's eye.
-		The formula for first $n$ terms is the geometric series is $G_n = \frac{1-r^{n+1}}{1-r}$.
+		The formula for the finite geometric series is $G_n = \frac{1-r^{n+1}}{1-r}$.
 		The term $r^{n+1}$ goes to zero as $n \to \infty$,
 		so the only part of the formula that remains is $\frac{1}{1-r}$.
 
@@ -388,7 +394,7 @@
 
 			\begin{figure}[htb]
 				\centering
-				\includegraphics[width=0.5\columnwidth]{figures/calculus/geometric_progression_of_one_half.png}
+				\includegraphics[width=0.54\columnwidth]{figures/calculus/geometric_progression_of_one_half.png}
 				\vspace{-2mm}
 				\caption{	A graphical representation of the infinite sum of the geometric series with $r=\frac{1}{2}$.
 						The area of each region corresponds to one of the terms in the series.
@@ -398,9 +404,9 @@
 
 		\noindent
 		That's kind of cool, no?
-		We're able to compute the value of a summation with infinitely many terms,
-		because we have the general pattern $G_n$ for the sum with $n$ terms
-		then evaluate the limit as $n$ goes to infinity.
+		We're able to compute the value of a sum with infinitely many terms,
+		because we know the general pattern $G_n$ for the sum with $n$ terms
+		then evaluate the limit of $G_n$ as $n$ goes to infinity.
 
 
 		\subsubsection{Convergent and divergent series}
@@ -417,7 +423,7 @@
 			In contrast,
 			the harmonic series $\sum h_k$ \emph{diverges}.
 			When we sum together more and more terms of the sequences $h_k$,
-			the total computed keeps growing and the infinite series blows up to infinity
+			the total keeps growing and the infinite series blows up to infinity
 			$\sum h_k = \infty$.
 			We say that the harmonic series \emph{is divergent}.
 
@@ -426,7 +432,7 @@
 
 		\subsubsection{Using convergent series for practical calculations}
 	
-			We can use infinite series to compute irrational numbers.
+			We can use infinite series to compute certain irrational numbers.
 	
 			\paragraph{Example 17: Euler's number}
 	
@@ -442,7 +448,7 @@
 				\]
 	
 			\noindent
-			The calculation above is not just cool math fact,
+			This calculation is not just cool math fact,
 			but a useful computational procedure
 			that we can use to approximate the value of $e = 2.71828\ldots$
 			using only basic arithmetic operations like repeated multiplication (factorial), division, and addition.
@@ -473,7 +479,7 @@
 			we would need to compute the infinite series $\sum_{k=0}^\infty \tfrac{1}{k!}$.
 			We can do this using SymPy
 			by calling the function \texttt{sp.summation}
-			whose syntax is similar to the function \texttt{sp.integrate} we used to compute integrals.
+			whose syntax is similar to the function \texttt{sp.integrate}.
 			The first argument is an the expression for the $k$\textsuperscript{th}
 			term in the sequence,
 			then we specify the index variable,
@@ -531,8 +537,9 @@
 				we can obtain an approximation that is arbitrarily close
 				to the true value $\ln(2) = 0.6931471805599453\ldots$.
 	
-				To get the exact value $\ln(2)$,
-				we can make SymPy compute the infinite series:
+				To get the exact value of $\ln(2)$,
+				we can compute the infinite series using SymPy,
+				as shown below.
 	
 				\begin{codeblock}[]
 				>>> sp.summation((-1)**(k+1)/k, (k, 1, sp.oo))
@@ -582,15 +589,15 @@
 		which we denote $f^{(k)}(0)$.
 		Specifically,
 		the $k$\textsuperscript{th} coefficient in the Taylor series approximation
-		for the function $f(x)$ is $c_k \eqdef \frac{f^{(k)}(0)}{k!}$,
-		where $k!$ is the factorial function.		
+		for the function $f(x)$ is $c_k \eqdef \frac{f^{(k)}(0)}{k!}$.
+		%, where $k!$ is the factorial function.		
 		The finite series with $n$ % such 
 		terms produces the following approximation:
 		\[
 			f(x)
 		 		\approx f(0)
 					+f^{\prime\!}(0)x
-					+\tfrac{f^{\prime\prime}(0)}{2!}x^2
+					+\tfrac{f^{\prime\prime\!}(0)}{2!}x^2
 					% +\tfrac{f^{(3)}(0)}{3!}x^3
 					+ \cdots
 					+\tfrac{f^{(n)}(0)}{n!}x^n  \\
@@ -602,7 +609,7 @@
 		the Taylor series approximation becomes exactly equal to the function $f(x)$:
 		\[
 			f(x) = f(0)	+ f^{\prime\!}(0)x
-					+ \tfrac{f^{\prime\prime}(0)}{2!}x^2
+					+ \tfrac{f^{\prime\prime\!}(0)}{2!}x^2
 					+ \tfrac{f^{(3)}(0)}{3!}x^3 + \cdots \\
 		 		= \sum_{k=0}^\infty \tfrac{f^{(k)}(0)}{k!}x^k.
 		\]
@@ -613,20 +620,21 @@
 		you can compute the Taylor series of any function $f(x)$.
 		For example,
 		let's find the Taylor series of the function $f(x) = e^x$ at $x=0$.
-		The first derivative of $f(x) = e^x$ is $f^{\prime\!}(x) = e^x$.
-		The second derivative of $f(x) = e^x$ is $f^{\prime\prime\!}(x) = e^x$.
-		In fact,
-		all the derivatives of $f(x)$ will be $e^x$ because the derivative of $e^x$ is equal to $e^x$.
+		The first derivative of $f(x) = e^x$ is $f^{\prime\!}(x) = e^x$,
+		the second derivative ois $f^{\prime\prime\!}(x) = e^x$,
+		and so on.
+		%	In fact,
+		%	all the derivatives of $f(x)$ will be $e^x$ because the derivative of $e^x$ is equal to $e^x$.
 		The $k$\textsuperscript{th} coefficient in the power series of $f(x)=e^x$ at the point $x=0$ 
 		is equal to the value of the $k$\textsuperscript{th} derivative of $f(x)$ evaluated at $x=0$
 		divided by $k!$.
 		In the case of $f(x) = e^x$,
 		we have $f^{(k)}(0) = e^0 = 1$,
 		so the coefficient of the $k$\textsuperscript{th} term is $c_k = \tfrac{f^{(k)}(0)}{k!}  = \tfrac{1}{k!}$.
-		The Taylor series of $f(x) = e^x$ is
+		The Taylor series of $f(x) = e^x$ is therefore:
 		\[
-			e^x	= \sum_{k=0}^\infty \tfrac{1}{k!}x^k
-		 	 	= 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{3!} + \tfrac{x^4}{4!} + \tfrac{x^5}{5!} + \tfrac{x^6}{6!} + \tfrac{x^7}{7!}  + \cdots 
+			e^x	= \textstyle \sum_{k=0}^\infty \tfrac{1}{k!}x^k
+		 	 	= 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{3!} + \tfrac{x^4}{4!} + \tfrac{x^5}{5!} + \tfrac{x^6}{6!} + \tfrac{x^7}{7!}  + \cdots.
 		 \]
 		Taylor series are a powerful computational tool for approximating functions.
 		As we compute more terms from the above series,
@@ -640,9 +648,12 @@
 		for several important functions.
 
 		\begin{table}[htb]
+		\vspace{-2mm}
 		\centering
 		\caption{Taylor series expansions for commonly used functions}
+		\vspace{-4mm}
 		\begin{shadebox}%
+		{ \small
 		\vspace{-2mm}
 		\begin{align*}
 		% f(x)			&=	\sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!}x^k		\\
@@ -658,28 +669,32 @@
 		 				=  1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} +  \cdots 					\\
 		\!\!\ln(x+1) 		& = \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\:x^n
 		 				=  x - \frac{x^2}2 + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} + \cdots 		 		
-		\end{align*}%
+		\end{align*}}%
 		\end{shadebox}
 		\label{table:taylor_series}
+		\vspace{-4mm}
 		\end{table}
 
 		% POLYNOMIAL BASIS
-		Readers who are familiar with the concept of a basis from linear algebra
+		Readers who are familiar with the concept of a \emph{basis} from linear algebra
 		can think of the Taylor series shown in Table~\ref{table:taylor_series}
 		as \emph{representations} of the corresponding functions
 		with respect to the basis of polynomial functions:
 		$(1, x, x^2, x^3, x^4, x^5, \ldots)$.
 		The Taylor series coefficients $c_k = \tfrac{f^{(k)}(0)}{k!}$
-		are the \emph{coordinates} of the function $f(x)$ in the \emph{polynomial basis}.
+		are the \emph{coordinates} of the function $f(x)$
+		in the \emph{basis of polynomial functions}.
 
 
 	\subsection{Obtaining Taylor series using SymPy}
 	\label{series:taylor_series_using_sympy}
 
-		The \texttt{SymPy} function \texttt{sp.series} is a convenient way to obtain the Taylor series of any function.
+		The \texttt{SymPy} function \texttt{sp.series}
+		can compute the Taylor series of any function.
 		Calling \texttt{series(fun,var,x0,n)} 
-		will show you the series expansion of any function \texttt{fun} 
-		near \texttt{var}=\texttt{x0} up to powers of \texttt{n}.
+		will show you the Taylor series approximation of the function \texttt{fun}
+		near \texttt{var}=\texttt{x0},
+		up to powers of \texttt{n}.
 		We can quickly fact-check the Taylor series given in Table~\ref{table:taylor_series} using SymPy.
 
 		\begin{codeblock}[]
@@ -722,12 +737,12 @@
 		also provides an easy way
 		to compute its integral function $F_0(x) \eqdef \int_0^x f(u)\,du$.
 		% for any function $f(x)$.
-		The Taylor series of $f(x)$ consists only of polynomial terms of the form $c_n x^n$.
+		The Taylor series of $f(x)$ consists only of polynomial terms like $\sum c_n x^n$.
 		%	We can compute the derivative function $f^{\prime\!}x)$
 		%	by simply computing the derivative of each term: $nc_n x^{n-1}$.
 		To compute the integral function $F_0(x) \eqdef \int_0^x f(u)\,du$,
-		we can compute the integrals of the individual terms,
-		which gives us $\frac{c_n}{n+1}x^{n+1}$.
+		we can compute the integral of each term,
+		which gives us $\sum \frac{c_n}{n+1}x^{n+1}$.
 		%	For example,
 		%	if we want to compute the integral of $\cos(x) = 1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots$,
 		%	we can compute the integral of each term in the Taylor series,

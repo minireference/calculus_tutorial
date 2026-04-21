@@ -14,12 +14,12 @@
 
 		% The symbolic math techniques for calculating integrals
 		The Python function \tt{integrate}
-		that we showed in Section~\ref{integrals:computing_integrals_numerically}
+		that we defined in Section~\ref{integrals:computing_integrals_numerically}
 		is a useful teaching tool,
-		but it would be much too slow to use for practical scientific computing tasks.
+		but it is much too slow to use for practical scientific computing tasks.
 		% that require computing integrals thousands of times.
 		The function \tt{quad} from the \tt{scipy.integrate} module
-		is a much more powerful tool for computing numerical integrals.
+		is a much more powerful tool for computing integrals numerically.
 		The name \tt{quad} is short for ``quadrature,''
 		which is a historical name for integrals.
 		% finding the area under the graph of a function.
@@ -68,7 +68,8 @@
 		\end{codeblock}
 
 		\noindent
-		The answers we obtain match the results we obtained earlier.
+		The answers we get using \tt{quad}
+		match the results we obtained earlier.
 		% the general formula we obtained above, $A_g(0,5) = \frac{1}{2}b^2$,
 		% when the upper limit of integration is $b=5$.
 		The main takeaway message

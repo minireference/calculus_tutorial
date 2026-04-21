@@ -37,8 +37,8 @@
 \fi
 \hypersetup{breaklinks=true,
             bookmarks=true,
-            pdfauthor={},
-            pdftitle={Calculus tutorial},
+            pdfauthor={Ivan Savov},
+            pdftitle={Calculus explained in 23 pages},
             colorlinks=true,
             citecolor=blue,
             urlcolor=black,
@@ -81,11 +81,11 @@
 
 
 
-\title{{\Huge Calculus explained in 25 pages}}
+\title{{\Huge Calculus explained in 23 pages}}
 %	A tale of with equations and code}
 %\author{Ivan Savov}
-\author{{\normalsize Tutorial based on the \href{http://minireference.com}{{\sc No bullshit guide}} series of textbooks by \href{mailto:ivan@minireference.com}{Ivan Savov}}}
-\author{Excerpt from the \href{http://minireference.com/}{\textbf{No Bullshit Guide to Math and Physics}} by Ivan Savov} 
+%\author{{\normalsize Tutorial based on the \href{http://minireference.com}{{\sc No bullshit guide}} series of textbooks by \href{mailto:ivan@minireference.com}{Ivan Savov}}}
+\author{Excerpt from the \href{http://minireference.com/}{\textbf{No Bullshit Guide to Math and Physics}} by Ivan Savov \vspace*{-6mm}} 
 \date{\today}
 
 
@@ -144,6 +144,16 @@
 }{\vspace{-2mm}}
 \makeatother
 
+\makeatletter
+% Format: \@dottedtocline{level}{indent}{numwidth}
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{1.6em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.6em}{2.2em}}
+% If you also want to tighten subsection entries, uncomment and tune:
+% \renewcommand*\l@subsection{\@dottedtocline{2}{1.6em}{2.0em}}
+% \renewcommand*\l@subsubsection{\@dottedtocline{3}{3.6em}{2.6em}}
+\makeatother
+
+
 % TMP macro while writing (to be expanded manually in final version)
 \def\tt{\texttt}
 
@@ -182,12 +192,19 @@
 % /ON-SCREEN DRAFT
 
 
+
+% Arabic numerals for sections and subsections
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesectiondis}{\thesection}
+\renewcommand{\thesubsectiondis}{\thesubsection}
+
+
 \begin{document}
 
 \makeatletter
 \preto{\@verbatim}{\topsep=0pt \partopsep=0pt \vspace{-1.2mm}}
 \makeatother
-
 
 
 
@@ -215,10 +232,13 @@
 
 
 
+\vspace{3mm}
 
 {  \small 
-\begin{spacing}{-1}
+\begin{spacing}{1.1}
+%\begin{singlespace}
 \tableofcontents
+%\end{singlespace}
 \end{spacing}
 }
 
@@ -230,10 +250,10 @@
 %	interval = subset of the domain of integration are called  (one dimensional)        not region
 %	region = two-dimensional area under the graph of f(x)
 
-\vspace{2em}
+%\vspace{4em}
+\input{sections/00_learning_objectives.tex}
 
-
-%\clearpage
+\clearpage
 \input{sections/10_introduction1.tex}
 % \input{sections/introduction2.tex}
 
@@ -276,10 +296,12 @@
 
 %  ADVANCED CALC  %%%%%%%%%%%%%%%%%%%%%%%%%
 %\clearpage
-\input{sections/70_multivariable_calculus.tex}
+\input{sections/70_advanced_calculus.tex}
+% CUT because not adding that much value + scary 
+%\input{sections/70_multivariable_calculus.tex}
 %\clearpage
-\input{sections/80_vector_calculus.tex}
-
+%\input{sections/80_vector_calculus.tex}
+% /CUT because not adding that much value + scary
 
 
 
@@ -300,7 +322,7 @@
 			\qquad
 			\text{(b)}~\lim_{x\to\infty}\tfrac{4x^2-7x+1}{x^2}
 			\qquad
-			\text{(c)}~\lim_{x\to 0^-} \tfrac{1}{x}.
+			\text{(c)}~\lim_{x\to 0^-} \tfrac{1}{x}
 		\]
 		%
 	\noindent
@@ -312,7 +334,7 @@
 			\quad
 			\text{(b)}~\!\!\lim_{x\to\infty} f(x)g(x)
 			\quad
-			\text{(c)}~\!\!\lim_{x\to\infty}\tfrac{4f(x)}{g(x)+1}.
+			\text{(c)}~\!\!\lim_{x\to\infty}\tfrac{4f(x)}{g(x)+1}
 		\]
 		%
 
@@ -325,7 +347,7 @@
 			\qquad
 			\text{(b)}~g(x) = \sqrt[3]{x}
 			\qquad
-			\text{(c)}~h(x) =  ax^2 + bx + c.
+			\text{(c)}~h(x) =  ax^2 + bx + c
 		\]
 
 	\noindent
@@ -336,7 +358,7 @@
 			\qquad
 			\text{(b)}~q(x) = \sqrt{x^2 + 1}
 			\qquad
-			\text{(c)}~r(\theta) =  \sin^3 \theta.
+			\text{(c)}~r(\theta) =  \sin^3 \theta
 		\]
 
 	\noindent
@@ -380,19 +402,19 @@
 	% copy pasted from calcproblems/99anssol/answers_tut.tex
 	{ \small
 		\begin{Answer}{1}
-		(a)~$0$. (b)~$4$. (c)~$-\infty$.
+		(a)~$0$; (b)~$4$; (c)~$-\infty$.
 		\end{Answer}
 		\begin{Answer}{2}
-		(a)~$1$. (b)~$6$. (c)~$2$.
+		(a)~$1$; (b)~$6$; (c)~$2$.
 		\end{Answer}
 		\begin{Answer}{3}
-		$f^{\prime\!}(x) = 13x^{12}$.
-					$g^{\prime\!}(x) = \frac{1}{3} x^{-\frac{2}{3}}$.
+		$f^{\prime\!}(x) = 13x^{12}$;
+					$g^{\prime\!}(x) = \frac{1}{3} x^{-\frac{2}{3}}$;
 					$h^{\prime\!}(x) = 2ax + b$.
 		\end{Answer}
 		\begin{Answer}{4}
-		$p^{\prime\!}(x) = \frac{-5}{(3x + 2)^2}$.
-					$q^{\prime\!}(x) = \frac{x}{\sqrt{ x^2 + 1}}$.
+		$p^{\prime\!}(x) = \frac{-5}{(3x + 2)^2}$;
+					$q^{\prime\!}(x) = \frac{x}{\sqrt{ x^2 + 1}}$;
 					$r^{\prime\!}(\theta) = 3\sin^2 \theta \cos\theta$.
 		\end{Answer}
 		\begin{Answer}{5}
@@ -471,16 +493,16 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\noindent
 	Check out the \textbf{No bullshit guide to math and physics}
-	for further calculus explanations and lots of practice problems.
+	for further calculus explanations and more practice problems.
 	
 
 	\begin{wrapfigure}[11]{r}{0pt}
-	\includegraphics[width=120pt]{figures/cover_v40_noline_lighter.jpg}
+	\includegraphics[width=118pt]{figures/cover_v40_noline_lighter.jpg}
 	%\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/mass_spring-highres.png}
 	\end{wrapfigure}
 
-	This book contains short lessons on mechanics
-	and calculus written in a style that is jargon-free and to the point.
+	This book contains short lessons
+	written in a style that is jargon-free and to the point.
 	The main focus of the book is to show the intricate connections
 	between the concepts of mechanics and calculus.
 	%	Often calculus and mechanics are taught as separate subjects.
@@ -488,7 +510,7 @@
 	%	If you learn calculus without mechanics, it will be boring.
 	%	If you learn mechanics without calculus, you won't truly understand.
 	This textbook covers both subjects in an integrated manner and aims to highlight the
-	connections between them. % two subjects.
+	links between the two subjects.
 
 	Contents:
 	\begin{itemize}

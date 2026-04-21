@@ -4,19 +4,20 @@
 	\subsection{Act 4: Techniques of integration}
 	\label{integrals:techniques_of_integration}
 
-		Okay we're getting into the fourth act of the calculus show,
+		We're getting into the fourth act of the calculus show,
 		and I want to remind you that you can ``tap out'' at any time.
 		The material in this act is some of the most boring stuff.
 		% that  only for students who are currently taking CALC~II class.
 		If you're taking an integral calculus class, %  (a.k.a. CALC 102, Integral calculus),
-		then you need to know this stuff because it is going to be your final exam.
-		Everyone else,
-		feel free to skip ahead to the next section.		% MAYBE: explicit FWD reference
+		then you need to know this stuff,
+		because it is going to be your final exam.
+		Everyone else
+		should feel free to skip ahead to the next section.		% MAYBE: explicit FWD reference
 
 		There are a bunch of tricks that extend the reach of analytical integration methods 
 		(anti-differentiation) to more complicated functions.
 		We don't have space to discuss all these tricks in this tutorial,
-		but we'll show the two most important tricks.
+		but I'll show you the two most important tricks.
 
 		\subsubsection{Substitution trick}
 
@@ -53,10 +54,9 @@
 
 			\paragraph{Example 14}
 
-				Let's compute the integral $\int_a^b \frac{1}{x - \sqrt{x}} \, dx$.
-				This looks like a scary formula,
-				but we can use the substitution trick to compute this integral. 
-				% ALT. becomes more manageable 
+				Let's use the substitution trick to compute the integral $\int_a^b \frac{1}{x - \sqrt{x}} \, dx$.
+				This looks like a scary integral,
+				but it's actually not that bad.
 				We'll apply the substitution $u=\sqrt{x}$,
 				which implies $u^{\prime\!}(x) =  \frac{1}{2\sqrt{x}}$,
 				and $dx = 2\sqrt{x}\,du = 2u\,du$.
@@ -69,10 +69,9 @@
 						=  \int_{u=\sqrt{a}}^{u=\sqrt{b}} \!\frac{1}{u^2 - u}  2u\,du.
 				\]
 				We're simply doing the search-and-replace on $u = \sqrt{x}$,
-				but to do this right,
-				we need to also replace $dx$
+				and also replacing $dx$
 				with the equivalent expression involving $du$,
-				and use the new limits of integration.
+				as using the new limits of integration.
 
 				We can now simplify the expression inside the integral:
 				\[
@@ -82,7 +81,7 @@
 				\]
 				The function inside the integral,
 				$f(u) = \frac{1}{u-1}$,
-				is similar to the inverse function $f(u) = \frac{1}{u}$
+				is similar to the function $f(u) = \frac{1}{u}$
 				whose antiderivative is $\ln(u)$.
 				Replacing $u$ by $u-1$
 				gives us the following antiderivative formula $\int \frac{1}{u - 1} \, du = \ln(u-1)$,
@@ -92,17 +91,14 @@
 					\; = \; 2\ln(\sqrt{b}-1) - 2\ln(\sqrt{a}-1).
 				\]
 				I know this sequence of steps went quickly,
-				and there are a lot of integral symbols,
-				but if you read each step carefully,
+				but if you look carefully,
 				you'll see we're just doing search-and-replace.
 
 
-
-			The substitution trick for integrals comes from the chain rule for derivatives
-			$\left[ F(u(x)) \right]^\prime = F^{\prime\!}(u(x))u^\prime(x)$.
-			We can use substitution only when computing the integral of a function
-			that has the special structure $f(u(x))u^{\prime\!}(x)$.
-
+			%	The substitution trick comes from the chain rule for derivatives
+			%	$\left[ F(u(x)) \right]^\prime = F^{\prime\!}(u(x))u^\prime(x)$.
+			%	We can use substitution only when computing the integral of a function
+			%	that has the special structure $f(u(x))u^{\prime\!}(x)$.
 			% TODO: mention it has great power -- basis of multivariable calculus when using parameterization FWD REF
 
 
@@ -112,9 +108,9 @@
 			when the function we're integrating is the product of two factors,
 			$\int f(x)g^{\prime\!}(x)\, dx$,
 			where $f(x)$ is some arbitrary function,
-			and $g^{\prime\!}(x)$ is the derivative of some other function.
-			
+			and $g^{\prime\!}(x)$ is the derivative of another function.
 
+			\vspace{-2mm}
 			\begin{shadebox}
 			\vspace{-1mm}
 			\[
@@ -124,21 +120,32 @@
 			\]
 			\vspace{-2mm}
 			\end{shadebox}	
-
+			\vspace{-2mm}
+			
+			\noindent
+			Essentially,
+			we're replacing the work of integrating $f(x)g^{\prime\!}(x)$
+			with the work of integrating $f^{\prime\!}(x)g(x)$,
+			which can sometimes be simpler to calculate.
+			Specifically,
+			for integration by parts trick to be useful,
+			we want $f^{\prime\!}(x)$ to be a simpler function than $f(x)$,
+			and $g(x)$ not to be much more complicated than $g^{\prime\!}(x)$.
 
 			\paragraph{Example 15}
 
 				Let's calculate $\int_0^5 x e^x \, dx$ using the integration by parts procedure.
 				The expression $x e^x$ consists of two factors: $x$ and $e^x$.
-				We'll identify $x$ with $f(x)$ and $e^x$ as $g^{\prime\!}(x)$.
+				We'll identify $x$ with $f(x)$ and $e^x$ as $g^{\prime\!}(x)$
+				in the integration by parts formula.
 				This means $f^{\prime\!}(x) = 1$
 				and $g(x)  = \int g^{\prime\!}(x)\,dx = e^x$.
 				We now know all the parts we need to apply the integration by parts formula:
 				\begin{align*}
 					\int_0^5 \underbrace{x}_{f(x)} \underbrace{e^x}_{g^{\prime\!}(x)} \, dx
 						&= \big[f(5)g(5)  - f(0)g(0)\big]	- \int_0^5 \!\! f^{\prime\!}(x)g(x) \, dx			\\[-4mm]
-						&= \big[ 5 e^5 \qquad \; - 0e^0 \big] \qquad \;\;\; - \int_0^5 1 \cdot e^x \, dx  	\\
-						&= \big[ 5 e^5 - 0e^0 \big] - \big[  e^5 - e^0 \big] 						\\
+						&= \big[ 5 e^5 \qquad \; - 0e^0 \big] \qquad \; - \int_0^5 1 \cdot e^x \, dx  	\\
+						&= \big[ 5 e^5 \qquad\; - 0e^0 \big] \qquad \; - \big[  e^5 - e^0 \big] 						\\
 						&= 5 e^5 - e^5 + 1  = 4e^5 + 1.
 				\end{align*}
 
@@ -171,25 +178,26 @@
 			%	since for centuries people were forced to use pen and paper calculations.			
 			There are tricks for trigonometric functions, square roots,
 			fractions that involve $x^2 + a^2$, etc.
-			There is an entire course,
-			called integral calculus,
+			There is an entire course called integral calculus
 			that is dedicated to learning integration tricks.
-			If you want to pursue advanced studies in physics or engineering,
-			you should definitely take this course to learn more integration tricks.
-			Section~5.15 in \textbf{No Bullshit Guide to Math and Physics} is a good introduction to the material.
+			If you plan to study physics or engineering,
+			you should definitely take this course to learn all the integration tricks.
+			See Section~5.15 in the \textbf{No Bullshit Guide to Math and Physics}
+			for more on this.
+			% details about this topic.
 
-			Despite all the formulas and integration techniques,
-			not all functions are \emph{integrable}.
-			There are many functions that don't have an antiderivative function,
+			Not all functions are \emph{integrable}.
+			There are functions that don't have an antiderivative function,
 			and hence no ``closed form'' integral function.
 			For example,
-			the function $f(x) = e^{-x^2}$ doesn't have an antiderivative:
-			there is no function $F(x)$ such that $F^{\prime\!}(x) = e^{-x^2}$.
-			For such functions,
-			we can't use the ``reverse engineering'' analytical shortcut
-			to find the integral,
-			and we must use numerical integration (the split-the-area-into-thin-rectangular-strips procedure).
-			Speaking of which...
+			the function $f(x) = e^{x^2}$ doesn't have an antiderivative:
+			there is no function $F(x)$ such that $F^{\prime\!}(x) = e^{x^2}$,
+			therefore,
+			we can't use the ``reverse engineering'' analytical shortcut.
+			For nonintegrable functions,
+			our only option is to use numerical integration:
+			the split-the-area-into-rectangular-strips procedure.
+			Speaking of which \ldots
 			%	but there is no 
 			%	that allows us to compute areas using the integral function.
 			

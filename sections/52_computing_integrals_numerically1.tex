@@ -1,8 +1,12 @@
 %!TEX root = ../calculus_tutorial.tex
 
 
+\vspace{-3mm} % LAYOUT
+
 	\subsection{Computing integrals numerically}
 	\label{integrals:computing_integrals_numerically}
+
+\vspace{-2mm} % LAYOUT
 
 		Computing the integral $\int_{a}^b f(x)dx$ \emph{numerically}
 		means using a computer to compute the Riemann sum approximation to $A_f(a,b)$
@@ -11,7 +15,7 @@
 		then adding up the areas to get the total area under the graph of $f(x)$.
 		The key step is to come up with a general mathematical expression
 		that describes the approximate area calculation with $n$ rectangular strips,
-		then evaluate this expression for very large values of $n$.
+		then evaluate this expression for large values of $n$.
 
 		Let's start by looking
 		at the math required to calculate the approximation to $\int_{0}^2 h(x)dx$ using $n=10$ rectangles,
@@ -22,7 +26,8 @@
 		we need to know the height of the function $h$ at these $x$-coordinates:
 		$[h(0.2), h(0.4), h(0.6), \ldots, h(1.8), h(2.0)]$.
 		The area of each rectangle is given by the height-times-width formula,
-		and we sum together all of them to compute the approximation to the total area:
+		and we sum together the $10$ area contributions
+		to compute the total area:
 		\[ 
 			A_h(0,2)
 			\approx
@@ -71,7 +76,7 @@
 		The labels above and below the summation symbol $\sum$
 		play the same role as the superscript and subscript in integral notation:
 		the label $k=1$ tells us where to start the summation,
-		and label $k=n$ tells us where to stop the summation.
+		and the label $k=n$ tells us where to stop the summation.
 
 
 		We can take what we learned from the particular example above
@@ -82,9 +87,9 @@
 			\quad\text{where}\quad
 			\Delta x = \tfrac{b-a}{n}.
 		\]
-		This is known as the \emph{Riemann sum} formula for computing areas.
-		We'll now turn this math formula into a Python procedure
-		that performs the $n$-rectangle area approximation calculation. %  for us:
+		This is known as the \emph{Riemann sum} formula for approximating areas.
+		We'll now turn the Riemann sum formula into a Python procedure
+		that performs the $n$-rectangle area calculation:
 
 		\begin{codeblock}[]
 		>>> def integrate(f, a, b, n):
@@ -141,12 +146,14 @@
 			\end{codeblock}
 
 			\begin{figure}[htb]
+				\vspace{-3mm}
 				\centering
 				\includegraphics[width=0.98\columnwidth]{figures/calculus/riemann_sum_n10_n20.pdf}
 				\vspace{-2mm}
 				\caption{	Approximations to the area under the graph of the function $h(x)=4-x^2$ 
 						computed using $n=10$ and $n=20$ rectangles.}
 				\label{fig:riemann_sum_n10_n20}
+				\vspace{-2mm}
 			\end{figure}
 
 			\noindent
@@ -161,12 +168,14 @@
 
  
 			 \begin{figure}[htb]
+				\vspace{-3mm}
 				\centering
 				\includegraphics[width=0.98\columnwidth]{figures/calculus/riemann_sum_n50_n100.pdf}
 				\vspace{-2mm}
 				\caption{	Approximations to the area under the graph of $h(x)=4-x^2$ 
 						computed using $n=50$ and $n=100$ rectangles.}
 				\label{fig:riemann_sum_n50_n100}
+				\vspace{-2mm}
 			\end{figure}
 
 			\noindent
@@ -214,13 +223,16 @@
 		the approximation to the area under the graph of $f(x)$
 		becomes \emph{arbitrarily close} to the true area.
 
+		\vspace{-2mm}
 		\begin{shadebox}
 		\vspace{1mm}
 		The integral between $x=a$ and $x=b$ is \emph{defined}
 		as the limit as $n$ goes to infinity of the Riemann sum:
 		\[
 			\int_{a}^{b}\!f(x)\,dx 
-				\eqdef \lim_{n\to\infty} \sum_{k=1}^{n} f(a + k\Delta x)\Delta x.
+				\eqdef \lim_{n\to\infty} \sum_{k=1}^{n} f(a + k\Delta x)\Delta x,
+				\quad
+				\text{where } \Delta x=\tfrac{b-1}{n}.
 		\]
 		\end{shadebox}
 
@@ -235,7 +247,7 @@
 		Note the structural similarity between the summation formula on the right
 		and the integral notation on the left:
 		% expressions on the two sides of this equation:
-		in both cases we evaluate $f$ at different $x$ values,
+		in both cases we evaluate $f$ at different $x$-values,
 		multiply by a width,
 		and add all these contributions together to get the total.
 		Perhaps now the weird notation we use for integrals will start to make more sense to you.
@@ -253,7 +265,7 @@
 		% ALT. defined as the rate of change of the function $f$ at $x$,
 		These two procedures are the foundations of calculus.
 		The limits $\lim_{n\to\infty}$ and $\lim_{\delta \to 0}$
-		are essential tools that allow us to perform these calculus operations on functions.
+		are essential tools that allow us to define these calculus operations on functions.
 		% TODO: sell applications
 
 

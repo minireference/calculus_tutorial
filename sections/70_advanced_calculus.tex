@@ -1,0 +1,106 @@
+%!TEX root = ../calculus_tutorial.tex
+
+\section{Advanced calculus}
+\label{sec:advanced_calculus}
+
+	We can extend the ideas of differential and integral calculus
+	to multivariable functions that take multiple variables as inputs
+	like $f: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$.
+	\emph{Multivariable calculus} is the study of derivatives and integrals of multivariable functions.
+	%	For a function of two variables $f(x,y)$,
+	%	there is an ``$x$-derivative'' operator $\frac{\partial}{\partial x}$
+	%	and a ``$y$-derivative'' operator $\frac{\partial}{\partial y}$.
+	%	The operation $\frac{\partial}{\partial x}f(x,y)$ describes taking the derivative of $f(x,y)$ with respect to the input variable $x$,
+	%	while keeping the input  variable $y$ constant.
+	% Multivariable functions appear all the time in machine learning, engineering, physics, and other sciences.
+	%	% OPTIMIZATION
+	%	The optimization techniques we discussed in
+	%	Section~\ref{derivatives:optimization} (see page \pageref{derivatives:optimization})
+	%	readily generalize to functions with multiple variables.
+	%	Indeed,
+	%	the \emph{gradient descent algorithm} is often used to optimize functions
+	%	with hundreds or thousands of variables.
+	%	% Gradients are the key for the optimization algorithms used in modern machine learning techniques.
+	%	Many of the cutting-edge machine learning models
+	%	``learn'' the model parameters by minimizing the value of some multivariable function
+	%	and repeatedly taking steps in the ``downhill'' direction,
+	%	as indicated by the gradient vector.
+	%	% MULTIVAR INTEGRALS 
+	%	Multivariable integrals are used a lot in probability theory and statistics,
+	%	where they are used to compute probabilities and expectations.			
+	%	%	There is a lot more to learn about calculus operations on multivariable functions,
+	%	%	but we don't have the space for further discussion.
+	%	Your basic knowledge of derivatives and integrals concepts we discussed
+	%	earlier in this tutorial will be very useful for understanding multivariable calculus topics.
+
+	In \emph{vector calculus},
+	we further extend the ideas of calculus
+	to the study of \emph{vector fields},
+	which are functions of the form $\vec{F}: \mathbb{R}^3 \to \mathbb{R}^3$.
+	% The vector field $\mathbf{F}$ assigns a three-dimensional output vector $\mathbf{F} = (F_x, F_y, F_z)$
+	% for each point $\mathbf{r} = (x,y,z)$ in $\mathbb{R}^3$.
+	% Note we use boldface to denote vectors.
+	Derivative and integral of vector fields are the math machinery used in physics
+	and electrical engineering.
+
+	%	% DERIVATIVES
+	%	\subsection{Vector calculus derivatives}
+	%		There are two derivative operations for vector fields,
+	%		and these are written in terms of the vector derivative operator $\nabla$ (\emph{nabla}),
+	%		which is defined as $\nabla \eqdef \big( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \big)$.
+	%		The \emph{divergence} of the vector field $\mathbf{F}$
+	%		is computed by taking the ``dot product'' of $\nabla$ and the vector field $\mathbf{F} = (F_x, F_y, F_z)$:
+	%		\[
+	%			\nabla \cdot \mathbf{F}(x,y,z)
+	%				= \frac{\partial F_x}{\partial x} 	+ \frac{\partial F_y}{\partial y}	+ \frac{\partial F_z}{\partial z}.
+	%		\]
+	%		The divergence tells us if the field $\mathbf{F}$
+	%		is acting as a ``source'' or a ``sink'' at the point $(x,y,z)$.
+	%	
+	%		The \emph{curl} of the vector field $\mathbf{F}$ is defined as the ``cross product''
+	%		of $\nabla$ and the vector field $\mathbf{F} = (F_x, F_y, F_z)$:
+	%		\[
+	%			\nabla \times \mathbf{F}(x,y,z)
+	%				= 	\left(
+	%						\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}, \;\;
+	%						\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}, \;\;
+	%						\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}
+	%					\right)\!.
+	%		\]
+	%		The curl tells us the rotational tendency of the vector field $\mathbf{F}$.
+
+
+	% INTEGRALS
+	%	\subsection{Vector calculus integrals}
+	%
+	%		There are several different kinds of integral operations you can use with vector fields,
+	%		depending on the type of ``total'' you want to compute,
+	%		and the region of integration.
+	%		%
+	%		% PATH INTEGRALS
+	%		The concept of a vector path integral is denoted
+	%		$\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r}$,
+	%		where $C$ is some curve in three dimensional space,
+	%		and $d\mathbf{r}$ describes a short step along this curve.
+	%		This integral computes the total action of the vector field $\mathbf{F}$
+	%		in the direction along the curve $C$.
+	%		%
+	%		% SURFACE INTEGRALS
+	%		The vector surface integral is denoted
+	%		$\iint_S \mathbf{F}(\mathbf{r}) \cdot d\mathbf{S}$,
+	%		where $S$ is some surface in three dimensional space,
+	%		and $d\mathbf{S}$ %  = \hat{\mathbf{n}}dS$
+	%		is a small ``piece of the surface.''
+	%		This integral computes the total \emph{flux} of the vector field $\mathbf{F}$
+	%		flowing through the surface $S$.
+	%		% To obtain the component of $\mathbf{F}$ in the direction of the surface normal,
+	%		% we take the dot product with  $\eqdef  \eqdef (\mathbf{r}_u^\prime \times \mathbf{r}_v^\prime) dudv$,
+	%	% VECTOR CALCULUS THEOREMS
+	%	The two main results in vector calculus
+	%	are \href{https://en.wikipedia.org/wiki/Divergence_theorem}{\emph{Gauss' divergence theorem}}
+	%	and \href{https://en.wikipedia.org/wiki/Stokes's_theorem}{\emph{Stokes' theorem}}.
+	%	Both theorems can be understood as extensions of the fundamental theorem of calculus (FTC),
+	%	since they show equivalences between
+	%	certain vector derivative and integral operations.
+		
+		

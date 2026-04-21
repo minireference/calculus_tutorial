@@ -2,31 +2,28 @@
 
 	\subsection{Applications of integration}
 
-		Intuitively,
-		we use integrals whenever we want to
-		compute the ``total'' of some quantity that varies over time or space.
+		Integrals are essential tools used in many areas of science, engineering, and business.
 
 		\subsubsection{Kinematics}
 
     			Calculus was originally invented
 			to describe the equations of motion $x(t)$, $v(t)$, and $a(t)$,
-			which correspond to the object's \emph{position}, \emph{velocity},
-			and \emph{acceleration} at time $t$.
+			which correspond to an object's
+			\emph{position}, \emph{velocity}, and \emph{acceleration} at time $t$.
 			We call these the \emph{kinematics} equations,
 			from the Greek word \emph{kinema} for motion.
 			The velocity function $v(t)$ is the derivative of the position function,
-			and the acceleration $a(t)$ is the derivative of the velocity,
-			which we can summarize as follows:
+			and the acceleration $a(t)$ is the derivative of the velocity.
+			We can summarize these relations as follows:
 			\[
 				a(t) \overset{\frac{d}{dt} }{\longleftarrow} v(t) \overset{\frac{d}{dt} }{\longleftarrow} x(t).
 			\]
-			The starting point of kinematics is Newton's second law,
-			which tells us that the acceleration of an object of mass $m$
+			Newton's second law tells us that the acceleration of an object of mass $m$
 			that has a net force $F_{\textrm{net}}$ acting on it is
 			$a = \tfrac{1}{m}F_{\textrm{net}}$.
 			Given the knowledge of acceleration over time $a(t)$,
 			we can predict the position of the object $x(t)$ at any time $t$
-			by ``undoing'' the derivative operations using integration:
+			by ``undoing'' the two derivative operations using integration:
 			\[
 				% \underbrace{ 
 				  \tfrac{1}{m} F_{\textrm{net}}(t)
@@ -62,15 +59,16 @@
 						= x_i +  \int_0^\tau (v_i+at) \, dt
 						= x_i + v_i\tau + \tfrac{1}{2}a\tau^2.
 			\]
-			These two simple calculus steps
+			These two calculus steps
 			allow us to obtain the famous kinematics equation
 			$x(t) = x_i + v_it + \tfrac{1}{2}at^2$
-			for descibing the motion of objects undergoing constant acceleration $a$. % $a(t) = a$.
+			that describes the motion of objects undergoing constant acceleration $a$. % $a(t) = a$.
 			Students taking a physics class are normally presented with this equation
 			and it seems to come out of nowhere,
-			but if you understand calculus you'll know where it comes from:
-			the integration operation applied to the acceleration function $a(t) = a$
-			and the initial conditions $x_i \eqdef x(0)$ and $v_i \eqdef v(0)$.
+			but if you understand calculus,
+			you'll know where it comes from:
+			the integration operation applied twice to the constant acceleration function $a(t) = a$.
+			% and the initial conditions $x_i \eqdef x(0)$ and $v_i \eqdef v(0)$.
 
 			% don't have memorize it,
 			% you can always derive from first principles $a(t) = a$,
@@ -83,15 +81,14 @@
 
 		\subsubsection{Solving differential equations}
 
-			Many important laws in science % and engineering
-			are described by \emph{differential equations}
-			that specify an unknown function $f(t)$ in terms of their derivatives
-			$f^{\prime\!}(t)$, $f^{\prime\prime\!}(t)$, etc.
+			Many important laws in science are described by \emph{differential equations}.
+			A differential equation specifes an unknown function $f(t)$
+			in terms of their derivatives $f^{\prime\!}(t)$, $f^{\prime\prime\!}(t)$, etc.
+			Integrals are the primary tool we use to solve differential equations.
+			% MAYBE diff equation = description of a system, and an instant later    — via Infinite Powers > Intro
 
-			% MAYBE: 
-			% diff equation = description of a system, and an instant later    — via Infinite Powers > Intro
-
-			Here are some examples of differential equations and their solutions:
+			Here are some examples of differential equations used in science
+			and their solutions:
 
 			\begin{itemize}
 
@@ -103,6 +100,8 @@
 					by computing the second derivative of $x(t)$.
 					% which is $x^{\prime\prime\!}(t) = a$.
 
+				\vspace{2mm}	% LAYOUT
+
 				\item In biology,
 					unconstrained bacterial growth is described by the equation $b^{\prime\!}(t) = kb(t)$,
 					where $b(t)$ is the number of bacteria at time $t$.
@@ -112,10 +111,14 @@
 					The solution to this equation is $b(t) = b_0e^{k t}$,
 					where $b_0$ describes the number of bacteria at time $t = 0$.
 
+				\vspace{2mm}	% LAYOUT
+
 				\item Radioactive decay is described by the differential equation
 					$r^{\prime\!}(t) = -\lambda r(t)$,
 					where $r(t)$ describes the number of atoms of some radioactive element.
 					The solution is $r(t) = r_0e^{-\lambda t}$.
+
+				\vspace{2mm}	% LAYOUT
 
 				\item Simple harmonic motion is described by the
 					differential equation $x^{\prime\prime\!}(t) + \omega^2 x(t) = 0$,
@@ -133,30 +136,41 @@
 			%	If we have to solve for $f(x)$ in the differential equation $\frac{d}{dx}f(x) = g(x)$,
 			%	we can take the integral on both sides of the equation to obtain the answer $f(x) = \int g(x)\,dx + C$.
 
+		\smallskip
+		We also use integrals whenever we want to
+		compute the total accumulation of some quantity that varies over time or space.
+		For example,
+		we can use integration to compute the total mass of an object
+		whose mass density varies from point to point.
 
-		\subsubsection{Probability calculations}
-		% ALT. Probability and expectation calculations
 
-			Integration is a key tool for computing probabilities of continuous random variables.
-			A continuous random variable $X$ is described by its \emph{probability density function} $f_X$,
-			and the probability of the event $\{ a \leq X \leq b\}$ is given by the integral
-			$\Pr( \{ a \leq X \leq b\} ) \eqdef \int_a^b f_X(x) \, dx$.
+		\subsubsection{Probability and expectation calculations}
+
+			Integration is required for computing probabilities of continuous random variables.
+			A continuous random variable $X$
+			is described by its \emph{probability density function}~$f_X$.
+			To compute the probability of the event $\{ a \leq X \leq b\}$,
+			we must find calculate the total probability density $f_X$
+			that falls between $x=a$ and $x=b$,
+			which is given by the following integral:
+			\[
+				\Pr( \{ a \leq X \leq b\} )
+					\;\; \eqdef \;\; \int_a^b f_X(x) \, dx.
+			\]
 			%	The probability density $f_X$ varies for different values of $x$,
-			%	so if we want to compute the total probability of $X$ falling between $x=a$ and $x=b$,
+			%	so if we want to compute the total probability of $X$ 
 			%	we must compute the integral of $f_X$.
 			%
 			For example,
 			the standard normal random variable $Z$
 			is described by the probability density function
 			$f_Z(z) = \tfrac{1}{\sqrt{2\pi}} e^{ -\frac{1}{2}z^2 }$.
-			To calculate the probability of the event $\{ -1 \leq Z \leq 1\}$,
-			we must evaluate the integral $\int_{-1}^1 f_Z(z) \, dz$,
-			which is easy to do using SciPy helper function $\tt{quad(}f_Z\tt{,a=-1,b=1)[0]} = 0.68269$.
+			To probability of the event $\{ -1 \leq Z \leq 1\}$
+			is calculated as the integral $\int_{-1}^1 f_Z(z) \, dz = \tt{quad(}f_Z\tt{,a=-1,b=1)[0]} = 0.68269$.
 			% MAYBE: this means 68\% of outcomes of the random variable Z will be between -1 and 1
 
+
 			\ifthenelse{\boolean{FORSTATSBOOK}}{
-				We also use integration to compute \emph{expectations}
-				for quantities that depend on continuous random variables.
 				The expected value of the quantity $G=g(X)$
 				under the randomness of a continuous random variable $X$
 				is defined as the following integral calculation:
@@ -170,4 +184,69 @@
 				Every time we use the $\EE_X$ notation in Section~\ref{sec:continuous_prob_distr},
 				there is some integral calculation going on behind the scenes,
 				so its good if you know to know a thing or two about integrals.
-			}{}
+			}{
+				We also use integration to compute \emph{expectations}.
+				For example,
+				the mean of the random variable $Z$
+				is defined as the following integral calculation
+				$\mu_Z \eqdef \EE[Z] = \int_{-\infty}^\infty zf_Z(z) \, dz$,
+				and its variance is defined as 
+				$\sigma_Z^2 \eqdef \EE[(Z-\mu_Z)^2] = \int_{-\infty}^\infty (Z-\mu_Z)^2 f_Z(z) \, dz$.
+				The mean and the variance are central concepts in probability theory and statistics,
+				so your integration skills will come in handy when learning these subjects.
+			}
+
+
+% OTHER IDEAS
+%	* **Volume of strange shapes**
+%	  * Build a 3D object out of thin slices.
+%	  * Example: volume of a wine glass, vase, or trumpet bell.
+%	
+%	* **Centre of mass**
+%	  * Integration locates the balance point of an object with uneven shape or density.
+%	  * Example: where does an L-shaped metal plate balance on one finger?
+%	
+%	* **Work done by a variable force**
+%	  * If force changes with position, $W=\int F(x),dx$.
+%	  * Cool example: energy needed to compress a spring or pump water out of a tank.
+%	
+%	* **Fluid pressure and hydrostatics**
+%	  * Pressure changes with depth, so total force on a dam or submarine hull comes from integration.
+%	  * Example: why the bottom of a dam must be much thicker than the top.
+%	
+%	* **Electric charge, electric field, gravitational field**
+%	  * Continuous distributions are handled by integrating small contributions.
+%	  * Example: gravitational pull of a ring, disk, or planet on a nearby object.
+%	
+%	* **Signal processing**
+%	  * Integrals measure accumulated signal strength or energy.
+%	  * Example: total energy in an audio waveform or radio signal.
+%	
+%	* **Population growth and epidemiology**
+%	  * Add up changing rates over time.
+%	  * Example: total number of infections generated over a wave of an epidemic.
+%	
+%	* **Economics**
+%	  * Recover totals from marginal quantities.
+%	  * Example: total cost from marginal cost, or consumer surplus as area under a demand curve.
+%	
+%	* **Medicine and pharmacokinetics**
+%	  * Drug concentration varies over time; integration gives total exposure.
+%	  * Example: AUC = area under the concentration-time curve.
+%	
+%	* **Computer graphics**
+%	  * Light hitting a surface can be modelled by integrating contributions from many directions.
+%	  * Cool example: realistic shadows and soft lighting in rendered movies and games.
+%	
+%	* **Machine learning**
+%	  * Integrals appear in continuous probability models and Bayesian inference.
+%	  * Example: marginalizing over unknown parameters.
+%	
+%	* **Arc length and surface area**
+%	  * Integration measures curved geometry.
+%	  * Example: length of a roller-coaster track or area of a curved dome.
+%	
+%	* **Heat flow and diffusion**
+%	  * Integrate changing heat or particle flux.
+%	  * Example: how much total heat enters a material during warming.
+

@@ -1,0 +1,41 @@
+
+
+
+The \emph{Heaviside step function} is an example of a function
+with a jump discontinuity.
+It is defined as follows:
+\[
+	H(x) \eqdef \begin{cases}
+				\; 1, 	& \text{if } x \geq 0 \\
+				\; 0, 	& \text{if } x < 0.
+			\end{cases}
+\]
+The function is zero for negative values of $x$,
+then suddenly jumps to one at $x=0$,
+as shown in Figure~\ref{fig:limits_examples}~(c).
+The limit as $x$ approaches $x=0$ from the left is $\lim_{x\to 0^-} H(x) = 0$.
+The limit at $x=0$ from the right is $\lim_{x\to 0^+} H(x) = 1$.
+The two limits are different,
+$\lim_{x\to 0^-} H(x) = 0 \neq 1 = \lim_{x\to 0^+} H(x)$,
+so the function is \emph{discontinuous} at $x=0$.
+
+
+
+% EXAMPLE  Heaviside
+\noindent
+To calculate the limit from the left or the right of a number,
+we provide a fourth argument \tt{"-"} or \tt{"+"} to \tt{sp.limit}.
+%		The following SymPy calculations confirm the limits of the Heaviside function
+%		when approaching $x=0$ from the left and from the right.
+
+
+\begin{codeblock}[]
+>>> from sympy import Heaviside
+>>> sp.limit(Heaviside(x,1), x, 0, "-")
+0
+>>> sp.limit(Heaviside(x,1), x, 0, "+")
+1
+\end{codeblock}
+
+%	\noindent
+%	See Figure~\ref{fig:limits_examples}~(c) for an illustration.

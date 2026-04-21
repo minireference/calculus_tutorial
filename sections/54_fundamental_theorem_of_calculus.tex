@@ -2,7 +2,7 @@
 
 	\subsection{Act 3: Fundamental theorem of calculus}
 
-		Note the pattern in the formulas for the integral functions $F_0(b)$ and $G_0(b)$.
+		We observed a pattern in the formulas for the integral functions $F_0(b)$ and $G_0(b)$.
 		The integral function of the constant function $f(x)=3$
 		is a linear function $F_0(b) = 3b$.
 		The integral of the linear function $g(x) = x$
@@ -10,11 +10,11 @@
 		%	The integral of the quadratic polynomial $h(x) = 4 - x^2$
 		%	is a third degree polynomial $H_0(b) = 4b - \frac{1}{3}b^3$.
 		In both cases,
-		the integral function seems to increase the degree of the function.
+		the integral function is a polynomial with one degree higher than the original function.
 		What is up with that?
 		Is this a coincidence,
-		or is there some fundamental math pattern
-		we could follow to ``guess'' integral functions?
+		or is there some fundamental pattern that applies to all integral functions?
+		% we could follow to ``guess'' the formulas of 
 
 		The fundamental theorem of calculus (FTC)
 		describes the inverse relation that exists between
@@ -22,15 +22,15 @@
 		and the differentiation operation $\frac{d}{dx}[\tt{<f>}]$.
 		%
 		A priori,
-		there is no reason to suspect that integrals would be related to derivatives.
-		The integral corresponds to the computation of an area,
-		whereas the derivative operation computes the slope of a function.
-		Yet behold:
+		there is no reason to suspect that integrals would be related to derivatives:
+		integrals correspond to the \emph{area} calculations,
+		whereas derivatives compute \emph{slopes},
+		yet behold:
 
 		\begin{shadetheorem}[fundamental theorem of calculus]
 			Let $f(x)$  be a continuous function,
 			and let $a \in \mathbb{R}$ be a constant.
-			Define the function $F_a(x)$ as follows:
+			Define the integral function $F_a(x)$ as follows:
 			\[
 				F_a(x)  \; \eqdef \; A_f(a, x) \; = \; \int_a^x f(u) \, du.
 			\]
@@ -40,26 +40,25 @@
 				\frac{d}{dx}\!\big[F_a(x)\big] \; = \; f(x).
 			\]
 		\end{shadetheorem}
+		\vspace{-2mm}
 
 		\noindent
-		Note we use the new variable $u$ inside the integral
+		Note we used the variable $u$ inside the integral
 		since $x$ is already used to denote the upper limit of integration.
 
 		% MAYBE: 	In words, the FTC tells us that ...
 
 		
-		To understand the inverse relationship between integration and differentiation,
+		To understand the inverse relationship between integrals and derivatives,
 		we can draw an analogy with the relationship between a function $f$
 		and its inverse function $f^{-1}$,
 		which \emph{undoes} the effects of $f$.
-		See Figure~\ref{fig:functions-inverse} on page~\pageref{fig:functions-inverse}.
+		See Figure~\ref{fig:functions-inverse} (page~\pageref{fig:functions-inverse}).
 		Given some initial value $x$,
 		if we apply the function $f$ to obtain the number $f(x)$,
 		then apply the inverse function $f^{-1}$ on the number $f(x)$,
 		we get back to the initial value $x$ we started from:
-		\[
-			f^{-1}\!\left( f(x) \right)	=	x.
-		\]
+		$f^{-1}\big( f(x) \big) = x$.
 		Similarly,
 		\textbf{the derivative operation is the inverse of the integral operation}.
 		If you perform the integral operation $\int \tt{<f>}\,dx$
@@ -83,9 +82,9 @@
 		\end{codeblock}
 
 		\noindent
-		We confirm that that the sequence of operations
-		$\frac{d}{dx} \int_0^x f(u)\,du  = \tt{sp.diff(sp.integrate(}f(x)\tt{))}$
-		brings us back to the original $f(x)$ we started from.
+		The sequence of operations
+		$\tt{sp.diff(sp.integrate(}f(x)\tt{))} = \frac{d}{dx}\!\int_0^x \!f(u)du$
+		brings us back to the original \tt{fx} we started~with.
 
 
 		% DIRECTION 2
@@ -106,10 +105,10 @@
 		\]
 		% The constant $C$ 
 		%  choice of the starting point for integration
-		Let's use SymPy to verify this formula.
-		We'll start with the function $\tt{Gx} = G(x) = x^3$,
+		Let's verify this formula.
+		We start with the function $\tt{Gx} = G(x) = x^3$,
 		compute its derivative $\tt{dGdx} = G^{\prime\!}(x)$ using \tt{sp.diff},
-		then use \tt{sp.integrate} to compute the integral function of $G^{\prime\!}(x)$.
+		then use \tt{sp.integrate} to integrate the function of $G^{\prime\!}(x)$.
 
 		\begin{codeblock}[]
 		>>> Gx = x**3
@@ -121,8 +120,8 @@
 		\end{codeblock}
 
 		\noindent
-		We see the operations $\tt{integrate(diff(}G(x)\tt{))} = \int_0^x G^{\prime\!}(u)\,du$
-		bring us back to the original $G(x)$ we started from.
+		Applying the operations $\tt{integrate(diff(}G(x)\tt{))}\!=\int_0^x\!G^{\prime\!}(u)\,du$
+		brings us back to the original \tt{Gx} that we started with.
 
 
 		\subsubsection{Using antiderivatives to compute integrals}
@@ -133,6 +132,7 @@
 			In order to explain this idea,
 			we'll introduce a new concept.
 			
+			\vspace{-2mm}
 			\begin{shadebox}
 				\vspace{1mm}
 				Given some function $f(x)$,
@@ -140,6 +140,7 @@
 				is called an \emph{antiderivative} of $f(x)$.
 				\vspace{1mm}
 			\end{shadebox}
+			\vspace{-2mm}
 			
 			\noindent
 			In words,
@@ -153,20 +154,21 @@
 			%	which we denote as $F(x) + C$.
 
 			The fundamental theorem of calculus
-			tells us that antiderivative functions $F(x)+C$
+			states that antiderivative functions $F(x)+C$
 			are closely related to integral functions $F_c(x) = \int_c^x f(u)\,du$.
 			The integral function $F_0(x)$ is equal to an antiderivative function $F(x) + C$,
-			for some additive constant $+C$.
+			for some constant $+C$.
 			%	Equivalently,
 			%	every antiderivative function $F(x) + C$
 			%	is equal to an integral function $F_c(x)$ for some starting point $c$.
-
+			%
 			This equivalence gives us an analytical shortcut
 			for obtaining the integral function $F_0(b) = \int_0^b f(x)\,dx$
 			by finding the antiderivative function of $f(x)$.
 			% for many simple functions $f(x)$.
 			% If we can find an  such that $F^{\prime\!}(x) = f(x)$,
 			% then we know $F_0(b) = F(b) + C$.
+
 			To find an antiderivative of $f(x)$,
 			we look for a function $F(x)$ whose derivative is $f(x)$.
 			We can use the table of derivative formulas
@@ -175,7 +177,7 @@
 			For example,
 			to find the antiderivative of the function $f(x) = m$,
 			we look for a row where this function appears on the right side of the table,
-			and then look at the corresponding function on the left side of the table,
+			then look at the corresponding function on the left side of the table,
 			which is the function $F(x) = mx + b$ in this case.
 			We can verify that $F^{\prime\!}(x) = f(x)$,
 			so indeed $F(x) = mx + b$ is an antiderivative of $f(x) = m$.
@@ -238,7 +240,7 @@
 				Therefore,
 				the antiderivative function has the form $H(x) = 4x - kx^3$,
 				for some multiplicative constant $k$.
-				Pick the constant $k$ that makes this equation true:
+				We must choose the constant $k$ that makes this equation true:
 				$H^{\prime\!}(x) = 4 - 3kx^2 = 4 - x^2$.
 				Solving $3k=1$,
 				we find $k=\frac{1}{3}$
@@ -250,7 +252,8 @@
 				We know from the geometric definition of the integral that
 				when $b=0$ the integral function must have value zero,
 				so $C=0$ in this case.
-				The integral function we're looking for is therefore $H_0(b) = 4b - \frac{1}{3}b^3$.
+				The integral function we're looking for is therefore
+				$H_0(b) = \int_0^b h(x)\,dx = 4b - \frac{1}{3}b^3$.
 
 
 
@@ -259,24 +262,21 @@
 			Computing integral functions by finding antiderivatives is very powerful.
 			We can use it to find the integral functions
 			for all the functions listed in the table of derivative formulas
-			(see page~\pageref{table:derivatives}).
+			(Table~\ref{table:derivatives} on page~\pageref{table:derivatives}).
 			% based on using the derivative formulas in reverse to guess the value of $F(x)$ 
 			For example,
-			the table tells us that the derivative of the linear function $f(x) = mx+b$
-			is the constant function $f^{\prime\!}(x) = m$.
-			This means the integral of a constant function
-			is a linear function $\int m\,dx = mx + C$.
-			The integral function of an exponential
+			the table tells us that the integral function of an exponential
 			is also an exponential $\int e^x \,dx = e^x + C$,
 			since $\frac{d}{dx}[e^x] = e^x$.
 			The derivative of $\log_e(x)$ is $\frac{1}{x}$,
 			therefore the integral of $\frac{1}{x}$ is $\log(x)$.
-			Similarly for the trigonometric functions $\int \cos(x) \,dx = \sin(x)$
-			and $\int - \sin(x) \,dx = \cos(x)$.
-			For economy of space,
-			we'll verify all these integral formulas by computing
-			the integral of the function $f(x) = m + e^x + \frac{1}{x} + \cos(x) - \sin(x)$
-			that contains the mix of several functions on the right side of Table~\ref{table:derivatives}.
+			Similarly,
+			we can guess the integrals of the trigonometric functions
+			$\int \cos(x) \,dx = \sin(x)$, since $\big[\!\sin(x)\big]' = \cos(x)$,
+			and $\int - \sin(x) \,dx = \cos(x)$, since $\big[\!\cos(x)\big]' = - \sin(x)$.
+			We can verify all these integral formulas by computing
+			the integral of the function $f(x) = m + e^x + \frac{1}{x} + \cos(x) - \sin(x)$,
+			which contains a mix of functions from the right side of~Table~\ref{table:derivatives}.
 
 			\begin{codeblock}[]
 			>>> fx = m + sp.exp(x) + 1/x + sp.cos(x) - sp.sin(x)
@@ -287,7 +287,7 @@
 			\noindent
 			SymPy tells us the integral function
 			$F_0$ is $F_0(x) = mx + e^x + \log(x) + \sin(x) + \cos(x)$,
-			which are all the corresponding terms on the left side of the table of derivative formulas.
+			which are all the corresponding terms from the left side of the table of derivative formulas.
 
 			\ifthenelse{\boolean{FORSTATSBOOK}}{
 				In probability theory,
@@ -307,9 +307,7 @@
 				with its probability density function $f_X$ defined as the derivative of $F_X$.
 			}{}
 
-
 			% LEAD OUT: what do we do when there is no simple formula?
-			\medskip
 			\noindent
 			Okay,
 			but what do we do if the function we want to integrate
@@ -369,3 +367,9 @@
 
 
 % That's kind of cool, no?
+
+
+		%	Differential calculus and integral calculus are two sides of the same coin.
+		%	If you understand why the theorem is true, 
+		%	you will understand something very deep about calculus. 
+		%	Differentiation is the inverse operation of integration.

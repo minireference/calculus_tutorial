@@ -7,12 +7,11 @@
 	infinitely large numbers,
 	infinitely small lengths,
 	and procedures with an infinite number of steps.
-	We use the shorthand ``$\lim$'' to denote limit expressions.
+	We use the shorthand ``$\lim$'' to write limit expressions.
 	For example,
 	the expression $\lim_{x \to \infty} f(x)$,
-	read ``the limit of $f(x)$ as $x$ goes to infinity,''
-	describes what happens to $f(x)$ when $x$ gets larger and larger.
-	% to the function $x$ tends to infinity (gets larger and larger).
+	is read ``the limit of $f(x)$ as $x$ goes to infinity,''
+	and describes what happens to $f(x)$ when $x$ gets larger and larger.
 
 
 	\subsection{Example 1: Archimedes' approximation to $\pi$}
@@ -26,6 +25,7 @@
 		so the area of a circle with radius $r=1$ is $\pi$.
 		Try to place yourself in Archimedes's shoes (sandals?)
 		and suppose that you don't know the formula.
+		How can you find the area?
 
 		Archimedes had the clever idea to approximate the circle
 		as a regular polygon with $n$ sides inscribed inside the circle.
@@ -56,7 +56,7 @@
 		However,
 		the polygon with $n=12$ is starting to look almost like a circle.
 		We can use our imagination to see that the approximation $A(n) \approx A_{\circ}$
-		will become increasingly accurate as $n$ becomes larger and larger.
+		will become more accurate as $n$ becomes larger and larger.
 		Archimedes only managed to compute an approximation with a $96$-sided polygon,
 		but thanks to computers we can push the approximation to much higher values of $n$.
 		For example,
@@ -67,8 +67,8 @@
 		See the computational notebook \href{https://bit.ly/calctut3}{\tt{bit.ly/calctut3}}
 		for the details of these calculations.
 
-		In the limit as $n \to \infty$, 
-		the approximation $A(n)$ % to the area of the circle 
+		In the limit as $n$ goes to infinity,
+		the approximation $A(n)$
 		becomes \emph{exactly} equal to $\pi = 3.141592653589793\ldots$,
 		which we can express as the limit expression $\lim_{n \to \infty} A(n) = \pi$.
 		Note that $A(n) \neq \pi$ for any finite number $n$,
@@ -82,7 +82,7 @@
 	that produces a useful approximation.
 
 
-	\subsection{Example 2: Euler's number}
+	\subsection{Example 2: Euler's number $e$}
 	\label{introduction:eulers_number}
 
 		Suppose you take out a loan with 100\% nominal interest rate.
@@ -93,7 +93,6 @@
 
 		However,
 		most banks don't calculate the interest only once per year.
-		% but more often.
 		If the bank calculates the interest twice per year,
 		during the first six months you'll have accrued $\frac{100\%}{2} = 50\%$ of interest,
 		so you'll owe them $(1+50\%) = (1+\frac{1}{2}) = 1.5$ times the initial amount.
@@ -133,7 +132,7 @@
 
 		What happens if we perform the compounding even more frequently?
 		Specifically,
-		we want to know what happens if the interest is compounded infinitely often.
+		we want to know what happens if the interest is compounded \emph{infinitely often}.
 		The infinitely-often calculation corresponds
 		to computing the \emph{limit} of expression  $(1 + \frac{1}{n})^n$,
 		as $n$ goes to infinity,
@@ -145,82 +144,45 @@
 		\]
 		This limit expression \emph{converges} to the value $e = 2.71828\ldots$,
 		which is known as \emph{Euler's number}.
-		% The number $e$ describes the limit of the annual growth rate of a loan
 		If we borrow $\$1000$,
 		we'll owe $\$1000e = \$2718.28$ at the end of one~year.		
-		%	 compound interest calculation for an annual interest rate of $100\%$
-		%	with compounding is performed infinitely often.
+		% The number $e$ describes the limit of the annual growth rate of a loan
+		% compound interest calculation for an annual interest rate of $100\%$
+		% with compounding is performed infinitely often.
 
 
 	We defined the number $\pi$ as the limit $\lim_{n \to \infty} A(n)$
-	and the number $e$ as the limit $\lim_{n\to \infty} \left( 1 + \tfrac{1}{n}\right)^{\!n}$.
-	The definitions of the numbers $\pi$ and $e$ as limits
-	go beyond the regular math operations we learn in high school math.
+	and the number $e$ as the limit $\lim_{n\to \infty} \big( 1 + \tfrac{1}{n}\big)^{\!n}$.
+	In both cases,
+	we define some computational procedure with $n$ steps,
+	then consider what happens as $n$ goes to infinity.
 	The limit expression $\lim_{n \to \infty}$ doesn't describe any particular number $n$,
 	but the \emph{process} of plugging in larger and larger values of $n$.
-	% This is what the limit notation $\lim_{n\to \infty} (1 + \frac{1}{n})^n$ means:
-	% it describes the behaviour of the expression $(1 + \frac{1}{n})^n$
-	% as $n$ goes to infinity.
-
-
-% TODO: summarize + drive point home => procedures 
-%	$\displaystyle  \lim_{n \to \infty} \textrm{proc}(n)$:
-%	limit expression that describes the outcome of some computational procedure with $n$ steps,
-%	as the number of steps $n$ goes to infinity.
-% The parameter $n$ usually describes the number of steps in a given procedure,
-% and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
-
-
-		% EULER'S NUMBER VIA SERIES	
-		%	Euler's number $e$ can also be obtained from another limit expression:
-		%	\[
-		%		e	=	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!}  + \cdots
-		%			= 	\lim_{n\to \infty} \sum_{k=0}^n \frac{1}{k!}
-		%			= 	2.718281828\ldots.
-		%	\]
-		%	This alternative expression
-		%	tells us we can compute $e$ as the sum ($\sum$)
-		%	with an infinite number of terms.
-		%	Each term comes from a common ``pattern'' $\frac{1}{k!}$,
-		%	where $k! = k\!\cdot\!(k-1) \cdots 3\!\cdot\!2\!\cdot\!1$
-		%	is the factorial function.
-		%	The notation $\sum_{k=0}^n$
-		%	describes the summation starting at $k=0$ and going all the way to $k=n$.
-		%	The limit $\lim_{n\to \infty}$ tells us the summation has infinitely many terms.
-		%	This kind of infinite sum expression are called a \emph{series},
-		%	and provides a powerful way to compute quantities by summing together a bunch of terms.
-		%	We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
-
-
-
-
 
 
 
 	\subsection{Limits at infinity}
 	\label{limits:limits_to_infinity}
 
-		We can use limit expressions to describe
+		We can use a limi expressions to describe
 		what happens to a function when its input variable tends to infinity.
 		Does $f(x)$ approach a finite number,
-		or does it keep growing to $\infty$?
-		The function $f(x)$ \emph{converges} to $L$
+		or does it keep growing?
+		We say the function $f(x)$ \emph{converges} to $L$
 		if the function approaches the value $L$ for large values of $x$:
 		\[
 			\lim_{x \to \infty} f(x)  =  L.
 		\]
-		We say ``the limit of $f(x)$ as $x$ goes to infinity is $L$.''
+		In words,
+		this math expression states that ``The limit of $f(x)$ as $x$ goes to infinity is $L$.''
 		See Figure~\ref{fig:limit-at-infinity-graph} for an illustration.
-		% ALT.
-		%	The limit equation $\displaystyle \lim_{x \to \infty} f(x) = L$
-		%	states that the  ``limit at infinity'' of the function $f(x)$ is equal to the number $L$.
 
 		\begin{figure}[htb]
 			\centering
-			\includegraphics[width=0.63212\columnwidth]{figures/calculus/limit-at-infinity-graph.png}
+			\includegraphics[width=0.7\columnwidth]{figures/calculus/limit-at-infinity-graph.png}
 			\vspace{-3mm}
 			\caption{	The function $f(x)$ oscillates up and down initially,
-					but then it ``settles down'' close to the value $L$ for large values of $x$.}
+					but then it converges (settles down) close to the value $L$ for large values of $x$.}
 			\label{fig:limit-at-infinity-graph}
 		\end{figure}
 
@@ -239,9 +201,6 @@
 			However,
 			the expression $\frac{1}{x}$ gets closer and closer to $0$ as $x$ goes to infinity.
 			Limits are useful because they allow us describe this tendency.
-			% as $\displaystyle \lim_{x\to \infty} f(x)=0$.
-			% even though $f(x)\neq 0$ for any number $x$.
-
 
 
 		\begin{figure}[htb]
@@ -249,35 +208,12 @@
 			\includegraphics[width=0.99\columnwidth]{figures/calculus/limits_examples.pdf}
 			% TODO: redo figure with xmax=8
 			\vspace{-6mm}
-			\caption{	Visual representation of the limit calculations for three functions.}
+			\caption{	Visual representation of the limit calculations from the examples.}
 					%	$\lim_{x\to \infty} \frac{1}{x}$,
 					%	$\lim_{x\to \infty} \frac{2x+1}{x}$,
 					%	$\lim_{x\to 0^-} H(x)$, and $\lim_{x\to 0^+} H(x)$.}
 			\label{fig:limits_examples}
 		\end{figure}
-
-
-
-		%	% CUTTABLE
-		%	The limit expression is a concise way of saying the following precise mathematical statement:
-		%	\begin{multline*}
-		%	  \textrm{For all } \epsilon>0,
-		%	  	 \textrm{ there exists a number } S \textrm{ such that } \\ 
-		%		 	\left|f(x) - L\right| <\epsilon
-		%			\textrm{ for all } x \textrm{ greater than or equal to } S.
-		%	\end{multline*}
-		%
-		%	\noindent
-		%
-		%	You can think of this fancy statement
-		%	as a formal way that a mathematician can prove $\displaystyle \lim_{x \to \infty} f(x) = L$ is true.
-		%	You tell the mathematician a level of $\epsilon$ that would convince you,
-		%	and the mathematician must find a starting point~$S$
-		%	after which $f(x)$ becomes (and stays) $\epsilon$-close to the limit $L$.
-		%	If the mathematician can succeed for all levels of precision $\epsilon$,
-		%	not matte show small,
-		%	then we have to believe that $\displaystyle \lim_{x \to \infty} f(x) = L$ is true.
-		%	% /CUTTABLE
 
 
 	\subsection{Limit formulas}
@@ -302,13 +238,13 @@
 		\subsubsection{Example 4}
 
 			Calculate $\lim_{x\to \infty} \frac{2x+1}{x}\,$.
-			We're given the function $f(x)=\frac{2x+1}{x}$
+			We're given the function $g(x)=\frac{2x+1}{x}$
 			and must determine what the function looks like for very large values of $x$.
 			We can rewrite the function as $\frac{2x+1}{x}=2+\frac{1}{x}$
 			then apply the sum formula for limits:
 			\[
 				\lim_{x\to \infty}\!\! \tfrac{2x+1}{x} 
-					= \lim_{x\to \infty}\!\left( 2 + \tfrac{1}{x} \right)
+					= \lim_{x\to \infty}\!\Big( 2 + \tfrac{1}{x} \Big)
 					= \lim_{x\to \infty} 2 + \!\lim_{x\to \infty} \tfrac{1}{x} 
 					= 2 + 0 = 2.
 			\]
@@ -320,55 +256,61 @@
 
 
 
-	\subsection{Limits to zero}
-	\label{limits:limits_to_zero}
+	\subsection{Limits at a point}
+	\label{limits:limits_at_a_point}
 
-		The limit expression $\lim_{x \to 0} f(x)$
-		describes the behaviour of the function $f$ for values of $x$ very close to $0$.
-		The limit $\lim_{x \to 0} f(x)$,
-		read ``the limit of $f(x)$ as $x$ goes to zero,''
-		asks us to evaluate the function $f$ for inputs like
-		$x=0.1$, $x=0.01$, $x=0.001$, $x=0.0001$, etc.
-		to see the behaviour of the function for very small values of $x$.
+		We also use limit expressions to describe what happens
+		when a function approaches some number $x=a$.
+		The limit expression $\lim_{x \to a^+} f(x)$
+		describes the behaviour of the function $f(x)$
+		as $x$ approaches $a$ \emph{from the right}.
+		To compute this limit,
+		we imagine a small distance $\delta$ (the Greek letter \emph{delta})
+		that that gets smaller and smaller,
+		and compute the following equivalent limit expression
+		\[
+			\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta).
+		\]
+		This limit expression describes the value of the function $f$
+		for inputs like $a+0.1$, $a+0.01$, $a+0.001$, $a+0.0001$, etc.
+		In other words,
+		the input $x$ gets closer and closer to $a$ (from the right)
+		without ever touching $x=a$.
 
 		For example,
-		when $x > 0$,
-		the limit $\lim_{x \to 0} \frac{1}{x} = \infty$.
+		the limit $\lim_{x \to 0^+} f(x)$,
+		read ``the limit of $f(x)$ as $x$ goes to zero,''
+		asks us to evaluate the function~$f$ for inputs like
+		$x=0.1$, $x=0.01$, $x=0.001$, $x=0.0001$, etc.
+		The outputs of $f(x) =~\frac{1}{x}$ get larger and larger
+		as $x$ takes on smaller and smaller values,
+		so the limit goes to infinity:
+		$\lim_{x\to 0^+} \tfrac{1}{x}
+			= \lim_{\delta \to 0} \tfrac{1}{0^+\delta}
+			= \lim_{\delta \to 0} \tfrac{1}{\delta} = \infty$.	
 		In words,
-		the function $f(x) = \frac{1}{x}$ ``blows up'' to infinity as $x$ goes to $0$,
+		the function $f(x) = \frac{1}{x}$ ``blows up'' to infinity as $x$ goes to $0^+$,
 		as shown in Figure~\ref{fig:limits_examples}~(a).
 
-
-	\subsection{Limits to a number}
-	\label{limits:limits_to_a_number}
-
-		More generally,
-		the limit of $f(x)$ approaching $x=a$ \emph{from the right}
-		is denoted $\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta)$.
-		We use the symbol $\delta$ (the Greek letter \emph{delta})
-		to describe a distance that gets smaller and smaller.
-		This limit expression describes the value of the function $f$
-		as the input $x$ gets closer and closer to $a$
-		with values like $a+0.1$, $a+0.01$, $a+0.001$, $a+0.0001$, etc.
-		%
-		The limit of $f(x)$ when $x$ approaches \emph{from the left} is defined analogously,
+		The limit of $f(x)$ when $x$ approaches $a$ \emph{from the left}
+		is defined analogously,
 		$\lim_{x\to a^-} f(x)  = \lim_{\delta \to 0} f(a - \delta)$.
-		%		describes what happens to $f(x)$ as $x$ approaches $a$ from below
-		%		(from the left) with values like $x=a-$, 
-		%		with $\delta>0, \delta \to 0$.
-
+		For example,
+		the value of the limit of $f(x) = \frac{1}{x}$
+		as $x$ approaches zero from the left
+		is $\lim_{x \to 0^-} \frac{1}{x} = -\infty$.
+		%
 		If both limits from the left and from the right at $x=a$
 		exist and are equal to each other,
-		we say the limit as $x\to a$ exists:
+		we can drop the $^+$ and $^-$ annotations,
+		and talk about the limit $x\to a$:
 		\[
 			\lim_{x\to a} f(x) =  \lim_{x\to a^+} f(x) =  \lim_{x\to a^-} f(x).
 		\]
 		For the two-sided limit of a function to exist at a point,
 		both the limit from the left and the limit from the right must converge to the same number.
-
-
-
-
+		We saw this  is not the case for the function $f(x) = \frac{1}{x}$ at $x=0$,
+		so the two-sided limit $\lim_{x\to 0} f(x)$ doesn't exist.
 
 
 
@@ -378,109 +320,70 @@
 	\subsection{Continuity}
 	\label{limits:continuity}
 
-		If the function $f(x)$ obeys, $f(a) = \lim_{x\to a} f(x)$,
+		If the function $f(x)$ obeys,
+		$f(a) = \lim_{x\to a} f(x)$,
 		we say the function $f(x)$ is \emph{continuous} at $x=a$.
 		Geometrically,
-		the graph of the continuous function at $x=a$ is a ``smooth'' curve
-		that doesn't have any hole or a jump at $x=a$.
+		the graph of the continuous function at $x=a$ is a smooth curve
+		that doesn't have a hole or a jump at $x=a$.
 		When a function is continuous,
 		we can draw its graph using a single pen stroke
 		without lifting the pen.
-		% means the function's graph looks like a smooth curve
+		The two-sided limit $\lim_{x\to a}$ requires both the left and the right limit to exist and to be equal.
+		Thus,
+		the definition of continuity implies the equalities $\lim_{x \to a^-}  f(x) =  f(a)$
+		and $f(a) = \lim_{x \to a^+}  f(x)$,
+		which correspond to the idea of ``not lifting the pen'' when drawing the graph of $f(x)$ at $x=a$.
+
 		In contrast,
-		functions that blow up to infinity or make sudden jumps are not continuous.
+		functions that are not defined at a point,
+		functions that blow up to infinity,
+		and functions that make sudden jumps are not continuous.
+		For example,
+		the function $f(x) = \frac{1}{x}$
+		is discontinuous at $x=0$,
+		since $\frac{1}{x}$ is not defined when $x=0$.
+		Also,
+		the limits $\lim_{x \to 0^+} \frac{1}{x} = \infty$ and $\lim_{x \to 0^-} \frac{1}{x} = -\infty$
+		are not the same,
+		so the two-sided limit $\lim_{x \to 0} \frac{1}{x}$ doesn't exist.
+
 
 		\subsubsection{Example 5}
+			
+			Let's investigate the behaviour of the function $g(x)=\frac{2x+1}{x}$ near the value $x=1$.
+			Is $g(x)$ continuous at $x=1$?
+			First we evaluate the function $g(x)$ for the input $x=1$,
+			which gives us $g(1) = \frac{2(1)+1}{1} = \frac{3}{1}=3$.
+			Nothing tricky going on here---we just plug the number $1$ into the formula for $g(x)$ to get the value of the function.
 
-			The \emph{Heaviside step function} is an example of a function
-			with a jump discontinuity.
-			It is defined as follows:
+			Next we compute the limit from the right at $x=1$
+			which is:
 			\[
-				H(x) \eqdef \begin{cases}
-							\; 1, 	& \text{if } x \geq 0 \\
-							\; 0, 	& \text{if } x < 0.
-						\end{cases}
+				\lim_{x\to 1^+}\! g(x)
+					= \!\!\lim_{x\to 1^+}\!\! \tfrac{2x+1}{x}
+					= \lim_{\delta \to 0}\! \tfrac{2(1+\delta)+1}{1+\delta}
+					= \lim_{\delta \to 0}\! \tfrac{2+2\delta+1}{1+\delta}
+					= \tfrac{3}{1}
+					= 3.
 			\]
-			The function is zero for negative values of $x$,
-			then suddenly jumps to one at $x=0$,
-			as shown in Figure~\ref{fig:limits_examples}~(c).
-			The limit as $x$ approaches $x=0$ from the left is $\lim_{x\to 0^-} H(x) = 0$.
-			The limit at $x=0$ from the right is $\lim_{x\to 0^+} H(x) = 1$.
-			The two limits are different,
-			$\lim_{x\to 0^-} H(x) = 0 \neq 1 = \lim_{x\to 0^+} H(x)$,
-			so the function is \emph{discontinuous} at $x=0$.
+			The $\delta$ terms in the numerator and denominator go to zero.
 
+			We evaluate the limit from the left using similar steps:
+			$\lim_{x\to 1^-} g(x) = \lim_{x\to 1^-} \frac{2x+1}{x} = \lim_{\delta \to 0} \tfrac{2(1-\delta)+1}{1-\delta} = 3$.
+			Since the limits from the left and the right are equal,
+			$\lim_{x\to 1^+} g(x) = \lim_{x\to 1^-} g(x)$,
+			we say that the two-sided limit exists $\lim_{x\to 1} g(x) = 3$.
+			Since $\lim_{x\to 1} g(x) = g(3)$,
+			the function $g(x)$ is continuous at $x=1$.
 
-		%	A more mathematically precise way to define continuity is to say the function is equal to its limit for all $x$.
-		%	We say a function $f(x)$ is \emph{continuous} at $a$ if the limit of $f$ as $x\to a$ converges to $f(a)$:
-		%	\[
-		%	 \lim_{x \to a}  f(x) =  f(a).
-		%	\]
-		%	Remember,
-		%	the two-sided limit $\lim_{x\to a}$ requires both the left and the right limit to exist and to be equal.
-		%	Thus, the definition of continuity implies the equality $\lim_{x \to a^-}  f(x) =  f(a)$
-		%	and $f(a) = \lim_{x \to a^+}  f(x)$,
-		%	which correspond to the idea of ``not lifting the pen'' when drawing the graph at $x=a$.
-
-		%	In words,
-		%	this means that a function $f(x)$ is continuous at $x=a$
-		%	if the limit from the left $\lim_{x \to a^-}  f(x)$
-		%	and the limit from the right $\lim_{x \to a^+}  f(x)$
-		%	are both equal to the value of the function at $x=a$.
-		%	% Take a moment to think about the mathematical definition of continuity at a point.
-		%	% Can you connect the math definition to the intuitive idea
-		%	% that functions are continuous if they can be drawn without lifting the pen?
-		%	Most functions we'll study in calculus are continuous,
-		%	but not all functions are.
-
-		%	Functions that are not defined for some value, as well as functions that make sudden jumps, are not continuous.
-		%	%		Another examples is the function $f(x)=\frac{2x+1}{x}$ which is discontinuous at $x=0$
-		%	%		(because the limit $\lim_{x \to 0}  f(x)$ doesn't exist and $f(0)$ is not defined).
-		%	For example,
-		%	consider the function $f : \mathbb{R} \setminus \{0\} \to \mathbb{R}$ defined by
-		%	\[
-		%		f(x)
-		%		=\frac{ | x-3| }{x-3} 
-		%		= \left\{ 	\begin{array}{rl}
-		%				1	\quad	&  \mathrm{  if } \;  x > 3, \\
-		%				-1	\quad	&  \mathrm{  if } \;  x < 3.
-		%		                        \end{array}                    \right.
-		%	\]
-		%	The function $f$ is continuous everywhere on the real line except at $x=3$.
-		%	Since this function $f$ is ``missing'' only at a single point,
-		%	we can try to ``patch it'' by filling in the missing value.
-		%	Consider the function $g : \mathbb{R} \to \mathbb{R}$ defined as
-		%	\[
-		%		g(x)
-		%		= \left\{ 	\begin{array}{rl}
-		%				1	\quad	&  \mathrm{  if }\;  x > 3, \\
-		%				1	\quad	&  \mathrm{  if }\;  x = 3, \\
-		%				-1	\quad	&  \mathrm{  if } \;  x < 3.
-		%		                        \end{array}                    \right.		
-		%	\]
-		%	The function $g$ is \emph{continuous from the right} at the point $x=3$,
-		%	since $\lim_{x \to 3^+} g(x)=1=g(3)$.
-		%	However,
-		%	taking the limit from the left,
-		%	we find $\lim_{x \to 3^-} g(x)=-1 \neq g(3)$,
-		%	which tells us $g$ is not continuous from the left.
-		%	We say the function $g$ has a \emph{jump discontinuity} at $x=3$.
-
-		% Khan Academy
-		% https://www.youtube.com/watch?v=Y7sqB1e4RBI
-
-		%	\paragraph{Example ?}	
-		%		We can calculate the limit $\displaystyle\lim_{x\to 5} \frac{2x+1}{x}$ as follows:
-		%		\[
-		%		 \lim_{x\to 5} \frac{2x+1}{x}
-		%		  = \frac{2(5)+1}{5}
-		%		  = \frac{11}{5}.
-		%		\]
-		%		There is nothing tricky going on here---we plug the number $5$ into the equation, and voila. 
-		%		The function $f(x)=\frac{2x+1}{x}$ is continuous at the value $x=5$, so the limit of the function 
-		%		as $x\to 5$ is equal to the value of the function $\displaystyle\lim_{x\to 5} f(x) = f(5)$.
-		%		% This is true in general for any continuous function.
-
+			Intuitively,
+			the graph of the function $g(x)$ at $x=1$ looks like a smooth curve.
+			Imagine the pen stroke drawing the graph at $x=1$:
+			it comes in from the left at height $\lim_{x\to 1^-} g(x) =~3$,
+			goes through $g(1) = 3$,
+			then leaves to the right at the same height $\lim_{x\to 1^+} g(x) = 3$.
+			The function $g(x)=\frac{2x+1}{x}$ is continuous everywhere except at $x=0$.
 
 
 
@@ -488,19 +391,18 @@
 	\subsection{Computing limits using SymPy}
 	
 		We can use SymPy to compute limit expressions,
-		which allows us to check the answers we obtain using pen-and-paper calculations.
-		We'll start by importing the \tt{sympy} module under the alias \tt{sp},
-		defining the symbolic variable $\tt{n} = n$,
-		which we can then use to write various expressions.
+		which allows us to check the answers we obtain using pen-and-paper limit calculations.
+		We start by importing the \tt{sympy} module under the alias \tt{sp}
+		and defining the symbolic variable $\tt{n} = n$,
+		which we can then use to write math expressions.
 
 		\begin{codeblock}[def-n-symbol]
 		>>> import sympy as sp
 		>>> n = sp.symbols("n")
 		\end{codeblock}
 
-		To compute limit expressions,
-		we use the SymPy function \tt{sp.limit(expr,var,value)},
-		which returns $\lim_{\tt{var} \to \tt{value}} \tt{expr}$.
+		We can use the SymPy function \tt{sp.limit(<expr>,var,value)}
+		to evaluate a limit $\lim_{\tt{var} \to \tt{value}} \tt{<expr>}$.
 		%	as the variable \tt{var} approaches \tt{value}.
 		% ALT
 		%	which evaluates the expression \tt{expr},
@@ -509,7 +411,7 @@
 		we use the symbol \texttt{sp.oo} (two lowercase \texttt{o}s),
 		which kind of looks like the infinity symbol $\infty$.
 
-		% We can use SymPy to check the limit calculation we saw above.		
+		% We can use SymPy to check the limit calculation we saw earlier in this section.
 		% EXAMPLE  e
 		Euler's number is defined as the limit
 		$e \eqdef \lim_{n\to \infty} \left( 1 + \frac{1}{n}\right)^{n}$.
@@ -520,67 +422,93 @@
 		\begin{codeblock}[sympy-e-from-limit]
 		>>> sp.limit((1+1/n)**n, n, sp.oo)
 		E
+		>>> sp.limit((1+1/n)**n, n, sp.oo).evalf(40)
+		2.718281828459045235360287471352662497757
 		\end{codeblock}
-		%	>>> sp.limit((1+1/n)**n, n, sp.oo).evalf(40)
-		%	2.718281828459045235360287471352662497757
+
 
 		\noindent
 		The result of \tt{sp.limit} is the exact value $e$
 		which is represented symbolically as \tt{E}.
-		%	On the second line,
-		%	we used the method \tt{.evalf(40)} 
-		%	to compute an approximation to $e$ to 40 decimals.
+		We then call the method \tt{.evalf(40)} 
+		to obtain an approximation to $e$ that is accurate to 40 decimals.
 
-
-		% EXAMPLE 1/x
-		Let's now compute the limits $\lim_{x \to \infty} \tfrac{1}{x}$
-		and $\lim_{x \to 0^+} \tfrac{1}{x}$.
-		We first define the symbol \tt{x}
-		then call the function \tt{sp.limit} to evaluate the two limits
-		involving the expression $\tt{1/x} = \frac{1}{x}$:
+		% EXAMPLE 1/x to \infty
+		Let's now compute the limit $\lim_{x \to \infty} \tfrac{1}{x}$.
+		We must first define the symbol \tt{x}
+		so that we can the expression $\tt{1/x} = \frac{1}{x}$
+		that we evaluate using the function \tt{sp.limit}:
 
 		\begin{codeblock}[]
 		>>> x = sp.symbols("x")
 		>>> sp.limit(1/x, x, sp.oo)
 		0
-		>>> sp.limit(1/x, x, 0)
-		oo
 		\end{codeblock}
 
 		\noindent
-		SymPy confirms that $\lim_{x \to \infty} \tfrac{1}{x} = 0$
-		and $\lim_{x \to 0^+} \tfrac{1}{x} = \infty$,
-		as calculated earlier.
+		This results confirms the answer $\lim_{x \to \infty} \tfrac{1}{x}=0$
+		that we obtained earlier in Example~3.
+
+
+		% EXAMPLE 1/x left and right
+		To evaluate the limit from the right or the left at a point,
+		we must provide a fourth argument,
+		either \tt{"+"} or \tt{"-"},
+		when calling the function \tt{sp.limit}.
+		We can evaluate the limits $\lim_{x \to 0^+} \tfrac{1}{x}$
+		and $\lim_{x \to 0^-} \tfrac{1}{x}$ as follows:
+
+		\begin{codeblock}[]
+		>>> sp.limit(1/x, x, 0, "+")
+		oo
+		>>> sp.limit(1/x, x, 0, "-")
+		-oo
+		\end{codeblock}
+		
+		\noindent
+		We confirm the limits $\lim_{x \to 0^+} \tfrac{1}{x} = \infty$
+		and $\lim_{x \to 0^-} \tfrac{1}{x} = -\infty$
+		that we calculated earlier.
 		See Figure~\ref{fig:limits_examples}~(a) for an illustration.
 
 
-		% EXAMPLE (2x+1)/x		
-		Here is another example,
-		that computes the limit of the fraction $\frac{2x+1}{x}$ as $x$ goes to infinity,
-		which is illustrated in Figure~\ref{fig:limits_examples}~(b).
+		% EXAMPLE (2x+1)/x at infinity
+		Let's now revisit Example~4,
+		and compute the limit of the function $g(x) = \frac{2x+1}{x}$ as $x$ goes to infinity:
 
 		\begin{codeblock}[]
 		>>> sp.limit((2*x+1)/x, x, sp.oo)
 		2
 		\end{codeblock}
 
-		% EXAMPLE  Heaviside
-		\noindent
-		To calculate the limit from the left or the right of a number,
-		we provide a fourth argument \tt{"-"} or \tt{"+"} to \tt{sp.limit}.
-		%		The following SymPy calculations confirm the limits of the Heaviside function
-		%		when approaching $x=0$ from the left and from the right.
+		This confirms the result illustrated in Figure~\ref{fig:limits_examples}~(b).
+
+
+		% EXAMPLE (2x+1)/x at x=1
+		We can also confirm the continuity calculations
+		for the function $g(x) = \frac{2x+1}{x}$ at $x=1$,
+		which we saw in Example~5.
+		We can evaluate the limit at $x=1$ from the left $\lim_{x \to 1^-} g(x)$,
+		the value of the function at $x=1$,
+		and limit from the right $\lim_{x \to 1^+} g(x)$
+		using the following code:
 
 		\begin{codeblock}[]
-		>>> from sympy import Heaviside
-		>>> sp.limit(Heaviside(x,1), x, 0, "-")
-		0
-		>>> sp.limit(Heaviside(x,1), x, 0, "+")
-		1
+		>>> sp.limit((2*x+1)/x, x, 1, "-")
+		3
+		>>> ((2*x+1)/x).subs({x:1})  # = g(1)
+		3
+		>>> sp.limit((2*x+1)/x, x, 1, "+")
+		3
 		\end{codeblock}
-
-		%	\noindent
-		%	See Figure~\ref{fig:limits_examples}~(c) for an illustration.
+		
+		\noindent
+		The fact that all three expressions % exist and
+		are equal to each other,
+		\[
+			\lim_{x \to 1^-} g(x) = g(1) = \lim_{x \to 1^+} g(x),
+		\]
+		tells us that the function $g(x)=\frac{2x+1}{x}$ is continuous at $x=1$.
 
 
 		% TODO: ADD MORE LIMIT EXAMPLES
@@ -636,38 +564,88 @@
 
 			\item The integral $\int_a^b f(x) \, dx$
 				describes the area under the graph of the function $f(x)$ between $x=a$ and $x=b$.
-				In Section~\ref{sec:integrals}
+				In Section~\ref{sec:integrals},
 				we'll learn how to compute integrals by splitting up areas into $n$ rectangles,
 				then taking the limit $\lim_{n \to \infty}$.
 
 			\item The series $\sum_{k=1}^n a_k$ describes
-				the sum of all the first $n$ terms in the sequence $a_k$.
+				the sum of the first $n$ terms in the sequence $a_k$.
 				In Section~\ref{sec:sequences_and_series},
-				we'll learn how to compute infinite series by evaluating limits like $\lim_{n \to \infty}$.
+				we'll learn how to compute infinite series by evaluating the limit
+				$\lim_{n \to \infty}\sum_{k=1}^n a_k$.
 
 		\end{itemize}
 
+		\noindent
+		In the remainder of this tutorial,
+		we'll use limits to evaluate all kinds of derivatives, integrals, and series expressions.
+		In each of these domains,
+		\textbf{limit expressions will help us} make precise statements
+		that \textbf{describe calculus procedures} that involve infinitely short lengths
+		and infinite number of steps.
 
-% Many important math and science quantities are defined as limit expressions.
-
-% LEAD OUT	
-%	In the remainder of this tutorial we'll use limits to evaluate derivatives, integrals, and series expressions.
-%	In each of these domains,
-%	limit expressions will help us make precise statements
-%	that describe calculus procedures with infinite small lengths and infinite number of steps.
-
-
-
+		% Many important math and science quantities are defined as limit expressions.
 
 
 
 
+%%% CUT MATERIAL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % TODO: Limit exercises
 
 
+%	% CUTTABLE
+%	The limit expression is a concise way of saying the following precise mathematical statement:
+%	\begin{multline*}
+%	  \textrm{For all } \epsilon>0,
+%	  	 \textrm{ there exists a number } S \textrm{ such that } \\ 
+%		 	\left|f(x) - L\right| <\epsilon
+%			\textrm{ for all } x \textrm{ greater than or equal to } S.
+%	\end{multline*}
+%
+%	\noindent
+%
+%	You can think of this fancy statement
+%	as a formal way that a mathematician can prove $\displaystyle \lim_{x \to \infty} f(x) = L$ is true.
+%	You tell the mathematician a level of $\epsilon$ that would convince you,
+%	and the mathematician must find a starting point~$S$
+%	after which $f(x)$ becomes (and stays) $\epsilon$-close to the limit $L$.
+%	If the mathematician can succeed for all levels of precision $\epsilon$,
+%	not matte show small,
+%	then we have to believe that $\displaystyle \lim_{x \to \infty} f(x) = L$ is true.
+%	% /CUTTABLE
 
+
+
+%	The definitions of the numbers $\pi$ and $e$ as limits
+%	go beyond the regular math operations we learn in high school math.
+%	$\displaystyle  \lim_{n \to \infty} \textrm{proc}(n)$:
+%	limit expression that describes the outcome of some computational procedure with $n$ steps,
+%	as the number of steps $n$ goes to infinity.
+% The parameter $n$ usually describes the number of steps in a given procedure,
+% and $\textrm{proc}(n)$ describes the output of this procedure when $n$ steps are used.
+
+% EULER'S NUMBER VIA SERIES	
+%	Euler's number $e$ can also be obtained from another limit expression:
+%	\[
+%		e	=	1  + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!}  + \cdots
+%			= 	\lim_{n\to \infty} \sum_{k=0}^n \frac{1}{k!}
+%			= 	2.718281828\ldots.
+%	\]
+%	This alternative expression
+%	tells us we can compute $e$ as the sum ($\sum$)
+%	with an infinite number of terms.
+%	Each term comes from a common ``pattern'' $\frac{1}{k!}$,
+%	where $k! = k\!\cdot\!(k-1) \cdots 3\!\cdot\!2\!\cdot\!1$
+%	is the factorial function.
+%	The notation $\sum_{k=0}^n$
+%	describes the summation starting at $k=0$ and going all the way to $k=n$.
+%	The limit $\lim_{n\to \infty}$ tells us the summation has infinitely many terms.
+%	This kind of infinite sum expression are called a \emph{series},
+%	and provides a powerful way to compute quantities by summing together a bunch of terms.
+%	We'll learn more about sequences and series in Section~\ref{sec:sequences_and_series}.
 
 
 
