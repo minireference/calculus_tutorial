@@ -82,8 +82,8 @@
 		\subsubsection{Solving differential equations}
 
 			Many important laws in science are described by \emph{differential equations}.
-			A differential equation specifes an unknown function $f(t)$
-			in terms of their derivatives $f^{\prime\!}(t)$, $f^{\prime\prime\!}(t)$, etc.
+			A differential equation specifies an unknown function $f(t)$
+			in terms of its derivatives $f^{\prime\!}(t)$, $f^{\prime\prime\!}(t)$, etc.
 			Integrals are the primary tool we use to solve differential equations.
 			% MAYBE diff equation = description of a system, and an instant later    — via Infinite Powers > Intro
 
@@ -129,7 +129,7 @@
 
 			\noindent
 			If you take a course on differential equations,
-			you'll learn all kind of tricks and techniques for solving differential equations.
+			you'll learn all kinds of tricks and techniques for solving differential equations.
 			Integration plays a key role in all these techniques,
 			since it allows us to ``undo'' the derivative operation.			
 			%	We use integrals to solve differential equations.
@@ -150,9 +150,7 @@
 			A continuous random variable $X$
 			is described by its \emph{probability density function}~$f_X$.
 			To compute the probability of the event $\{ a \leq X \leq b\}$,
-			we must calculate the total probability density $f_X$
-			that falls between $x=a$ and $x=b$,
-			which is given by the following integral:
+			we must integrate the probability density $f_X$ from $x=a$ to $x=b$:
 			\[
 				\Pr( \{ a \leq X \leq b\} )
 					\;\; \eqdef \;\; \int_a^b f_X(x) \, dx.
@@ -176,14 +174,14 @@
 				is defined as the following integral calculation:
 				$\EE_X[g(X)] \eqdef \int_{x \in \calX} g(x)f_X(x)\,dx$.
 				The expected value is computed by ``weighing'' each value of $g(x)$
-				by the corresponding probability density for the event $\{X=x\}$,
+				by the corresponding value of the probability density at $x$,
 				summed over all possible values for the random variable $X$.
 				The mean $\mu = \EE_X[X]$ and the variance $\sigma^2 = \EE_X[(X-\mu)^2]$
 				are two central concepts in probability theory and statistics
 				that are computed as expectation integrals.
 				Every time we use the $\EE_X$ notation in Section~\ref{sec:continuous_prob_distr},
 				there is some integral calculation going on behind the scenes,
-				so its good if you know to know a thing or two about integrals.
+				so it's good if you know a thing or two about integrals.
 			}{
 				We also use integration to compute \emph{expectations}.
 				For example,

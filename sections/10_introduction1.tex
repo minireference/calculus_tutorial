@@ -85,11 +85,11 @@
 			The integral symbol $\int$ is an elongated $S$ that stands for \emph{sum}.
 			To calculate the total distance travelled,
 			we imagine splitting the time between $t=0$ and $t=\tau$
-			into many short time intervals~$dt$.
-			During each instant,
+			into short time intervals.
+			During short time interval $dt$ seconds,
 			the position increases by $x^{\prime\!}(t)dt$~m,
-			where $x^{\prime\!}(t)$ is the velocity (measured in m/s),
-			and $dt$ is the time interval (measured in seconds).
+			which is the product of the velocity $x^{\prime\!}(t)$ (measured in m/s),
+			and the length of the time interval $dt$ (measured in~s).
 			The integral $\int_{0}^{\tau}  x^{\prime\!}(t)\, dt$
 			calculates the ``sum'' of these $x^{\prime\!}(t)\,dt$ contributions
 			accumulated between $t=0$ and $t=\tau$.
@@ -209,7 +209,7 @@
 			$1.4142135623730951$ on a computer.
 			This numerical approximation is good enough for most engineering and scientific use cases.
 			What we give up in mathematical exactitude,
-			we gain manyfold in computational power:
+			we gain many times over in computational power:
 			modern computers can perform trillions ($10^{12}$) of floating point operations per second!
 			The Python libraries NumPy and SciPy make it easy to do numerical calculus operations on a computer,
 			as we'll demonstrate in code examples throughout this tutorial.

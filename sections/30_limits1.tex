@@ -30,9 +30,9 @@
 		Archimedes had the clever idea to approximate the circle
 		as a regular polygon with $n$ sides inscribed inside the circle.
 		Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon}
-		shows the hexagonal (6-sides),
+		shows the hexagonal (6-sided),
 		octagonal (8-sides),
-		and dodecagonal (12-sides) approximations to the circle.
+		and dodecagonal (12-sided) approximations to the circle.
 
 		\begin{figure}[htb]
 			\centering
@@ -48,7 +48,7 @@
 		He then computed the area of each slice using the formula for the area of a triangle,
 		and added up the areas of the $2n$ triangles
 		to obtain the total area of the $n$-sided polygon.
-		Let's denote $A(n)$ the area approximation
+		Let's denote by $A(n)$ the area approximation
 		computed from a $n$-sided polygon.
 		Looking at Figure~\ref{fig:inscribed-hexagon-octagon-dodecagon},
 		we see the approximations to the area of the circle
@@ -85,10 +85,10 @@
 	\subsection{Example 2: Euler's number $e$}
 	\label{introduction:eulers_number}
 
-		Suppose you take out a loan with 100\% nominal interest rate.
+		Suppose you take out a loan with a 100\% interest rate.
 		This is a very bad loan that nobody would agree to in the real world,
 		but we'll use it for this example to make the math come out simpler.
-		An interest of $100\%$ calculated yearly means at the end of one year,
+		An interest rate of $100\%$ calculated yearly means at the end of one year,
 		you'll owe the bank $(1+100\%) = (1+1)=2$ times the amount you borrowed initially.
 
 		However,
@@ -164,7 +164,7 @@
 	\subsection{Limits at infinity}
 	\label{limits:limits_to_infinity}
 
-		We can use a limi expressions to describe
+		We can use a limit expressions to describe
 		what happens to a function when its input variable tends to infinity.
 		Does $f(x)$ approach a finite number,
 		or does it keep growing?
@@ -200,7 +200,7 @@
 			so it would be wrong to write $f(x)=0$ for any $x \in \mathbb{R}$.
 			However,
 			the expression $\frac{1}{x}$ gets closer and closer to $0$ as $x$ goes to infinity.
-			Limits are useful because they allow us describe this tendency.
+			Limits are useful because they allow us to describe this tendency.
 
 
 		\begin{figure}[htb]
@@ -218,7 +218,7 @@
 
 	\subsection{Limit formulas}
 
-		The limit of the sum, difference, product, and quotient of two functions
+		The limits of the sum, difference, product, and quotient of two functions
 		are computed as follows:
 		% is equal to the corresponding operation of the limits of the two functions:
 		\begin{align*}	
@@ -265,8 +265,8 @@
 		describes the behaviour of the function $f(x)$
 		as $x$ approaches $a$ \emph{from the right}.
 		To compute this limit,
-		we imagine a small distance $\delta$ (the Greek letter \emph{delta})
-		that that gets smaller and smaller,
+		we imagine a small positive number $\delta > 0$ (the Greek letter \emph{delta})
+		that gets smaller and smaller,
 		and compute the following equivalent limit expression
 		\[
 			\lim_{x\to a^+} f(x) = \lim_{\delta \to 0} f(a + \delta).
@@ -294,7 +294,7 @@
 
 		The limit of $f(x)$ when $x$ approaches $a$ \emph{from the left}
 		is defined analogously,
-		$\lim_{x\to a^-} f(x)  = \lim_{\delta \to 0} f(a - \delta)$.
+		$\lim_{x\to a^-} f(x)  = \lim_{\delta \to 0^+} f(a - \delta)$.
 		For example,
 		the limit of $f(x) = \frac{1}{x}$
 		as $x$ approaches zero from the left
@@ -373,7 +373,7 @@
 			Since the limits from the left and the right are equal,
 			$\lim_{x\to 1^+} g(x) = \lim_{x\to 1^-} g(x)$,
 			we say that the two-sided limit exists $\lim_{x\to 1} g(x) = 3$.
-			Since $\lim_{x\to 1} g(x) = g(3)$,
+			Since $\lim_{x\to 1} g(x) = 3 = g(1)$,
 			the function $g(x)$ is continuous at $x=1$.
 
 			Intuitively,
@@ -392,7 +392,7 @@
 		We can use SymPy to compute limit expressions,
 		which allows us to check the answers we obtain using pen-and-paper limit calculations.
 		We start by importing the \tt{sympy} module under the alias \tt{sp}
-		and defining the symbolic variable $\tt{n} = n$,
+		and defining the symbolic variable $\tt{n}$,
 		which we can then use to write math expressions.
 
 		\begin{codeblock}[def-n-symbol]
@@ -435,8 +435,8 @@
 		% EXAMPLE 1/x to \infty
 		Let's now compute the limit $\lim_{x \to \infty} \tfrac{1}{x}$.
 		We must first define the symbol \tt{x}
-		so that we can the expression $\tt{1/x} = \frac{1}{x}$
-		that we evaluate using the function \tt{sp.limit}:
+		so that we can write the expression $\tt{1/x} = \frac{1}{x}$,
+		which we then evaluate using the function \tt{sp.limit}:
 
 		\begin{codeblock}[]
 		>>> x = sp.symbols("x")
@@ -445,7 +445,7 @@
 		\end{codeblock}
 
 		\noindent
-		This results confirms the answer $\lim_{x \to \infty} \tfrac{1}{x}=0$
+		This result confirms the answer $\lim_{x \to \infty} \tfrac{1}{x}=0$
 		that we obtained earlier in Example~3.
 
 
@@ -581,7 +581,7 @@
 		In each of these domains,
 		\textbf{limit expressions will help us} make precise statements
 		that \textbf{describe calculus procedures} that involve infinitely short lengths
-		and infinite number of steps.
+		and an infinite number of steps.
 
 		% Many important math and science quantities are defined as limit expressions.
 
